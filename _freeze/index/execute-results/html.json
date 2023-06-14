@@ -1,0 +1,16 @@
+{
+  "hash": "f704e0033ed5af6b0485658c812c1017",
+  "result": {
+    "markdown": "---\ntitle: \"MATH167R: Statistical Programming with R\"\ntbl-colwidths: [5,10,30,5,5,5]\n---\n\n\n\n::: column-screen-inset-right\n| Week | Date | Topic | Slides |  Lab | HW | \n|:------:|--------|--------|:------:|:------:|:------:|\n|  [1](/weeks/week-1.html)  | M 8/21 | Course Overview | | | |\n|                           | W 8/23 | Course Overview | | | |        \n| 2 | M 8/28 | | | | |\n|                           | W 8/30 | | | | |    \n| 3 | M 9/4 | *Labor Day (No Class)* | | | |\n|                           | W 9/6 | | | | |    \n| 4 | M 9/11 | | | | |\n|                           | W 9/13 | | | | |   \n| 5 | M 9/18 | | | | |\n|                           | W 9/20 | | | | |  \n| 6 | M 9/25 | | | | |\n|                           | W 9/27 | | | | |  \n| 7 | M 10/2 | | | | |\n|                           | W 10/4 | | | | |  \n| 8 | M 10/9 | | | | |\n|                           | W 10/11 | | | | |  \n| 9 | M 10/16 | | | | |\n|                           | W 10/18 | | | | | \n| 10 | M 10/23 | | | | |\n|                           | W 10/25 | | | | | \n| 11 | M 10/30 | | | | |\n|                           | W 11/1 | | | | | \n| 12 | M 11/6 | | | | |\n|                           | W 11/8 | | | | | \n| 13 | M 11/13 | | | | |\n|                           | W 11/15 | | | | | \n| 14 | M 11/20 | | | | |\n|                           | W 11/22 | *Thanksgiving (No Class)* | | | | \n| 15 | M 11/27 | | | | |\n|                           | W 11/29 | | | | | \n| 16 | M 12/4 | | | | |\n|                           | W 12/6 | | | | | \n:::\n\n\n::: {.cell}\n\n:::\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

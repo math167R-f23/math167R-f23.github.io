@@ -1,14 +1,21 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "math167R-f23.github.io",
+    "objectID": "weeks/week-1.html",
+    "href": "weeks/week-1.html",
+    "title": "About",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "MATH167R: Statistical Programming with R",
+    "section": "",
+    "text": "Week\nDate\nTopic\nSlides\nLab\nHW\n\n\n\n\n1\nM 8/21\nCourse Overview\n\n\n\n\n\n\nW 8/23\nCourse Overview\n\n\n\n\n\n2\nM 8/28\n\n\n\n\n\n\n\nW 8/30\n\n\n\n\n\n\n3\nM 9/4\nLabor Day (No Class)\n\n\n\n\n\n\nW 9/6\n\n\n\n\n\n\n4\nM 9/11\n\n\n\n\n\n\n\nW 9/13\n\n\n\n\n\n\n5\nM 9/18\n\n\n\n\n\n\n\nW 9/20\n\n\n\n\n\n\n6\nM 9/25\n\n\n\n\n\n\n\nW 9/27\n\n\n\n\n\n\n7\nM 10/2\n\n\n\n\n\n\n\nW 10/4\n\n\n\n\n\n\n8\nM 10/9\n\n\n\n\n\n\n\nW 10/11\n\n\n\n\n\n\n9\nM 10/16\n\n\n\n\n\n\n\nW 10/18\n\n\n\n\n\n\n10\nM 10/23\n\n\n\n\n\n\n\nW 10/25\n\n\n\n\n\n\n11\nM 10/30\n\n\n\n\n\n\n\nW 11/1\n\n\n\n\n\n\n12\nM 11/6\n\n\n\n\n\n\n\nW 11/8\n\n\n\n\n\n\n13\nM 11/13\n\n\n\n\n\n\n\nW 11/15\n\n\n\n\n\n\n14\nM 11/20\n\n\n\n\n\n\n\nW 11/22\nThanksgiving (No Class)\n\n\n\n\n\n15\nM 11/27\n\n\n\n\n\n\n\nW 11/29\n\n\n\n\n\n\n16\nM 12/4\n\n\n\n\n\n\n\nW 12/6"
+  },
+  {
+    "objectID": "syllabus.html",
+    "href": "syllabus.html",
     "title": "About",
     "section": "",
     "text": "About this site\n\n1 + 1\n\n[1] 2"

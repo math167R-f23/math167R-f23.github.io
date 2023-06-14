@@ -1,11 +1,50 @@
 ---
-title: "math167R-f23.github.io"
+title: "MATH167R: Statistical Programming with R"
+tbl-colwidths: [5,10,30,5,5,5]
 ---
 
-This is a Quarto website.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+::: column-screen-inset-right
+| Week | Date | Topic | Slides |  Lab | HW | 
+|:------:|--------|--------|:------:|:------:|:------:|
+|  [1](/weeks/week-1.html)  | M 8/21 | Course Overview | | | |
+|                           | W 8/23 | Course Overview | | | |        
+| 2 | M 8/28 | | | | |
+|                           | W 8/30 | | | | |    
+| 3 | M 9/4 | *Labor Day (No Class)* | | | |
+|                           | W 9/6 | | | | |    
+| 4 | M 9/11 | | | | |
+|                           | W 9/13 | | | | |   
+| 5 | M 9/18 | | | | |
+|                           | W 9/20 | | | | |  
+| 6 | M 9/25 | | | | |
+|                           | W 9/27 | | | | |  
+| 7 | M 10/2 | | | | |
+|                           | W 10/4 | | | | |  
+| 8 | M 10/9 | | | | |
+|                           | W 10/11 | | | | |  
+| 9 | M 10/16 | | | | |
+|                           | W 10/18 | | | | | 
+| 10 | M 10/23 | | | | |
+|                           | W 10/25 | | | | | 
+| 11 | M 10/30 | | | | |
+|                           | W 11/1 | | | | | 
+| 12 | M 11/6 | | | | |
+|                           | W 11/8 | | | | | 
+| 13 | M 11/13 | | | | |
+|                           | W 11/15 | | | | | 
+| 14 | M 11/20 | | | | |
+|                           | W 11/22 | *Thanksgiving (No Class)* | | | | 
+| 15 | M 11/27 | | | | |
+|                           | W 11/29 | | | | | 
+| 16 | M 12/4 | | | | |
+|                           | W 12/6 | | | | | 
+:::
 
-```{r}
-1 + 1
+```{r echo = FALSE}
+knitr::knit_exit()
 ```
+
+|      |      |       | Prepare | Slides | AE  |                                                    Labs                                                    | HW  | Exam | Project |
+|--------|--------|--------|:------:|:------:|:------:|:------:|:------:|:------:|:------:|
+| Week | Date | Topic |   📖    |   🖥️   | 📋  |[💻 | ✍️  
