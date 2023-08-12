@@ -7,18 +7,18 @@ tbl-colwidths: [5,10,20,10,10,10]
 |          Week           | Date    | Topic                                 |                 Slides                  |                  Check-in                  |                Lab                 |
 |:----------:|------------|------------|:----------:|:----------:|:----------:|
 | [1](/weeks/week-1.html) | M 8/21  | Course Overview and Introduction to R | [Slides 01](hello){.label .label-green} | [Check-in 01](hello){.label .label-purple} | [Lab 01](hello){.label .label-red} |
-|                         | W 8/23  | R Fundamentals                        |                                         |                                            |                                    |
-|            2            | M 8/28  | R Fundamentals                        |                                         |                                            |                                    |
-|                         | W 8/30  | R Fundamentals                        |                                         |                                            |                                    |
+|                         | W 8/23  | R fundamentals                        |                                         |                                            |                                    |
+|            2            | M 8/28  | R fundamentals                        |                                         |                                            |                                    |
+|                         | W 8/30  | R fundamentals                        |                                         |                                            |                                    |
 |            3            | M 9/4   | *Labor Day (No Class)*                |                                         |                                            |                                    |
 |                         | W 9/6   | Exploring data with R                 |                                         |                                            |                                    |
 |            4            | M 9/11  | Exploring data with R                 |                                         |                                            |                                    |
 |                         | W 9/13  | Exploring data with R                 |                                         |                                            |                                    |
-|            5            | M 9/18  | Data Visualization                    |                                         |                                            |                                    |
-|                         | W 9/20  | Data Visualization                    |                                         |                                            |                                    |
-|            6            | M 9/25  | Data Visualization                    |                                         |                                            |                                    |
-|                         | W 9/27  | Data Manipulation and management      |                                         |                                            |                                    |
-|            7            | M 10/2  | Data Manipulation and management      |                                         |                                            |                                    |
+|            5            | M 9/18  | Data visualization                    |                                         |                                            |                                    |
+|                         | W 9/20  | Data visualization                    |                                         |                                            |                                    |
+|            6            | M 9/25  | Data visualization                    |                                         |                                            |                                    |
+|                         | W 9/27  | Data manipulation and management      |                                         |                                            |                                    |
+|            7            | M 10/2  | Data manipulation and management      |                                         |                                            |                                    |
 |                         | W 10/4  | Midterm exam                          |                                         |                                            |                                    |
 |            8            | M 10/9  | Programming basics                    |                                         |                                            |                                    |
 |                         | W 10/11 | Programming basics                    |                                         |                                            |                                    |
