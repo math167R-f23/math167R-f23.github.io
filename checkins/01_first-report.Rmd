@@ -1,0 +1,47 @@
+---
+title: "Check-in 1: Instructions"
+author: "Peter Gao"
+date: "2023-08-21"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## A. Running your first R code
+
+Your first check-in has two parts. First, you'll try running and reading some basic R code.
+
+1. On the computer you are using, create a new folder titled "MATH167R" or something similar.
+
+2. Within this folder, create a sub-folder named "checkins" or something similar.
+
+3. Download "01_first-R-code.R" and save it in your checkins folder.
+
+4. Open "01_first-R-code.R" in RStudio. It should look something like the code below.
+
+```{r}
+
+```
+
+5. 
+
+5. Answer the two questions 
+
+## B. Compiling your first R Markdown report
+
+Now, we'll use a tool called R Markdown to generate a report that combines code, output, and writing. R Markdown reports are commonly used to share data analysis in a clear and reproducible way.
+
+1. Download 01_first-report.Rmd to your checkins folder and open it in RStudio.
+
+2. 
+
+```{r cars}
+summary(cars)
+```
+
+To receive full points on the first check-in, make sure:
+
+1. You answered the questions on your first R code here.
+2. You submitted your first R Markdown report (in .html form) here.

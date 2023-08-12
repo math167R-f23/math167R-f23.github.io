@@ -1,9 +1,9 @@
 ---
-title: "About"
+title: "Week 1"
 ---
 
-About this site
+## Key Links
 
-```{r}
-1 + 1
-```
+[Slides 01](hello){.label .label-green} [Check-in 01](hello){.label .label-purple} [Lab 01](hello){.label .label-red}
+
+## Topics covered
