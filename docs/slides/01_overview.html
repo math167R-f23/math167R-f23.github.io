@@ -7,9 +7,7 @@
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/quarto-contrib/kbd/kbd.js"></script>
-<link href="../site_libs/quarto-contrib/kbd/kbd.css" rel="stylesheet"><meta charset="utf-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Peter Gao">
@@ -31,6 +29,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -344,43 +407,54 @@ Peter Gao
 <h2>Course information</h2>
 <table>
 <colgroup>
-<col style="width: 9%">
-<col style="width: 90%">
+<col style="width: 14%">
+<col style="width: 85%">
 </colgroup>
+<thead>
+<tr class="header">
+<th><strong>Instructor</strong></th>
+<th>Peter Gao</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td><strong>Instructor</strong></td>
-<td>Peter Gao</td>
-</tr>
-<tr class="even">
-<td><strong>Office</strong></td>
-<td>MH 311</td>
-</tr>
-<tr class="odd">
 <td><strong>Lectures</strong></td>
-<td>Weekly on Monday and Wednesday</td>
+<td>MW 10:30-11:45am in MH234</td>
 </tr>
 <tr class="even">
 <td><strong>Office Hours</strong></td>
-<td><p>Monday and Wednesday, 1:30-2:30pm</p>
-<p>or email for an appointment</p></td>
+<td>MW 1:30-2:30pm in MH311 or email for an appointment</td>
 </tr>
 <tr class="odd">
 <td><strong>Email</strong></td>
 <td><p>peter.gao [at sjsu]</p>
-<p><em>I will make every effort to respond to emails within a day, but please feel free to send me a reminder after 48 hours have passed. Please include [MATH 167R] in your subject line.</em></p></td>
+<p><em>Feel free to send me a reminder after 48 hours have passed. Please include [MATH 167R] in your subject line.</em></p></td>
 </tr>
 </tbody>
 </table>
 </section>
+<section id="learning-objectives" class="slide level2">
+<h2>Learning objectives</h2>
+<p>Upon successful completion of this course, students will be able to:</p>
+<ol type="1">
+<li>Understand the structures of R objects</li>
+<li>Import data from a variety of sources.</li>
+<li>Save data in formats that can be used by other programs.</li>
+<li>Create publication quality graphs.</li>
+<li>Download and install packages.</li>
+<li>Create reusable functions.</li>
+<li>Perform statistical analysis on R.</li>
+</ol>
+</section>
 <section id="where-to-look" class="slide level2">
 <h2>Where to look</h2>
-<p><strong>Course website</strong>: Course slides, assignment instructions, data.</p>
-<p><strong>Canvas</strong>: Submitting assignments, receiving grades.</p>
+<p><strong>Course website</strong>: Course slides, assignment instructions.</p>
+<p><strong>Canvas</strong>: Official syllabus, submitting assignments, receiving grades, data</p>
 </section>
 <section id="what-you-need" class="slide level2">
 <h2>What you need</h2>
-<p>Access to a computer…</p>
+<p><strong>Access to a computer with R and RStudio:</strong> the computer lab in MacQuarrie Hall 221 contains computers with all of the software that will be used during the semester.</p>
+<p>All of the coursework may be completed on a personal computer and the software is freely available to students.</p>
 </section>
 <section id="course-structure" class="slide level2">
 <h2>Course structure</h2>
@@ -399,8 +473,8 @@ Peter Gao
 <li><p><strong>Check-ins</strong>: On most Mondays, you will be assigned short check-in assignments. These are designed to be completed during lab or shortly after and will be due at the start of the next class. At the end of the quarter, your lowest check-in grade will be dropped. They will be graded on the following two point scale:</p>
 <ul>
 <li><p>0: indicates incomplete or unacceptable work</p></li>
-<li><p>1: represents demonstrated effort towards completing at least 75% of the assignment</p></li>
-<li><p>2: represents demonstrated effort towards completing the entire assignment.</p></li>
+<li><p>1: effort towards completing at least 75% of the assignment</p></li>
+<li><p>2: effort towards completing the entire assignment.</p></li>
 </ul></li>
 </ul>
 </section>
@@ -417,79 +491,268 @@ Peter Gao
 <li><p><strong>Class Project</strong>: During the semester, you will complete a class project that requires you to apply the data manipulation, visualization, and analysis skills covered in this course to a real-world dataset of your choice.</p></li>
 </ul>
 </section>
-<section id="expectations" class="slide level2">
-<h2>Expectations</h2>
-<ul>
-<li><strong>Late Work</strong>: In general, the late policy is as follows: Any assignment that is received late but less than 24 hours late will receive a grade penalty of 25%. Any assignment that is received 24–48 hours late will receive a grade penalty of 50%. Assignments will not be accepted more than 48 hours late.</li>
-</ul>
-</section>
-<section id="expectations-1" class="slide level2">
-<h2>Expectations</h2>
+<section id="late-policy" class="slide level2">
+<h2>Late policy</h2>
 <ul>
 <li><strong>Late Work</strong>: In general, the late policy is as follows: Any assignment that is received late but less than 24 hours late will receive a grade penalty of 25%. Any assignment that is received 24–48 hours late will receive a grade penalty of 50%. Assignments will not be accepted more than 48 hours late.</li>
 </ul>
 </section>
 <section id="collaboration" class="slide level2">
 <h2>Collaboration</h2>
-<p>On most assignments, collaboration is allowed and encouraged. You may discuss problems, approaches, and solutions with your classmates. Acceptable collaboration is limited to your classmates in this course and you must clearly include on any collaborative work the name(s) of anyone with whom you worked. Additionally, all submitted work must be your own; you should not submit code or answers copied from any resource including your classmates. Plagiarism and cheating is easy to detect and can lead to serious negative consequences for you. If you have any questions regarding this policy, please ask for clarification.</p>
+<p>You may discuss problems, approaches, and solutions with your classmates. Acceptable collaboration is limited to your classmates in this course and you must clearly include on any collaborative work the name(s) of anyone with whom you worked.</p>
+<p>All submitted work must be your own; you should not submit code or answers copied from any resource including your classmates. If you have any questions regarding this policy, please ask for clarification.</p>
 </section>
 <section id="chatgpt-and-other-tools" class="slide level2">
 <h2>ChatGPT (and other tools)…</h2>
-<p>Students are encouraged to use online resources including large language model-based chatbots (ex. ChatGPT) <strong>as aids for learning and understanding course material</strong>. However, the use of external resources like ChatGPT to generate code or answers for course assignments, exams, and projects is not permitted.</p>
+<p>Students are encouraged to use online resources including large language model-based chatbots (ex. ChatGPT) <strong>as aids for learning and understanding course material</strong>.</p>
+<p>However, the use of external resources like ChatGPT to generate code or answers for course assignments, exams, and projects is not permitted.</p>
 </section>
 <section id="discussion" class="slide level2">
 <h2>Discussion</h2>
-<p>You are encouraged to participate on the Canvas discussion forum by posting questions about assignments and answering questions from other students. Posts may not include substantial amounts of code that can be used for a solution to any problem, but may include code snippets within reason. Participation, in the form of both questions and answers, can earn you up to 2% extra credit for your final grade. Posts will be evaluated based on how substantive and helpful they are to the class.</p>
+<p><strong>Piazza discussion forum</strong>: post questions about assignments and answer questions from other students.</p>
+<p>Posts may not include substantial amounts of code that can be used for a solution to any problem, but may include code snippets.</p>
+<p>Participation (both questions and answers), <strong>can</strong> earn you up to 2% extra credit for your final grade. Posts will be evaluated based on how substantive and helpful they are to the class.</p>
 </section>
-<section id="office-hours" class="slide level2">
-<h2>Office Hours</h2>
-<p>Please come</p>
+<section id="discussion-1" class="slide level2">
+<h2>Discussion</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="bad-questions">Bad questions:</h3>
+<ul>
+<li><p>How do you do problem 2?</p></li>
+<li><p>Here’s my code and it’s broken. How do I fix it?</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h3 id="good-questions">Good questions:</h3>
+<ul>
+<li><p>Here’s a snippet of code I used for problem 2:&nbsp;<br>
+<code>code snippet</code>&nbsp;<br>
+It returned the following error:&nbsp;<br>
+<code>error message</code>&nbsp;<br>
+Does anyone know why? I already tried...</p></li>
+<li><p>I don’t understand the concept from Slide 18 today. Could anyone elaborate on why...</p></li>
+</ul>
+</div><h3 id="section"></h3>
+</div>
+</section>
+<section id="office-hours-aka-drop-in-hours" class="slide level2">
+<h2>Office Hours (aka drop-in hours)</h2>
+<table>
+<colgroup>
+<col style="width: 16%">
+<col style="width: 83%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>In-person</td>
+<td>MH 311 Monday and Wednesday 12:30 to 1:30pm or by appointment (email)</td>
+</tr>
+<tr class="even">
+<td>Zoom</td>
+<td>By appointment</td>
+</tr>
+</tbody>
+</table>
+<p>Come by:</p>
+<ul>
+<li>for a snack</li>
+<li>to ask questions or work with other students</li>
+<li>just to chat!</li>
+</ul>
+<p><strong>My advice:</strong> make it a habit to drop by office hours, starting early in the semester when schedules are less busy.</p>
 </section>
 <section id="slides-explained" class="slide level2">
 <h2>Slides explained</h2>
-<p>Slides will be posted on the course website before class.</p>
+<p>Slides will usually be posted on the course website before class. I encourage you to return to the slides after class and make sure you understand the code used and the concepts covered.</p>
+</section>
+<section>
+<section id="introduction-to-r" class="title-slide slide level1 center">
+<h1>Introduction to R</h1>
+
 </section>
 <section id="what-is-r" class="slide level2">
 <h2>What is R?</h2>
-<p><kbd>Shift-Ctrl-P</kbd></p>
+<p><img data-src="https://www.r-project.org/logo/Rlogo.png" class="absolute" style="top: 5px; right: 5px; width: 11%; "></p>
+<p>R is a programming language designed for statistical analysis.</p>
+<ul>
+<li><p>open-source</p></li>
+<li><p>free</p></li>
+<li><p>large and active community of developers and users</p></li>
+<li><p>great analysis tools</p></li>
+<li><p>great visualization tools</p></li>
+</ul>
 </section>
 <section id="why-r" class="slide level2">
 <h2>Why R?</h2>
+<p>In this class we will cover programming through the use of the R language, emphasizing <strong>statistical computing</strong> skills.</p>
+<p>Advances in computation have enabled advances at every step of the data analysis pipeline:</p>
+<ul>
+<li>Data collection, storage, and sharing</li>
+<li>Exploratory data analysis and visualization</li>
+<li>Statistical inference and prediction</li>
+<li>Communication and distribution of results</li>
+</ul>
+<p>R is a programming language tailored to these tasks.</p>
 </section>
-<section id="goals" class="slide level2">
-<h2>Goals</h2>
+<section id="what-is-rstudio" class="slide level2">
+<h2>What is RStudio?</h2>
+<p>RStudio is an integrated development environment (IDE) designed to make your life easier.</p>
+<ul>
+<li><p>Organizes scripts, files, plots, code console, ...</p></li>
+<li><p>Highlights syntax</p></li>
+<li><p>Helpful interactive graphical interface</p></li>
+<li><p>Will make an efficient, reproducible workflow&nbsp;<em>much</em>&nbsp;easier</p></li>
+</ul>
 </section>
-<section id="r-a-fancy-calculator" class="slide level2">
-<h2>R: A fancy calculator</h2>
+<section id="a-tour-through-r-and-rstudio" class="slide level2">
+<h2>A tour through R and RStudio</h2>
+<p>By default…</p>
+<ul>
+<li><em>Top left</em>: Editor pane. Browse and edit scripts and data with tabs</li>
+<li><em>Top right</em>: List of objects in your Environment (recall <code>ls()</code>), code History</li>
+<li><em>Bottom left</em>: Console for running R code line-by-line (<code>&gt;</code> prompt)</li>
+<li><em>Bottom right</em>: Files, plots, packages, help files</li>
+</ul>
+</section>
+<section id="rstudio-r-a-fancy-calculator" class="slide level2">
+<h2>RStudio + R: A fancy calculator</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Addition</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="dv">6</span> <span class="sc">+</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Subtraction</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="dv">6</span> <span class="sc">-</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Multiplication</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="dv">6</span> <span class="sc">*</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 18</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Division</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="dv">6</span> <span class="sc">/</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+<p>Here, the <code>[1]</code> indicates the first output value. We only have one output value here, but in the future we will have more.</p>
+</div>
+</section>
+<section id="rstudio-r-a-fancy-calculator-1" class="slide level2">
+<h2>RStudio + R: A fancy calculator</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Exponentiation</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="dv">3</span> <span class="sc">^</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3486784401</code></pre>
+</div>
+</div>
+<p>R can usually handle bigger numbers than your handheld calculator, but even R has limits:</p>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># Bigger exponentiation</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="dv">3</span> <span class="sc">^</span> <span class="dv">1000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] Inf</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="assignment" class="slide level2">
+<h2>Assignment</h2>
+<p>R can also store values (like numbers) as <strong>objects</strong>, which can be referenced later:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>x <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>x <span class="sc">+</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
 </section>
 <section id="more-than-a-fancy-calculator" class="slide level2">
 <h2>More than a fancy calculator</h2>
+<p>Of course, we wouldn’t have a whole course on R if this was all it could do.</p>
 </section>
 <section id="data-analysis" class="slide level2">
 <h2>Data analysis</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="fu">data</span>(penguins)</span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="fu">lm</span>(body_mass_g <span class="sc">~</span> flipper_length_mm, <span class="at">data =</span> penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = body_mass_g ~ flipper_length_mm, data = penguins)
+
+Coefficients:
+      (Intercept)  flipper_length_mm  
+         -5780.83              49.69  </code></pre>
+</div>
+</div>
 </section>
 <section id="visualization" class="slide level2">
 <h2>Visualization</h2>
-</section>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span> </span>
+<span id="cb19-3"><a href="#cb19-3"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="01_overview_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
 <section id="communication" class="slide level2">
 <h2>Communication</h2>
+<p>R Markdown files (see examples <a href="https://rmarkdown.rstudio.com/gallery.html">here</a>)</p>
+<ul>
+<li>Combine code, output, and writing</li>
+<li>Self-contained analyses</li>
+<li>Creates HTML, PDF, slides (like these!), webpages, …</li>
+</ul>
 </section>
-<section id="installing-r" class="slide level2">
-<h2>Installing R</h2>
+<section id="installing-r-and-rstudio" class="slide level2">
+<h2>Installing R and RStudio</h2>
+<ol type="1">
+<li><p>Download and install R from <a href="https://cran.rstudio.com">this link</a></p></li>
+<li><p>Download and install RStudio Desktop from <a href="https://posit.co/download/rstudio-desktop/">this link</a>.</p></li>
+</ol>
 </section>
 <section id="your-first-check-in" class="slide level2">
 <h2>Your first check-in</h2>
+<ol type="1">
+<li><p>On the computer you are using, create a new folder titled “MATH167R” or something similar.</p></li>
+<li><p>Within this folder, create a sub-folder named “checkins” or something similar.</p></li>
+<li><p>Download “01_first-R-code.R” and save it in your checkins folder.</p></li>
+<li><p>Open “01_first-R-code.R” in RStudio. It should look something like the code below.</p></li>
+</ol>
 </section>
 <section id="running-your-first-r-code" class="slide level2">
 <h2>Running your first R code</h2>
-</section>
-<section id="creating-your-first-r-markdown-report" class="slide level2">
-<h2>Creating your first R Markdown report</h2>
+<ol start="5" type="1">
+<li>Run the code line by line and answer the two questions on the Check-in 1 assignment on Canvas.</li>
+</ol>
 
 <div class="footer footer-default">
 
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
@@ -701,6 +964,44 @@ Peter Gao
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
