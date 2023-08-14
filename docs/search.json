@@ -4,14 +4,14 @@
     "href": "checkins/01_first-checkin.html",
     "title": "Check-in 1: Instructions",
     "section": "",
-    "text": "Your first check-in has two parts. First, you’ll try running and reading some basic R code.\n\nOn the computer you are using, create a new folder titled “MATH167R” or something similar.\nWithin this folder, create a sub-folder named “checkins” or something similar.\nDownload “01_first-R-code.R” and save it in your checkins folder.\nOpen “01_first-R-code.R” in RStudio. It should look something like the code below.\n\n\nsides &lt;- c(\"H\", \"T\")\n\nflip1 &lt;- sample(sides, 1, replace = T)\nprint(flip1)\n\n[1] \"T\"\n\nflip10 &lt;- sample(sides, 10, replace = T)\nprint(flip10)\n\n [1] \"T\" \"H\" \"H\" \"H\" \"H\" \"H\" \"H\" \"T\" \"T\" \"T\"\n\n\n\nRun the code line by line and answer the two questions on the Check-in 1 assignment on Canvas."
+    "text": "Your first check-in has two parts. First, you’ll try running and reading some basic R code.\n\nOn the computer you are using, create a new folder titled “MATH167R” or something similar.\nWithin this folder, create a sub-folder named “checkins” or something similar.\nDownload “01_first-R-code.R” and save it in your checkins folder.\nOpen “01_first-R-code.R” in RStudio. It should look something like the code below.\n\n\nsides &lt;- c(\"H\", \"T\")\n\nflip1 &lt;- sample(sides, 1, replace = T)\nprint(flip1)\n\nflip10 &lt;- sample(sides, 10, replace = T)\nprint(flip10)\n\n\nRun the code line by line and answer the two questions on the Check-in 1 assignment on Canvas."
   },
   {
     "objectID": "checkins/01_first-checkin.html#a.-running-your-first-r-code",
     "href": "checkins/01_first-checkin.html#a.-running-your-first-r-code",
     "title": "Check-in 1: Instructions",
     "section": "",
-    "text": "Your first check-in has two parts. First, you’ll try running and reading some basic R code.\n\nOn the computer you are using, create a new folder titled “MATH167R” or something similar.\nWithin this folder, create a sub-folder named “checkins” or something similar.\nDownload “01_first-R-code.R” and save it in your checkins folder.\nOpen “01_first-R-code.R” in RStudio. It should look something like the code below.\n\n\nsides &lt;- c(\"H\", \"T\")\n\nflip1 &lt;- sample(sides, 1, replace = T)\nprint(flip1)\n\n[1] \"T\"\n\nflip10 &lt;- sample(sides, 10, replace = T)\nprint(flip10)\n\n [1] \"T\" \"H\" \"H\" \"H\" \"H\" \"H\" \"H\" \"T\" \"T\" \"T\"\n\n\n\nRun the code line by line and answer the two questions on the Check-in 1 assignment on Canvas."
+    "text": "Your first check-in has two parts. First, you’ll try running and reading some basic R code.\n\nOn the computer you are using, create a new folder titled “MATH167R” or something similar.\nWithin this folder, create a sub-folder named “checkins” or something similar.\nDownload “01_first-R-code.R” and save it in your checkins folder.\nOpen “01_first-R-code.R” in RStudio. It should look something like the code below.\n\n\nsides &lt;- c(\"H\", \"T\")\n\nflip1 &lt;- sample(sides, 1, replace = T)\nprint(flip1)\n\nflip10 &lt;- sample(sides, 10, replace = T)\nprint(flip10)\n\n\nRun the code line by line and answer the two questions on the Check-in 1 assignment on Canvas."
   },
   {
     "objectID": "slides/01_overview.html#course-information",
