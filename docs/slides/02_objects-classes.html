@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Peter Gao">
-  <title>MATH167R - MATH167R: Overview</title>
+  <title>MATH167R - MATH167R: Basic Definitions</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -384,7 +384,7 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="MATH167R - MATH167R: Overview">
+<meta property="og:title" content="MATH167R - MATH167R: Basic Definitions">
 <meta property="og:site-name" content="MATH167R">
 </head>
 <body class="quarto-light">
@@ -392,7 +392,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">MATH167R: Overview</h1>
+  <h1 class="title">MATH167R: Basic Definitions</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -403,428 +403,407 @@ Peter Gao
 </div>
 
 </section>
-<section id="course-information" class="slide level2">
-<h2>Course information</h2>
-<table>
-<colgroup>
-<col style="width: 14%">
-<col style="width: 85%">
-</colgroup>
-<thead>
-<tr class="header">
-<th><strong>Instructor</strong></th>
-<th>Peter Gao</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Lectures</strong></td>
-<td>MW 10:30-11:45am in MH234</td>
-</tr>
-<tr class="even">
-<td><strong>Office Hours</strong></td>
-<td>MW 1:30-2:30pm in MH311 or email for an appointment</td>
-</tr>
-<tr class="odd">
-<td><strong>Email</strong></td>
-<td><p>peter.gao [at sjsu]</p>
-<p><em>Feel free to send me a reminder after 48 hours have passed. Please include [MATH 167R] in your subject line.</em></p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="learning-objectives" class="slide level2">
-<h2>Learning objectives</h2>
-<p>Upon successful completion of this course, students will be able to:</p>
-<ol type="1">
-<li>Understand the structures of R objects</li>
-<li>Import data from a variety of sources.</li>
-<li>Save data in formats that can be used by other programs.</li>
-<li>Create publication quality graphs.</li>
-<li>Download and install packages.</li>
-<li>Create reusable functions.</li>
-<li>Perform statistical analysis on R.</li>
-</ol>
-</section>
-<section id="learning-objectives-1" class="slide level2">
-<h2>Learning objectives</h2>
-<p>In this class we will discuss some basic computer science concepts, but we will emphasize tools for data analysis.</p>
-<p>Advances in computation have enabled advances at every step of the data analysis pipeline:</p>
+<section id="warm-up-getting-to-know-each-other" class="slide level2">
+<h2>Warm-up: Getting to know each other</h2>
+<p>In groups of two or three, share:</p>
 <ul>
-<li><p>Data collection, storage, and sharing</p></li>
-<li><p>Exploratory data analysis and visualization</p></li>
-<li><p>Statistical inference and prediction</p></li>
-<li><p>Simulation&nbsp;</p></li>
-<li><p>Communication and distribution of results</p></li>
+<li>What you’d like us to call you in class</li>
+<li>Major/program and why you’re taking this course</li>
+<li>Something you’d be interested in studying/exploring through data</li>
 </ul>
-</section>
-<section id="where-to-look" class="slide level2">
-<h2>Where to look</h2>
-<p><strong>Course website</strong>: Course slides, assignment instructions.</p>
-<p><strong>Canvas</strong>: Official syllabus, submitting assignments, receiving grades, data</p>
-<p><strong>Piazza</strong>: Discussion board</p>
-<p>If you ever have questions about accessing materials, please contact me. If you need any kind of accommodations, please let me know as soon as possible.</p>
-</section>
-<section id="what-you-need" class="slide level2">
-<h2>What you need</h2>
-<p><strong>Access to a computer with R and RStudio:</strong> the computer lab in MacQuarrie Hall 221 contains computers with all of the software that will be used during the semester.</p>
-<p>All of the coursework may be completed on a personal computer and the software is freely available to students.</p>
-</section>
-<section id="course-structure" class="slide level2">
-<h2>Course structure</h2>
-<p>Your final grade will be calculated as follows:</p>
-<ul>
-<li><p>15%: Check-ins</p></li>
-<li><p>30%: Labs</p></li>
-<li><p>15%: Midterm exam</p></li>
-<li><p>20%: Final exam</p></li>
-<li><p>20%: Class project</p></li>
-</ul>
-</section>
-<section id="assignments" class="slide level2">
-<h2>Assignments</h2>
-<ul>
-<li><p><strong>Check-ins</strong>: On most Mondays, you will be assigned short check-in assignments. These are designed to be completed during lab or shortly after and will be due at the start of the next class. At the end of the quarter, your lowest check-in grade will be dropped. They will be graded on the following two point scale:</p>
-<ul>
-<li><p>0: indicates incomplete or unacceptable work</p></li>
-<li><p>1: effort towards completing at least 75% of the assignment</p></li>
-<li><p>2: effort towards completing the entire assignment.</p></li>
-</ul></li>
-</ul>
-</section>
-<section id="assignments-1" class="slide level2">
-<h2>Assignments</h2>
-<ul>
-<li><strong>Labs</strong>: On most Wednesdays, you will be assigned Labs. These are extended, more complicated assignments that you will likely not be able to complete during class. They will typically be due the next Wednesday.</li>
-</ul>
-</section>
-<section id="assignments-2" class="slide level2">
-<h2>Assignments</h2>
-<ul>
-<li><p><strong>Midterm and Final Exams</strong>: There will be one in-person midterm during the semester and one final exam during finals week. Practice questions will be provided in advance of the exams.</p></li>
-<li><p><strong>Class Project</strong>: During the semester, you will complete a class project that requires you to apply the data manipulation, visualization, and analysis skills covered in this course to a real-world dataset of your choice.</p></li>
-</ul>
-</section>
-<section id="late-policy" class="slide level2">
-<h2>Late policy</h2>
-<p>In general, the late policy is as follows:</p>
-<ul>
-<li><p>Any assignment that is received late but less than 24 hours late will receive a grade penalty of 25%.</p></li>
-<li><p>Any assignment that is received 24–48 hours late will receive a grade penalty of 50%.</p></li>
-<li><p>Assignments will not be accepted more than 48 hours late.</p></li>
-</ul>
-</section>
-<section id="collaboration" class="slide level2">
-<h2>Collaboration</h2>
-<ul>
-<li><p>You may discuss problems, approaches, and solutions with your <strong>classmates</strong>.</p></li>
-<li><p>You must credit anyone with whom you worked on each assignment.</p></li>
-<li><p>All submitted work must be your own; you should not submit code or answers copied from any resource including your classmates.</p></li>
-<li><p>If you have any questions, ask!</p></li>
-</ul>
-</section>
-<section id="chatgpt-and-other-tools" class="slide level2">
-<h2>ChatGPT (and other tools)…</h2>
-<p>Students are encouraged to use online resources including large language model-based chatbots (ex. ChatGPT) <strong>as aids for learning and understanding course material</strong>.</p>
-<p>However, the use of external resources like ChatGPT to generate code or answers for course assignments, exams, and projects is not permitted.</p>
-</section>
-<section id="discussion" class="slide level2">
-<h2>Discussion</h2>
-<p><strong>Piazza discussion forum</strong>: post questions about assignments and answer questions from other students.</p>
-<p>Posts may not include substantial amounts of code that can be used for a solution to any problem, but may include code snippets.</p>
-<ul>
-<li>Worth up to 2% extra credit on your final grade!</li>
-</ul>
-</section>
-<section id="discussion-1" class="slide level2 smaller">
-<h2>Discussion</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<h3 id="bad-questions">Bad questions:</h3>
-<ul>
-<li><p>How do you do problem 2?</p></li>
-<li><p>Here’s my code and it’s broken. How do I fix it?</p></li>
-</ul>
-</div><div class="column" style="width:50%;">
-<h3 id="good-questions">Good questions:</h3>
-<ul>
-<li><p>Here’s a snippet of code I used for problem 2:&nbsp;<br>
-<code>code snippet</code>&nbsp;<br>
-It returned the following error:&nbsp;<br>
-<code>error message</code>&nbsp;<br>
-Does anyone know why? I already tried...</p></li>
-<li><p>I don’t understand the concept from Slide 18 today. Could anyone elaborate on why...</p></li>
-</ul>
-</div><h3 id="section"></h3>
-</div>
-</section>
-<section id="office-hours-aka-drop-in-hours" class="slide level2">
-<h2>Office Hours (aka drop-in hours)</h2>
-<table>
-<colgroup>
-<col style="width: 15%">
-<col style="width: 84%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>In-person</td>
-<td>MH 311 Monday and Wednesday 12:30 to 1:30pm or by appointment (email)</td>
-</tr>
-<tr class="even">
-<td>Zoom</td>
-<td>By appointment</td>
-</tr>
-</tbody>
-</table>
-<p>Come by:</p>
-<ul>
-<li>for a snack</li>
-<li>to ask questions or work with other students</li>
-<li>just to chat!</li>
-</ul>
-<p><strong>My advice:</strong> make it a habit to drop by office hours, starting early in the semester when schedules are less busy.</p>
-</section>
-<section id="lecture-slides" class="slide level2">
-<h2>Lecture slides</h2>
-<p>Slides will usually be posted on the course website before class. I encourage you to return to the slides after class and make sure you understand the code used and the concepts covered.</p>
-<p>Generally speaking, code will be contained in blocks that look like this:</p>
+<p>and discuss what you think the following code does:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># example comment</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>example line of code</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>sides <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"H"</span>, <span class="st">"T"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>flip10 <span class="ot">&lt;-</span> <span class="fu">sample</span>(sides, <span class="dv">10</span>, <span class="at">replace =</span> T)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">sum</span>(flip10 <span class="sc">==</span> <span class="st">"H"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="getting-to-know-each-other" class="slide level2">
-<h2>Getting to know each other</h2>
-<p>Form groups of 2-3 and discuss the following:</p>
-<ol type="1">
-<li><p>Introduce yourself (names, major/program)</p></li>
-<li><p>What are you excited/nervous/confused about with regards to this course? What questions do you have?</p></li>
-<li><p>Have you ever used R? Programmed?</p></li>
-<li><p>What is one area of interest you would like to use statistics/data science to study?</p></li>
-</ol>
+<section id="overview-of-today" class="slide level2">
+<h2>Overview of today</h2>
+<ul>
+<li>Basic definitions: objects, expressions, values, objects, functions, classes</li>
+<li>R Markdown and file management</li>
+</ul>
 </section>
 <section>
-<section id="introduction-to-r" class="title-slide slide level1 center">
-<h1>Introduction to R</h1>
+<section id="basic-definitions" class="title-slide slide level1 center">
+<h1>Basic definitions</h1>
 
 </section>
-<section id="what-is-r" class="slide level2">
-<h2>What is R?</h2>
-<p><img data-src="https://www.r-project.org/logo/Rlogo.png" class="absolute" style="top: 5px; right: 5px; width: 11%; "></p>
-<p>R is a programming language designed for statistical analysis.</p>
-<ul>
-<li><p>open-source</p></li>
-<li><p>free</p></li>
-<li><p>large and active community of developers and users</p></li>
-<li><p>great analysis tools</p></li>
-<li><p>great visualization tools</p></li>
-</ul>
-</section>
-<section id="why-r" class="slide level2">
-<h2>Why R?</h2>
-<p>In this class we will cover programming through the use of the R language, emphasizing <strong>statistical computing</strong> skills.</p>
-<p>Advances in computation have enabled advances at every step of the data analysis pipeline:</p>
-<ul>
-<li>Data collection, storage, and sharing</li>
-<li>Exploratory data analysis and visualization</li>
-<li>Statistical inference and prediction</li>
-<li>Communication and distribution of results</li>
-</ul>
-<p>R is a programming language tailored to these tasks.</p>
-</section>
-<section id="what-is-rstudio" class="slide level2">
-<h2>What is RStudio?</h2>
-<p>RStudio is an integrated development environment (IDE) designed to make your life easier.</p>
-<ul>
-<li><p>Organizes scripts, files, plots, code console, ...</p></li>
-<li><p>Highlights syntax</p></li>
-<li><p>Helpful interactive graphical interface</p></li>
-<li><p>Will make an efficient, reproducible workflow&nbsp;<em>much</em>&nbsp;easier</p></li>
-</ul>
-</section>
-<section id="a-tour-through-r-and-rstudio" class="slide level2">
-<h2>A tour through R and RStudio</h2>
-<p>By default…</p>
-<ul>
-<li><em>Top left</em>: Editor pane. Browse and edit scripts and data with tabs</li>
-<li><em>Top right</em>: List of objects in your Environment (recall <code>ls()</code>), code History</li>
-<li><em>Bottom left</em>: Console for running R code line-by-line (<code>&gt;</code> prompt)</li>
-<li><em>Bottom right</em>: Files, plots, packages, help files</li>
-</ul>
-</section>
-<section id="rstudio-r-a-fancy-calculator" class="slide level2">
-<h2>RStudio + R: A fancy calculator</h2>
+<section id="review" class="slide level2">
+<h2>Review</h2>
+<blockquote>
+<p><em>“To understand computations in R, two slogans are helpful: Everything that exists is an <strong>object</strong>. Everything that happens is a <strong>function</strong> call.”</em></p>
+<p>(Chambers, 2014)</p>
+</blockquote>
+<p>We saw last class that we can use R to perform basic mathematical operations:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Addition</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="dv">6</span> <span class="sc">+</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="dv">3</span> <span class="sc">+</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 9</code></pre>
+<pre><code>[1] 8</code></pre>
 </div>
 </div>
-<div class="fragment">
+</section>
+<section id="expressions" class="slide level2">
+<h2>Expressions</h2>
+<p>We saw last class that we can use R to perform basic mathematical operations:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Subtraction</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="dv">6</span> <span class="sc">-</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="dv">3</span> <span class="sc">+</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8</code></pre>
+</div>
+</div>
+<p><strong><em>Definition</em></strong>: an <strong>expression</strong> is a symbol or a combination of symbols that evaluates to a value.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
 </div>
-</div>
-<div class="fragment">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Multiplication</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="dv">6</span> <span class="sc">*</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 18</code></pre>
-</div>
-</div>
-</div>
-<div class="fragment">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># Division</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="dv">6</span> <span class="sc">/</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
-<p>Here, the <code>[1]</code> indicates the first output value. We only have one output value here, but in the future we will have more.</p>
-</div>
 </section>
-<section id="rstudio-r-a-fancy-calculator-1" class="slide level2">
-<h2>RStudio + R: A fancy calculator</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Exponentiation</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="dv">3</span> <span class="sc">^</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3486784401</code></pre>
-</div>
-</div>
-<p>R can usually handle bigger numbers than your handheld calculator, but even R has limits:</p>
-<div class="fragment">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Bigger exponentiation</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="dv">3</span> <span class="sc">^</span> <span class="dv">1000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] Inf</code></pre>
-</div>
-</div>
-</div>
+<section id="objects" class="slide level2">
+<h2>Objects</h2>
+<p><strong><em>Definition</em></strong>: An <strong>object</strong> is created when R evaluates an expression. The object is accessible only by name.</p>
+<ul>
+<li>An anonymous object gets deleted from the computer memory by a process called garbage collection.</li>
+<li>A special object named <code>.Last.value</code> contains the value of the last evaluated expression (in console only).</li>
+</ul>
 </section>
 <section id="assignment" class="slide level2">
 <h2>Assignment</h2>
-<p>R can also store values (like numbers) as <strong>objects</strong>, which can be referenced later:</p>
+<p>We saw last class that we can assign names to values:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>x <span class="ot">&lt;-</span> <span class="dv">7</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="fu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 7</code></pre>
+<pre><code>[1] 3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="fu">print</span>(x <span class="sc">+</span> y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong><em>Definition</em></strong>: <strong>Assignment</strong> is an operation to <strong>bind</strong> an object to name, using the symbol <code>&lt;-</code>.</p>
+<ul>
+<li><code>=</code> and <code>&lt;-</code> are not generally equivalent. However, they are equivalent when they are used as assignment operators.</li>
+</ul>
+</section>
+<section id="check-your-understanding-assignment" class="slide level2">
+<h2>Check your understanding: Assignment</h2>
+<p>What do you expect the output of the following chunks to be?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>z <span class="ot">&lt;-</span> y <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="fu">print</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>b <span class="ot">&lt;-</span> a <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>b <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> b</span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="fu">print</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="check-your-understanding-assignment-1" class="slide level2">
+<h2>Check your understanding: Assignment</h2>
+<p>What do you expect the output of the following chunks to be?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a>z <span class="ot">&lt;-</span> y <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="fu">print</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 10</code></pre>
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>b <span class="ot">&lt;-</span> a <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a>b <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> b</span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="fu">print</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
 </div>
 </div>
 </section>
-<section id="a-tricky-calculator" class="slide level2">
-<h2>A tricky calculator</h2>
-<p>What do you expect the output to be?</p>
+<section id="objects-and-data" class="slide level2">
+<h2>Objects and data</h2>
+<p>We can use assignments to save values as named objects and perform math on the objects:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>x <span class="ot">&lt;-</span> <span class="dv">7</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb18-3"><a href="#cb18-3"></a><span class="fu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="fragment">
-<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>y <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a>x <span class="sc">+</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 8</code></pre>
 </div>
 </div>
+<p>Today we’ll see that R can handle objects that are not numbers:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>z <span class="ot">&lt;-</span> <span class="st">"Hello"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
-<p>What about this code?</p>
+<p>However, we need to be careful because not all operations work with all types of data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>x <span class="ot">&lt;-</span> <span class="dv">7</span></span>
-<span id="cb20-2"><a href="#cb20-2"></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb20-3"><a href="#cb20-3"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb20-4"><a href="#cb20-4"></a><span class="fu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>x <span class="sc">+</span> z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in x + z: non-numeric argument to binary operator</code></pre>
 </div>
+</div>
+</div>
+</section>
+<section id="atomic-vectors" class="slide level2">
+<h2>Atomic vectors</h2>
+<p>The most basic type of object in R used for storing values is the atomic vector. The four most common types of atomic vectors are:</p>
+<ul>
+<li>logical: ex. <code>TRUE</code> or <code>FALSE</code></li>
+<li>integer: ex. 1, 2, 3, 4, …</li>
+<li>double: ex. 3.1</li>
+<li>character: ex. <code>"Hello"</code></li>
+</ul>
+<p>Integers and doubles are both also called <strong>numeric</strong> vectors.</p>
+</section>
+<section id="atomic-vectors-1" class="slide level2">
+<h2>Atomic vectors</h2>
+
+<img data-src="img/02_atomics.png" class="r-stretch quarto-figure-center"><p>from <em>Advanced R</em>, Hadley Wickham.</p>
+</section>
+<section id="atomic-vectors-2" class="slide level2">
+<h2>Atomic vectors</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>example_lgc <span class="ot">&lt;-</span> T</span>
+<span id="cb21-2"><a href="#cb21-2"></a>example_int <span class="ot">&lt;-</span> 1L</span>
+<span id="cb21-3"><a href="#cb21-3"></a>example_dbl <span class="ot">&lt;-</span> <span class="fl">1.0</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a>example_chr <span class="ot">&lt;-</span> <span class="st">"Hello"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">class</span>(example_lgc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 8</code></pre>
+<pre><code>[1] "logical"</code></pre>
 </div>
-</div>
-</div>
-</section>
-<section id="a-tricky-calculator-1" class="slide level2">
-<h2>A tricky calculator</h2>
-<p>When we assign <code>y &lt;- x + 1</code>, we essentially create a copy of <code>x</code>. As a result, when we reassign <code>x &lt;- 0</code>, <code>y</code> is not affected.</p>
-<p>This isn’t necessarily “right” or “wrong”– this is just how R works! R is full of these little subtleties that you need to be able to grasp in order to write functional code.</p>
-</section>
-<section id="more-than-a-fancy-calculator" class="slide level2">
-<h2>More than a fancy calculator</h2>
-<p>Of course, we wouldn’t have a whole course on R if this was all it could do.</p>
-</section>
-<section id="data-analysis" class="slide level2">
-<h2>Data analysis</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb22-2"><a href="#cb22-2"></a><span class="fu">data</span>(penguins)</span>
-<span id="cb22-3"><a href="#cb22-3"></a><span class="fu">lm</span>(body_mass_g <span class="sc">~</span> flipper_length_mm, <span class="at">data =</span> penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">class</span>(example_int)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = body_mass_g ~ flipper_length_mm, data = penguins)
-
-Coefficients:
-      (Intercept)  flipper_length_mm  
-         -5780.83              49.69  </code></pre>
+<pre><code>[1] "integer"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">class</span>(example_dbl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "numeric"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">class</span>(example_chr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
 </div>
 </div>
 </section>
-<section id="visualization" class="slide level2">
-<h2>Visualization</h2>
+<section id="coercion" class="slide level2">
+<h2>Coercion</h2>
+<p>You can explicitly change the class of an object:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb24-2"><a href="#cb24-2"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span> </span>
-<span id="cb24-3"><a href="#cb24-3"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">as.numeric</span>(example_lgc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
 </div>
-<img data-src="01_overview_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
-<section id="communication" class="slide level2">
-<h2>Communication</h2>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">as.numeric</span>(example_chr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+</div>
+<ul>
+<li><p>When elements of different types are mixed in an atomic vector, R automatically converts all of them to the same type.</p></li>
+<li><p><strong>Order of precedence</strong>, from the highest to the lowest: character, numeric, integer, logical.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="st">"hello"</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "TRUE"  "hello" "1"    </code></pre>
+</div>
+</div>
+</section>
+<section id="special-values" class="slide level2">
+<h2>Special values</h2>
+<table>
+<colgroup>
+<col style="width: 24%">
+<col style="width: 75%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Value</th>
+<th>Usual meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>NA</code></td>
+<td>Missing values</td>
+</tr>
+<tr class="even">
+<td><code>NaN</code></td>
+<td>a computed value that is not a number (try <code>1/0</code>)</td>
+</tr>
+<tr class="odd">
+<td><code>NULL</code></td>
+<td>an object with no value</td>
+</tr>
+<tr class="even">
+<td><code>-Inf</code> and <code>Inf</code></td>
+<td>a computed value that is large (or large and negative)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="environment" class="slide level2">
+<h2>Environment</h2>
+</section></section>
+<section>
+<section id="file-management" class="title-slide slide level1 center">
+<h1>File management</h1>
+
+</section>
+<section id="the-working-directory" class="slide level2">
+<h2>The working directory</h2>
+<ul>
+<li><p>The <strong>working directory</strong> is a folder where files are retrieved from or saved to by default.</p></li>
+<li><p>The command <code>getwd()</code> gets the working directory, which usually is:</p>
+<ul>
+<li><code>/Users/USERNAME</code> on Apple</li>
+<li><code>C:\Users\USERNAME\Documents</code> on Windows</li>
+</ul></li>
+<li><p>Files on a computer are grouped into folders, which are organized in a hierarchy.</p></li>
+<li><p>The <strong>absolute pathname</strong> of a file describes its location in the hierarchy.</p></li>
+</ul>
+</section>
+<section id="relative-pathnames" class="slide level2">
+<h2>Relative pathnames</h2>
+<p>The <strong>relative pathname</strong> of a file specifies its location relative to the working directory.</p>
+<ul>
+<li>The command <code>setwd()</code> sets the working directory for the current R session.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb36-2"><a href="#cb36-2"></a><span class="fu">setwd</span>(<span class="st">"/Users/pgao/Desktop"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><strong>On Windows, add <code>C:</code> to the beginning of the absolute pathname.</strong></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="fu">setwd</span>(<span class="st">"C:/Documents/"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="example-file-structure" class="slide level2">
+<h2>Example file structure</h2>
+
+<img data-src="images/Screen Shot 2023-08-15 at 7.51.33 AM.png" class="r-stretch"></section>
+<section id="project-based-workflow" class="slide level2">
+<h2>Project-based workflow</h2>
+<p>In this class, I encourage you to organize all your code/assignments/files into a single MATH167R folder.</p>
+<p>Once you create this folder, you can create an <strong>RStudio Project</strong>, which will create a file that tells RStudio that all the code in the folder is associated with a single project.</p>
+<p>Any code in the project folder assumes that the working directory is the project root directory. This ensures that the project can be moved around your computer or onto another computer and none of the paths will break.</p>
+</section>
+<section id="example-file-structure-for-math167r" class="slide level2">
+<h2>Example file structure for MATH167R</h2>
+<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1"></a><span class="ex">MATH167R</span></span>
+<span id="cb38-2"><a href="#cb38-2"></a><span class="ex">├──</span> labs</span>
+<span id="cb38-3"><a href="#cb38-3"></a><span class="ex">│&nbsp;&nbsp;</span> ├── 01_lab.R</span>
+<span id="cb38-4"><a href="#cb38-4"></a><span class="ex">│&nbsp;&nbsp;</span> └── 02_lab.R</span>
+<span id="cb38-5"><a href="#cb38-5"></a><span class="ex">├──</span> checkins</span>
+<span id="cb38-6"><a href="#cb38-6"></a><span class="ex">│&nbsp;&nbsp;</span> ├── 01_checkin.R</span>
+<span id="cb38-7"><a href="#cb38-7"></a><span class="ex">│&nbsp;&nbsp;</span> └── 02_checkin.R</span>
+<span id="cb38-8"><a href="#cb38-8"></a><span class="ex">├──</span> project</span>
+<span id="cb38-9"><a href="#cb38-9"></a><span class="ex">│&nbsp;&nbsp;</span> └── data</span>
+<span id="cb38-10"><a href="#cb38-10"></a><span class="ex">│&nbsp;&nbsp;</span>     └── trees.csv</span>
+<span id="cb38-11"><a href="#cb38-11"></a><span class="ex">└──</span> exams</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="naming-files" class="slide level2">
+<h2>Naming files</h2>
+<p>Tips from <a href="https://github.com/jennybc/how-to-name-files">Jenny Bryan</a>:</p>
+<ul>
+<li>machine readable</li>
+<li>human readable</li>
+<li>plays well with default ordering</li>
+</ul>
+</section>
+<section id="naming-files-1" class="slide level2 smaller">
+<h2>Naming files</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="bad">Bad</h3>
+<ul>
+<li><code>newfinal2actualFINALnew.docx</code></li>
+<li><code>my first lab.R</code></li>
+<li><code>stuff.R</code></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h3 id="good">Good:</h3>
+<ul>
+<li><code>01_lab1.Rmd</code></li>
+<li><code>analysis_functions.R</code></li>
+<li><code>2020-01-08_labWriteup.Rmd</code></li>
+</ul>
+</div><section id="section" class="slide level2">
+<h2></h2>
+</section>
+</div>
+</section></section>
+<section>
+<section id="r-markdown" class="title-slide slide level1 center">
+<h1>R Markdown</h1>
+
+</section>
+<section id="r-markdown-1" class="slide level2">
+<h2>R Markdown</h2>
 <p>R Markdown files (see examples <a href="https://rmarkdown.rstudio.com/gallery.html">here</a>)</p>
 <ul>
 <li>Combine code, output, and writing</li>
 <li>Self-contained analyses</li>
 <li>Creates HTML, PDF, slides (like these!), webpages, …</li>
+<li>will be required for assignments</li>
 </ul>
 </section>
-<section id="installing-r-and-rstudio" class="slide level2">
-<h2>Installing R and RStudio</h2>
-<ol type="1">
-<li><p>Download and install R from <a href="https://cran.rstudio.com">this link</a></p></li>
-<li><p>Download and install RStudio Desktop from <a href="https://posit.co/download/rstudio-desktop/">this link</a>.</p></li>
-</ol>
+<section id="your-first-rmarkdown-file" class="slide level2">
+<h2>Your first RMarkdown file</h2>
+<p>Open <code>01_first-R-lab.Rmd</code> in RStudio. At the top of the file, you should see the following header:</p>
+<pre><code>---
+title: "Lab 1: Basic Definitions"
+author: "YOUR NAME HERE"
+date: "2023-08-21"
+output: html_document
+---</code></pre>
+<p>This header contains <strong>metadata</strong> about the document that follows: the name of the file, the author, the date, and what kind of output it will create.</p>
 </section>
-<section id="your-first-check-in" class="slide level2">
-<h2>Your first check-in</h2>
-<ol type="1">
-<li><p>On the computer you are using, create a new folder titled “MATH167R” or something similar.</p></li>
-<li><p>Within this folder, create a sub-folder named “checkins” or something similar.</p></li>
-<li><p>Download “01_first-R-code.R” and save it in your checkins folder.</p></li>
-<li><p>Open “01_first-R-code.R” in RStudio. It should look something like the code below.</p></li>
-</ol>
+<section id="source-editor" class="slide level2">
+<h2>Source Editor</h2>
+
+<img data-src="images/Screen Shot 2023-08-19 at 6.28.06 PM.png" class="r-stretch"></section>
+<section id="visual-editor" class="slide level2">
+<h2>Visual Editor</h2>
+
+<img data-src="images/Screen Shot 2023-08-19 at 6.29.01 PM.png" class="r-stretch"></section>
+<section id="code-chunks" class="slide level2">
+<h2>Code chunks</h2>
+<p>Code chunks contain R code that is evaluated when you render your R Markdown report. You can insert a code chunk by clicking <code>Insert &gt; Code Chunk</code> or by typing the chunk delimiters&nbsp;<code>```{r}</code>&nbsp;and&nbsp;<code>```</code> .</p>
+<p>Chunk output can be customized with optional arguments set in the&nbsp;<code>{}</code>&nbsp;of a chunk header, as we will see in Lab 01.</p>
 </section>
-<section id="your-first-check-in-1" class="slide level2">
-<h2>Your first check-in</h2>
-<ol start="5" type="1">
-<li><p>Run the code line by line and answer the two questions on the Check-in 1 assignment on Canvas.</p></li>
-<li><p>For complete credit for Check-in 1, please also complete the pre-course survey and NameCoach recording.</p></li>
-<li><p>If you would like to find others to work with, please also reply to the Piazza post.</p></li>
-</ol>
+<section id="r-markdown-and-directory-weirdness" class="slide level2">
+<h2>R Markdown (and directory weirdness)</h2>
+<ul>
+<li>R Markdown handles all the tricky file management–just put the file you want to access in the same folder as your .Rmd file</li>
+<li>This can be confusing/frustrating—patience is key!</li>
+<li>Try downloading the sample code <code>01_lab-test-code.R</code> from [here](../static/01_lab-test-code.R) and putting it in the same folder as your Lab 01 R Markdown report.</li>
+</ul>
+</section>
+<section id="r-markdown-2" class="slide level2">
+<h2>R Markdown</h2>
+<p>Remember the following:</p>
+<ul>
+<li>R Markdown produces fully reproducible reports – each time you render, you run the analyis from the beginning</li>
+<li>Code goes in chunks, while the explanation/narrative goes outside of chunks</li>
+<li>RStudio now provides a visual editor for a familiar / Google docs-like editing experience</li>
+</ul>
+</section>
+<section id="lab-1" class="slide level2">
+<h2>Lab 1</h2>
+<p>In Lab 1, we’ll make sure R and RStudio are properly installed and updated, practice assigning objects, and generate your first R Markdown report (in a properly organized directory).</p>
 
 <div class="footer footer-default">
 

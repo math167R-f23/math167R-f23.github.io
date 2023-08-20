@@ -33,11 +33,31 @@ Upon successful completion of this course, students will be able to:
 6.  Create reusable functions.
 7.  Perform statistical analysis on R.
 
+## Learning objectives
+
+In this class we will discuss some basic computer science concepts, but we will emphasize tools for data analysis.
+
+Advances in computation have enabled advances at every step of the data analysis pipeline:
+
+-   Data collection, storage, and sharing
+
+-   Exploratory data analysis and visualization
+
+-   Statistical inference and prediction
+
+-   Simulation 
+
+-   Communication and distribution of results
+
 ## Where to look
 
 **Course website**: Course slides, assignment instructions.
 
 **Canvas**: Official syllabus, submitting assignments, receiving grades, data
+
+**Piazza**: Discussion board
+
+If you ever have questions about accessing materials, please contact me. If you need any kind of accommodations, please let me know as soon as possible.
 
 ## What you need
 
@@ -81,13 +101,23 @@ Your final grade will be calculated as follows:
 
 ## Late policy
 
--   **Late Work**: In general, the late policy is as follows: Any assignment that is received late but less than 24 hours late will receive a grade penalty of 25%. Any assignment that is received 24--48 hours late will receive a grade penalty of 50%. Assignments will not be accepted more than 48 hours late.
+In general, the late policy is as follows:
+
+-   Any assignment that is received late but less than 24 hours late will receive a grade penalty of 25%.
+
+-   Any assignment that is received 24--48 hours late will receive a grade penalty of 50%.
+
+-   Assignments will not be accepted more than 48 hours late.
 
 ## Collaboration
 
-You may discuss problems, approaches, and solutions with your classmates. Acceptable collaboration is limited to your classmates in this course and you must clearly include on any collaborative work the name(s) of anyone with whom you worked.
+-   You may discuss problems, approaches, and solutions with your **classmates**.
 
-All submitted work must be your own; you should not submit code or answers copied from any resource including your classmates. If you have any questions regarding this policy, please ask for clarification.
+-   You must credit anyone with whom you worked on each assignment.
+
+-   All submitted work must be your own; you should not submit code or answers copied from any resource including your classmates.
+
+-   If you have any questions, ask!
 
 ## ChatGPT (and other tools)...
 
@@ -101,9 +131,9 @@ However, the use of external resources like ChatGPT to generate code or answers 
 
 Posts may not include substantial amounts of code that can be used for a solution to any problem, but may include code snippets.
 
-Participation (both questions and answers), **can** earn you up to 2% extra credit for your final grade. Posts will be evaluated based on how substantive and helpful they are to the class.
+-   Worth up to 2% extra credit on your final grade!
 
-## Discussion
+## Discussion {.smaller}
 
 ::: columns
 ::: {.column width="50%"}
@@ -131,11 +161,11 @@ Participation (both questions and answers), **can** earn you up to 2% extra cred
 
 ## Office Hours (aka drop-in hours)
 
-+-------------+-----------------------------------------------------------------------+
-| In-person   | MH 311 Monday and Wednesday 12:30 to 1:30pm or by appointment (email) |
-+-------------+-----------------------------------------------------------------------+
-| Zoom        | By appointment                                                        |
-+-------------+-----------------------------------------------------------------------+
++------------+-----------------------------------------------------------------------+
+| In-person  | MH 311 Monday and Wednesday 12:30 to 1:30pm or by appointment (email) |
++------------+-----------------------------------------------------------------------+
+| Zoom       | By appointment                                                        |
++------------+-----------------------------------------------------------------------+
 
 Come by:
 
@@ -145,9 +175,28 @@ Come by:
 
 **My advice:** make it a habit to drop by office hours, starting early in the semester when schedules are less busy.
 
-## Slides explained
+## Lecture slides
 
 Slides will usually be posted on the course website before class. I encourage you to return to the slides after class and make sure you understand the code used and the concepts covered.
+
+Generally speaking, code will be contained in blocks that look like this:
+
+```{r, eval = F, echo = T}
+# example comment
+example line of code
+```
+
+## Getting to know each other
+
+Form groups of 2-3 and discuss the following:
+
+1. Introduce yourself (names, major/program)
+
+2. What are you excited/nervous/confused about with regards to this course? What questions do you have?
+
+3. Have you ever used R? Programmed?
+
+4. What is one area of interest you would like to use statistics/data science to study? 
 
 # Introduction to R
 
@@ -196,11 +245,10 @@ RStudio is an integrated development environment (IDE) designed to make your lif
 
 By default...
 
-* *Top left*: Editor pane. Browse and edit scripts and data with tabs
-* *Top right*: List of objects in your Environment (recall `ls()`), code History
-* *Bottom left*: Console for running R code line-by-line (`>` prompt)
-* *Bottom right*: Files, plots, packages, help files
-
+-   *Top left*: Editor pane. Browse and edit scripts and data with tabs
+-   *Top right*: List of objects in your Environment (recall `ls()`), code History
+-   *Bottom left*: Console for running R code line-by-line (`>` prompt)
+-   *Bottom right*: Files, plots, packages, help files
 
 ## RStudio + R: A fancy calculator
 
@@ -247,16 +295,61 @@ R can usually handle bigger numbers than your handheld calculator, but even R ha
 # Bigger exponentiation
 3 ^ 1000
 ```
+
 ## Assignment
 
 R can also store values (like numbers) as **objects**, which can be referenced later:
 
 ```{r, echo = T}
 x <- 7
-x
+print(x)
 y <- 3
-x + y
+print(x + y)
 ```
+
+## A tricky calculator
+
+What do you expect the output to be?
+
+```{r, echo = T, eval = F}
+x <- 7
+y <- x + 1
+print(y)
+```
+
+. . .
+
+```{r, echo = F, eval = T}
+x <- 7
+y <- x + 1
+print(y)
+```
+
+
+. . .
+
+What about this code?
+```{r, echo = T, eval = F}
+x <- 7
+y <- x + 1
+x <- 0
+print(y)
+```
+
+. . .
+
+```{r, echo = F, eval = T}
+x <- 7
+y <- x + 1
+x <- 0
+print(y)
+```
+
+## A tricky calculator
+
+When we assign `y <- x + 1`, we essentially create a copy of `x`. As a result, when we reassign `x <- 0`, `y` is not affected.
+
+This isn't necessarily "right" or "wrong"-- this is just how R works! R is full of these little subtleties that you need to be able to grasp in order to write functional code.
 
 ## More than a fancy calculator
 
@@ -282,26 +375,30 @@ ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
 
 R Markdown files (see examples [here](https://rmarkdown.rstudio.com/gallery.html))
 
-* Combine code, output, and writing
-* Self-contained analyses
-* Creates HTML, PDF, slides (like these!), webpages, ...
+-   Combine code, output, and writing
+-   Self-contained analyses
+-   Creates HTML, PDF, slides (like these!), webpages, ...
 
 ## Installing R and RStudio
 
-1. Download and install R from [this link](https://cran.rstudio.com)
+1.  Download and install R from [this link](https://cran.rstudio.com)
 
-2. Download and install RStudio Desktop from [this link](https://posit.co/download/rstudio-desktop/).
+2.  Download and install RStudio Desktop from [this link](https://posit.co/download/rstudio-desktop/).
 
 ## Your first check-in
 
-1. On the computer you are using, create a new folder titled "MATH167R" or something similar.
+1.  On the computer you are using, create a new folder titled "MATH167R" or something similar.
 
-2. Within this folder, create a sub-folder named "checkins" or something similar.
+2.  Within this folder, create a sub-folder named "checkins" or something similar.
 
-3. Download "01_first-R-code.R" and save it in your checkins folder.
+3.  Download "01_first-R-code.R" and save it in your checkins folder.
 
-4. Open "01_first-R-code.R" in RStudio. It should look something like the code below.
+4.  Open "01_first-R-code.R" in RStudio. It should look something like the code below.
 
-## Running your first R code
+## Your first check-in
 
-5. Run the code line by line and answer the two questions on the Check-in 1 assignment on Canvas.
+5.  Run the code line by line and answer the two questions on the Check-in 1 assignment on Canvas.
+
+6. For complete credit for Check-in 1, please also complete the pre-course survey and NameCoach recording.
+
+7. If you would like to find others to work with, please also reply to the Piazza post.

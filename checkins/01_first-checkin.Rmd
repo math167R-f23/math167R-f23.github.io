@@ -11,8 +11,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## A. Running your first R code
 
-Your first check-in has two parts. First, you'll try running and reading some basic R code.
-
 1. On the computer you are using, create a new folder titled "MATH167R" or something similar.
 
 2. Within this folder, create a sub-folder named "checkins" or something similar.
@@ -25,3 +23,8 @@ Your first check-in has two parts. First, you'll try running and reading some ba
 ```
 
 5. Run the code line by line and answer the two questions on the [Check-in 1 assignment](https://sjsu.instructure.com/courses/1571636/quizzes/1690553) on Canvas.
+
+
+6. For complete credit for Check-in 1, please also complete the pre-course survey and NameCoach recording (links on Canvas).
+
+7. If you would like to find others to work with, please also reply to the Piazza post.
