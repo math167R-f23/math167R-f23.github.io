@@ -1,801 +1,80 @@
 [
   {
-    "objectID": "checkins/01_first-checkin.html",
-    "href": "checkins/01_first-checkin.html",
-    "title": "Check-in 1: Instructions",
+    "objectID": "checkins/02_checkin.html",
+    "href": "checkins/02_checkin.html",
+    "title": "Check-in 2",
     "section": "",
-    "text": "On the computer you are using, create a new folder titled “MATH167R” or something similar.\nWithin this folder, create a sub-folder named “checkins” or something similar.\nDownload “01_first-R-code.R” and save it in your checkins folder.\nOpen “01_first-R-code.R” in RStudio. It should look something like the code below.\n\n\nsides &lt;- c(\"H\", \"T\")\n\nflip1 &lt;- sample(sides, 1, replace = T)\nprint(flip1)\n\nflip10 &lt;- sample(sides, 10, replace = T)\nprint(flip10)\n\n\nRun the code line by line and answer the two questions on the Check-in 1 assignment on Canvas.\nFor complete credit for Check-in 1, please also complete the pre-course survey and NameCoach recording (links on Canvas).\nIf you would like to find others to work with, please also reply to the Piazza post."
+    "text": "You should edit this .Rmd using RStudio, then click Render in the menu bar of the Source window (above the text of this .Rmd). Remember, you must submit both your .Rmd and the compiled .html in order to receive full credit!"
   },
   {
-    "objectID": "checkins/01_first-checkin.html#a.-running-your-first-r-code",
-    "href": "checkins/01_first-checkin.html#a.-running-your-first-r-code",
-    "title": "Check-in 1: Instructions",
+    "objectID": "checkins/02_checkin.html#a.-functions",
+    "href": "checkins/02_checkin.html#a.-functions",
+    "title": "Check-in 2",
+    "section": "A. Functions",
+    "text": "A. Functions\nWork with one or two other students,\n1. In words, what does the following line of code do?\n\nsample(1:6, 1)\n\n[1] 1\n\n\n\n2. Run the line of code in RStudio. What do you get? What did your groupmates get? What happens to the result each time you knit the document?\n\n3. Below, we introduce the set.seed function. What do the two lines of code below do? What does the 456 mean? What happens to the result each time you knit the document?\n\nset.seed(456)\nsample(1:6, 1)\n\n[1] 5"
+  },
+  {
+    "objectID": "checkins/02_checkin.html#b.-vectors-and-matrices",
+    "href": "checkins/02_checkin.html#b.-vectors-and-matrices",
+    "title": "Check-in 2",
+    "section": "B. Vectors and Matrices",
+    "text": "B. Vectors and Matrices\n4. Write a line of code to generate a vector of length 100 whose entries are 1, 2, …, 100.\n\n# REPLACE WITH YOUR CODE\n\n5. Write a line of code to generate the following matrix:\n1 2 3\n4 5 6\n7 8 9\n\n# REPLACE WITH YOUR CODE"
+  },
+  {
+    "objectID": "syllabus.html",
+    "href": "syllabus.html",
+    "title": "Syllabus",
     "section": "",
-    "text": "On the computer you are using, create a new folder titled “MATH167R” or something similar.\nWithin this folder, create a sub-folder named “checkins” or something similar.\nDownload “01_first-R-code.R” and save it in your checkins folder.\nOpen “01_first-R-code.R” in RStudio. It should look something like the code below.\n\n\nsides &lt;- c(\"H\", \"T\")\n\nflip1 &lt;- sample(sides, 1, replace = T)\nprint(flip1)\n\nflip10 &lt;- sample(sides, 10, replace = T)\nprint(flip10)\n\n\nRun the code line by line and answer the two questions on the Check-in 1 assignment on Canvas.\nFor complete credit for Check-in 1, please also complete the pre-course survey and NameCoach recording (links on Canvas).\nIf you would like to find others to work with, please also reply to the Piazza post."
+    "text": "Instructor\nPeter Gao\n\n\nLectures\nWeekly on Monday and Wednesday, 10:30-11:45am in MH234\n\n\nOffice Hours\nMonday and Wednesday, 1:30-2:30pm in MH311 or email for an appointment\n\n\nEmail\npeter.gao [at sjsu]\nI will make every effort to respond to emails within a day, but please feel free to send me a reminder after 48 hours have passed. Please include [MATH 167R] in your subject line."
   },
   {
-    "objectID": "slides/04_vectorization-lists.html#warm-up",
-    "href": "slides/04_vectorization-lists.html#warm-up",
-    "title": "MATH167R: Overview",
-    "section": "Warm-up",
-    "text": "Warm-up\nWhaa"
-  },
-  {
-    "objectID": "slides/04_vectorization-lists.html#introductions",
-    "href": "slides/04_vectorization-lists.html#introductions",
-    "title": "MATH167R: Overview",
-    "section": "Introductions",
-    "text": "Introductions"
-  },
-  {
-    "objectID": "slides/04_vectorization-lists.html#overview-of-today",
-    "href": "slides/04_vectorization-lists.html#overview-of-today",
-    "title": "MATH167R: Overview",
-    "section": "Overview of today",
-    "text": "Overview of today\n\nTypes of data\nBasic definitions: objects, expressions, values, functions\nR Markdown and file management"
-  },
-  {
-    "objectID": "slides/04_vectorization-lists.html#types-of-data-1",
-    "href": "slides/04_vectorization-lists.html#types-of-data-1",
-    "title": "MATH167R: Overview",
-    "section": "Types of data",
-    "text": "Types of data\nWe saw last class that we can use R to perform basic mathematical operations:\n\n3 + 5\n\n[1] 8\n\n\n\nWe can also save these values as objects/variables and perform math on the objects:\n\nx &lt;- 3\ny &lt;- 5\nx + y\n\n[1] 8"
-  },
-  {
-    "objectID": "slides/04_vectorization-lists.html#non-numerical-data",
-    "href": "slides/04_vectorization-lists.html#non-numerical-data",
-    "title": "MATH167R: Overview",
-    "section": "Non-numerical data",
-    "text": "Non-numerical data\nToday we’ll see that R can handle objects that are not numbers:\n\nz &lt;- \"Hello\"\n\n\nHowever, we need to be careful because not all operations work with all types of data:\n\nx + z\n\nError in x + z: non-numeric argument to binary operator"
-  },
-  {
-    "objectID": "slides/04_vectorization-lists.html#atomic-vectors",
-    "href": "slides/04_vectorization-lists.html#atomic-vectors",
-    "title": "MATH167R: Overview",
-    "section": "Atomic vectors",
-    "text": "Atomic vectors\n\nlogical\ninteger\ndouble\ncharacter"
-  },
-  {
-    "objectID": "slides/04_vectorization-lists.html#atomic-vectors-1",
-    "href": "slides/04_vectorization-lists.html#atomic-vectors-1",
-    "title": "MATH167R: Overview",
-    "section": "Atomic vectors",
-    "text": "Atomic vectors\n\nfrom Advanced R, Hadley Wickham."
-  },
-  {
-    "objectID": "slides/04_vectorization-lists.html#atomic-vectors-2",
-    "href": "slides/04_vectorization-lists.html#atomic-vectors-2",
-    "title": "MATH167R: Overview",
-    "section": "Atomic vectors",
-    "text": "Atomic vectors\n\nexample_logical &lt;- T\nexample_integer &lt;- 1L\nexample_double &lt;- 1.0\nexample_character &lt;- \"Hello\"\n\n\n\nclass(example_logical)\n\n[1] \"logical\"\n\nclass(example_integer)\n\n[1] \"integer\"\n\nclass(example_double)\n\n[1] \"numeric\"\n\nclass(example_character)\n\n[1] \"character\""
-  },
-  {
-    "objectID": "slides/04_vectorization-lists.html#coercion",
-    "href": "slides/04_vectorization-lists.html#coercion",
-    "title": "MATH167R: Overview",
-    "section": "Coercion",
-    "text": "Coercion\n\nas.numeric(example_logical)\n\n[1] 1\n\nas.numeric(example_character)\n\n[1] NA"
-  },
-  {
-    "objectID": "slides/04_vectorization-lists.html#vectors",
-    "href": "slides/04_vectorization-lists.html#vectors",
-    "title": "MATH167R: Overview",
-    "section": "Vectors",
-    "text": "Vectors\n\nA vector is a set of atomic vectors of the same type\nWe create vectors using the function c()\n\n\n\n[1] 16  3  0  7 -2\n\n\n\nWe can shorthand vectors counting up (or down) using :\n\n\n\n[1] 1 2 3 4 5"
-  },
-  {
-    "objectID": "slides/04_vectorization-lists.html#vectors-1",
-    "href": "slides/04_vectorization-lists.html#vectors-1",
-    "title": "MATH167R: Overview",
-    "section": "Vectors",
-    "text": "Vectors\n\nWe index vectors using [index] after the vector name\n\n\n\n[1] 3\n\n\n\nIf we use a negative index, we return the vector with that element removed\n\n\n\n[1] 1 2 3 5"
-  },
-  {
-    "objectID": "slides/04_vectorization-lists.html#vector-data-types",
-    "href": "slides/04_vectorization-lists.html#vector-data-types",
-    "title": "MATH167R: Overview",
-    "section": "Vector Data Types",
-    "text": "Vector Data Types\nNote that vectors can only have one type of data. So we can do\n\n\n[1] 1 2 3\n\n\n[1] \"a\" \"b\" \"c\"\n\n\nbut when we try\n\n\n[1] \"1\" \"b\" \"3\"\n\n\nR will force the entries in our vector to be of the same type! This is a common source of bugs."
-  },
-  {
-    "objectID": "slides/04_vectorization-lists.html#useful-functions-for-vectors",
-    "href": "slides/04_vectorization-lists.html#useful-functions-for-vectors",
-    "title": "MATH167R: Overview",
-    "section": "Useful functions for vectors",
-    "text": "Useful functions for vectors\n\nmax(), min(), mean(), median(), sum(), sd(), var()\nlength() returns the number of elements in the vector\nhead() and tail() return the beginning and end vectors\nsort() will sort\nsummary() returns a 5-number summary\nany() and all() to check conditions on Boolean vectors\nhist() will return a crude histogram (we’ll learn how to make this nicer later)\n\nYou will need some of these for Lab 1!\nIf you are unclear about what any of them do, use ? before the function name to read the documentation. You should get in the habit of checking function documentation a lot!"
-  },
-  {
-    "objectID": "slides/04_vectorization-lists.html#what-is-a-comment",
-    "href": "slides/04_vectorization-lists.html#what-is-a-comment",
-    "title": "MATH167R: Overview",
-    "section": "What is a comment?",
-    "text": "What is a comment?\n\nComputers completely ignore comments (in R, any line preceded by #)\nComments do not impact the functionality of your code at all."
-  },
-  {
-    "objectID": "slides/04_vectorization-lists.html#so-why-do-them",
-    "href": "slides/04_vectorization-lists.html#so-why-do-them",
-    "title": "MATH167R: Overview",
-    "section": "So why do them…",
-    "text": "So why do them…\n\nCommenting a code allows you to write notes for readers of your code only\nUsually, that reader is you!\nCoding without comments is ill-advised, bordering on impossible\nSneak peak at functions…"
-  },
-  {
-    "objectID": "slides/04_vectorization-lists.html#example",
-    "href": "slides/04_vectorization-lists.html#example",
-    "title": "MATH167R: Overview",
-    "section": "Example",
-    "text": "Example"
-  },
-  {
-    "objectID": "slides/04_vectorization-lists.html#comment-style-guide",
-    "href": "slides/04_vectorization-lists.html#comment-style-guide",
-    "title": "MATH167R: Overview",
-    "section": "Comment Style Guide",
-    "text": "Comment Style Guide\n\nWhen starting out, you should comment most lines\nFrequent use of comments should allow most comments to be restricted to one line for readability\nA comment should go above its corresponding line, be indented equally with the next line, and use a single # to mark a comment\nUse a string of - or = to break your code into easily noticeable chunks\n\nExample: # Data Manipulation -----------\nRStudio allows you to collapse chunks marked like this to help with clutter\n\n\n\n\n\n* There are exceptions to every rule! Usually, comments are to help you!\n\n\n\n\n* Clear commenting is required for this course\n\n\n## Who are you to tell me how to type?\n\n\nWe will be using a mix of the Tidyverse Style Guide by Hadley Wickham and the Google Style Guide. Please see the links for details, but I will summarize some main points here and throughout the class as we learn more functionality, such as functions and packages.\n\n\nYou will be graded on following good code style!\n\n\n## Object Names\n\n\nUse either underscores (_) or big camel case (BigCamelCase) to separate words within an object name. Do not use dots . to separate words in R functions!\n\n\n::: {.cell}\n\n\n:::\n\n\n## Object Names\n\n\nNames should be concise, meaningful, and (generally) nouns.\n\n\n::: {.cell}\n\n\n:::\n\n\n## Object Names\n\n\nIt is very important that object names do not write over common functions!\n\n\n::: {.cell}\n\n\n:::\n\n\nNote: T and F are R shorthand for TRUE and FALSE, respectively. In general, spell them out to be as clear as possible.\n\n\n## Spacing\n\n\nPut a space after every comma, just like in English writing.\n\n\n::: {.cell}\n\n\n:::\n\n\nDo not put spaces inside or outside parentheses for regular function calls.\n\n\n::: {.cell}\n\n\n:::"
-  },
-  {
-    "objectID": "slides/04_vectorization-lists.html#spacing-with-operators",
-    "href": "slides/04_vectorization-lists.html#spacing-with-operators",
-    "title": "MATH167R: Overview",
-    "section": "Spacing with Operators",
-    "text": "Spacing with Operators\nMost of the time when you are doing math, conditionals, logicals, or assignment, your operators should be surrounded by spaces. (e.g. for ==, +, -, &lt;-, etc.)\nThere are some exceptions we will learn more about later, such as the power symbol ^. See the Tidyverse Style Guide for more details!"
-  },
-  {
-    "objectID": "slides/04_vectorization-lists.html#extra-spacing",
-    "href": "slides/04_vectorization-lists.html#extra-spacing",
-    "title": "MATH167R: Overview",
-    "section": "Extra Spacing",
-    "text": "Extra Spacing\nAdding extra spaces ok if it improves alignment of = or &lt;-."
-  },
-  {
-    "objectID": "slides/04_vectorization-lists.html#long-lines-of-code",
-    "href": "slides/04_vectorization-lists.html#long-lines-of-code",
-    "title": "MATH167R: Overview",
-    "section": "Long Lines of Code",
-    "text": "Long Lines of Code\nStrive to limit your code to 80 characters per line. This fits comfortably on a printed page with a reasonably sized font.\nIf a function call is too long to fit on a single line, use one line each for the function name, each argument, and the closing ). This makes the code easier to read and to change later.\nTip! Try RStudio &gt; Preferences &gt; Code &gt; Display &gt; Show Margin with Margin column 80 to give yourself a visual cue!"
-  },
-  {
-    "objectID": "slides/04_vectorization-lists.html#assignment",
-    "href": "slides/04_vectorization-lists.html#assignment",
-    "title": "MATH167R: Overview",
-    "section": "Assignment",
-    "text": "Assignment\nWe use &lt;- instead of = for assignment. This is moderately controversial if you find yourself in the right (wrong?) communities."
-  },
-  {
-    "objectID": "slides/04_vectorization-lists.html#semicolons",
-    "href": "slides/04_vectorization-lists.html#semicolons",
-    "title": "MATH167R: Overview",
-    "section": "Semicolons",
-    "text": "Semicolons\nIn R, semi-colons (;) are used to execute pieces of R code on a single line. In general, this is bad practice and should be avoided. Also, you never need to end lines of code with semi-colons!"
-  },
-  {
-    "objectID": "slides/04_vectorization-lists.html#quotes-and-strings",
-    "href": "slides/04_vectorization-lists.html#quotes-and-strings",
-    "title": "MATH167R: Overview",
-    "section": "Quotes and Strings",
-    "text": "Quotes and Strings\nUse \", not ', for quoting text. The only exception is when the text already contains double quotes and no single quotes."
-  },
-  {
-    "objectID": "slides/02_fundamentals.html#warm-up",
-    "href": "slides/02_fundamentals.html#warm-up",
-    "title": "MATH167R: Overview",
-    "section": "Warm-up",
-    "text": "Warm-up\nWhaa"
-  },
-  {
-    "objectID": "slides/02_fundamentals.html#introductions",
-    "href": "slides/02_fundamentals.html#introductions",
-    "title": "MATH167R: Overview",
-    "section": "Introductions",
-    "text": "Introductions"
-  },
-  {
-    "objectID": "slides/02_fundamentals.html#overview-of-today",
-    "href": "slides/02_fundamentals.html#overview-of-today",
-    "title": "MATH167R: Overview",
-    "section": "Overview of today",
-    "text": "Overview of today\n\nTypes of data\nBasic definitions: objects, expressions, values, functions\nR Markdown and file management"
-  },
-  {
-    "objectID": "slides/02_fundamentals.html#types-of-data-1",
-    "href": "slides/02_fundamentals.html#types-of-data-1",
-    "title": "MATH167R: Overview",
-    "section": "Types of data",
-    "text": "Types of data\nWe saw last class that we can use R to perform basic mathematical operations:\n\n3 + 5\n\n[1] 8\n\n\n\nWe can also save these values as objects/variables and perform math on the objects:\n\nx &lt;- 3\ny &lt;- 5\nx + y\n\n[1] 8"
-  },
-  {
-    "objectID": "slides/02_fundamentals.html#non-numerical-data",
-    "href": "slides/02_fundamentals.html#non-numerical-data",
-    "title": "MATH167R: Overview",
-    "section": "Non-numerical data",
-    "text": "Non-numerical data\nToday we’ll see that R can handle objects that are not numbers:\n\nz &lt;- \"Hello\"\n\n\nHowever, we need to be careful because not all operations work with all types of data:\n\nx + z\n\nError in x + z: non-numeric argument to binary operator"
-  },
-  {
-    "objectID": "slides/02_fundamentals.html#atomic-vectors",
-    "href": "slides/02_fundamentals.html#atomic-vectors",
-    "title": "MATH167R: Overview",
-    "section": "Atomic vectors",
-    "text": "Atomic vectors\n\nlogical\ninteger\ndouble\ncharacter"
-  },
-  {
-    "objectID": "slides/02_fundamentals.html#atomic-vectors-1",
-    "href": "slides/02_fundamentals.html#atomic-vectors-1",
-    "title": "MATH167R: Overview",
-    "section": "Atomic vectors",
-    "text": "Atomic vectors\n\nfrom Advanced R, Hadley Wickham."
-  },
-  {
-    "objectID": "slides/02_fundamentals.html#atomic-vectors-2",
-    "href": "slides/02_fundamentals.html#atomic-vectors-2",
-    "title": "MATH167R: Overview",
-    "section": "Atomic vectors",
-    "text": "Atomic vectors\n\nexample_logical &lt;- T\nexample_integer &lt;- 1L\nexample_double &lt;- 1.0\nexample_character &lt;- \"Hello\"\n\n\n\nclass(example_logical)\n\n[1] \"logical\"\n\nclass(example_integer)\n\n[1] \"integer\"\n\nclass(example_double)\n\n[1] \"numeric\"\n\nclass(example_character)\n\n[1] \"character\""
-  },
-  {
-    "objectID": "slides/02_fundamentals.html#coercion",
-    "href": "slides/02_fundamentals.html#coercion",
-    "title": "MATH167R: Overview",
-    "section": "Coercion",
-    "text": "Coercion\n\nas.numeric(example_logical)\n\n[1] 1\n\nas.numeric(example_character)\n\n[1] NA"
-  },
-  {
-    "objectID": "slides/02_fundamentals.html#vectors",
-    "href": "slides/02_fundamentals.html#vectors",
-    "title": "MATH167R: Overview",
-    "section": "Vectors",
-    "text": "Vectors\n\nA vector is a set of atomic vectors of the same type\nWe create vectors using the function c()\n\n\n\n[1] 16  3  0  7 -2\n\n\n\nWe can shorthand vectors counting up (or down) using :\n\n\n\n[1] 1 2 3 4 5"
-  },
-  {
-    "objectID": "slides/02_fundamentals.html#vectors-1",
-    "href": "slides/02_fundamentals.html#vectors-1",
-    "title": "MATH167R: Overview",
-    "section": "Vectors",
-    "text": "Vectors\n\nWe index vectors using [index] after the vector name\n\n\n\n[1] 3\n\n\n\nIf we use a negative index, we return the vector with that element removed\n\n\n\n[1] 1 2 3 5"
-  },
-  {
-    "objectID": "slides/02_fundamentals.html#vector-data-types",
-    "href": "slides/02_fundamentals.html#vector-data-types",
-    "title": "MATH167R: Overview",
-    "section": "Vector Data Types",
-    "text": "Vector Data Types\nNote that vectors can only have one type of data. So we can do\n\n\n[1] 1 2 3\n\n\n[1] \"a\" \"b\" \"c\"\n\n\nbut when we try\n\n\n[1] \"1\" \"b\" \"3\"\n\n\nR will force the entries in our vector to be of the same type! This is a common source of bugs."
-  },
-  {
-    "objectID": "slides/02_fundamentals.html#useful-functions-for-vectors",
-    "href": "slides/02_fundamentals.html#useful-functions-for-vectors",
-    "title": "MATH167R: Overview",
-    "section": "Useful functions for vectors",
-    "text": "Useful functions for vectors\n\nmax(), min(), mean(), median(), sum(), sd(), var()\nlength() returns the number of elements in the vector\nhead() and tail() return the beginning and end vectors\nsort() will sort\nsummary() returns a 5-number summary\nany() and all() to check conditions on Boolean vectors\nhist() will return a crude histogram (we’ll learn how to make this nicer later)\n\nYou will need some of these for Lab 1!\nIf you are unclear about what any of them do, use ? before the function name to read the documentation. You should get in the habit of checking function documentation a lot!"
-  },
-  {
-    "objectID": "slides/02_fundamentals.html#what-is-a-comment",
-    "href": "slides/02_fundamentals.html#what-is-a-comment",
-    "title": "MATH167R: Overview",
-    "section": "What is a comment?",
-    "text": "What is a comment?\n\nComputers completely ignore comments (in R, any line preceded by #)\nComments do not impact the functionality of your code at all."
-  },
-  {
-    "objectID": "slides/02_fundamentals.html#so-why-do-them",
-    "href": "slides/02_fundamentals.html#so-why-do-them",
-    "title": "MATH167R: Overview",
-    "section": "So why do them…",
-    "text": "So why do them…\n\nCommenting a code allows you to write notes for readers of your code only\nUsually, that reader is you!\nCoding without comments is ill-advised, bordering on impossible\nSneak peak at functions…"
-  },
-  {
-    "objectID": "slides/02_fundamentals.html#example",
-    "href": "slides/02_fundamentals.html#example",
-    "title": "MATH167R: Overview",
-    "section": "Example",
-    "text": "Example"
-  },
-  {
-    "objectID": "slides/02_fundamentals.html#comment-style-guide",
-    "href": "slides/02_fundamentals.html#comment-style-guide",
-    "title": "MATH167R: Overview",
-    "section": "Comment Style Guide",
-    "text": "Comment Style Guide\n\nWhen starting out, you should comment most lines\nFrequent use of comments should allow most comments to be restricted to one line for readability\nA comment should go above its corresponding line, be indented equally with the next line, and use a single # to mark a comment\nUse a string of - or = to break your code into easily noticeable chunks\n\nExample: # Data Manipulation -----------\nRStudio allows you to collapse chunks marked like this to help with clutter\n\n\n\n\n\n* There are exceptions to every rule! Usually, comments are to help you!\n\n\n\n\n* Clear commenting is required for this course\n\n\n## Who are you to tell me how to type?\n\n\nWe will be using a mix of the Tidyverse Style Guide by Hadley Wickham and the Google Style Guide. Please see the links for details, but I will summarize some main points here and throughout the class as we learn more functionality, such as functions and packages.\n\n\nYou will be graded on following good code style!\n\n\n## Object Names\n\n\nUse either underscores (_) or big camel case (BigCamelCase) to separate words within an object name. Do not use dots . to separate words in R functions!\n\n\n::: {.cell}\n\n\n:::\n\n\n## Object Names\n\n\nNames should be concise, meaningful, and (generally) nouns.\n\n\n::: {.cell}\n\n\n:::\n\n\n## Object Names\n\n\nIt is very important that object names do not write over common functions!\n\n\n::: {.cell}\n\n\n:::\n\n\nNote: T and F are R shorthand for TRUE and FALSE, respectively. In general, spell them out to be as clear as possible.\n\n\n## Spacing\n\n\nPut a space after every comma, just like in English writing.\n\n\n::: {.cell}\n\n\n:::\n\n\nDo not put spaces inside or outside parentheses for regular function calls.\n\n\n::: {.cell}\n\n\n:::"
-  },
-  {
-    "objectID": "slides/02_fundamentals.html#spacing-with-operators",
-    "href": "slides/02_fundamentals.html#spacing-with-operators",
-    "title": "MATH167R: Overview",
-    "section": "Spacing with Operators",
-    "text": "Spacing with Operators\nMost of the time when you are doing math, conditionals, logicals, or assignment, your operators should be surrounded by spaces. (e.g. for ==, +, -, &lt;-, etc.)\nThere are some exceptions we will learn more about later, such as the power symbol ^. See the Tidyverse Style Guide for more details!"
-  },
-  {
-    "objectID": "slides/02_fundamentals.html#extra-spacing",
-    "href": "slides/02_fundamentals.html#extra-spacing",
-    "title": "MATH167R: Overview",
-    "section": "Extra Spacing",
-    "text": "Extra Spacing\nAdding extra spaces ok if it improves alignment of = or &lt;-."
-  },
-  {
-    "objectID": "slides/02_fundamentals.html#long-lines-of-code",
-    "href": "slides/02_fundamentals.html#long-lines-of-code",
-    "title": "MATH167R: Overview",
-    "section": "Long Lines of Code",
-    "text": "Long Lines of Code\nStrive to limit your code to 80 characters per line. This fits comfortably on a printed page with a reasonably sized font.\nIf a function call is too long to fit on a single line, use one line each for the function name, each argument, and the closing ). This makes the code easier to read and to change later.\nTip! Try RStudio &gt; Preferences &gt; Code &gt; Display &gt; Show Margin with Margin column 80 to give yourself a visual cue!"
-  },
-  {
-    "objectID": "slides/02_fundamentals.html#assignment",
-    "href": "slides/02_fundamentals.html#assignment",
-    "title": "MATH167R: Overview",
-    "section": "Assignment",
-    "text": "Assignment\nWe use &lt;- instead of = for assignment. This is moderately controversial if you find yourself in the right (wrong?) communities."
-  },
-  {
-    "objectID": "slides/02_fundamentals.html#semicolons",
-    "href": "slides/02_fundamentals.html#semicolons",
-    "title": "MATH167R: Overview",
-    "section": "Semicolons",
-    "text": "Semicolons\nIn R, semi-colons (;) are used to execute pieces of R code on a single line. In general, this is bad practice and should be avoided. Also, you never need to end lines of code with semi-colons!"
-  },
-  {
-    "objectID": "slides/02_fundamentals.html#quotes-and-strings",
-    "href": "slides/02_fundamentals.html#quotes-and-strings",
-    "title": "MATH167R: Overview",
-    "section": "Quotes and Strings",
-    "text": "Quotes and Strings\nUse \", not ', for quoting text. The only exception is when the text already contains double quotes and no single quotes."
-  },
-  {
-    "objectID": "slides/03_functions-vectors-matrices.html#warm-up",
-    "href": "slides/03_functions-vectors-matrices.html#warm-up",
-    "title": "MATH167R: Overview",
-    "section": "Warm-up",
-    "text": "Warm-up\nWhaa"
-  },
-  {
-    "objectID": "slides/03_functions-vectors-matrices.html#introductions",
-    "href": "slides/03_functions-vectors-matrices.html#introductions",
-    "title": "MATH167R: Overview",
-    "section": "Introductions",
-    "text": "Introductions"
-  },
-  {
-    "objectID": "slides/03_functions-vectors-matrices.html#overview-of-today",
-    "href": "slides/03_functions-vectors-matrices.html#overview-of-today",
-    "title": "MATH167R: Overview",
-    "section": "Overview of today",
-    "text": "Overview of today\n\nTypes of data\nBasic definitions: objects, expressions, values, functions\nR Markdown and file management"
-  },
-  {
-    "objectID": "slides/03_functions-vectors-matrices.html#types-of-data-1",
-    "href": "slides/03_functions-vectors-matrices.html#types-of-data-1",
-    "title": "MATH167R: Overview",
-    "section": "Types of data",
-    "text": "Types of data\nWe saw last class that we can use R to perform basic mathematical operations:\n\n3 + 5\n\n[1] 8\n\n\n\nWe can also save these values as objects/variables and perform math on the objects:\n\nx &lt;- 3\ny &lt;- 5\nx + y\n\n[1] 8"
-  },
-  {
-    "objectID": "slides/03_functions-vectors-matrices.html#non-numerical-data",
-    "href": "slides/03_functions-vectors-matrices.html#non-numerical-data",
-    "title": "MATH167R: Overview",
-    "section": "Non-numerical data",
-    "text": "Non-numerical data\nToday we’ll see that R can handle objects that are not numbers:\n\nz &lt;- \"Hello\"\n\n\nHowever, we need to be careful because not all operations work with all types of data:\n\nx + z\n\nError in x + z: non-numeric argument to binary operator"
-  },
-  {
-    "objectID": "slides/03_functions-vectors-matrices.html#atomic-vectors",
-    "href": "slides/03_functions-vectors-matrices.html#atomic-vectors",
-    "title": "MATH167R: Overview",
-    "section": "Atomic vectors",
-    "text": "Atomic vectors\n\nlogical\ninteger\ndouble\ncharacter"
-  },
-  {
-    "objectID": "slides/03_functions-vectors-matrices.html#atomic-vectors-1",
-    "href": "slides/03_functions-vectors-matrices.html#atomic-vectors-1",
-    "title": "MATH167R: Overview",
-    "section": "Atomic vectors",
-    "text": "Atomic vectors\n\nfrom Advanced R, Hadley Wickham."
-  },
-  {
-    "objectID": "slides/03_functions-vectors-matrices.html#atomic-vectors-2",
-    "href": "slides/03_functions-vectors-matrices.html#atomic-vectors-2",
-    "title": "MATH167R: Overview",
-    "section": "Atomic vectors",
-    "text": "Atomic vectors\n\nexample_logical &lt;- T\nexample_integer &lt;- 1L\nexample_double &lt;- 1.0\nexample_character &lt;- \"Hello\"\n\n\n\nclass(example_logical)\n\n[1] \"logical\"\n\nclass(example_integer)\n\n[1] \"integer\"\n\nclass(example_double)\n\n[1] \"numeric\"\n\nclass(example_character)\n\n[1] \"character\""
-  },
-  {
-    "objectID": "slides/03_functions-vectors-matrices.html#coercion",
-    "href": "slides/03_functions-vectors-matrices.html#coercion",
-    "title": "MATH167R: Overview",
-    "section": "Coercion",
-    "text": "Coercion\n\nas.numeric(example_logical)\n\n[1] 1\n\nas.numeric(example_character)\n\n[1] NA"
-  },
-  {
-    "objectID": "slides/03_functions-vectors-matrices.html#vectors",
-    "href": "slides/03_functions-vectors-matrices.html#vectors",
-    "title": "MATH167R: Overview",
-    "section": "Vectors",
-    "text": "Vectors\n\nA vector is a set of atomic vectors of the same type\nWe create vectors using the function c()\n\n\n\n[1] 16  3  0  7 -2\n\n\n\nWe can shorthand vectors counting up (or down) using :\n\n\n\n[1] 1 2 3 4 5"
-  },
-  {
-    "objectID": "slides/03_functions-vectors-matrices.html#vectors-1",
-    "href": "slides/03_functions-vectors-matrices.html#vectors-1",
-    "title": "MATH167R: Overview",
-    "section": "Vectors",
-    "text": "Vectors\n\nWe index vectors using [index] after the vector name\n\n\n\n[1] 3\n\n\n\nIf we use a negative index, we return the vector with that element removed\n\n\n\n[1] 1 2 3 5"
-  },
-  {
-    "objectID": "slides/03_functions-vectors-matrices.html#vector-data-types",
-    "href": "slides/03_functions-vectors-matrices.html#vector-data-types",
-    "title": "MATH167R: Overview",
-    "section": "Vector Data Types",
-    "text": "Vector Data Types\nNote that vectors can only have one type of data. So we can do\n\n\n[1] 1 2 3\n\n\n[1] \"a\" \"b\" \"c\"\n\n\nbut when we try\n\n\n[1] \"1\" \"b\" \"3\"\n\n\nR will force the entries in our vector to be of the same type! This is a common source of bugs."
-  },
-  {
-    "objectID": "slides/03_functions-vectors-matrices.html#useful-functions-for-vectors",
-    "href": "slides/03_functions-vectors-matrices.html#useful-functions-for-vectors",
-    "title": "MATH167R: Overview",
-    "section": "Useful functions for vectors",
-    "text": "Useful functions for vectors\n\nmax(), min(), mean(), median(), sum(), sd(), var()\nlength() returns the number of elements in the vector\nhead() and tail() return the beginning and end vectors\nsort() will sort\nsummary() returns a 5-number summary\nany() and all() to check conditions on Boolean vectors\nhist() will return a crude histogram (we’ll learn how to make this nicer later)\n\nYou will need some of these for Lab 1!\nIf you are unclear about what any of them do, use ? before the function name to read the documentation. You should get in the habit of checking function documentation a lot!"
-  },
-  {
-    "objectID": "slides/03_functions-vectors-matrices.html#what-is-a-comment",
-    "href": "slides/03_functions-vectors-matrices.html#what-is-a-comment",
-    "title": "MATH167R: Overview",
-    "section": "What is a comment?",
-    "text": "What is a comment?\n\nComputers completely ignore comments (in R, any line preceded by #)\nComments do not impact the functionality of your code at all."
-  },
-  {
-    "objectID": "slides/03_functions-vectors-matrices.html#so-why-do-them",
-    "href": "slides/03_functions-vectors-matrices.html#so-why-do-them",
-    "title": "MATH167R: Overview",
-    "section": "So why do them…",
-    "text": "So why do them…\n\nCommenting a code allows you to write notes for readers of your code only\nUsually, that reader is you!\nCoding without comments is ill-advised, bordering on impossible\nSneak peak at functions…"
-  },
-  {
-    "objectID": "slides/03_functions-vectors-matrices.html#example",
-    "href": "slides/03_functions-vectors-matrices.html#example",
-    "title": "MATH167R: Overview",
-    "section": "Example",
-    "text": "Example"
-  },
-  {
-    "objectID": "slides/03_functions-vectors-matrices.html#comment-style-guide",
-    "href": "slides/03_functions-vectors-matrices.html#comment-style-guide",
-    "title": "MATH167R: Overview",
-    "section": "Comment Style Guide",
-    "text": "Comment Style Guide\n\nWhen starting out, you should comment most lines\nFrequent use of comments should allow most comments to be restricted to one line for readability\nA comment should go above its corresponding line, be indented equally with the next line, and use a single # to mark a comment\nUse a string of - or = to break your code into easily noticeable chunks\n\nExample: # Data Manipulation -----------\nRStudio allows you to collapse chunks marked like this to help with clutter\n\n\n\n\n\n* There are exceptions to every rule! Usually, comments are to help you!\n\n\n\n\n* Clear commenting is required for this course\n\n\n## Who are you to tell me how to type?\n\n\nWe will be using a mix of the Tidyverse Style Guide by Hadley Wickham and the Google Style Guide. Please see the links for details, but I will summarize some main points here and throughout the class as we learn more functionality, such as functions and packages.\n\n\nYou will be graded on following good code style!\n\n\n## Object Names\n\n\nUse either underscores (_) or big camel case (BigCamelCase) to separate words within an object name. Do not use dots . to separate words in R functions!\n\n\n::: {.cell}\n\n\n:::\n\n\n## Object Names\n\n\nNames should be concise, meaningful, and (generally) nouns.\n\n\n::: {.cell}\n\n\n:::\n\n\n## Object Names\n\n\nIt is very important that object names do not write over common functions!\n\n\n::: {.cell}\n\n\n:::\n\n\nNote: T and F are R shorthand for TRUE and FALSE, respectively. In general, spell them out to be as clear as possible.\n\n\n## Spacing\n\n\nPut a space after every comma, just like in English writing.\n\n\n::: {.cell}\n\n\n:::\n\n\nDo not put spaces inside or outside parentheses for regular function calls.\n\n\n::: {.cell}\n\n\n:::"
-  },
-  {
-    "objectID": "slides/03_functions-vectors-matrices.html#spacing-with-operators",
-    "href": "slides/03_functions-vectors-matrices.html#spacing-with-operators",
-    "title": "MATH167R: Overview",
-    "section": "Spacing with Operators",
-    "text": "Spacing with Operators\nMost of the time when you are doing math, conditionals, logicals, or assignment, your operators should be surrounded by spaces. (e.g. for ==, +, -, &lt;-, etc.)\nThere are some exceptions we will learn more about later, such as the power symbol ^. See the Tidyverse Style Guide for more details!"
-  },
-  {
-    "objectID": "slides/03_functions-vectors-matrices.html#extra-spacing",
-    "href": "slides/03_functions-vectors-matrices.html#extra-spacing",
-    "title": "MATH167R: Overview",
-    "section": "Extra Spacing",
-    "text": "Extra Spacing\nAdding extra spaces ok if it improves alignment of = or &lt;-."
-  },
-  {
-    "objectID": "slides/03_functions-vectors-matrices.html#long-lines-of-code",
-    "href": "slides/03_functions-vectors-matrices.html#long-lines-of-code",
-    "title": "MATH167R: Overview",
-    "section": "Long Lines of Code",
-    "text": "Long Lines of Code\nStrive to limit your code to 80 characters per line. This fits comfortably on a printed page with a reasonably sized font.\nIf a function call is too long to fit on a single line, use one line each for the function name, each argument, and the closing ). This makes the code easier to read and to change later.\nTip! Try RStudio &gt; Preferences &gt; Code &gt; Display &gt; Show Margin with Margin column 80 to give yourself a visual cue!"
-  },
-  {
-    "objectID": "slides/03_functions-vectors-matrices.html#assignment",
-    "href": "slides/03_functions-vectors-matrices.html#assignment",
-    "title": "MATH167R: Overview",
-    "section": "Assignment",
-    "text": "Assignment\nWe use &lt;- instead of = for assignment. This is moderately controversial if you find yourself in the right (wrong?) communities."
-  },
-  {
-    "objectID": "slides/03_functions-vectors-matrices.html#semicolons",
-    "href": "slides/03_functions-vectors-matrices.html#semicolons",
-    "title": "MATH167R: Overview",
-    "section": "Semicolons",
-    "text": "Semicolons\nIn R, semi-colons (;) are used to execute pieces of R code on a single line. In general, this is bad practice and should be avoided. Also, you never need to end lines of code with semi-colons!"
-  },
-  {
-    "objectID": "slides/03_functions-vectors-matrices.html#quotes-and-strings",
-    "href": "slides/03_functions-vectors-matrices.html#quotes-and-strings",
-    "title": "MATH167R: Overview",
-    "section": "Quotes and Strings",
-    "text": "Quotes and Strings\nUse \", not ', for quoting text. The only exception is when the text already contains double quotes and no single quotes."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "MATH167R: Statistical Programming with R",
+    "objectID": "syllabus.html#course-information",
+    "href": "syllabus.html#course-information",
+    "title": "Syllabus",
     "section": "",
-    "text": "Week\nDate\nTopic\nSlides\nCheck-in\nLab\n\n\n\n\n1\nM 8/21\nCourse Overview and Introduction to R\nSlides 01\nCheck-in 01\n\n\n\n\nW 8/23\nR fundamentals\nSlides 02\n\nLab 01\n\n\n2\nM 8/28\nR fundamentals\n\n\n\n\n\n\nW 8/30\nR fundamentals\n\n\n\n\n\n3\nM 9/4\nLabor Day (No Class)\n\n\n\n\n\n\nW 9/6\nExploring data with R\n\n\n\n\n\n4\nM 9/11\nExploring data with R\n\n\n\n\n\n\nW 9/13\nExploring data with R\n\n\n\n\n\n5\nM 9/18\nData visualization\n\n\n\n\n\n\nW 9/20\nData visualization\n\n\n\n\n\n6\nM 9/25\nData visualization\n\n\n\n\n\n\nW 9/27\nData manipulation and management\n\n\n\n\n\n7\nM 10/2\nData manipulation and management\n\n\n\n\n\n\nW 10/4\nMidterm exam\n\n\n\n\n\n8\nM 10/9\nProgramming basics\n\n\n\n\n\n\nW 10/11\nProgramming basics\n\n\n\n\n\n9\nM 10/16\nProgramming basics\n\n\n\n\n\n\nW 10/18\nProgramming basics\n\n\n\n\n\n10\nM 10/23\nProgramming basics\n\n\n\n\n\n\nW 10/25\nProgramming basics\n\n\n\n\n\n11\nM 10/30\nSimulations\n\n\n\n\n\n\nW 11/1\nSimulations\n\n\n\n\n\n12\nM 11/6\nSimulations\n\n\n\n\n\n\nW 11/8\nStatistical inference\n\n\n\n\n\n13\nM 11/13\nStatistical inference\n\n\n\n\n\n\nW 11/15\nStatistical inference\n\n\n\n\n\n14\nM 11/20\nStatistical inference\n\n\n\n\n\n\nW 11/22\nThanksgiving (No Class)\n\n\n\n\n\n15\nM 11/27\nReal world data analysis\n\n\n\n\n\n\nW 11/29\nReal world data analysis\n\n\n\n\n\n16\nM 12/4\nReal world data analysis\n\n\n\n\n\n\nW 12/6\nFinal review"
+    "text": "Instructor\nPeter Gao\n\n\nLectures\nWeekly on Monday and Wednesday, 10:30-11:45am in MH234\n\n\nOffice Hours\nMonday and Wednesday, 1:30-2:30pm in MH311 or email for an appointment\n\n\nEmail\npeter.gao [at sjsu]\nI will make every effort to respond to emails within a day, but please feel free to send me a reminder after 48 hours have passed. Please include [MATH 167R] in your subject line."
   },
   {
-    "objectID": "labs/01_first-R-lab.html",
-    "href": "labs/01_first-R-lab.html",
-    "title": "Lab 1: Basic Definitions",
-    "section": "",
-    "text": "Explain what the following code does in your own words.\n\nx &lt;- 1\ny &lt;- 1\nprint(x + y)\n\n[1] 2\n\n\nYOUR EXPLANATION HERE"
+    "objectID": "syllabus.html#learning-objectives",
+    "href": "syllabus.html#learning-objectives",
+    "title": "Syllabus",
+    "section": "Learning objectives",
+    "text": "Learning objectives\nIntroduction to the R programming language. Topics include data structures, reading and writing data, databases, data visualization, accessing packages, programming structures and functions.\nUpon successful completion of this course, students will be able to:\n\nUnderstand the structures of R objects\nImport data from a variety of sources.\nSave data in formats that can be used by other programs.\nCreate publication quality graphs.\nDownload and install packages.\nCreate reusable functions.\nPerform statistical analysis on R.\n\nThis course aims to help you build a foundation of computational skills for data analysis. Data encountered in real world applications are usually messy, breaking many of the assumptions we make in typical statistics courses. Throughout this course, we will practice using computers to help us understand, summarize, visualize, and model complex data in a reproducible way."
   },
   {
-    "objectID": "labs/01_first-R-lab.html#a.-combining-r-code-and-output",
-    "href": "labs/01_first-R-lab.html#a.-combining-r-code-and-output",
-    "title": "Lab 1: Basic Definitions",
-    "section": "",
-    "text": "Explain what the following code does in your own words.\n\nx &lt;- 1\ny &lt;- 1\nprint(x + y)\n\n[1] 2\n\n\nYOUR EXPLANATION HERE"
+    "objectID": "syllabus.html#materials",
+    "href": "syllabus.html#materials",
+    "title": "Syllabus",
+    "section": "Materials",
+    "text": "Materials\nThe primary text for the course will be the lecture slides, which will be posted to the course website. The following textbooks may be useful resources.\n\nGrolemund, G. (2014). Hands-On Programming with R. Available here for free.\nWickham, H. and Grolemund, G. (2023). R for Data Science. Available here for free.\nLee, B.L. (2016). An Introduction to Computational Probability and Statistics with R (Draft).\nÇetinkaya-Rundel, M. and Hardin, J. (2021) Introduction to Modern Statistics. Available here for free.\n\nThe main way we will interact with R is through the software RStudio, both of which can be downloaded and installed for free. The students will be required to have access to a computer with R and RStudio. The computer lab in MacQuarrie Hall 221 contains computers with all of the software that will be used during the semester. All of the coursework may be completed on a personal computer and the software is freely available to students."
   },
   {
-    "objectID": "labs/01_first-R-lab.html#b.-running-an-r-script",
-    "href": "labs/01_first-R-lab.html#b.-running-an-r-script",
-    "title": "Lab 1: Basic Definitions",
-    "section": "B. Running an R script",
-    "text": "B. Running an R script\n\nDownload the 01_lab-test-code.R file and put it in the same folder as this lab. Change the chunk option eval = F to eval = T. What does this code file do?\n\nsource(\"01_lab-test-code.R\")\n\nYOUR EXPLANATION HERE"
+    "objectID": "syllabus.html#course-requirements-and-grading",
+    "href": "syllabus.html#course-requirements-and-grading",
+    "title": "Syllabus",
+    "section": "Course requirements and grading",
+    "text": "Course requirements and grading\nTypically, each 75 minute class session will be broken up into a 50 minute lecture and a 25 minute lab. Lab time will be an opportunity for you to practice coding, work collaboratively on assignments, and ask for help.\n\nCheck-ins: On most Mondays, you will be assigned short check-in assignments. These are designed to be completed during lab or shortly after and will usually be due at the start of the next class. At the end of the quarter, your lowest check-in grade will be dropped. They will be graded on the following two point scale:\n\n0: indicates incomplete or unacceptable work\n1: represents demonstrated effort towards completing at least 75% of the assignment\n2: represents demonstrated effort towards completing the entire assignment.\n\nLabs: On most Wednesdays, you will be assigned Labs. These are extended, more complicated assignments that you will likely not be able to complete during class. They will typically be due the next Wednesday. At the end of the quarter, your lowest lab grade will be dropped.\nMidterm and Final Exams: There will be one in-person midterm during the semester and one final exam during finals week. Practice questions will be provided in advance of the exams. There will be no make-up midterm or final exams.\nClass Project: During the semester, you will complete a class project that requires you to apply the data manipulation, visualization, and analysis skills covered in this course to a real-world dataset of your choice.\nLate Work: In general, the late policy is as follows: Any assignment that is received late but less than 24 hours late will receive a grade penalty of 25%. Any assignment that is received 24 to 48 hours late will receive a grade penalty of 50%. Assignments will not be accepted more than 48 hours late.\n\n\nGrading scale\nYour final grade will be calculated as follows:\n\n15%: Check-ins\n30%: Labs\n15%: Midterm exam\n20%: Final exam\n20%: Class project\n\n\n\n\nLetter Grade\nRaw Percentage\n\n\n\n\nA plus\n96 to 100%\n\n\nA\n93 to 95%\n\n\nA minus\n90 to 92%\n\n\nB plus\n86 to 89%\n\n\nB\n83 to 85%\n\n\nB minus\n80 to 82%\n\n\nC plus\n76 to 79%\n\n\nC\n73 to 75%\n\n\nC minus\n70 to 72%\n\n\nD plus\n66 to 69%\n\n\nD\n63 to 65%\n\n\nD minus\n60 to 62%\n\n\nF\n0 to 60%"
   },
   {
-    "objectID": "labs/01_first-R-lab.html#c.-exercises",
-    "href": "labs/01_first-R-lab.html#c.-exercises",
-    "title": "Lab 1: Basic Definitions",
-    "section": "C. Exercises",
-    "text": "C. Exercises\n\nIn contrast to the usual mathematical interpretation of x = x + 1, which has no finite solution, the following assignment evaluates to a finite value. Explain.\n\nx &lt;- 1\nx &lt;- x + 1\nprint(x)\n\n[1] 2\n\n\nYOUR EXPLANATION HERE\nThe first expression below evaluates to a numeric value, but the second one causes an error. Explain.\n\nT + 1\n\n[1] 2\n\nT + \"Hello\"\n\nError in T + \"Hello\": non-numeric argument to binary operator\n\n\nYOUR EXPLANATION HERE\nCorrect the code below so example_chr is an object of the character class.\n\n# YOUR CODE HERE\nexample_chr &lt;- T\nclass(example_chr)\n\n[1] \"logical\"\n\n\nWhat questions do you have about R, RStudio, and RMarkdown?\n\nYour first question…\nYour second question…"
+    "objectID": "syllabus.html#course-schedule",
+    "href": "syllabus.html#course-schedule",
+    "title": "Syllabus",
+    "section": "Course Schedule",
+    "text": "Course Schedule\nThe updated course schedule is available on the course homepage here."
   },
   {
-    "objectID": "weeks/week-1.html",
-    "href": "weeks/week-1.html",
-    "title": "Week 1",
-    "section": "",
-    "text": "Slides 01\nCheck-in 01"
+    "objectID": "syllabus.html#policies",
+    "href": "syllabus.html#policies",
+    "title": "Syllabus",
+    "section": "Policies",
+    "text": "Policies\n\nFeedback\nI encourage and appreciate your feedback throughout the quarter. You are welcome to provide feedback on any aspect of the course at any time via email or in person. If you would prefer to do so confidentially, you can do so through the form on the course Canvas page.\n\n\nCollaboration\nOn most assignments, collaboration is allowed and encouraged. You may discuss problems, approaches, and solutions with your classmates. Acceptable collaboration is limited to your classmates in this course and you must clearly include on any collaborative work the name(s) of anyone with whom you worked. Additionally, all submitted work must be your own; you should not submit code or answers copied from any resource including your classmates. Plagiarism and cheating is easy to detect and can lead to serious negative consequences for you. If you have any questions regarding this policy, please ask for clarification.\n\n\nOnline resources\nStudents are encouraged to use online resources including large language model-based chatbots (ex. ChatGPT) as aids for learning and understanding course material. However, the use of external resources like ChatGPT to generate code or answers for course labs, assignments, exams, and projects is not permitted.\n\n\nDiscussion\nYou are encouraged to participate on the discussion forum by posting questions about assignments and answering questions from other students. Posts may not include substantial amounts of code that can be used for a solution to any problem, but may include code snippets within reason. Participation, in the form of both questions and answers, can earn you up to 2% extra credit for your final grade. Posts will be evaluated based on how substantive and helpful they are to the class.\n\n\nUniversity policies\nPer University Policy S16-9, relevant university policy concerning all courses, such as student responsibilities, academic integrity, accommodations, dropping and adding, consent for recording of class, etc. and available student services (e.g. learning assistance, counseling, and other resources) are listed on Syllabus Information web page (link). Make sure to visit this page to review and be aware of these university policies and resources."
   },
   {
-    "objectID": "weeks/week-1.html#key-links",
-    "href": "weeks/week-1.html#key-links",
-    "title": "Week 1",
-    "section": "",
-    "text": "Slides 01\nCheck-in 01"
-  },
-  {
-    "objectID": "slides/02_functions-expressions.html#review",
-    "href": "slides/02_functions-expressions.html#review",
-    "title": "MATH167R: Functions and Expressions",
-    "section": "Review",
-    "text": "Review"
-  },
-  {
-    "objectID": "slides/02_functions-expressions.html#warm-up",
-    "href": "slides/02_functions-expressions.html#warm-up",
-    "title": "MATH167R: Functions and Expressions",
-    "section": "Warm-up",
-    "text": "Warm-up"
-  },
-  {
-    "objectID": "slides/02_functions-expressions.html#todays-goals",
-    "href": "slides/02_functions-expressions.html#todays-goals",
-    "title": "MATH167R: Functions and Expressions",
-    "section": "Today’s goals",
-    "text": "Today’s goals"
-  },
-  {
-    "objectID": "slides/02_functions-expressions.html#expressions",
-    "href": "slides/02_functions-expressions.html#expressions",
-    "title": "MATH167R: Functions and Expressions",
-    "section": "Expressions",
-    "text": "Expressions"
-  },
-  {
-    "objectID": "slides/02_functions-expressions.html#functions",
-    "href": "slides/02_functions-expressions.html#functions",
-    "title": "MATH167R: Functions and Expressions",
-    "section": "Functions",
-    "text": "Functions"
-  },
-  {
-    "objectID": "slides/02_functions-expressions.html#in-practice",
-    "href": "slides/02_functions-expressions.html#in-practice",
-    "title": "MATH167R: Functions and Expressions",
-    "section": "In practice",
-    "text": "In practice"
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#warm-up-getting-to-know-each-other",
-    "href": "slides/02_objects-classes.html#warm-up-getting-to-know-each-other",
-    "title": "MATH167R: Basic Definitions",
-    "section": "Warm-up: Getting to know each other",
-    "text": "Warm-up: Getting to know each other\nIn groups of two or three, share:\n\nWhat you’d like us to call you in class\nMajor/program and why you’re taking this course\nSomething you’d be interested in studying/exploring through data\n\nand discuss what you think the following code does:\n\nsides &lt;- c(\"H\", \"T\")\nflip10 &lt;- sample(sides, 10, replace = T)\nsum(flip10 == \"H\")"
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#overview-of-today",
-    "href": "slides/02_objects-classes.html#overview-of-today",
-    "title": "MATH167R: Basic Definitions",
-    "section": "Overview of today",
-    "text": "Overview of today\n\nBasic definitions: objects, expressions, values, objects, functions, classes\nR Markdown and file management"
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#review",
-    "href": "slides/02_objects-classes.html#review",
-    "title": "MATH167R: Basic Definitions",
-    "section": "Review",
-    "text": "Review\n\n“To understand computations in R, two slogans are helpful: Everything that exists is an object. Everything that happens is a function call.”\n(Chambers, 2014)\n\nWe saw last class that we can use R to perform basic mathematical operations:\n\n3 + 5\n\n[1] 8"
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#expressions",
-    "href": "slides/02_objects-classes.html#expressions",
-    "title": "MATH167R: Basic Definitions",
-    "section": "Expressions",
-    "text": "Expressions\nWe saw last class that we can use R to perform basic mathematical operations:\n\n3 + 5\n\n[1] 8\n\n\nDefinition: an expression is a symbol or a combination of symbols that evaluates to a value.\n\n1 + 2\n\n[1] 3"
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#objects",
-    "href": "slides/02_objects-classes.html#objects",
-    "title": "MATH167R: Basic Definitions",
-    "section": "Objects",
-    "text": "Objects\nDefinition: An object is created when R evaluates an expression. The object is accessible only by name.\n\nAn anonymous object gets deleted from the computer memory by a process called garbage collection.\nA special object named .Last.value contains the value of the last evaluated expression (in console only)."
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#assignment",
-    "href": "slides/02_objects-classes.html#assignment",
-    "title": "MATH167R: Basic Definitions",
-    "section": "Assignment",
-    "text": "Assignment\nWe saw last class that we can assign names to values:\n\nx &lt;- 1 + 2\nx\n\n[1] 3\n\n\nDefinition: Assignment is an operation to bind an object to name, using the symbol &lt;-.\n\n= and &lt;- are not generally equivalent. However, they are equivalent when they are used as assignment operators."
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#check-your-understanding-assignment",
-    "href": "slides/02_objects-classes.html#check-your-understanding-assignment",
-    "title": "MATH167R: Basic Definitions",
-    "section": "Check your understanding: Assignment",
-    "text": "Check your understanding: Assignment\nWhat do you expect the output of the following chunks to be?\n\nx &lt;- 1\ny &lt;- x + 1\nx &lt;- 0\nz &lt;- y + 1\nprint(z)\n\n\na &lt;- 1\nb &lt;- a + 1\nb &lt;- 2 * b\nprint(b)"
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#check-your-understanding-assignment-1",
-    "href": "slides/02_objects-classes.html#check-your-understanding-assignment-1",
-    "title": "MATH167R: Basic Definitions",
-    "section": "Check your understanding: Assignment",
-    "text": "Check your understanding: Assignment\nWhat do you expect the output of the following chunks to be?\n\nx &lt;- 1\ny &lt;- x + 1\nx &lt;- 0\nz &lt;- y + 1\nprint(z)\n\n[1] 3\n\n\n\na &lt;- 1\nb &lt;- a + 1\nb &lt;- 2 * b\nprint(b)\n\n[1] 4"
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#objects-and-data",
-    "href": "slides/02_objects-classes.html#objects-and-data",
-    "title": "MATH167R: Basic Definitions",
-    "section": "Objects and data",
-    "text": "Objects and data\nWe can use assignments to save values as named objects and perform math on the objects:\n\nx &lt;- 3\ny &lt;- 5\nx + y\n\n[1] 8\n\n\nToday we’ll see that R can handle objects that are not numbers:\n\nz &lt;- \"Hello\"\n\n\nHowever, we need to be careful because not all operations work with all types of data:\n\nx + z\n\nError in x + z: non-numeric argument to binary operator"
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#atomic-vectors",
-    "href": "slides/02_objects-classes.html#atomic-vectors",
-    "title": "MATH167R: Basic Definitions",
-    "section": "Atomic vectors",
-    "text": "Atomic vectors\nThe most basic type of object in R used for storing values is the atomic vector. The four most common types of atomic vectors are:\n\nlogical: ex. TRUE or FALSE\ninteger: ex. 1, 2, 3, 4, …\ndouble: ex. 3.1\ncharacter: ex. \"Hello\"\n\nIntegers and doubles are both also called numeric vectors."
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#atomic-vectors-1",
-    "href": "slides/02_objects-classes.html#atomic-vectors-1",
-    "title": "MATH167R: Basic Definitions",
-    "section": "Atomic vectors",
-    "text": "Atomic vectors\n\nfrom Advanced R, Hadley Wickham."
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#atomic-vectors-2",
-    "href": "slides/02_objects-classes.html#atomic-vectors-2",
-    "title": "MATH167R: Basic Definitions",
-    "section": "Atomic vectors",
-    "text": "Atomic vectors\n\nexample_lgc &lt;- T\nexample_int &lt;- 1L\nexample_dbl &lt;- 1.0\nexample_chr &lt;- \"Hello\"\n\n\n\nclass(example_lgc)\n\n[1] \"logical\"\n\nclass(example_int)\n\n[1] \"integer\"\n\nclass(example_dbl)\n\n[1] \"numeric\"\n\nclass(example_chr)\n\n[1] \"character\""
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#coercion",
-    "href": "slides/02_objects-classes.html#coercion",
-    "title": "MATH167R: Basic Definitions",
-    "section": "Coercion",
-    "text": "Coercion\nYou can explicitly change the class of an object:\n\nas.numeric(example_lgc)\n\n[1] 1\n\nas.numeric(example_chr)\n\n[1] NA\n\n\n\nWhen elements of different types are mixed in an atomic vector, R automatically converts all of them to the same type.\nOrder of precedence, from the highest to the lowest: character, numeric, integer, logical.\n\n\nc(TRUE, \"hello\", 1)\n\n[1] \"TRUE\"  \"hello\" \"1\""
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#special-values",
-    "href": "slides/02_objects-classes.html#special-values",
-    "title": "MATH167R: Basic Definitions",
-    "section": "Special values",
-    "text": "Special values\n\n\n\n\n\n\n\nValue\nUsual meaning\n\n\n\n\nNA\nMissing values\n\n\nNaN\na computed value that is not a number (try 1/0)\n\n\nNULL\nan object with no value\n\n\n-Inf and Inf\na computed value that is large (or large and negative)"
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#environment",
-    "href": "slides/02_objects-classes.html#environment",
-    "title": "MATH167R: Basic Definitions",
-    "section": "Environment",
-    "text": "Environment"
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#the-working-directory",
-    "href": "slides/02_objects-classes.html#the-working-directory",
-    "title": "MATH167R: Basic Definitions",
-    "section": "The working directory",
-    "text": "The working directory\n\nThe working directory is a folder where files are retrieved from or saved to by default.\nThe command getwd() gets the working directory, which usually is:\n\n/Users/USERNAME on Apple\nC:\\Users\\USERNAME\\Documents on Windows\n\nFiles on a computer are grouped into folders, which are organized in a hierarchy.\nThe absolute pathname of a file describes its location in the hierarchy."
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#relative-pathnames",
-    "href": "slides/02_objects-classes.html#relative-pathnames",
-    "title": "MATH167R: Basic Definitions",
-    "section": "Relative pathnames",
-    "text": "Relative pathnames\nThe relative pathname of a file specifies its location relative to the working directory.\n\nThe command setwd() sets the working directory for the current R session.\n\n\ngetwd()\nsetwd(\"/Users/pgao/Desktop\")\n\n\nOn Windows, add C: to the beginning of the absolute pathname.\n\n\ngetwd()\nsetwd(\"C:/Documents/\")"
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#example-file-structure",
-    "href": "slides/02_objects-classes.html#example-file-structure",
-    "title": "MATH167R: Basic Definitions",
-    "section": "Example file structure",
-    "text": "Example file structure"
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#project-based-workflow",
-    "href": "slides/02_objects-classes.html#project-based-workflow",
-    "title": "MATH167R: Basic Definitions",
-    "section": "Project-based workflow",
-    "text": "Project-based workflow\nIn this class, I encourage you to organize all your code/assignments/files into a single MATH167R folder.\nOnce you create this folder, you can create an RStudio Project, which will create a file that tells RStudio that all the code in the folder is associated with a single project.\nAny code in the project folder assumes that the working directory is the project root directory. This ensures that the project can be moved around your computer or onto another computer and none of the paths will break."
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#example-file-structure-for-math167r",
-    "href": "slides/02_objects-classes.html#example-file-structure-for-math167r",
-    "title": "MATH167R: Basic Definitions",
-    "section": "Example file structure for MATH167R",
-    "text": "Example file structure for MATH167R\nMATH167R\n├── labs\n│   ├── 01_lab.R\n│   └── 02_lab.R\n├── checkins\n│   ├── 01_checkin.R\n│   └── 02_checkin.R\n├── project\n│   └── data\n│       └── trees.csv\n└── exams"
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#naming-files",
-    "href": "slides/02_objects-classes.html#naming-files",
-    "title": "MATH167R: Basic Definitions",
-    "section": "Naming files",
-    "text": "Naming files\nTips from Jenny Bryan:\n\nmachine readable\nhuman readable\nplays well with default ordering"
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#naming-files-1",
-    "href": "slides/02_objects-classes.html#naming-files-1",
-    "title": "MATH167R: Basic Definitions",
-    "section": "Naming files",
-    "text": "Naming files\n\n\nBad\n\nnewfinal2actualFINALnew.docx\nmy first lab.R\nstuff.R\n\n\nGood:\n\n01_lab1.Rmd\nanalysis_functions.R\n2020-01-08_labWriteup.Rmd"
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#r-markdown-1",
-    "href": "slides/02_objects-classes.html#r-markdown-1",
-    "title": "MATH167R: Basic Definitions",
-    "section": "R Markdown",
-    "text": "R Markdown\nR Markdown files (see examples here)\n\nCombine code, output, and writing\nSelf-contained analyses\nCreates HTML, PDF, slides (like these!), webpages, …\nwill be required for assignments"
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#your-first-rmarkdown-file",
-    "href": "slides/02_objects-classes.html#your-first-rmarkdown-file",
-    "title": "MATH167R: Basic Definitions",
-    "section": "Your first RMarkdown file",
-    "text": "Your first RMarkdown file\nOpen 01_first-R-lab.Rmd in RStudio. At the top of the file, you should see the following header:\n---\ntitle: \"Lab 1: Basic Definitions\"\nauthor: \"YOUR NAME HERE\"\ndate: \"2023-08-21\"\noutput: html_document\n---\nThis header contains metadata about the document that follows: the name of the file, the author, the date, and what kind of output it will create."
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#source-editor",
-    "href": "slides/02_objects-classes.html#source-editor",
-    "title": "MATH167R: Basic Definitions",
-    "section": "Source Editor",
-    "text": "Source Editor"
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#visual-editor",
-    "href": "slides/02_objects-classes.html#visual-editor",
-    "title": "MATH167R: Basic Definitions",
-    "section": "Visual Editor",
-    "text": "Visual Editor"
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#code-chunks",
-    "href": "slides/02_objects-classes.html#code-chunks",
-    "title": "MATH167R: Basic Definitions",
-    "section": "Code chunks",
-    "text": "Code chunks\nCode chunks contain R code that is evaluated when you render your R Markdown report. You can insert a code chunk by clicking Insert &gt; Code Chunk or by typing the chunk delimiters ```{r} and ``` .\nChunk output can be customized with optional arguments set in the {} of a chunk header, as we will see in Lab 01."
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#r-markdown-and-directory-weirdness",
-    "href": "slides/02_objects-classes.html#r-markdown-and-directory-weirdness",
-    "title": "MATH167R: Basic Definitions",
-    "section": "R Markdown (and directory weirdness)",
-    "text": "R Markdown (and directory weirdness)\n\nR Markdown handles all the tricky file management–just put the file you want to access in the same folder as your .Rmd file\nThis can be confusing/frustrating—patience is key!\nTry downloading the sample code 01_lab-test-code.R from [here](../static/01_lab-test-code.R) and putting it in the same folder as your Lab 01 R Markdown report."
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#r-markdown-2",
-    "href": "slides/02_objects-classes.html#r-markdown-2",
-    "title": "MATH167R: Basic Definitions",
-    "section": "R Markdown",
-    "text": "R Markdown\nRemember the following:\n\nR Markdown produces fully reproducible reports – each time you render, you run the analyis from the beginning\nCode goes in chunks, while the explanation/narrative goes outside of chunks\nRStudio now provides a visual editor for a familiar / Google docs-like editing experience"
-  },
-  {
-    "objectID": "slides/02_objects-classes.html#lab-1",
-    "href": "slides/02_objects-classes.html#lab-1",
-    "title": "MATH167R: Basic Definitions",
-    "section": "Lab 1",
-    "text": "Lab 1\nIn Lab 1, we’ll make sure R and RStudio are properly installed and updated, practice assigning objects, and generate your first R Markdown report (in a properly organized directory)."
+    "objectID": "syllabus.html#frequently-asked-questions",
+    "href": "syllabus.html#frequently-asked-questions",
+    "title": "Syllabus",
+    "section": "Frequently Asked Questions",
+    "text": "Frequently Asked Questions\nQ1. Why doesn’t my code work? Why don’t I “get” programming?\nA1. This is a natural part of learning to program. In fact, I believe that the ability to work through “bugs” and broken code is the single most important skill you can develop in this course. If you can learn how to be resourceful and solve your own coding problems, you will be able to learn any programming language on your own.\nQ2. OK, but my homework is due in a week and I need actual advice on how to fix this bug.\nA2. It sounds like you’re getting started early! Good. If you’re running into trouble, here are a few places you can ask for help:\n\nGoogle\nStackOverflow\nThe course discussion board\nYour classmates\n\nQ3. OK, but my homework is due tomorrow and I still can’t fix this bug.\nA3. Above all, try not to put yourself in this position. Start early and ask questions early. Give yourself time to solve your own problems. Of course, sometime you will get busy or life will get in the way and you won’t have as much time as you would like to work on an assignment. My second piece of advice is don’t go it alone. There have been numerous times where I have spent hours looking for a bug only to have a friend identify it in minutes. This does not just mean asking your friends who have already completed MATH 167 for help—some times all you need is a different perspective. Ask your classmates for help—in person or on the discussion board."
   },
   {
     "objectID": "slides/01_overview.html#course-information",
@@ -1029,59 +308,1256 @@
     "text": "Your first check-in\n\nRun the code line by line and answer the two questions on the Check-in 1 assignment on Canvas.\nFor complete credit for Check-in 1, please also complete the pre-course survey and NameCoach recording.\nIf you would like to find others to work with, please also reply to the Piazza post."
   },
   {
-    "objectID": "syllabus.html",
-    "href": "syllabus.html",
-    "title": "Syllabus",
+    "objectID": "slides/02_objects-classes.html#warm-up-getting-to-know-each-other",
+    "href": "slides/02_objects-classes.html#warm-up-getting-to-know-each-other",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Warm-up: Getting to know each other",
+    "text": "Warm-up: Getting to know each other\nIn groups of two or three, share:\n\nIntroduce yourself\nDiscuss what you think the following code does (feel free to try it out):\n\n\nsides &lt;- 1:6\nrolls &lt;- sample(sides, 100, replace = T)\nprint(sum(rolls == 1))"
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#overview-of-today",
+    "href": "slides/02_objects-classes.html#overview-of-today",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Overview of today",
+    "text": "Overview of today\n\nBasic definitions: objects, expressions, functions, data types\nR Markdown and file management"
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#review",
+    "href": "slides/02_objects-classes.html#review",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Review",
+    "text": "Review\n\n“To understand computations in R, two slogans are helpful: Everything that exists is an object. Everything that happens is a function call.”\n(Chambers, 2014)\n\nWe saw last class that we can use R to perform basic mathematical operations:\n\n3 + 5\n\n[1] 8"
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#expressions",
+    "href": "slides/02_objects-classes.html#expressions",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Expressions",
+    "text": "Expressions\nWe saw last class that we can use R to perform basic mathematical operations:\n\n3 + 5\n\n[1] 8\n\n\nDefinition: an expression is a symbol or a combination of symbols that evaluates to a value.\n\n1 + 2\n\n[1] 3"
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#objects",
+    "href": "slides/02_objects-classes.html#objects",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Objects",
+    "text": "Objects\nDefinition: An object is created when R evaluates an expression. The object is accessible only by name.\n\nAn anonymous object gets deleted from the computer memory by a process called garbage collection.\nA special object named .Last.value contains the value of the last evaluated expression (in console only)."
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#assignment",
+    "href": "slides/02_objects-classes.html#assignment",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Assignment",
+    "text": "Assignment\nWe saw last class that we can assign names to values:\n\nx &lt;- 1 + 2\nx\n\n[1] 3\n\n\nDefinition: Assignment is an operation to bind an object to name, using the symbol &lt;-.\n\n= and &lt;- are not generally equivalent. However, they are equivalent when they are used as assignment operators.\n\nx = 1 + 2\nx\n\n[1] 3"
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#check-your-understanding-assignment",
+    "href": "slides/02_objects-classes.html#check-your-understanding-assignment",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Check your understanding: Assignment",
+    "text": "Check your understanding: Assignment\nWhat do you expect the output of the following chunks to be?\n\nx &lt;- 1\ny &lt;- x + 1\nx &lt;- 0\nz &lt;- y + 1\nprint(z)\n\n\na &lt;- 1\nb &lt;- a + 1\nb &lt;- 2 * b\nprint(b)"
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#check-your-understanding-assignment-1",
+    "href": "slides/02_objects-classes.html#check-your-understanding-assignment-1",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Check your understanding: Assignment",
+    "text": "Check your understanding: Assignment\nWhat do you expect the output of the following chunks to be?\n\nx &lt;- 1\ny &lt;- x + 1\nx &lt;- 0\nz &lt;- y + 1\nprint(z)\n\n[1] 3\n\n\n\na &lt;- 1\nb &lt;- a + 1\nb &lt;- 2 * b\nprint(b)\n\n[1] 4"
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#objects-and-data",
+    "href": "slides/02_objects-classes.html#objects-and-data",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Objects and data",
+    "text": "Objects and data\nWe can use assignments to save values as named objects and perform math on the objects:\n\nx &lt;- 3\ny &lt;- 5\nx + y\n\n[1] 8\n\n\nToday we’ll see that R can handle objects that are not numbers:\n\nz &lt;- \"Hello\"\n\n\nHowever, we need to be careful because not all operations work with all types of data:\n\nx + z\n\nError in x + z: non-numeric argument to binary operator"
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#atomic-vectors",
+    "href": "slides/02_objects-classes.html#atomic-vectors",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Atomic vectors",
+    "text": "Atomic vectors\nThe most basic type of object in R used for storing values is the atomic vector. The four most common types of atomic vectors are:\n\nlogical: ex. TRUE or FALSE\ninteger: ex. 1, 2, 3, 4, …\ndouble: ex. 3.1\ncharacter: ex. \"Hello\"\n\nIntegers and doubles are both also called numeric vectors."
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#atomic-vectors-1",
+    "href": "slides/02_objects-classes.html#atomic-vectors-1",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Atomic vectors",
+    "text": "Atomic vectors\n\nfrom Advanced R, Hadley Wickham."
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#atomic-vectors-2",
+    "href": "slides/02_objects-classes.html#atomic-vectors-2",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Atomic vectors",
+    "text": "Atomic vectors\n\nexample_lgc &lt;- T\nexample_int &lt;- 1L\nexample_dbl &lt;- 1.0\nexample_chr &lt;- \"Hello\"\n\nThe typeof function can be used to get the data type of an object.\n\n\ntypeof(example_lgc)\n\n[1] \"logical\"\n\ntypeof(example_int)\n\n[1] \"integer\"\n\ntypeof(example_dbl)\n\n[1] \"double\"\n\ntypeof(example_chr)\n\n[1] \"character\""
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#coercion",
+    "href": "slides/02_objects-classes.html#coercion",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Coercion",
+    "text": "Coercion\n\nYou can explicitly change the type of an object:\n\nas.numeric(example_lgc)\n\n[1] 1\n\nas.numeric(example_chr)\n\n[1] NA\n\n\nWhen elements of different types are mixed in an atomic vector, R automatically converts all of them to the same type.\nOrder of precedence, from the highest to the lowest: character, numeric, integer, logical.\n\nc(TRUE, \"hello\", 1)\n\n[1] \"TRUE\"  \"hello\" \"1\""
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#special-values",
+    "href": "slides/02_objects-classes.html#special-values",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Special values",
+    "text": "Special values\n\n\n\n\n\n\n\nValue\nUsual meaning\n\n\n\n\nNA\nMissing values\n\n\nNaN\na computed value that is not a number (try 1/0)\n\n\nNULL\nan object with no value\n\n\n-Inf and Inf\na computed value that is large (or large and negative)"
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#environment",
+    "href": "slides/02_objects-classes.html#environment",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Environment",
+    "text": "Environment\nWhen R evaluates an expression such as x + 1, how does R locate the object associated with the name x?\n\nDuring an assignment, the binding between an object and its name is stored in an environment.\n\n\nWhen R starts, a global environment (sometimes called a workspace) is created; every subsequent assignment that takes place at the command prompt adds objects to this environment."
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#environment-1",
+    "href": "slides/02_objects-classes.html#environment-1",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Environment",
+    "text": "Environment\nWe will see later that we can enter local environments within the global environment and define objects that are confined to these local environments.\nThe ls() command displays object in the current global environment.\nTo remove objects, we can use the rm() command."
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#operators",
+    "href": "slides/02_objects-classes.html#operators",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Operators",
+    "text": "Operators\nAn operator is a symbol that tells the compiler to perform specific mathematical or logical operations.\nTypes of operators:\n\nAssignment operators\nArithmetic operators\nLogical operators\nRelational operators"
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#arithmetic-operators",
+    "href": "slides/02_objects-classes.html#arithmetic-operators",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Arithmetic Operators",
+    "text": "Arithmetic Operators\n\n\n\n\n\n\n\n\nOperator\nOperation\nExample\n\n\n\n\n+\nAddition\n&gt; 3 + 4\n[1] 7\n\n\n-\nSubtraction\n&gt; 3 - 4\n[1] -1\n\n\n*\nMultiplication\n&gt; 3 * 4\n[1] 12\n\n\n/\nDivision\n&gt; 3 / 4\n[1] 0.75"
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#arithmetic-operators-1",
+    "href": "slides/02_objects-classes.html#arithmetic-operators-1",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Arithmetic Operators",
+    "text": "Arithmetic Operators\n\n\n\n\n\n\n\n\nOperator\nOperation\nExample\n\n\n\n\n^ or **\nExponentiation\n&gt; 3 ^ 4\n[1] 81\n\n\n%%\nModulo\n&gt; 3 %% 4\n[1] 3"
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#logical-operators",
+    "href": "slides/02_objects-classes.html#logical-operators",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Logical Operators",
+    "text": "Logical Operators\n\n\n\n\n\n\n\n\nOperator\nOperation\nExample\n\n\n\n\n&\nAND\n&gt; TRUE & FALSE\n[1] FALSE\n\n\n|\nOR\n&gt; TRUE & FALSE\n[1] TRUE\n\n\n!\nNOT\n&gt; !TRUE\n[1] FALSE"
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#relational-operators",
+    "href": "slides/02_objects-classes.html#relational-operators",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Relational Operators",
+    "text": "Relational Operators\n\n\n\n\n\n\n\n\nOperator\nOperation\nExample\n\n\n\n\n&gt;\ngreater than\n&gt; 2 &gt; 1\n[1] TRUE\n\n\n&gt;=\ngreater than or equal to\n&gt; 2 &gt;= 1\n[1] TRUE\n\n\n==\nequal\n&gt; 2 == 1\n[1] FALSE\n\n\n&lt;=\nless than or equal to\n&gt; 2 &lt;= 1\n[1] FALSE\n\n\n&lt;\nless than\n&gt; 2 &lt; 1\n[1] FALSE\n\n\n!=\nnot equal to\n&gt; 2 != 1\n[1] TRUE"
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#relational-operators-1",
+    "href": "slides/02_objects-classes.html#relational-operators-1",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Relational Operators",
+    "text": "Relational Operators\n\n\n\n\n\n\n\n\nOperator\nOperation\nExample\n\n\n\n\n!=\nnot equal to\n&gt; 2 != 1\n[1] TRUE"
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#check-your-understanding-operators",
+    "href": "slides/02_objects-classes.html#check-your-understanding-operators",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Check your understanding: Operators",
+    "text": "Check your understanding: Operators\n\nTRUE & FALSE & TRUE\nTRUE & (FALSE | TRUE)\n1 &lt; 4\n(1 &lt; 4) & (3 &gt; 4)\n\n\nAnswers:\n\nTRUE & FALSE & TRUE\n\n[1] FALSE\n\nTRUE & (FALSE | TRUE)\n\n[1] TRUE\n\n1 &lt; 4\n\n[1] TRUE\n\n(1 &lt; 4) & (3 &gt; 4)\n\n[1] FALSE"
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#the-working-directory",
+    "href": "slides/02_objects-classes.html#the-working-directory",
+    "title": "MATH167R: Basic Definitions",
+    "section": "The working directory",
+    "text": "The working directory\n\nThe working directory is a folder where files are retrieved from or saved to by default.\nThe command getwd() gets the working directory, which usually is:\n\n/Users/USERNAME on Apple\nC:\\Users\\USERNAME\\Documents on Windows\n\nFiles on a computer are grouped into folders, which are organized in a hierarchy.\nThe absolute pathname of a file describes its location in the hierarchy."
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#relative-pathnames",
+    "href": "slides/02_objects-classes.html#relative-pathnames",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Relative pathnames",
+    "text": "Relative pathnames\nThe relative pathname of a file specifies its location relative to the working directory.\n\nThe command setwd() sets the working directory for the current R session.\n\n\ngetwd()\nsetwd(\"/Users/pgao/Desktop\")\n\n\nOn Windows, add C: to the beginning of the absolute pathname.\n\n\ngetwd()\nsetwd(\"C:/Documents/\")"
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#example-file-structure",
+    "href": "slides/02_objects-classes.html#example-file-structure",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Example file structure",
+    "text": "Example file structure"
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#project-based-workflow",
+    "href": "slides/02_objects-classes.html#project-based-workflow",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Project-based workflow",
+    "text": "Project-based workflow\nIn this class, I encourage you to organize all your code/assignments/files into a single MATH167R folder.\nOnce you create this folder, you can create an RStudio Project, which will create a file that tells RStudio that all the code in the folder is associated with a single project.\nAny code in the project folder assumes that the working directory is the project root directory. This ensures that the project can be moved around your computer or onto another computer and none of the paths will break."
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#example-file-structure-for-math167r",
+    "href": "slides/02_objects-classes.html#example-file-structure-for-math167r",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Example file structure for MATH167R",
+    "text": "Example file structure for MATH167R\nMATH167R\n├── labs\n│   ├── 01_lab.R\n│   └── 02_lab.R\n├── checkins\n│   ├── 01_checkin.R\n│   └── 02_checkin.R\n├── project\n│   └── data\n│       └── trees.csv\n└── exams"
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#naming-files",
+    "href": "slides/02_objects-classes.html#naming-files",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Naming files",
+    "text": "Naming files\nTips from Jenny Bryan:\n\nmachine readable\nhuman readable\nplays well with default ordering"
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#naming-files-1",
+    "href": "slides/02_objects-classes.html#naming-files-1",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Naming files",
+    "text": "Naming files\n\n\nBad\n\nnewfinal2actualFINALnew.docx\nmy first lab.R\nstuff.R\n\n\nGood:\n\n01_lab1.Rmd\nanalysis_functions.R\n2020-01-08_labWriteup.Rmd"
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#r-markdown-1",
+    "href": "slides/02_objects-classes.html#r-markdown-1",
+    "title": "MATH167R: Basic Definitions",
+    "section": "R Markdown",
+    "text": "R Markdown\nR Markdown files (see examples here)\n\nCombine code, output, and writing\nSelf-contained analyses\nCreates HTML, PDF, slides (like these!), webpages, …\nwill be required for assignments"
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#your-first-rmarkdown-file",
+    "href": "slides/02_objects-classes.html#your-first-rmarkdown-file",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Your first RMarkdown file",
+    "text": "Your first RMarkdown file\nOpen 01_first-R-lab.Rmd in RStudio. At the top of the file, you should see the following header:\n---\ntitle: \"Lab 1: Basic Definitions\"\nauthor: \"YOUR NAME HERE\"\ndate: \"2023-08-21\"\noutput: html_document\n---\nThis header contains metadata about the document that follows: the name of the file, the author, the date, and what kind of output it will create."
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#source-editor",
+    "href": "slides/02_objects-classes.html#source-editor",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Source Editor",
+    "text": "Source Editor"
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#visual-editor",
+    "href": "slides/02_objects-classes.html#visual-editor",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Visual Editor",
+    "text": "Visual Editor"
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#code-chunks",
+    "href": "slides/02_objects-classes.html#code-chunks",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Code chunks",
+    "text": "Code chunks\nCode chunks contain R code that is evaluated when you render your R Markdown report. You can insert a code chunk by clicking Insert &gt; Code Chunk or by typing the chunk delimiters ```{r} and ``` .\nChunk output can be customized with optional arguments set in the {} of a chunk header, as we will see in Lab 01."
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#r-markdown-and-directory-weirdness",
+    "href": "slides/02_objects-classes.html#r-markdown-and-directory-weirdness",
+    "title": "MATH167R: Basic Definitions",
+    "section": "R Markdown (and directory weirdness)",
+    "text": "R Markdown (and directory weirdness)\n\nR Markdown handles all the tricky file management–just put the file you want to access in the same folder as your .Rmd file\nThis can be confusing/frustrating—patience is key!\nTry downloading the sample code 01_lab-test-code.R from [here](../static/01_lab-test-code.R) and putting it in the same folder as your Lab 01 R Markdown report."
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#r-markdown-2",
+    "href": "slides/02_objects-classes.html#r-markdown-2",
+    "title": "MATH167R: Basic Definitions",
+    "section": "R Markdown",
+    "text": "R Markdown\nRemember the following:\n\nR Markdown produces fully reproducible reports – each time you render, you run the analyis from the beginning\nCode goes in chunks, while the explanation/narrative goes outside of chunks\nRStudio now provides a visual editor for a familiar / Google docs-like editing experience"
+  },
+  {
+    "objectID": "slides/02_objects-classes.html#lab-1",
+    "href": "slides/02_objects-classes.html#lab-1",
+    "title": "MATH167R: Basic Definitions",
+    "section": "Lab 1",
+    "text": "Lab 1\nIn Lab 1, we’ll make sure R and RStudio are properly installed and updated, practice assigning objects, and generate your first R Markdown report (in a properly organized directory)."
+  },
+  {
+    "objectID": "slides/04_lists-data-frames.html#warm-up",
+    "href": "slides/04_lists-data-frames.html#warm-up",
+    "title": "MATH167R: Vectorized functions and lists",
+    "section": "Warm-up",
+    "text": "Warm-up\nDiscuss the following lines of code. What do they do?\n\nx &lt;- c(3 &gt; 4, T, 5 &gt; 6)\ny &lt;- c(1, 0, 1)\nrbind(x, y)\n\n\nAnswer:\n\nx &lt;- c(3 &gt; 4, T, 5 &gt; 6)\ny &lt;- c(1, 0, 1)\nrbind(x, y)\n\n  [,1] [,2] [,3]\nx    0    1    0\ny    1    0    1"
+  },
+  {
+    "objectID": "slides/04_lists-data-frames.html#overview-of-today",
+    "href": "slides/04_lists-data-frames.html#overview-of-today",
+    "title": "MATH167R: Vectorized functions and lists",
+    "section": "Overview of today",
+    "text": "Overview of today\n\nVectorized functions\nLists\nData frames"
+  },
+  {
+    "objectID": "slides/04_lists-data-frames.html#vector-arithmetic",
+    "href": "slides/04_lists-data-frames.html#vector-arithmetic",
+    "title": "MATH167R: Vectorized functions and lists",
+    "section": "Vector Arithmetic",
+    "text": "Vector Arithmetic\nVectorization, or applying functions across vectors/arrays, is one of R’s most powerful capabilities\n\nx &lt;- 1:5\ny &lt;- -1:-5\ny\n\n[1] -1 -2 -3 -4 -5\n\nx + y\n\n[1] 0 0 0 0 0\n\nx * y\n\n[1]  -1  -4  -9 -16 -25"
+  },
+  {
+    "objectID": "slides/04_lists-data-frames.html#vector-arithmetic-1",
+    "href": "slides/04_lists-data-frames.html#vector-arithmetic-1",
+    "title": "MATH167R: Vectorized functions and lists",
+    "section": "Vector Arithmetic",
+    "text": "Vector Arithmetic\nBe careful! R recycles, repeating elements of shorter vectors to match longer vectors. This is incredibly useful when done on purpose, but can also easily lead to hard-to-catch bugs in your code!\n\n2 * x\n\n[1]  2  4  6  8 10\n\nc(1, -1) * x\n\n[1]  1 -2  3 -4  5\n\nc(1, -1) + x\n\n[1] 2 1 4 3 6"
+  },
+  {
+    "objectID": "slides/04_lists-data-frames.html#vector-arithmetic-2",
+    "href": "slides/04_lists-data-frames.html#vector-arithmetic-2",
+    "title": "MATH167R: Vectorized functions and lists",
+    "section": "Vector Arithmetic",
+    "text": "Vector Arithmetic\nWe can apply many functions component-wise to vectors, including comparison operators.\n\nx &gt;= 3\n\n[1] FALSE FALSE  TRUE  TRUE  TRUE\n\ny &lt; -2\n\n[1] FALSE FALSE  TRUE  TRUE  TRUE\n\n(x &gt;= 3) & (y &lt; -2)\n\n[1] FALSE FALSE  TRUE  TRUE  TRUE\n\nx == c(1, 3, 2, 4, 5)\n\n[1]  TRUE FALSE FALSE  TRUE  TRUE"
+  },
+  {
+    "objectID": "slides/04_lists-data-frames.html#boolean-vectors",
+    "href": "slides/04_lists-data-frames.html#boolean-vectors",
+    "title": "MATH167R: Vectorized functions and lists",
+    "section": "Boolean Vectors",
+    "text": "Boolean Vectors\nIn code, entries that are TRUE or FALSE are called booleans (logicals in R). These are incredibly important, because they can be used to give your computer conditions. What will the following code do?\n\nx[x &gt; 3] &lt;- 3\nx\n\n\n\n\n[1] 1 2 3 3 3"
+  },
+  {
+    "objectID": "slides/04_lists-data-frames.html#boolean-vectors-1",
+    "href": "slides/04_lists-data-frames.html#boolean-vectors-1",
+    "title": "MATH167R: Vectorized functions and lists",
+    "section": "Boolean Vectors",
+    "text": "Boolean Vectors\nWe can also do basic arithmetic with booleans. TRUE is encoded as 1 and FALSE is encoded as 0.\n\n# First reset x\nx &lt;- 1:5\nsum(x &gt;= 3)\n\n\n\n\n[1] 3\n\n\n\n\n\nmean(x &gt;= 3)\n\n\n\n\n\n[1] 0.6\n\n\n\n\nWhat is this last quantity telling us?\n\n\nBy taking the mean, we are looking at the proportion of our vector that is TRUE!"
+  },
+  {
+    "objectID": "slides/04_lists-data-frames.html#complicated-indexing",
+    "href": "slides/04_lists-data-frames.html#complicated-indexing",
+    "title": "MATH167R: Vectorized functions and lists",
+    "section": "Complicated indexing",
+    "text": "Complicated indexing\nWe can also get more complicated with our indexing.\n\n# Return the second and third elements of \ny[c(2, 3)]\n\n[1] -2 -3\n\n# Return the values of x greater than 3\nx[x &gt;= 3]\n\n[1] 3 4 5\n\n# Values of x that match the index of the values of y that are less than -2\nx[y &lt; -2]\n\n[1] 3 4 5\n\n# which() returns the index of entries that are TRUE\nwhich(y &lt; -2)\n\n[1] 3 4 5"
+  },
+  {
+    "objectID": "slides/04_lists-data-frames.html#complicated-indexing-1",
+    "href": "slides/04_lists-data-frames.html#complicated-indexing-1",
+    "title": "MATH167R: Vectorized functions and lists",
+    "section": "Complicated indexing",
+    "text": "Complicated indexing\nWe can compare entire vectors using identical()\n\nidentical(x, -rev(y))\n\n[1] FALSE\n\n\nWhat do you think the function rev() is doing in the code above?\nHint: Use ?rev to read the help files for the function"
+  },
+  {
+    "objectID": "slides/04_lists-data-frames.html#lists-1",
+    "href": "slides/04_lists-data-frames.html#lists-1",
+    "title": "MATH167R: Vectorized functions and lists",
+    "section": "Lists",
+    "text": "Lists\nLists, like vectors and matrices, are a class of objects in R. Lists are special because they can store multiple different types of data.\n\nmy_list &lt;- list(\"some_numbers\" = 1:5,\n                \"some_characters\" = c(\"a\", \"b\", \"c\"),\n                \"a_matrix\" = diag(2))\nmy_list\n\n$some_numbers\n[1] 1 2 3 4 5\n\n$some_characters\n[1] \"a\" \"b\" \"c\"\n\n$a_matrix\n     [,1] [,2]\n[1,]    1    0\n[2,]    0    1\n\n\nMake sure to store items within a list using the = operator for assigning arguments, not &lt;-!"
+  },
+  {
+    "objectID": "slides/04_lists-data-frames.html#accessing-list-elements",
+    "href": "slides/04_lists-data-frames.html#accessing-list-elements",
+    "title": "MATH167R: Vectorized functions and lists",
+    "section": "Accessing List Elements",
+    "text": "Accessing List Elements\nThere are three ways to access an item within a list\n\ndouble brackets [[]] with its name in quotes\ndouble brackets [[]] with its index as a number\ndollar sign $ followed by its name without quotes\n\n\nmy_list[[\"some_numbers\"]]\n\n[1] 1 2 3 4 5\n\nmy_list[[1]]\n\n[1] 1 2 3 4 5\n\nmy_list$some_numbers\n\n[1] 1 2 3 4 5"
+  },
+  {
+    "objectID": "slides/04_lists-data-frames.html#why-double-brackets",
+    "href": "slides/04_lists-data-frames.html#why-double-brackets",
+    "title": "MATH167R: Vectorized functions and lists",
+    "section": "Why double brackets?",
+    "text": "Why double brackets?\nIf you use a single bracket to index, like we do with matrices and vectors, you will return a list with a single element.\n\nmy_list[1]\n\n$some_numbers\n[1] 1 2 3 4 5\n\nmy_list[[1]]\n\n[1] 1 2 3 4 5\n\n\nNote that this means you can only return a single item in a list using double brackets or the dollar sign! (Why?)"
+  },
+  {
+    "objectID": "slides/04_lists-data-frames.html#why-double-brackets-1",
+    "href": "slides/04_lists-data-frames.html#why-double-brackets-1",
+    "title": "MATH167R: Vectorized functions and lists",
+    "section": "Why double brackets?",
+    "text": "Why double brackets?\nThis is a subtle but important difference!\n\nmy_list[1] + 1\n\nError in my_list[1] + 1: non-numeric argument to binary operator\n\n\n\nmy_list[[1]] + 1\n\n[1] 2 3 4 5 6"
+  },
+  {
+    "objectID": "slides/04_lists-data-frames.html#subsetting-a-list",
+    "href": "slides/04_lists-data-frames.html#subsetting-a-list",
+    "title": "MATH167R: Vectorized functions and lists",
+    "section": "Subsetting a list",
+    "text": "Subsetting a list\nYou can subset a list similarly to vectors and matrices using single brackets.\n\nmy_list[1:2]\n\n$some_numbers\n[1] 1 2 3 4 5\n\n$some_characters\n[1] \"a\" \"b\" \"c\"\n\nmy_list[-2]\n\n$some_numbers\n[1] 1 2 3 4 5\n\n$a_matrix\n     [,1] [,2]\n[1,]    1    0\n[2,]    0    1"
+  },
+  {
+    "objectID": "slides/04_lists-data-frames.html#adding-to-a-list",
+    "href": "slides/04_lists-data-frames.html#adding-to-a-list",
+    "title": "MATH167R: Vectorized functions and lists",
+    "section": "Adding to a list",
+    "text": "Adding to a list\nWe can use the same tools we used to access list elements to add to a list. However, if we use double brackets, we must use quotes, otherwise R will search for something that does not yet exist.\n\nmy_list$a_boolean &lt;- FALSE\nmy_list[[\"a_list\"]] &lt;- list(\"recursive\" = TRUE)\nmy_list\n\n$some_numbers\n[1] 1 2 3 4 5\n\n$some_characters\n[1] \"a\" \"b\" \"c\"\n\n$a_matrix\n     [,1] [,2]\n[1,]    1    0\n[2,]    0    1\n\n$a_boolean\n[1] FALSE\n\n$a_list\n$a_list$recursive\n[1] TRUE"
+  },
+  {
+    "objectID": "slides/04_lists-data-frames.html#names-of-list-items",
+    "href": "slides/04_lists-data-frames.html#names-of-list-items",
+    "title": "MATH167R: Vectorized functions and lists",
+    "section": "Names of List Items",
+    "text": "Names of List Items\nCall names() to get a vector of list item names.\n\nnames(my_list)\n\n[1] \"some_numbers\"    \"some_characters\" \"a_matrix\"        \"a_boolean\"      \n[5] \"a_list\""
+  },
+  {
+    "objectID": "slides/04_lists-data-frames.html#why-bother",
+    "href": "slides/04_lists-data-frames.html#why-bother",
+    "title": "MATH167R: Vectorized functions and lists",
+    "section": "Why bother?",
+    "text": "Why bother?\n\nLists give us key-value pairs, also known as dictionaries or associative arrays\nThis means we can look up items in a list by name, rather than location\nFor example, if we know we are looking for output within a list, we can always search for it, regardless of how the list was created or what else it contains"
+  },
+  {
+    "objectID": "slides/04_lists-data-frames.html#data-frames-1",
+    "href": "slides/04_lists-data-frames.html#data-frames-1",
+    "title": "MATH167R: Vectorized functions and lists",
+    "section": "Data frames",
+    "text": "Data frames\nA data frame in R is essentially a special type of list, where each item is a vector of equal length. Typically, we say that data has \\(n\\) rows (one for each observation) and \\(p\\) columns (one for each variable)\nUnlike a matrix, columns can have different types. However, many column functions still apply! (such as colSums, summary, etc.)"
+  },
+  {
+    "objectID": "slides/04_lists-data-frames.html#creating-a-data-frame",
+    "href": "slides/04_lists-data-frames.html#creating-a-data-frame",
+    "title": "MATH167R: Vectorized functions and lists",
+    "section": "Creating a data frame",
+    "text": "Creating a data frame\nAn easy way to create a data frame is to use the function data.frame().\nLike lists, make sure you define the names using = and not &lt;-!\n\nmy_data &lt;- data.frame(\"var1\" = 1:3,\n                      \"var2\" = c(\"a\", \"b\", \"c\"),\n                      \"var3\" = c(TRUE, FALSE, TRUE))\nmy_data\n\n  var1 var2  var3\n1    1    a  TRUE\n2    2    b FALSE\n3    3    c  TRUE"
+  },
+  {
+    "objectID": "slides/04_lists-data-frames.html#creating-a-data-frame-1",
+    "href": "slides/04_lists-data-frames.html#creating-a-data-frame-1",
+    "title": "MATH167R: Vectorized functions and lists",
+    "section": "Creating a data frame",
+    "text": "Creating a data frame\nIf you import or create numeric data as a matrix, you can also convert it easily using as.data.frame()\n\nmy_matrix &lt;- matrix(1:9, nrow = 3, ncol = 3)\nmy_matrix\n\n     [,1] [,2] [,3]\n[1,]    1    4    7\n[2,]    2    5    8\n[3,]    3    6    9\n\nas.data.frame(my_matrix)\n\n  V1 V2 V3\n1  1  4  7\n2  2  5  8\n3  3  6  9"
+  },
+  {
+    "objectID": "slides/04_lists-data-frames.html#subsetting-data-frames",
+    "href": "slides/04_lists-data-frames.html#subsetting-data-frames",
+    "title": "MATH167R: Vectorized functions and lists",
+    "section": "Subsetting data frames",
+    "text": "Subsetting data frames\nWe can subset data frames using most of the tools we’ve learned about subsetting so far. We can use keys or indices.\n\nmy_data$var1\n\n[1] 1 2 3\n\nmy_data[\"var1\"]\n\n  var1\n1    1\n2    2\n3    3\n\nmy_data[[\"var1\"]]\n\n[1] 1 2 3"
+  },
+  {
+    "objectID": "slides/04_lists-data-frames.html#subsetting-data-frames-1",
+    "href": "slides/04_lists-data-frames.html#subsetting-data-frames-1",
+    "title": "MATH167R: Vectorized functions and lists",
+    "section": "Subsetting data frames",
+    "text": "Subsetting data frames\n\nmy_data[1]\n\n  var1\n1    1\n2    2\n3    3\n\nmy_data[[1]]\n\n[1] 1 2 3\n\nmy_data[, 1]\n\n[1] 1 2 3\n\nmy_data[1, ]\n\n  var1 var2 var3\n1    1    a TRUE"
+  },
+  {
+    "objectID": "slides/04_lists-data-frames.html#adding-to-a-data-frame",
+    "href": "slides/04_lists-data-frames.html#adding-to-a-data-frame",
+    "title": "MATH167R: Vectorized functions and lists",
+    "section": "Adding to a data frame",
+    "text": "Adding to a data frame\nWe can add to a data frame using rbind() and cbind(), but be careful with type mismatches! We can also add columns using the column index methods.\n\n# These all do the same thing\nmy_data &lt;- cbind(my_data, \"var4\" = c(3, 2, 1))\nmy_data$var4 &lt;- c(3, 2, 1)\nmy_data[, \"var4\"] &lt;- c(3, 2, 1)\nmy_data[[\"var4\"]] &lt;- c(3, 2, 1)\nmy_data\n\n  var1 var2  var3 var4\n1    1    a  TRUE    3\n2    2    b FALSE    2\n3    3    c  TRUE    1"
+  },
+  {
+    "objectID": "slides/04_lists-data-frames.html#adding-to-a-data-frame-1",
+    "href": "slides/04_lists-data-frames.html#adding-to-a-data-frame-1",
+    "title": "MATH167R: Vectorized functions and lists",
+    "section": "Adding to a data frame",
+    "text": "Adding to a data frame\n\nrbind(my_data, c(1, 2, 3, 4))\n\n  var1 var2 var3 var4\n1    1    a    1    3\n2    2    b    0    2\n3    3    c    1    1\n4    1    2    3    4\n\nrbind(my_data, list(4, \"d\", FALSE, 0))\n\n  var1 var2  var3 var4\n1    1    a  TRUE    3\n2    2    b FALSE    2\n3    3    c  TRUE    1\n4    4    d FALSE    0"
+  },
+  {
+    "objectID": "slides/04_lists-data-frames.html#investigating-a-data-frame",
+    "href": "slides/04_lists-data-frames.html#investigating-a-data-frame",
+    "title": "MATH167R: Vectorized functions and lists",
+    "section": "Investigating a data frame",
+    "text": "Investigating a data frame\nWe can use str() to see the structure of a data frame (or any other object!)\n\nmy_data2 &lt;- rbind(my_data, c(1, 2, 3, 4))\nstr(my_data2)\n\n'data.frame':   4 obs. of  4 variables:\n $ var1: num  1 2 3 1\n $ var2: chr  \"a\" \"b\" \"c\" \"2\"\n $ var3: num  1 0 1 3\n $ var4: num  3 2 1 4\n\nmy_data2 &lt;- rbind(my_data, list(4, \"d\", FALSE, 0))\nstr(my_data2)\n\n'data.frame':   4 obs. of  4 variables:\n $ var1: num  1 2 3 4\n $ var2: chr  \"a\" \"b\" \"c\" \"d\"\n $ var3: logi  TRUE FALSE TRUE FALSE\n $ var4: num  3 2 1 0"
+  },
+  {
+    "objectID": "slides/04_lists-data-frames.html#investigating-a-data-frame-1",
+    "href": "slides/04_lists-data-frames.html#investigating-a-data-frame-1",
+    "title": "MATH167R: Vectorized functions and lists",
+    "section": "Investigating a data frame",
+    "text": "Investigating a data frame\nMost data frames will have column names describing the variables. They can also include rownames, which we can add using rownames().\n\nrownames(my_data2) &lt;- c(\"Obs1\", \"Obs2\", \"Obs3\", \"Obs4\")\nmy_data2\n\n     var1 var2  var3 var4\nObs1    1    a  TRUE    3\nObs2    2    b FALSE    2\nObs3    3    c  TRUE    1\nObs4    4    d FALSE    0"
+  },
+  {
+    "objectID": "slides/04_lists-data-frames.html#example-data-frames-in-r",
+    "href": "slides/04_lists-data-frames.html#example-data-frames-in-r",
+    "title": "MATH167R: Vectorized functions and lists",
+    "section": "Example data frames in R",
+    "text": "Example data frames in R\nThere are plenty of free datasets available through R and its packages. If you haven’t already, run install.packages(\"palmerpenguins\") in your console. Then, we can load the penguins dataset.\n\n# load palmer penguins package\nlibrary(palmerpenguins)\n\n# open penguins data as a data frame\ndata(penguins)\npenguins &lt;- as.data.frame(penguins)"
+  },
+  {
+    "objectID": "slides/04_lists-data-frames.html#penguins-data",
+    "href": "slides/04_lists-data-frames.html#penguins-data",
+    "title": "MATH167R: Vectorized functions and lists",
+    "section": "Penguins data",
+    "text": "Penguins data\nWe can use the head function to look at the first several rows:\n\nhead(penguins)\n\n  species    island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n1  Adelie Torgersen           39.1          18.7               181        3750\n2  Adelie Torgersen           39.5          17.4               186        3800\n3  Adelie Torgersen           40.3          18.0               195        3250\n4  Adelie Torgersen             NA            NA                NA          NA\n5  Adelie Torgersen           36.7          19.3               193        3450\n6  Adelie Torgersen           39.3          20.6               190        3650\n     sex year\n1   male 2007\n2 female 2007\n3 female 2007\n4   &lt;NA&gt; 2007\n5 female 2007\n6   male 2007\n\n\n\nHow many columns are in this dataset?\nHow many rows are in this dataset?"
+  },
+  {
+    "objectID": "slides/04_lists-data-frames.html#penguins-data-1",
+    "href": "slides/04_lists-data-frames.html#penguins-data-1",
+    "title": "MATH167R: Vectorized functions and lists",
+    "section": "Penguins data",
+    "text": "Penguins data\nUsing the $ operator, we can access individual columns.\n\npenguins$bill_length_mm\n\n  [1] 39.1 39.5 40.3   NA 36.7 39.3 38.9 39.2 34.1 42.0 37.8 37.8 41.1 38.6 34.6\n [16] 36.6 38.7 42.5 34.4 46.0 37.8 37.7 35.9 38.2 38.8 35.3 40.6 40.5 37.9 40.5\n [31] 39.5 37.2 39.5 40.9 36.4 39.2 38.8 42.2 37.6 39.8 36.5 40.8 36.0 44.1 37.0\n [46] 39.6 41.1 37.5 36.0 42.3 39.6 40.1 35.0 42.0 34.5 41.4 39.0 40.6 36.5 37.6\n [61] 35.7 41.3 37.6 41.1 36.4 41.6 35.5 41.1 35.9 41.8 33.5 39.7 39.6 45.8 35.5\n [76] 42.8 40.9 37.2 36.2 42.1 34.6 42.9 36.7 35.1 37.3 41.3 36.3 36.9 38.3 38.9\n [91] 35.7 41.1 34.0 39.6 36.2 40.8 38.1 40.3 33.1 43.2 35.0 41.0 37.7 37.8 37.9\n[106] 39.7 38.6 38.2 38.1 43.2 38.1 45.6 39.7 42.2 39.6 42.7 38.6 37.3 35.7 41.1\n[121] 36.2 37.7 40.2 41.4 35.2 40.6 38.8 41.5 39.0 44.1 38.5 43.1 36.8 37.5 38.1\n[136] 41.1 35.6 40.2 37.0 39.7 40.2 40.6 32.1 40.7 37.3 39.0 39.2 36.6 36.0 37.8\n[151] 36.0 41.5 46.1 50.0 48.7 50.0 47.6 46.5 45.4 46.7 43.3 46.8 40.9 49.0 45.5\n[166] 48.4 45.8 49.3 42.0 49.2 46.2 48.7 50.2 45.1 46.5 46.3 42.9 46.1 44.5 47.8\n[181] 48.2 50.0 47.3 42.8 45.1 59.6 49.1 48.4 42.6 44.4 44.0 48.7 42.7 49.6 45.3\n[196] 49.6 50.5 43.6 45.5 50.5 44.9 45.2 46.6 48.5 45.1 50.1 46.5 45.0 43.8 45.5\n[211] 43.2 50.4 45.3 46.2 45.7 54.3 45.8 49.8 46.2 49.5 43.5 50.7 47.7 46.4 48.2\n[226] 46.5 46.4 48.6 47.5 51.1 45.2 45.2 49.1 52.5 47.4 50.0 44.9 50.8 43.4 51.3\n[241] 47.5 52.1 47.5 52.2 45.5 49.5 44.5 50.8 49.4 46.9 48.4 51.1 48.5 55.9 47.2\n[256] 49.1 47.3 46.8 41.7 53.4 43.3 48.1 50.5 49.8 43.5 51.5 46.2 55.1 44.5 48.8\n[271] 47.2   NA 46.8 50.4 45.2 49.9 46.5 50.0 51.3 45.4 52.7 45.2 46.1 51.3 46.0\n[286] 51.3 46.6 51.7 47.0 52.0 45.9 50.5 50.3 58.0 46.4 49.2 42.4 48.5 43.2 50.6\n[301] 46.7 52.0 50.5 49.5 46.4 52.8 40.9 54.2 42.5 51.0 49.7 47.5 47.6 52.0 46.9\n[316] 53.5 49.0 46.2 50.9 45.5 50.9 50.8 50.1 49.0 51.5 49.8 48.1 51.4 45.7 50.7\n[331] 42.5 52.2 45.2 49.3 50.2 45.6 51.9 46.8 45.7 55.8 43.5 49.6 50.8 50.2"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "MATH167R: Statistical Programming with R",
     "section": "",
-    "text": "Instructor\nPeter Gao\n\n\nLectures\nWeekly on Monday and Wednesday, 10:30-11:45am in MH234\n\n\nOffice Hours\nMonday and Wednesday, 1:30-2:30pm in MH311 or email for an appointment\n\n\nEmail\npeter.gao [at sjsu]\nI will make every effort to respond to emails within a day, but please feel free to send me a reminder after 48 hours have passed. Please include [MATH 167R] in your subject line."
+    "text": "Week\nDate\nTopic\nSlides\nCheck-in\nLab\n\n\n\n\n1\nM 8/21\nCourse Overview and Introduction to R\nSlides 01\nCheck-in 01\n\n\n\n\nW 8/23\nR fundamentals\nSlides 02\n\nLab 01\n\n\n2\nM 8/28\nR fundamentals\n\n\n\n\n\n\nW 8/30\nR fundamentals\n\n\n\n\n\n3\nM 9/4\nLabor Day (No Class)\n\n\n\n\n\n\nW 9/6\nExploring data with R\n\n\n\n\n\n4\nM 9/11\nExploring data with R\n\n\n\n\n\n\nW 9/13\nExploring data with R\n\n\n\n\n\n5\nM 9/18\nData visualization\n\n\n\n\n\n\nW 9/20\nData visualization\n\n\n\n\n\n6\nM 9/25\nData visualization\n\n\n\n\n\n\nW 9/27\nData manipulation and management\n\n\n\n\n\n7\nM 10/2\nData manipulation and management\n\n\n\n\n\n\nW 10/4\nMidterm exam\n\n\n\n\n\n8\nM 10/9\nProgramming basics\n\n\n\n\n\n\nW 10/11\nProgramming basics\n\n\n\n\n\n9\nM 10/16\nProgramming basics\n\n\n\n\n\n\nW 10/18\nProgramming basics\n\n\n\n\n\n10\nM 10/23\nProgramming basics\n\n\n\n\n\n\nW 10/25\nProgramming basics\n\n\n\n\n\n11\nM 10/30\nSimulations\n\n\n\n\n\n\nW 11/1\nSimulations\n\n\n\n\n\n12\nM 11/6\nSimulations\n\n\n\n\n\n\nW 11/8\nStatistical inference\n\n\n\n\n\n13\nM 11/13\nStatistical inference\n\n\n\n\n\n\nW 11/15\nStatistical inference\n\n\n\n\n\n14\nM 11/20\nStatistical inference\n\n\n\n\n\n\nW 11/22\nThanksgiving (No Class)\n\n\n\n\n\n15\nM 11/27\nReal world data analysis\n\n\n\n\n\n\nW 11/29\nReal world data analysis\n\n\n\n\n\n16\nM 12/4\nReal world data analysis\n\n\n\n\n\n\nW 12/6\nFinal review"
   },
   {
-    "objectID": "syllabus.html#course-information",
-    "href": "syllabus.html#course-information",
-    "title": "Syllabus",
+    "objectID": "labs/01_first-R-lab.html",
+    "href": "labs/01_first-R-lab.html",
+    "title": "Lab 1: Basic Definitions",
     "section": "",
-    "text": "Instructor\nPeter Gao\n\n\nLectures\nWeekly on Monday and Wednesday, 10:30-11:45am in MH234\n\n\nOffice Hours\nMonday and Wednesday, 1:30-2:30pm in MH311 or email for an appointment\n\n\nEmail\npeter.gao [at sjsu]\nI will make every effort to respond to emails within a day, but please feel free to send me a reminder after 48 hours have passed. Please include [MATH 167R] in your subject line."
+    "text": "Explain what the following code does in your own words.\n\nx &lt;- 1\ny &lt;- 1\nprint(x + y)\n\n[1] 2\n\n\nYOUR EXPLANATION HERE"
   },
   {
-    "objectID": "syllabus.html#learning-objectives",
-    "href": "syllabus.html#learning-objectives",
-    "title": "Syllabus",
-    "section": "Learning objectives",
-    "text": "Learning objectives\nIntroduction to the R programming language. Topics include data structures, reading and writing data, databases, data visualization, accessing packages, programming structures and functions.\nUpon successful completion of this course, students will be able to:\n\nUnderstand the structures of R objects\nImport data from a variety of sources.\nSave data in formats that can be used by other programs.\nCreate publication quality graphs.\nDownload and install packages.\nCreate reusable functions.\nPerform statistical analysis on R.\n\nThis course aims to help you build a foundation of computational skills for data analysis. Data encountered in real world applications are usually messy, breaking many of the assumptions we make in typical statistics courses. Throughout this course, we will practice using computers to help us understand, summarize, visualize, and model complex data in a reproducible way."
+    "objectID": "labs/01_first-R-lab.html#a.-combining-r-code-and-output",
+    "href": "labs/01_first-R-lab.html#a.-combining-r-code-and-output",
+    "title": "Lab 1: Basic Definitions",
+    "section": "",
+    "text": "Explain what the following code does in your own words.\n\nx &lt;- 1\ny &lt;- 1\nprint(x + y)\n\n[1] 2\n\n\nYOUR EXPLANATION HERE"
   },
   {
-    "objectID": "syllabus.html#materials",
-    "href": "syllabus.html#materials",
-    "title": "Syllabus",
-    "section": "Materials",
-    "text": "Materials\nThe primary text for the course will be the lecture slides, which will be posted to the course website. The following textbooks may be useful resources.\n\nGrolemund, G. (2014). Hands-On Programming with R. Available here for free.\nWickham, H. and Grolemund, G. (2023). R for Data Science. Available here for free.\nLee, B.L. (2016). An Introduction to Computational Probability and Statistics with R (Draft).\nÇetinkaya-Rundel, M. and Hardin, J. (2021) Introduction to Modern Statistics. Available here for free.\n\nThe main way we will interact with R is through the software RStudio, both of which can be downloaded and installed for free. The students will be required to have access to a computer with R and RStudio. The computer lab in MacQuarrie Hall 221 contains computers with all of the software that will be used during the semester. All of the coursework may be completed on a personal computer and the software is freely available to students."
+    "objectID": "labs/01_first-R-lab.html#b.-running-an-r-script",
+    "href": "labs/01_first-R-lab.html#b.-running-an-r-script",
+    "title": "Lab 1: Basic Definitions",
+    "section": "B. Running an R script",
+    "text": "B. Running an R script\n\nDownload the 01_lab-test-code.R file and put it in the same folder as this lab. Change the chunk option eval = F to eval = T. What does this code file do?\n\nsource(\"01_lab-test-code.R\")\n\nYOUR EXPLANATION HERE"
   },
   {
-    "objectID": "syllabus.html#course-requirements-and-grading",
-    "href": "syllabus.html#course-requirements-and-grading",
-    "title": "Syllabus",
-    "section": "Course requirements and grading",
-    "text": "Course requirements and grading\nTypically, each 75 minute class session will be broken up into a 50 minute lecture and a 25 minute lab. Lab time will be an opportunity for you to practice coding, work collaboratively on assignments, and ask for help.\n\nCheck-ins: On most Mondays, you will be assigned short check-in assignments. These are designed to be completed during lab or shortly after and will usually be due at the start of the next class. At the end of the quarter, your lowest check-in grade will be dropped. They will be graded on the following two point scale:\n\n0: indicates incomplete or unacceptable work\n1: represents demonstrated effort towards completing at least 75% of the assignment\n2: represents demonstrated effort towards completing the entire assignment.\n\nLabs: On most Wednesdays, you will be assigned Labs. These are extended, more complicated assignments that you will likely not be able to complete during class. They will typically be due the next Wednesday. At the end of the quarter, your lowest lab grade will be dropped.\nMidterm and Final Exams: There will be one in-person midterm during the semester and one final exam during finals week. Practice questions will be provided in advance of the exams. There will be no make-up midterm or final exams.\nClass Project: During the semester, you will complete a class project that requires you to apply the data manipulation, visualization, and analysis skills covered in this course to a real-world dataset of your choice.\nLate Work: In general, the late policy is as follows: Any assignment that is received late but less than 24 hours late will receive a grade penalty of 25%. Any assignment that is received 24 to 48 hours late will receive a grade penalty of 50%. Assignments will not be accepted more than 48 hours late.\n\n\nGrading scale\nYour final grade will be calculated as follows:\n\n15%: Check-ins\n30%: Labs\n15%: Midterm exam\n20%: Final exam\n20%: Class project\n\n\n\n\nLetter Grade\nRaw Percentage\n\n\n\n\nA plus\n96 to 100%\n\n\nA\n93 to 95%\n\n\nA minus\n90 to 92%\n\n\nB plus\n86 to 89%\n\n\nB\n83 to 85%\n\n\nB minus\n80 to 82%\n\n\nC plus\n76 to 79%\n\n\nC\n73 to 75%\n\n\nC minus\n70 to 72%\n\n\nD plus\n66 to 69%\n\n\nD\n63 to 65%\n\n\nD minus\n60 to 62%\n\n\nF\n0 to 60%"
+    "objectID": "labs/01_first-R-lab.html#c.-exercises",
+    "href": "labs/01_first-R-lab.html#c.-exercises",
+    "title": "Lab 1: Basic Definitions",
+    "section": "C. Exercises",
+    "text": "C. Exercises\n\nIn contrast to the usual mathematical interpretation of x = x + 1, which has no finite solution, the following assignment evaluates to a finite value. Explain.\n\nx &lt;- 1\nx &lt;- x + 1\nprint(x)\n\n[1] 2\n\n\nYOUR EXPLANATION HERE\nThe first expression below evaluates to a numeric value, but the second one causes an error. Explain.\n\nT + 1\n\n[1] 2\n\nT + \"Hello\"\n\nError in T + \"Hello\": non-numeric argument to binary operator\n\n\nYOUR EXPLANATION HERE\nCorrect the code below so example_chr is an object of the character class.\n\n# YOUR CODE HERE\nexample_chr &lt;- T\nclass(example_chr)\n\n[1] \"logical\"\n\n\nWhat questions do you have about R, RStudio, and RMarkdown?\n\nYour first question…\nYour second question…"
   },
   {
-    "objectID": "syllabus.html#course-schedule",
-    "href": "syllabus.html#course-schedule",
-    "title": "Syllabus",
-    "section": "Course Schedule",
-    "text": "Course Schedule\nThe updated course schedule is available on the course homepage here."
+    "objectID": "labs/02_lab.html",
+    "href": "labs/02_lab.html",
+    "title": "Lab 2",
+    "section": "",
+    "text": "You should edit this .Rmd using RStudio, then click Render in the menu bar of the Source window (above the text of this .Rmd). Remember, you must submit both your .Rmd and the compiled .html in order to receive full credit!"
   },
   {
-    "objectID": "syllabus.html#policies",
-    "href": "syllabus.html#policies",
-    "title": "Syllabus",
-    "section": "Policies",
-    "text": "Policies\n\nFeedback\nI encourage and appreciate your feedback throughout the quarter. You are welcome to provide feedback on any aspect of the course at any time via email or in person. If you would prefer to do so confidentially, you can do so through the form on the course Canvas page.\n\n\nCollaboration\nOn most assignments, collaboration is allowed and encouraged. You may discuss problems, approaches, and solutions with your classmates. Acceptable collaboration is limited to your classmates in this course and you must clearly include on any collaborative work the name(s) of anyone with whom you worked. Additionally, all submitted work must be your own; you should not submit code or answers copied from any resource including your classmates. Plagiarism and cheating is easy to detect and can lead to serious negative consequences for you. If you have any questions regarding this policy, please ask for clarification.\n\n\nOnline resources\nStudents are encouraged to use online resources including large language model-based chatbots (ex. ChatGPT) as aids for learning and understanding course material. However, the use of external resources like ChatGPT to generate code or answers for course labs, assignments, exams, and projects is not permitted.\n\n\nDiscussion\nYou are encouraged to participate on the discussion forum by posting questions about assignments and answering questions from other students. Posts may not include substantial amounts of code that can be used for a solution to any problem, but may include code snippets within reason. Participation, in the form of both questions and answers, can earn you up to 2% extra credit for your final grade. Posts will be evaluated based on how substantive and helpful they are to the class.\n\n\nUniversity policies\nPer University Policy S16-9, relevant university policy concerning all courses, such as student responsibilities, academic integrity, accommodations, dropping and adding, consent for recording of class, etc. and available student services (e.g. learning assistance, counseling, and other resources) are listed on Syllabus Information web page (link). Make sure to visit this page to review and be aware of these university policies and resources."
+    "objectID": "labs/02_lab.html#a.-functions-and-vectors",
+    "href": "labs/02_lab.html#a.-functions-and-vectors",
+    "title": "Lab 2",
+    "section": "A. Functions and Vectors",
+    "text": "A. Functions and Vectors\nIn this problem, we will revisit the sample function to simulate the birthday problem. The birthday problem asks for the probability that in a set of \\(n\\) randomly chosen people, at least two will share a birthday. For the purpose of this problem, suppose that we live in a universe where there are exactly 365 days in a year (sorry to those of you with leap day birthdays!) and each individual has an equal probability of being born on any given day.\n1. Write code to create a vector birthdays of the numbers 1:365.\n::: {.cell}\n\n```{.r .cell-code}\n# YOUR CODE HERE\n```\n:::\n2. Use the sample() function to sample \\(n=5\\) birthdays (with replacement) from birthdays and save it as a vector sample_5. Repeat this with \\(n=10, 20, 30, 50, 100\\). You may want to use set.seed() to set a random seed.\n::: {.cell}\n\n```{.r .cell-code}\n# YOUR CODE HERE\n```\n:::\n3. Did you sample the same birthday twice in sample_5? What about for the other samples? Write code that can be used to test whether any of the days appears twice in each of your samples. There are many ways to do this and you can use any functions. In particular, length() and unique() may be useful.\n::: {.cell}\n\n```{.r .cell-code}\n# YOUR CODE HERE\n```\n:::\n4. What do you observe? Discuss any patterns or surprising findings."
   },
   {
-    "objectID": "syllabus.html#frequently-asked-questions",
-    "href": "syllabus.html#frequently-asked-questions",
-    "title": "Syllabus",
-    "section": "Frequently Asked Questions",
-    "text": "Frequently Asked Questions\nQ1. Why doesn’t my code work? Why don’t I “get” programming?\nA1. This is a natural part of learning to program. In fact, I believe that the ability to work through “bugs” and broken code is the single most important skill you can develop in this course. If you can learn how to be resourceful and solve your own coding problems, you will be able to learn any programming language on your own.\nQ2. OK, but my homework is due in a week and I need actual advice on how to fix this bug.\nA2. It sounds like you’re getting started early! Good. If you’re running into trouble, here are a few places you can ask for help:\n\nGoogle\nStackOverflow\nThe course discussion board\nYour classmates\n\nQ3. OK, but my homework is due tomorrow and I still can’t fix this bug.\nA3. Above all, try not to put yourself in this position. Start early and ask questions early. Give yourself time to solve your own problems. Of course, sometime you will get busy or life will get in the way and you won’t have as much time as you would like to work on an assignment. My second piece of advice is don’t go it alone. There have been numerous times where I have spent hours looking for a bug only to have a friend identify it in minutes. This does not just mean asking your friends who have already completed MATH 167 for help—some times all you need is a different perspective. Ask your classmates for help—in person or on the discussion board."
+    "objectID": "labs/02_lab.html#b.-working-with-data-frames",
+    "href": "labs/02_lab.html#b.-working-with-data-frames",
+    "title": "Lab 2",
+    "section": "B. Working with Data Frames",
+    "text": "B. Working with Data Frames\nUse the following code to load the penguins data.\n\n# load palmer penguins package\nlibrary(palmerpenguins)\n\n# open penguins data as a data frame\ndata(penguins)\npenguins &lt;- as.data.frame(penguins)\n\n5. Using the mean() function, compute the mean body mass of penguins in the dataset, dropping any missing values.\n::: {.cell}\n\n```{.r .cell-code}\n# YOUR CODE HERE\n```\n:::\n\n\n&lt;!-- REPLACE THIS LINE WITH YOUR ANSWER --&gt;\n6. Using the max function, compute the maximum flipper length of penguins in the dataset, dropping any missing values.\n::: {.cell}\n\n```{.r .cell-code}\n# YOUR CODE HERE\n```\n:::\n\n\n&lt;!-- REPLACE THIS LINE WITH YOUR ANSWER --&gt;\n7. Using the hist function, create a histogram of the ratio of the penguins’ bill length to bill depth, dropping any missing values. What is the shape of the reuslting distribution?\n::: {.cell}\n\n```{.r .cell-code}\n# YOUR CODE HERE\n```\n:::\n\n\n&lt;!-- REPLACE THIS LINE WITH YOUR ANSWER --&gt;"
+  },
+  {
+    "objectID": "weeks/week-1.html",
+    "href": "weeks/week-1.html",
+    "title": "Week 1",
+    "section": "",
+    "text": "Slides 01\nCheck-in 01"
+  },
+  {
+    "objectID": "weeks/week-1.html#key-links",
+    "href": "weeks/week-1.html#key-links",
+    "title": "Week 1",
+    "section": "",
+    "text": "Slides 01\nCheck-in 01"
+  },
+  {
+    "objectID": "slides/02_functions-expressions.html#review",
+    "href": "slides/02_functions-expressions.html#review",
+    "title": "MATH167R: Functions and Expressions",
+    "section": "Review",
+    "text": "Review"
+  },
+  {
+    "objectID": "slides/02_functions-expressions.html#warm-up",
+    "href": "slides/02_functions-expressions.html#warm-up",
+    "title": "MATH167R: Functions and Expressions",
+    "section": "Warm-up",
+    "text": "Warm-up"
+  },
+  {
+    "objectID": "slides/02_functions-expressions.html#todays-goals",
+    "href": "slides/02_functions-expressions.html#todays-goals",
+    "title": "MATH167R: Functions and Expressions",
+    "section": "Today’s goals",
+    "text": "Today’s goals"
+  },
+  {
+    "objectID": "slides/02_functions-expressions.html#expressions",
+    "href": "slides/02_functions-expressions.html#expressions",
+    "title": "MATH167R: Functions and Expressions",
+    "section": "Expressions",
+    "text": "Expressions"
+  },
+  {
+    "objectID": "slides/02_functions-expressions.html#functions",
+    "href": "slides/02_functions-expressions.html#functions",
+    "title": "MATH167R: Functions and Expressions",
+    "section": "Functions",
+    "text": "Functions"
+  },
+  {
+    "objectID": "slides/02_functions-expressions.html#in-practice",
+    "href": "slides/02_functions-expressions.html#in-practice",
+    "title": "MATH167R: Functions and Expressions",
+    "section": "In practice",
+    "text": "In practice"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#warm-up",
+    "href": "slides/03_functions-vectors-matrices.html#warm-up",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Warm-up",
+    "text": "Warm-up\nDiscuss the following lines of code. What do they do?\n\nx &lt;- TRUE\ny &lt;- 3 &gt; 4\nx &lt;- x & y\nas.numeric(x)\n\n\nAnswer:\n\nx &lt;- TRUE\ny &lt;- 3 &gt; 4\nx &lt;- x & y\nas.numeric(x)\n\n[1] 0"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#overview-of-today",
+    "href": "slides/03_functions-vectors-matrices.html#overview-of-today",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Overview of today",
+    "text": "Overview of today\n\nFunctions and arguments\nVectors and matrices\nIndexing data"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#functions",
+    "href": "slides/03_functions-vectors-matrices.html#functions",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Functions",
+    "text": "Functions\n\n“To understand computations in R, two slogans are helpful: Everything that exists is an object. Everything that happens is a function call.”\n(Chambers, 2014)\n\nWe have already seen some functions, including the sample function:\n\nsides &lt;- 1:6\nrolls &lt;- sample(sides, 10, replace = T)\n\nand the typeof function:\n\nx &lt;- T\ntypeof(x)\n\n[1] \"logical\"\n\n\nFunctions provide code to execute some task given a set of inputs."
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#functions-1",
+    "href": "slides/03_functions-vectors-matrices.html#functions-1",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Functions",
+    "text": "Functions\nA function call is a command to execute the code of a function:\nfunction_name(argument1, argument2, ...)\nArguments or parameters are expressions/values that are the inputs to the function.\n\nexp(-1)\n\n[1] 0.3678794\n\nexp(0)\n\n[1] 1\n\n\nThe parentheses following the name of a function are still required even when there are no arguments:\n\nls()"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#functions-2",
+    "href": "slides/03_functions-vectors-matrices.html#functions-2",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Functions",
+    "text": "Functions\nWhenever you are using a function for the first time, it is good idea to access the documentation by typing ?function_name into the console.\n\n?exp"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#specifying-arguments",
+    "href": "slides/03_functions-vectors-matrices.html#specifying-arguments",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Specifying arguments",
+    "text": "Specifying arguments\nA formal argument is a named argument that is used in the code of a function.\nThe function args displays the formal arguments:\n\nargs(sample)\n\nfunction (x, size, replace = FALSE, prob = NULL) \nNULL\n\n\nAn actual argument t is the value specified by the user during a function call:\n\nsides &lt;- c(\"H\", \"T\")\nsample(x = sides, size = 1, replace = T)\n\n[1] \"H\""
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#matching-arguments",
+    "href": "slides/03_functions-vectors-matrices.html#matching-arguments",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Matching arguments",
+    "text": "Matching arguments\nThe two most common ways to specify arguments are positional and exact:\n\nPositional: the actual arguments are matched to the formal arguments in order:\n\n\nsample(sides, 1, T)\n\n[1] \"T\"\n\nsample(1, T, sides)\n\nError in sample.int(x, size, replace, prob): invalid 'replace' argument\n\n\n\nExact: the actual arguments are matched to the formal arguments using names:\n\n\nsample(size = 1, replace = T, x = sides)\n\n[1] \"H\""
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#check-your-understanding-functions",
+    "href": "slides/03_functions-vectors-matrices.html#check-your-understanding-functions",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Check your understanding: functions",
+    "text": "Check your understanding: functions\nHow can we use functions to compute (feel free to look online):\n\n\\(\\ln 10\\)\n\\(\\log_{10} 10\\)\n\n\nAnswer:\n\nlog(10)\n\n[1] 2.302585\n\nlog10(10)\n\n[1] 1"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#atomic-vectors",
+    "href": "slides/03_functions-vectors-matrices.html#atomic-vectors",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Atomic Vectors",
+    "text": "Atomic Vectors\n\nLast class, we introduced atomic vectors, but we only considered vectors of length one.\nGenerally, atomic vectors are sets of elements of the same type.\nWe create vectors using the function c()\n\nc(16, 3, 0, 7, -2)\n\n[1] 16  3  0  7 -2"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#accessing-elements-of-vectors",
+    "href": "slides/03_functions-vectors-matrices.html#accessing-elements-of-vectors",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Accessing elements of vectors",
+    "text": "Accessing elements of vectors\n\nWe index vectors using [index] after the vector name:\n\nx &lt;- c(16, 3, 0, 7, -2)\nx[3]\n\n[1] 0\n\nx[4]\n\n[1] 7\n\n\nIf we use a negative index, we return the vector with that element removed\n\nx[-4]\n\n[1] 16  3  0 -2"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#atomic-vectors-and-data-types",
+    "href": "slides/03_functions-vectors-matrices.html#atomic-vectors-and-data-types",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Atomic vectors and data types",
+    "text": "Atomic vectors and data types\nNote that atomic vectors can only have one type of data. So the following lines work:\n\nx &lt;- c(1, 2, 3)\ny &lt;- c(\"a\", \"b\", \"c\")\nz &lt;- c(T, F, T)\n\n\nbut when we try\n\nc(1, \"b\", 3)\n\n[1] \"1\" \"b\" \"3\"\n\n\nR will force the elements in our vector to be of the same type! This is a common source of bugs."
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#check-your-understanding-vectors",
+    "href": "slides/03_functions-vectors-matrices.html#check-your-understanding-vectors",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Check your understanding: vectors",
+    "text": "Check your understanding: vectors\nWhat do you expect the output of the following chunk to be?\n\nx &lt;- c(1, 2, 3)\ny &lt;- c(\"a\", \"b\", \"c\")\nc(x, y)\n\n\nAnswer:\n\nx &lt;- c(1, 2, 3)\ny &lt;- c(\"a\", \"b\", \"c\")\nc(x, y)\n\n[1] \"1\" \"2\" \"3\" \"a\" \"b\" \"c\"\n\n\nWe can use the c() function to concatenate vectors (forcing elements to be the same type)."
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#check-your-understanding-vectors-1",
+    "href": "slides/03_functions-vectors-matrices.html#check-your-understanding-vectors-1",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Check your understanding: vectors",
+    "text": "Check your understanding: vectors\nWhat do you expect the output of the following chunk to be?\n\nx &lt;- c(3 &gt; 4, T, 5 &gt; 6)\nx[3]\n\n\nAnswer:\n\nx &lt;- c(3 &gt; 4, T, 5 &gt; 6)\nx[3]\n\n[1] FALSE\n\n\nR evaluates expressions when creating vectors."
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#useful-functions-for-vectors",
+    "href": "slides/03_functions-vectors-matrices.html#useful-functions-for-vectors",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Useful functions for vectors",
+    "text": "Useful functions for vectors\n\nmax(), min(), mean(), median(), sum(), sd(), var()\nlength() returns the number of elements in the vector\nhead() and tail() return the beginning and end vectors\nsort() will sort\nsummary() returns a 5-number summary\nany() and all() to check conditions on Boolean vectors\nhist() will return a crude histogram (we’ll learn how to make this nicer later)\n\nIf you are unclear about what any of them do, use ? before the function name to read the documentation. You should get in the habit of checking function documentation a lot!"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#generating-vectors",
+    "href": "slides/03_functions-vectors-matrices.html#generating-vectors",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Generating vectors",
+    "text": "Generating vectors\nThe notation a:b generates integers starting at a and ending at b.\n\n1:6\n\n[1] 1 2 3 4 5 6\n\n\nThe rep function repeats values of the first argument.\n\nrep(\"Hello\", times = 3)\n\n[1] \"Hello\" \"Hello\" \"Hello\"\n\n\nThe rnorm function randomly generates n elements with the specified mean and sd.\n\nrnorm(n = 10, mean = 1, sd = 1)\n\n [1]  0.5685811  2.3764760  0.5958275  0.1057296  0.3593342  1.6830647\n [7]  1.3369043  1.2756476 -0.2531414  0.4183426"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#matrices-1",
+    "href": "slides/03_functions-vectors-matrices.html#matrices-1",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Matrices",
+    "text": "Matrices\n\nMatrices are two-dimensional extensions of vectors: they have rows and columns\nWe can create a matrix using the function matrix()\n\n\nx &lt;- c(1, 2, 3, 4, 5)\ny &lt;- c(5, 4, 3, 2, 1)\nmy_matrix &lt;- matrix(c(x, y), nrow = 2, ncol = 5, byrow = TRUE)\nmy_matrix\n\n     [,1] [,2] [,3] [,4] [,5]\n[1,]    1    2    3    4    5\n[2,]    5    4    3    2    1"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#constructing-matrices",
+    "href": "slides/03_functions-vectors-matrices.html#constructing-matrices",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Constructing matrices",
+    "text": "Constructing matrices\n\n# Note: byrow = FALSE is the default\nmy_matrix2 &lt;- matrix(c(x, y), nrow = 2, ncol = 5)\nmy_matrix2\n\n     [,1] [,2] [,3] [,4] [,5]\n[1,]    1    3    5    4    2\n[2,]    2    4    5    3    1\n\n\nWarning: be careful not to call your matrix matrix! Why not?"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#constructing-matrices-1",
+    "href": "slides/03_functions-vectors-matrices.html#constructing-matrices-1",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Constructing matrices",
+    "text": "Constructing matrices\nWe can also generate matrices by column binding (cbind()) and row binding (rbind()) vectors\n\ncbind(x, y)\n\n     x y\n[1,] 1 5\n[2,] 2 4\n[3,] 3 3\n[4,] 4 2\n[5,] 5 1\n\nrbind(x, y)\n\n  [,1] [,2] [,3] [,4] [,5]\nx    1    2    3    4    5\ny    5    4    3    2    1"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#indexing-and-subsetting-matrices",
+    "href": "slides/03_functions-vectors-matrices.html#indexing-and-subsetting-matrices",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Indexing and Subsetting Matrices",
+    "text": "Indexing and Subsetting Matrices\nIndexing a matrix is similar to indexing a vector, except we must index both the row and column, in that order.\n\nmy_matrix\n\n     [,1] [,2] [,3] [,4] [,5]\n[1,]    1    2    3    4    5\n[2,]    5    4    3    2    1\n\n\nWhat is the output of the following line?\n\nmy_matrix[2, 3]\n\n\n\n\n[1] 3\n\n\n\n\nWhat is the output of the following line?\n\nmy_matrix[2, c(1, 3, 5)]\n\n\n\n\n\n[1] 5 3 1"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#dropping-entries",
+    "href": "slides/03_functions-vectors-matrices.html#dropping-entries",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Dropping entries",
+    "text": "Dropping entries\nAlso similarly to vectors, we can subset using a negative index.\n\nmy_matrix\n\n     [,1] [,2] [,3] [,4] [,5]\n[1,]    1    2    3    4    5\n[2,]    5    4    3    2    1\n\nmy_matrix[-2, -4]\n\n[1] 1 2 3 5\n\n# Note: Leaving an index blank includes all indices\nmy_matrix[, -c(1, 3, 4, 5)]\n\n[1] 2 4"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#dropping-entries-1",
+    "href": "slides/03_functions-vectors-matrices.html#dropping-entries-1",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Dropping entries",
+    "text": "Dropping entries\n\nmy_matrix[, -c(1, 3, 4, 5)]\n\n[1] 2 4\n\nis.matrix(my_matrix[, -c(1, 3, 4, 5)])\n\n[1] FALSE\n\n\nWhat happened here? When subsetting a matrix reduces one dimension to length 1, R automatically coerces it into a vector. We can prevent this by including drop = FALSE.\n\nmy_matrix[, -c(1, 3, 4, 5), drop = FALSE]\n\n     [,1]\n[1,]    2\n[2,]    4\n\nis.matrix(my_matrix[, -c(1, 3, 4, 5), drop = FALSE])\n\n[1] TRUE"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#filling-in-a-matrix",
+    "href": "slides/03_functions-vectors-matrices.html#filling-in-a-matrix",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Filling in a Matrix",
+    "text": "Filling in a Matrix\nWe can also fill in an empty matrix using indices. In R, you should always start by initializing an empty matrix of the right size.\n\nmy_results &lt;- matrix(NA, nrow = 3, ncol = 3)\nmy_results\n\n     [,1] [,2] [,3]\n[1,]   NA   NA   NA\n[2,]   NA   NA   NA\n[3,]   NA   NA   NA"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#filling-in-a-matrix-1",
+    "href": "slides/03_functions-vectors-matrices.html#filling-in-a-matrix-1",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Filling in a Matrix",
+    "text": "Filling in a Matrix\nThen I can replace a single row (or column) using indices as follows.\n\nmy_results[2, ] &lt;- c(2, 4, 3)\nmy_results\n\n     [,1] [,2] [,3]\n[1,]   NA   NA   NA\n[2,]    2    4    3\n[3,]   NA   NA   NA\n\n\nWe can also fill in multiple rows (or columns) at once. (Likewise, we can also do subsets of rows/columns, or unique entries). Note that recycling applies here.\n\nmy_results[c(1, 3), ] &lt;- 7\nmy_results\n\n     [,1] [,2] [,3]\n[1,]    7    7    7\n[2,]    2    4    3\n[3,]    7    7    7"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#matrix-data-types",
+    "href": "slides/03_functions-vectors-matrices.html#matrix-data-types",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Matrix Data Types",
+    "text": "Matrix Data Types\nMatrices, like vectors, can only have entries of one type.\n\nrbind(c(1, 2, 3), c(\"a\", \"b\", \"c\"))\n\n     [,1] [,2] [,3]\n[1,] \"1\"  \"2\"  \"3\" \n[2,] \"a\"  \"b\"  \"c\""
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#matrix-functions",
+    "href": "slides/03_functions-vectors-matrices.html#matrix-functions",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Matrix functions",
+    "text": "Matrix functions\nLet’s create 3 matrices for the purposes of demonstrating matrix functions.\n\nmat1 &lt;- matrix(1:6, nrow = 2, ncol = 3, byrow = TRUE)\nmat1\n\n     [,1] [,2] [,3]\n[1,]    1    2    3\n[2,]    4    5    6\n\nmat2 &lt;- matrix(1:6, nrow = 3, ncol = 2)\nmat2\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\n\n\nmat3 &lt;- matrix(5:10, nrow = 2, ncol = 3, byrow = TRUE)\nmat3\n\n     [,1] [,2] [,3]\n[1,]    5    6    7\n[2,]    8    9   10"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#matrix-functions-1",
+    "href": "slides/03_functions-vectors-matrices.html#matrix-functions-1",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Matrix functions",
+    "text": "Matrix functions\nMatrix Sums +\n\nmat1 + mat3\n\n     [,1] [,2] [,3]\n[1,]    6    8   10\n[2,]   12   14   16\n\n\nElement-wise Matrix Multiplication *\n\nmat1 * mat3\n\n     [,1] [,2] [,3]\n[1,]    5   12   21\n[2,]   32   45   60\n\n\nMatrix Multiplication %*%\n\nmat_square &lt;- mat1 %*% mat2\nmat_square\n\n     [,1] [,2]\n[1,]   14   32\n[2,]   32   77"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#matrix-functions-2",
+    "href": "slides/03_functions-vectors-matrices.html#matrix-functions-2",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Matrix functions",
+    "text": "Matrix functions\nColumn Bind Matrices cbind()\n\ncbind(mat1, mat3)\n\n     [,1] [,2] [,3] [,4] [,5] [,6]\n[1,]    1    2    3    5    6    7\n[2,]    4    5    6    8    9   10\n\n\nTranspose t()\n\nt(mat1)\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    6\n\n\nColumn Sums colSums()\n\ncolSums(mat1)\n\n[1] 5 7 9\n\n\nRow Sums rowSums()\n\nrowSums(mat1)\n\n[1]  6 15"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#matrix-functions-3",
+    "href": "slides/03_functions-vectors-matrices.html#matrix-functions-3",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Matrix functions",
+    "text": "Matrix functions\nColumn Means colMeans()\n\ncolMeans(mat1)\n\n[1] 2.5 3.5 4.5\n\n\nRow Means rowMeans()\n\nrowMeans(mat1)\n\n[1] 2 5\n\n\nDimensions dim()\n\ndim(mat1)\n\n[1] 2 3"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#matrix-functions-4",
+    "href": "slides/03_functions-vectors-matrices.html#matrix-functions-4",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Matrix functions",
+    "text": "Matrix functions\nDeterminant det()\n\ndet(mat_square)\n\n[1] 54\n\n\nMatrix Inverse solve()\n\nsolve(mat_square)\n\n           [,1]       [,2]\n[1,]  1.4259259 -0.5925926\n[2,] -0.5925926  0.2592593\n\n\nMatrix Diagonal diag()\n\ndiag(mat_square)\n\n[1] 14 77"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#what-is-a-comment",
+    "href": "slides/03_functions-vectors-matrices.html#what-is-a-comment",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "What is a comment?",
+    "text": "What is a comment?\n\nComputers completely ignore comments (in R, any line preceded by #)\nComments do not impact the functionality of your code at all."
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#so-why-do-them",
+    "href": "slides/03_functions-vectors-matrices.html#so-why-do-them",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "So why do them…",
+    "text": "So why do them…\n\nCommenting a code allows you to write notes for readers of your code only\nUsually, that reader is you!\nCoding without comments is ill-advised, bordering on impossible\nSneak peak at functions…"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#example",
+    "href": "slides/03_functions-vectors-matrices.html#example",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Example",
+    "text": "Example\n\n#' Wald-type t test\n#' @param mod an object of class \\code{bbdml}\n#' @return Matrix with wald test statistics and p-values. Univariate tests only.\nwaldt &lt;- function(mod) {\n  # Covariance matrix\n  covMat &lt;- try(chol2inv(chol(hessian(mod))), silent = TRUE)\n  if (class(covMat) == \"try-error\") {\n    warning(\"Singular Hessian! Cannot calculate p-values in this setting.\")\n    np &lt;- length(mod$param)\n    se &lt;- tvalue &lt;- pvalue &lt;- rep(NA, np)\n  } else {\n    # Standard errors\n    se &lt;- sqrt(diag(covMat))\n    # test statistic\n    tvalue &lt;- mod$param/se\n    # P-value\n    pvalue &lt;- 2*stats::pt(-abs(tvalue), mod$df.residual)\n  }\n  # make table\n  coef.table &lt;- cbind(mod$param, se, tvalue, pvalue)\n  dimnames(coef.table) &lt;- list(names(mod$param),\n                               c(\"Estimate\", \"Std. Error\", \"t value\", \"Pr(&gt;|t|)\"))\n  return(coef.table)\n}"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#comment-style-guide",
+    "href": "slides/03_functions-vectors-matrices.html#comment-style-guide",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Comment Style Guide",
+    "text": "Comment Style Guide\n\nWhen starting out, you should comment most lines\nFrequent use of comments should allow most comments to be restricted to one line for readability\nA comment should go above its corresponding line, be indented equally with the next line, and use a single # to mark a comment\nUse a string of - or = to break your code into easily noticeable chunks\n\nExample: # Data Manipulation -----------\nRStudio allows you to collapse chunks marked like this to help with clutter"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#comment-style-guide-1",
+    "href": "slides/03_functions-vectors-matrices.html#comment-style-guide-1",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Comment Style Guide",
+    "text": "Comment Style Guide\n\nThere are exceptions to every rule! Usually, comments are to help you!\n\nExample of breaking rules\n\nHere’s a snippet of a long mathematical function (lots of code omitted with ellipses for space).\nCode is divided into major steps marked by easily visible comments"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#example-of-breaking-rules-1",
+    "href": "slides/03_functions-vectors-matrices.html#example-of-breaking-rules-1",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Example of breaking rules",
+    "text": "Example of breaking rules\n\nobjfun &lt;- function(theta, W, M, X, X_star, np, npstar, link, phi.link) {\n\n  ### STEP 1 - Negative Log-likelihood\n\n  # extract matrix of betas (np x 1), first np entries\n  b      &lt;- utils::head(theta, np)\n  # extract matrix of beta stars (npstar x 1), last npstar entries\n  b_star &lt;- utils::tail(theta, npstar)\n\n  ...\n\n  ### STEP 2 - Gradient\n\n  # define gam\n  gam &lt;- phi/(1 - phi)"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#a-final-plea",
+    "href": "slides/03_functions-vectors-matrices.html#a-final-plea",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "A final plea",
+    "text": "A final plea\n\nBeing a successful programmer requires commenting your code\nWant to understand code you wrote &gt;24 hours ago without comments?"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#who-are-you-to-tell-me-how-to-type",
+    "href": "slides/03_functions-vectors-matrices.html#who-are-you-to-tell-me-how-to-type",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Who are you to tell me how to type?",
+    "text": "Who are you to tell me how to type?\nWe will be using a mix of the Tidyverse Style Guide by Hadley Wickham and the Google Style Guide. Please see the links for details, but I will summarize some main points here and throughout the class as we learn more functionality, such as functions and packages.\nYou may be graded on following good code style!"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#object-names",
+    "href": "slides/03_functions-vectors-matrices.html#object-names",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Object Names",
+    "text": "Object Names\nUse either underscores (_) or big camel case (BigCamelCase) to separate words within an object name. Do not use dots . to separate words in R functions!\n\n# Good\nday_one\nday_1\nDayOne\n\n# Bad\ndayone"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#object-names-1",
+    "href": "slides/03_functions-vectors-matrices.html#object-names-1",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Object Names",
+    "text": "Object Names\nNames should be concise, meaningful, and (generally) nouns.\n\n# Good\nday_one\n\n# Bad\nfirst_day_of_the_month\ndjm1"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#object-names-2",
+    "href": "slides/03_functions-vectors-matrices.html#object-names-2",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Object Names",
+    "text": "Object Names\nIt is very important that object names do not write over common functions!\n\n# Very extra super bad\nc &lt;- 7\nt &lt;- 23\nT &lt;- FALSE\nmean &lt;- \"something\"\n\nNote: T and F are R shorthand for TRUE and FALSE, respectively. In general, spell them out to be as clear as possible."
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#spacing",
+    "href": "slides/03_functions-vectors-matrices.html#spacing",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Spacing",
+    "text": "Spacing\nPut a space after every comma, just like in English writing.\n\n# Good\nx[, 1]\n\n# Bad\nx[,1]\nx[ ,1]\nx[ , 1]\n\nDo not put spaces inside or outside parentheses for regular function calls.\n\n# Good\nmean(x, na.rm = TRUE)\n\n# Bad\nmean (x, na.rm = TRUE)\nmean( x, na.rm = TRUE )"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#spacing-with-operators",
+    "href": "slides/03_functions-vectors-matrices.html#spacing-with-operators",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Spacing with Operators",
+    "text": "Spacing with Operators\nMost of the time when you are doing math, conditionals, logicals, or assignment, your operators should be surrounded by spaces. (e.g. for ==, +, -, &lt;-, etc.)\n\n# Good\nheight &lt;- (feet * 12) + inches\nmean(x, na.rm = 10)\n\n# Bad\nheight&lt;-feet*12+inches\nmean(x, na.rm=10)\n\nThere are some exceptions we will learn more about later, such as the power symbol ^. See the Tidyverse Style Guide for more details!"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#extra-spacing",
+    "href": "slides/03_functions-vectors-matrices.html#extra-spacing",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Extra Spacing",
+    "text": "Extra Spacing\nAdding extra spaces ok if it improves alignment of = or &lt;-.\n\n# Good\nlist(\n  total = a + b + c,\n  mean  = (a + b + c) / n\n)\n\n# Also fine\nlist(\n  total = a + b + c,\n  mean = (a + b + c) / n\n)"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#long-lines-of-code",
+    "href": "slides/03_functions-vectors-matrices.html#long-lines-of-code",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Long Lines of Code",
+    "text": "Long Lines of Code\nStrive to limit your code to 80 characters per line. This fits comfortably on a printed page with a reasonably sized font.\nIf a function call is too long to fit on a single line, use one line each for the function name, each argument, and the closing ). This makes the code easier to read and to change later.\n\n# Good\ndo_something_very_complicated(\n  something = \"that\",\n  requires = many,\n  arguments = \"some of which may be long\"\n)\n\n# Bad\ndo_something_very_complicated(\"that\", requires, many, arguments,\n                              \"some of which may be long\"\n                              )\n\nTip! Try RStudio &gt; Preferences &gt; Code &gt; Display &gt; Show Margin with Margin column 80 to give yourself a visual cue!"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#assignment",
+    "href": "slides/03_functions-vectors-matrices.html#assignment",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Assignment",
+    "text": "Assignment\nWe use &lt;- instead of = for assignment. This is moderately controversial if you find yourself in the right (wrong?) communities.\n\n# Good\nx &lt;- 5\n\n# Bad\nx = 5"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#semicolons",
+    "href": "slides/03_functions-vectors-matrices.html#semicolons",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Semicolons",
+    "text": "Semicolons\nIn R, semi-colons (;) are used to execute pieces of R code on a single line. In general, this is bad practice and should be avoided. Also, you never need to end lines of code with semi-colons!\n\n# Bad\na &lt;- 2; b &lt;- 3\n\n# Also bad\na &lt;- 2;\nb &lt;- 3;\n\n# Good\na &lt;- 2\nb &lt;- 3"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#quotes-and-strings",
+    "href": "slides/03_functions-vectors-matrices.html#quotes-and-strings",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Quotes and Strings",
+    "text": "Quotes and Strings\nUse \", not ', for quoting text. The only exception is when the text already contains double quotes and no single quotes.\n\n# Bad\n'Text'\n'Text with \"double\" and \\'single\\' quotes'\n\n# Good\n\"Text\"\n'Text with \"quotes\"'\n'&lt;a href=\"http://style.tidyverse.org\"&gt;A link&lt;/a&gt;'"
+  },
+  {
+    "objectID": "slides/03_functions-vectors-matrices.html#check-in-2",
+    "href": "slides/03_functions-vectors-matrices.html#check-in-2",
+    "title": "MATH167R: Functions, vectors, and matrices",
+    "section": "Check-in 2",
+    "text": "Check-in 2\nIn Check-in 2, we’ll practice using functions, vectors, and matrices. We’ll also make practice using an .Rmd template."
+  },
+  {
+    "objectID": "slides/02_fundamentals.html#warm-up",
+    "href": "slides/02_fundamentals.html#warm-up",
+    "title": "MATH167R: Overview",
+    "section": "Warm-up",
+    "text": "Warm-up\nWhaa"
+  },
+  {
+    "objectID": "slides/02_fundamentals.html#introductions",
+    "href": "slides/02_fundamentals.html#introductions",
+    "title": "MATH167R: Overview",
+    "section": "Introductions",
+    "text": "Introductions"
+  },
+  {
+    "objectID": "slides/02_fundamentals.html#overview-of-today",
+    "href": "slides/02_fundamentals.html#overview-of-today",
+    "title": "MATH167R: Overview",
+    "section": "Overview of today",
+    "text": "Overview of today\n\nTypes of data\nBasic definitions: objects, expressions, values, functions\nR Markdown and file management"
+  },
+  {
+    "objectID": "slides/02_fundamentals.html#types-of-data-1",
+    "href": "slides/02_fundamentals.html#types-of-data-1",
+    "title": "MATH167R: Overview",
+    "section": "Types of data",
+    "text": "Types of data\nWe saw last class that we can use R to perform basic mathematical operations:\n\n3 + 5\n\n[1] 8\n\n\n\nWe can also save these values as objects/variables and perform math on the objects:\n\nx &lt;- 3\ny &lt;- 5\nx + y\n\n[1] 8"
+  },
+  {
+    "objectID": "slides/02_fundamentals.html#non-numerical-data",
+    "href": "slides/02_fundamentals.html#non-numerical-data",
+    "title": "MATH167R: Overview",
+    "section": "Non-numerical data",
+    "text": "Non-numerical data\nToday we’ll see that R can handle objects that are not numbers:\n\nz &lt;- \"Hello\"\n\n\nHowever, we need to be careful because not all operations work with all types of data:\n\nx + z\n\nError in x + z: non-numeric argument to binary operator"
+  },
+  {
+    "objectID": "slides/02_fundamentals.html#atomic-vectors",
+    "href": "slides/02_fundamentals.html#atomic-vectors",
+    "title": "MATH167R: Overview",
+    "section": "Atomic vectors",
+    "text": "Atomic vectors\n\nlogical\ninteger\ndouble\ncharacter"
+  },
+  {
+    "objectID": "slides/02_fundamentals.html#atomic-vectors-1",
+    "href": "slides/02_fundamentals.html#atomic-vectors-1",
+    "title": "MATH167R: Overview",
+    "section": "Atomic vectors",
+    "text": "Atomic vectors\n\nfrom Advanced R, Hadley Wickham."
+  },
+  {
+    "objectID": "slides/02_fundamentals.html#atomic-vectors-2",
+    "href": "slides/02_fundamentals.html#atomic-vectors-2",
+    "title": "MATH167R: Overview",
+    "section": "Atomic vectors",
+    "text": "Atomic vectors\n\nexample_logical &lt;- T\nexample_integer &lt;- 1L\nexample_double &lt;- 1.0\nexample_character &lt;- \"Hello\"\n\n\n\nclass(example_logical)\n\n[1] \"logical\"\n\nclass(example_integer)\n\n[1] \"integer\"\n\nclass(example_double)\n\n[1] \"numeric\"\n\nclass(example_character)\n\n[1] \"character\""
+  },
+  {
+    "objectID": "slides/02_fundamentals.html#coercion",
+    "href": "slides/02_fundamentals.html#coercion",
+    "title": "MATH167R: Overview",
+    "section": "Coercion",
+    "text": "Coercion\n\nas.numeric(example_logical)\n\n[1] 1\n\nas.numeric(example_character)\n\n[1] NA"
+  },
+  {
+    "objectID": "slides/02_fundamentals.html#vectors",
+    "href": "slides/02_fundamentals.html#vectors",
+    "title": "MATH167R: Overview",
+    "section": "Vectors",
+    "text": "Vectors\n\nA vector is a set of atomic vectors of the same type\nWe create vectors using the function c()\n\n\n\n[1] 16  3  0  7 -2\n\n\n\nWe can shorthand vectors counting up (or down) using :\n\n\n\n[1] 1 2 3 4 5"
+  },
+  {
+    "objectID": "slides/02_fundamentals.html#vectors-1",
+    "href": "slides/02_fundamentals.html#vectors-1",
+    "title": "MATH167R: Overview",
+    "section": "Vectors",
+    "text": "Vectors\n\nWe index vectors using [index] after the vector name\n\n\n\n[1] 3\n\n\n\nIf we use a negative index, we return the vector with that element removed\n\n\n\n[1] 1 2 3 5"
+  },
+  {
+    "objectID": "slides/02_fundamentals.html#vector-data-types",
+    "href": "slides/02_fundamentals.html#vector-data-types",
+    "title": "MATH167R: Overview",
+    "section": "Vector Data Types",
+    "text": "Vector Data Types\nNote that vectors can only have one type of data. So we can do\n\n\n[1] 1 2 3\n\n\n[1] \"a\" \"b\" \"c\"\n\n\nbut when we try\n\n\n[1] \"1\" \"b\" \"3\"\n\n\nR will force the entries in our vector to be of the same type! This is a common source of bugs."
+  },
+  {
+    "objectID": "slides/02_fundamentals.html#useful-functions-for-vectors",
+    "href": "slides/02_fundamentals.html#useful-functions-for-vectors",
+    "title": "MATH167R: Overview",
+    "section": "Useful functions for vectors",
+    "text": "Useful functions for vectors\n\nmax(), min(), mean(), median(), sum(), sd(), var()\nlength() returns the number of elements in the vector\nhead() and tail() return the beginning and end vectors\nsort() will sort\nsummary() returns a 5-number summary\nany() and all() to check conditions on Boolean vectors\nhist() will return a crude histogram (we’ll learn how to make this nicer later)\n\nYou will need some of these for Lab 1!\nIf you are unclear about what any of them do, use ? before the function name to read the documentation. You should get in the habit of checking function documentation a lot!"
+  },
+  {
+    "objectID": "slides/02_fundamentals.html#what-is-a-comment",
+    "href": "slides/02_fundamentals.html#what-is-a-comment",
+    "title": "MATH167R: Overview",
+    "section": "What is a comment?",
+    "text": "What is a comment?\n\nComputers completely ignore comments (in R, any line preceded by #)\nComments do not impact the functionality of your code at all."
+  },
+  {
+    "objectID": "slides/02_fundamentals.html#so-why-do-them",
+    "href": "slides/02_fundamentals.html#so-why-do-them",
+    "title": "MATH167R: Overview",
+    "section": "So why do them…",
+    "text": "So why do them…\n\nCommenting a code allows you to write notes for readers of your code only\nUsually, that reader is you!\nCoding without comments is ill-advised, bordering on impossible\nSneak peak at functions…"
+  },
+  {
+    "objectID": "slides/02_fundamentals.html#example",
+    "href": "slides/02_fundamentals.html#example",
+    "title": "MATH167R: Overview",
+    "section": "Example",
+    "text": "Example"
+  },
+  {
+    "objectID": "slides/02_fundamentals.html#comment-style-guide",
+    "href": "slides/02_fundamentals.html#comment-style-guide",
+    "title": "MATH167R: Overview",
+    "section": "Comment Style Guide",
+    "text": "Comment Style Guide\n\nWhen starting out, you should comment most lines\nFrequent use of comments should allow most comments to be restricted to one line for readability\nA comment should go above its corresponding line, be indented equally with the next line, and use a single # to mark a comment\nUse a string of - or = to break your code into easily noticeable chunks\n\nExample: # Data Manipulation -----------\nRStudio allows you to collapse chunks marked like this to help with clutter\n\n\n\n\n\n* There are exceptions to every rule! Usually, comments are to help you!\n\n\n\n\n* Clear commenting is required for this course\n\n\n## Who are you to tell me how to type?\n\n\nWe will be using a mix of the Tidyverse Style Guide by Hadley Wickham and the Google Style Guide. Please see the links for details, but I will summarize some main points here and throughout the class as we learn more functionality, such as functions and packages.\n\n\nYou will be graded on following good code style!\n\n\n## Object Names\n\n\nUse either underscores (_) or big camel case (BigCamelCase) to separate words within an object name. Do not use dots . to separate words in R functions!\n\n\n::: {.cell}\n\n\n:::\n\n\n## Object Names\n\n\nNames should be concise, meaningful, and (generally) nouns.\n\n\n::: {.cell}\n\n\n:::\n\n\n## Object Names\n\n\nIt is very important that object names do not write over common functions!\n\n\n::: {.cell}\n\n\n:::\n\n\nNote: T and F are R shorthand for TRUE and FALSE, respectively. In general, spell them out to be as clear as possible.\n\n\n## Spacing\n\n\nPut a space after every comma, just like in English writing.\n\n\n::: {.cell}\n\n\n:::\n\n\nDo not put spaces inside or outside parentheses for regular function calls.\n\n\n::: {.cell}\n\n\n:::"
+  },
+  {
+    "objectID": "slides/02_fundamentals.html#spacing-with-operators",
+    "href": "slides/02_fundamentals.html#spacing-with-operators",
+    "title": "MATH167R: Overview",
+    "section": "Spacing with Operators",
+    "text": "Spacing with Operators\nMost of the time when you are doing math, conditionals, logicals, or assignment, your operators should be surrounded by spaces. (e.g. for ==, +, -, &lt;-, etc.)\nThere are some exceptions we will learn more about later, such as the power symbol ^. See the Tidyverse Style Guide for more details!"
+  },
+  {
+    "objectID": "slides/02_fundamentals.html#extra-spacing",
+    "href": "slides/02_fundamentals.html#extra-spacing",
+    "title": "MATH167R: Overview",
+    "section": "Extra Spacing",
+    "text": "Extra Spacing\nAdding extra spaces ok if it improves alignment of = or &lt;-."
+  },
+  {
+    "objectID": "slides/02_fundamentals.html#long-lines-of-code",
+    "href": "slides/02_fundamentals.html#long-lines-of-code",
+    "title": "MATH167R: Overview",
+    "section": "Long Lines of Code",
+    "text": "Long Lines of Code\nStrive to limit your code to 80 characters per line. This fits comfortably on a printed page with a reasonably sized font.\nIf a function call is too long to fit on a single line, use one line each for the function name, each argument, and the closing ). This makes the code easier to read and to change later.\nTip! Try RStudio &gt; Preferences &gt; Code &gt; Display &gt; Show Margin with Margin column 80 to give yourself a visual cue!"
+  },
+  {
+    "objectID": "slides/02_fundamentals.html#assignment",
+    "href": "slides/02_fundamentals.html#assignment",
+    "title": "MATH167R: Overview",
+    "section": "Assignment",
+    "text": "Assignment\nWe use &lt;- instead of = for assignment. This is moderately controversial if you find yourself in the right (wrong?) communities."
+  },
+  {
+    "objectID": "slides/02_fundamentals.html#semicolons",
+    "href": "slides/02_fundamentals.html#semicolons",
+    "title": "MATH167R: Overview",
+    "section": "Semicolons",
+    "text": "Semicolons\nIn R, semi-colons (;) are used to execute pieces of R code on a single line. In general, this is bad practice and should be avoided. Also, you never need to end lines of code with semi-colons!"
+  },
+  {
+    "objectID": "slides/02_fundamentals.html#quotes-and-strings",
+    "href": "slides/02_fundamentals.html#quotes-and-strings",
+    "title": "MATH167R: Overview",
+    "section": "Quotes and Strings",
+    "text": "Quotes and Strings\nUse \", not ', for quoting text. The only exception is when the text already contains double quotes and no single quotes."
+  },
+  {
+    "objectID": "slides/04_vectorization-lists.html#warm-up",
+    "href": "slides/04_vectorization-lists.html#warm-up",
+    "title": "MATH167R: Overview",
+    "section": "Warm-up",
+    "text": "Warm-up\nWhaa"
+  },
+  {
+    "objectID": "slides/04_vectorization-lists.html#introductions",
+    "href": "slides/04_vectorization-lists.html#introductions",
+    "title": "MATH167R: Overview",
+    "section": "Introductions",
+    "text": "Introductions"
+  },
+  {
+    "objectID": "slides/04_vectorization-lists.html#overview-of-today",
+    "href": "slides/04_vectorization-lists.html#overview-of-today",
+    "title": "MATH167R: Overview",
+    "section": "Overview of today",
+    "text": "Overview of today\n\nTypes of data\nBasic definitions: objects, expressions, values, functions\nR Markdown and file management"
+  },
+  {
+    "objectID": "slides/04_vectorization-lists.html#types-of-data-1",
+    "href": "slides/04_vectorization-lists.html#types-of-data-1",
+    "title": "MATH167R: Overview",
+    "section": "Types of data",
+    "text": "Types of data\nWe saw last class that we can use R to perform basic mathematical operations:\n\n3 + 5\n\n[1] 8\n\n\n\nWe can also save these values as objects/variables and perform math on the objects:\n\nx &lt;- 3\ny &lt;- 5\nx + y\n\n[1] 8"
+  },
+  {
+    "objectID": "slides/04_vectorization-lists.html#non-numerical-data",
+    "href": "slides/04_vectorization-lists.html#non-numerical-data",
+    "title": "MATH167R: Overview",
+    "section": "Non-numerical data",
+    "text": "Non-numerical data\nToday we’ll see that R can handle objects that are not numbers:\n\nz &lt;- \"Hello\"\n\n\nHowever, we need to be careful because not all operations work with all types of data:\n\nx + z\n\nError in x + z: non-numeric argument to binary operator"
+  },
+  {
+    "objectID": "slides/04_vectorization-lists.html#atomic-vectors",
+    "href": "slides/04_vectorization-lists.html#atomic-vectors",
+    "title": "MATH167R: Overview",
+    "section": "Atomic vectors",
+    "text": "Atomic vectors\n\nlogical\ninteger\ndouble\ncharacter"
+  },
+  {
+    "objectID": "slides/04_vectorization-lists.html#atomic-vectors-1",
+    "href": "slides/04_vectorization-lists.html#atomic-vectors-1",
+    "title": "MATH167R: Overview",
+    "section": "Atomic vectors",
+    "text": "Atomic vectors\n\nfrom Advanced R, Hadley Wickham."
+  },
+  {
+    "objectID": "slides/04_vectorization-lists.html#atomic-vectors-2",
+    "href": "slides/04_vectorization-lists.html#atomic-vectors-2",
+    "title": "MATH167R: Overview",
+    "section": "Atomic vectors",
+    "text": "Atomic vectors\n\nexample_logical &lt;- T\nexample_integer &lt;- 1L\nexample_double &lt;- 1.0\nexample_character &lt;- \"Hello\"\n\n\n\nclass(example_logical)\n\n[1] \"logical\"\n\nclass(example_integer)\n\n[1] \"integer\"\n\nclass(example_double)\n\n[1] \"numeric\"\n\nclass(example_character)\n\n[1] \"character\""
+  },
+  {
+    "objectID": "slides/04_vectorization-lists.html#coercion",
+    "href": "slides/04_vectorization-lists.html#coercion",
+    "title": "MATH167R: Overview",
+    "section": "Coercion",
+    "text": "Coercion\n\nas.numeric(example_logical)\n\n[1] 1\n\nas.numeric(example_character)\n\n[1] NA"
+  },
+  {
+    "objectID": "slides/04_vectorization-lists.html#vectors",
+    "href": "slides/04_vectorization-lists.html#vectors",
+    "title": "MATH167R: Overview",
+    "section": "Vectors",
+    "text": "Vectors\n\nA vector is a set of atomic vectors of the same type\nWe create vectors using the function c()\n\n\n\n[1] 16  3  0  7 -2\n\n\n\nWe can shorthand vectors counting up (or down) using :\n\n\n\n[1] 1 2 3 4 5"
+  },
+  {
+    "objectID": "slides/04_vectorization-lists.html#vectors-1",
+    "href": "slides/04_vectorization-lists.html#vectors-1",
+    "title": "MATH167R: Overview",
+    "section": "Vectors",
+    "text": "Vectors\n\nWe index vectors using [index] after the vector name\n\n\n\n[1] 3\n\n\n\nIf we use a negative index, we return the vector with that element removed\n\n\n\n[1] 1 2 3 5"
+  },
+  {
+    "objectID": "slides/04_vectorization-lists.html#vector-data-types",
+    "href": "slides/04_vectorization-lists.html#vector-data-types",
+    "title": "MATH167R: Overview",
+    "section": "Vector Data Types",
+    "text": "Vector Data Types\nNote that vectors can only have one type of data. So we can do\n\n\n[1] 1 2 3\n\n\n[1] \"a\" \"b\" \"c\"\n\n\nbut when we try\n\n\n[1] \"1\" \"b\" \"3\"\n\n\nR will force the entries in our vector to be of the same type! This is a common source of bugs."
+  },
+  {
+    "objectID": "slides/04_vectorization-lists.html#useful-functions-for-vectors",
+    "href": "slides/04_vectorization-lists.html#useful-functions-for-vectors",
+    "title": "MATH167R: Overview",
+    "section": "Useful functions for vectors",
+    "text": "Useful functions for vectors\n\nmax(), min(), mean(), median(), sum(), sd(), var()\nlength() returns the number of elements in the vector\nhead() and tail() return the beginning and end vectors\nsort() will sort\nsummary() returns a 5-number summary\nany() and all() to check conditions on Boolean vectors\nhist() will return a crude histogram (we’ll learn how to make this nicer later)\n\nYou will need some of these for Lab 1!\nIf you are unclear about what any of them do, use ? before the function name to read the documentation. You should get in the habit of checking function documentation a lot!"
+  },
+  {
+    "objectID": "slides/04_vectorization-lists.html#what-is-a-comment",
+    "href": "slides/04_vectorization-lists.html#what-is-a-comment",
+    "title": "MATH167R: Overview",
+    "section": "What is a comment?",
+    "text": "What is a comment?\n\nComputers completely ignore comments (in R, any line preceded by #)\nComments do not impact the functionality of your code at all."
+  },
+  {
+    "objectID": "slides/04_vectorization-lists.html#so-why-do-them",
+    "href": "slides/04_vectorization-lists.html#so-why-do-them",
+    "title": "MATH167R: Overview",
+    "section": "So why do them…",
+    "text": "So why do them…\n\nCommenting a code allows you to write notes for readers of your code only\nUsually, that reader is you!\nCoding without comments is ill-advised, bordering on impossible\nSneak peak at functions…"
+  },
+  {
+    "objectID": "slides/04_vectorization-lists.html#example",
+    "href": "slides/04_vectorization-lists.html#example",
+    "title": "MATH167R: Overview",
+    "section": "Example",
+    "text": "Example"
+  },
+  {
+    "objectID": "slides/04_vectorization-lists.html#comment-style-guide",
+    "href": "slides/04_vectorization-lists.html#comment-style-guide",
+    "title": "MATH167R: Overview",
+    "section": "Comment Style Guide",
+    "text": "Comment Style Guide\n\nWhen starting out, you should comment most lines\nFrequent use of comments should allow most comments to be restricted to one line for readability\nA comment should go above its corresponding line, be indented equally with the next line, and use a single # to mark a comment\nUse a string of - or = to break your code into easily noticeable chunks\n\nExample: # Data Manipulation -----------\nRStudio allows you to collapse chunks marked like this to help with clutter\n\n\n\n\n\n* There are exceptions to every rule! Usually, comments are to help you!\n\n\n\n\n* Clear commenting is required for this course\n\n\n## Who are you to tell me how to type?\n\n\nWe will be using a mix of the Tidyverse Style Guide by Hadley Wickham and the Google Style Guide. Please see the links for details, but I will summarize some main points here and throughout the class as we learn more functionality, such as functions and packages.\n\n\nYou will be graded on following good code style!\n\n\n## Object Names\n\n\nUse either underscores (_) or big camel case (BigCamelCase) to separate words within an object name. Do not use dots . to separate words in R functions!\n\n\n::: {.cell}\n\n\n:::\n\n\n## Object Names\n\n\nNames should be concise, meaningful, and (generally) nouns.\n\n\n::: {.cell}\n\n\n:::\n\n\n## Object Names\n\n\nIt is very important that object names do not write over common functions!\n\n\n::: {.cell}\n\n\n:::\n\n\nNote: T and F are R shorthand for TRUE and FALSE, respectively. In general, spell them out to be as clear as possible.\n\n\n## Spacing\n\n\nPut a space after every comma, just like in English writing.\n\n\n::: {.cell}\n\n\n:::\n\n\nDo not put spaces inside or outside parentheses for regular function calls.\n\n\n::: {.cell}\n\n\n:::"
+  },
+  {
+    "objectID": "slides/04_vectorization-lists.html#spacing-with-operators",
+    "href": "slides/04_vectorization-lists.html#spacing-with-operators",
+    "title": "MATH167R: Overview",
+    "section": "Spacing with Operators",
+    "text": "Spacing with Operators\nMost of the time when you are doing math, conditionals, logicals, or assignment, your operators should be surrounded by spaces. (e.g. for ==, +, -, &lt;-, etc.)\nThere are some exceptions we will learn more about later, such as the power symbol ^. See the Tidyverse Style Guide for more details!"
+  },
+  {
+    "objectID": "slides/04_vectorization-lists.html#extra-spacing",
+    "href": "slides/04_vectorization-lists.html#extra-spacing",
+    "title": "MATH167R: Overview",
+    "section": "Extra Spacing",
+    "text": "Extra Spacing\nAdding extra spaces ok if it improves alignment of = or &lt;-."
+  },
+  {
+    "objectID": "slides/04_vectorization-lists.html#long-lines-of-code",
+    "href": "slides/04_vectorization-lists.html#long-lines-of-code",
+    "title": "MATH167R: Overview",
+    "section": "Long Lines of Code",
+    "text": "Long Lines of Code\nStrive to limit your code to 80 characters per line. This fits comfortably on a printed page with a reasonably sized font.\nIf a function call is too long to fit on a single line, use one line each for the function name, each argument, and the closing ). This makes the code easier to read and to change later.\nTip! Try RStudio &gt; Preferences &gt; Code &gt; Display &gt; Show Margin with Margin column 80 to give yourself a visual cue!"
+  },
+  {
+    "objectID": "slides/04_vectorization-lists.html#assignment",
+    "href": "slides/04_vectorization-lists.html#assignment",
+    "title": "MATH167R: Overview",
+    "section": "Assignment",
+    "text": "Assignment\nWe use &lt;- instead of = for assignment. This is moderately controversial if you find yourself in the right (wrong?) communities."
+  },
+  {
+    "objectID": "slides/04_vectorization-lists.html#semicolons",
+    "href": "slides/04_vectorization-lists.html#semicolons",
+    "title": "MATH167R: Overview",
+    "section": "Semicolons",
+    "text": "Semicolons\nIn R, semi-colons (;) are used to execute pieces of R code on a single line. In general, this is bad practice and should be avoided. Also, you never need to end lines of code with semi-colons!"
+  },
+  {
+    "objectID": "slides/04_vectorization-lists.html#quotes-and-strings",
+    "href": "slides/04_vectorization-lists.html#quotes-and-strings",
+    "title": "MATH167R: Overview",
+    "section": "Quotes and Strings",
+    "text": "Quotes and Strings\nUse \", not ', for quoting text. The only exception is when the text already contains double quotes and no single quotes."
+  },
+  {
+    "objectID": "checkins/01_first-checkin.html",
+    "href": "checkins/01_first-checkin.html",
+    "title": "Check-in 1: Instructions",
+    "section": "",
+    "text": "On the computer you are using, create a new folder titled “MATH167R” or something similar.\nWithin this folder, create a sub-folder named “checkins” or something similar.\nDownload “01_first-R-code.R” and save it in your checkins folder.\nOpen “01_first-R-code.R” in RStudio. It should look something like the code below.\n\n\nsides &lt;- c(\"H\", \"T\")\n\nflip1 &lt;- sample(sides, 1, replace = T)\nprint(flip1)\n\nflip10 &lt;- sample(sides, 10, replace = T)\nprint(flip10)\n\n\nRun the code line by line and answer the two questions on the Check-in 1 assignment on Canvas.\nFor complete credit for Check-in 1, please also complete the pre-course survey and NameCoach recording (links on Canvas).\nIf you would like to find others to work with, please also reply to the Piazza post."
+  },
+  {
+    "objectID": "checkins/01_first-checkin.html#a.-running-your-first-r-code",
+    "href": "checkins/01_first-checkin.html#a.-running-your-first-r-code",
+    "title": "Check-in 1: Instructions",
+    "section": "",
+    "text": "On the computer you are using, create a new folder titled “MATH167R” or something similar.\nWithin this folder, create a sub-folder named “checkins” or something similar.\nDownload “01_first-R-code.R” and save it in your checkins folder.\nOpen “01_first-R-code.R” in RStudio. It should look something like the code below.\n\n\nsides &lt;- c(\"H\", \"T\")\n\nflip1 &lt;- sample(sides, 1, replace = T)\nprint(flip1)\n\nflip10 &lt;- sample(sides, 10, replace = T)\nprint(flip10)\n\n\nRun the code line by line and answer the two questions on the Check-in 1 assignment on Canvas.\nFor complete credit for Check-in 1, please also complete the pre-course survey and NameCoach recording (links on Canvas).\nIf you would like to find others to work with, please also reply to the Piazza post."
   }
 ]
