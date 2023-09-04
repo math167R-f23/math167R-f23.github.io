@@ -21,7 +21,7 @@ editor: visual
 
 ## Warm-up
 
-**Answer: **
+**Answer:**
 
 1.  Matrices only contain one type of data whereas each column of a data frame may contain a different type of data.
 
@@ -46,19 +46,18 @@ Today we'll use the `flights` data to practice our data exploration skills.
 
 ## R Packages
 
-* Packages bundle together code, data, and documentation in an easy to share way.
-* They come with code that others have written to extend the functionality of R.
-* Packages can range from graphical software, to web scraping tools, statistical models for spatio-temporal data, microbial data analysis tools, etc.=
+-   Packages bundle together code, data, and documentation in an easy to share way.
+-   They come with code that others have written to extend the functionality of R.
+-   Packages can range from graphical software, to web scraping tools, statistical models for spatio-temporal data, microbial data analysis tools, etc.=
 
 ## Downloading packages
 
-* The most popular package repository is the Comprehensive R Archive Network, or [CRAN](https://cran.r-project.org/)
-* Other popular repositories include [Bioconductor](https://www.bioconductor.org/) and [Github](https://github.com/)
+-   The most popular package repository is the Comprehensive R Archive Network, or [CRAN](https://cran.r-project.org/)
+-   Other popular repositories include [Bioconductor](https://www.bioconductor.org/) and [Github](https://github.com/)
 
 ## Installing packages
 
-If a package is available on CRAN, like most packages we will use for this course,
-you can install it using `install.packages()`:
+If a package is available on CRAN, like most packages we will use for this course, you can install it using `install.packages()`:
 
 ```{r, eval = FALSE}
 install.packages("nycflights13")
@@ -66,8 +65,7 @@ install.packages("nycflights13")
 
 You can also install by clicking *Install* in the *Packages* tab through RStudio.
 
-For the most part, after you install a package, it is saved on your computer until you update R, and you will not need to re-install it. 
-Thus, you should **never** include a call to `install.packages()` in any `.R` or `.Rmd` file!
+For the most part, after you install a package, it is saved on your computer until you update R, and you will not need to re-install it. Thus, you should **never** include a call to `install.packages()` in any `.R` or `.Rmd` file!
 
 ## Loading packages
 
@@ -83,12 +81,13 @@ Note that unlike `install.packages()`, you do not need to include the package na
 
 Loading a package must be done with each new R session, so you should put calls to `library()` in your `.R` and `.Rmd` files.
 
-This can be done in the opening code chunk. If it is a `.Rmd`, you can set the parameter
-`include = FALSE` to hide the messages and code if the details are unimportant for the reader.
+This can be done in the opening code chunk. If it is a `.Rmd`, you can set the parameter `include = FALSE` to hide the messages and code if the details are unimportant for the reader.
 
-    `r ''````{r, include = FALSE}
-    library(nycflights13)
-    ```
+````         
+`r ''````{r, include = FALSE}
+library(nycflights13)
+```
+````
 
 ## Exploring data
 
@@ -121,7 +120,7 @@ We can access documentation on the flights dataset using the `?` operator:
 ?flights
 ```
 
-. . . 
+. . .
 
 The `nrow()`, `ncol()`, and `dim()` functions provide information about the number of rows and columns:
 
@@ -224,7 +223,6 @@ mean(LGA_flights$arr_delay, na.rm = T)
 mean(EWR_flights$arr_delay, na.rm = T)
 ```
 
-
 ## Summarizing subsets of a dataset
 
 Other summaries might be more relevant/informative:
@@ -247,10 +245,10 @@ mean(EWR_flights$distance, na.rm = T)
 
 The previous code provides a basic way to subset datasets. When doing a lot of descriptive/exploratory analysis, many people prefer using code from the `tidyverse` packages:
 
-* Reading and saving data: `readr`
-* Data manipulation: `tidyr`, `dplyr`
-* Data visualization: `ggplot2`
-* Working with different data structures: `tibble`, `purrr`, `stringr`, `forcats`
+-   Reading and saving data: `readr`
+-   Data manipulation: `tidyr`, `dplyr`
+-   Data visualization: `ggplot2`
+-   Working with different data structures: `tibble`, `purrr`, `stringr`, `forcats`
 
 You can install them all using
 
@@ -264,25 +262,19 @@ install.packages("tidyverse")
 
 There are three rules required for data to be considered tidy
 
-* Each variable must have its own column
-* Each observation must have its own row
-* Each value must have its own cell
+-   Each variable must have its own column
+-   Each observation must have its own row
+-   Each value must have its own cell
 
 Seems simple, but can sometimes be tricky. We will discuss transformating data in the future.
 
 ## Name conflicts {.smaller}
 
-Recall that packages are essentially ways for you to install and use functions 
-written by others.
-Occasionally, some of these functions have the same name and there is a conflict.
-Whichever package you load more recently using `library` will mask the old function, meaning that R will default to that version.
+Recall that packages are essentially ways for you to install and use functions written by others. Occasionally, some of these functions have the same name and there is a conflict. Whichever package you load more recently using `library` will mask the old function, meaning that R will default to that version.
 
-In general, this is fine, especially with `tidyverse`. These package authors know when 
-they have masked common functions in R, and typically we will prefer `tidyverse` version.
+In general, this is fine, especially with `tidyverse`. These package authors know when they have masked common functions in R, and typically we will prefer `tidyverse` version.
 
-The conflict message is to make sure you know about conflicts. 
-You can (and should) hide this in your R Markdown files by adding the parameter
-`message=FALSE` or `include=FALSE` to your code chunk when you load packages.
+The conflict message is to make sure you know about conflicts. You can (and should) hide this in your R Markdown files by adding the parameter `message=FALSE` or `include=FALSE` to your code chunk when you load packages.
 
 ## Subsetting with `filter()`
 
@@ -318,6 +310,7 @@ summarize(flights,
           mean_dep_delay = mean(dep_delay, na.rm = T),
           mean_arr_delay = mean(arr_delay, na.rm = T))
 ```
+
 ## Pipe notation
 
 **Pipes** use the `|>` operator to take the output from a previous function call and "pipe" it through to the next function.
@@ -358,7 +351,6 @@ flights |>
   summarize(mean_arr_delay = mean(arr_delay, na.rm = T))
 ```
 
-
 How could you do the same thing with base R?
 
 . . .
@@ -374,9 +366,7 @@ Note that the class of object is slightly different!
 
 ## Saving Data
 
-You can save single R objects as `.rds` files using `saveRDS()`, 
-multiple R objects as `.RData` or `.rda` files using `save()`, 
-and your entire workspace as `.RData` using `save.image()`.
+You can save single R objects as `.rds` files using `saveRDS()`, multiple R objects as `.RData` or `.rda` files using `save()`, and your entire workspace as `.RData` using `save.image()`.
 
 ```{r, eval = FALSE}
 object1 <- 1:5
@@ -395,7 +385,7 @@ In general, you should use `.RData` for multiple objects, and generally should n
 
 `save.image()` should never be a part of your workflow.
 
-## Loading Data 
+## Loading Data
 
 You can load `.rds` files using `readRDS()` and `.Rdata` and `.rda` files using `load()`.
 
@@ -420,8 +410,7 @@ load("./Data/my_data.RData")
 
 ## Other types of data
 
-Often, you will read and write files as **c**omma **s**eparated **v**alues, or `.csv`. 
-You can do this by navigating *File > Import Dataset* in the menu bar, but generally I recommend doing it manually using the `readr` package. You will need to do so if loading data is part of your work flow, such as if it is required for an R Markdown writeup.
+Often, you will read and write files as **c**omma **s**eparated **v**alues, or `.csv`. You can do this by navigating *File \> Import Dataset* in the menu bar, but generally I recommend doing it manually using the `readr` package. You will need to do so if loading data is part of your work flow, such as if it is required for an R Markdown writeup.
 
 ```{r, eval = FALSE}
 library(readr)
@@ -430,5 +419,3 @@ read_csv("./Data/file.csv")
 # save a .csv file in a "Data" subfolder
 write_csv("./Data/data_output.csv")
 ```
-
-

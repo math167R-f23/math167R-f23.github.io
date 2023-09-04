@@ -1,0 +1,18 @@
+{
+  "hash": "dbd964c26d4c75758483a273a1f77295",
+  "result": {
+    "markdown": "---\ntitle: \"MATH167R: Data visualization\"\nauthor: \"Peter Gao\"\nformat: \n  revealjs:\n    theme: [./slides.scss, ../theme.scss]\neditor: visual\n---\n\n\n## Warm-up\n\n1.  What does the following code do? How would you write it without a pipe?\n\n\n    ::: {.cell}\n    \n    ```{.r .cell-code}\n    flips <- factor(c(\"H\", \"T\", \"H\", \"H\"), levels = c(\"H\", \"T\"))\n    sum(as.numeric(flips))\n    ```\n    :::\n\n\n## Warm-up\n\n**Answer:**\n\n1.  \n\n\n    ::: {.cell}\n    \n    ```{.r .cell-code}\n    flips <- factor(c(\"H\", \"T\", \"H\", \"H\"), levels = c(\"H\", \"T\"))\n    sum(as.numeric(flips))\n    ```\n    :::\n\n\n## Overview of today\n\n-   Data visualization in base R\n-   Data visualization with `ggplot2`\n-   Principles of data visualization\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-after-body": [
+        "\n<script>\n  // htmlwidgets need to know to resize themselves when slides are shown/hidden.\n  // Fire the \"slideenter\" event (handled by htmlwidgets.js) when the current\n  // slide changes (different for each slide format).\n  (function () {\n    // dispatch for htmlwidgets\n    function fireSlideEnter() {\n      const event = window.document.createEvent(\"Event\");\n      event.initEvent(\"slideenter\", true, true);\n      window.document.dispatchEvent(event);\n    }\n\n    function fireSlideChanged(previousSlide, currentSlide) {\n      fireSlideEnter();\n\n      // dispatch for shiny\n      if (window.jQuery) {\n        if (previousSlide) {\n          window.jQuery(previousSlide).trigger(\"hidden\");\n        }\n        if (currentSlide) {\n          window.jQuery(currentSlide).trigger(\"shown\");\n        }\n      }\n    }\n\n    // hookup for slidy\n    if (window.w3c_slidy) {\n      window.w3c_slidy.add_observer(function (slide_num) {\n        // slide_num starts at position 1\n        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);\n      });\n    }\n\n  })();\n</script>\n\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

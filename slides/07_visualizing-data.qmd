@@ -1,0 +1,34 @@
+---
+title: "MATH167R: Data visualization"
+author: "Peter Gao"
+format: 
+  revealjs:
+    theme: [./slides.scss, ../theme.scss]
+editor: visual
+---
+
+## Warm-up
+
+1.  What does the following code do? How would you write it without a pipe?
+
+    ```{r, echo = T, eval = F}
+    flips <- factor(c("H", "T", "H", "H"), levels = c("H", "T"))
+    sum(as.numeric(flips))
+    ```
+
+## Warm-up
+
+**Answer:**
+
+1.  
+
+    ```{r, echo = T, eval = F}
+    flips <- factor(c("H", "T", "H", "H"), levels = c("H", "T"))
+    sum(as.numeric(flips))
+    ```
+
+## Overview of today
+
+-   Data visualization in base R
+-   Data visualization with `ggplot2`
+-   Principles of data visualization
