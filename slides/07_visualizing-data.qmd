@@ -272,7 +272,6 @@ ggplot(data = ces_data,
 :::
 :::
 
-
 ## Customizing shapes {.smaller}
 
 We can customize the shape within `geom_histogram()`:
@@ -327,11 +326,9 @@ ggplot(data = ces_data,
 :::
 :::
 
-
 ## Subsetting our data {.smaller}
 
 Recall we can subset our data using the `dplyr::filter()` function. Note the use of the `%in%` operator here:
-
 
 ```{r, echo = T, eval = T}
 library(dplyr)
@@ -368,7 +365,6 @@ ggplot(data = ces_sfba,
 :::
 :::
 
-
 ## Customizing our scatter plot {.smaller}
 
 We can similarly customize our scatter plots
@@ -399,7 +395,6 @@ ggplot(data = ces_sfba,
 ```
 :::
 :::
-
 
 ## Beyond two dimensions {.smaller}
 
@@ -440,122 +435,106 @@ We can similarly customize our scatter plots
 
 ::: columns
 ::: {.column width="50%"}
-
 **Avoid:**
 
-* 3D plots
-* Deceptive axes
-* Excessive labels
-* Excessive/bad coloring
-* Fancy shading/effects
-* Bad variable/axis names
-* Unreadable labels
-* Overloaded with information
+-   3D plots
+-   Deceptive axes
+-   Excessive labels
+-   Excessive/bad coloring
+-   Fancy shading/effects
+-   Bad variable/axis names
+-   Unreadable labels
+-   Overloaded with information
 :::
 
 ::: {.column width="50%"}
-
 **Strive for:**
 
-* Simple, clean graphics
-* Neat and human readable text
-* Appropriate data range (bar charts should *always* start from 0!)
-* Consistent intervals
-* Roughly ~6 colors or less
-* Size figures appropriately
-
+-   Simple, clean graphics
+-   Neat and human readable text
+-   Appropriate data range (bar charts should *always* start from 0!)
+-   Consistent intervals
+-   Roughly \~6 colors or less
+-   Size figures appropriately
 :::
-
 :::
 
 ## Some misleading visualizations
 
-<img src="images/bad1.jpg" alt="" height="450"/>
-
+<img src="images/bad1.jpg" height="450"/>
 
 **Avoid:** Pie charts! Eugh! The proportions are completely off!
 
 ## Some misleading visualizations
 
-
-<img src="images/bad2.jpg" alt="" height="450"/>
-
+<img src="images/bad2.jpg" height="450"/>
 
 **Avoid:** Pie charts! Eugh! Percents don't add up!
 
 ## Some misleading visualizations
 
-<img src="images/bad3.png" alt="" height="450"/>
+<img src="images/bad3.png" height="450"/>
 
 **Avoid:** 3d bar charts?!
 
 ## Some misleading visualizations
 
-<img src="images/bad4.png" alt="" height="450"/>
+<img src="images/bad4.png" height="450"/>
 
 **Avoid:** Bad use of color
 
 ## Some misleading visualizations
 
-<img src="images/bad5.jpg" alt="" height="450"/>
+<img src="images/bad5.jpg" height="450"/>
 
 **Avoid:** Bad axis, lack of information, 3D bar chart
 
-
 ## Some misleading visualizations
 
-<img src="images/bad6.jpg" alt="" height="450"/>
+<img src="images/bad6.jpg" height="450"/>
 
 **Avoid:** Four numbers displayed as a cluttered chart, terrible labels, bad axis range
 
-
 ## Some misleading visualizations
 
-<img src="images/bad7.jpg" alt="" height="450"/>
+<img src="images/bad7.jpg" height="450"/>
 
 **Avoid:** Deceptively flipped y-axis! (and excessive color)
 
-
 ## Some misleading visualizations
 
-<img src="images/bad8.jpg" alt="" height="450"/>
+<img src="images/bad8.jpg" height="450"/>
 
-(This was presented in Congress!)]
+(This was presented in Congress!)\]
 
 **Avoid:** Two axes in a single plot, bad axis range
 
-
 ## Some misleading visualizations
 
-<img src="images/bad9.png" alt="" height="450"/>
-
+<img src="images/bad9.png" height="450"/>
 
 **Avoid:** Deceptive axis range (should start at 0)
 
 ## Some misleading visualizations
 
-<img src="images/bad10.png" alt="" height="450"/>
+<img src="images/bad10.png" height="450"/>
 
 (From the Gates Foundation!)
 
-
 **Avoid:** Inconsistent x-axis intervals
-
 
 ## ggplot cheatsheet
 
-* Axes: `xlim()`, `ylim()`
-* Legends: within initial `aes()`, edit within `theme()` or `guides()`
-* `geom_point()`, `geom_line()`, `geom_histogram()`, `geom_bar()`, `geom_boxplot()`, `geom_text()`
-* `facet_grid()`, `facet_wrap()` for faceting
-* `labs()` for labels
-* `theme_bw()` to make things look nicer
-* Graphical parameters: `color` for color, `alpha` for opacity, `lwd`/`size` for thickness, `shape` for shape, `fill` for interior color, ...
+-   Axes: `xlim()`, `ylim()`
+-   Legends: within initial `aes()`, edit within `theme()` or `guides()`
+-   `geom_point()`, `geom_line()`, `geom_histogram()`, `geom_bar()`, `geom_boxplot()`, `geom_text()`
+-   `facet_grid()`, `facet_wrap()` for faceting
+-   `labs()` for labels
+-   `theme_bw()` to make things look nicer
+-   Graphical parameters: `color` for color, `alpha` for opacity, `lwd`/`size` for thickness, `shape` for shape, `fill` for interior color, ...
 
-Find more tips  [here!](https://github.com/rstudio/cheatsheets/raw/master/data-visualization.pdf)
-
+Find more tips [here!](https://github.com/rstudio/cheatsheets/raw/master/data-visualization.pdf)
 
 ## Lab 04
 
 In this lab, we'll practice data visualization with base R and `ggplot2`.
-
