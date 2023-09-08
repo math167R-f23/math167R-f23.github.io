@@ -2,7 +2,11 @@
 title: "Lab 4"
 author: "YOUR NAME HERE"
 date: "2023-09-13"
-output: html_document
+format: 
+  html:
+    embed-resources: true
+    code-tools: true
+    code-summary: "Code"
 ---
 
 Remember, you must submit *both* your .Rmd and the compiled .html in order to receive full credit! In addition, to receive full credit, your code output and plots must be correctly formatted.
