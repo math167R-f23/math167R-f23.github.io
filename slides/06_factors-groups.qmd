@@ -1,5 +1,5 @@
 ---
-title: "MATH167R: Descriptive statistics"
+title: "MATH167R: Factors and Categorical Data"
 author: "Peter Gao"
 format: 
   revealjs:
@@ -91,8 +91,8 @@ typeof(weather_forecasts$date)
 
 In R, objects can be associated with **attributes** such as class, that provide information on the values contained within.
 
-```{r}
-attributes(weather_forecasts)
+```{r, eval = T, echo = T}
+attributes(head(weather_forecasts))
 ```
 
 ## Factors: categorical data
@@ -162,7 +162,9 @@ As an example of how factors work, let's look at an example using Tidy Tuesday d
 
 ```{r, warning = F, message = F, cache = T, echo = T}
 movies <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018/2018-10-23/movie_profit.csv")
-colnames(movies)
+knitr::kable(movies[1:20,], digits = 3, row.names = F) %>%
+  kableExtra::kable_styling("striped", full_width = T) %>% 
+  kableExtra::scroll_box(height = "300px")
 ```
 
 ## Movies genre
