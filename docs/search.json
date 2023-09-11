@@ -2541,11 +2541,11 @@
     "text": "Remember, you must submit both your .Rmd and the compiled .html in order to receive full credit! In addition, to receive full credit, your code output and plots must be correctly formatted."
   },
   {
-    "objectID": "checkins/03_checkin.html#a.-weather-forecast-data",
-    "href": "checkins/03_checkin.html#a.-weather-forecast-data",
+    "objectID": "checkins/03_checkin.html#a.-flights-data",
+    "href": "checkins/03_checkin.html#a.-flights-data",
     "title": "Check-in 3",
-    "section": "A. Weather Forecast Data",
-    "text": "A. Weather Forecast Data\n1. For this lab, we’ll be using the flights data. You can load this data using the following code:\n\nlibrary(nycflights13)\ndata(flights)\n\n2. Use the mutate() function to turn origin into a factor.\n\n# YOUR CODE HERE\n\n3. Compute the mean arr_delay for each origin airport. Which airport has the longest delays on average? You can drop missing rows.\n\n# YOUR CODE HERE\n\n\n4. Use the mutate() function to turn month into a factor.\n\n# YOUR CODE HERE\n\n\n5. Compute the mean arr_delay by month. What do you notice?\n\n# YOUR CODE HERE\n\n\n6. Compute the mean arr_delay by month AND airport. What do you notice?\n\n# YOUR CODE HERE"
+    "section": "A. Flights Data",
+    "text": "A. Flights Data\n1. For this lab, we’ll be using the flights data. You can load this data using the following code:\n\nlibrary(nycflights13)\ndata(flights)\n\n2. Use the mutate() function to turn origin into a factor.\n\n# YOUR CODE HERE\n\n3. Compute the mean arr_delay for each origin airport. Which airport has the longest delays on average? You can drop missing rows.\n\n# YOUR CODE HERE\n\n\n4. Use the mutate() function to turn month into a factor.\n\n# YOUR CODE HERE\n\n\n5. Compute the mean arr_delay by month. What do you notice?\n\n# YOUR CODE HERE\n\n\n6. Compute the mean arr_delay by month AND airport. What do you notice?\n\n# YOUR CODE HERE"
   },
   {
     "objectID": "checkins/01_first-checkin.html",

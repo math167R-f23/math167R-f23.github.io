@@ -14,7 +14,7 @@ Remember, you must submit *both* your .Rmd and the compiled .html in order to re
 
 INSERT NAMES OF ANY COLLABORATORS
 
-## A. Weather Forecast Data
+## A. Flights Data
 
 **1.**  For this lab, we'll be using the `flights` data. You can load this data using the following code:
 
