@@ -12,20 +12,28 @@ editor: visual
 1.  What does the following code do?
 
     ```{r, echo = T, eval = F}
-    flips <- factor(c("H", "T", "H", "H"), levels = c("H", "T"))
-    sum(as.numeric(flips))
+    library(palmerpenguins)
+    library(ggplot2)
+    data(penguins)
+    ggplot(penguins, 
+           aes(x = flipper_length_mm, 
+               y = body_mass_g, 
+               color = species)) + 
+      geom_point()
     ```
 
 ## Warm-up
 
-**Answer:**
-
-1.  
-
-    ```{r, echo = T, eval = F}
-    flips <- factor(c("H", "T", "H", "H"), levels = c("H", "T"))
-    sum(as.numeric(flips))
-    ```
+```{r, echo = T, eval = T, warning = F}
+library(palmerpenguins)
+library(ggplot2)
+data(penguins)
+ggplot(penguins, 
+       aes(x = flipper_length_mm, 
+           y = body_mass_g, 
+           color = species)) + 
+  geom_point()
+```
 
 ## Overview of today
 
@@ -36,8 +44,7 @@ editor: visual
 
 ## Example: Egg production in the United States
 
-Today we'll start using the [The Humane League's US Egg Production
-dataset](https://thehumaneleague.org/article/E008R01-us-egg-production-data), which we can load using the following code:
+Today we'll start using the [The Humane League's US Egg Production dataset](https://thehumaneleague.org/article/E008R01-us-egg-production-data), which we can load using the following code:
 
 ```{r, echo = T, eval = T}
 library(tidyverse)
@@ -47,22 +54,18 @@ head(eggproduction)
 
 ## Data Dictionary {.smaller}
 
-<div style="height:500px;overflow:auto;">
-
-|variable       |class     |description    |
-|:--------------|:---------|:--------------|
-|observed_month |double    |Month in which report observations are collected,Dates are recorded in ISO 8601 format YYYY-MM-DD |
-|prod_type      |character |type of egg product: hatching, table eggs      |
-|prod_process   |character |type of production process and housing: cage-free (organic), cage-free (non-organic), all. The value 'all' includes cage-free and conventional housing.   |
-|n_hens         |double    |number of hens produced by hens for a given month-type-process combo   |
-|n_eggs         |double    |number of eggs producing eggs for a given month-type-process combo     |
-|source         |character |Original USDA report from which data are sourced. Values correspond to titles of PDF reports. Date of report is included in title.   |
-
-</div>
-
+::: {style="height:500px;overflow:auto;"}
+| variable       | class     | description                                                                                                                                             |
+|:---------------|:----------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|
+| observed_month | double    | Month in which report observations are collected,Dates are recorded in ISO 8601 format YYYY-MM-DD                                                       |
+| prod_type      | character | type of egg product: hatching, table eggs                                                                                                               |
+| prod_process   | character | type of production process and housing: cage-free (organic), cage-free (non-organic), all. The value 'all' includes cage-free and conventional housing. |
+| n_hens         | double    | number of hens produced by hens for a given month-type-process combo                                                                                    |
+| n_eggs         | double    | number of eggs producing eggs for a given month-type-process combo                                                                                      |
+| source         | character | Original USDA report from which data are sourced. Values correspond to titles of PDF reports. Date of report is included in title.                      |
+:::
 
 ## Building up a visualization
-
 
 ```{r}
 #| echo: TRUE
@@ -77,10 +80,7 @@ eggproduction |>
   filter(prod_type == "table eggs") 
 ```
 
-
-
 ## Building up a visualization
-
 
 ```{r}
 #| echo: TRUE
@@ -109,7 +109,6 @@ eggproduction |>
   geom_point()
 ```
 
-
 ```{r, echo = FALSE, eval = T, fig.height = 4, fig.width = 8}
 eggproduction |> 
   filter(prod_type == "table eggs") |>
@@ -119,7 +118,6 @@ eggproduction |>
 
 ## Building up a visualization
 
-
 ```{r}
 #| echo: TRUE
 #| eval: FALSE
@@ -136,8 +134,6 @@ eggproduction |>
   ggplot(aes(x = observed_month, y = n_eggs, color = prod_process)) +
   geom_point()
 ```
-
-
 
 ## Building up a visualization
 
@@ -157,7 +153,6 @@ eggproduction |>
   ggplot(aes(x = observed_month, y = n_eggs, color = prod_process)) +
   geom_line()
 ```
-
 
 ## Labels and legends
 
@@ -217,15 +212,15 @@ Learning `ggplot` takes a lot of time--use your peers, me, and the internet as a
 
 **General strategy**
 
-1. Clean and tidy data into the appropriate format.
+1.  Clean and tidy data into the appropriate format.
 
-2. Map **variables** to **aesthetics**.
+2.  Map **variables** to **aesthetics**.
 
-3. Use `geom_` functions to draw **markings** with the appropriate aesthetics.
+3.  Use `geom_` functions to draw **markings** with the appropriate aesthetics.
 
-4. Add labels and titles with `xlab`, `ylab`, and `ggtitle`.
+4.  Add labels and titles with `xlab`, `ylab`, and `ggtitle`.
 
-5. Adjust text size, legend position with `theme`.
+5.  Adjust text size, legend position with `theme`.
 
 ## Adding even more dimensions
 
@@ -260,17 +255,20 @@ eggproduction |>
 state_population <- readr::read_csv("https://www2.census.gov/programs-surveys/popest/datasets/2010-2020/national/totals/nst-est2020.csv")
 
 # code to print the data
-knitr::kable(state_population, digits = 3, row.names = F) %>%
+library(knitr)
+kable(state_population, digits = 3, row.names = F) %>%
   kableExtra::kable_styling("striped", full_width = T) %>% 
   kableExtra::scroll_box(height = "560px")
 ```
+
 ## US population data, 2010-2020
 
 ```{r, echo = F, eval = T}
 state_population <- readr::read_csv("https://www2.census.gov/programs-surveys/popest/datasets/2010-2020/national/totals/nst-est2020.csv")
 
 # code to print the data
-knitr::kable(state_population, digits = 3, row.names = F) %>%
+library(knitr)
+kable(state_population, digits = 3, row.names = F) %>%
   kableExtra::kable_styling("striped", full_width = T) %>% 
   kableExtra::scroll_box(height = "560px")
 ```
@@ -284,7 +282,7 @@ US_pop <- state_population |>
   filter(SUMLEV == "010")
 
 # code to print the data
-knitr::kable(US_pop, digits = 3, row.names = F) %>%
+kable(US_pop, digits = 3, row.names = F) %>%
   kableExtra::kable_styling("striped", full_width = T)
 ```
 
@@ -320,7 +318,7 @@ plot_dat <- data.frame(
   Year = 2010:2020,
   Population = US_pop[1, 8:19]
 )
-head(plot.dat)
+head(plot_dat)
 ```
 
 ## National population data
@@ -332,7 +330,6 @@ plot_dat <- data.frame(
   Year = 2010:2020,
   Population = as.numeric(US_pop[1, 8:19])
 )
-head(plot_dat)
 ```
 
 ```{r, echo = F, eval = T, error = T}
@@ -341,14 +338,13 @@ plot_dat <- data.frame(
   Year = 2010:2020,
   Population = as.numeric(US_pop[1, 8:19])
 )
-head(plot_dat)
 ```
 
 ## National population data
 
 Now what? `US_pop` has an extra column `POPESTIMATE042020` which we need to remove.
 
-```{r, echo = T, eval = F, error = T}
+```{r, echo = T, eval = T, error = T}
 # base R
 plot_dat <- data.frame(
   Year = 2010:2020,
@@ -359,9 +355,9 @@ head(plot_dat)
 
 ## National population data
 
-Now what? `US_pop` has an extra column `POPESTIMATE042020` which we need to remove.
+Finally, we can use the `plot` function to get our desired visualization:
 
-```{r, echo = T, eval = F, error = T}
+```{r, echo = T, eval = T, error = T}
 plot(plot_dat$Year, plot_dat$Population)
 ```
 
@@ -369,38 +365,36 @@ plot(plot_dat$Year, plot_dat$Population)
 
 Now let's see how we might approach the same task in the tidyverse. Our strategy will be to "tidy" the data so we have one row for each observation and one column for each observation.
 
-First, let's remove the unnecessary column using the `select()` function:
+First, let's remove the unnecessary column using the `select()` function. Here the `kable` function is used to print out our table.
 
-<div style="height:500px;overflow:auto;">
-
-```{r, echo = F, eval = T}
+::: {style="height:500px;overflow:auto;"}
+```{r}
 #| echo: TRUE
-#| eval: FALSE
+#| eval: TRUE
 #| code-line-numbers: "2"
 US_pop |> 
-  select(-POPESTIMATE042020) 
+  select(-POPESTIMATE042020)  |>
+  kable()
 ```
-
-</div>
+:::
 
 ## Tidyverse strategy
 
 Now let's use the `pivot_longer` function to combine the `POPESTIMATE` columns into two variables: `Year` and `Population`:
 
-<div style="height:500px;overflow:auto;">
-
-```{r, echo = F, eval = T}
+::: {style="height:500px;overflow:auto;"}
+```{r}
 #| echo: TRUE
-#| eval: FALSE
-#| code-line-numbers: "3"
+#| eval: TRUE
+#| code-line-numbers: "3-5"
 US_pop |> 
   select(-POPESTIMATE042020) |>
   pivot_longer(contains("POPESTIMATE"), 
                names_to = "Year",
-               values_to = "Population")
+               values_to = "Population") |>
+  kable()
 ```
-
-</div>
+:::
 
 What do we need to do next?
 
@@ -408,21 +402,20 @@ What do we need to do next?
 
 Finally, we need to use the `str_sub()` function to shorten our `Year` variable before turning it into a numeric.
 
-<div style="height:500px;overflow:auto;">
-
-```{r, echo = F, eval = T}
+::: {style="height:500px;overflow:auto;"}
+```{r}
 #| echo: TRUE
-#| eval: FALSE
-#| code-line-numbers: "3"
+#| eval: TRUE
+#| code-line-numbers: "6"
 US_pop |> 
   select(-POPESTIMATE042020) |>
   pivot_longer(contains("POPESTIMATE"), 
                names_to = "Year",
                values_to = "Population") |>
-  mutate(Year = as.numeric(stringr::str_sub(Year, start = 12)))
+  mutate(Year = as.numeric(stringr::str_sub(Year, start = 12))) |>
+  kable()
 ```
-
-</div>
+:::
 
 ## Tidyverse strategy
 
@@ -430,8 +423,8 @@ Now we can `|>` it to `ggplot`:
 
 ```{r, echo = F, eval = T, fig.height = 4, fig.width = 8}
 #| echo: TRUE
-#| eval: FALSE
-#| code-line-numbers: "3"
+#| eval: TRUE
+#| code-line-numbers: "7-8"
 US_pop |> 
   select(-POPESTIMATE042020) |>
   pivot_longer(contains("POPESTIMATE"), 
@@ -442,16 +435,14 @@ US_pop |>
   geom_line()
 ```
 
-
-
 ## Tidyverse strategy: More complicated plots
 
-Now we can `|>` it to `ggplot`:
+We can map the `color` aesthetic to the region:
 
-```{r, echo = F, eval = T, fig.height = 4, fig.width = 8}
+```{r}
 #| echo: TRUE
-#| eval: FALSE
-#| code-line-numbers: "3"
+#| eval: TRUE
+#| code-line-numbers: "2, 7-8"
 state_population |> 
   filter(SUMLEV == "020") |>
   select(-POPESTIMATE042020) |>
@@ -471,15 +462,27 @@ They are challenging to use because you need to have a clear vision of the data 
 
 ## Example: `pivot_longer()`
 
-```{r}
+```{r, echo = T}
 relig_income
+```
+
+## Example: `pivot_longer()`
+
+```{r, echo = T}
 relig_income %>%
   pivot_longer(!religion, names_to = "income", values_to = "count")
 ```
+
 ## Example: `pivot_longer()`
 
-```{r}
+```{r, echo = T}
 billboard
+
+```
+
+## Example: `pivot_longer()`
+
+```{r, echo = T}
 billboard %>%
   pivot_longer(
     cols = starts_with("wk"),
@@ -492,19 +495,26 @@ billboard %>%
 
 ## Example: `pivot_wider()`
 
-
-```{r}
+```{r, echo = T}
 fish_encounters
+```
+
+## Example: `pivot_wider()`
+
+```{r, echo = T}
 fish_encounters %>%
   pivot_wider(names_from = station, values_from = seen)
 ```
 
+## Example: `pivot_wider()`
+
+```{r, echo = T}
+us_rent_income
+```
 
 ## Example: `pivot_wider()`
 
-
-```{r}
-us_rent_income
+```{r, echo = T}
 us_rent_income %>%
   pivot_wider(
     names_from = variable,

@@ -9,7 +9,7 @@
 <meta name="author" content="YOUR NAME HERE">
 <meta name="dcterms.date" content="2023-10-04">
 
-<title>MATH167R - Midterm</title>
+<title>MATH167R - Midterm Project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -4475,7 +4475,7 @@ vertical-align: -.125em;
 }</script>
 
 
-<meta property="og:title" content="MATH167R - Midterm">
+<meta property="og:title" content="MATH167R - Midterm Project">
 <meta property="og:description" content>
 <meta property="og:site-name" content="MATH167R">
 </head>
@@ -4566,11 +4566,14 @@ vertical-align: -.125em;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
-  <li><a href="#a.-analyzing-trends-in-san-jose-rental-prices-60-points" id="toc-a.-analyzing-trends-in-san-jose-rental-prices-60-points" class="nav-link" data-scroll-target="#a.-analyzing-trends-in-san-jose-rental-prices-60-points">A. Analyzing trends in San Jose rental prices (60 points)</a></li>
-  <li><a href="#b.-open-ended-data-visualization-40-points" id="toc-b.-open-ended-data-visualization-40-points" class="nav-link" data-scroll-target="#b.-open-ended-data-visualization-40-points">B. Open ended data visualization (40 points)</a>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a>
   <ul class="collapse">
   <li><a href="#details" id="toc-details" class="nav-link" data-scroll-target="#details">Details</a></li>
+  <li><a href="#grading-rubric" id="toc-grading-rubric" class="nav-link" data-scroll-target="#grading-rubric">Grading Rubric</a></li>
+  </ul></li>
+  <li><a href="#a.-analyzing-trends-in-san-jose-rental-prices" id="toc-a.-analyzing-trends-in-san-jose-rental-prices" class="nav-link" data-scroll-target="#a.-analyzing-trends-in-san-jose-rental-prices">A. Analyzing trends in San Jose rental prices</a></li>
+  <li><a href="#b.-open-ended-data-visualization" id="toc-b.-open-ended-data-visualization" class="nav-link" data-scroll-target="#b.-open-ended-data-visualization">B. Open ended data visualization</a>
+  <ul class="collapse">
   <li><a href="#requirements" id="toc-requirements" class="nav-link" data-scroll-target="#requirements">Requirements</a></li>
   </ul></li>
   </ul>
@@ -4581,7 +4584,7 @@ vertical-align: -.125em;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Midterm</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Midterm Project</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -4610,39 +4613,46 @@ vertical-align: -.125em;
 
 <section id="instructions" class="level2">
 <h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
-<p>For this project, you will be exploring and visualizing data on Craigslist apartment rental postings in the Bay Area. Your goal is to observe and visualize interesting trends and patterns in the data, and to tell a cohesive and compelling story about the insights you gain. In the first part of the assignment, you will… In the second part of this assignment you will …</p>
-</section>
-<section id="a.-analyzing-trends-in-san-jose-rental-prices-60-points" class="level2">
-<h2 class="anchored" data-anchor-id="a.-analyzing-trends-in-san-jose-rental-prices-60-points">A. Analyzing trends in San Jose rental prices (60 points)</h2>
-</section>
-<section id="b.-open-ended-data-visualization-40-points" class="level2">
-<h2 class="anchored" data-anchor-id="b.-open-ended-data-visualization-40-points">B. Open ended data visualization (40 points)</h2>
-<p>Exceptional projects will include creative and unique insights into the data. For example, how have the number of residential building permits issued changed over time? How many housing units have been built in each council district? Where are the most expensive building projects in Seattle? Has the COVID-19 pandemic affected the number of permits issued? These are just a few examples of the types of question I hope you will explore for this project.</p>
-<p>Your projects will be evaluated on the quality of your visualizations and exploratory analyses.</p>
-<p>This includes, but is not limited to, the quality of your writing, the informativeness and clarity of your visualizations, and your creativity.</p>
-<p>Your submission should read as one continuous and cohesive report, rather than six distinct and unconnected sections.</p>
-<p>To this end, your report should include an introductory paragraph as well as a conclusion/summary paragraph at the end.</p>
-<p>The target audience of your report is an educated reader who is uninformed about the details of the data, but is interested in learning more about recent trends in Seattle. If you would like, you may also propose a different dataset for this project, but please get my permission via email.</p>
-<p><strong>If you do so, you must both submit the same .Rmd, .html, and .Rproj files on Canvas with both of your names at the top of the .html.</strong></p>
+<p>For this project, you will be exploring and visualizing data on Craigslist apartment rental postings in the Bay Area. Your goal is to observe and visualize interesting trends and patterns in the data, and to tell a cohesive and compelling story about the insights you gain. In the first part of the assignment, you will practice generating descriptive statistics and data visualizations to explore changing rental prices in Santa Clara county. In the second part of this assignment you will identify your own questions of interest and investigate them using your choice of data visualizations. Exceptional projects will include creative and unique insights into the data.</p>
+<p>Your projects will be evaluated on the quality of your visualizations and exploratory analyses. This includes, but is not limited to, the quality of your writing, the informativeness and clarity of your visualizations, and your creativity.</p>
+<p>The target audience of your report is an educated reader who is uninformed about the details of the data, but is interested in learning more about recent trends in Bay Area housing prices.</p>
 <section id="details" class="level3">
 <h3 class="anchored" data-anchor-id="details">Details</h3>
 <ul>
-<li>If you use this .Rmd as your starting template, please remove all instructions, details, and requirements. I only want to receive your final written report.</li>
-<li>Your Project 1 directory should include an R Project associated with your report and analysis.</li>
-<li>Final submissions must include .Rmd, .html, and .Rproj files</li>
-<li>The data are available <a href="https://raw.githubusercontent.com/peteragao/STAT302-AUT2021/base/files/projects/01_data-visualization/Building_Permits_Clean.csv">here</a>. Note that you can use links within <code>read_csv()</code> to read online .csv files. I <strong>strongly</strong> recommend saving a version of the unprocessed .csv on your machine in a <code>Data</code> subfolder within your Project 1 folder so you will be able to work offline.</li>
+<li><strong>If you use this .Rmd as your starting template, please remove all information about requirements and grading</strong>. Your final submission should only include the questions and answers for parts A and B.</li>
+<li>Final submissions must include .Rmd and .html files.</li>
+<li>The data are available <a href="https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-07-05/rent.csv">here</a> from Tidy Tuesday, as prepared by <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-07-05/readme.md">Dr. Kate Pennington</a>. Note that you can use links within <code>read_csv()</code> to read online .csv files. I <strong>strongly</strong> recommend saving a version of the unprocessed .csv on your machine in a <code>data</code> subfolder within your project folder so you will be able to work offline.</li>
 </ul>
 </section>
+<section id="grading-rubric" class="level3">
+<h3 class="anchored" data-anchor-id="grading-rubric">Grading Rubric</h3>
+<ul>
+<li>Part A (35 points): graded on the correctness of your computations, appropriate use of R functions, and the depth/clarity of your explanations</li>
+<li>Part B (45 points): graded based on whether your visualizations meet the standards outlined below under Part B.</li>
+<li>Code style/formatting (20 points): to receive full credit, all code, text, and output in your final report should be correctly formatted. Code should be appropriately commented and styled (ex. appropriate variable names).</li>
+</ul>
+</section>
+</section>
+<section id="a.-analyzing-trends-in-san-jose-rental-prices" class="level2">
+<h2 class="anchored" data-anchor-id="a.-analyzing-trends-in-san-jose-rental-prices">A. Analyzing trends in San Jose rental prices</h2>
+<ol type="1">
+<li><p>How many 1 bedroom listings from Santa Clara county are in this dataset?</p></li>
+<li><p>Create two histograms for the prices of 1 bedroom listings in Santa Clara county in 2005 and 2018. Compare and discuss.</p></li>
+<li><p>Create a line plot with year on the x-axis and median price for a 1 bedroom apartment for Santa Clara county on the y-axis from 2000 to 2018.</p></li>
+<li><p>Create a single plot with year on the x-axis and median price for a 1 bedroom apartment on the y-axis, using a separate line for each city in Santa Clara county, for the years 2000 to 2018.</p></li>
+</ol>
+</section>
+<section id="b.-open-ended-data-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="b.-open-ended-data-visualization">B. Open ended data visualization</h2>
 <section id="requirements" class="level3">
 <h3 class="anchored" data-anchor-id="requirements">Requirements</h3>
 <ul>
-<li>Your project should include at least 6 visualizations. Feel free to add more to tell a more complete and compelling story, but each visualization should contribute to the substance of your report.</li>
-<li>Your project should include at least 3 different types of visualizations (e.g. scatterplots, box plots, bar plots, histograms, line plots, etc.).</li>
-<li>At least one of your plots should display variation over time in some way.</li>
-<li>At least one of your plots should display variation over location in some way.</li>
+<li>Identify three research questions of interest that you want to study using this dataset.</li>
+<li>For each of your three research questions, generate a data visualization using your dataset. Discuss and interpret your findings.</li>
+<li>Your project should include at least two different types of visualizations (e.g. scatterplots, box plots, bar plots, histograms, line plots, etc.).</li>
+<li>At least one of your plots should display variation over time or location (or both) in some way.</li>
 <li>Each visualization should include a caption that fully explains how to understand your visualization (i.e. explain all the components, legends, etc.). A good guideline is that someone who has not read your report should be able to look at just a visualization and its caption and fully understand what that visualization is showing.</li>
-<li>Each visualization, in order to contribute to your 6 visualization requirement, must be accompanied by at least one paragraph of text. This text should include an interpretation of your visualization as well as what is interesting about your visualization. A strong visualization will be accompanied by text explaining what patterns or insights it helps us glean from the data. Sometimes, you may find that you need two or more visualizations to make a single point. This is fine (and likely preferred if you think it’s necessary), but it will only count towards 1 of your total visualizations.</li>
-<li><strong>At the end of your report</strong>, you should include a code appendix with all of your code, from downloading the data to generating the figures. This code should be well-commented and follow the style guidelines we learned in class. Use comments to label which blocks of code correspond to which visualizations. <strong>You should have no code in the main body of your report!</strong> (Remember: you can use <code>echo = FALSE</code> to hide code.)</li>
+<li>Each visualization must be accompanied by at least one paragraph of text. This text should include an interpretation of your visualization as well as what is interesting about your visualization. A strong visualization will be accompanied by text explaining what patterns or insights it helps us glean from the data.</li>
 </ul>
 <p>Keep in mind: <strong>there are no right answers for this project!</strong> These are real data, and I’m hoping for creative and interesting analyses that tell a compelling story about the data rather than cookie cutter reports. Have some fun with it, and good luck!</p>
 
@@ -4938,7 +4948,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class>
 <div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;Midterm&quot;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;Midterm Project&quot;</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> &quot;YOUR NAME HERE&quot;</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> &quot;2023-10-04&quot;</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
@@ -4950,57 +4960,54 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">## Instructions</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>For this project, you will be exploring and visualizing data on Craigslist apartment rental postings in the Bay Area. Your goal is to observe and visualize interesting trends and patterns in the data, and to tell a cohesive and compelling story about the insights you gain. In the first part of the assignment, you will... In the second part of this assignment you will ...</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>For this project, you will be exploring and visualizing data on Craigslist apartment rental postings in the Bay Area. Your goal is to observe and visualize interesting trends and patterns in the data, and to tell a cohesive and compelling story about the insights you gain. In the first part of the assignment, you will practice generating descriptive statistics and data visualizations to explore changing rental prices in Santa Clara county. In the second part of this assignment you will identify your own questions of interest and investigate them using your choice of data visualizations. Exceptional projects will include creative and unique insights into the data. </span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## A. Analyzing trends in San Jose rental prices (60 points)</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>Your projects will be evaluated on the quality of your visualizations and exploratory analyses. This includes, but is not limited to, the quality of your writing, the informativeness and clarity of your visualizations, and your creativity.</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## B. Open ended data visualization (40 points)</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>The target audience of your report is an educated reader who is uninformed about the details of the data, but is interested in learning more about recent trends in Bay Area housing prices. </span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">### Details</span></span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>Exceptional projects will include creative and unique insights into the data. For example, how have the number of residential building permits issued changed over time? How many housing units have been built in each council district? Where are the most expensive building projects in Seattle? Has the COVID-19 pandemic affected the number of permits issued? These are just a few examples of the types of question I hope you will explore for this project.</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**If you use this .Rmd as your starting template, please remove all information about requirements and grading**. Your final submission should only include the questions and answers for parts A and B.</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Final submissions must include .Rmd and .html files.</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>The data are available <span class="co">[</span><span class="ot">here</span><span class="co">](https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-07-05/rent.csv)</span> from Tidy Tuesday, as prepared by <span class="co">[</span><span class="ot">Dr. Kate Pennington</span><span class="co">](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-07-05/readme.md)</span>. Note that you can use links within <span class="in">`read_csv()`</span> to read online .csv files. I **strongly** recommend saving a version of the unprocessed .csv on your machine in a <span class="in">`data`</span> subfolder within your project folder so you will be able to work offline.</span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>Your projects will be evaluated on the quality of your visualizations and exploratory analyses.</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="fu">### Grading Rubric</span></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>This includes, but is not limited to, the quality of your writing, the informativeness and clarity of your visualizations, and your creativity.</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>Your submission should read as one continuous and cohesive report, rather than six distinct and unconnected sections. </span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Part A (35 points): graded on the correctness of your computations, appropriate use of R functions, and the depth/clarity of your explanations</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Part B (45 points): graded based on whether your visualizations meet the standards outlined below under Part B.</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Code style/formatting (20 points): to receive full credit, all code, text, and output in your final report should be correctly formatted. Code should be appropriately commented and styled (ex. appropriate variable names).</span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>To this end, your report should include an introductory paragraph as well as a conclusion/summary paragraph at the end.</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu">## A. Analyzing trends in San Jose rental prices </span></span>
 <span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>The target audience of your report is an educated reader who is uninformed about the details of the data, but is interested in learning more about recent trends in Seattle. If you would like, you may also propose a different dataset for this project, but please get my permission via email.</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>How many 1 bedroom listings from Santa Clara county are in this dataset?</span>
 <span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>**If you do so, you must both submit the same .Rmd, .html, and .Rproj files on Canvas with both of your names at the top of the .html.**</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Create two histograms for the prices of 1 bedroom listings in Santa Clara county in 2005 and 2018. Compare and discuss.</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Create a line plot with year on the x-axis and median price for a 1 bedroom apartment for Santa Clara county on the y-axis from 2000 to 2018. </span>
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="fu">### Details</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Create a single plot with year on the x-axis and median price for a 1 bedroom apartment on the y-axis, using a separate line for each city in Santa Clara county, for the years 2000 to 2018. </span>
 <span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>If you use this .Rmd as your starting template, please remove all instructions, details, and requirements. I only want to receive your final written report.</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Your Project 1 directory should include an R Project associated with your report and analysis.</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Final submissions must include .Rmd, .html, and .Rproj files</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>The data are available <span class="co">[</span><span class="ot">here</span><span class="co">](https://raw.githubusercontent.com/peteragao/STAT302-AUT2021/base/files/projects/01_data-visualization/Building_Permits_Clean.csv)</span>. Note that you can use links within <span class="in">`read_csv()`</span> to read online .csv files. I **strongly** recommend saving a version of the unprocessed .csv on your machine in a <span class="in">`Data`</span> subfolder within your Project 1 folder so you will be able to work offline.</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="fu">## B. Open ended data visualization</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="fu">### Requirements</span></span>
 <span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="fu">### Requirements</span></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Your project should include at least 6 visualizations. Feel free to add more to tell a more complete and compelling story, but each visualization should contribute to the substance of your report.</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Your project should include at least 3 different types of visualizations (e.g. scatterplots, box plots, bar plots, histograms, line plots, etc.).</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>At least one of your plots should display variation over time in some way.</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>At least one of your plots should display variation over location in some way.</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Each visualization should include a caption that fully explains how to understand your visualization (i.e. explain all the components, legends, etc.). A good guideline is that someone who has not read your report should be able to look at just a visualization and its caption and fully understand what that visualization is showing.</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Each visualization, in order to contribute to your 6 visualization requirement, must be accompanied by at least one paragraph of text. This text should include an interpretation of your visualization as well as what is interesting about your visualization. A strong visualization will be accompanied by text explaining what patterns or insights it helps us glean from the data. Sometimes, you may find that you need two or more visualizations to make a single point. This is fine (and likely preferred if you think it&#39;s necessary), but it will only count towards 1 of your total visualizations.</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**At the end of your report**, you should include a code appendix with all of your code, from downloading the data to generating the figures. This code should be well-commented and follow the style guidelines we learned in class. Use comments to label which blocks of code correspond to which visualizations. **You should have no code in the main body of your report!** (Remember: you can use <span class="in">`echo = FALSE`</span> to hide code.)</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Identify three research questions of interest that you want to study using this dataset.</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>For each of your three research questions, generate a data visualization using your dataset. Discuss and interpret your findings. </span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Your project should include at least two different types of visualizations (e.g. scatterplots, box plots, bar plots, histograms, line plots, etc.).</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>At least one of your plots should display variation over time or location (or both) in some way.</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Each visualization should include a caption that fully explains how to understand your visualization (i.e. explain all the components, legends, etc.). A good guideline is that someone who has not read your report should be able to look at just a visualization and its caption and fully understand what that visualization is showing.</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Each visualization must be accompanied by at least one paragraph of text. This text should include an interpretation of your visualization as well as what is interesting about your visualization. A strong visualization will be accompanied by text explaining what patterns or insights it helps us glean from the data. </span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>Keep in mind: **there are no right answers for this project!**</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>These are real data, and I&#39;m hoping for creative and interesting analyses that tell a compelling story about the data rather than cookie cutter reports. Have some fun with it, and good luck!</span>
 <span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>Keep in mind: **there are no right answers for this project!**</span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>These are real data, and I&#39;m hoping for creative and interesting analyses that tell a compelling story about the data rather than cookie cutter reports. Have some fun with it, and good luck!</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

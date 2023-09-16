@@ -411,21 +411,31 @@ Peter Gao
 <ol type="1">
 <li><p>What does the following code do?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>flips <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"H"</span>, <span class="st">"T"</span>, <span class="st">"H"</span>, <span class="st">"H"</span>), <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"H"</span>, <span class="st">"T"</span>))</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">sum</span>(<span class="fu">as.numeric</span>(flips))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">data</span>(penguins)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">ggplot</span>(penguins, </span>
+<span id="cb1-5"><a href="#cb1-5"></a>       <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
+<span id="cb1-6"><a href="#cb1-6"></a>           <span class="at">y =</span> body_mass_g, </span>
+<span id="cb1-7"><a href="#cb1-7"></a>           <span class="at">color =</span> species)) <span class="sc">+</span> </span>
+<span id="cb1-8"><a href="#cb1-8"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 </ol>
 </section>
 <section id="warm-up-1" class="slide level2">
 <h2>Warm-up</h2>
-<p><strong>Answer:</strong></p>
-<ol type="1">
-<li><div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>flips <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"H"</span>, <span class="st">"T"</span>, <span class="st">"H"</span>, <span class="st">"H"</span>), <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"H"</span>, <span class="st">"T"</span>))</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">sum</span>(<span class="fu">as.numeric</span>(flips))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-</ol>
-</section>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="fu">data</span>(penguins)</span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="fu">ggplot</span>(penguins, </span>
+<span id="cb2-5"><a href="#cb2-5"></a>       <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, </span>
+<span id="cb2-6"><a href="#cb2-6"></a>           <span class="at">y =</span> body_mass_g, </span>
+<span id="cb2-7"><a href="#cb2-7"></a>           <span class="at">color =</span> species)) <span class="sc">+</span> </span>
+<span id="cb2-8"><a href="#cb2-8"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
 <section id="overview-of-today" class="slide level2">
 <h2>Overview of today</h2>
 <ul>
@@ -463,9 +473,9 @@ Peter Gao
 <div style="height:500px;overflow:auto;">
 <table>
 <colgroup>
-<col style="width: 37%">
-<col style="width: 25%">
-<col style="width: 37%">
+<col style="width: 8%">
+<col style="width: 6%">
+<col style="width: 85%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -636,9 +646,10 @@ Peter Gao
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>state_population <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://www2.census.gov/programs-surveys/popest/datasets/2010-2020/national/totals/nst-est2020.csv"</span>)</span>
 <span id="cb14-2"><a href="#cb14-2"></a></span>
 <span id="cb14-3"><a href="#cb14-3"></a><span class="co"># code to print the data</span></span>
-<span id="cb14-4"><a href="#cb14-4"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(state_population, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">row.names =</span> F) <span class="sc">%&gt;%</span></span>
-<span id="cb14-5"><a href="#cb14-5"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="st">"striped"</span>, <span class="at">full_width =</span> T) <span class="sc">%&gt;%</span> </span>
-<span id="cb14-6"><a href="#cb14-6"></a>  kableExtra<span class="sc">::</span><span class="fu">scroll_box</span>(<span class="at">height =</span> <span class="st">"560px"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="fu">kable</span>(state_population, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">row.names =</span> F) <span class="sc">%&gt;%</span></span>
+<span id="cb14-6"><a href="#cb14-6"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="st">"striped"</span>, <span class="at">full_width =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-7"><a href="#cb14-7"></a>  kableExtra<span class="sc">::</span><span class="fu">scroll_box</span>(<span class="at">height =</span> <span class="st">"560px"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="us-population-data-2010-2020-1" class="slide level2">
@@ -1883,7 +1894,7 @@ Peter Gao
 <span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">filter</span>(SUMLEV <span class="sc">==</span> <span class="st">"010"</span>)</span>
 <span id="cb15-3"><a href="#cb15-3"></a></span>
 <span id="cb15-4"><a href="#cb15-4"></a><span class="co"># code to print the data</span></span>
-<span id="cb15-5"><a href="#cb15-5"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(US_pop, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">row.names =</span> F) <span class="sc">%&gt;%</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="fu">kable</span>(US_pop, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">row.names =</span> F) <span class="sc">%&gt;%</span></span>
 <span id="cb15-6"><a href="#cb15-6"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="st">"striped"</span>, <span class="at">full_width =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-striped" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
@@ -1956,25 +1967,6 @@ Peter Gao
 <span id="cb16-6"><a href="#cb16-6"></a><span class="fu">head</span>(plot_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): object 'plot.dat' not found</code></pre>
-</div>
-</div>
-</section>
-<section id="national-population-data-3" class="slide level2">
-<h2>National population data</h2>
-<p>What went wrong? <code>US_pop[1, 8:19]</code> is a tibble, and we need a numeric.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>plot_dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb18-2"><a href="#cb18-2"></a>  <span class="at">Year =</span> <span class="dv">2010</span><span class="sc">:</span><span class="dv">2020</span>,</span>
-<span id="cb18-3"><a href="#cb18-3"></a>  <span class="at">Population =</span> <span class="fu">as.numeric</span>(US_pop[<span class="dv">1</span>, <span class="dv">8</span><span class="sc">:</span><span class="dv">19</span>])</span>
-<span id="cb18-4"><a href="#cb18-4"></a>)</span>
-<span id="cb18-5"><a href="#cb18-5"></a><span class="fu">head</span>(plot_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="cell-output cell-output-error">
-<pre><code>Error in data.frame(Year = 2010:2020, Population = as.numeric(US_pop[1, : arguments imply differing number of rows: 11, 12</code></pre>
-</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Year Population.POPESTIMATE2010 Population.POPESTIMATE2011
 1 2010                  309327143                  311583481
@@ -2021,33 +2013,109 @@ Peter Gao
 </div>
 </div>
 </section>
+<section id="national-population-data-3" class="slide level2">
+<h2>National population data</h2>
+<p>What went wrong? <code>US_pop[1, 8:19]</code> is a tibble, and we need a numeric.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>plot_dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb18-2"><a href="#cb18-2"></a>  <span class="at">Year =</span> <span class="dv">2010</span><span class="sc">:</span><span class="dv">2020</span>,</span>
+<span id="cb18-3"><a href="#cb18-3"></a>  <span class="at">Population =</span> <span class="fu">as.numeric</span>(US_pop[<span class="dv">1</span>, <span class="dv">8</span><span class="sc">:</span><span class="dv">19</span>])</span>
+<span id="cb18-4"><a href="#cb18-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-error">
+<pre><code>Error in data.frame(Year = 2010:2020, Population = as.numeric(US_pop[1, : arguments imply differing number of rows: 11, 12</code></pre>
+</div>
+</div>
+</section>
 <section id="national-population-data-4" class="slide level2">
 <h2>National population data</h2>
 <p>Now what? <code>US_pop</code> has an extra column <code>POPESTIMATE042020</code> which we need to remove.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># base R</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a>plot_dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb21-3"><a href="#cb21-3"></a>  <span class="at">Year =</span> <span class="dv">2010</span><span class="sc">:</span><span class="dv">2020</span>,</span>
-<span id="cb21-4"><a href="#cb21-4"></a>  <span class="at">Population =</span> <span class="fu">as.numeric</span>(US_pop[, <span class="fu">c</span>(<span class="dv">8</span><span class="sc">:</span><span class="dv">17</span>, <span class="dv">19</span>)])</span>
-<span id="cb21-5"><a href="#cb21-5"></a>)</span>
-<span id="cb21-6"><a href="#cb21-6"></a><span class="fu">head</span>(plot_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># base R</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>plot_dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb20-3"><a href="#cb20-3"></a>  <span class="at">Year =</span> <span class="dv">2010</span><span class="sc">:</span><span class="dv">2020</span>,</span>
+<span id="cb20-4"><a href="#cb20-4"></a>  <span class="at">Population =</span> <span class="fu">as.numeric</span>(US_pop[, <span class="fu">c</span>(<span class="dv">8</span><span class="sc">:</span><span class="dv">17</span>, <span class="dv">19</span>)])</span>
+<span id="cb20-5"><a href="#cb20-5"></a>)</span>
+<span id="cb20-6"><a href="#cb20-6"></a><span class="fu">head</span>(plot_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Year Population
+1 2010  309327143
+2 2011  311583481
+3 2012  313877662
+4 2013  316059947
+5 2014  318386329
+6 2015  320738994</code></pre>
+</div>
 </div>
 </section>
 <section id="national-population-data-5" class="slide level2">
 <h2>National population data</h2>
-<p>Now what? <code>US_pop</code> has an extra column <code>POPESTIMATE042020</code> which we need to remove.</p>
+<p>Finally, we can use the <code>plot</code> function to get our desired visualization:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">plot</span>(plot_dat<span class="sc">$</span>Year, plot_dat<span class="sc">$</span>Population)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
-</section>
+<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-29-1.png" width="960" class="r-stretch"></section>
 <section id="tidyverse-strategy" class="slide level2">
 <h2>Tidyverse strategy</h2>
 <p>Now let’s see how we might approach the same task in the tidyverse. Our strategy will be to “tidy” the data so we have one row for each observation and one column for each observation.</p>
-<p>First, let’s remove the unnecessary column using the <code>select()</code> function:</p>
+<p>First, let’s remove the unnecessary column using the <code>select()</code> function. Here the <code>kable</code> function is used to print out our table.</p>
 <div style="height:500px;overflow:auto;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>US_pop <span class="sc">|&gt;</span> </span>
-<span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">select</span>(<span class="sc">-</span>POPESTIMATE042020) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">select</span>(<span class="sc">-</span>POPESTIMATE042020)  <span class="sc">|&gt;</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a>  <span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">SUMLEV</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">REGION</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">DIVISION</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">STATE</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">NAME</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">CENSUS2010POP</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">ESTIMATESBASE2010</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">POPESTIMATE2010</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">POPESTIMATE2011</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">POPESTIMATE2012</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">POPESTIMATE2013</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">POPESTIMATE2014</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">POPESTIMATE2015</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">POPESTIMATE2016</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">POPESTIMATE2017</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">POPESTIMATE2018</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">POPESTIMATE2019</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">POPESTIMATE2020</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">010</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">00</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: right;">308745538</td>
+<td style="text-align: right;">308758105</td>
+<td style="text-align: right;">309327143</td>
+<td style="text-align: right;">311583481</td>
+<td style="text-align: right;">313877662</td>
+<td style="text-align: right;">316059947</td>
+<td style="text-align: right;">318386329</td>
+<td style="text-align: right;">320738994</td>
+<td style="text-align: right;">323071755</td>
+<td style="text-align: right;">325122128</td>
+<td style="text-align: right;">326838199</td>
+<td style="text-align: right;">328329953</td>
+<td style="text-align: right;">329484123</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
 </div>
 </div>
 </section>
@@ -2056,11 +2124,154 @@ Peter Gao
 <p>Now let’s use the <code>pivot_longer</code> function to combine the <code>POPESTIMATE</code> columns into two variables: <code>Year</code> and <code>Population</code>:</p>
 <div style="height:500px;overflow:auto;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>US_pop <span class="sc">|&gt;</span> </span>
+<div class="sourceCode cell-code" id="cb24" data-code-line-numbers="3-5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>US_pop <span class="sc">|&gt;</span> </span>
 <span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">select</span>(<span class="sc">-</span>POPESTIMATE042020) <span class="sc">|&gt;</span></span>
 <span id="cb24-3"><a href="#cb24-3"></a>  <span class="fu">pivot_longer</span>(<span class="fu">contains</span>(<span class="st">"POPESTIMATE"</span>), </span>
 <span id="cb24-4"><a href="#cb24-4"></a>               <span class="at">names_to =</span> <span class="st">"Year"</span>,</span>
-<span id="cb24-5"><a href="#cb24-5"></a>               <span class="at">values_to =</span> <span class="st">"Population"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-5"><a href="#cb24-5"></a>               <span class="at">values_to =</span> <span class="st">"Population"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb24-6"><a href="#cb24-6"></a>  <span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">SUMLEV</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">REGION</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">DIVISION</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">STATE</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">NAME</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">CENSUS2010POP</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">ESTIMATESBASE2010</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Year</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Population</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">010</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">00</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: right;">308745538</td>
+<td style="text-align: right;">308758105</td>
+<td style="text-align: left;">POPESTIMATE2010</td>
+<td style="text-align: right;">309327143</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">010</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">00</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: right;">308745538</td>
+<td style="text-align: right;">308758105</td>
+<td style="text-align: left;">POPESTIMATE2011</td>
+<td style="text-align: right;">311583481</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">010</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">00</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: right;">308745538</td>
+<td style="text-align: right;">308758105</td>
+<td style="text-align: left;">POPESTIMATE2012</td>
+<td style="text-align: right;">313877662</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">010</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">00</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: right;">308745538</td>
+<td style="text-align: right;">308758105</td>
+<td style="text-align: left;">POPESTIMATE2013</td>
+<td style="text-align: right;">316059947</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">010</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">00</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: right;">308745538</td>
+<td style="text-align: right;">308758105</td>
+<td style="text-align: left;">POPESTIMATE2014</td>
+<td style="text-align: right;">318386329</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">010</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">00</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: right;">308745538</td>
+<td style="text-align: right;">308758105</td>
+<td style="text-align: left;">POPESTIMATE2015</td>
+<td style="text-align: right;">320738994</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">010</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">00</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: right;">308745538</td>
+<td style="text-align: right;">308758105</td>
+<td style="text-align: left;">POPESTIMATE2016</td>
+<td style="text-align: right;">323071755</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">010</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">00</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: right;">308745538</td>
+<td style="text-align: right;">308758105</td>
+<td style="text-align: left;">POPESTIMATE2017</td>
+<td style="text-align: right;">325122128</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">010</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">00</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: right;">308745538</td>
+<td style="text-align: right;">308758105</td>
+<td style="text-align: left;">POPESTIMATE2018</td>
+<td style="text-align: right;">326838199</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">010</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">00</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: right;">308745538</td>
+<td style="text-align: right;">308758105</td>
+<td style="text-align: left;">POPESTIMATE2019</td>
+<td style="text-align: right;">328329953</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">010</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">00</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: right;">308745538</td>
+<td style="text-align: right;">308758105</td>
+<td style="text-align: left;">POPESTIMATE2020</td>
+<td style="text-align: right;">329484123</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
 </div>
 </div>
 <p>What do we need to do next?</p>
@@ -2070,12 +2281,155 @@ Peter Gao
 <p>Finally, we need to use the <code>str_sub()</code> function to shorten our <code>Year</code> variable before turning it into a numeric.</p>
 <div style="height:500px;overflow:auto;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>US_pop <span class="sc">|&gt;</span> </span>
+<div class="sourceCode cell-code" id="cb25" data-code-line-numbers="6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>US_pop <span class="sc">|&gt;</span> </span>
 <span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">select</span>(<span class="sc">-</span>POPESTIMATE042020) <span class="sc">|&gt;</span></span>
 <span id="cb25-3"><a href="#cb25-3"></a>  <span class="fu">pivot_longer</span>(<span class="fu">contains</span>(<span class="st">"POPESTIMATE"</span>), </span>
 <span id="cb25-4"><a href="#cb25-4"></a>               <span class="at">names_to =</span> <span class="st">"Year"</span>,</span>
 <span id="cb25-5"><a href="#cb25-5"></a>               <span class="at">values_to =</span> <span class="st">"Population"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb25-6"><a href="#cb25-6"></a>  <span class="fu">mutate</span>(<span class="at">Year =</span> <span class="fu">as.numeric</span>(stringr<span class="sc">::</span><span class="fu">str_sub</span>(Year, <span class="at">start =</span> <span class="dv">12</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-6"><a href="#cb25-6"></a>  <span class="fu">mutate</span>(<span class="at">Year =</span> <span class="fu">as.numeric</span>(stringr<span class="sc">::</span><span class="fu">str_sub</span>(Year, <span class="at">start =</span> <span class="dv">12</span>))) <span class="sc">|&gt;</span></span>
+<span id="cb25-7"><a href="#cb25-7"></a>  <span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">SUMLEV</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">REGION</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">DIVISION</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">STATE</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">NAME</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">CENSUS2010POP</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">ESTIMATESBASE2010</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Year</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Population</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">010</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">00</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: right;">308745538</td>
+<td style="text-align: right;">308758105</td>
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">309327143</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">010</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">00</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: right;">308745538</td>
+<td style="text-align: right;">308758105</td>
+<td style="text-align: right;">2011</td>
+<td style="text-align: right;">311583481</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">010</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">00</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: right;">308745538</td>
+<td style="text-align: right;">308758105</td>
+<td style="text-align: right;">2012</td>
+<td style="text-align: right;">313877662</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">010</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">00</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: right;">308745538</td>
+<td style="text-align: right;">308758105</td>
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">316059947</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">010</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">00</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: right;">308745538</td>
+<td style="text-align: right;">308758105</td>
+<td style="text-align: right;">2014</td>
+<td style="text-align: right;">318386329</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">010</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">00</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: right;">308745538</td>
+<td style="text-align: right;">308758105</td>
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">320738994</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">010</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">00</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: right;">308745538</td>
+<td style="text-align: right;">308758105</td>
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">323071755</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">010</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">00</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: right;">308745538</td>
+<td style="text-align: right;">308758105</td>
+<td style="text-align: right;">2017</td>
+<td style="text-align: right;">325122128</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">010</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">00</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: right;">308745538</td>
+<td style="text-align: right;">308758105</td>
+<td style="text-align: right;">2018</td>
+<td style="text-align: right;">326838199</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">010</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">00</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: right;">308745538</td>
+<td style="text-align: right;">308758105</td>
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">328329953</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">010</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">00</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: right;">308745538</td>
+<td style="text-align: right;">308758105</td>
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">329484123</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
 </div>
 </div>
 </section>
@@ -2083,7 +2437,7 @@ Peter Gao
 <h2>Tidyverse strategy</h2>
 <p>Now we can <code>|&gt;</code> it to <code>ggplot</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>US_pop <span class="sc">|&gt;</span> </span>
+<div class="sourceCode cell-code" id="cb26" data-code-line-numbers="7-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>US_pop <span class="sc">|&gt;</span> </span>
 <span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">select</span>(<span class="sc">-</span>POPESTIMATE042020) <span class="sc">|&gt;</span></span>
 <span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">pivot_longer</span>(<span class="fu">contains</span>(<span class="st">"POPESTIMATE"</span>), </span>
 <span id="cb26-4"><a href="#cb26-4"></a>               <span class="at">names_to =</span> <span class="st">"Year"</span>,</span>
@@ -2091,13 +2445,14 @@ Peter Gao
 <span id="cb26-6"><a href="#cb26-6"></a>  <span class="fu">mutate</span>(<span class="at">Year =</span> <span class="fu">as.numeric</span>(stringr<span class="sc">::</span><span class="fu">str_sub</span>(Year, <span class="at">start =</span> <span class="dv">12</span>))) <span class="sc">|&gt;</span></span>
 <span id="cb26-7"><a href="#cb26-7"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Population)) <span class="sc">+</span> </span>
 <span id="cb26-8"><a href="#cb26-8"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
-</section>
+<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-33-1.png" width="768" class="r-stretch"></section>
 <section id="tidyverse-strategy-more-complicated-plots" class="slide level2">
 <h2>Tidyverse strategy: More complicated plots</h2>
-<p>Now we can <code>|&gt;</code> it to <code>ggplot</code>:</p>
+<p>We can map the <code>color</code> aesthetic to the region:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>state_population <span class="sc">|&gt;</span> </span>
+<div class="sourceCode cell-code" id="cb27" data-code-line-numbers="2, 7-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>state_population <span class="sc">|&gt;</span> </span>
 <span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">filter</span>(SUMLEV <span class="sc">==</span> <span class="st">"020"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb27-3"><a href="#cb27-3"></a>  <span class="fu">select</span>(<span class="sc">-</span>POPESTIMATE042020) <span class="sc">|&gt;</span></span>
 <span id="cb27-4"><a href="#cb27-4"></a>  <span class="fu">pivot_longer</span>(<span class="fu">contains</span>(<span class="st">"POPESTIMATE"</span>), </span>
@@ -2106,8 +2461,9 @@ Peter Gao
 <span id="cb27-7"><a href="#cb27-7"></a>  <span class="fu">mutate</span>(<span class="at">Year =</span> <span class="fu">as.numeric</span>(stringr<span class="sc">::</span><span class="fu">str_sub</span>(Year, <span class="at">start =</span> <span class="dv">12</span>))) <span class="sc">|&gt;</span></span>
 <span id="cb27-8"><a href="#cb27-8"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Population, <span class="at">color =</span> NAME)) <span class="sc">+</span> </span>
 <span id="cb27-9"><a href="#cb27-9"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
-</section>
+<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-34-1.png" width="960" class="r-stretch"></section>
 <section id="pivot_longer-and-pivot_wider" class="slide level2">
 <h2><code>pivot_longer()</code> and <code>pivot_wider()</code></h2>
 <p>The <code>pivot_longer()</code> and <code>pivot_wider()</code> functions are useful for reshaping data: <code>pivot_longer()</code> “lengthens” datasets and <code>pivot_wider()</code> does the opposite.</p>
@@ -2116,6 +2472,7 @@ Peter Gao
 <section id="example-pivot_longer" class="slide level2">
 <h2>Example: <code>pivot_longer()</code></h2>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>relig_income</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 18 × 11
    religion `&lt;$10k` `$10-20k` `$20-30k` `$30-40k` `$40-50k` `$50-75k` `$75-100k`
@@ -2141,6 +2498,13 @@ Peter Gao
 # ℹ 3 more variables: `$100-150k` &lt;dbl&gt;, `&gt;150k` &lt;dbl&gt;,
 #   `Don't know/refused` &lt;dbl&gt;</code></pre>
 </div>
+</div>
+</section>
+<section id="example-pivot_longer-1" class="slide level2">
+<h2>Example: <code>pivot_longer()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>relig_income <span class="sc">%&gt;%</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a>  <span class="fu">pivot_longer</span>(<span class="sc">!</span>religion, <span class="at">names_to =</span> <span class="st">"income"</span>, <span class="at">values_to =</span> <span class="st">"count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 180 × 3
    religion income             count
@@ -2159,9 +2523,10 @@ Peter Gao
 </div>
 </div>
 </section>
-<section id="example-pivot_longer-1" class="slide level2">
+<section id="example-pivot_longer-2" class="slide level2">
 <h2>Example: <code>pivot_longer()</code></h2>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>billboard</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 317 × 79
    artist     track date.entered   wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8
@@ -2184,6 +2549,19 @@ Peter Gao
 #   wk31 &lt;dbl&gt;, wk32 &lt;dbl&gt;, wk33 &lt;dbl&gt;, wk34 &lt;dbl&gt;, wk35 &lt;dbl&gt;, wk36 &lt;dbl&gt;,
 #   wk37 &lt;dbl&gt;, wk38 &lt;dbl&gt;, wk39 &lt;dbl&gt;, wk40 &lt;dbl&gt;, wk41 &lt;dbl&gt;, wk42 &lt;dbl&gt;, …</code></pre>
 </div>
+</div>
+</section>
+<section id="example-pivot_longer-3" class="slide level2">
+<h2>Example: <code>pivot_longer()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>billboard <span class="sc">%&gt;%</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb34-3"><a href="#cb34-3"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"wk"</span>),</span>
+<span id="cb34-4"><a href="#cb34-4"></a>    <span class="at">names_to =</span> <span class="st">"week"</span>,</span>
+<span id="cb34-5"><a href="#cb34-5"></a>    <span class="at">names_prefix =</span> <span class="st">"wk"</span>,</span>
+<span id="cb34-6"><a href="#cb34-6"></a>    <span class="at">values_to =</span> <span class="st">"rank"</span>,</span>
+<span id="cb34-7"><a href="#cb34-7"></a>    <span class="at">values_drop_na =</span> <span class="cn">TRUE</span></span>
+<span id="cb34-8"><a href="#cb34-8"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5,307 × 5
    artist  track                   date.entered week   rank
@@ -2205,6 +2583,7 @@ Peter Gao
 <section id="example-pivot_wider" class="slide level2">
 <h2>Example: <code>pivot_wider()</code></h2>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>fish_encounters</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 114 × 3
    fish  station  seen
@@ -2221,6 +2600,13 @@ Peter Gao
 10 4842  MAE         1
 # ℹ 104 more rows</code></pre>
 </div>
+</div>
+</section>
+<section id="example-pivot_wider-1" class="slide level2">
+<h2>Example: <code>pivot_wider()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>fish_encounters <span class="sc">%&gt;%</span></span>
+<span id="cb38-2"><a href="#cb38-2"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> station, <span class="at">values_from =</span> seen)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 19 × 12
    fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW
@@ -2247,9 +2633,10 @@ Peter Gao
 </div>
 </div>
 </section>
-<section id="example-pivot_wider-1" class="slide level2">
+<section id="example-pivot_wider-2" class="slide level2">
 <h2>Example: <code>pivot_wider()</code></h2>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a>us_rent_income</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 104 × 5
    GEOID NAME       variable estimate   moe
@@ -2266,6 +2653,16 @@ Peter Gao
 10 06    California rent         1358     3
 # ℹ 94 more rows</code></pre>
 </div>
+</div>
+</section>
+<section id="example-pivot_wider-3" class="slide level2">
+<h2>Example: <code>pivot_wider()</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>us_rent_income <span class="sc">%&gt;%</span></span>
+<span id="cb42-2"><a href="#cb42-2"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb42-3"><a href="#cb42-3"></a>    <span class="at">names_from =</span> variable,</span>
+<span id="cb42-4"><a href="#cb42-4"></a>    <span class="at">values_from =</span> <span class="fu">c</span>(estimate, moe)</span>
+<span id="cb42-5"><a href="#cb42-5"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 52 × 6
    GEOID NAME                 estimate_income estimate_rent moe_income moe_rent
