@@ -15,7 +15,6 @@ Consider the following data:
 library(tidyverse)
 ChickWeight
 ```
-    
 
 1.  What does the following code do?
 
@@ -49,7 +48,6 @@ We can use SQL-like join statements in R!
 -   `outer_join(x, y, by = "key")`: keep all observations in `x` and `y`, match keys where possible, `NA` otherwise
 
 Usually, `left_join()` will suffice.
-
 
 ## Example: Band members
 
@@ -107,7 +105,6 @@ merge(band_members, band_instruments, by.x = "name", by.y = "name", all.x = T)
 merge(band_members, band_instruments, by.x = "name", by.y = "name", all.y = T)
 ```
 
-
 ## Example: California data
 
 ```{r, echo = T, eval = F}
@@ -129,7 +126,6 @@ income_2010 <- get_acs(geography = "county",
                        state = "CA", 
                        year = 2010)
 ```
-
 
 ```{r, echo = T, eval = T, comment = F, message = F, warning = F, include = F}
 library(tidycensus)
@@ -174,7 +170,23 @@ income_2010 <- income_2010 |>
 
 ## Example: California data
 
-```{r}
+```{r, echo = T, eval = F}
+income_combined <- income_2010 |>
+  left_join(income_2021, by = c("GEOID", "NAME"))
+ggplot(income_combined, aes(x = medincome_2010, y = medincome_2021)) +
+  geom_point() + 
+  geom_abline(slope = 1) + 
+  labs(title = "Median income in 2021 vs. 2010, CA Counties",
+       subtitle = "American Community Survey",
+       y = "2021 Median Income",
+       x = "2010 Median Income")
+  
+```
+
+
+## Example: California data
+
+```{r, echo = F, eval = T}
 income_combined <- income_2010 |>
   left_join(income_2021, by = c("GEOID", "NAME"))
 ggplot(income_combined, aes(x = medincome_2010, y = medincome_2021)) +
@@ -205,10 +217,10 @@ Exploratory data analysis is the process of learning about a dataset by visualiz
 
 By now we've seen most of the skills you need to carry out exploratory data analysis (EDA). As Wickham, Çetinkaya-Rundel, and Grolemund put it, the cycle of EDA looks something like this:
 
-1. Generate questions about your data.
+1.  Generate questions about your data.
 
-2. Explore your questions by visualizing, transforming, and modelling your data.
+2.  Explore your questions by visualizing, transforming, and modelling your data.
 
-3. Use your findings to refine your questions and generate new questions.
+3.  Use your findings to refine your questions and generate new questions.
 
 You can read their walkthrough of the EDA process [here](https://r4ds.hadley.nz/eda).

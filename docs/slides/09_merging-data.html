@@ -1221,8 +1221,22 @@ Peter Gao
 </section>
 <section id="example-california-data-2" class="slide level2">
 <h2>Example: California data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>income_combined <span class="ot">&lt;-</span> income_2010 <span class="sc">|&gt;</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a>  <span class="fu">left_join</span>(income_2021, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"GEOID"</span>, <span class="st">"NAME"</span>))</span>
+<span id="cb32-3"><a href="#cb32-3"></a><span class="fu">ggplot</span>(income_combined, <span class="fu">aes</span>(<span class="at">x =</span> medincome_2010, <span class="at">y =</span> medincome_2021)) <span class="sc">+</span></span>
+<span id="cb32-4"><a href="#cb32-4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb32-5"><a href="#cb32-5"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb32-6"><a href="#cb32-6"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Median income in 2021 vs. 2010, CA Counties"</span>,</span>
+<span id="cb32-7"><a href="#cb32-7"></a>       <span class="at">subtitle =</span> <span class="st">"American Community Survey"</span>,</span>
+<span id="cb32-8"><a href="#cb32-8"></a>       <span class="at">y =</span> <span class="st">"2021 Median Income"</span>,</span>
+<span id="cb32-9"><a href="#cb32-9"></a>       <span class="at">x =</span> <span class="st">"2010 Median Income"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="example-california-data-3" class="slide level2">
+<h2>Example: California data</h2>
 
-<img data-src="09_merging-data_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
+<img data-src="09_merging-data_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section>
 <section id="data-manipulation-cheatsheet" class="slide level2">
 <h2>Data manipulation cheatsheet</h2>
 <ul>

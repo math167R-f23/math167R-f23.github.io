@@ -473,6 +473,13 @@
     "href": "slides/09_merging-data.html#example-california-data-2",
     "title": "MATH167R: Merging data",
     "section": "Example: California data",
+    "text": "Example: California data\n\nincome_combined &lt;- income_2010 |&gt;\n  left_join(income_2021, by = c(\"GEOID\", \"NAME\"))\nggplot(income_combined, aes(x = medincome_2010, y = medincome_2021)) +\n  geom_point() + \n  geom_abline(slope = 1) + \n  labs(title = \"Median income in 2021 vs. 2010, CA Counties\",\n       subtitle = \"American Community Survey\",\n       y = \"2021 Median Income\",\n       x = \"2010 Median Income\")"
+  },
+  {
+    "objectID": "slides/09_merging-data.html#example-california-data-3",
+    "href": "slides/09_merging-data.html#example-california-data-3",
+    "title": "MATH167R: Merging data",
+    "section": "Example: California data",
     "text": "Example: California data"
   },
   {
