@@ -34,12 +34,15 @@ The target audience of your report is an educated reader who is uninformed about
 
 1. How many 1 bedroom listings from Santa Clara county are in this dataset?
 
-2. Create two histograms for the prices of 1 bedroom listings in Santa Clara county in 2005 and 2018. Compare and discuss.
+2. What is the median price for a 1 bedroom listing in Santa Clara county in 2018?
 
-3. Create a line plot with year on the x-axis and median price for a 1 bedroom apartment for Santa Clara county on the y-axis from 2000 to 2018. 
+3. Which country has the highest median price for a 1 bedroom listing in 2018?
 
-4. Create a single plot with year on the x-axis and median price for a 1 bedroom apartment on the y-axis, using a separate line for each city in Santa Clara county, for the years 2000 to 2018. 
+4. Create two histograms for the prices of 1 bedroom listings in Santa Clara county in 2005 and 2018. Compare and discuss.
 
+5. Create and interpret a line plot with year on the x-axis and median price for a 1 bedroom apartment for Santa Clara county on the y-axis from 2000 to 2018. 
+
+6. Create and interpret a single plot with year on the x-axis and median price for a 1 bedroom apartment on the y-axis, using a separate line for each city in Santa Clara county, for the years 2000 to 2018. 
 
 ## B. Open ended data visualization
 

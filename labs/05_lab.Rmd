@@ -21,7 +21,7 @@ For this lab, please work with one to two other students. List their names here.
 
 ## A. 
 
-1. Download the median age by state tables for 2010 and 2020 from the Canvas assignment [here](). You can use the `read_csv` function from the `readr` package to open these files and save them as `age_2010` and `age_2020`.
+1. Download the median age by state tables for 2010 and 2020 from the Canvas assignment [here](https://sjsu.instructure.com/courses/1571636/assignments/6775084). You can use the `read_csv` function from the `readr` package to open these files and save them as `age_2010` and `age_2020`.
  
 ```{r, eval = F, echo = T}
 

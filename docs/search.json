@@ -137,7 +137,7 @@
     "href": "projects/midterm_project.html#a.-analyzing-trends-in-san-jose-rental-prices",
     "title": "Midterm Project",
     "section": "A. Analyzing trends in San Jose rental prices",
-    "text": "A. Analyzing trends in San Jose rental prices\n\nHow many 1 bedroom listings from Santa Clara county are in this dataset?\nCreate two histograms for the prices of 1 bedroom listings in Santa Clara county in 2005 and 2018. Compare and discuss.\nCreate a line plot with year on the x-axis and median price for a 1 bedroom apartment for Santa Clara county on the y-axis from 2000 to 2018.\nCreate a single plot with year on the x-axis and median price for a 1 bedroom apartment on the y-axis, using a separate line for each city in Santa Clara county, for the years 2000 to 2018."
+    "text": "A. Analyzing trends in San Jose rental prices\n\nHow many 1 bedroom listings from Santa Clara county are in this dataset?\nWhat is the median price for a 1 bedroom listing in Santa Clara county in 2018?\nWhich country has the highest median price for a 1 bedroom listing in 2018?\nCreate two histograms for the prices of 1 bedroom listings in Santa Clara county in 2005 and 2018. Compare and discuss.\nCreate and interpret a line plot with year on the x-axis and median price for a 1 bedroom apartment for Santa Clara county on the y-axis from 2000 to 2018.\nCreate and interpret a single plot with year on the x-axis and median price for a 1 bedroom apartment on the y-axis, using a separate line for each city in Santa Clara county, for the years 2000 to 2018."
   },
   {
     "objectID": "projects/midterm_project.html#b.-open-ended-data-visualization",
@@ -1799,6 +1799,146 @@
     "text": "Lab 1\nIn Lab 1, we’ll make sure R and RStudio are properly installed and updated, practice assigning objects, and generate your first R Markdown report (in a properly organized directory)."
   },
   {
+    "objectID": "slides/11_spatial-data.html#overview-of-today",
+    "href": "slides/11_spatial-data.html#overview-of-today",
+    "title": "MATH167R: Spatial data analysis",
+    "section": "Overview of today",
+    "text": "Overview of today\n\nVisualizing spatial data\nMerging data\nProject work time"
+  },
+  {
+    "objectID": "slides/11_spatial-data.html#loading-project-data",
+    "href": "slides/11_spatial-data.html#loading-project-data",
+    "title": "MATH167R: Spatial data analysis",
+    "section": "Loading project data",
+    "text": "Loading project data\nToday we’ll practice working with spatial data. In R, most basic GIS (geographic information system) tasks can be carried out using the sf package, which you can install using install.packages(\"sf\"). Today we’ll also be using tidyverse packages.\n\nlibrary(sf)\nlibrary(knitr)\nlibrary(tidyverse)\nba_rent &lt;- readr::read_csv(\"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-07-05/rent.csv\")"
+  },
+  {
+    "objectID": "slides/11_spatial-data.html#craigslist-rental-data",
+    "href": "slides/11_spatial-data.html#craigslist-rental-data",
+    "title": "MATH167R: Spatial data analysis",
+    "section": "Craigslist rental data",
+    "text": "Craigslist rental data\nThis dataset provides Craigslist rental listings for the Bay Area, from 2000-2018. It was originally collected by Dr. Kate Pennington, whose methodology you can read about here.\n\nhead(ba_rent)\n\n# A tibble: 6 × 17\n  post_id      date  year nhood city  county price  beds baths  sqft room_in_apt\n  &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;\n1 pre2013_1… 2.01e7  2005 alam… alam… alame…  1250     2     2    NA           0\n2 pre2013_1… 2.01e7  2005 alam… alam… alame…  1295     2    NA    NA           0\n3 pre2013_1… 2.00e7  2004 alam… alam… alame…  1100     2    NA    NA           0\n4 pre2013_6… 2.01e7  2012 alam… alam… alame…  1425     1    NA   735           0\n5 pre2013_1… 2.00e7  2004 alam… alam… alame…   890     1    NA    NA           0\n6 pre2013_1… 2.01e7  2006 alam… alam… alame…   825     1    NA    NA           0\n# ℹ 6 more variables: address &lt;chr&gt;, lat &lt;dbl&gt;, lon &lt;dbl&gt;, title &lt;chr&gt;,\n#   descr &lt;chr&gt;, details &lt;chr&gt;"
+  },
+  {
+    "objectID": "slides/11_spatial-data.html#craigslist-rental-data-variables",
+    "href": "slides/11_spatial-data.html#craigslist-rental-data-variables",
+    "title": "MATH167R: Spatial data analysis",
+    "section": "Craigslist rental data variables",
+    "text": "Craigslist rental data variables\n\n\n\n\nvariable\nclass\ndescription\n\n\n\n\npost_id\ncharacter\nUnique ID\n\n\ndate\ndouble\ndate\n\n\nyear\ndouble\nyear\n\n\nnhood\ncharacter\nneighborhood\n\n\ncity\ncharacter\ncity\n\n\ncounty\ncharacter\ncounty\n\n\nprice\ndouble\nprice in USD\n\n\nbeds\ndouble\nn of beds\n\n\nbaths\ndouble\nn of baths\n\n\nsqft\ndouble\nsquare feet of rental\n\n\nroom_in_apt\ndouble\nroom in apartment\n\n\naddress\ncharacter\naddress\n\n\nlat\ndouble\nlatitude\n\n\nlon\ndouble\nlongitude\n\n\ntitle\ncharacter\ntitle of listing\n\n\ndescr\ncharacter\ndescription\n\n\ndetails\ncharacter\nadditional details"
+  },
+  {
+    "objectID": "slides/11_spatial-data.html#craigslist-rental-data-1",
+    "href": "slides/11_spatial-data.html#craigslist-rental-data-1",
+    "title": "MATH167R: Spatial data analysis",
+    "section": "Craigslist rental data",
+    "text": "Craigslist rental data"
+  },
+  {
+    "objectID": "slides/11_spatial-data.html#basic-summaries",
+    "href": "slides/11_spatial-data.html#basic-summaries",
+    "title": "MATH167R: Spatial data analysis",
+    "section": "Basic summaries",
+    "text": "Basic summaries\nReview: What does the following code produce?\n\nba_rent |&gt;\n  filter(beds == 2, year == 2010) |&gt;\n  group_by(city) |&gt;\n  summarize(mean_price = mean(price, na.rm = T)) |&gt;\n  arrange(mean_price) |&gt;\n  kable()\n\n\n\n\n\n\n\ncity\nmean_price\n\n\n\n\nsan leandro\n700.0000\n\n\nrichmond\n910.0000\n\n\nfairfield\n922.7273\n\n\nsf bay area\n925.0000\n\n\ngilroy\n1000.0000\n\n\nrohnert park\n1061.1111\n\n\nconcord\n1098.1818\n\n\nvallejo\n1141.4286\n\n\nsanta rosa\n1161.0000\n\n\nhayward\n1178.8571\n\n\nel sobrante\n1197.8571\n\n\nalameda\n1250.0000\n\n\npittsburg\n1259.6667\n\n\nsonoma\n1330.0000\n\n\ncambrian\n1350.0000\n\n\nfairfax\n1395.0000\n\n\ndublin\n1431.3333\n\n\nmorgan hill\n1439.0000\n\n\nlivermore\n1447.0000\n\n\nwoodacre\n1450.0000\n\n\nlos gatos\n1472.5000\n\n\npetaluma\n1491.1429\n\n\nunion city\n1498.6500\n\n\noakland\n1512.3529\n\n\nmilpitas\n1528.0000\n\n\nwalnut creek\n1548.0000\n\n\nnapa county\n1565.0000\n\n\ncampbell\n1570.8750\n\n\nredwood city\n1575.5000\n\n\nel cerrito\n1581.2500\n\n\nnovato\n1615.5000\n\n\nbelmont\n1622.5000\n\n\npacifica\n1630.7500\n\n\nsunnyvale\n1657.0588\n\n\nsan jose\n1669.1818\n\n\nsan ramon\n1683.3333\n\n\nmountain view\n1726.3000\n\n\nsanta clara\n1780.6190\n\n\ncorte madera\n1799.0000\n\n\nberkeley\n1842.0417\n\n\nlarkspur\n1847.5000\n\n\nsan mateo\n1909.3333\n\n\nlos altos\n1923.7500\n\n\ncupertino\n1936.8889\n\n\nfoster city\n2017.2500\n\n\nsan bruno\n2047.5000\n\n\nsanta cruz\n2100.0000\n\n\npalo alto\n2110.0000\n\n\nmill valley\n2124.0000\n\n\nsan rafael\n2152.8750\n\n\norinda\n2175.0000\n\n\nsausalito\n2236.0000\n\n\ndaly city\n2252.5000\n\n\nmenlo park\n2327.5000\n\n\nemeryville\n2331.6667\n\n\nwoodside\n2400.0000\n\n\nburlingame\n2575.0000\n\n\nsan anselmo\n2750.0000\n\n\nsan francisco\n2800.2436\n\n\nbelvedere\n2806.6667\n\n\nhealdsburg\n4500.0000"
+  },
+  {
+    "objectID": "slides/11_spatial-data.html#simple-features",
+    "href": "slides/11_spatial-data.html#simple-features",
+    "title": "MATH167R: Spatial data analysis",
+    "section": "Simple features",
+    "text": "Simple features\nSimple Features is a set of standards for storing and accessing geographic data.\n\nGeographic data typically consist of geometries such as points, lines, and polygons\nIn R, the most popular package for working with simple features data is sf.\nWorking with spatial data can be extremely memory intensive, so care is needed."
+  },
+  {
+    "objectID": "slides/11_spatial-data.html#working-with-point-data",
+    "href": "slides/11_spatial-data.html#working-with-point-data",
+    "title": "MATH167R: Spatial data analysis",
+    "section": "Working with point data",
+    "text": "Working with point data\nOur ba_rent data frame already has latitude and longitude, but many points are missing:\n\nsummary(ba_rent$lat)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's \n  33.57   37.40   37.76   37.67   37.80   40.43  193145 \n\nsummary(ba_rent$lon)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's \n -123.2  -122.4  -122.3  -122.2  -122.0   -74.2  196484 \n\n\n\nCompare the number of NA values with the total rows:\n\n\n\nnrow(ba_rent)\n\n[1] 200796"
+  },
+  {
+    "objectID": "slides/11_spatial-data.html#working-with-point-data-1",
+    "href": "slides/11_spatial-data.html#working-with-point-data-1",
+    "title": "MATH167R: Spatial data analysis",
+    "section": "Working with point data",
+    "text": "Working with point data\nLet’s just work with the entries for which we have data from the year 2018.\n\nba_rent_geo &lt;- ba_rent |&gt;\n  filter(!is.na(lat) & !is.na(lon))\nnrow(ba_rent_geo)\n\n[1] 4311\n\n\nWe have extremely limited data in this time frame."
+  },
+  {
+    "objectID": "slides/11_spatial-data.html#converting-data-to-sf-object",
+    "href": "slides/11_spatial-data.html#converting-data-to-sf-object",
+    "title": "MATH167R: Spatial data analysis",
+    "section": "Converting data to sf object",
+    "text": "Converting data to sf object\nWhen each row in our data frame refers to a point with longitude and latitude, we can use the st_as_sf function to convert our data frame to an sf object.\n\nba_rent_geo &lt;- ba_rent_geo |&gt;\n  st_as_sf(coords = c(\"lon\", \"lat\"), crs = st_crs(4326))\nba_rent_geo\n\nSimple feature collection with 4311 features and 15 fields\nGeometry type: POINT\nDimension:     XY\nBounding box:  xmin: -123.1965 ymin: 33.97564 xmax: -74.19802 ymax: 40.43494\nGeodetic CRS:  WGS 84\n# A tibble: 4,311 × 16\n   post_id     date  year nhood city  county price  beds baths  sqft room_in_apt\n * &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;\n 1 43283531… 2.01e7  2014 alam… alam… alame…  1450     1    NA   640           0\n 2 48659165… 2.02e7  2015 alam… alam… alame…  2100     1     1    NA           0\n 3 48172274… 2.01e7  2014 alam… alam… alame…  1939     2     1   864           0\n 4 35443866… 2.01e7  2013 alam… alam… alame…  2650     3    NA  2400           0\n 5 46673146… 2.01e7  2014 alam… alam… alame…   600     0    NA    NA           0\n 6 47108881… 2.01e7  2014 alam… alam… alame…  2250     2     1  1080           0\n 7 59557241… 2.02e7  2017 alam… alam… alame…  3900     3     2    NA           0\n 8 59619891… 2.02e7  2017 alam… alam… alame…  3995     3     2  1787           0\n 9 42680700… 2.01e7  2014 alam… alam… alame…  7200     5    NA  3400           0\n10 49351757… 2.02e7  2015 alam… alam… alame…  2536     2     2  1225           0\n# ℹ 4,301 more rows\n# ℹ 5 more variables: address &lt;chr&gt;, title &lt;chr&gt;, descr &lt;chr&gt;, details &lt;chr&gt;,\n#   geometry &lt;POINT [°]&gt;"
+  },
+  {
+    "objectID": "slides/11_spatial-data.html#visualizing-point-data",
+    "href": "slides/11_spatial-data.html#visualizing-point-data",
+    "title": "MATH167R: Spatial data analysis",
+    "section": "Visualizing point data",
+    "text": "Visualizing point data\nWe can easily visualize this data now using the geom_sf() function, which automatically handles sf objects.\n\nggplot(ba_rent_geo) + geom_sf()"
+  },
+  {
+    "objectID": "slides/11_spatial-data.html#visualizing-point-data-1",
+    "href": "slides/11_spatial-data.html#visualizing-point-data-1",
+    "title": "MATH167R: Spatial data analysis",
+    "section": "Visualizing point data",
+    "text": "Visualizing point data\nWe can add a basemap using the annotation_map_tile function from the ggspatial package.\n\nlibrary(ggspatial)\nggplot(ba_rent_geo) + \n  annotation_map_tile(zoomin = -1) +\n  geom_sf()"
+  },
+  {
+    "objectID": "slides/11_spatial-data.html#removing-extra-point",
+    "href": "slides/11_spatial-data.html#removing-extra-point",
+    "title": "MATH167R: Spatial data analysis",
+    "section": "Removing extra point",
+    "text": "Removing extra point\nWe can remove points outside a certain box using the st_crop function:\n\nbox = c(xmin = -130, ymin = 36.5, xmax = -120, ymax = 40)\nba_rent_geo &lt;- ba_rent_geo |&gt;\n  st_crop(box)\nggplot(ba_rent_geo) + \n  annotation_map_tile(zoomin = -1) +\n  geom_sf()"
+  },
+  {
+    "objectID": "slides/11_spatial-data.html#theme-and-customization",
+    "href": "slides/11_spatial-data.html#theme-and-customization",
+    "title": "MATH167R: Spatial data analysis",
+    "section": "Theme and customization",
+    "text": "Theme and customization\nWe can then adjust the color to show price and also change the color scale:\n\nggplot(ba_rent_geo, aes(color = price)) + \n  annotation_map_tile(zoomin = -1) +\n  geom_sf(alpha = 0.75, size = 0.75) +\n  scale_color_viridis_c()"
+  },
+  {
+    "objectID": "slides/11_spatial-data.html#spatial-polygon-data",
+    "href": "slides/11_spatial-data.html#spatial-polygon-data",
+    "title": "MATH167R: Spatial data analysis",
+    "section": "Spatial polygon data",
+    "text": "Spatial polygon data\nAlthough we do not have complete coordinate data, we have good information about county:\n\nsum(is.na(ba_rent$county))\n\n[1] 1394\n\nunique(ba_rent$county)\n\n [1] \"alameda\"       \"san francisco\" \"contra costa\"  \"santa clara\"  \n [5] \"napa\"          \"san mateo\"     \"santa cruz\"    \"sonoma\"       \n [9] \"marin\"         \"solano\"        NA"
+  },
+  {
+    "objectID": "slides/11_spatial-data.html#spatial-polygon-data-1",
+    "href": "slides/11_spatial-data.html#spatial-polygon-data-1",
+    "title": "MATH167R: Spatial data analysis",
+    "section": "Spatial polygon data",
+    "text": "Spatial polygon data\nWe can create a county level summary table for the median rent by county for 2015:\n\ncounty_rent_15 &lt;- ba_rent %&gt;%\n  filter(beds == 1, year == 2015, !is.na(county)) |&gt;\n  group_by(county) |&gt;\n  summarize(median_rent = median(price, na.rm = T))\ncounty_rent_15\n\n# A tibble: 10 × 2\n   county        median_rent\n   &lt;chr&gt;               &lt;dbl&gt;\n 1 alameda             1950 \n 2 contra costa        1475 \n 3 marin               2188 \n 4 napa                1642.\n 5 san francisco       3227 \n 6 san mateo           2465 \n 7 santa clara         2228 \n 8 santa cruz          1650 \n 9 solano              1292 \n10 sonoma              1495"
+  },
+  {
+    "objectID": "slides/11_spatial-data.html#spatial-polygon-data-2",
+    "href": "slides/11_spatial-data.html#spatial-polygon-data-2",
+    "title": "MATH167R: Spatial data analysis",
+    "section": "Spatial polygon data",
+    "text": "Spatial polygon data\nWe will then connect this summary table to an sf object. We can load US county data using the tigris package.\n\nlibrary(tigris)\nca_counties &lt;- counties(\"California\", cb = TRUE)\n\n\n# convert county names to lower case\nca_counties &lt;- ca_counties |&gt;\n  mutate(county = stringr::str_to_lower(NAME))\nca_counties\n\nSimple feature collection with 58 features and 13 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -124.4096 ymin: 32.53444 xmax: -114.1312 ymax: 42.00948\nGeodetic CRS:  NAD83\nFirst 10 features:\n    STATEFP COUNTYFP COUNTYNS       AFFGEOID GEOID        NAME\n48       06      059 00277294 0500000US06059 06059      Orange\n51       06      111 00277320 0500000US06111 06111     Ventura\n95       06      063 00277296 0500000US06063 06063      Plumas\n182      06      015 01682074 0500000US06015 06015   Del Norte\n246      06      023 01681908 0500000US06023 06023    Humboldt\n254      06      043 00277286 0500000US06043 06043    Mariposa\n327      06      037 00277283 0500000US06037 06037 Los Angeles\n340      06      065 00277297 0500000US06065 06065   Riverside\n341      06      101 00277315 0500000US06101 06101      Sutter\n342      06      113 00277321 0500000US06113 06113        Yolo\n              NAMELSAD STUSPS STATE_NAME LSAD       ALAND     AWATER\n48       Orange County     CA California   06  2053476505  406279630\n51      Ventura County     CA California   06  4767622161  947345735\n95       Plumas County     CA California   06  6612400772  156387638\n182   Del Norte County     CA California   06  2606118035  578742633\n246    Humboldt County     CA California   06  9241565229 1253726036\n254    Mariposa County     CA California   06  3752476985   36220865\n327 Los Angeles County     CA California   06 10513508620 1787475204\n340   Riverside County     CA California   06 18671924669  242973907\n341      Sutter County     CA California   06  1560975503   14811541\n342        Yolo County     CA California   06  2628145869   22877242\n                          geometry      county\n48  MULTIPOLYGON (((-118.1144 3...      orange\n51  MULTIPOLYGON (((-119.4412 3...     ventura\n95  MULTIPOLYGON (((-121.497 40...      plumas\n182 MULTIPOLYGON (((-124.2175 4...   del norte\n246 MULTIPOLYGON (((-124.4086 4...    humboldt\n254 MULTIPOLYGON (((-120.3944 3...    mariposa\n327 MULTIPOLYGON (((-118.6044 3... los angeles\n340 MULTIPOLYGON (((-117.6767 3...   riverside\n341 MULTIPOLYGON (((-121.9483 3...      sutter\n342 MULTIPOLYGON (((-122.4215 3...        yolo"
+  },
+  {
+    "objectID": "slides/11_spatial-data.html#joining-spatial-data",
+    "href": "slides/11_spatial-data.html#joining-spatial-data",
+    "title": "MATH167R: Spatial data analysis",
+    "section": "Joining spatial data",
+    "text": "Joining spatial data\nIf we want to keep only the counties for which we have data, we must use a right_join starting with ca_counties:\n\nca_counties &lt;- ca_counties |&gt;\n  right_join(county_rent_15, by = \"county\")\nca_counties\n\nSimple feature collection with 10 features and 14 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -123.5335 ymin: 36.85065 xmax: -121.2082 ymax: 38.86424\nGeodetic CRS:  NAD83\n   STATEFP COUNTYFP COUNTYNS       AFFGEOID GEOID          NAME\n1       06      081 00277305 0500000US06081 06081     San Mateo\n2       06      041 00277285 0500000US06041 06041         Marin\n3       06      095 00277312 0500000US06095 06095        Solano\n4       06      001 01675839 0500000US06001 06001       Alameda\n5       06      055 00277292 0500000US06055 06055          Napa\n6       06      013 01675903 0500000US06013 06013  Contra Costa\n7       06      097 01657246 0500000US06097 06097        Sonoma\n8       06      085 00277307 0500000US06085 06085   Santa Clara\n9       06      087 00277308 0500000US06087 06087    Santa Cruz\n10      06      075 00277302 0500000US06075 06075 San Francisco\n               NAMELSAD STUSPS STATE_NAME LSAD      ALAND    AWATER\n1      San Mateo County     CA California   06 1161922042 757123906\n2          Marin County     CA California   06 1347889807 797077678\n3         Solano County     CA California   06 2128527683 218619356\n4        Alameda County     CA California   06 1910017353 216902808\n5           Napa County     CA California   06 1938032964 104262608\n6   Contra Costa County     CA California   06 1856838508 225278783\n7         Sonoma County     CA California   06 4080864785 498081645\n8    Santa Clara County     CA California   06 3343892720  33595850\n9     Santa Cruz County     CA California   06 1152823584 419714230\n10 San Francisco County     CA California   06  121507089 479146790\n          county median_rent                       geometry\n1      san mateo      2465.0 MULTIPOLYGON (((-122.5209 3...\n2          marin      2188.0 MULTIPOLYGON (((-122.4463 3...\n3         solano      1292.0 MULTIPOLYGON (((-122.4035 3...\n4        alameda      1950.0 MULTIPOLYGON (((-122.3423 3...\n5           napa      1642.5 MULTIPOLYGON (((-122.6464 3...\n6   contra costa      1475.0 MULTIPOLYGON (((-122.4298 3...\n7         sonoma      1495.0 MULTIPOLYGON (((-123.5331 3...\n8    santa clara      2228.0 MULTIPOLYGON (((-122.2027 3...\n9     santa cruz      1650.0 MULTIPOLYGON (((-122.3177 3...\n10 san francisco      3227.0 MULTIPOLYGON (((-122.3323 3..."
+  },
+  {
+    "objectID": "slides/11_spatial-data.html#visualizing-polygon-data",
+    "href": "slides/11_spatial-data.html#visualizing-polygon-data",
+    "title": "MATH167R: Spatial data analysis",
+    "section": "Visualizing polygon data",
+    "text": "Visualizing polygon data\nWe can now use the geom_sf() function to visualize our data.\n\nggplot(ca_counties, aes(fill = median_rent)) +\n  geom_sf()"
+  },
+  {
+    "objectID": "slides/11_spatial-data.html#themes-and-customization",
+    "href": "slides/11_spatial-data.html#themes-and-customization",
+    "title": "MATH167R: Spatial data analysis",
+    "section": "Themes and customization",
+    "text": "Themes and customization\n\nggplot(ca_counties, aes(fill = median_rent)) +\n  geom_sf() +\n  scale_fill_viridis_c(name = \"Median Rent\") +\n  ggtitle(\"Median 1BR rent by county, Bay Area, 2015\",\n           subtitle = \"based on Craigslist rental listings\") +\n  theme_minimal()"
+  },
+  {
     "objectID": "slides/02_fundamentals.html#warm-up",
     "href": "slides/02_fundamentals.html#warm-up",
     "title": "MATH167R: Overview",
@@ -1958,6 +2098,83 @@
     "title": "MATH167R: Overview",
     "section": "Quotes and Strings",
     "text": "Quotes and Strings\nUse \", not ', for quoting text. The only exception is when the text already contains double quotes and no single quotes."
+  },
+  {
+    "objectID": "slides/10_data-management.html#overview-of-today",
+    "href": "slides/10_data-management.html#overview-of-today",
+    "title": "MATH167R: Data Management",
+    "section": "Overview of today",
+    "text": "Overview of today\n\nWorkflow for downloading and saving data\nOrganizing output and saving images\nExploratory data analysis\nGroup lab time"
+  },
+  {
+    "objectID": "slides/10_data-management.html#downloading-data",
+    "href": "slides/10_data-management.html#downloading-data",
+    "title": "MATH167R: Data Management",
+    "section": "Downloading data",
+    "text": "Downloading data\nUp until now, we’ve mostly been working with small datasets and I have given you code to download this data from the internet:\n\neggproduction  &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-04-11/egg-production.csv')\n\nIf you put this line of code in a chunk in your .Rmd file, each time you knit/render, you will have to download this data.\nSo, if you do not have access to the internet, you will be unable to knit to html."
+  },
+  {
+    "objectID": "slides/10_data-management.html#saving-data-locally",
+    "href": "slides/10_data-management.html#saving-data-locally",
+    "title": "MATH167R: Data Management",
+    "section": "Saving data locally",
+    "text": "Saving data locally\nYou can instead download the data to a local folder or use the following code to save it locally:\n\nreadr::write_csv(eggproduction, \"~/Documents/MATH167R/data/egg-production.csv\")\n\nYou can subsequently load it locally (no internet needed):\n\neggproduction &lt;- readr::read_csv(\"~/Documents/MATH167R/data/egg-production.csv\")"
+  },
+  {
+    "objectID": "slides/10_data-management.html#saving-data-locally-1",
+    "href": "slides/10_data-management.html#saving-data-locally-1",
+    "title": "MATH167R: Data Management",
+    "section": "Saving data locally",
+    "text": "Saving data locally\nAny R object can be saved as a .rds file (including plots or output).\n\nlibrary(tidyverse)\nstate_population &lt;- readr::read_csv(\"https://www2.census.gov/programs-surveys/popest/datasets/2010-2020/national/totals/nst-est2020.csv\")\nUS_pop_tidy &lt;- state_population |&gt;\n  filter(SUMLEV == \"010\") |&gt; \n  select(-POPESTIMATE042020) |&gt;\n  pivot_longer(contains(\"POPESTIMATE\"), \n               names_to = \"Year\",\n               values_to = \"Population\") |&gt;\n  mutate(Year = as.numeric(stringr::str_sub(Year, start = 12)))\nsaveRDS(US_pop_tidy, \"~/Documents/MATH167R/data/US_pop_tidy.rds\")\n\nYou can subsequently load it locally using readRDS() (no internet needed):\n\nUS_pop_tidy &lt;- readRDS(\"~/Documents/MATH167R/data/US_pop_tidy.rds\")"
+  },
+  {
+    "objectID": "slides/10_data-management.html#saving-plots-locally",
+    "href": "slides/10_data-management.html#saving-plots-locally",
+    "title": "MATH167R: Data Management",
+    "section": "Saving plots locally",
+    "text": "Saving plots locally\n\nUS_pop_plot &lt;- US_pop_tidy |&gt;\n  ggplot(aes(x = Year, y = Population)) + \n  geom_line()\nsaveRDS(US_pop_plot, \"~/Documents/MATH167R/data/US_pop_plot.rds\")\n\n\nUS_pop_plot &lt;- readRDS(\"~/Documents/MATH167R/data/US_pop_tidy.rds\")\nprint(US_pop_plot)\n\n# A tibble: 11 × 9\n   SUMLEV REGION DIVISION STATE NAME       CENSUS2010POP ESTIMATESBASE2010  Year\n   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;             &lt;dbl&gt; &lt;dbl&gt;\n 1 010    0      0        00    United St…     308745538         308758105  2010\n 2 010    0      0        00    United St…     308745538         308758105  2011\n 3 010    0      0        00    United St…     308745538         308758105  2012\n 4 010    0      0        00    United St…     308745538         308758105  2013\n 5 010    0      0        00    United St…     308745538         308758105  2014\n 6 010    0      0        00    United St…     308745538         308758105  2015\n 7 010    0      0        00    United St…     308745538         308758105  2016\n 8 010    0      0        00    United St…     308745538         308758105  2017\n 9 010    0      0        00    United St…     308745538         308758105  2018\n10 010    0      0        00    United St…     308745538         308758105  2019\n11 010    0      0        00    United St…     308745538         308758105  2020\n# ℹ 1 more variable: Population &lt;dbl&gt;"
+  },
+  {
+    "objectID": "slides/10_data-management.html#saving-multiple-objects",
+    "href": "slides/10_data-management.html#saving-multiple-objects",
+    "title": "MATH167R: Data Management",
+    "section": "Saving multiple objects",
+    "text": "Saving multiple objects\nUsing the save() function, you can save multiple objects as a .RData file:\n\nsave(US_pop_plot, US_pop_tidy, file = \"~/Documents/MATH167R/data/US_pop_combined.RData\")\n\nLoad these objects using a load() call:\n\nload(\"~/Documents/MATH167R/data/US_pop_combined.RData\")\nprint(US_pop_plot)\n\n# A tibble: 11 × 9\n   SUMLEV REGION DIVISION STATE NAME       CENSUS2010POP ESTIMATESBASE2010  Year\n   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;             &lt;dbl&gt; &lt;dbl&gt;\n 1 010    0      0        00    United St…     308745538         308758105  2010\n 2 010    0      0        00    United St…     308745538         308758105  2011\n 3 010    0      0        00    United St…     308745538         308758105  2012\n 4 010    0      0        00    United St…     308745538         308758105  2013\n 5 010    0      0        00    United St…     308745538         308758105  2014\n 6 010    0      0        00    United St…     308745538         308758105  2015\n 7 010    0      0        00    United St…     308745538         308758105  2016\n 8 010    0      0        00    United St…     308745538         308758105  2017\n 9 010    0      0        00    United St…     308745538         308758105  2018\n10 010    0      0        00    United St…     308745538         308758105  2019\n11 010    0      0        00    United St…     308745538         308758105  2020\n# ℹ 1 more variable: Population &lt;dbl&gt;"
+  },
+  {
+    "objectID": "slides/10_data-management.html#saving-plots-locally-1",
+    "href": "slides/10_data-management.html#saving-plots-locally-1",
+    "title": "MATH167R: Data Management",
+    "section": "Saving plots locally",
+    "text": "Saving plots locally\nWe can save plots to .pdf files using a call to pdf() before the plot code and then dev.off() afterwards.\n\npdf(file = \"~/Documents/MATH167R/results/US_pop_plot.pdf\",\n    width = 8, height = 6) # dimensions in inches\nUS_pop_plot &lt;- US_pop_tidy |&gt;\n  ggplot(aes(x = Year, y = Population)) + \n  geom_line() + \n  ggtitle(\"US Population, 2010-2020\")\nprint(US_pop_plot)\ndev.off()\n\nquartz_off_screen \n                2"
+  },
+  {
+    "objectID": "slides/10_data-management.html#generating-clean-tables-using-kable",
+    "href": "slides/10_data-management.html#generating-clean-tables-using-kable",
+    "title": "MATH167R: Data Management",
+    "section": "Generating clean tables using kable()",
+    "text": "Generating clean tables using kable()\nThe kable() function from the knitr package can be sued to generate clean tables for publication. The kableExtra package contains many extra functions for formatting tables.\n\nstate_population &lt;- readr::read_csv(\"https://www2.census.gov/programs-surveys/popest/datasets/2010-2020/national/totals/nst-est2020.csv\")\n\n# code to print the data\nlibrary(knitr)\nkable(state_population, digits = 3, row.names = F) |&gt;\n  kableExtra::kable_styling(\"striped\", full_width = T) |&gt; \n  kableExtra::scroll_box(height = \"560px\")"
+  },
+  {
+    "objectID": "slides/10_data-management.html#caching-code-chunks",
+    "href": "slides/10_data-management.html#caching-code-chunks",
+    "title": "MATH167R: Data Management",
+    "section": "Caching code chunks",
+    "text": "Caching code chunks\nYou can name your chunks and use the code chunk cache = T to save the output of a code chunk so you don’t have to wait for the code to run every time you knit.\n\n::: {.cell hash='10_data-management_cache/revealjs/pop_plot_7e7d4779152bde63af0efbee008140e8'}\n\n```{.r .cell-code}\nUS_pop_plot &lt;- US_pop_tidy |&gt;\n  ggplot(aes(x = Year, y = Population)) + \n  geom_line() + \n  ggtitle(\"US Population, 2010-2020\")\nprint(US_pop_plot)\n\n\n\n:::\n```"
+  },
+  {
+    "objectID": "slides/10_data-management.html#caching-code-chunks-1",
+    "href": "slides/10_data-management.html#caching-code-chunks-1",
+    "title": "MATH167R: Data Management",
+    "section": "Caching code chunks",
+    "text": "Caching code chunks\nHowever, that means plots/output will not automatically update if you change the “upstream” data processing pipeline. You must change the cached chunk or delete the cache to rerun the code.\nBefore you turn in your assignments, you should clear all the cached files and knit from scratch to make sure no errors have been introduced."
+  },
+  {
+    "objectID": "slides/10_data-management.html#group-lab-time",
+    "href": "slides/10_data-management.html#group-lab-time",
+    "title": "MATH167R: Data Management",
+    "section": "Group Lab Time",
+    "text": "Group Lab Time\nThe rest of class is devoted to working in groups on your lab assignment."
   },
   {
     "objectID": "slides/08_advanced-visualization.html#warm-up",
