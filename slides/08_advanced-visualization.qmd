@@ -56,7 +56,7 @@ head(eggproduction)
 
 ::: {style="height:500px;overflow:auto;"}
 | variable       | class     | description                                                                                                                                             |
-|:---------------|:----------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|:----------|:----------|:--------------------------------------------------|
 | observed_month | double    | Month in which report observations are collected,Dates are recorded in ISO 8601 format YYYY-MM-DD                                                       |
 | prod_type      | character | type of egg product: hatching, table eggs                                                                                                               |
 | prod_process   | character | type of production process and housing: cage-free (organic), cage-free (non-organic), all. The value 'all' includes cage-free and conventional housing. |
@@ -256,8 +256,8 @@ state_population <- readr::read_csv("https://www2.census.gov/programs-surveys/po
 
 # code to print the data
 library(knitr)
-kable(state_population, digits = 3, row.names = F) %>%
-  kableExtra::kable_styling("striped", full_width = T) %>% 
+kable(state_population, digits = 3, row.names = F) |>
+  kableExtra::kable_styling("striped", full_width = T) |> 
   kableExtra::scroll_box(height = "560px")
 ```
 
@@ -268,8 +268,8 @@ state_population <- readr::read_csv("https://www2.census.gov/programs-surveys/po
 
 # code to print the data
 library(knitr)
-kable(state_population, digits = 3, row.names = F) %>%
-  kableExtra::kable_styling("striped", full_width = T) %>% 
+kable(state_population, digits = 3, row.names = F) |>
+  kableExtra::kable_styling("striped", full_width = T) |> 
   kableExtra::scroll_box(height = "560px")
 ```
 
@@ -282,7 +282,7 @@ US_pop <- state_population |>
   filter(SUMLEV == "010")
 
 # code to print the data
-kable(US_pop, digits = 3, row.names = F) %>%
+kable(US_pop, digits = 3, row.names = F) |>
   kableExtra::kable_styling("striped", full_width = T)
 ```
 
@@ -401,10 +401,21 @@ What do we need to do next?
 ## Tidyverse strategy
 
 Finally, we need to use the `str_sub()` function to shorten our `Year` variable before turning it into a numeric.
-
-::: {style="height:500px;overflow:auto;"}
 ```{r}
 #| echo: TRUE
+#| eval: FALSE
+#| code-line-numbers: "6"
+US_pop |> 
+  select(-POPESTIMATE042020) |>
+  pivot_longer(contains("POPESTIMATE"), 
+               names_to = "Year",
+               values_to = "Population") |>
+  mutate(Year = as.numeric(stringr::str_sub(Year, start = 12))) |>
+  kable()
+```
+::: {style="height:450px;overflow:auto;"}
+```{r}
+#| echo: FALSE
 #| eval: TRUE
 #| code-line-numbers: "6"
 US_pop |> 
@@ -469,7 +480,7 @@ relig_income
 ## Example: `pivot_longer()`
 
 ```{r, echo = T}
-relig_income %>%
+relig_income |>
   pivot_longer(!religion, names_to = "income", values_to = "count")
 ```
 
@@ -483,7 +494,7 @@ billboard
 ## Example: `pivot_longer()`
 
 ```{r, echo = T}
-billboard %>%
+billboard |>
   pivot_longer(
     cols = starts_with("wk"),
     names_to = "week",
@@ -502,7 +513,7 @@ fish_encounters
 ## Example: `pivot_wider()`
 
 ```{r, echo = T}
-fish_encounters %>%
+fish_encounters |>
   pivot_wider(names_from = station, values_from = seen)
 ```
 
@@ -515,7 +526,7 @@ us_rent_income
 ## Example: `pivot_wider()`
 
 ```{r, echo = T}
-us_rent_income %>%
+us_rent_income |>
   pivot_wider(
     names_from = variable,
     values_from = c(estimate, moe)

@@ -473,9 +473,9 @@ Peter Gao
 <div style="height:500px;overflow:auto;">
 <table>
 <colgroup>
-<col style="width: 8%">
-<col style="width: 6%">
-<col style="width: 85%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 69%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -647,8 +647,8 @@ Peter Gao
 <span id="cb14-2"><a href="#cb14-2"></a></span>
 <span id="cb14-3"><a href="#cb14-3"></a><span class="co"># code to print the data</span></span>
 <span id="cb14-4"><a href="#cb14-4"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb14-5"><a href="#cb14-5"></a><span class="fu">kable</span>(state_population, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">row.names =</span> F) <span class="sc">%&gt;%</span></span>
-<span id="cb14-6"><a href="#cb14-6"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="st">"striped"</span>, <span class="at">full_width =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="fu">kable</span>(state_population, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">row.names =</span> F) <span class="sc">|&gt;</span></span>
+<span id="cb14-6"><a href="#cb14-6"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="st">"striped"</span>, <span class="at">full_width =</span> T) <span class="sc">|&gt;</span> </span>
 <span id="cb14-7"><a href="#cb14-7"></a>  kableExtra<span class="sc">::</span><span class="fu">scroll_box</span>(<span class="at">height =</span> <span class="st">"560px"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -1894,7 +1894,7 @@ Peter Gao
 <span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">filter</span>(SUMLEV <span class="sc">==</span> <span class="st">"010"</span>)</span>
 <span id="cb15-3"><a href="#cb15-3"></a></span>
 <span id="cb15-4"><a href="#cb15-4"></a><span class="co"># code to print the data</span></span>
-<span id="cb15-5"><a href="#cb15-5"></a><span class="fu">kable</span>(US_pop, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">row.names =</span> F) <span class="sc">%&gt;%</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="fu">kable</span>(US_pop, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">row.names =</span> F) <span class="sc">|&gt;</span></span>
 <span id="cb15-6"><a href="#cb15-6"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="st">"striped"</span>, <span class="at">full_width =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-striped" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
@@ -2279,7 +2279,6 @@ Peter Gao
 <section id="tidyverse-strategy-2" class="slide level2">
 <h2>Tidyverse strategy</h2>
 <p>Finally, we need to use the <code>str_sub()</code> function to shorten our <code>Year</code> variable before turning it into a numeric.</p>
-<div style="height:500px;overflow:auto;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25" data-code-line-numbers="6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>US_pop <span class="sc">|&gt;</span> </span>
 <span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">select</span>(<span class="sc">-</span>POPESTIMATE042020) <span class="sc">|&gt;</span></span>
@@ -2288,6 +2287,9 @@ Peter Gao
 <span id="cb25-5"><a href="#cb25-5"></a>               <span class="at">values_to =</span> <span class="st">"Population"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb25-6"><a href="#cb25-6"></a>  <span class="fu">mutate</span>(<span class="at">Year =</span> <span class="fu">as.numeric</span>(stringr<span class="sc">::</span><span class="fu">str_sub</span>(Year, <span class="at">start =</span> <span class="dv">12</span>))) <span class="sc">|&gt;</span></span>
 <span id="cb25-7"><a href="#cb25-7"></a>  <span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div style="height:450px;overflow:auto;">
+<div class="cell">
 <div class="cell-output-display">
 <table data-quarto-postprocess="true">
 <thead>
@@ -2447,7 +2449,7 @@ Peter Gao
 <span id="cb26-8"><a href="#cb26-8"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-33-1.png" width="768" class="r-stretch"></section>
+<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-34-1.png" width="768" class="r-stretch"></section>
 <section id="tidyverse-strategy-more-complicated-plots" class="slide level2">
 <h2>Tidyverse strategy: More complicated plots</h2>
 <p>We can map the <code>color</code> aesthetic to the region:</p>
@@ -2463,7 +2465,7 @@ Peter Gao
 <span id="cb27-9"><a href="#cb27-9"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-34-1.png" width="960" class="r-stretch"></section>
+<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-35-1.png" width="960" class="r-stretch"></section>
 <section id="pivot_longer-and-pivot_wider" class="slide level2">
 <h2><code>pivot_longer()</code> and <code>pivot_wider()</code></h2>
 <p>The <code>pivot_longer()</code> and <code>pivot_wider()</code> functions are useful for reshaping data: <code>pivot_longer()</code> “lengthens” datasets and <code>pivot_wider()</code> does the opposite.</p>
@@ -2503,7 +2505,7 @@ Peter Gao
 <section id="example-pivot_longer-1" class="slide level2">
 <h2>Example: <code>pivot_longer()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>relig_income <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>relig_income <span class="sc">|&gt;</span></span>
 <span id="cb30-2"><a href="#cb30-2"></a>  <span class="fu">pivot_longer</span>(<span class="sc">!</span>religion, <span class="at">names_to =</span> <span class="st">"income"</span>, <span class="at">values_to =</span> <span class="st">"count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 180 × 3
@@ -2554,7 +2556,7 @@ Peter Gao
 <section id="example-pivot_longer-3" class="slide level2">
 <h2>Example: <code>pivot_longer()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>billboard <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>billboard <span class="sc">|&gt;</span></span>
 <span id="cb34-2"><a href="#cb34-2"></a>  <span class="fu">pivot_longer</span>(</span>
 <span id="cb34-3"><a href="#cb34-3"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"wk"</span>),</span>
 <span id="cb34-4"><a href="#cb34-4"></a>    <span class="at">names_to =</span> <span class="st">"week"</span>,</span>
@@ -2605,7 +2607,7 @@ Peter Gao
 <section id="example-pivot_wider-1" class="slide level2">
 <h2>Example: <code>pivot_wider()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>fish_encounters <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>fish_encounters <span class="sc">|&gt;</span></span>
 <span id="cb38-2"><a href="#cb38-2"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> station, <span class="at">values_from =</span> seen)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 19 × 12
@@ -2658,7 +2660,7 @@ Peter Gao
 <section id="example-pivot_wider-3" class="slide level2">
 <h2>Example: <code>pivot_wider()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>us_rent_income <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>us_rent_income <span class="sc">|&gt;</span></span>
 <span id="cb42-2"><a href="#cb42-2"></a>  <span class="fu">pivot_wider</span>(</span>
 <span id="cb42-3"><a href="#cb42-3"></a>    <span class="at">names_from =</span> variable,</span>
 <span id="cb42-4"><a href="#cb42-4"></a>    <span class="at">values_from =</span> <span class="fu">c</span>(estimate, moe)</span>

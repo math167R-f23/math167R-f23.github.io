@@ -30,40 +30,37 @@ ba_rent <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/ti
 
 This dataset provides Craigslist rental listings for the Bay Area, from 2000-2018. It was originally collected by Dr. Kate Pennington, whose methodology you can read about [here](https://www.katepennington.org/clmethod).
 
-
 ```{r}
 #| echo: TRUE
 #| eval: TRUE
 head(ba_rent)
 ```
 
-
 ## Craigslist rental data variables
 
 ::: {style="height:500px;overflow:auto;"}
-|**variable**    |**class**     |**description** |
-|:-----------|:---------|:-----------|
-|post_id     |character | Unique ID     |
-|date        |double    | date    |
-|year        |double    |year    |
-|nhood       |character |neighborhood    |
-|city        |character |city    |
-|county      |character |county    |
-|price       |double    | price in USD    |
-|beds        |double    | n of beds    |
-|baths       |double    | n of baths    |
-|sqft        |double    | square feet of rental    |
-|room_in_apt |double    | room in apartment    |
-|address     |character | address    |
-|lat         |double    | latitude    |
-|lon         |double    | longitude    |
-|title       |character | title of listing    |
-|descr       |character | description    |
-|details     |character | additional details    |
+| **variable** | **class** | **description**       |
+|:-------------|:----------|:----------------------|
+| post_id      | character | Unique ID             |
+| date         | double    | date                  |
+| year         | double    | year                  |
+| nhood        | character | neighborhood          |
+| city         | character | city                  |
+| county       | character | county                |
+| price        | double    | price in USD          |
+| beds         | double    | n of beds             |
+| baths        | double    | n of baths            |
+| sqft         | double    | square feet of rental |
+| room_in_apt  | double    | room in apartment     |
+| address      | character | address               |
+| lat          | double    | latitude              |
+| lon          | double    | longitude             |
+| title        | character | title of listing      |
+| descr        | character | description           |
+| details      | character | additional details    |
 :::
 
 ## Craigslist rental data
-
 
 ## Basic summaries
 
@@ -79,10 +76,10 @@ ba_rent |>
   arrange(mean_price) |>
   kable()
 ```
+
 . . .
 
 ::: {style="height:350px;overflow:auto;"}
-
 ```{r}
 #| echo: FALSE
 #| eval: TRUE
@@ -94,18 +91,17 @@ ba_rent |>
   arrange(mean_price) |>
   kable()
 ```
-
 :::
 
 ## Simple features
 
 **Simple Features** is a set of standards for storing and accessing geographic data.
 
-* Geographic data typically consist of geometries such as points, lines, and polygons
+-   Geographic data typically consist of geometries such as points, lines, and polygons
 
-* In R, the most popular package for working with simple features data is `sf`.
+-   In R, the most popular package for working with simple features data is `sf`.
 
-* Working with spatial data can be extremely memory intensive, so care is needed.
+-   Working with spatial data can be extremely memory intensive, so care is needed.
 
 ## Working with point data
 
@@ -166,7 +162,6 @@ We can easily visualize this data now using the `geom_sf()` function, which auto
 ggplot(ba_rent_geo) + geom_sf()
 ```
 
-
 ## Visualizing point data
 
 We can add a basemap using the `annotation_map_tile` function from the `ggspatial` package.
@@ -181,10 +176,9 @@ ggplot(ba_rent_geo) +
   geom_sf()
 ```
 
-
 ## Removing extra point
 
-We can remove points outside a certain box using the `st_crop` function: 
+We can remove points outside a certain box using the `st_crop` function:
 
 ```{r}
 #| echo: TRUE
@@ -199,7 +193,6 @@ ggplot(ba_rent_geo) +
   annotation_map_tile(zoomin = -1) +
   geom_sf()
 ```
-
 
 ## Theme and customization
 
@@ -272,6 +265,7 @@ ca_counties
 ## Joining spatial data
 
 If we want to keep only the counties for which we have data, we must use a `right_join` starting with `ca_counties`:
+
 ```{r}
 #| echo: TRUE
 #| eval: TRUE
