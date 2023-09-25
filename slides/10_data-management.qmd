@@ -147,9 +147,10 @@ kable(state_population, digits = 3, row.names = F) |>
 
 You can name your chunks and use the code chunk `cache = T` to save the output of a code chunk so you don't have to wait for the code to run every time you knit.
 
-```
-
-```{r pop_plot, eval = T, echo = T, cache = T}
+```{r pop_plot}
+#| eval: TRUE
+#| cache: TRUE
+#| echo: fenced
 US_pop_plot <- US_pop_tidy |>
   ggplot(aes(x = Year, y = Population)) + 
   geom_line() + 
@@ -157,7 +158,6 @@ US_pop_plot <- US_pop_tidy |>
 print(US_pop_plot)
 ```
 
-```
 
 ## Caching code chunks
 

@@ -2167,7 +2167,7 @@
     "href": "slides/10_data-management.html#caching-code-chunks",
     "title": "MATH167R: Data Management",
     "section": "Caching code chunks",
-    "text": "Caching code chunks\nYou can name your chunks and use the code chunk cache = T to save the output of a code chunk so you don’t have to wait for the code to run every time you knit.\n\n::: {.cell hash='10_data-management_cache/revealjs/pop_plot_7e7d4779152bde63af0efbee008140e8'}\n\n```{.r .cell-code}\nUS_pop_plot &lt;- US_pop_tidy |&gt;\n  ggplot(aes(x = Year, y = Population)) + \n  geom_line() + \n  ggtitle(\"US Population, 2010-2020\")\nprint(US_pop_plot)\n\n\n\n:::\n```"
+    "text": "Caching code chunks\nYou can name your chunks and use the code chunk cache = T to save the output of a code chunk so you don’t have to wait for the code to run every time you knit.\n\n```{r pop_plot}\n#| eval: TRUE\n#| cache: TRUE\nUS_pop_plot &lt;- US_pop_tidy |&gt;\n  ggplot(aes(x = Year, y = Population)) + \n  geom_line() + \n  ggtitle(\"US Population, 2010-2020\")\nprint(US_pop_plot)\n```"
   },
   {
     "objectID": "slides/10_data-management.html#caching-code-chunks-1",
