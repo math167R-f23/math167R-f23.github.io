@@ -6,10 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="YOUR NAME HERE">
-<meta name="dcterms.date" content="2023-09-13">
+<meta name="dcterms.date" content="2023-12-06">
 
-<title>MATH167R - Lab 4</title>
+<title>MATH167R - Final Project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -4475,7 +4474,7 @@ vertical-align: -.125em;
 }</script>
 
 
-<meta property="og:title" content="MATH167R - Lab 4">
+<meta property="og:title" content="MATH167R - Final Project">
 <meta property="og:description" content>
 <meta property="og:site-name" content="MATH167R">
 </head>
@@ -4566,9 +4565,17 @@ vertical-align: -.125em;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#collaborators" id="toc-collaborators" class="nav-link active" data-scroll-target="#collaborators">Collaborators</a></li>
-  <li><a href="#a.-penguins-visualizations" id="toc-a.-penguins-visualizations" class="nav-link" data-scroll-target="#a.-penguins-visualizations">A. Penguins visualizations</a></li>
-  <li><a href="#b.-your-choice-of-data" id="toc-b.-your-choice-of-data" class="nav-link" data-scroll-target="#b.-your-choice-of-data">B. Your choice of data</a></li>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a>
+  <ul class="collapse">
+  <li><a href="#details" id="toc-details" class="nav-link" data-scroll-target="#details">Details</a></li>
+  </ul></li>
+  <li><a href="#part-one-project-proposal-10-points-due-1013" id="toc-part-one-project-proposal-10-points-due-1013" class="nav-link" data-scroll-target="#part-one-project-proposal-10-points-due-1013">Part One: Project Proposal (10 points), due 10/13</a></li>
+  <li><a href="#part-two-final-report-70-points-due-126" id="toc-part-two-final-report-70-points-due-126" class="nav-link" data-scroll-target="#part-two-final-report-70-points-due-126">Part Two: Final Report (70 points), due 12/6</a></li>
+  <li><a href="#part-three-lightning-talks-15-points-slides-due-123" id="toc-part-three-lightning-talks-15-points-slides-due-123" class="nav-link" data-scroll-target="#part-three-lightning-talks-15-points-slides-due-123">Part Three: Lightning Talks (15 points), slides due 12/3</a></li>
+  <li><a href="#part-four-reflection-and-self-evaluation-5-points-due-126" id="toc-part-four-reflection-and-self-evaluation-5-points-due-126" class="nav-link" data-scroll-target="#part-four-reflection-and-self-evaluation-5-points-due-126">Part Four: Reflection and Self-evaluation (5 points), due 12/6</a>
+  <ul class="collapse">
+  <li><a href="#grading-rubric" id="toc-grading-rubric" class="nav-link" data-scroll-target="#grading-rubric">Grading Rubric</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -4577,24 +4584,18 @@ vertical-align: -.125em;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Lab 4</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Final Project</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>YOUR NAME HERE </p>
-          </div>
-  </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 13, 2023</p>
+      <p class="date">December 6, 2023</p>
     </div>
   </div>
   
@@ -4604,84 +4605,77 @@ vertical-align: -.125em;
 
 </header>
 
-<p>Remember, you must submit <em>both</em> your .Rmd and the compiled .html in order to receive full credit! In addition, to receive full credit, your code output and plots must be correctly formatted.</p>
-<section id="collaborators" class="level3">
-<h3 class="anchored" data-anchor-id="collaborators">Collaborators</h3>
-<p>INSERT NAMES OF ANY COLLABORATORS</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># LOAD ANY RELEVANT PACKAGES HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="a.-penguins-visualizations" class="level2">
-<h2 class="anchored" data-anchor-id="a.-penguins-visualizations">A. Penguins visualizations</h2>
+<section id="instructions" class="level2">
+<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<p>For this project, you will be exploring data on a topic of your choice. You should choose a dataset that interests you and will enable you to demonstrate the exploration, visualization, and analysis skills you have learned this semester.</p>
+<p>You will use your selected dataset to conduct an exploratory data analysis as well as a statistical analysis (hypothesis test or regression analysis) to explore a set of research questions of your own choice.</p>
+<p>Your projects will be evaluated on your use of code to perform your analysis as well as the quality of your visualizations and exposition. This includes, but is not limited to, the quality of your writing, the informativeness of your visualizations, and the depth of research questions. The target audience of your report is a peer who is uninformed about the details of the data, but is interested in learning more about your analysis. Again, <strong>there are no right answers for this project!</strong> Successful projects will involve more than a cursory analysis of one or two variables in the dataset and will tell a compelling story about the dataset.</p>
+<section id="details" class="level3">
+<h3 class="anchored" data-anchor-id="details">Details</h3>
 <ol type="1">
-<li>For this lab, we’ll be using the <code>palmerpenguins</code> data. Use the following code to load the data.</li>
+<li>Choose a data set or multiple datasets with the following characteristics:
+<ol type="a">
+<li>At least three continuous variables</li>
+<li>At least three categorical variables</li>
+</ol></li>
+<li>Identify three research questions of interest that you want to study using this dataset.</li>
+<li>For each of your three research questions, generate a data visualization or descriptive statistic. Discuss and interpret your findings.</li>
+<li>For at least one of your research questions, perform a statistical analysis (ex. linear regression or hypothesis test). Discuss and interpret your findings.</li>
+<li>Final submissions must include .Rmd and .html files.</li>
+<li>If you are an undergraduate interested in participating in a competition and potentially presenting at the Electronic Undergraduate Statistics Conference, you may consider using this project to submit to the <a href="https://www.causeweb.org/usproc/usclap">Undergraduate Class Project Competition</a>.</li>
 </ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="2" type="1">
-<li>Create and interpret a histogram of <code>bill_length_mm</code> using base R code. Be sure to use meaningful axis labels and titles.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<!--# YOUR ANSWER/EXPLANATION HERE -->
-<ol start="3" type="1">
-<li>Create and interpret a histogram of <code>bill_length_mm</code> using ggplot2. Be sure to use meaningful axis labels and titles.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="4" type="1">
-<li>Create and interpret a scatterplot of <code>bill_length_mm</code> versus <code>bill_depth_mm</code> using base R code. Be sure to use meaningful axis labels and titles.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<!--# YOUR ANSWER/EXPLANATION HERE -->
-<ol start="5" type="1">
-<li>Create and interpret a scatterplot of <code>bill_length_mm</code> versus <code>bill_depth_mm</code> using ggplot2. Be sure to use meaningful axis labels and titles.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<!--# YOUR ANSWER/EXPLANATION HERE -->
-<ol start="6" type="1">
-<li>Update your <code>ggplot2</code> scatterplot of <code>bill_length_mm</code> versus <code>bill_depth_mm</code> using ggplot2 so that the color of a point represents the corresponding penguin’s species. What do you notice?</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<!--# YOUR ANSWER/EXPLANATION HERE -->
 </section>
-<section id="b.-your-choice-of-data" class="level2">
-<h2 class="anchored" data-anchor-id="b.-your-choice-of-data">B. Your choice of data</h2>
-<ol start="7" type="1">
-<li>Find and download a dataset from the Tidy Tuesday project (https://github.com/rfordatascience/tidytuesday).</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="8" type="1">
-<li>Create and interpret a univariate visualization for a variable of your choice.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<!--# YOUR ANSWER/EXPLANATION HERE -->
-<ol start="9" type="1">
-<li>Create and interpret a multivariate visualization for a variable of your choice.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<!--# YOUR ANSWER/EXPLANATION HERE -->
+</section>
+<section id="part-one-project-proposal-10-points-due-1013" class="level2">
+<h2 class="anchored" data-anchor-id="part-one-project-proposal-10-points-due-1013">Part One: Project Proposal (10 points), due 10/13</h2>
+<p>You will submit a 1-2 page project proposal with the following information:</p>
+<ul>
+<li>A brief description of your dataset (where it is from, how it can be obtained, what variables are included).</li>
+<li>An overview of the main research questions you hope to explore through your project.</li>
+<li>A list of three to five outside references you plan to consult for background reading on your research questions.</li>
+<li>Any questions you have for me.</li>
+</ul>
+</section>
+<section id="part-two-final-report-70-points-due-126" class="level2">
+<h2 class="anchored" data-anchor-id="part-two-final-report-70-points-due-126">Part Two: Final Report (70 points), due 12/6</h2>
+<p>5-7 pages, including figures. You do not have to write this in the form of an essay, but you should present your findings in a clear and organized way. In particular, you should be sure to cover the following areas:</p>
+<ul>
+<li><strong>Introduction and background</strong>: Introduce your dataset and research questions of interest. Discuss any previous research/findings or relevant context on your question of interest.</li>
+<li><strong>Exploratory data analysis</strong>: For each of your three research questions, generate a data visualization or descriptive statistic. Discuss and interpret your findings.</li>
+<li><strong>Inferential statistical analysis</strong>: For at least one of your research questions, perform a statistical analysis (ex. linear regression or hypothesis test). Discuss and interpret your findings.</li>
+<li><strong>Conclusions and future questions</strong>: Summarize your conclusions and discuss any questions you might interested in exploring in the future. Are there other types of datasets that would have been helpful to have?</li>
+</ul>
+</section>
+<section id="part-three-lightning-talks-15-points-slides-due-123" class="level2">
+<h2 class="anchored" data-anchor-id="part-three-lightning-talks-15-points-slides-due-123">Part Three: Lightning Talks (15 points), slides due 12/3</h2>
+<p>3-5 minutes, maximum four slides. You should rehearse your lightning talk in advance and it should include:</p>
+<ul>
+<li>A quick introduction to your dataset and research questions of interest.</li>
+<li>An overview of your favorite visualization/descriptive summary/result from your project.</li>
+</ul>
+</section>
+<section id="part-four-reflection-and-self-evaluation-5-points-due-126" class="level2">
+<h2 class="anchored" data-anchor-id="part-four-reflection-and-self-evaluation-5-points-due-126">Part Four: Reflection and Self-evaluation (5 points), due 12/6</h2>
+<p>You will complete a 1-2 page reflection and self-evaluation on your work this semester for MATH167R. Questions will be posted at least two weeks in advance of the due date.</p>
+<section id="grading-rubric" class="level3">
+<h3 class="anchored" data-anchor-id="grading-rubric">Grading Rubric</h3>
+<ul>
+<li>Project Proposal: Graded based on completion of all instructions.</li>
+<li>Final Report:
+<ul>
+<li>Exposition (10 points): graded on the clarity of your writing and the appropriateness of your dataset and research questions</li>
+<li>Exploratory data analysis (25 points): graded on the correctness of your computations/visualizations, appropriate use of R functions, and the depth/clarity of your explanations</li>
+<li>Inferential statistical analysis (25 points): graded on the appropriateness of your analysis, accuracy of your computations and interpretations, appropriate use of R functions, and the depth/clarity of your explanations</li>
+<li>Code style/formatting (10 points): to receive full credit, all code, text, and output in your final report should be correctly formatted. Code should be appropriately commented and styled (ex. appropriate variable names).</li>
+</ul></li>
+<li>Lightning Talks: graded based on the quality and completeness of your presentation.</li>
+<li>Reflection and Self-evaluation: Graded based on completion.</li>
+</ul>
 
 
 <!-- -->
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -4969,99 +4963,81 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class>
-<div class="sourceCode" id="cb11" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;Lab 4&quot;</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> &quot;YOUR NAME HERE&quot;</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> &quot;2023-09-13&quot;</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">    embed-resources: true</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">    code-summary: &quot;Code&quot;</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>Remember, you must submit *both* your .Rmd and the compiled .html in order to receive full credit! In addition, to receive full credit, your code output and plots must be correctly formatted.</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="fu">### Collaborators</span></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>INSERT NAMES OF ANY COLLABORATORS</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="co"># LOAD ANY RELEVANT PACKAGES HERE</span></span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="fu">## A. Penguins visualizations</span></span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>For this lab, we&#39;ll be using the <span class="in">`palmerpenguins`</span> data. Use the following code to load the data.</span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(penguins)</span>
-<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Create and interpret a histogram of <span class="in">`bill_length_mm`</span> using base R code. Be sure to use meaningful axis labels and titles.</span>
-<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span>
-<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--# YOUR ANSWER/EXPLANATION HERE --&gt;</span></span>
-<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Create and interpret a histogram of <span class="in">`bill_length_mm`</span> using ggplot2. Be sure to use meaningful axis labels and titles.</span>
-<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span>
-<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>Create and interpret a scatterplot of <span class="in">`bill_length_mm`</span> versus <span class="in">`bill_depth_mm`</span> using base R code. Be sure to use meaningful axis labels and titles.</span>
-<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span>
-<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--# YOUR ANSWER/EXPLANATION HERE --&gt;</span></span>
-<span id="cb11-62"><a href="#cb11-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Create and interpret a scatterplot of <span class="in">`bill_length_mm`</span> versus <span class="in">`bill_depth_mm`</span> using ggplot2. Be sure to use meaningful axis labels and titles.</span>
-<span id="cb11-64"><a href="#cb11-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-67"><a href="#cb11-67" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-68"><a href="#cb11-68" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span>
-<span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-71"><a href="#cb11-71" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--# YOUR ANSWER/EXPLANATION HERE --&gt;</span></span>
-<span id="cb11-72"><a href="#cb11-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-73"><a href="#cb11-73" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>Update your <span class="in">`ggplot2`</span> scatterplot of <span class="in">`bill_length_mm`</span> versus <span class="in">`bill_depth_mm`</span> using ggplot2 so that the color of a point represents the corresponding penguin&#39;s species. What do you notice?</span>
-<span id="cb11-74"><a href="#cb11-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-78"><a href="#cb11-78" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span>
-<span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--# YOUR ANSWER/EXPLANATION HERE --&gt;</span></span>
-<span id="cb11-82"><a href="#cb11-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-83"><a href="#cb11-83" aria-hidden="true" tabindex="-1"></a><span class="fu">## B. Your choice of data</span></span>
-<span id="cb11-84"><a href="#cb11-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-85"><a href="#cb11-85" aria-hidden="true" tabindex="-1"></a><span class="ss">7. </span>Find and download a dataset from the Tidy Tuesday project (https://github.com/rfordatascience/tidytuesday). </span>
-<span id="cb11-86"><a href="#cb11-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-89"><a href="#cb11-89" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-90"><a href="#cb11-90" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span>
-<span id="cb11-91"><a href="#cb11-91" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-92"><a href="#cb11-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-93"><a href="#cb11-93" aria-hidden="true" tabindex="-1"></a><span class="ss">8. </span>Create and interpret a univariate visualization for a variable of your choice. </span>
-<span id="cb11-94"><a href="#cb11-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-97"><a href="#cb11-97" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-98"><a href="#cb11-98" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span>
-<span id="cb11-99"><a href="#cb11-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-100"><a href="#cb11-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-101"><a href="#cb11-101" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--# YOUR ANSWER/EXPLANATION HERE --&gt;</span></span>
-<span id="cb11-102"><a href="#cb11-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-103"><a href="#cb11-103" aria-hidden="true" tabindex="-1"></a><span class="ss">9. </span>Create and interpret a multivariate visualization for a variable of your choice. </span>
-<span id="cb11-104"><a href="#cb11-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-107"><a href="#cb11-107" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-108"><a href="#cb11-108" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span>
-<span id="cb11-109"><a href="#cb11-109" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-110"><a href="#cb11-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-111"><a href="#cb11-111" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--# YOUR ANSWER/EXPLANATION HERE --&gt;</span></span>
-<span id="cb11-112"><a href="#cb11-112" aria-hidden="true" tabindex="-1"></a></span>
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;Final Project&quot;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> &quot;2023-12-06&quot;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">    embed-resources: true</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    code-summary: &quot;Code&quot;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">## Instructions</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>For this project, you will be exploring data on a topic of your choice. You should choose a dataset that interests you and will enable you to demonstrate the exploration, visualization, and analysis skills you have learned this semester.</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>You will use your selected dataset to conduct an exploratory data analysis as well as a statistical analysis (hypothesis test or regression analysis) to explore a set of research questions of your own choice. </span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>Your projects will be evaluated on your use of code to perform your analysis as well as the quality of your visualizations and exposition. This includes, but is not limited to, the quality of your writing, the informativeness of your visualizations, and the depth of research questions. The target audience of your report is a peer who is uninformed about the details of the data, but is interested in learning more about your analysis. Again, **there are no right answers for this project!** Successful projects will involve more than a cursory analysis of one or two variables in the dataset and will tell a compelling story about the dataset.</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">### Details</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Choose a data set or multiple datasets with the following characteristics:</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    a. At least three continuous variables</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    b. At least three categorical variables</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Identify three research questions of interest that you want to study using this dataset.</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>For each of your three research questions, generate a data visualization or descriptive statistic. Discuss and interpret your findings. </span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>For at least one of your research questions, perform a statistical analysis (ex. linear regression or hypothesis test). Discuss and interpret your findings. </span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Final submissions must include .Rmd and .html files.</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>If you are an undergraduate interested in participating in a competition and potentially presenting at the  Electronic Undergraduate Statistics Conference, you may consider using this project to submit to the <span class="co">[</span><span class="ot">Undergraduate Class Project Competition</span><span class="co">](https://www.causeweb.org/usproc/usclap)</span>.</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="fu">## Part One: Project Proposal (10 points), due 10/13</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>You will submit a 1-2 page project proposal with the following information:</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>A brief description of your dataset (where it is from, how it can be obtained, what variables are included).</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>An overview of the main research questions you hope to explore through your project.</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>A list of three to five outside references you plan to consult for background reading on your research questions.</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Any questions you have for me.</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="fu">## Part Two: Final Report (70 points), due 12/6</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>5-7 pages, including figures. You do not have to write this in the form of an essay, but you should present your findings in a clear and organized way. In particular, you should be sure to cover the following areas:</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Introduction and background**: Introduce your dataset and research questions of interest. Discuss any previous research/findings or relevant context on your question of interest.</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Exploratory data analysis**: For each of your three research questions, generate a data visualization or descriptive statistic. Discuss and interpret your findings. </span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Inferential statistical analysis**: For at least one of your research questions, perform a statistical analysis (ex. linear regression or hypothesis test). Discuss and interpret your findings.</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Conclusions and future questions**: Summarize your conclusions and discuss any questions you might interested in exploring in the future. Are there other types of datasets that would have been helpful to have? </span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="fu">## Part Three: Lightning Talks (15 points), slides due 12/3</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>3-5 minutes, maximum four slides. You should rehearse your lightning talk in advance and it should include:</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>A quick introduction to your dataset and research questions of interest.</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>An overview of your favorite visualization/descriptive summary/result from your project.</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="fu">## Part Four: Reflection and Self-evaluation (5 points), due 12/6</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>You will complete a 1-2 page reflection and self-evaluation on your work this semester for MATH167R. Questions will be posted at least two weeks in advance of the due date.</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="fu">### Grading Rubric</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Project Proposal:  Graded based on completion of all instructions.</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Final Report: </span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="ss">    * </span>Exposition (10 points): graded on the clarity of your writing and the appropriateness of your dataset and research questions</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="ss">    * </span>Exploratory data analysis (25 points): graded on the correctness of your computations/visualizations, appropriate use of R functions, and the depth/clarity of your explanations</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="ss">    * </span>Inferential statistical analysis (25 points): graded on the appropriateness of your analysis, accuracy of your computations and interpretations, appropriate use of R functions, and the depth/clarity of your explanations</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="ss">    * </span>Code style/formatting (10 points): to receive full credit, all code, text, and output in your final report should be correctly formatted. Code should be appropriately commented and styled (ex. appropriate variable names).</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Lightning Talks: graded based on the quality and completeness of your presentation.</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Reflection and Self-evaluation: Graded based on completion.</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

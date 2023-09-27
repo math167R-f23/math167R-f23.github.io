@@ -36,7 +36,7 @@ The target audience of your report is an educated reader who is uninformed about
 
 2. What is the median price for a 1 bedroom listing in Santa Clara county in 2018?
 
-3. Which country has the highest median price for a 1 bedroom listing in 2018?
+3. Which county has the highest median price for a 1 bedroom listing in 2018?
 
 4. Create two histograms for the prices of 1 bedroom listings in Santa Clara county in 2005 and 2018. Compare and discuss.
 

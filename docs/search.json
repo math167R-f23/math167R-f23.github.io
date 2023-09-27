@@ -105,6 +105,27 @@
     "text": "B. Your choice of data\n\nAs a group, identify a dataset of interest and open it in R. Provide a brief one paragraph description of the dataset and explain why you chose it.\nState three possible research questions you could explore using this dataset.\nFor each of your three research questions, generate a descriptive statistic or data visualization using your dataset. Discuss and interpret your findings."
   },
   {
+    "objectID": "labs/06_lab.html",
+    "href": "labs/06_lab.html",
+    "title": "Lab 6",
+    "section": "",
+    "text": "Remember, you must submit both your .Rmd and the compiled .html in order to receive full credit! In addition, to receive full credit, your code output and plots must be correctly formatted."
+  },
+  {
+    "objectID": "labs/06_lab.html#a.-basic-functions",
+    "href": "labs/06_lab.html#a.-basic-functions",
+    "title": "Lab 6",
+    "section": "A. Basic functions",
+    "text": "A. Basic functions\n\nWrite a function is_even() that takes as input a single integer x and returns a logical that represents whether x is an even number or not. This function should check to make sure the input is an integer. If the input is not an integer, the function should stop with an informative error message.\nEvaluate your function with even integer input.\nEvaluate your function with odd numeric input.\nTrigger your custom error message. Note: You will need to add the chunk option error = TRUE to your R Markdown code chunk. If you do not, your document will not compile.\nWrite a function get_factors() that takes a single positive integer input x and outputs all of its factors as a vector. For example, since 10 is divisible by 1, 2, 5, and 10 itself, get_factors(10) should return a numeric vector containing 1, 2, 5, and 10."
+  },
+  {
+    "objectID": "labs/06_lab.html#b.-thresholding-functions",
+    "href": "labs/06_lab.html#b.-thresholding-functions",
+    "title": "Lab 6",
+    "section": "B. Thresholding functions",
+    "text": "B. Thresholding functions\n\nThe hard-threshold function is defined as\n\n\\[f_\\lambda(x) =\\begin{cases}\nx & |x|\\geq \\lambda\\\\\n0 & |x|&lt;\\lambda\n\\end{cases}\\]\nWrite an R function that takes two arguments as input: a numeric input x and a threshold lambda. Your function should return the value of \\(f_\\lambda(x)\\) and work for vector input x of any length.\n\nFor \\(\\lambda=4\\), demonstrate your function on the vector c(-5, -3, 0, 3, 5).\n\n(Hint: the output should be the vector -5, 0, 0, 0, 5)\n\nFor \\(\\lambda=2\\), demonstrate your function on the vector c(-7, -5, -3, 0, 3, 5, 7)."
+  },
+  {
     "objectID": "weeks/week-1.html",
     "href": "weeks/week-1.html",
     "title": "Week 1",
@@ -137,7 +158,7 @@
     "href": "projects/midterm_project.html#a.-analyzing-trends-in-san-jose-rental-prices",
     "title": "Midterm Project",
     "section": "A. Analyzing trends in San Jose rental prices",
-    "text": "A. Analyzing trends in San Jose rental prices\n\nHow many 1 bedroom listings from Santa Clara county are in this dataset?\nWhat is the median price for a 1 bedroom listing in Santa Clara county in 2018?\nWhich country has the highest median price for a 1 bedroom listing in 2018?\nCreate two histograms for the prices of 1 bedroom listings in Santa Clara county in 2005 and 2018. Compare and discuss.\nCreate and interpret a line plot with year on the x-axis and median price for a 1 bedroom apartment for Santa Clara county on the y-axis from 2000 to 2018.\nCreate and interpret a single plot with year on the x-axis and median price for a 1 bedroom apartment on the y-axis, using a separate line for each city in Santa Clara county, for the years 2000 to 2018."
+    "text": "A. Analyzing trends in San Jose rental prices\n\nHow many 1 bedroom listings from Santa Clara county are in this dataset?\nWhat is the median price for a 1 bedroom listing in Santa Clara county in 2018?\nWhich county has the highest median price for a 1 bedroom listing in 2018?\nCreate two histograms for the prices of 1 bedroom listings in Santa Clara county in 2005 and 2018. Compare and discuss.\nCreate and interpret a line plot with year on the x-axis and median price for a 1 bedroom apartment for Santa Clara county on the y-axis from 2000 to 2018.\nCreate and interpret a single plot with year on the x-axis and median price for a 1 bedroom apartment on the y-axis, using a separate line for each city in Santa Clara county, for the years 2000 to 2018."
   },
   {
     "objectID": "projects/midterm_project.html#b.-open-ended-data-visualization",
@@ -147,11 +168,53 @@
     "text": "B. Open ended data visualization\n\nRequirements\n\nIdentify three research questions of interest that you want to study using this dataset.\nFor each of your three research questions, generate a data visualization using your dataset. Discuss and interpret your findings.\nYour project should include at least two different types of visualizations (e.g. scatterplots, box plots, bar plots, histograms, line plots, etc.).\nAt least one of your plots should display variation over time or location (or both) in some way.\nEach visualization should include a caption that fully explains how to understand your visualization (i.e. explain all the components, legends, etc.). A good guideline is that someone who has not read your report should be able to look at just a visualization and its caption and fully understand what that visualization is showing.\nEach visualization must be accompanied by at least one paragraph of text. This text should include an interpretation of your visualization as well as what is interesting about your visualization. A strong visualization will be accompanied by text explaining what patterns or insights it helps us glean from the data.\n\nKeep in mind: there are no right answers for this project! These are real data, and I’m hoping for creative and interesting analyses that tell a compelling story about the data rather than cookie cutter reports. Have some fun with it, and good luck!"
   },
   {
+    "objectID": "projects/final_project.html",
+    "href": "projects/final_project.html",
+    "title": "Final Project",
+    "section": "",
+    "text": "For this project, you will be exploring data on a topic of your choice. You should choose a dataset that interests you and will enable you to demonstrate the exploration, visualization, and analysis skills you have learned this semester.\nYou will use your selected dataset to conduct an exploratory data analysis as well as a statistical analysis (hypothesis test or regression analysis) to explore a set of research questions of your own choice.\nYour projects will be evaluated on your use of code to perform your analysis as well as the quality of your visualizations and exposition. This includes, but is not limited to, the quality of your writing, the informativeness of your visualizations, and the depth of research questions. The target audience of your report is a peer who is uninformed about the details of the data, but is interested in learning more about your analysis. Again, there are no right answers for this project! Successful projects will involve more than a cursory analysis of one or two variables in the dataset and will tell a compelling story about the dataset.\n\n\n\nChoose a data set or multiple datasets with the following characteristics:\n\nAt least three continuous variables\nAt least three categorical variables\n\nIdentify three research questions of interest that you want to study using this dataset.\nFor each of your three research questions, generate a data visualization or descriptive statistic. Discuss and interpret your findings.\nFor at least one of your research questions, perform a statistical analysis (ex. linear regression or hypothesis test). Discuss and interpret your findings.\nFinal submissions must include .Rmd and .html files.\nIf you are an undergraduate interested in participating in a competition and potentially presenting at the Electronic Undergraduate Statistics Conference, you may consider using this project to submit to the Undergraduate Class Project Competition."
+  },
+  {
+    "objectID": "projects/final_project.html#instructions",
+    "href": "projects/final_project.html#instructions",
+    "title": "Final Project",
+    "section": "",
+    "text": "For this project, you will be exploring data on a topic of your choice. You should choose a dataset that interests you and will enable you to demonstrate the exploration, visualization, and analysis skills you have learned this semester.\nYou will use your selected dataset to conduct an exploratory data analysis as well as a statistical analysis (hypothesis test or regression analysis) to explore a set of research questions of your own choice.\nYour projects will be evaluated on your use of code to perform your analysis as well as the quality of your visualizations and exposition. This includes, but is not limited to, the quality of your writing, the informativeness of your visualizations, and the depth of research questions. The target audience of your report is a peer who is uninformed about the details of the data, but is interested in learning more about your analysis. Again, there are no right answers for this project! Successful projects will involve more than a cursory analysis of one or two variables in the dataset and will tell a compelling story about the dataset.\n\n\n\nChoose a data set or multiple datasets with the following characteristics:\n\nAt least three continuous variables\nAt least three categorical variables\n\nIdentify three research questions of interest that you want to study using this dataset.\nFor each of your three research questions, generate a data visualization or descriptive statistic. Discuss and interpret your findings.\nFor at least one of your research questions, perform a statistical analysis (ex. linear regression or hypothesis test). Discuss and interpret your findings.\nFinal submissions must include .Rmd and .html files.\nIf you are an undergraduate interested in participating in a competition and potentially presenting at the Electronic Undergraduate Statistics Conference, you may consider using this project to submit to the Undergraduate Class Project Competition."
+  },
+  {
+    "objectID": "projects/final_project.html#part-one-project-proposal-10-points-due-1013",
+    "href": "projects/final_project.html#part-one-project-proposal-10-points-due-1013",
+    "title": "Final Project",
+    "section": "Part One: Project Proposal (10 points), due 10/13",
+    "text": "Part One: Project Proposal (10 points), due 10/13\nYou will submit a 1-2 page project proposal with the following information:\n\nA brief description of your dataset (where it is from, how it can be obtained, what variables are included).\nAn overview of the main research questions you hope to explore through your project.\nA list of three to five outside references you plan to consult for background reading on your research questions.\nAny questions you have for me."
+  },
+  {
+    "objectID": "projects/final_project.html#part-two-final-report-70-points-due-126",
+    "href": "projects/final_project.html#part-two-final-report-70-points-due-126",
+    "title": "Final Project",
+    "section": "Part Two: Final Report (70 points), due 12/6",
+    "text": "Part Two: Final Report (70 points), due 12/6\n5-7 pages, including figures. You do not have to write this in the form of an essay, but you should present your findings in a clear and organized way. In particular, you should be sure to cover the following areas:\n\nIntroduction and background: Introduce your dataset and research questions of interest. Discuss any previous research/findings or relevant context on your question of interest.\nExploratory data analysis: For each of your three research questions, generate a data visualization or descriptive statistic. Discuss and interpret your findings.\nInferential statistical analysis: For at least one of your research questions, perform a statistical analysis (ex. linear regression or hypothesis test). Discuss and interpret your findings.\nConclusions and future questions: Summarize your conclusions and discuss any questions you might interested in exploring in the future. Are there other types of datasets that would have been helpful to have?"
+  },
+  {
+    "objectID": "projects/final_project.html#part-three-lightning-talks-15-points-slides-due-123",
+    "href": "projects/final_project.html#part-three-lightning-talks-15-points-slides-due-123",
+    "title": "Final Project",
+    "section": "Part Three: Lightning Talks (15 points), slides due 12/3",
+    "text": "Part Three: Lightning Talks (15 points), slides due 12/3\n3-5 minutes, maximum four slides. You should rehearse your lightning talk in advance and it should include:\n\nA quick introduction to your dataset and research questions of interest.\nAn overview of your favorite visualization/descriptive summary/result from your project."
+  },
+  {
+    "objectID": "projects/final_project.html#part-four-reflection-and-self-evaluation-5-points-due-126",
+    "href": "projects/final_project.html#part-four-reflection-and-self-evaluation-5-points-due-126",
+    "title": "Final Project",
+    "section": "Part Four: Reflection and Self-evaluation (5 points), due 12/6",
+    "text": "Part Four: Reflection and Self-evaluation (5 points), due 12/6\nYou will complete a 1-2 page reflection and self-evaluation on your work this semester for MATH167R. Questions will be posted at least two weeks in advance of the due date.\n\nGrading Rubric\n\nProject Proposal: Graded based on completion of all instructions.\nFinal Report:\n\nExposition (10 points): graded on the clarity of your writing and the appropriateness of your dataset and research questions\nExploratory data analysis (25 points): graded on the correctness of your computations/visualizations, appropriate use of R functions, and the depth/clarity of your explanations\nInferential statistical analysis (25 points): graded on the appropriateness of your analysis, accuracy of your computations and interpretations, appropriate use of R functions, and the depth/clarity of your explanations\nCode style/formatting (10 points): to receive full credit, all code, text, and output in your final report should be correctly formatted. Code should be appropriately commented and styled (ex. appropriate variable names).\n\nLightning Talks: graded based on the quality and completeness of your presentation.\nReflection and Self-evaluation: Graded based on completion."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "MATH167R: Statistical Programming with R",
     "section": "",
-    "text": "Week\nDate\nTopic\nSlides\nCheck-in\nLab\n\n\n\n\n1\nM 8/21\nCourse Overview and Introduction to R\nSlides 01\nCheck-in 01\n\n\n\n\nW 8/23\nR fundamentals\nSlides 02\n\nLab 01\n\n\n2\nM 8/28\nR fundamentals\nSlides 03\nCheck-in 02\n\n\n\n\nW 8/30\nR fundamentals\nSlides 04\n\nLab 02\n\n\n3\nM 9/4\nLabor Day (No Class)\n\n\n\n\n\n\nW 9/6\nExploring data with R\nSlides 05\n\nLab 03\n\n\n4\nM 9/11\nExploring data with R\nSlides 06\nCheck-in 03\n\n\n\n\nW 9/13\nData visualization\nSlides 07\n\nLab 04\n\n\n5\nM 9/18\nData visualization\nSlides 08\nCheck-in 04\n\n\n\n\nW 9/20\nData visualization\nSlides 09\n\nLab 05\n\n\n6\nM 9/25\nData manipulation and management\nSlides 10\n\n\n\n\n\nW 9/27\nData manipulation and management\nSlides 11\n\n\n\n\n7\nM 10/2\nData manipulation and management\n\n\n\n\n\n\nW 10/4\nMidterm exam\n\n\n\n\n\n8\nM 10/9\nProgramming basics\n\n\n\n\n\n\nW 10/11\nProgramming basics\n\n\n\n\n\n9\nM 10/16\nProgramming basics\n\n\n\n\n\n\nW 10/18\nProgramming basics\n\n\n\n\n\n10\nM 10/23\nProgramming basics\n\n\n\n\n\n\nW 10/25\nProgramming basics\n\n\n\n\n\n11\nM 10/30\nSimulations\n\n\n\n\n\n\nW 11/1\nSimulations\n\n\n\n\n\n12\nM 11/6\nSimulations\n\n\n\n\n\n\nW 11/8\nStatistical inference\n\n\n\n\n\n13\nM 11/13\nStatistical inference\n\n\n\n\n\n\nW 11/15\nStatistical inference\n\n\n\n\n\n14\nM 11/20\nStatistical inference\n\n\n\n\n\n\nW 11/22\nThanksgiving (No Class)\n\n\n\n\n\n15\nM 11/27\nReal world data analysis\n\n\n\n\n\n\nW 11/29\nReal world data analysis\n\n\n\n\n\n16\nM 12/4\nReal world data analysis\n\n\n\n\n\n\nW 12/6\nFinal review"
+    "text": "Week\nDate\nTopic\nSlides\nCheck-in\nLab\n\n\n\n\n1\nM 8/21\nCourse Overview and Introduction to R\nSlides 01\nCheck-in 01\n\n\n\n\nW 8/23\nR fundamentals\nSlides 02\n\nLab 01\n\n\n2\nM 8/28\nR fundamentals\nSlides 03\nCheck-in 02\n\n\n\n\nW 8/30\nR fundamentals\nSlides 04\n\nLab 02\n\n\n3\nM 9/4\nLabor Day (No Class)\n\n\n\n\n\n\nW 9/6\nExploring data with R\nSlides 05\n\nLab 03\n\n\n4\nM 9/11\nExploring data with R\nSlides 06\nCheck-in 03\n\n\n\n\nW 9/13\nData visualization\nSlides 07\n\nLab 04\n\n\n5\nM 9/18\nData visualization\nSlides 08\nCheck-in 04\n\n\n\n\nW 9/20\nData visualization\nSlides 09\n\nLab 05\n\n\n6\nM 9/25\nData manipulation and management\nSlides 10\n\n\n\n\n\nW 9/27\nData manipulation and management\nSlides 11\n\n\n\n\n7\nM 10/2\nProgramming basics\n\n\n\n\n\n\nW 10/4\nMidterm exam\n\n\n\n\n\n8\nM 10/9\nProgramming basics\n\n\n\n\n\n\nW 10/11\nProgramming basics\n\n\n\n\n\n9\nM 10/16\nProgramming basics\n\n\n\n\n\n\nW 10/18\nProgramming basics\n\n\n\n\n\n10\nM 10/23\nProgramming basics\n\n\n\n\n\n\nW 10/25\nProgramming basics\n\n\n\n\n\n11\nM 10/30\nSimulations\n\n\n\n\n\n\nW 11/1\nSimulations\n\n\n\n\n\n12\nM 11/6\nSimulations\n\n\n\n\n\n\nW 11/8\nStatistical inference\n\n\n\n\n\n13\nM 11/13\nStatistical inference\n\n\n\n\n\n\nW 11/15\nStatistical inference\n\n\n\n\n\n14\nM 11/20\nStatistical inference\n\n\n\n\n\n\nW 11/22\nThanksgiving (No Class)\n\n\n\n\n\n15\nM 11/27\nReal world data analysis\n\n\n\n\n\n\nW 11/29\nReal world data analysis\n\n\n\n\n\n16\nM 12/4\nReal world data analysis\n\n\n\n\n\n\nW 12/6\nFinal review"
   },
   {
     "objectID": "slides/06_factors-groups.html#warm-up",
@@ -1302,6 +1365,412 @@
     "text": "Check-in 2\nIn Check-in 2, we’ll practice using functions, vectors, and matrices. We’ll also make practice using an .Rmd template."
   },
   {
+    "objectID": "slides/14_vectorization-recursion.html#overview-of-today",
+    "href": "slides/14_vectorization-recursion.html#overview-of-today",
+    "title": "MATH167R: Vectorization and recursion",
+    "section": "Overview of today",
+    "text": "Overview of today\n\nVectorization\nRecursion\nLab time"
+  },
+  {
+    "objectID": "slides/14_vectorization-recursion.html#vectorization",
+    "href": "slides/14_vectorization-recursion.html#vectorization",
+    "title": "MATH167R: Vectorization and recursion",
+    "section": "Vectorization",
+    "text": "Vectorization\nLast class, we saw how to use for and while loops to repeat tasks. However, often in R, functions or operations are vectorized, meaning they automatically act on every entry in a vector.\n\nx &lt;- 1:4\nx * 2\n\n[1] 2 4 6 8"
+  },
+  {
+    "objectID": "slides/14_vectorization-recursion.html#vectorization-1",
+    "href": "slides/14_vectorization-recursion.html#vectorization-1",
+    "title": "MATH167R: Vectorization and recursion",
+    "section": "Vectorization",
+    "text": "Vectorization\n\nx &lt;- 1:4\nx &lt; 2\n\n[1]  TRUE FALSE FALSE FALSE\n\n\n\n\nx &lt;- 1:4\ny &lt;- 4:1\nx + y\n\n[1] 5 5 5 5"
+  },
+  {
+    "objectID": "slides/14_vectorization-recursion.html#vectorization-with-data",
+    "href": "slides/14_vectorization-recursion.html#vectorization-with-data",
+    "title": "MATH167R: Vectorization and recursion",
+    "section": "Vectorization with data",
+    "text": "Vectorization with data\nWe often rely on vectorization when working with columns of a data frame.\n\nlibrary(palmerpenguins)\nlibrary(tidyverse)\ndata(penguins)\npenguins &lt;- penguins |&gt;\n  mutate(bill_len_dep_ratio = bill_length_mm / bill_depth_mm)\npenguins$bill_len_dep_ratio\n\n  [1] 2.090909 2.270115 2.238889       NA 1.901554 1.907767 2.185393 2.000000\n  [9] 1.883978 2.079208 2.210526 2.184971 2.335227 1.820755 1.639810 2.056180\n [17] 2.036842 2.053140 1.869565 2.139535 2.065574 2.016043 1.869792 2.110497\n [25] 2.255814 1.867725 2.182796 2.262570 2.037634 2.142857 2.365269 2.055249\n [33] 2.219101 2.164021 2.141176 1.857820 1.940000 2.281081 1.948187 2.083770\n [41] 2.027778 2.217391 1.945946 2.238579 2.189349 2.106383 2.163158 1.984127\n [49] 2.011173 1.995283 2.237288 2.121693 1.955307 2.153846 1.906077 2.225806\n [57] 2.228571 2.159574 2.198795 1.968586 2.112426 1.957346 2.211765 2.258242\n [65] 2.128655 2.311111 2.191358 2.151832 2.162651 2.154639 1.763158 2.157609\n [73] 2.302326 2.423280 2.028571 2.313514 2.434524 1.917526 2.248447 2.204188\n [81] 2.011628 2.437500 1.952128 1.809278 2.095506 2.034483 1.861538 1.983871\n [89] 1.994792 2.069149 1.983333 2.270718 1.988304 2.187845 2.092486 2.158730\n [97] 2.048387 2.178378 2.055901 2.335135 1.955307 2.050000 2.356250 1.890000\n[105] 2.037634 2.100529 2.244186 1.910000 2.241176 2.273684 2.309091 2.246305\n[113] 2.242938 2.164103 1.913043 2.333333 2.270588 1.819512 2.100000 2.209677\n[121] 2.104651 1.904040 2.364706 2.237838 2.213836 2.136842 2.204545 2.267760\n[129] 2.280702 2.450000 2.150838 2.244792 1.989189 2.027027 2.164773 2.348571\n[137] 2.034286 2.000000 2.242424 2.217877 2.350877 2.360465 2.070968 2.394118\n[145] 2.220238 2.085561 2.107527 1.989130 2.022472 2.088398 2.105263 2.243243\n[153] 3.492424 3.067485 3.453901 3.289474 3.282759 3.444444 3.109589 3.052288\n[161] 3.231343 3.038961 2.985401 3.043478 3.321168 3.315068 3.136986 3.140127\n[169] 3.111111 3.236842 3.186207 3.225166 3.510490 3.110345 3.206897 2.930380\n[177] 3.274809 3.052980 3.111888 3.186667 3.370629 3.267974 3.091503 3.014085\n[185] 3.110345 3.505882 3.317568 2.969325 3.109489 2.566474 3.235294 3.101911\n[193] 3.116788 3.100000 3.306569 3.306667 3.176101 3.136691 3.273381 3.176101\n[201] 3.375940 2.860759 3.281690 3.439716 3.131944 3.340000 3.229167 2.922078\n[209] 3.151079 3.033333 2.979310 3.294118 3.282609 3.100671 3.287770 3.458599\n[217] 3.225352 2.964286 3.208333 3.055556 3.063380 3.380000 3.180000 2.974359\n[225] 3.089744 3.141892 3.093333 3.037500 3.345070 3.134969 3.275362 2.756098\n[233] 3.386207 3.365385 3.246575 3.144654 3.253623 2.936416 3.013889 3.612676\n[241] 3.392857 3.064706 3.166667 3.052632 3.137931 3.074534 3.027211 3.235669\n[249] 3.126582 3.212329 3.361111 3.096970 3.233333 3.288235 3.045161 3.273333\n[257] 3.427536 2.906832 2.836735 3.379747 3.092857 3.185430 3.322368 3.132075\n[265] 2.861842 3.159509 3.276596 3.443750 2.834395 3.012346 3.445255       NA\n[273] 3.272727 3.210191 3.054054 3.099379 2.597765 2.564103 2.671875 2.427807\n[281] 2.661616 2.539326 2.532967 2.818681 2.433862 2.577889 2.617978 2.546798\n[289] 2.716763 2.872928 2.684211 2.576531 2.515000 3.258427 2.494624 2.703297\n[297] 2.450867 2.771429 2.602410 2.608247 2.608939 2.736842 2.744565 2.605263\n[305] 2.606742 2.640000 2.463855 2.605769 2.544910 2.712766 2.672043 2.827381\n[313] 2.601093 2.512077 2.825301 2.688442 2.512821 2.640000 2.664921 2.676471\n[321] 2.843575 2.745946 2.798883 2.500000 2.754011 2.878613 2.932927 2.705263\n[329] 2.641618 2.573604 2.456647 2.776596 2.722892 2.477387 2.670213 2.350515\n[337] 2.661538 2.836364 2.688235 2.818182 2.403315 2.725275 2.673684 2.684492"
+  },
+  {
+    "objectID": "slides/14_vectorization-recursion.html#vectorization-in-functions",
+    "href": "slides/14_vectorization-recursion.html#vectorization-in-functions",
+    "title": "MATH167R: Vectorization and recursion",
+    "section": "Vectorization in functions",
+    "text": "Vectorization in functions\nOften we desire our function to be vectorized: so that it can take in vectors as inputs and perform an operation/task for each entry of the vector(s).\nFor this reason, it is important to begin remembering which functions are vectorized/vectorizable."
+  },
+  {
+    "objectID": "slides/14_vectorization-recursion.html#absolute-error",
+    "href": "slides/14_vectorization-recursion.html#absolute-error",
+    "title": "MATH167R: Vectorization and recursion",
+    "section": "Absolute error",
+    "text": "Absolute error\n\nweather_forecasts &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-12-20/weather_forecasts.csv')\nweather_forecasts &lt;- weather_forecasts |&gt;\n  mutate(abs_err_precip = abs(observed_temp - forecast_temp))\n\nExercise: Write a function that takes as input two vectors of length \\(n\\), observed and predicted and returns a vector of length \\(n\\) of the absolute errors."
+  },
+  {
+    "objectID": "slides/14_vectorization-recursion.html#absolute-error-1",
+    "href": "slides/14_vectorization-recursion.html#absolute-error-1",
+    "title": "MATH167R: Vectorization and recursion",
+    "section": "Absolute error",
+    "text": "Absolute error\n\nabsolute_error &lt;- function(observed, predicted) {\n  return(abs(observed - predicted))\n}"
+  },
+  {
+    "objectID": "slides/14_vectorization-recursion.html#squared-error",
+    "href": "slides/14_vectorization-recursion.html#squared-error",
+    "title": "MATH167R: Vectorization and recursion",
+    "section": "Squared error",
+    "text": "Squared error\nExercise: Write a function that takes as input two vectors of length \\(n\\), observed and predicted and returns a vector of length \\(n\\) of the squared errors.\n\n\nsquared_error &lt;- function(observed, predicted) {\n  return((observed - predicted)^2)\n}"
+  },
+  {
+    "objectID": "slides/14_vectorization-recursion.html#why-not-vectorize",
+    "href": "slides/14_vectorization-recursion.html#why-not-vectorize",
+    "title": "MATH167R: Vectorization and recursion",
+    "section": "Why not vectorize?",
+    "text": "Why not vectorize?\n\nmodifying in place\nwhile loops\nrecursive functions"
+  },
+  {
+    "objectID": "slides/14_vectorization-recursion.html#modifying-in-place",
+    "href": "slides/14_vectorization-recursion.html#modifying-in-place",
+    "title": "MATH167R: Vectorization and recursion",
+    "section": "Modifying in place",
+    "text": "Modifying in place\nSometimes we wish to change the value of some object iteratively. In such cases, vectorizing code may not be possible.\nWhat do you expect the output of this code to be?\n\nx &lt;- numeric(10)\nfor (i in 1:length(x)) {\n  x[i] &lt;- sum(x[0:i])\n}\nx\n\n\n\n\n [1]  1  3  6 10 15 21 28 36 45 55\n\n\n\n\nThese are known as the triangular numbers."
+  },
+  {
+    "objectID": "slides/14_vectorization-recursion.html#recursion",
+    "href": "slides/14_vectorization-recursion.html#recursion",
+    "title": "MATH167R: Vectorization and recursion",
+    "section": "Recursion",
+    "text": "Recursion\nRecursion is a method for solving a problem where the solution can be divided into simpler or smaller versions of the same problem.\nExample: Factorial function\n\nExample: Fractals"
+  },
+  {
+    "objectID": "slides/14_vectorization-recursion.html#recursive-functions-factorial",
+    "href": "slides/14_vectorization-recursion.html#recursive-functions-factorial",
+    "title": "MATH167R: Vectorization and recursion",
+    "section": "Recursive functions: factorial",
+    "text": "Recursive functions: factorial\nRecursive functions are those that call themselves to solve problems.\n\nfact &lt;- function(x) {\n  if (x == 0 | x == 1) {\n    return(1)\n  } else {\n    return(x * fact(x - 1))\n  }\n}\nfact(4)\n\n\n\n\n[1] 24"
+  },
+  {
+    "objectID": "slides/14_vectorization-recursion.html#recursive-functions-fibonacci",
+    "href": "slides/14_vectorization-recursion.html#recursive-functions-fibonacci",
+    "title": "MATH167R: Vectorization and recursion",
+    "section": "Recursive functions: Fibonacci",
+    "text": "Recursive functions: Fibonacci\nExercise: write a function fibonacci() that takes as input a natural number n and returns the \\(n\\)th Fibonacci number.\n\n\nfibonacci &lt;- function(n) {\n  if (n == 1 | n == 2) {\n    return(1)\n  } else {\n    return(fibonacci(n - 1) + fibonacci(n - 2))\n  }\n}\nfibonacci(10)\n\n[1] 55"
+  },
+  {
+    "objectID": "slides/14_vectorization-recursion.html#recursive-functions-prime-factorization",
+    "href": "slides/14_vectorization-recursion.html#recursive-functions-prime-factorization",
+    "title": "MATH167R: Vectorization and recursion",
+    "section": "Recursive functions: Prime factorization",
+    "text": "Recursive functions: Prime factorization\nChallenge: write a function factorize() that takes as input a natural number n and returns its prime factorization.\n\nHow might we get started with this question?"
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#overview-of-today",
+    "href": "slides/12_programming-basics.html#overview-of-today",
+    "title": "MATH167R: Programming Basics",
+    "section": "Overview of today",
+    "text": "Overview of today\n\nWhat is an algorithm?\nControl statements\nWriting R functions"
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#programming-and-this-class",
+    "href": "slides/12_programming-basics.html#programming-and-this-class",
+    "title": "MATH167R: Programming Basics",
+    "section": "Programming and this class",
+    "text": "Programming and this class\nUp until now, we have been focusing on using R for exploratory data analysis:\n\nDownloading and combining datasets\nObjects and types of data in R\nCreating data visualizations and computing descriptive statistics\nWriting R Markdown documents for communication\n\nFor the next several weeks, we will focus on programming and computer science concepts (as they might be used for data science)."
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#what-is-an-algorithm",
+    "href": "slides/12_programming-basics.html#what-is-an-algorithm",
+    "title": "MATH167R: Programming Basics",
+    "section": "What is an algorithm?",
+    "text": "What is an algorithm?\nAn algorithm is a finite sequence of instructions for performing some task or solving some problem.\nAlgorithms should be unambiguous and precise. In other words, if the instructions are followed correctly, the output should be reproducible: using the same inputs twice should yield the same outputs each time."
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#a-bad-example-an-ambiguous-cookie-recipe.",
+    "href": "slides/12_programming-basics.html#a-bad-example-an-ambiguous-cookie-recipe.",
+    "title": "MATH167R: Programming Basics",
+    "section": "A bad example: an ambiguous cookie recipe.",
+    "text": "A bad example: an ambiguous cookie recipe.\n\nMix dry ingredients.\nMix wet ingredients.\nAdd dry ingredients to wet ingredients.\nRoll into balls and put on baking sheet.\nBake in oven."
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#a-more-precise-example-the-smallest-number",
+    "href": "slides/12_programming-basics.html#a-more-precise-example-the-smallest-number",
+    "title": "MATH167R: Programming Basics",
+    "section": "A more precise example: the smallest number",
+    "text": "A more precise example: the smallest number\nInput: A list of numbers L. Output: The smallest number in the list L\n\nIf L is empty, then there is no smallest number.\nAssume the first number in L is the smallest.\nFor each remaining number in L, compare with the current assumed smallest number. If it is smaller, assume this number is now the smallest number.\nWhen there are no more numbers in L to consider, report the current smallest number."
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#flowcharts-for-algorithms",
+    "href": "slides/12_programming-basics.html#flowcharts-for-algorithms",
+    "title": "MATH167R: Programming Basics",
+    "section": "Flowcharts for algorithms",
+    "text": "Flowcharts for algorithms\nYou may also find it helpful to imagine an algorithm as a flowchart (from Wikipedia):"
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#algorithms-in-code",
+    "href": "slides/12_programming-basics.html#algorithms-in-code",
+    "title": "MATH167R: Programming Basics",
+    "section": "Algorithms in code",
+    "text": "Algorithms in code\nSince algorithms are simply sets of instructions or “recipes,” we can represent them as:\n\nWritten “pseudo-code” instructions (in English or other languages)\nFlow charts\nCode (in R, Python, or other programming languages)\n\nOur goal will be to write basic algorithms in R that we can use to carry out data science tasks."
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#functions-as-algorithms",
+    "href": "slides/12_programming-basics.html#functions-as-algorithms",
+    "title": "MATH167R: Programming Basics",
+    "section": "Functions as algorithms",
+    "text": "Functions as algorithms\nEach function is an implementation of an algorithm. For example, consider the rank() function which returns the rank-ordering of each number in a vector:\n\nrank(c(10, 9, 8))\n\n[1] 3 2 1\n\n\n\nrank\n\nfunction (x, na.last = TRUE, ties.method = c(\"average\", \"first\", \n    \"last\", \"random\", \"max\", \"min\")) \n{\n    stopifnot(length(na.last) == 1L)\n    nas &lt;- is.na(x)\n    nm &lt;- names(x)\n    ties.method &lt;- match.arg(ties.method)\n    if (is.factor(x)) \n        x &lt;- as.integer(x)\n    x &lt;- x[!nas]\n    y &lt;- switch(ties.method, average = , min = , max = .Internal(rank(x, \n        length(x), ties.method)), first = sort.list(sort.list(x)), \n        last = sort.list(rev.default(sort.list(x, decreasing = TRUE))), \n        random = sort.list(order(x, stats::runif(sum(!nas)))))\n    if (!is.na(na.last) && any(nas)) {\n        yy &lt;- NA\n        NAkeep &lt;- (na.last == \"keep\")\n        if (NAkeep || na.last) {\n            yy[!nas] &lt;- y\n            if (!NAkeep) \n                yy[nas] &lt;- (length(y) + 1L):length(yy)\n        }\n        else {\n            len &lt;- sum(nas)\n            yy[!nas] &lt;- y + len\n            yy[nas] &lt;- seq_len(len)\n        }\n        y &lt;- yy\n        names(y) &lt;- nm\n    }\n    else names(y) &lt;- nm[!nas]\n    y\n}\n&lt;bytecode: 0x13b06ed70&gt;\n&lt;environment: namespace:base&gt;"
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#exercise",
+    "href": "slides/12_programming-basics.html#exercise",
+    "title": "MATH167R: Programming Basics",
+    "section": "Exercise",
+    "text": "Exercise\nCan you write an algorithm to check if a positive integer N is divisible by 3?"
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#control-statements",
+    "href": "slides/12_programming-basics.html#control-statements",
+    "title": "MATH167R: Programming Basics",
+    "section": "Control statements",
+    "text": "Control statements\nMost algorithms will require the interpreter to check some conditions to determine the outcome.\n\nBy default, the expressions in the body of a function are evaluated sequentially.\nIn programming, control statements allow the developer (the person writing the code) to tell the interpreter what to do in different scenarios."
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#if-statements",
+    "href": "slides/12_programming-basics.html#if-statements",
+    "title": "MATH167R: Programming Basics",
+    "section": "if statements",
+    "text": "if statements\nR provides the if syntax for conditional evaluation:\nif (condition) code\n\nif statements give conditions for which a chunk of code is evaluated.\nFirst, a condition is specified before a chunk of code.\n\nIf the condition is TRUE, then the chunk is evaluated.\nIf the condition is FALSE, then it is not evaluated."
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#if-statements-1",
+    "href": "slides/12_programming-basics.html#if-statements-1",
+    "title": "MATH167R: Programming Basics",
+    "section": "if statements",
+    "text": "if statements\n\nx &lt;- 1\n# Conditions go in parentheses after if\nif (x &gt; 0) {\n  # code chunks get surrounded by curly brackets\n  print(paste0(\"x is equal to \", x, \", a positive number!\"))\n}\n\n\n\n\n[1] \"x is equal to 1, a positive number!\""
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#if-statements-2",
+    "href": "slides/12_programming-basics.html#if-statements-2",
+    "title": "MATH167R: Programming Basics",
+    "section": "if statements",
+    "text": "if statements\n\nx &lt;- -1\n# Conditions go in parenthesis after if\nif (x &gt; 0) {\n  # code chunks get surrounded by curly brackets\n  print(paste0(\"x is equal to \", x, \", a positive number!\"))\n}"
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#if-statements-3",
+    "href": "slides/12_programming-basics.html#if-statements-3",
+    "title": "MATH167R: Programming Basics",
+    "section": "if statements",
+    "text": "if statements\nWe can also write one line if statements without braces:\n\ngrade &lt;- NULL\nscore &lt;- 65\nif (score &gt;= 60) grade &lt;- \"CR\"\nprint(grade)\n\n[1] \"CR\"\n\n\n\ngrade &lt;- NULL\nscore &lt;- 55\nif (score &gt;= 60) grade &lt;- \"CR\"\nprint(grade)\n\nNULL"
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#else-statements",
+    "href": "slides/12_programming-basics.html#else-statements",
+    "title": "MATH167R: Programming Basics",
+    "section": "else statements",
+    "text": "else statements\nWe can use else to specify what we want to happen when the condition is FALSE.\n\nx &lt;- 1\nif (x &gt; 0) {\n  print(paste0(\"x is equal to \", x, \", a positive number!\"))\n} else {\n  print(paste0(\"x is equal to \", x, \", a negative number!\"))\n}\n\n\n\n\n[1] \"x is equal to 1, a positive number!\""
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#else-statements-1",
+    "href": "slides/12_programming-basics.html#else-statements-1",
+    "title": "MATH167R: Programming Basics",
+    "section": "else statements",
+    "text": "else statements\n\nx &lt;- -1\nif (x &gt; 0) {\n  print(paste0(\"x is equal to \", x, \", a positive number!\"))\n} else {\n  print(paste0(\"x is equal to \", x, \", a negative number!\"))\n}\n\n[1] \"x is equal to -1, a negative number!\""
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#else-if",
+    "href": "slides/12_programming-basics.html#else-if",
+    "title": "MATH167R: Programming Basics",
+    "section": "else if",
+    "text": "else if\nWe use else if when there are more than two possible paths. Here, the final else chunk will evaluate for any cases not covered by the if or else if.\n\nx &lt;- 1\nif (x &gt; 0) {\n  paste0(\"x is equal to \", x, \", a positive number!\")\n} else if (x &lt; 0) {\n  paste0(\"x is equal to \", x, \", a negative number!\")\n} else {\n  paste0(\"x is equal to \", x, \"!\")\n}\n\n[1] \"x is equal to 1, a positive number!\""
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#else-if-1",
+    "href": "slides/12_programming-basics.html#else-if-1",
+    "title": "MATH167R: Programming Basics",
+    "section": "else if",
+    "text": "else if\n\nx &lt;- -1\nif (x &gt; 0) {\n  paste0(\"x is equal to \", x, \", a positive number!\")\n} else if (x &lt; 0) {\n  paste0(\"x is equal to \", x, \", a negative number!\")\n} else {\n  paste0(\"x is equal to \", x, \"!\")\n}\n\n[1] \"x is equal to -1, a negative number!\""
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#else-if-2",
+    "href": "slides/12_programming-basics.html#else-if-2",
+    "title": "MATH167R: Programming Basics",
+    "section": "else if",
+    "text": "else if\n\nx &lt;- 0\nif (x &gt; 0) {\n  paste0(\"x is equal to \", x, \", a positive number!\")\n} else if (x &lt; 0) {\n  paste0(\"x is equal to \", x, \", a negative number!\")\n} else {\n  paste0(\"x is equal to \", x, \"!\")\n}\n\n[1] \"x is equal to 0!\""
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#divisibility",
+    "href": "slides/12_programming-basics.html#divisibility",
+    "title": "MATH167R: Programming Basics",
+    "section": "Divisibility",
+    "text": "Divisibility\nSuppose we want to check if x is divisible by 3 and print out the answer. What should CONDITION be?\n\nx &lt;- 5\nif (CONDITION) {\n  IF TRUE, DO THIS\n} else {\n  ELSE, DO THIS\n}"
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#divisibility-1",
+    "href": "slides/12_programming-basics.html#divisibility-1",
+    "title": "MATH167R: Programming Basics",
+    "section": "Divisibility",
+    "text": "Divisibility\nSuppose we want to check if x is divisible by 5 and print out the answer. What should CONDITION be?\n\nx &lt;- 5\n# modulo operator\nif (x %% 3 == 0) {\n  print(\"divisible by 3\")\n} else {\n  print(\"not divisible by 3\")\n}\n\n\n\n\n[1] \"not divisible by 3\""
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#check-length-of-strings",
+    "href": "slides/12_programming-basics.html#check-length-of-strings",
+    "title": "MATH167R: Programming Basics",
+    "section": "Check length of strings",
+    "text": "Check length of strings\nNote: We will need the stringr package for this.\n\n# Run this if you have never installed stringr before!\n# install.packages(\"stringr\")\nlibrary(stringr)\n\n\nx &lt;- \"cat\"\nif (str_length(x) &lt;= 10) {\n  cat(\"x is a short string.\")\n} else {\n  cat(\"x is a long string.\")\n}\n\nx is a short string."
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#check-class",
+    "href": "slides/12_programming-basics.html#check-class",
+    "title": "MATH167R: Programming Basics",
+    "section": "Check class",
+    "text": "Check class\n\nx &lt;- 5\nif (is.numeric(x)) {\n  cat(\"x is a numeric.\")\n} else if (is.character(x)) {\n  cat(\"x is a character.\")\n} else {\n  cat(\"x is some class I didn't check for in my code.\")\n}\n\nx is a numeric."
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#check-class-1",
+    "href": "slides/12_programming-basics.html#check-class-1",
+    "title": "MATH167R: Programming Basics",
+    "section": "Check class",
+    "text": "Check class\n\nx &lt;- list()\nif (is.numeric(x)) {\n  cat(\"x is a numeric.\")\n} else if (is.character(x)) {\n  cat(\"x is a character.\")\n} else {\n  cat(\"x is some class I didn't check for in my code.\")\n}\n\nx is some class I didn't check for in my code."
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#functions",
+    "href": "slides/12_programming-basics.html#functions",
+    "title": "MATH167R: Programming Basics",
+    "section": "Functions",
+    "text": "Functions\nWe’ve already seen and used several functions, but you can also create your own.\nThis is incredibly useful when:\n\nYou use the same code repeatedly\nYou want to perform the same task for slightly different input values\nYou want others to be able to use your code"
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#anatomy-of-a-function",
+    "href": "slides/12_programming-basics.html#anatomy-of-a-function",
+    "title": "MATH167R: Programming Basics",
+    "section": "Anatomy of a function",
+    "text": "Anatomy of a function\nThe function named function is used to create a function:\nfunction(formal arguments) {body}\nThe body comprises one or more lines of code that will perform the desired computations.\n\ncelsiusToFahrenheit &lt;- function(x) {x * 9 / 5 + 32}\ncelsiusToFahrenheit(0)\n\n\n\n\n[1] 32"
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#anatomy-of-a-function-1",
+    "href": "slides/12_programming-basics.html#anatomy-of-a-function-1",
+    "title": "MATH167R: Programming Basics",
+    "section": "Anatomy of a function",
+    "text": "Anatomy of a function\nFor more complicated functions, we typically move the body to a new line:\n\nfunction_name &lt;- function(param1, param2 = \"default\") {\n  # body of the function\n  return(output)\n}\n\n\nfunction_name: the name you want to give your function, what you will use to call it\nfunction(): call this to define a function\nparam1, param2: formal arguments input by the user. You can assign default values by setting them equal to something in the call to function()\nbody: the actual code that is executed\nreturn(): the output value returned to the user"
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#square-a-number-add-2",
+    "href": "slides/12_programming-basics.html#square-a-number-add-2",
+    "title": "MATH167R: Programming Basics",
+    "section": "Square a number, add 2",
+    "text": "Square a number, add 2\n\nsquare_plus_2 &lt;- function(x) {\n  y &lt;- x^2 + 2\n  return(y)\n}\n\nsquare_plus_2(4)\n\n[1] 18\n\nsquare_plus_2(10)\n\n[1] 102\n\nsquare_plus_2(1:5)\n\n[1]  3  6 11 18 27"
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#square-a-number-add-2-1",
+    "href": "slides/12_programming-basics.html#square-a-number-add-2-1",
+    "title": "MATH167R: Programming Basics",
+    "section": "Square a number, add 2",
+    "text": "Square a number, add 2\n\nsquare_plus_2(\"some string\")\n\nError in x^2: non-numeric argument to binary operator\n\n\nWhat happened here?\n\nWe wrote a function for numerics only but didn’t check the input."
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#square-a-number-add-2-2",
+    "href": "slides/12_programming-basics.html#square-a-number-add-2-2",
+    "title": "MATH167R: Programming Basics",
+    "section": "Square a number, add 2",
+    "text": "Square a number, add 2\nLet’s try making our function more robust by adding a if statement and a stop call.\n\nsquare_plus_2 &lt;- function(x) {\n  if (!is.numeric(x)) {\n    stop(\"x must be numeric!\")\n  } else {\n    y &lt;- x^2 + 2\n    return(y)\n  }\n}\n\nsquare_plus_2(\"some string\")\n\nError in square_plus_2(\"some string\"): x must be numeric!"
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#function-names",
+    "href": "slides/12_programming-basics.html#function-names",
+    "title": "MATH167R: Programming Basics",
+    "section": "Function Names",
+    "text": "Function Names\nStrive to have function names based on verbs. Otherwise, standard variable name style guidelines apply!\n\n# Good\nadd_row()\npermute()\n\n# Bad\nrow_adder()\npermutation()"
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#spacing",
+    "href": "slides/12_programming-basics.html#spacing",
+    "title": "MATH167R: Programming Basics",
+    "section": "Spacing",
+    "text": "Spacing\nPlace a space before and after () when used with if, for, or while.\n\n# Good\nif (condition) {\n  x + 2\n}\n\n# Bad\nif(condition){\n  x + 2\n}"
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#spacing-1",
+    "href": "slides/12_programming-basics.html#spacing-1",
+    "title": "MATH167R: Programming Basics",
+    "section": "Spacing",
+    "text": "Spacing\nPlace a space after () used for function arguments.\n\n# Good\nif (debug) {\n  show(x)\n}\n\n# Bad\nif(debug){\n  show(x)\n}"
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#code-blocks",
+    "href": "slides/12_programming-basics.html#code-blocks",
+    "title": "MATH167R: Programming Basics",
+    "section": "Code Blocks",
+    "text": "Code Blocks\n\n{ should be the last character on the line. Related code (e.g., an if clause, a function declaration, a trailing comma, …) must be on the same line as the opening brace. It should be preceded by a single space.\nThe contents within code blocks should be indented by two spaces from where it started\n} should be the first character on the line."
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#code-blocks-1",
+    "href": "slides/12_programming-basics.html#code-blocks-1",
+    "title": "MATH167R: Programming Basics",
+    "section": "Code Blocks",
+    "text": "Code Blocks\n\n# Good\nif (y &lt; 0) {\n  message(\"y is negative\")\n}\n\nif (y == 0) {\n  if (x &gt; 0) {\n    log(x)\n  } else {\n    message(\"x is negative or zero\")\n  }\n} else {\n  y^x\n}"
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#code-blocks-2",
+    "href": "slides/12_programming-basics.html#code-blocks-2",
+    "title": "MATH167R: Programming Basics",
+    "section": "Code Blocks",
+    "text": "Code Blocks\n\n# Bad\nif (y&lt;0){\nmessage(\"Y is negative\")\n}\n\nif (y == 0)\n{\n    if (x &gt; 0) {\n      log(x)\n    } else {\n  message(\"x is negative or zero\")\n    }\n} else { y ^ x }"
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#in-line-statments",
+    "href": "slides/12_programming-basics.html#in-line-statments",
+    "title": "MATH167R: Programming Basics",
+    "section": "In-line Statments",
+    "text": "In-line Statments\nIn general, it’s ok to drop the curly braces for very simple statements that fit on one line. However, function calls that affect control flow (return, stop, etc.) should always go in their own {} block:\n\n# Good\ny &lt;- 10\nx &lt;- if (y &lt; 20) \"Too low\" else \"Too high\"\n\nif (y &lt; 0) {\n  stop(\"Y is negative\")\n}\n\nfind_abs &lt;- function(x) {\n  if (x &gt; 0) {\n    return(x)\n  }\n  x * -1\n}"
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#in-line-statements",
+    "href": "slides/12_programming-basics.html#in-line-statements",
+    "title": "MATH167R: Programming Basics",
+    "section": "In-line Statements",
+    "text": "In-line Statements\nIn general, it’s ok to drop the curly braces for very simple statements that fit on one line. However, function calls that affect control flow (return, stop, etc.) should always go in their own {} block:\n\n# Bad\nif (y &lt; 0) stop(\"Y is negative\")\n\nif (y &lt; 0)\n  stop(\"Y is negative\")\n\nfind_abs &lt;- function(x) {\n  if (x &gt; 0) return(x)\n  x * -1\n}"
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#long-lines-in-functions",
+    "href": "slides/12_programming-basics.html#long-lines-in-functions",
+    "title": "MATH167R: Programming Basics",
+    "section": "Long lines in functions",
+    "text": "Long lines in functions\nIf a function definition runs over multiple lines, indent the second line to where the definition starts.\n\n# Good\nlong_function_name &lt;- function(a = \"a long argument\",\n                               b = \"another argument\",\n                               c = \"another long argument\") {\n  # As usual code is indented by two spaces.\n}\n\n# Bad\nlong_function_name &lt;- function(a = \"a long argument\",\n  b = \"another argument\",\n  c = \"another long argument\") {\n  # Here it's hard to spot where the definition ends and the\n  # code begins\n}"
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#return",
+    "href": "slides/12_programming-basics.html#return",
+    "title": "MATH167R: Programming Basics",
+    "section": "return",
+    "text": "return\nStrictly speaking, return is not necessary in a function definition. The function will output the last line of executable R code. The following function definitions will output the same results!\n\nAdd_Values &lt;- function(x, y) {\n  return(x + y)\n}\n\nAdd_Values &lt;- function(x, y) {\n  x + y\n}"
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#commenting-functions",
+    "href": "slides/12_programming-basics.html#commenting-functions",
+    "title": "MATH167R: Programming Basics",
+    "section": "Commenting functions",
+    "text": "Commenting functions\nFor now, when commenting functions, include (at least) 3 lines of comments:\n\na comment describing the purpose of a function\na comment describing each input\na comment describing the output\n\nThe function body should be commented as usual!"
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#commenting-functions-1",
+    "href": "slides/12_programming-basics.html#commenting-functions-1",
+    "title": "MATH167R: Programming Basics",
+    "section": "Commenting functions",
+    "text": "Commenting functions\n\n# Good ----\n# Function: square_plus_2, squares a number and then adds 2\n# Input: x, must be numeric\n# Output: numeric equal to x^2 + 2\nsquare_plus_2 &lt;- function(x) {\n  # check that x is numeric\n  if (!is.numeric(x)) {\n    stop(\"x must be numeric!\")\n  } else {\n    # if numeric, then square and add 2\n    y &lt;- x^2 + 2\n    return(y)\n  }\n}"
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#commenting-functions-2",
+    "href": "slides/12_programming-basics.html#commenting-functions-2",
+    "title": "MATH167R: Programming Basics",
+    "section": "Commenting functions",
+    "text": "Commenting functions\n\n# Bad ----\n# Function for problem 2c\nsquare_plus_2 &lt;- function(x) {\n  if (!is.numeric(x)) {\n    stop(\"x must be numeric!\")\n  } else {\n    y &lt;- x^2 + 2\n    return(y)\n  }\n}"
+  },
+  {
+    "objectID": "slides/12_programming-basics.html#exercises",
+    "href": "slides/12_programming-basics.html#exercises",
+    "title": "MATH167R: Programming Basics",
+    "section": "Exercises",
+    "text": "Exercises\n\nWrite a function that takes as input three numbers, a, b, and c, and returns the sum, without using the sum function.\nWrite a function that takes as input one number, a, and returns its absolute value, without using the abs function."
+  },
+  {
     "objectID": "slides/05_exploring-data.html#warm-up",
     "href": "slides/05_exploring-data.html#warm-up",
     "title": "MATH167R: Importing and Exploring Data",
@@ -2107,6 +2576,160 @@
     "text": "Quotes and Strings\nUse \", not ', for quoting text. The only exception is when the text already contains double quotes and no single quotes."
   },
   {
+    "objectID": "slides/13_functions-loops.html#overview-of-today",
+    "href": "slides/13_functions-loops.html#overview-of-today",
+    "title": "MATH167R: Functions and Loops",
+    "section": "Overview of today",
+    "text": "Overview of today\n\nWriting R functions\nLoops"
+  },
+  {
+    "objectID": "slides/13_functions-loops.html#anatomy-of-a-function",
+    "href": "slides/13_functions-loops.html#anatomy-of-a-function",
+    "title": "MATH167R: Functions and Loops",
+    "section": "Anatomy of a function",
+    "text": "Anatomy of a function\nRecall the structure of a function:\n\nfunction_name &lt;- function(param1, param2 = \"default\") {\n  # body of the function\n  return(output)\n}\n\n\nfunction_name: the name you want to give your function, what you will use to call it\nfunction(): call this to define a function\nparam1, param2: formal arguments input by the user. You can assign default values by setting them equal to something in the call to function()\nbody: the actual code that is executed\nreturn(): the output value returned to the user"
+  },
+  {
+    "objectID": "slides/13_functions-loops.html#exercise-degrees-to-radians",
+    "href": "slides/13_functions-loops.html#exercise-degrees-to-radians",
+    "title": "MATH167R: Functions and Loops",
+    "section": "Exercise: degrees to radians",
+    "text": "Exercise: degrees to radians\n\nWrite a function degreesToRadians that takes as input one number, degrees, and returns its value in radians. You do not need to check the data type of the input."
+  },
+  {
+    "objectID": "slides/13_functions-loops.html#exercise-degrees-to-radians-1",
+    "href": "slides/13_functions-loops.html#exercise-degrees-to-radians-1",
+    "title": "MATH167R: Functions and Loops",
+    "section": "Exercise: degrees to radians",
+    "text": "Exercise: degrees to radians\n\n\ndegreesToRadians &lt;- function(degrees) {\n  return((degrees / 360) * 2 * pi)\n}\ndegreesToRadians(180)\n\n[1] 3.141593"
+  },
+  {
+    "objectID": "slides/13_functions-loops.html#additional-notes-on-functions",
+    "href": "slides/13_functions-loops.html#additional-notes-on-functions",
+    "title": "MATH167R: Functions and Loops",
+    "section": "Additional notes on functions",
+    "text": "Additional notes on functions\n\n\nHow do I know if a function is working?\n\nTest it on easy examples for which you know the results\nWhen using if, test all the possible cases"
+  },
+  {
+    "objectID": "slides/13_functions-loops.html#loops",
+    "href": "slides/13_functions-loops.html#loops",
+    "title": "MATH167R: Functions and Loops",
+    "section": "Loops",
+    "text": "Loops\n\nLoops enable us to repeat a line/lines of code many times.\nR provides three types of explicit loops: for, while, and repeat. We will focus on for and while."
+  },
+  {
+    "objectID": "slides/13_functions-loops.html#for-loops",
+    "href": "slides/13_functions-loops.html#for-loops",
+    "title": "MATH167R: Functions and Loops",
+    "section": "for loops",
+    "text": "for loops\n\nfor loops repeat a chunk of code for each value of a vector.\n\nfor (name in vector) {body}\n\n\n\n\nfor (i in 1:8) {\n  print(i)\n}\n\n\n\n\n\n[1] 1\n[1] 2\n[1] 3\n[1] 4\n[1] 5\n[1] 6\n[1] 7\n[1] 8"
+  },
+  {
+    "objectID": "slides/13_functions-loops.html#example-vector-sum",
+    "href": "slides/13_functions-loops.html#example-vector-sum",
+    "title": "MATH167R: Functions and Loops",
+    "section": "Example: Vector sum",
+    "text": "Example: Vector sum\n\nx &lt;- c(1:10)\nsum(x)\n\n[1] 55\n\ntotal_sum &lt;- 0\nfor (i in x) {\n  total_sum &lt;- total_sum + i\n}\nprint(total_sum)\n\n[1] 55"
+  },
+  {
+    "objectID": "slides/13_functions-loops.html#example-fibonacci-sequence",
+    "href": "slides/13_functions-loops.html#example-fibonacci-sequence",
+    "title": "MATH167R: Functions and Loops",
+    "section": "Example: Fibonacci sequence",
+    "text": "Example: Fibonacci sequence\n\n# code to compute the first 10 Fibonacci numbers\nfib_10 &lt;- numeric(10) # empty numeric vector of length 10\nfib_10[1] &lt;- 1\nfib_10[2] &lt;- 1\nfor (i in 3:10) {\n  fib_10[i] &lt;- fib_10[i - 1] + fib_10[i - 2]\n}\nfib_10\n\n [1]  1  1  2  3  5  8 13 21 34 55"
+  },
+  {
+    "objectID": "slides/13_functions-loops.html#while-loops",
+    "href": "slides/13_functions-loops.html#while-loops",
+    "title": "MATH167R: Functions and Loops",
+    "section": "while loops",
+    "text": "while loops\n\nwhile loops continuously evaluate the inner code chunk until the condition is FALSE.\nBe careful here: It is possible to get stuck in an infinite loop!\n\nx &lt;- 0\nwhile (x &lt; 5) {\n  cat(\"x is currently\", x, \". Let's increase it by 1.\")\n  x &lt;- x + 1\n}\n\nx is currently 0 . Let's increase it by 1.x is currently 1 . Let's increase it by 1.x is currently 2 . Let's increase it by 1.x is currently 3 . Let's increase it by 1.x is currently 4 . Let's increase it by 1."
+  },
+  {
+    "objectID": "slides/13_functions-loops.html#while-loops-1",
+    "href": "slides/13_functions-loops.html#while-loops-1",
+    "title": "MATH167R: Functions and Loops",
+    "section": "while loops",
+    "text": "while loops\n\nLet’s see if we can clean up that output. Add \"\\n\" to a string to force a line break.\n\nx &lt;- 0\nwhile (x &lt; 5) {\n  cat(\"x is currently \", x, \". Let's increase it by 1! \\n\", sep = \"\")\n  x &lt;- x + 1\n}\n\nx is currently 0. Let's increase it by 1! \nx is currently 1. Let's increase it by 1! \nx is currently 2. Let's increase it by 1! \nx is currently 3. Let's increase it by 1! \nx is currently 4. Let's increase it by 1!"
+  },
+  {
+    "objectID": "slides/13_functions-loops.html#example-string-input",
+    "href": "slides/13_functions-loops.html#example-string-input",
+    "title": "MATH167R: Functions and Loops",
+    "section": "Example: String input",
+    "text": "Example: String input\n\nstring_vector &lt;- c(\"a\", \"b\", \"c\", \"d\", \"e\")\nfor (mystring in string_vector) {\n  print(mystring)\n}\n\n[1] \"a\"\n[1] \"b\"\n[1] \"c\"\n[1] \"d\"\n[1] \"e\""
+  },
+  {
+    "objectID": "slides/13_functions-loops.html#nested-loops",
+    "href": "slides/13_functions-loops.html#nested-loops",
+    "title": "MATH167R: Functions and Loops",
+    "section": "Nested Loops",
+    "text": "Nested Loops\nIn nested loops, the innermost loop iterates most quickly.\n\ncounter &lt;- 0\nfor (i in 1:3) {\n  for (j in 1:2) {\n    counter &lt;- counter + 1\n    cat(\"i = \", i, \", j = \", j, \", counter = \", counter, \"\\n\", sep = \"\")\n  }\n}\n\ni = 1, j = 1, counter = 1\ni = 1, j = 2, counter = 2\ni = 2, j = 1, counter = 3\ni = 2, j = 2, counter = 4\ni = 3, j = 1, counter = 5\ni = 3, j = 2, counter = 6"
+  },
+  {
+    "objectID": "slides/13_functions-loops.html#nested-loops-1",
+    "href": "slides/13_functions-loops.html#nested-loops-1",
+    "title": "MATH167R: Functions and Loops",
+    "section": "Nested Loops",
+    "text": "Nested Loops\n\nfor (i in 1:3) {\n  for (j in 1:2) {\n    print(i * j)\n  }\n}\n\n[1] 1\n[1] 2\n[1] 2\n[1] 4\n[1] 3\n[1] 6"
+  },
+  {
+    "objectID": "slides/13_functions-loops.html#filling-in-a-vector",
+    "href": "slides/13_functions-loops.html#filling-in-a-vector",
+    "title": "MATH167R: Functions and Loops",
+    "section": "Filling in a vector",
+    "text": "Filling in a vector\nNote: Usually, this is an inefficient way to do this. We will see a faster way to work with vectors next class.\n\n# Inefficient\nx &lt;- rep(NA, 5)\nfor (i in 1:5) {\n  x[i] &lt;- i * 2\n}\nx\n\n[1]  2  4  6  8 10\n\n# Much better\nx &lt;- seq(2, 10, by = 2)\nx\n\n[1]  2  4  6  8 10"
+  },
+  {
+    "objectID": "slides/13_functions-loops.html#filling-in-a-vector-1",
+    "href": "slides/13_functions-loops.html#filling-in-a-vector-1",
+    "title": "MATH167R: Functions and Loops",
+    "section": "Filling in a vector",
+    "text": "Filling in a vector\n\nlibrary(stringr)\nx &lt;- rep(NA, 5)\nmy_strings &lt;- c(\"a\", \"a \", \"a c\", \"a ca\", \"a cat\")\nfor (i in 1:5) {\n  x[i] &lt;- str_length(my_strings[i])\n  print(x)\n}\n\n[1]  1 NA NA NA NA\n[1]  1  2 NA NA NA\n[1]  1  2  3 NA NA\n[1]  1  2  3  4 NA\n[1] 1 2 3 4 5"
+  },
+  {
+    "objectID": "slides/13_functions-loops.html#filling-in-a-matrix",
+    "href": "slides/13_functions-loops.html#filling-in-a-matrix",
+    "title": "MATH167R: Functions and Loops",
+    "section": "Filling in a matrix",
+    "text": "Filling in a matrix\nNote: Usually, this is an inefficient way to do this. We will see a faster way to work with vectors next class.\n\nx &lt;- matrix(NA, nrow = 4, ncol = 3)\nfor (i in 1:4) {\n  for (j in 1:3) {\n    x[i, j] &lt;- i * j\n  }\n}\nx\n\n     [,1] [,2] [,3]\n[1,]    1    2    3\n[2,]    2    4    6\n[3,]    3    6    9\n[4,]    4    8   12"
+  },
+  {
+    "objectID": "slides/13_functions-loops.html#continue-until-positive-sample",
+    "href": "slides/13_functions-loops.html#continue-until-positive-sample",
+    "title": "MATH167R: Functions and Loops",
+    "section": "Continue until positive sample",
+    "text": "Continue until positive sample\n\nset.seed(3)\nx &lt;- -1\nwhile (x &lt; 0) {\n  x &lt;- rnorm(1)\n  print(x)\n}\n\n[1] -0.9619334\n[1] -0.2925257\n[1] 0.2587882\n\nx\n\n[1] 0.2587882"
+  },
+  {
+    "objectID": "slides/13_functions-loops.html#combining-loops-and-conditional-evaluation",
+    "href": "slides/13_functions-loops.html#combining-loops-and-conditional-evaluation",
+    "title": "MATH167R: Functions and Loops",
+    "section": "Combining Loops and Conditional Evaluation",
+    "text": "Combining Loops and Conditional Evaluation\nConsider the following code. What do you think it does?\n\nfor (i in 1:10) {\n  if (i %% 2 == 1) {\n    print(\"odd\")\n  } else {\n    print(\"even\")\n  }\n}\n\n\n\n\n[1] \"odd\"\n[1] \"even\"\n[1] \"odd\"\n[1] \"even\"\n[1] \"odd\"\n[1] \"even\"\n[1] \"odd\"\n[1] \"even\"\n[1] \"odd\"\n[1] \"even\""
+  },
+  {
+    "objectID": "slides/13_functions-loops.html#fizz-buzz",
+    "href": "slides/13_functions-loops.html#fizz-buzz",
+    "title": "MATH167R: Functions and Loops",
+    "section": "Fizz Buzz",
+    "text": "Fizz Buzz\nLet’s play Fizz Buzz.\n\nEveryone takes turns to count incrementally.\nAny number divisible by three is replaced with the word “fizz.”\nAny number divisible by five is replaced with the word “buzz.”\nAny number divisible by both three and five is replaced with the word “fizzbuzz.”"
+  },
+  {
+    "objectID": "slides/13_functions-loops.html#fizz-buzz-1",
+    "href": "slides/13_functions-loops.html#fizz-buzz-1",
+    "title": "MATH167R: Functions and Loops",
+    "section": "Fizz Buzz",
+    "text": "Fizz Buzz\nCan we write code for a computer to play fizz buzz with itself? Suppose we want the computer to play Fizz Buzz up to 100.\n\n\nfor (i in 1:100) {\n  if (i %% 3 == 0 & i %% 5 == 0) {\n    print(\"fizzbuzz\")\n  } else if (i %% 3 == 0) {\n    print(\"fizz\")\n  } else if (i %% 5 == 0) {\n    print(\"buzz\")\n  } else {\n    print(i)\n  }\n}\n\n\n\n\n\n[1] 1\n[1] 2\n[1] \"fizz\"\n[1] 4\n[1] \"buzz\"\n[1] \"fizz\"\n[1] 7\n[1] 8\n[1] \"fizz\"\n[1] \"buzz\"\n[1] 11\n[1] \"fizz\"\n[1] 13\n[1] 14\n[1] \"fizzbuzz\"\n[1] 16\n[1] 17\n[1] \"fizz\"\n[1] 19\n[1] \"buzz\"\n[1] \"fizz\"\n[1] 22\n[1] 23\n[1] \"fizz\"\n[1] \"buzz\"\n[1] 26\n[1] \"fizz\"\n[1] 28\n[1] 29\n[1] \"fizzbuzz\"\n[1] 31\n[1] 32\n[1] \"fizz\"\n[1] 34\n[1] \"buzz\"\n[1] \"fizz\"\n[1] 37\n[1] 38\n[1] \"fizz\"\n[1] \"buzz\"\n[1] 41\n[1] \"fizz\"\n[1] 43\n[1] 44\n[1] \"fizzbuzz\"\n[1] 46\n[1] 47\n[1] \"fizz\"\n[1] 49\n[1] \"buzz\"\n[1] \"fizz\"\n[1] 52\n[1] 53\n[1] \"fizz\"\n[1] \"buzz\"\n[1] 56\n[1] \"fizz\"\n[1] 58\n[1] 59\n[1] \"fizzbuzz\"\n[1] 61\n[1] 62\n[1] \"fizz\"\n[1] 64\n[1] \"buzz\"\n[1] \"fizz\"\n[1] 67\n[1] 68\n[1] \"fizz\"\n[1] \"buzz\"\n[1] 71\n[1] \"fizz\"\n[1] 73\n[1] 74\n[1] \"fizzbuzz\"\n[1] 76\n[1] 77\n[1] \"fizz\"\n[1] 79\n[1] \"buzz\"\n[1] \"fizz\"\n[1] 82\n[1] 83\n[1] \"fizz\"\n[1] \"buzz\"\n[1] 86\n[1] \"fizz\"\n[1] 88\n[1] 89\n[1] \"fizzbuzz\"\n[1] 91\n[1] 92\n[1] \"fizz\"\n[1] 94\n[1] \"buzz\"\n[1] \"fizz\"\n[1] 97\n[1] 98\n[1] \"fizz\"\n[1] \"buzz\""
+  },
+  {
+    "objectID": "slides/13_functions-loops.html#coding-challenges",
+    "href": "slides/13_functions-loops.html#coding-challenges",
+    "title": "MATH167R: Functions and Loops",
+    "section": "Coding challenges",
+    "text": "Coding challenges\n\nProject Euler\nHackerRank\nLeetCode (doesn’t support R)"
+  },
+  {
     "objectID": "slides/10_data-management.html#overview-of-today",
     "href": "slides/10_data-management.html#overview-of-today",
     "title": "MATH167R: Data Management",
@@ -2896,6 +3519,13 @@
     "title": "Check-in 3",
     "section": "A. Flights Data",
     "text": "A. Flights Data\n1. For this lab, we’ll be using the flights data. You can load this data using the following code:\n\nlibrary(nycflights13)\ndata(flights)\n\n2. Use the mutate() function to turn origin into a factor.\n\n# YOUR CODE HERE\n\n3. Compute the mean arr_delay for each origin airport. Which airport has the longest delays on average? You can drop missing rows.\n\n# YOUR CODE HERE\n\n\n4. Use the mutate() function to turn month into a factor.\n\n# YOUR CODE HERE\n\n\n5. Compute the mean arr_delay by month. What do you notice?\n\n# YOUR CODE HERE\n\n\n6. Compute the mean arr_delay by month AND airport. What do you notice?\n\n# YOUR CODE HERE"
+  },
+  {
+    "objectID": "checkins/06_checkin.html",
+    "href": "checkins/06_checkin.html",
+    "title": "Check-in 6",
+    "section": "",
+    "text": "Remember, you must submit both your .Rmd and the compiled .html in order to receive full credit! In addition, to receive full credit, your code output and plots must be correctly formatted.\n\nCollaborators\nINSERT NAMES OF ANY COLLABORATORS\n\n(Project Euler Problem 1) The natural numbers less than 10 that are divisible by 3 or 5 are 3, 5, 6, and 9. The sum of these numbers is 23. Write R code to compute the sum of all the numbers less than 1000 that are divisible by 3 or 5."
   },
   {
     "objectID": "checkins/01_first-checkin.html",
