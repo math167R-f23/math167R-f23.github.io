@@ -562,7 +562,7 @@ if (y == 0)
 } else { y ^ x }
 ```
 
-## In-line Statments
+## In-line Statements
 
 In general, it's ok to drop the curly braces for very simple statements that fit on one line. However, function calls that affect control flow (`return`, `stop`, etc.) should always go in their own `{}` block:
 

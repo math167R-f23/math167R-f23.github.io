@@ -465,13 +465,13 @@ Peter Gao
 <section id="functions-as-algorithms" class="slide level2">
 <h2>Functions as algorithms</h2>
 <p>Each function is an implementation of an algorithm. For example, consider the <code>rank()</code> function which returns the rank-ordering of each number in a vector:</p>
-<div class="cell" data-hash="12_programming-basics_cache/html/unnamed-chunk-1_eb8527ff806cb17f83c4861dbcf3d856">
+<div class="cell" data-hash="12_programming-basics_cache/revealjs/unnamed-chunk-1_e51b53086bfe0cfc2ce182d5c4875095">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">rank</span>(<span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">9</span>, <span class="dv">8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3 2 1</code></pre>
 </div>
 </div>
-<div class="cell" data-hash="12_programming-basics_cache/html/unnamed-chunk-2_3e6de91fdd88a8ec956cfe2720a64582">
+<div class="cell" data-hash="12_programming-basics_cache/revealjs/unnamed-chunk-2_3f36ea56b0c204714d6f630f58d8f111">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>rank</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>function (x, na.last = TRUE, ties.method = c("average", "first", 
@@ -507,7 +507,7 @@ Peter Gao
     else names(y) &lt;- nm[!nas]
     y
 }
-&lt;bytecode: 0x13b06ed70&gt;
+&lt;bytecode: 0x13bcf1048&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 </div>
 </div>
@@ -855,16 +855,6 @@ Peter Gao
 <h2>Square a number, add 2</h2>
 <p>Let’s try making our function more robust by adding a <code>if</code> statement and a <code>stop</code> call.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>square_plus_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb45-2"><a href="#cb45-2"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
-<span id="cb45-3"><a href="#cb45-3"></a>    <span class="fu">stop</span>(<span class="st">"x must be numeric!"</span>)</span>
-<span id="cb45-4"><a href="#cb45-4"></a>  } <span class="cf">else</span> {</span>
-<span id="cb45-5"><a href="#cb45-5"></a>    y <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span>
-<span id="cb45-6"><a href="#cb45-6"></a>    <span class="fu">return</span>(y)</span>
-<span id="cb45-7"><a href="#cb45-7"></a>  }</span>
-<span id="cb45-8"><a href="#cb45-8"></a>}</span>
-<span id="cb45-9"><a href="#cb45-9"></a></span>
-<span id="cb45-10"><a href="#cb45-10"></a><span class="fu">square_plus_2</span>(<span class="st">"some string"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in square_plus_2("some string"): x must be numeric!</code></pre>
 </div>
@@ -878,45 +868,14 @@ Peter Gao
 <section id="function-names" class="slide level2">
 <h2>Function Names</h2>
 <p>Strive to have function names based on verbs. Otherwise, standard variable name style guidelines apply!</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="co"># Good</span></span>
-<span id="cb47-2"><a href="#cb47-2"></a><span class="fu">add_row</span>()</span>
-<span id="cb47-3"><a href="#cb47-3"></a><span class="fu">permute</span>()</span>
-<span id="cb47-4"><a href="#cb47-4"></a></span>
-<span id="cb47-5"><a href="#cb47-5"></a><span class="co"># Bad</span></span>
-<span id="cb47-6"><a href="#cb47-6"></a><span class="fu">row_adder</span>()</span>
-<span id="cb47-7"><a href="#cb47-7"></a><span class="fu">permutation</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="spacing" class="slide level2">
 <h2>Spacing</h2>
 <p>Place a space before and after <code>()</code> when used with <code>if</code>, <code>for</code>, or <code>while</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="co"># Good</span></span>
-<span id="cb48-2"><a href="#cb48-2"></a><span class="cf">if</span> (condition) {</span>
-<span id="cb48-3"><a href="#cb48-3"></a>  x <span class="sc">+</span> <span class="dv">2</span></span>
-<span id="cb48-4"><a href="#cb48-4"></a>}</span>
-<span id="cb48-5"><a href="#cb48-5"></a></span>
-<span id="cb48-6"><a href="#cb48-6"></a><span class="co"># Bad</span></span>
-<span id="cb48-7"><a href="#cb48-7"></a><span class="cf">if</span>(condition){</span>
-<span id="cb48-8"><a href="#cb48-8"></a>  x <span class="sc">+</span> <span class="dv">2</span></span>
-<span id="cb48-9"><a href="#cb48-9"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="spacing-1" class="slide level2">
 <h2>Spacing</h2>
 <p>Place a space after <code>()</code> used for function arguments.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="co"># Good</span></span>
-<span id="cb49-2"><a href="#cb49-2"></a><span class="cf">if</span> (debug) {</span>
-<span id="cb49-3"><a href="#cb49-3"></a>  <span class="fu">show</span>(x)</span>
-<span id="cb49-4"><a href="#cb49-4"></a>}</span>
-<span id="cb49-5"><a href="#cb49-5"></a></span>
-<span id="cb49-6"><a href="#cb49-6"></a><span class="co"># Bad</span></span>
-<span id="cb49-7"><a href="#cb49-7"></a><span class="cf">if</span>(debug){</span>
-<span id="cb49-8"><a href="#cb49-8"></a>  <span class="fu">show</span>(x)</span>
-<span id="cb49-9"><a href="#cb49-9"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="code-blocks" class="slide level2">
 <h2>Code Blocks</h2>
@@ -928,109 +887,25 @@ Peter Gao
 </section>
 <section id="code-blocks-1" class="slide level2">
 <h2>Code Blocks</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="co"># Good</span></span>
-<span id="cb50-2"><a href="#cb50-2"></a><span class="cf">if</span> (y <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
-<span id="cb50-3"><a href="#cb50-3"></a>  <span class="fu">message</span>(<span class="st">"y is negative"</span>)</span>
-<span id="cb50-4"><a href="#cb50-4"></a>}</span>
-<span id="cb50-5"><a href="#cb50-5"></a></span>
-<span id="cb50-6"><a href="#cb50-6"></a><span class="cf">if</span> (y <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb50-7"><a href="#cb50-7"></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb50-8"><a href="#cb50-8"></a>    <span class="fu">log</span>(x)</span>
-<span id="cb50-9"><a href="#cb50-9"></a>  } <span class="cf">else</span> {</span>
-<span id="cb50-10"><a href="#cb50-10"></a>    <span class="fu">message</span>(<span class="st">"x is negative or zero"</span>)</span>
-<span id="cb50-11"><a href="#cb50-11"></a>  }</span>
-<span id="cb50-12"><a href="#cb50-12"></a>} <span class="cf">else</span> {</span>
-<span id="cb50-13"><a href="#cb50-13"></a>  y<span class="sc">^</span>x</span>
-<span id="cb50-14"><a href="#cb50-14"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="code-blocks-2" class="slide level2">
 <h2>Code Blocks</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="co"># Bad</span></span>
-<span id="cb51-2"><a href="#cb51-2"></a><span class="cf">if</span> (y<span class="sc">&lt;</span><span class="dv">0</span>){</span>
-<span id="cb51-3"><a href="#cb51-3"></a><span class="fu">message</span>(<span class="st">"Y is negative"</span>)</span>
-<span id="cb51-4"><a href="#cb51-4"></a>}</span>
-<span id="cb51-5"><a href="#cb51-5"></a></span>
-<span id="cb51-6"><a href="#cb51-6"></a><span class="cf">if</span> (y <span class="sc">==</span> <span class="dv">0</span>)</span>
-<span id="cb51-7"><a href="#cb51-7"></a>{</span>
-<span id="cb51-8"><a href="#cb51-8"></a>    <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb51-9"><a href="#cb51-9"></a>      <span class="fu">log</span>(x)</span>
-<span id="cb51-10"><a href="#cb51-10"></a>    } <span class="cf">else</span> {</span>
-<span id="cb51-11"><a href="#cb51-11"></a>  <span class="fu">message</span>(<span class="st">"x is negative or zero"</span>)</span>
-<span id="cb51-12"><a href="#cb51-12"></a>    }</span>
-<span id="cb51-13"><a href="#cb51-13"></a>} <span class="cf">else</span> { y <span class="sc">^</span> x }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="in-line-statments" class="slide level2">
-<h2>In-line Statments</h2>
-<p>In general, it’s ok to drop the curly braces for very simple statements that fit on one line. However, function calls that affect control flow (<code>return</code>, <code>stop</code>, etc.) should always go in their own <code>{}</code> block:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="co"># Good</span></span>
-<span id="cb52-2"><a href="#cb52-2"></a>y <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb52-3"><a href="#cb52-3"></a>x <span class="ot">&lt;-</span> <span class="cf">if</span> (y <span class="sc">&lt;</span> <span class="dv">20</span>) <span class="st">"Too low"</span> <span class="cf">else</span> <span class="st">"Too high"</span></span>
-<span id="cb52-4"><a href="#cb52-4"></a></span>
-<span id="cb52-5"><a href="#cb52-5"></a><span class="cf">if</span> (y <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
-<span id="cb52-6"><a href="#cb52-6"></a>  <span class="fu">stop</span>(<span class="st">"Y is negative"</span>)</span>
-<span id="cb52-7"><a href="#cb52-7"></a>}</span>
-<span id="cb52-8"><a href="#cb52-8"></a></span>
-<span id="cb52-9"><a href="#cb52-9"></a>find_abs <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb52-10"><a href="#cb52-10"></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb52-11"><a href="#cb52-11"></a>    <span class="fu">return</span>(x)</span>
-<span id="cb52-12"><a href="#cb52-12"></a>  }</span>
-<span id="cb52-13"><a href="#cb52-13"></a>  x <span class="sc">*</span> <span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb52-14"><a href="#cb52-14"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="in-line-statements" class="slide level2">
 <h2>In-line Statements</h2>
 <p>In general, it’s ok to drop the curly braces for very simple statements that fit on one line. However, function calls that affect control flow (<code>return</code>, <code>stop</code>, etc.) should always go in their own <code>{}</code> block:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a><span class="co"># Bad</span></span>
-<span id="cb53-2"><a href="#cb53-2"></a><span class="cf">if</span> (y <span class="sc">&lt;</span> <span class="dv">0</span>) <span class="fu">stop</span>(<span class="st">"Y is negative"</span>)</span>
-<span id="cb53-3"><a href="#cb53-3"></a></span>
-<span id="cb53-4"><a href="#cb53-4"></a><span class="cf">if</span> (y <span class="sc">&lt;</span> <span class="dv">0</span>)</span>
-<span id="cb53-5"><a href="#cb53-5"></a>  <span class="fu">stop</span>(<span class="st">"Y is negative"</span>)</span>
-<span id="cb53-6"><a href="#cb53-6"></a></span>
-<span id="cb53-7"><a href="#cb53-7"></a>find_abs <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb53-8"><a href="#cb53-8"></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="fu">return</span>(x)</span>
-<span id="cb53-9"><a href="#cb53-9"></a>  x <span class="sc">*</span> <span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb53-10"><a href="#cb53-10"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+</section>
+<section id="in-line-statements-1" class="slide level2">
+<h2>In-line Statements</h2>
+<p>In general, it’s ok to drop the curly braces for very simple statements that fit on one line. However, function calls that affect control flow (<code>return</code>, <code>stop</code>, etc.) should always go in their own <code>{}</code> block:</p>
 </section>
 <section id="long-lines-in-functions" class="slide level2">
 <h2>Long lines in functions</h2>
 <p>If a function definition runs over multiple lines, indent the second line to where the definition starts.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="co"># Good</span></span>
-<span id="cb54-2"><a href="#cb54-2"></a>long_function_name <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">a =</span> <span class="st">"a long argument"</span>,</span>
-<span id="cb54-3"><a href="#cb54-3"></a>                               <span class="at">b =</span> <span class="st">"another argument"</span>,</span>
-<span id="cb54-4"><a href="#cb54-4"></a>                               <span class="at">c =</span> <span class="st">"another long argument"</span>) {</span>
-<span id="cb54-5"><a href="#cb54-5"></a>  <span class="co"># As usual code is indented by two spaces.</span></span>
-<span id="cb54-6"><a href="#cb54-6"></a>}</span>
-<span id="cb54-7"><a href="#cb54-7"></a></span>
-<span id="cb54-8"><a href="#cb54-8"></a><span class="co"># Bad</span></span>
-<span id="cb54-9"><a href="#cb54-9"></a>long_function_name <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">a =</span> <span class="st">"a long argument"</span>,</span>
-<span id="cb54-10"><a href="#cb54-10"></a>  <span class="at">b =</span> <span class="st">"another argument"</span>,</span>
-<span id="cb54-11"><a href="#cb54-11"></a>  <span class="at">c =</span> <span class="st">"another long argument"</span>) {</span>
-<span id="cb54-12"><a href="#cb54-12"></a>  <span class="co"># Here it's hard to spot where the definition ends and the</span></span>
-<span id="cb54-13"><a href="#cb54-13"></a>  <span class="co"># code begins</span></span>
-<span id="cb54-14"><a href="#cb54-14"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="return" class="slide level2">
 <h2><code>return</code></h2>
 <p>Strictly speaking, <code>return</code> is not necessary in a function definition. The function will output the last line of executable R code. The following function definitions will output the same results!</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>Add_Values <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb55-2"><a href="#cb55-2"></a>  <span class="fu">return</span>(x <span class="sc">+</span> y)</span>
-<span id="cb55-3"><a href="#cb55-3"></a>}</span>
-<span id="cb55-4"><a href="#cb55-4"></a></span>
-<span id="cb55-5"><a href="#cb55-5"></a>Add_Values <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb55-6"><a href="#cb55-6"></a>  x <span class="sc">+</span> y</span>
-<span id="cb55-7"><a href="#cb55-7"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="commenting-functions" class="slide level2">
 <h2>Commenting functions</h2>
@@ -1044,37 +919,9 @@ Peter Gao
 </section>
 <section id="commenting-functions-1" class="slide level2">
 <h2>Commenting functions</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="co"># Good ----</span></span>
-<span id="cb56-2"><a href="#cb56-2"></a><span class="co"># Function: square_plus_2, squares a number and then adds 2</span></span>
-<span id="cb56-3"><a href="#cb56-3"></a><span class="co"># Input: x, must be numeric</span></span>
-<span id="cb56-4"><a href="#cb56-4"></a><span class="co"># Output: numeric equal to x^2 + 2</span></span>
-<span id="cb56-5"><a href="#cb56-5"></a>square_plus_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb56-6"><a href="#cb56-6"></a>  <span class="co"># check that x is numeric</span></span>
-<span id="cb56-7"><a href="#cb56-7"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
-<span id="cb56-8"><a href="#cb56-8"></a>    <span class="fu">stop</span>(<span class="st">"x must be numeric!"</span>)</span>
-<span id="cb56-9"><a href="#cb56-9"></a>  } <span class="cf">else</span> {</span>
-<span id="cb56-10"><a href="#cb56-10"></a>    <span class="co"># if numeric, then square and add 2</span></span>
-<span id="cb56-11"><a href="#cb56-11"></a>    y <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span>
-<span id="cb56-12"><a href="#cb56-12"></a>    <span class="fu">return</span>(y)</span>
-<span id="cb56-13"><a href="#cb56-13"></a>  }</span>
-<span id="cb56-14"><a href="#cb56-14"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="commenting-functions-2" class="slide level2">
 <h2>Commenting functions</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="co"># Bad ----</span></span>
-<span id="cb57-2"><a href="#cb57-2"></a><span class="co"># Function for problem 2c</span></span>
-<span id="cb57-3"><a href="#cb57-3"></a>square_plus_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb57-4"><a href="#cb57-4"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
-<span id="cb57-5"><a href="#cb57-5"></a>    <span class="fu">stop</span>(<span class="st">"x must be numeric!"</span>)</span>
-<span id="cb57-6"><a href="#cb57-6"></a>  } <span class="cf">else</span> {</span>
-<span id="cb57-7"><a href="#cb57-7"></a>    y <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span>
-<span id="cb57-8"><a href="#cb57-8"></a>    <span class="fu">return</span>(y)</span>
-<span id="cb57-9"><a href="#cb57-9"></a>  }</span>
-<span id="cb57-10"><a href="#cb57-10"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
 <section id="exercises" class="slide level2">
 <h2>Exercises</h2>
@@ -1298,6 +1145,44 @@ Peter Gao
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
