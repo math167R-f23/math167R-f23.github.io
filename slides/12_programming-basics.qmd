@@ -5,6 +5,9 @@ format:
   revealjs:
     theme: [./slides.scss, ../theme.scss]
 editor: visual
+execute:
+  echo: true
+  eval: true
 ---
 
 ## Overview of today
@@ -371,6 +374,14 @@ if (is.numeric(x)) {
   cat("x is some class I didn't check for in my code.")
 }
 ```
+
+## Exercise
+
+Write code that, given two numerics `x` and `y`, prints out:
+
+* `EQUAL` if `sum(x)` and `sum(y)` are equal.
+* `X` if `sum(x)` is bigger.
+* `Y` if `sum(y)` is bigger.
 
 ## Functions
 

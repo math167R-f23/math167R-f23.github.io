@@ -1631,6 +1631,13 @@
     "text": "Check class\n\nx &lt;- list()\nif (is.numeric(x)) {\n  cat(\"x is a numeric.\")\n} else if (is.character(x)) {\n  cat(\"x is a character.\")\n} else {\n  cat(\"x is some class I didn't check for in my code.\")\n}\n\nx is some class I didn't check for in my code."
   },
   {
+    "objectID": "slides/12_programming-basics.html#exercise-1",
+    "href": "slides/12_programming-basics.html#exercise-1",
+    "title": "MATH167R: Programming Basics",
+    "section": "Exercise",
+    "text": "Exercise\nWrite code that, given two numerics x and y, prints out:\n\nEQUAL if sum(x) and sum(y) are equal.\nX if sum(x) is bigger.\nY if sum(y) is bigger."
+  },
+  {
     "objectID": "slides/12_programming-basics.html#functions",
     "href": "slides/12_programming-basics.html#functions",
     "title": "MATH167R: Programming Basics",
@@ -1670,28 +1677,28 @@
     "href": "slides/12_programming-basics.html#square-a-number-add-2-2",
     "title": "MATH167R: Programming Basics",
     "section": "Square a number, add 2",
-    "text": "Square a number, add 2\nLet’s try making our function more robust by adding a if statement and a stop call.\n\n\nError in square_plus_2(\"some string\"): x must be numeric!"
+    "text": "Square a number, add 2\nLet’s try making our function more robust by adding a if statement and a stop call.\n\nsquare_plus_2 &lt;- function(x) {\n  if (!is.numeric(x)) {\n    stop(\"x must be numeric!\")\n  } else {\n    y &lt;- x^2 + 2\n    return(y)\n  }\n}\n\nsquare_plus_2(\"some string\")\n\nError in square_plus_2(\"some string\"): x must be numeric!"
   },
   {
     "objectID": "slides/12_programming-basics.html#function-names",
     "href": "slides/12_programming-basics.html#function-names",
     "title": "MATH167R: Programming Basics",
     "section": "Function Names",
-    "text": "Function Names\nStrive to have function names based on verbs. Otherwise, standard variable name style guidelines apply!"
+    "text": "Function Names\nStrive to have function names based on verbs. Otherwise, standard variable name style guidelines apply!\n\n# Good\nadd_row()\npermute()\n\n# Bad\nrow_adder()\npermutation()"
   },
   {
     "objectID": "slides/12_programming-basics.html#spacing",
     "href": "slides/12_programming-basics.html#spacing",
     "title": "MATH167R: Programming Basics",
     "section": "Spacing",
-    "text": "Spacing\nPlace a space before and after () when used with if, for, or while."
+    "text": "Spacing\nPlace a space before and after () when used with if, for, or while.\n\n# Good\nif (condition) {\n  x + 2\n}\n\n# Bad\nif(condition){\n  x + 2\n}"
   },
   {
     "objectID": "slides/12_programming-basics.html#spacing-1",
     "href": "slides/12_programming-basics.html#spacing-1",
     "title": "MATH167R: Programming Basics",
     "section": "Spacing",
-    "text": "Spacing\nPlace a space after () used for function arguments."
+    "text": "Spacing\nPlace a space after () used for function arguments.\n\n# Good\nif (debug) {\n  show(x)\n}\n\n# Bad\nif(debug){\n  show(x)\n}"
   },
   {
     "objectID": "slides/12_programming-basics.html#code-blocks",
@@ -1705,42 +1712,42 @@
     "href": "slides/12_programming-basics.html#code-blocks-1",
     "title": "MATH167R: Programming Basics",
     "section": "Code Blocks",
-    "text": "Code Blocks"
+    "text": "Code Blocks\n\n# Good\nif (y &lt; 0) {\n  message(\"y is negative\")\n}\n\nif (y == 0) {\n  if (x &gt; 0) {\n    log(x)\n  } else {\n    message(\"x is negative or zero\")\n  }\n} else {\n  y^x\n}"
   },
   {
     "objectID": "slides/12_programming-basics.html#code-blocks-2",
     "href": "slides/12_programming-basics.html#code-blocks-2",
     "title": "MATH167R: Programming Basics",
     "section": "Code Blocks",
-    "text": "Code Blocks"
+    "text": "Code Blocks\n\n# Bad\nif (y&lt;0){\nmessage(\"Y is negative\")\n}\n\nif (y == 0)\n{\n    if (x &gt; 0) {\n      log(x)\n    } else {\n  message(\"x is negative or zero\")\n    }\n} else { y ^ x }"
   },
   {
     "objectID": "slides/12_programming-basics.html#in-line-statements",
     "href": "slides/12_programming-basics.html#in-line-statements",
     "title": "MATH167R: Programming Basics",
     "section": "In-line Statements",
-    "text": "In-line Statements\nIn general, it’s ok to drop the curly braces for very simple statements that fit on one line. However, function calls that affect control flow (return, stop, etc.) should always go in their own {} block:"
+    "text": "In-line Statements\nIn general, it’s ok to drop the curly braces for very simple statements that fit on one line. However, function calls that affect control flow (return, stop, etc.) should always go in their own {} block:\n\n# Good\ny &lt;- 10\nx &lt;- if (y &lt; 20) \"Too low\" else \"Too high\"\n\nif (y &lt; 0) {\n  stop(\"Y is negative\")\n}\n\nfind_abs &lt;- function(x) {\n  if (x &gt; 0) {\n    return(x)\n  }\n  x * -1\n}"
   },
   {
     "objectID": "slides/12_programming-basics.html#in-line-statements-1",
     "href": "slides/12_programming-basics.html#in-line-statements-1",
     "title": "MATH167R: Programming Basics",
     "section": "In-line Statements",
-    "text": "In-line Statements\nIn general, it’s ok to drop the curly braces for very simple statements that fit on one line. However, function calls that affect control flow (return, stop, etc.) should always go in their own {} block:"
+    "text": "In-line Statements\nIn general, it’s ok to drop the curly braces for very simple statements that fit on one line. However, function calls that affect control flow (return, stop, etc.) should always go in their own {} block:\n\n# Bad\nif (y &lt; 0) stop(\"Y is negative\")\n\nif (y &lt; 0)\n  stop(\"Y is negative\")\n\nfind_abs &lt;- function(x) {\n  if (x &gt; 0) return(x)\n  x * -1\n}"
   },
   {
     "objectID": "slides/12_programming-basics.html#long-lines-in-functions",
     "href": "slides/12_programming-basics.html#long-lines-in-functions",
     "title": "MATH167R: Programming Basics",
     "section": "Long lines in functions",
-    "text": "Long lines in functions\nIf a function definition runs over multiple lines, indent the second line to where the definition starts."
+    "text": "Long lines in functions\nIf a function definition runs over multiple lines, indent the second line to where the definition starts.\n\n# Good\nlong_function_name &lt;- function(a = \"a long argument\",\n                               b = \"another argument\",\n                               c = \"another long argument\") {\n  # As usual code is indented by two spaces.\n}\n\n# Bad\nlong_function_name &lt;- function(a = \"a long argument\",\n  b = \"another argument\",\n  c = \"another long argument\") {\n  # Here it's hard to spot where the definition ends and the\n  # code begins\n}"
   },
   {
     "objectID": "slides/12_programming-basics.html#return",
     "href": "slides/12_programming-basics.html#return",
     "title": "MATH167R: Programming Basics",
     "section": "return",
-    "text": "return\nStrictly speaking, return is not necessary in a function definition. The function will output the last line of executable R code. The following function definitions will output the same results!"
+    "text": "return\nStrictly speaking, return is not necessary in a function definition. The function will output the last line of executable R code. The following function definitions will output the same results!\n\nAdd_Values &lt;- function(x, y) {\n  return(x + y)\n}\n\nAdd_Values &lt;- function(x, y) {\n  x + y\n}"
   },
   {
     "objectID": "slides/12_programming-basics.html#commenting-functions",
@@ -1754,14 +1761,14 @@
     "href": "slides/12_programming-basics.html#commenting-functions-1",
     "title": "MATH167R: Programming Basics",
     "section": "Commenting functions",
-    "text": "Commenting functions"
+    "text": "Commenting functions\n\n# Good ----\n# Function: square_plus_2, squares a number and then adds 2\n# Input: x, must be numeric\n# Output: numeric equal to x^2 + 2\nsquare_plus_2 &lt;- function(x) {\n  # check that x is numeric\n  if (!is.numeric(x)) {\n    stop(\"x must be numeric!\")\n  } else {\n    # if numeric, then square and add 2\n    y &lt;- x^2 + 2\n    return(y)\n  }\n}"
   },
   {
     "objectID": "slides/12_programming-basics.html#commenting-functions-2",
     "href": "slides/12_programming-basics.html#commenting-functions-2",
     "title": "MATH167R: Programming Basics",
     "section": "Commenting functions",
-    "text": "Commenting functions"
+    "text": "Commenting functions\n\n# Bad ----\n# Function for problem 2c\nsquare_plus_2 &lt;- function(x) {\n  if (!is.numeric(x)) {\n    stop(\"x must be numeric!\")\n  } else {\n    y &lt;- x^2 + 2\n    return(y)\n  }\n}"
   },
   {
     "objectID": "slides/12_programming-basics.html#exercises",
