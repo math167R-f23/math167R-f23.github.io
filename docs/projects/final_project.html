@@ -4616,11 +4616,11 @@ vertical-align: -.125em;
 <li>Choose a data set or multiple datasets with the following characteristics:
 <ol type="a">
 <li>At least three continuous variables</li>
-<li>At least three categorical variables</li>
+<li>At least two categorical variables</li>
 </ol></li>
-<li>Identify three research questions of interest that you want to study using this dataset.</li>
-<li>For each of your three research questions, generate a data visualization or descriptive statistic. Discuss and interpret your findings.</li>
-<li>For at least one of your research questions, perform a statistical analysis (ex. linear regression or hypothesis test). Discuss and interpret your findings.</li>
+<li>Identify three research questions of interest that you want to study using this dataset. Each of your research questions should involve at least two of the variables in your dataset.</li>
+<li>For each of your three research questions, generate at least one data visualization or descriptive statistic. Discuss and interpret your findings.</li>
+<li>For at least one of your research questions, perform a statistical analysis (ex. hypothesis test, confidence interval, linear regression). Discuss and interpret your findings.</li>
 <li>Final submissions must include .Rmd and .html files.</li>
 <li>If you are an undergraduate interested in participating in a competition and potentially presenting at the Electronic Undergraduate Statistics Conference, you may consider using this project to submit to the <a href="https://www.causeweb.org/usproc/usclap">Undergraduate Class Project Competition</a>.</li>
 </ol>
@@ -4630,20 +4630,65 @@ vertical-align: -.125em;
 <h2 class="anchored" data-anchor-id="part-one-project-proposal-10-points-due-1013">Part One: Project Proposal (10 points), due 10/13</h2>
 <p>You will submit a 1-2 page project proposal with the following information:</p>
 <ul>
-<li>A brief description of your dataset (where it is from, how it can be obtained, what variables are included).</li>
-<li>An overview of the main research questions you hope to explore through your project.</li>
-<li>A list of three to five outside references you plan to consult for background reading on your research questions.</li>
-<li>Any questions you have for me.</li>
+<li><p>A brief description of your dataset (where it is from, how it can be obtained, why you chose it).</p></li>
+<li><p>A <strong>data dictionary</strong> in the following format (if there are more than 10 variables, you can choose the 10 variables that interest you most):</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Variable name</th>
+<th>Variable type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ex. <code>dob</code></td>
+<td>Date</td>
+<td>date of birth</td>
+</tr>
+<tr class="even">
+<td>ex. <code>city</code></td>
+<td>character</td>
+<td>city of birth</td>
+</tr>
+<tr class="odd">
+<td>. . .</td>
+<td>. . .</td>
+<td>. . .</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>An overview of the main research questions you hope to explore through your project. Each of your research questions should involve at least two of the variables in your dataset.</p></li>
+<li><p>A list of three to five outside references you plan to consult for background reading on your research questions.</p></li>
+<li><p>Any questions you have for me.</p></li>
 </ul>
 </section>
 <section id="part-two-final-report-70-points-due-126" class="level2">
 <h2 class="anchored" data-anchor-id="part-two-final-report-70-points-due-126">Part Two: Final Report (70 points), due 12/6</h2>
 <p>5-7 pages, including figures. You do not have to write this in the form of an essay, but you should present your findings in a clear and organized way. In particular, you should be sure to cover the following areas:</p>
 <ul>
-<li><strong>Introduction and background</strong>: Introduce your dataset and research questions of interest. Discuss any previous research/findings or relevant context on your question of interest.</li>
-<li><strong>Exploratory data analysis</strong>: For each of your three research questions, generate a data visualization or descriptive statistic. Discuss and interpret your findings.</li>
-<li><strong>Inferential statistical analysis</strong>: For at least one of your research questions, perform a statistical analysis (ex. linear regression or hypothesis test). Discuss and interpret your findings.</li>
-<li><strong>Conclusions and future questions</strong>: Summarize your conclusions and discuss any questions you might interested in exploring in the future. Are there other types of datasets that would have been helpful to have?</li>
+<li><strong>Introduction and background</strong>:
+<ul>
+<li>Introduce your dataset and research questions of interest. Each of your research questions should involve at least two of the variables in your dataset.</li>
+<li>Discuss any previous research/findings or relevant context on your question of interest.</li>
+<li>Provide a univariate visualization of a categorical variable in your dataset.</li>
+<li>Provide a univariate visualization of a numerical variable in your dataset.</li>
+</ul></li>
+<li><strong>Exploratory data analysis</strong>:
+<ul>
+<li>For each of your three research questions, generate at least one data visualization or descriptive statistic.</li>
+<li>Discuss and interpret your findings.</li>
+</ul></li>
+<li><strong>Inferential statistical analysis</strong>:
+<ul>
+<li>For at least one of your research questions, perform a basic statistical analysis (ex. confidence interval, hypothesis test, linear regression).</li>
+<li>Discuss and interpret your findings.</li>
+</ul></li>
+<li><strong>Conclusions and future questions</strong>:
+<ul>
+<li>Summarize your conclusions and discuss any questions you might interested in exploring in the future.</li>
+<li>Are there other types of datasets that would have been helpful to have?</li>
+</ul></li>
 </ul>
 </section>
 <section id="part-three-lightning-talks-15-points-slides-due-123" class="level2">
@@ -4977,67 +5022,81 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>For this project, you will be exploring data on a topic of your choice. You should choose a dataset that interests you and will enable you to demonstrate the exploration, visualization, and analysis skills you have learned this semester.</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>You will use your selected dataset to conduct an exploratory data analysis as well as a statistical analysis (hypothesis test or regression analysis) to explore a set of research questions of your own choice. </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>You will use your selected dataset to conduct an exploratory data analysis as well as a statistical analysis (hypothesis test or regression analysis) to explore a set of research questions of your own choice.</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>Your projects will be evaluated on your use of code to perform your analysis as well as the quality of your visualizations and exposition. This includes, but is not limited to, the quality of your writing, the informativeness of your visualizations, and the depth of research questions. The target audience of your report is a peer who is uninformed about the details of the data, but is interested in learning more about your analysis. Again, **there are no right answers for this project!** Successful projects will involve more than a cursory analysis of one or two variables in the dataset and will tell a compelling story about the dataset.</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">### Details</span></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Choose a data set or multiple datasets with the following characteristics:</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    a. At least three continuous variables</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    b. At least three categorical variables</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Identify three research questions of interest that you want to study using this dataset.</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>For each of your three research questions, generate a data visualization or descriptive statistic. Discuss and interpret your findings. </span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>For at least one of your research questions, perform a statistical analysis (ex. linear regression or hypothesis test). Discuss and interpret your findings. </span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Final submissions must include .Rmd and .html files.</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>If you are an undergraduate interested in participating in a competition and potentially presenting at the  Electronic Undergraduate Statistics Conference, you may consider using this project to submit to the <span class="co">[</span><span class="ot">Undergraduate Class Project Competition</span><span class="co">](https://www.causeweb.org/usproc/usclap)</span>.</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Choose a data set or multiple datasets with the following characteristics:</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    a.  At least three continuous variables</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    b.  At least two categorical variables</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Identify three research questions of interest that you want to study using this dataset. Each of your research questions should involve at least two of the variables in your dataset.</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>For each of your three research questions, generate at least one data visualization or descriptive statistic. Discuss and interpret your findings.</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>For at least one of your research questions, perform a statistical analysis (ex. hypothesis test, confidence interval, linear regression). Discuss and interpret your findings.</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>Final submissions must include .Rmd and .html files.</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">6.  </span>If you are an undergraduate interested in participating in a competition and potentially presenting at the Electronic Undergraduate Statistics Conference, you may consider using this project to submit to the <span class="co">[</span><span class="ot">Undergraduate Class Project Competition</span><span class="co">](https://www.causeweb.org/usproc/usclap)</span>.</span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="fu">## Part One: Project Proposal (10 points), due 10/13</span></span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>You will submit a 1-2 page project proposal with the following information:</span>
 <span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>A brief description of your dataset (where it is from, how it can be obtained, what variables are included).</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>An overview of the main research questions you hope to explore through your project.</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>A list of three to five outside references you plan to consult for background reading on your research questions.</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Any questions you have for me.</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="fu">## Part Two: Final Report (70 points), due 12/6</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>5-7 pages, including figures. You do not have to write this in the form of an essay, but you should present your findings in a clear and organized way. In particular, you should be sure to cover the following areas:</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Introduction and background**: Introduce your dataset and research questions of interest. Discuss any previous research/findings or relevant context on your question of interest.</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Exploratory data analysis**: For each of your three research questions, generate a data visualization or descriptive statistic. Discuss and interpret your findings. </span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Inferential statistical analysis**: For at least one of your research questions, perform a statistical analysis (ex. linear regression or hypothesis test). Discuss and interpret your findings.</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>**Conclusions and future questions**: Summarize your conclusions and discuss any questions you might interested in exploring in the future. Are there other types of datasets that would have been helpful to have? </span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>A brief description of your dataset (where it is from, how it can be obtained, why you chose it).</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>A **data dictionary** in the following format (if there are more than 10 variables, you can choose the 10 variables that interest you most):</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    | Variable name | Variable type | Description   |</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    |---------------|---------------|---------------|</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    | ex. <span class="in">`dob`</span>     | Date          | date of birth |</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    | ex. <span class="in">`city`</span>    | character     | city of birth |</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    | . . .         | . . .         | . . .         |</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>An overview of the main research questions you hope to explore through your project. Each of your research questions should involve at least two of the variables in your dataset.</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>A list of three to five outside references you plan to consult for background reading on your research questions.</span>
 <span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="fu">## Part Three: Lightning Talks (15 points), slides due 12/3</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Any questions you have for me.</span>
 <span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>3-5 minutes, maximum four slides. You should rehearse your lightning talk in advance and it should include:</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="fu">## Part Two: Final Report (70 points), due 12/6</span></span>
 <span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>A quick introduction to your dataset and research questions of interest.</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>An overview of your favorite visualization/descriptive summary/result from your project.</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="fu">## Part Four: Reflection and Self-evaluation (5 points), due 12/6</span></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>You will complete a 1-2 page reflection and self-evaluation on your work this semester for MATH167R. Questions will be posted at least two weeks in advance of the due date.</span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="fu">### Grading Rubric</span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Project Proposal:  Graded based on completion of all instructions.</span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Final Report: </span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="ss">    * </span>Exposition (10 points): graded on the clarity of your writing and the appropriateness of your dataset and research questions</span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="ss">    * </span>Exploratory data analysis (25 points): graded on the correctness of your computations/visualizations, appropriate use of R functions, and the depth/clarity of your explanations</span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="ss">    * </span>Inferential statistical analysis (25 points): graded on the appropriateness of your analysis, accuracy of your computations and interpretations, appropriate use of R functions, and the depth/clarity of your explanations</span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="ss">    * </span>Code style/formatting (10 points): to receive full credit, all code, text, and output in your final report should be correctly formatted. Code should be appropriately commented and styled (ex. appropriate variable names).</span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Lightning Talks: graded based on the quality and completeness of your presentation.</span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Reflection and Self-evaluation: Graded based on completion.</span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>5-7 pages, including figures. You do not have to write this in the form of an essay, but you should present your findings in a clear and organized way. In particular, you should be sure to cover the following areas:</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Introduction and background**: </span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Introduce your dataset and research questions of interest. Each of your research questions should involve at least two of the variables in your dataset.</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Discuss any previous research/findings or relevant context on your question of interest. </span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Provide a univariate visualization of a categorical variable in your dataset.</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Provide a univariate visualization of a numerical variable in your dataset.</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Exploratory data analysis**: </span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>For each of your three research questions, generate at least one data visualization or descriptive statistic. </span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Discuss and interpret your findings.</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Inferential statistical analysis**:</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>For at least one of your research questions, perform a basic statistical analysis (ex. confidence interval, hypothesis test, linear regression). </span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Discuss and interpret your findings.</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Conclusions and future questions**: </span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Summarize your conclusions and discuss any questions you might interested in exploring in the future. </span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Are there other types of datasets that would have been helpful to have?</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="fu">## Part Three: Lightning Talks (15 points), slides due 12/3</span></span>
 <span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>3-5 minutes, maximum four slides. You should rehearse your lightning talk in advance and it should include:</span>
 <span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>A quick introduction to your dataset and research questions of interest.</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>An overview of your favorite visualization/descriptive summary/result from your project.</span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="fu">## Part Four: Reflection and Self-evaluation (5 points), due 12/6</span></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>You will complete a 1-2 page reflection and self-evaluation on your work this semester for MATH167R. Questions will be posted at least two weeks in advance of the due date.</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="fu">### Grading Rubric</span></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Project Proposal: Graded based on completion of all instructions.</span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Final Report:</span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Exposition (10 points): graded on the clarity of your writing and the appropriateness of your dataset and research questions</span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Exploratory data analysis (25 points): graded on the correctness of your computations/visualizations, appropriate use of R functions, and the depth/clarity of your explanations</span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Inferential statistical analysis (25 points): graded on the appropriateness of your analysis, accuracy of your computations and interpretations, appropriate use of R functions, and the depth/clarity of your explanations</span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Code style/formatting (10 points): to receive full credit, all code, text, and output in your final report should be correctly formatted. Code should be appropriately commented and styled (ex. appropriate variable names).</span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Lightning Talks: graded based on the quality and completeness of your presentation.</span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Reflection and Self-evaluation: Graded based on completion.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
