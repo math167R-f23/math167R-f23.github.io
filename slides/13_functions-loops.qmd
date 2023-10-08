@@ -74,7 +74,7 @@ R provides three types of explicit loops: `for`, `while`, and `repeat`. We will 
 
 `for` loops repeat a chunk of code for each value of a vector.
 
-::: {.center}
+::: center
 `for (name in vector) {body}`
 :::
 

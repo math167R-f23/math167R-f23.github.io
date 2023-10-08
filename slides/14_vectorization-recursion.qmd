@@ -146,7 +146,7 @@ Recursion is a method for solving a problem where the solution can be divided in
 
 **Example**: Factorial function
 
-. . . 
+. . .
 
 **Example**: Fractals
 
@@ -202,7 +202,6 @@ fibonacci <- function(n) {
 }
 fibonacci(10)
 ```
-
 
 ## Recursive functions: Prime factorization
 
