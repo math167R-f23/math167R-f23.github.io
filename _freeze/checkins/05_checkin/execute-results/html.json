@@ -1,8 +1,10 @@
 {
-  "hash": "b74992ee86042e718ef4940a2c11301d",
+  "hash": "682d8afc04135d8810bd7c9268d4d74d",
   "result": {
-    "markdown": "---\ntitle: \"Check-in 5\"\nauthor: \"YOUR NAME HERE\"\ndate: \"2023-09-25\"\nformat: \n  html:\n    code-tools: true\n    code-summary: \"Code\"\n---\n\n\nRemember, you must submit *both* your .Rmd and the compiled .html in order to receive full credit! In addition, to receive full credit, your code output and plots must be correctly formatted.\n\n### Collaborators\n\nINSERT NAMES OF ANY COLLABORATORS\n\n## A. Housing units data\n\n\n::: {.cell}\n\n```{.r .cell-code}\nhousing_units <- readr::read_csv(\"https://www2.census.gov/programs-surveys/popest/datasets/2010-2020/housing/HU-EST2020_ALL.csv\")\n```\n\n::: {.cell-output .cell-output-stderr}\n```\nWarning: One or more parsing issues, call `problems()` on your data frame for details,\ne.g.:\n  dat <- vroom(...)\n  problems(dat)\n```\n:::\n\n::: {.cell-output .cell-output-stderr}\n```\nRows: 3199 Columns: 21\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (6): SUMLEV, STATE, COUNTY, REGNAME, STNAME, CTYNAME\ndbl (15): REGION, CENSUS2010HU, HUESTIMATESBASE2010, HUESTIMATE2010, HUESTIM...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n```\n:::\n:::\n\n\n**1**. Generate a line plot of the number of housing units in the entire United States from 2010 to 2020.\n\n**2.** Generate a line plot of the number of housing units in each of the four regions (Midwest, Northeast, South, and West) from 2010 to 2020, using a different color for each region.\n",
-    "supporting": [],
+    "markdown": "---\ntitle: \"Check-in 6\"\nauthor: \"YOUR NAME HERE\"\ndate: \"2023-10-09\"\nformat: \n  html:\n    code-tools: true\n    code-summary: \"Code\"\n---\n\n\nRemember, you must submit *both* your .Rmd and the compiled .html in order to receive full credit! In addition, to receive full credit, your code output and plots must be correctly formatted.\n\n### Collaborators\n\nINSERT NAMES OF ANY COLLABORATORS\n\n1. (Project Euler Problem 1) The natural numbers less than 10 that are divisible by 3 or 5 are 3, 5, 6, and 9. The sum of these numbers is 23. Write R code to compute the sum of all the numbers less than 1000 that are divisible by 3 or 5.\n\n",
+    "supporting": [
+      "05_checkin_files"
+    ],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
