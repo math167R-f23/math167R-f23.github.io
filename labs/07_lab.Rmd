@@ -1,0 +1,43 @@
+---
+title: "Lab 7"
+author: "YOUR NAME HERE"
+date: "2023-10-18"
+format: 
+  html:
+    embed-resources: true
+    code-tools: true
+    code-summary: "Code"
+---
+
+Remember, you must submit *both* your .Rmd and the compiled .html in order to receive full credit! In addition, to receive full credit, your code output and plots must be correctly formatted.
+
+### Collaborators
+
+```{r}
+# LOAD ANY RELEVANT PACKAGES HERE
+```
+
+## A. Skewness and Kurtosis
+
+Skewness describes how asymmetrical the distribution of a numerical variable is around its mean. Given observations $x_1,\ldots, x_n$, we can calculate the sample skewness $s$ of a variable using the following formula:
+
+$$s = \frac{\frac{1}{n}\sum\limits_{i=1}^n(x_i-\overline{x})^3}{\left[\frac{1}{n}\sum\limits_{i=1}^n(x_i-\overline{x})^2\right]^{3/2}}$$
+Kurtosis is a measure of the "tailedness" of the distribution of a numerical variable is around its mean. Higher values of kurtosis indicate more extreme outliers. Given observations $x_1,\ldots, x_n$, we can calculate the sample kurtosis $k$ of a variable using the following formula:
+
+$$k = \frac{\frac{1}{n}\sum\limits_{i=1}^n(x_i-\overline{x})^4}{\left[\frac{1}{n}\sum\limits_{i=1}^n(x_i-\overline{x})^2\right]^{2}}-3$$
+
+1. Write a function `skewness()` that takes as input a numeric vector `x` and returns the sample skewness. There are functions in R that compute skewness, but you cannot use any of them--write your own implementation.
+
+2. Write a function `kurtosis()` that takes as input a numeric vector `x` and returns the sample skewness. There are functions in R that compute kurtosis, but you cannot use any of them--write your own implementation.
+
+3. Use your function to compute the sample skewness of the `arr_delay` variable in the `flights` dataset contained in the `nycflights13` package.
+
+4. Use your function to compute the sample kurtosis of the `arr_delay` variable in the `flights` dataset contained in the `nycflights13` package.
+
+## B. Writing a simulation function
+
+In this part, you will simulate a one-dimensional random walk. Suppose you are at the point $x$ at time $t$. At time $t+1$, you have a 50% chance of moving forwards to $x+1$ and a 50% chance of moving backwards to $x-1$. Assume that at time $t=0$, you are at $x_0=0$.
+
+5. Write a function `random_walk()` that takes as input a single numeric $n$ and simulates $n$ steps of a one-dimensional random walk. The output should be a length vector of length $n+1$ starting with 0 where the $(i+1)$th entry represents the location of the random walker at time $t=i$. For example, `random_walk(5)` may return the vector $(0, 1, 2, 1, 2)$.
+
+6. Use your function to generate a random walk of 100 steps and generate a line graph with $t=0,1,\ldots, 100$ on the x-axis and $x_0,\ldots, x_{100}$ on the y-axis.

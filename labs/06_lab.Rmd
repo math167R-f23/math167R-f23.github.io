@@ -13,7 +13,6 @@ Remember, you must submit *both* your .Rmd and the compiled .html in order to re
 
 ### Collaborators
 
-For this lab, please work with one to two other students. List their names here.
 
 ```{r}
 # LOAD ANY RELEVANT PACKAGES HERE

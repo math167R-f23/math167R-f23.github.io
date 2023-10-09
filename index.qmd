@@ -5,7 +5,7 @@ tbl-colwidths: [5,10,20,10,10,10]
 
 ::: column-screen-inset-right
 |          Week           | Date    | Topic                                 |                                   Slides                                    |                              Check-in                               |                                                               Lab                                                               |
-|:----------:|------------|------------|:----------:|:----------:|:----------:|
+|:-----------------------:|---------|---------------------------------------|:---------------------------------------------------------------------------:|:-------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------:|
 | [1](/weeks/week-1.html) | M 8/21  | Course Overview and Introduction to R |          [Slides 01](slides/01_overview.html){.label .label-green}          | [Check-in 01](checkins/01_first-checkin.html){.label .label-purple} |                                                                                                                                 |
 |                         | W 8/23  | R fundamentals                        |      [Slides 02](slides/02_objects-classes.html){.label .label-green}       |                                                                     | [Lab 01](https://raw.githubusercontent.com/math167R-f23/math167R-f23.github.io/main/labs/01_first-R-lab.Rmd){.label .label-red} |
 |            2            | M 8/28  | R fundamentals                        | [Slides 03](slides/03_functions-vectors-matrices.html){.label .label-green} |    [Check-in 02](checkins/02_checkin.html){.label .label-purple}    |                                                                                                                                 |
@@ -45,5 +45,5 @@ knitr::knit_exit()
 ```
 
 |      |      |       | Prepare | Slides |                    AE                    | Labs | HW  | Exam | Project |
-|--------|--------|--------|:------:|:------:|:------:|:------:|:------:|:------:|:------:|
+|------|------|-------|:-------:|:------:|:----------------------------------------:|:----:|:---:|:----:|:-------:|
 | Week | Date | Topic |   📖    |   🖥️   | 📋 [Lab 01](hello){.label .label-purple} |  ✍️  |     |      |         |
