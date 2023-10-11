@@ -1,0 +1,24 @@
+---
+title: "MATH167R: Simulations"
+author: "Peter Gao"
+format: 
+  revealjs:
+    theme: [./slides.scss, ../theme.scss]
+editor: visual
+---
+
+## Overview of today
+
+- Random variables in R
+- Writing simulations
+
+## Random walks
+
+## Gambler's ruin
+
+
+
+
+```{r echo = FALSE}
+knitr::knit_exit()
+```

@@ -29,6 +29,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -343,435 +408,365 @@ Peter Gao
 <ul>
 <li>Debugging (based on <a href="https://rstats.wtf/debugging-r-code.html">Jennifer Bryan and Jim Hester’s What they Forgot to Teach You About R - Debugging R Code</a>)</li>
 </ul>
-<!-- # What to do when your code doesn't work -->
-<!-- ## Step 1: Look online -->
-<!-- When you see an error code you don't understand, search for it! -->
-<!-- Search for the **exact text** of your error message (except for any references to filepaths, etc.). -->
-<!-- R has millions of users and an incredibly active online community. If you encounter any error message, chances are someone has had to debug that exact error in the past. -->
-<!-- ## Step 2: Reset -->
-<!-- Many, many issues will be solved by closing and re-opening R.  -->
-<!-- Sometimes, things get weird with your global environment, and you just need to start with a clean slate. It can be frustrating, because you don't know what was causing the issue, but also a relief, because it will be fixed. -->
-<!-- Resetting will: -->
-<!-- * Clear your workspace (better than `rm(list = ls()`!) -->
-<!-- * Reset your options to their defaults (an easy one to miss!) -->
-<!-- * Clear your search path (the order R looks for things) -->
-<!-- ## Step 3: Repeat -->
-<!-- When you encounter a bug, try to repeat it. Likely, it came about for a reason.  -->
-<!-- When you do repeat it, you should repeat it with a minimal working example. This means you should remove as much code and simplify as much data as possible. -->
-<!-- * Small and simple inputs -->
-<!-- * No extraneous packages -->
-<!-- * No unnecessary function calls -->
-<!-- Example: did your function break with a large data matrix of real-world data stored within a package? How about if you just use a `\(3 \times 3\)` matrix of `\(1\)`'s?  -->
-<!-- ## Step 4: Locate -->
-<!-- If you weren't able to fix a bug the "easy" way (found the solution on Google or just needed a reset), and you have a minimal working example demonstrating your bug, then you are ready for the really hard part:  -->
-<!-- finding the bug. -->
-<!-- Often (not always), once you find a bug, it is rather easy to fix. -->
-<!-- ## `traceback()`: call stack -->
-<!-- Sometimes functions(in functions(in functions(in functions(...)))) can get complicated... -->
-<!-- ```r -->
-<!-- f &lt;- function(a) g(a) -->
-<!-- g &lt;- function(b) h(b) -->
-<!-- h &lt;- function(c) i(c) -->
-<!-- i &lt;- function(d) { -->
-<!--   if (!is.numeric(d)) { -->
-<!--     stop("`d` must be numeric", call. = FALSE) -->
-<!--   } -->
-<!--   d + 10 -->
-<!-- } -->
-<!-- f(5) -->
-<!-- ``` -->
-<!-- ``` -->
-<!-- ## [1] 15 -->
-<!-- ``` -->
-<!-- ```r -->
-<!-- f(1:3) -->
-<!-- ``` -->
-<!-- ``` -->
-<!-- ## [1] 11 12 13 -->
-<!-- ``` -->
-<!-- --- -->
-<!-- .center[&lt;img src="images/traceback.png" alt="" height="50"/&gt;] -->
-<!-- ```r -->
-<!-- f("a") -->
-<!-- ``` -->
-<!-- ```r -->
-<!-- traceback() # Or, just click traceback within RStudio -->
-<!-- ``` -->
-<!-- ``` -->
-<!-- ## Error: `d` must be numeric -->
-<!-- ``` -->
-<!-- ``` -->
-<!-- ## 5: stop("`d` must be numeric", call. = FALSE) -->
-<!-- ## 4: i(c) -->
-<!-- ## 3: h(b) -->
-<!-- ## 2: g(a) -->
-<!-- ## 1: f("a") -->
-<!-- ``` -->
-<!-- This is called a **call stack**. -->
-<!-- --- -->
-<!-- ``` -->
-<!-- ## Error: `d` must be numeric -->
-<!-- ``` -->
-<!-- ``` -->
-<!-- ## 5: stop("`d` must be numeric", call. = FALSE) -->
-<!-- ## 4: i(c) -->
-<!-- ## 3: h(b) -->
-<!-- ## 2: g(a) -->
-<!-- ## 1: f("a") -->
-<!-- ``` -->
-<!-- Read from bottom to top: -->
-<!-- 1. First call was to `f("a")` -->
-<!-- 2. Second call was `g(a)` -->
-<!-- 3. Third call was `h(b)` -->
-<!-- 4. Fourth call was `i(c)` -->
-<!-- 5. Fifth and last call was our error message, so we know `i(c)` triggered our error! -->
-<!-- But we're not done yet... -->
-<!-- We now know that our error occurred within `i(c)`, but we don't know *where* within `i(c)` our error occurred. -->
-<!-- --- -->
-<!-- Note this is done in your **Console**, not your **Editor** pane! This is typically not a part of your reproducible workflow, this is you figuring out your own problems until you fix what actually belongs in your workflow. -->
-<!-- Once you have the bug fixed, *then* put the debugged code in your Editor pane.  -->
-<!-- In general, most debugging will be done through the **Console**! -->
-<!-- --- -->
-<!-- layout: false -->
-<!-- # Stop on error: &lt;TT&gt;traceback&lt;/TT&gt; -->
-<!-- We can also set `traceback()` as our default error handler using -->
-<!-- ```r -->
-<!-- options(error = traceback) -->
-<!-- ``` -->
-<!-- and `traceback()` will automatically be called whenever we encounter an error.  -->
-<!-- I personally don't like doing this, but to each their own. -->
-<!-- --- -->
-<!-- layout: false -->
-<!-- layout: true -->
-<!-- # &lt;TT&gt;print(), cat(), str()&lt;/TT&gt;: messages -->
-<!-- --- -->
-<!-- Take your function, throw in a `print()` statement to see what the function is seeing. -->
-<!-- ```r -->
-<!-- i &lt;- function(d) { -->
-<!--   print(d) -->
-<!--   if (!is.numeric(d)) { -->
-<!--     stop("`d` must be numeric", call. = FALSE) -->
-<!--   } -->
-<!--   d + 10 -->
-<!-- } -->
-<!-- f("a") -->
-<!-- ``` -->
-<!-- ``` -->
-<!-- ## [1] "a" -->
-<!-- ``` -->
-<!-- ``` -->
-<!-- ## Error: `d` must be numeric -->
-<!-- ``` -->
-<!-- This is a quick and easy way to find bugs quickly. Probably the most common first step when manually debugging! -->
-<!-- --- -->
-<!-- Take your function, throw in a `cat()` statement to see what the function is seeing.  -->
-<!-- ```r -->
-<!-- i &lt;- function(d) { -->
-<!--   cat("The value of input parameter d is:", d, "\n") -->
-<!--   cat("The class of input parameter d is:", class(d), "\n") -->
-<!--   if (!is.numeric(d)) { -->
-<!--     stop("`d` must be numeric", call. = FALSE) -->
-<!--   } -->
-<!--   d + 10 -->
-<!-- } -->
-<!-- f("a") -->
-<!-- ``` -->
-<!-- ``` -->
-<!-- ## The value of input parameter d is: a  -->
-<!-- ## The class of input parameter d is: character -->
-<!-- ``` -->
-<!-- ``` -->
-<!-- ## Error: `d` must be numeric -->
-<!-- ``` -->
-<!-- I like to use `cat()` when I want to print myself more informative error messages, or when I want to print out multiple messages so that I can tell them apart. -->
-<!-- --- -->
-<!-- Take your function, throw in a `str()` statement to see what the function is seeing. -->
-<!-- ```r -->
-<!-- i &lt;- function(d) { -->
-<!--   str(d) -->
-<!--   if (!is.numeric(d)) { -->
-<!--     stop("`d` must be numeric", call. = FALSE) -->
-<!--   } -->
-<!--   d + 10 -->
-<!-- } -->
-<!-- f("a") -->
-<!-- ``` -->
-<!-- ``` -->
-<!-- ##  chr "a" -->
-<!-- ``` -->
-<!-- ``` -->
-<!-- ## Error: `d` must be numeric -->
-<!-- ``` -->
-<!-- More specifically, `str()` can be used to see *the structure of* what the function is seeing.  -->
-<!-- This can often be more informative if the structure is not what you expect (a common source of bugs!). -->
-<!-- --- -->
-<!-- The main downside to these approaches is that it can get messy quickly if you use multiple print statements, and you cannot further investigate the object.  -->
-<!-- However, many bugs come down to typos or other trivial errors, and print statements are often all you need! -->
-<!-- --- -->
-<!-- layout: false -->
-<!-- layout: true -->
-<!-- # &lt;TT&gt;browser()&lt;/TT&gt;: Interactive debugger -->
-<!-- --- -->
-<!-- Sometimes, it may not be enough to just use print statements and locate a bug. You can get more information and interact with that information using `browser()`, an interactive debugger. -->
-<!-- Within RStudio, you can also get right to an interactive debugger by clicking `Rerun with Debug`. -->
-<!-- .center[&lt;img src="images/traceback.png" alt="" height="50"/&gt;] -->
-<!-- --- -->
-<!-- Alternatively, we can plug `browser()` into our function, similarly to the print statements. -->
-<!-- ```r -->
-<!-- i &lt;- function(d) { -->
-<!--   browser() -->
-<!--   if (!is.numeric(d)) { -->
-<!--     stop("`d` must be numeric", call. = FALSE) -->
-<!--   } -->
-<!--   d + 10 -->
-<!-- } -->
-<!-- f("a") -->
-<!-- ``` -->
-<!-- --- -->
-<!-- After you run a function with `browser()`, you will be *inside* of your function with an interactive debugger! -->
-<!-- You will know it worked if you see a special prompt: `Browse[1]&gt;`. -->
-<!-- We can see: -->
-<!-- * The environment within the function using the Environment pane -->
-<!-- * The call stack using the new Traceback pane -->
-<!-- * Special interactive debugging commands -->
-<!-- .center[&lt;img src="images/debug.png" alt="" height="50"/&gt;] -->
-<!-- --- -->
-<!-- .center[.huge[[Demo](https://raw.githubusercontent.com/peteragao/STAT302-AUT2021/base/files/slides/07_debuggit.Rmd)]] -->
-<!-- &lt;br/&gt; -->
-<!-- ```r -->
-<!-- # BROWSER DEMO -->
-<!-- f &lt;- function(a) g(a) -->
-<!-- g &lt;- function(b) h(b) -->
-<!-- h &lt;- function(c) i(c) -->
-<!-- i &lt;- function(d) { -->
-<!--   browser() -->
-<!--   if (!is.numeric(d)) { -->
-<!--     stop("`d` must be numeric", call. = FALSE) -->
-<!--   } -->
-<!--   d + 10 -->
-<!-- } -->
-<!-- f("a") -->
-<!-- ``` -->
-<!-- --- -->
-<!-- ## Interactive debugging commands -->
-<!-- .center[&lt;img src="images/debug.png" alt="" height="40"/&gt;] -->
-<!-- * Next, `n`: executes the next step in the function. (If you have a variable named `n`, use `print(n)` to display its value.) -->
-<!-- * Step into, &lt;img src="images/stepin.png" alt="" height="22"/&gt; or `s`: works like next, but if the next step is a function, it will step into that function so you can explore it interactively. (Easy to get lost!) -->
-<!-- * Finish, &lt;img src="images/finish.png" alt="" height="22"/&gt; or `f`: finishes execution of the current loop or function. Useful to skip over long for loops you don't need to interact with. -->
-<!-- * Continue, `c`: leaves the debugger and continues execution of the function. Useful if you’ve fixed the bad state and want to check that the function proceeds correctly. -->
-<!-- * Stop, `Q`: exits the debugger and returns to the R prompt. -->
-<!-- --- -->
-<!-- ## Interactive debugging commands -->
-<!-- .center[&lt;img src="images/debug.png" alt="" height="40"/&gt;] -->
-<!-- * Enter (no text): repeat the previous interactive debugging command. Defaults to Next `n` if you haven't used any debugging commands yet. -->
-<!-- * `where`: prints stack trace of active calls (the interactive equivalent of `traceback`). -->
-<!-- --- -->
-<!-- ## Other useful things to do -->
-<!-- * `ls()`: List the current environment. You can use this to browse everything that the function is able to see at that moment. -->
-<!-- * `str()`, `print()`: examine objects as the function sees them. -->
-<!-- --- -->
-<!-- ## A Note -->
-<!-- If you execute the step of a function where the error occurs, you will exit interactive debugging mode, the error message will print, and you will be returned to the R prompt! -->
-<!-- This can get annoying, because it stops you from interacting right when you hit the bug. -->
-<!-- What I often do is execute my function within an interactive debugger until I hit the error so I know exactly where the error occurs. Then I execute my function again within an interactive debugger, stopping just before I trigger the error. -->
-<!-- To check I'm in the right place, I then copy and paste the next line of code into my `Browse` console. -->
-<!-- This will trigger the error without exiting the interactive debugger. -->
-<!-- Once I am there, I am now interacting with the exact environment R is using before the error is triggered. -->
-<!-- I then usually examine one-by-one each object in the environment to make sure the structure matches up with what I expect. -->
-<!-- Usually doing this allows me to identify what object does not look what I expect and why, allowing me to fix it. -->
-<!-- However, if I still can't figure it out, I then `s` "Step into" the next function and repeat this process. -->
-<!-- --- -->
-<!-- .center[.huge[[Demo](https://raw.githubusercontent.com/peteragao/STAT302-AUT2021/base/files/slides/07_debuggit.Rmd)]] -->
-<!-- &lt;br/&gt; -->
-<!-- ```r -->
-<!-- # BROWSER DEMO 2 -->
-<!-- loop_fun &lt;- function(x) { -->
-<!--   # browser() -->
-<!--   n &lt;- length(x) -->
-<!--   y &lt;- rep(NA, n) -->
-<!--   z &lt;- rep(NA, n) -->
-<!--   for (i in 1:n) { -->
-<!--     y[i] &lt;- x[i] * 2 -->
-<!--     z[i] &lt;- y[i] * 2 -->
-<!--   } -->
-<!--   return(list("y" = y, "z" = z)) -->
-<!-- } -->
-<!-- loop_fun(1:5) -->
-<!-- loop_fun(diag(1:5)) -->
-<!-- ``` -->
-<!-- --- -->
-<!-- layout: false -->
-<!-- layout: true -->
-<!-- # Breakpoints -->
-<!-- --- -->
-<!-- Breakpoints are an RStudio-specific tool that work as an alternative to `browser()`. -->
-<!-- A breakpoint at a line is equivalent to a `browser()` call before that line, but with the benefit that you don't need to change your source code and worry about leaving a `browser()` where it doesn't belong. -->
-<!-- Personally, I find them a bit more tedious because they require sourcing and saving, and I prefer working with code directly rather than IDE's. -->
-<!-- To set a break point, just click the empty space next to a line number. -->
-<!-- If your file is not saved, it will prompt you to save it.  -->
-<!-- You will then then see an empty circle, indicating that RStudio will remember the breakpoint, but it has not been enabled. -->
-<!-- In order to enable a breakpoint, you need to save and source file. -->
-<!-- You can then enable as many breakpoints as you want with a single click. -->
-<!-- However, as soon as you edit the file at all (even if you don't save), it will no longer be considered sourced, and you will have to re-source it to enable breakpoints. -->
-<!-- .center[&lt;img src="images/breakpoint1.png" alt="" height="75"/&gt; &amp;nbsp; &amp;nbsp;  &lt;img src="images/breakpoint2.png" alt="" height="60"/&gt;] -->
-<!-- --- -->
-<!-- .center[.huge[[Demo](https://raw.githubusercontent.com/peteragao/STAT302-AUT2021/base/files/slides/07_debuggit.Rmd)]] -->
-<!-- &lt;br/&gt; -->
-<!-- ```r -->
-<!-- # BREAKPOINT DEMO -->
-<!-- loop_fun &lt;- function(x) { -->
-<!--   # browser() -->
-<!--   n &lt;- length(x) -->
-<!--   y &lt;- rep(NA, n) -->
-<!--   z &lt;- rep(NA, n) -->
-<!--   for (i in 1:n) { -->
-<!--     y[i] &lt;- x[i] * 2 -->
-<!--     z[i] &lt;- y[i] * 2 -->
-<!--   } -->
-<!--   return(list("y" = y, "z" = z)) -->
-<!-- } -->
-<!-- loop_fun(1:5) -->
-<!-- loop_fun(diag(1:5)) -->
-<!-- ``` -->
-<!-- --- -->
-<!-- layout: false -->
-<!-- # Stop on error: &lt;TT&gt;recover&lt;/TT&gt; -->
-<!-- Note that we can also set an interactive debugger as our default error handler using `recover` -->
-<!-- ```r -->
-<!-- options(error = recover) -->
-<!-- ``` -->
-<!-- This works similarly to `options(error = traceback)` except you will now be able to select a frame and interactively debug within the frames. -->
-<!-- Again, I personally don't like doing this because often a quick bug I can identify right away from the error message without needing to enter an interactive debugger, so I don't like to have it do this on every error. -->
-<!-- --- -->
-<!-- # Stop on error: &lt;TT&gt;recover&lt;/TT&gt; -->
-<!-- .center[.huge[[Demo](https://raw.githubusercontent.com/peteragao/STAT302-AUT2021/base/files/slides/07_debuggit.Rmd)]] -->
-<!-- &lt;br/&gt; -->
-<!-- ```r -->
-<!-- # RECOVER DEMO -->
-<!-- f &lt;- function(a) g(a) -->
-<!-- g &lt;- function(b) h(b) -->
-<!-- h &lt;- function(c) i(c) -->
-<!-- i &lt;- function(d) { -->
-<!--   if (!is.numeric(d)) { -->
-<!--     stop("`d` must be numeric", call. = FALSE) -->
-<!--   } -->
-<!--   d + 10 -->
-<!-- } -->
-<!-- # options(error = recover) -->
-<!-- f("a") -->
-<!-- ``` -->
-<!-- --- -->
-<!-- # &lt;TT&gt;debug()&lt;/TT&gt;: debug a function -->
-<!-- If you want to enter the debugger for a function within a package, you can't just insert a `browser()`.  -->
-<!-- Even for your own functions, it may be more convenient to debug the entire function rather than edit the source code. -->
-<!-- When a function is in debug mode, it will remain in debug mode until you call `undebug()`. -->
-<!-- --- -->
-<!-- .center[.huge[[Demo](https://raw.githubusercontent.com/peteragao/STAT302-AUT2021/base/files/slides/07_debuggit.Rmd)]] -->
-<!-- &lt;br/&gt; -->
-<!-- ```r -->
-<!-- # DEBUG DEMO -->
-<!-- debug(lm) -->
-<!-- lm(mpg ~ wt, data = mtcars) -->
-<!-- debug(f) -->
-<!-- f("a") -->
-<!-- undebug(lm) -->
-<!-- undebug(f) -->
-<!-- ``` -->
-<!-- --- -->
-<!-- # &lt;TT&gt;debugonce()&lt;/TT&gt;: debug a function -->
-<!-- It can get tedious to `undebug()` every function you flagged with `debug()`. -->
-<!-- As an alternative, you can call `debugonce()`, which will automatically undebug the function as soon as you exit the interactive debugger. -->
-<!-- ```r -->
-<!-- debugonce(lm) -->
-<!-- lm(mpg ~ wt, data = mtcars) -->
-<!-- debugonce(f) -->
-<!-- f("a") -->
-<!-- ``` -->
-<!-- --- -->
-<!-- # &lt;TT&gt;trace()&lt;/TT&gt;: debug at chosen place -->
-<!-- `trace()` is an alternative to `debug()`. It is similar in that a function will be traced until you call `untrace()`.  -->
-<!-- It is more flexible in that it allows you to choose where you want to debug a function, but it can also be more complicated to use. -->
-<!-- ```r -->
-<!-- trace(print, quote(if (is.numeric(x) &amp;&amp; x &gt;= 3) cat("hi\n")), print = FALSE) -->
-<!-- ``` -->
-<!-- ``` -->
-<!-- ## Tracing function "print" in package "base" -->
-<!-- ``` -->
-<!-- ``` -->
-<!-- ## [1] "print" -->
-<!-- ``` -->
-<!-- ```r -->
-<!-- print(1) -->
-<!-- ``` -->
-<!-- ``` -->
-<!-- ## [1] 1 -->
-<!-- ``` -->
-<!-- ```r -->
-<!-- print(3) -->
-<!-- ``` -->
-<!-- ``` -->
-<!-- ## hi -->
-<!-- ## [1] 3 -->
-<!-- ``` -->
-<!-- ```r -->
-<!-- untrace(print) -->
-<!-- ``` -->
-<!-- ``` -->
-<!-- ## Untracing function "print" in package "base" -->
-<!-- ``` -->
-<!-- --- -->
-<!-- # &lt;TT&gt;trace()&lt;/TT&gt;: debug at chosen place -->
-<!-- .center[.huge[[Demo](https://raw.githubusercontent.com/peteragao/STAT302-AUT2021/base/files/slides/07_debuggit.Rmd)]] -->
-<!-- &lt;br/&gt; -->
-<!-- ```r -->
-<!-- # TRACE DEMO -->
-<!-- fun &lt;- function() { -->
-<!--   for (i in 1:10000) { -->
-<!--     if (i == 9876) { -->
-<!--       stop("Oh no!") -->
-<!--     } -->
-<!--   } -->
-<!-- } -->
-<!-- # x &lt;- as.list(body(fun)) -->
-<!-- # x -->
-<!-- # as.list(x[[2]]) -->
-<!-- # as.list(x[[c(2, 4)]]) -->
-<!-- # as.list(x[[c(2, 4, 2)]]) -->
-<!-- # as.list(x[[c(2, 4, 2, 3)]]) -->
-<!-- trace(fun, browser, at = list(c(2, 4, 2, 3))) -->
-<!-- fun() -->
-<!-- ``` -->
-<!-- --- -->
-<!-- # Debugging Summary -->
-<!-- .middler-nocent[ -->
-<!-- ### 1. Google! -->
-<!-- ### 2. Reset! -->
-<!-- ### 3. Repeat! -->
-<!-- ### 4. Locate: -->
-<!-- * Call stack: `traceback()` -->
-<!-- * Non-interactive messages: `print()`, `cat()`, `str()` -->
-<!-- * Interactive debugging: breakpoints, `browser()`, `debug()`, -->
-<!-- `debugonce()`, `trace()`, breakpoints -->
-<!-- * Interactive debugging commands: Next `n`, Step into &lt;img src="images/stepin.png" alt="" height="22"/&gt; `s`, Finish &lt;img src="images/finish.png" alt="" height="22"/&gt; `f`, Continue `c`, Stop `Q`, `where` -->
-<!-- * Stop on error: `traceback` (non-interactive), `recover` (interactive) -->
-<!-- ] -->
-<!-- --- -->
-<!-- # Debugging Resources -->
-<!-- .middler-nocent[ -->
-<!-- * [Advanced R Debugging - Hadley Wickham ](https://adv-r.hadley.nz/debugging.html) -->
-<!-- * [What they Forgot to Teach You About R - Jennifer Bryan and Jim Hester](https://rstats.wtf/debugging-r-code.html) -->
-<!-- * [Debugging Techniques in RStudio - Amanda Gadrow](https://resources.rstudio.com/wistia-rstudio-conf-2018-2/debugging-techniques-in-rstudio-amanda-gadrow-4) -->
-<!-- * [Debugging with RStudio Article - Jonathan McPherson](https://support.rstudio.com/hc/en-us/articles/200713843) -->
-<!-- * [Introduction to debugging in R and RStudio - Jim Hester](https://www.jimhester.com/talk/2019-crug-debugging/) -->
-<!-- &lt;br/&gt; -->
-<!-- .center[[Cheatsheet](https://github.com/ajmcoqui/debuggingRStudio/blob/b70a3575a3ff5e7867b05fb5e84568abba426c4b/RStudio_Debugging_Cheatsheet.pdf)] -->
-<!-- ] -->
-<!-- --- -->
+</section>
+<section>
+<section id="what-to-do-when-your-code-doesnt-work" class="title-slide slide level1 center">
+<h1>What to do when your code doesn’t work</h1>
+
+</section>
+<section id="step-1-look-online" class="slide level2">
+<h2>Step 1: Look online</h2>
+<p>When you see an error code you don’t understand, search for it!</p>
+<p>Search for the <strong>exact text</strong> of your error message (except for any references to filepaths, etc.).</p>
+<p>R has millions of users and an incredibly active online community. If you encounter any error message, chances are someone has had to debug that exact error in the past.</p>
+</section>
+<section id="step-2-reset" class="slide level2">
+<h2>Step 2: Reset</h2>
+<p>Many, many issues will be solved by closing and re-opening R.</p>
+<p>Sometimes, things get weird with your global environment, and you just need to start with a clean slate. It can be frustrating, because you don’t know what was causing the issue, but also a relief, because it will be fixed.</p>
+<p>Resetting will:</p>
+<ul>
+<li>Clear your workspace (better than <code>rm(list = ls()</code>!)</li>
+<li>Reset your options to their defaults (an easy one to miss!)</li>
+<li>Clear your search path (the order R looks for things)</li>
+</ul>
+</section>
+<section id="step-3-repeat" class="slide level2">
+<h2>Step 3: Repeat</h2>
+<p>When you encounter a bug, try to repeat it. Likely, it came about for a reason.</p>
+<p>When you do repeat it, you should repeat it with a minimal working example. This means you should remove as much code and simplify as much data as possible.</p>
+<ul>
+<li>Small and simple inputs</li>
+<li>No extraneous packages</li>
+<li>No unnecessary function calls</li>
+</ul>
+<p>Example: did your function break with a large data matrix of real-world data stored within a package? How about if you just use a <code>\(3 \times 3\)</code> matrix of <code>\(1\)</code>’s?</p>
+</section>
+<section id="step-4-locate" class="slide level2">
+<h2>Step 4: Locate</h2>
+<p>If you weren’t able to fix a bug the “easy” way (found the solution on Google or just needed a reset), and you have a minimal working example demonstrating your bug, then you are ready for the really hard part: finding the bug.</p>
+<p>Often (not always), once you find a bug, it is rather easy to fix.</p>
+</section>
+<section id="traceback-call-stack" class="slide level2">
+<h2><code>traceback()</code>: call stack</h2>
+<p>Sometimes functions(in functions(in functions(in functions(…)))) can get complicated.</p>
+<p><strong>Exercise</strong>: What will the following code return?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(a) <span class="fu">g</span>(a)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>g <span class="ot">&lt;-</span> <span class="cf">function</span>(b) <span class="fu">h</span>(b)</span>
+<span id="cb1-3"><a href="#cb1-3"></a>h <span class="ot">&lt;-</span> <span class="cf">function</span>(c) <span class="fu">i</span>(c)</span>
+<span id="cb1-4"><a href="#cb1-4"></a>i <span class="ot">&lt;-</span> <span class="cf">function</span>(d) {</span>
+<span id="cb1-5"><a href="#cb1-5"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(d)) {</span>
+<span id="cb1-6"><a href="#cb1-6"></a>    <span class="fu">stop</span>(<span class="st">"`d` must be numeric"</span>, <span class="at">call. =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-7"><a href="#cb1-7"></a>  }</span>
+<span id="cb1-8"><a href="#cb1-8"></a>  d <span class="sc">+</span> <span class="dv">10</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a>}</span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="fu">f</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="traceback-call-stack-1" class="slide level2">
+<h2><code>traceback()</code>: call stack</h2>
+<p>What about this code?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(a) <span class="fu">g</span>(a)</span>
+<span id="cb3-2"><a href="#cb3-2"></a>g <span class="ot">&lt;-</span> <span class="cf">function</span>(b) <span class="fu">h</span>(b)</span>
+<span id="cb3-3"><a href="#cb3-3"></a>h <span class="ot">&lt;-</span> <span class="cf">function</span>(c) <span class="fu">i</span>(c)</span>
+<span id="cb3-4"><a href="#cb3-4"></a>i <span class="ot">&lt;-</span> <span class="cf">function</span>(d) {</span>
+<span id="cb3-5"><a href="#cb3-5"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(d)) {</span>
+<span id="cb3-6"><a href="#cb3-6"></a>    <span class="fu">stop</span>(<span class="st">"`d` must be numeric"</span>, <span class="at">call. =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb3-7"><a href="#cb3-7"></a>  }</span>
+<span id="cb3-8"><a href="#cb3-8"></a>  d <span class="sc">+</span> <span class="dv">10</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a>}</span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="fu">f</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 11 12 13</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="traceback-call-stack-2" class="slide level2">
+<h2><code>traceback()</code>: call stack</h2>
+<p>What about this code?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(a) <span class="fu">g</span>(a)</span>
+<span id="cb5-2"><a href="#cb5-2"></a>g <span class="ot">&lt;-</span> <span class="cf">function</span>(b) <span class="fu">h</span>(b)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>h <span class="ot">&lt;-</span> <span class="cf">function</span>(c) <span class="fu">i</span>(c)</span>
+<span id="cb5-4"><a href="#cb5-4"></a>i <span class="ot">&lt;-</span> <span class="cf">function</span>(d) {</span>
+<span id="cb5-5"><a href="#cb5-5"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(d)) {</span>
+<span id="cb5-6"><a href="#cb5-6"></a>    <span class="fu">stop</span>(<span class="st">"`d` must be numeric"</span>, <span class="at">call. =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb5-7"><a href="#cb5-7"></a>  }</span>
+<span id="cb5-8"><a href="#cb5-8"></a>  d <span class="sc">+</span> <span class="dv">10</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a>}</span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="fu">f</span>(<span class="st">"a"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output cell-output-error">
+<pre><code>Error: `d` must be numeric</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Why doesn’t it say <code>'a' must be numeric</code>?</p>
+</div>
+</section>
+<section id="traceback-call-stack-3" class="slide level2">
+<h2><code>traceback()</code>: call stack</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">traceback</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>5: stop("`d` must be numeric", call. = FALSE) 
+4: i(c) 
+3: h(b) 
+2: g(a) 
+1: f("a")</code></pre>
+</section>
+<section id="traceback-call-stack-4" class="slide level2">
+<h2><code>traceback()</code>: call stack</h2>
+<p>This is called a <strong>call stack</strong>.</p>
+<p>Read from bottom to top:</p>
+<ol type="1">
+<li>First call was to <code>f("a")</code></li>
+<li>Second call was <code>g(a)</code></li>
+<li>Third call was <code>h(b)</code></li>
+<li>Fourth call was <code>i(c)</code></li>
+<li>Fifth and last call was our error message, so we know <code>i(c)</code> triggered our error.</li>
+</ol>
+<p>We now know that our error occurred within <code>i(c)</code>, but we don’t know <em>where</em> within <code>i(c)</code> our error occurred.</p>
+</section>
+<section id="traceback-call-stack-5" class="slide level2">
+<h2><code>traceback()</code>: call stack</h2>
+<p>Note this is done in your <strong>Console</strong>, not your <strong>Editor</strong> pane. This is typically not a part of your reproducible workflow, this is you figuring out your own problems until you fix what actually belongs in your workflow.</p>
+<p>Once you have the bug fixed, <em>then</em> put the debugged code in your Editor pane. In general, most debugging will be done through the <strong>Console</strong>.</p>
+</section>
+<section id="print-cat-str-messages" class="slide level2">
+<h2><code>print(), cat(), str()</code>: messages</h2>
+<p>Use <code>print()</code> statements to test out <code>print()</code> statements to see the values used during execution.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>i <span class="ot">&lt;-</span> <span class="cf">function</span>(d) {</span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">print</span>(d)</span>
+<span id="cb9-3"><a href="#cb9-3"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(d)) {</span>
+<span id="cb9-4"><a href="#cb9-4"></a>    <span class="fu">stop</span>(<span class="st">"`d` must be numeric"</span>, <span class="at">call. =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb9-5"><a href="#cb9-5"></a>  }</span>
+<span id="cb9-6"><a href="#cb9-6"></a>  d <span class="sc">+</span> <span class="dv">10</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a>}</span>
+<span id="cb9-8"><a href="#cb9-8"></a><span class="fu">f</span>(<span class="st">"a"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "a"</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: `d` must be numeric</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>This is a quick and easy way to find bugs quickly. Probably the most common first step when manually debugging.</p>
+</div>
+</section>
+<section id="print-cat-str-messages-1" class="slide level2">
+<h2><code>print(), cat(), str()</code>: messages</h2>
+<p>Take your function, throw in a <code>cat()</code> statement to see what the function is seeing.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12" data-code-line-numbers="2-3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>i <span class="ot">&lt;-</span> <span class="cf">function</span>(d) {</span>
+<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">cat</span>(<span class="st">"The value of input parameter d is:"</span>, d, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">cat</span>(<span class="st">"The class of input parameter d is:"</span>, <span class="fu">class</span>(d), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb12-4"><a href="#cb12-4"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(d)) {</span>
+<span id="cb12-5"><a href="#cb12-5"></a>    <span class="fu">stop</span>(<span class="st">"`d` must be numeric"</span>, <span class="at">call. =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb12-6"><a href="#cb12-6"></a>  }</span>
+<span id="cb12-7"><a href="#cb12-7"></a>  d <span class="sc">+</span> <span class="dv">10</span></span>
+<span id="cb12-8"><a href="#cb12-8"></a>}</span>
+<span id="cb12-9"><a href="#cb12-9"></a><span class="fu">f</span>(<span class="st">"a"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The value of input parameter d is: a 
+The class of input parameter d is: character </code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: `d` must be numeric</code></pre>
+</div>
+</div>
+</section>
+<section id="print-cat-str-messages-2" class="slide level2">
+<h2><code>print(), cat(), str()</code>: messages</h2>
+<p>We can similarly use <code>str()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>i <span class="ot">&lt;-</span> <span class="cf">function</span>(d) {</span>
+<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">str</span>(d)</span>
+<span id="cb15-3"><a href="#cb15-3"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(d)) {</span>
+<span id="cb15-4"><a href="#cb15-4"></a>    <span class="fu">stop</span>(<span class="st">"`d` must be numeric"</span>, <span class="at">call. =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb15-5"><a href="#cb15-5"></a>  }</span>
+<span id="cb15-6"><a href="#cb15-6"></a>  d <span class="sc">+</span> <span class="dv">10</span></span>
+<span id="cb15-7"><a href="#cb15-7"></a>}</span>
+<span id="cb15-8"><a href="#cb15-8"></a><span class="fu">f</span>(<span class="st">"a"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> chr "a"</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: `d` must be numeric</code></pre>
+</div>
+</div>
+<p>More specifically, <code>str()</code> can be used to see <em>the structure of</em> what the function is seeing. This can often be more informative if the structure is not what you expect (a common source of bugs).</p>
+</section>
+<section id="print-cat-str-messages-3" class="slide level2">
+<h2><code>print(), cat(), str()</code>: messages</h2>
+<p>The main downside to these approaches is that it can get messy quickly if you use multiple print statements, and you cannot further investigate the object. However, many bugs come down to typos or other trivial errors, and print statements are often all you need.</p>
+</section>
+<section id="browser-interactive-debugger" class="slide level2">
+<h2><code>browser()</code>: Interactive debugger</h2>
+<p>Sometimes, it may not be enough to just use print statements and locate a bug. You can get more information and interact with that information using <code>browser()</code>, an interactive debugger.</p>
+<p>Within RStudio, you can also get right to an interactive debugger by clicking <code>Rerun with Debug</code>.</p>
+</section>
+<section id="browser-interactive-debugger-1" class="slide level2">
+<h2><code>browser()</code>: Interactive debugger</h2>
+<p>Alternatively, we can plug <code>browser()</code> into our function, as with the print statements.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>i <span class="ot">&lt;-</span> <span class="cf">function</span>(d) {</span>
+<span id="cb18-2"><a href="#cb18-2"></a>  <span class="fu">browser</span>()</span>
+<span id="cb18-3"><a href="#cb18-3"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(d)) {</span>
+<span id="cb18-4"><a href="#cb18-4"></a>    <span class="fu">stop</span>(<span class="st">"`d` must be numeric"</span>, <span class="at">call. =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb18-5"><a href="#cb18-5"></a>  }</span>
+<span id="cb18-6"><a href="#cb18-6"></a>  d <span class="sc">+</span> <span class="dv">10</span></span>
+<span id="cb18-7"><a href="#cb18-7"></a>}</span>
+<span id="cb18-8"><a href="#cb18-8"></a><span class="fu">f</span>(<span class="st">"a"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Called from: i(c)
+debug at &lt;text&gt;#3: if (!is.numeric(d)) {
+    stop("`d` must be numeric", call. = FALSE)
+}
+debug at &lt;text&gt;#4: stop("`d` must be numeric", call. = FALSE)</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: `d` must be numeric</code></pre>
+</div>
+</div>
+</section>
+<section id="browser-interactive-debugger-2" class="slide level2">
+<h2><code>browser()</code>: Interactive debugger</h2>
+<p>After you run a function with <code>browser()</code>, you will be <em>inside</em> of your function with an interactive debugger.</p>
+<p>You will know it worked if you see a special prompt: <code>Browse[1]&gt;</code>.</p>
+<p>We can see:</p>
+<ul>
+<li>The environment within the function using the Environment pane</li>
+<li>The call stack using the new Traceback pane</li>
+<li>Special interactive debugging commands</li>
+</ul>
+</section>
+<section id="interactive-debugging-commands" class="slide level2">
+<h2>Interactive debugging commands</h2>
+<ul>
+<li><p>Next, <code>n</code>: executes the next step in the function. (If you have a variable named <code>n</code>, use <code>print(n)</code> to display its value.)</p></li>
+<li><p>Step into works like next, but if the next step is a function, it will step into that function so you can explore it interactively. (Easy to get lost!)</p></li>
+<li><p>Finish, or <code>f</code>: finishes execution of the current loop or function. Useful to skip over long for loops you don’t need to interact with.</p></li>
+<li><p>Continue, <code>c</code>: leaves the debugger and continues execution of the function. Useful if you’ve fixed the bad state and want to check that the function proceeds correctly.</p></li>
+<li><p>Stop, <code>Q</code>: exits the debugger and returns to the R prompt.</p></li>
+</ul>
+</section>
+<section id="interactive-debugging-commands-1" class="slide level2">
+<h2>Interactive debugging commands</h2>
+<ul>
+<li><p>Enter (no text): repeat the previous interactive debugging command. Defaults to Next <code>n</code> if you haven’t used any debugging commands yet.</p></li>
+<li><p><code>where</code>: prints stack trace of active calls (the interactive equivalent of <code>traceback</code>).</p></li>
+</ul>
+</section>
+<section id="other-useful-things-to-do" class="slide level2">
+<h2>Other useful things to do</h2>
+<ul>
+<li><p><code>ls()</code>: List the current environment. You can use this to browse everything that the function is able to see at that moment.</p></li>
+<li><p><code>str()</code>, <code>print()</code>: examine objects as the function sees them.</p></li>
+</ul>
+</section>
+<section id="a-warning" class="slide level2">
+<h2>A warning</h2>
+<p>If you execute the step of a function where the error occurs, you will exit interactive debugging mode, the error message will print, and you will be returned to the R prompt.</p>
+<p>This can get annoying, because it stops you from interacting right when you hit the bug.</p>
+<p>Strategy: * Call <code>browser()</code> and execute until you hit the error. Remember exactly where it occurs. * Call <code>browser()</code> again and execute again, stopping just before triggering the error. * You can copy and paste the next line of code into the <code>Browse</code> console to trigger the error without exiting the interactive debugger.</p>
+</section>
+<section id="tips" class="slide level2">
+<h2>Tips</h2>
+<ul>
+<li>Within the debugging section, you are interacting with the exact environment R is using before the error is triggered.</li>
+<li>Examine each object one-by-one in the environment to make sure the structure matches expectations.</li>
+<li>If you still can’t figure it out, <code>s</code> “Step into” the next function and repeat this process.</li>
+</ul>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># BROWSER DEMO 2</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>loop_fun <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb21-3"><a href="#cb21-3"></a>  <span class="co"># browser()</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb21-5"><a href="#cb21-5"></a>  y <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, n)</span>
+<span id="cb21-6"><a href="#cb21-6"></a>  z <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, n)</span>
+<span id="cb21-7"><a href="#cb21-7"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
+<span id="cb21-8"><a href="#cb21-8"></a>    y[i] <span class="ot">&lt;-</span> x[i] <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb21-9"><a href="#cb21-9"></a>    z[i] <span class="ot">&lt;-</span> y[i] <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb21-10"><a href="#cb21-10"></a>  }</span>
+<span id="cb21-11"><a href="#cb21-11"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="st">"y"</span> <span class="ot">=</span> y, <span class="st">"z"</span> <span class="ot">=</span> z))</span>
+<span id="cb21-12"><a href="#cb21-12"></a>}</span>
+<span id="cb21-13"><a href="#cb21-13"></a><span class="fu">loop_fun</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb21-14"><a href="#cb21-14"></a><span class="fu">loop_fun</span>(<span class="fu">diag</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>loop_fun <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb22-2"><a href="#cb22-2"></a>  <span class="co"># browser()</span></span>
+<span id="cb22-3"><a href="#cb22-3"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb22-4"><a href="#cb22-4"></a>  y <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, n)</span>
+<span id="cb22-5"><a href="#cb22-5"></a>  z <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, n)</span>
+<span id="cb22-6"><a href="#cb22-6"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
+<span id="cb22-7"><a href="#cb22-7"></a>    y[i] <span class="ot">&lt;-</span> x[i] <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb22-8"><a href="#cb22-8"></a>    z[i] <span class="ot">&lt;-</span> y[i] <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb22-9"><a href="#cb22-9"></a>  }</span>
+<span id="cb22-10"><a href="#cb22-10"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="st">"y"</span> <span class="ot">=</span> y, <span class="st">"z"</span> <span class="ot">=</span> z))</span>
+<span id="cb22-11"><a href="#cb22-11"></a>}</span>
+<span id="cb22-12"><a href="#cb22-12"></a><span class="fu">loop_fun</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$y
+[1]  2  4  6  8 10
+
+$z
+[1]  4  8 12 16 20</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">loop_fun</span>(<span class="fu">diag</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$y
+ [1]  2  0  0  0  0  0  4  0  0  0  0  0  6  0  0  0  0  0  8  0  0  0  0  0 10
+
+$z
+ [1]  4  0  0  0  0  0  8  0  0  0  0  0 12  0  0  0  0  0 16  0  0  0  0  0 20</code></pre>
+</div>
+</div>
+</section>
+<section id="debugging-summary" class="slide level2">
+<h2>Debugging Summary</h2>
+<h3 id="search-online.">1. Search online.</h3>
+<h3 id="reset.">2. Reset.</h3>
+<h3 id="repeat.">3. Repeat.</h3>
+<h3 id="locate">4. Locate:</h3>
+<ul>
+<li>Call stack: <code>traceback()</code></li>
+<li>Non-interactive messages: <code>print()</code>, <code>cat()</code>, <code>str()</code></li>
+<li>Interactive debugging: <code>browser()</code>, <code>debug()</code>, <code>debugonce()</code>, <code>trace()</code></li>
+</ul>
+</section>
+<section id="debugging-resources" class="slide level2">
+<h2>Debugging Resources</h2>
+<ul>
+<li><a href="https://adv-r.hadley.nz/debugging.html">Advanced R Debugging - Hadley Wickham</a></li>
+<li><a href="https://rstats.wtf/debugging-r-code.html">What they Forgot to Teach You About R - Jennifer Bryan and Jim Hester</a></li>
+<li><a href="https://resources.rstudio.com/wistia-rstudio-conf-2018-2/debugging-techniques-in-rstudio-amanda-gadrow-4">Debugging Techniques in RStudio - Amanda Gadrow</a></li>
+<li><a href="https://support.rstudio.com/hc/en-us/articles/200713843">Debugging with RStudio Article - Jonathan McPherson</a></li>
+<li><a href="https://www.jimhester.com/talk/2019-crug-debugging/">Introduction to debugging in R and RStudio - Jim Hester</a></li>
+<li><a href="https://github.com/ajmcoqui/debuggingRStudio/blob/b70a3575a3ff5e7867b05fb5e84568abba426c4b/RStudio_Debugging_Cheatsheet.pdf">Cheatsheet</a></li>
+</ul>
 
 <div class="footer footer-default">
 
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
@@ -983,6 +978,44 @@ Peter Gao
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

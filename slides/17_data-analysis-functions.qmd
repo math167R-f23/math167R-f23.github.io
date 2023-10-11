@@ -1,0 +1,38 @@
+---
+title: "MATH167R: Programming for data analysis"
+author: "Peter Gao"
+format: 
+  revealjs:
+    theme: [./slides.scss, ../theme.scss]
+editor: visual
+---
+
+## Overview of today
+
+-   Programming for data science
+-   Functions for data analysis
+-   Functional R programming with `apply`, `lapply`, `mapply`
+-   Working with APIs
+-   Web scraping
+
+## Programming for data science
+
+In the first half of the semester, we covered skills for exploratory data analysis: visualization and descriptive statistics.
+
+Today, we'll combine those skills with programming concepts.
+
+## Motivating example
+
+Each week,
+
+```{r echo = FALSE}
+knitr::knit_exit()
+```
+
+## Functional programming
+
+## Updating results for new data
+
+## Looping through many data files
+
+## Web scraping

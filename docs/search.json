@@ -231,6 +231,20 @@
     "text": "Part Four: Reflection and Self-evaluation (5 points), due 12/6\nYou will complete a 1-2 page reflection and self-evaluation on your work this semester for MATH167R. Questions will be posted at least two weeks in advance of the due date.\n\nGrading Rubric\n\nProject Proposal: Graded based on completion of all instructions.\nFinal Report:\n\nExposition (10 points): graded on the clarity of your writing and the appropriateness of your dataset and research questions\nExploratory data analysis (25 points): graded on the correctness of your computations/visualizations, appropriate use of R functions, and the depth/clarity of your explanations\nInferential statistical analysis (25 points): graded on the appropriateness of your analysis, accuracy of your computations and interpretations, appropriate use of R functions, and the depth/clarity of your explanations\nCode style/formatting (10 points): to receive full credit, all code, text, and output in your final report should be correctly formatted. Code should be appropriately commented and styled (ex. appropriate variable names).\n\nLightning Talks: graded based on the quality and completeness of your presentation.\nReflection and Self-evaluation: Graded based on completion."
   },
   {
+    "objectID": "projects/final_exam.html",
+    "href": "projects/final_exam.html",
+    "title": "Final Exam Study Guide",
+    "section": "",
+    "text": "How to use and interpret the following structures:\n\nfunctions\nConditional evaluation: if, else, else if, ifelse\nfor and while loops\n\nThe following concepts: * Classes and object-oriented programming * Environment and scope * Vectorization * Recursion * Functional programming: lapply, sapply, and mapply\nHow to interpret code and results used for:\n\ngenerating visualizations via ggplot2\nperforming statistical analyses: lm(), t.test()\ngenerating random variables\nrunning simulations"
+  },
+  {
+    "objectID": "projects/final_exam.html#instructions",
+    "href": "projects/final_exam.html#instructions",
+    "title": "Final Exam Study Guide",
+    "section": "",
+    "text": "How to use and interpret the following structures:\n\nfunctions\nConditional evaluation: if, else, else if, ifelse\nfor and while loops\n\nThe following concepts: * Classes and object-oriented programming * Environment and scope * Vectorization * Recursion * Functional programming: lapply, sapply, and mapply\nHow to interpret code and results used for:\n\ngenerating visualizations via ggplot2\nperforming statistical analyses: lm(), t.test()\ngenerating random variables\nrunning simulations"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "MATH167R: Statistical Programming with R",
@@ -1057,6 +1071,195 @@
     "text": "Overview of today\n\nDebugging (based on Jennifer Bryan and Jim Hester’s What they Forgot to Teach You About R - Debugging R Code)"
   },
   {
+    "objectID": "slides/16_debugging.html#step-1-look-online",
+    "href": "slides/16_debugging.html#step-1-look-online",
+    "title": "MATH167R: Debugging",
+    "section": "Step 1: Look online",
+    "text": "Step 1: Look online\nWhen you see an error code you don’t understand, search for it!\nSearch for the exact text of your error message (except for any references to filepaths, etc.).\nR has millions of users and an incredibly active online community. If you encounter any error message, chances are someone has had to debug that exact error in the past."
+  },
+  {
+    "objectID": "slides/16_debugging.html#step-2-reset",
+    "href": "slides/16_debugging.html#step-2-reset",
+    "title": "MATH167R: Debugging",
+    "section": "Step 2: Reset",
+    "text": "Step 2: Reset\nMany, many issues will be solved by closing and re-opening R.\nSometimes, things get weird with your global environment, and you just need to start with a clean slate. It can be frustrating, because you don’t know what was causing the issue, but also a relief, because it will be fixed.\nResetting will:\n\nClear your workspace (better than rm(list = ls()!)\nReset your options to their defaults (an easy one to miss!)\nClear your search path (the order R looks for things)"
+  },
+  {
+    "objectID": "slides/16_debugging.html#step-3-repeat",
+    "href": "slides/16_debugging.html#step-3-repeat",
+    "title": "MATH167R: Debugging",
+    "section": "Step 3: Repeat",
+    "text": "Step 3: Repeat\nWhen you encounter a bug, try to repeat it. Likely, it came about for a reason.\nWhen you do repeat it, you should repeat it with a minimal working example. This means you should remove as much code and simplify as much data as possible.\n\nSmall and simple inputs\nNo extraneous packages\nNo unnecessary function calls\n\nExample: did your function break with a large data matrix of real-world data stored within a package? How about if you just use a \\(3 \\times 3\\) matrix of \\(1\\)’s?"
+  },
+  {
+    "objectID": "slides/16_debugging.html#step-4-locate",
+    "href": "slides/16_debugging.html#step-4-locate",
+    "title": "MATH167R: Debugging",
+    "section": "Step 4: Locate",
+    "text": "Step 4: Locate\nIf you weren’t able to fix a bug the “easy” way (found the solution on Google or just needed a reset), and you have a minimal working example demonstrating your bug, then you are ready for the really hard part: finding the bug.\nOften (not always), once you find a bug, it is rather easy to fix."
+  },
+  {
+    "objectID": "slides/16_debugging.html#traceback-call-stack",
+    "href": "slides/16_debugging.html#traceback-call-stack",
+    "title": "MATH167R: Debugging",
+    "section": "traceback(): call stack",
+    "text": "traceback(): call stack\nSometimes functions(in functions(in functions(in functions(…)))) can get complicated.\nExercise: What will the following code return?\n\nf &lt;- function(a) g(a)\ng &lt;- function(b) h(b)\nh &lt;- function(c) i(c)\ni &lt;- function(d) {\n  if (!is.numeric(d)) {\n    stop(\"`d` must be numeric\", call. = FALSE)\n  }\n  d + 10\n}\nf(5)\n\n\n\n\n[1] 15"
+  },
+  {
+    "objectID": "slides/16_debugging.html#traceback-call-stack-1",
+    "href": "slides/16_debugging.html#traceback-call-stack-1",
+    "title": "MATH167R: Debugging",
+    "section": "traceback(): call stack",
+    "text": "traceback(): call stack\nWhat about this code?\n\nf &lt;- function(a) g(a)\ng &lt;- function(b) h(b)\nh &lt;- function(c) i(c)\ni &lt;- function(d) {\n  if (!is.numeric(d)) {\n    stop(\"`d` must be numeric\", call. = FALSE)\n  }\n  d + 10\n}\nf(1:3)\n\n\n\n\n[1] 11 12 13"
+  },
+  {
+    "objectID": "slides/16_debugging.html#traceback-call-stack-2",
+    "href": "slides/16_debugging.html#traceback-call-stack-2",
+    "title": "MATH167R: Debugging",
+    "section": "traceback(): call stack",
+    "text": "traceback(): call stack\nWhat about this code?\n\nf &lt;- function(a) g(a)\ng &lt;- function(b) h(b)\nh &lt;- function(c) i(c)\ni &lt;- function(d) {\n  if (!is.numeric(d)) {\n    stop(\"`d` must be numeric\", call. = FALSE)\n  }\n  d + 10\n}\nf(\"a\")\n\n\n\n\nError: `d` must be numeric\n\n\n\n\nWhy doesn’t it say 'a' must be numeric?"
+  },
+  {
+    "objectID": "slides/16_debugging.html#traceback-call-stack-3",
+    "href": "slides/16_debugging.html#traceback-call-stack-3",
+    "title": "MATH167R: Debugging",
+    "section": "traceback(): call stack",
+    "text": "traceback(): call stack\n\ntraceback()\n\n5: stop(\"`d` must be numeric\", call. = FALSE) \n4: i(c) \n3: h(b) \n2: g(a) \n1: f(\"a\")"
+  },
+  {
+    "objectID": "slides/16_debugging.html#traceback-call-stack-4",
+    "href": "slides/16_debugging.html#traceback-call-stack-4",
+    "title": "MATH167R: Debugging",
+    "section": "traceback(): call stack",
+    "text": "traceback(): call stack\nThis is called a call stack.\nRead from bottom to top:\n\nFirst call was to f(\"a\")\nSecond call was g(a)\nThird call was h(b)\nFourth call was i(c)\nFifth and last call was our error message, so we know i(c) triggered our error.\n\nWe now know that our error occurred within i(c), but we don’t know where within i(c) our error occurred."
+  },
+  {
+    "objectID": "slides/16_debugging.html#traceback-call-stack-5",
+    "href": "slides/16_debugging.html#traceback-call-stack-5",
+    "title": "MATH167R: Debugging",
+    "section": "traceback(): call stack",
+    "text": "traceback(): call stack\nNote this is done in your Console, not your Editor pane. This is typically not a part of your reproducible workflow, this is you figuring out your own problems until you fix what actually belongs in your workflow.\nOnce you have the bug fixed, then put the debugged code in your Editor pane. In general, most debugging will be done through the Console."
+  },
+  {
+    "objectID": "slides/16_debugging.html#print-cat-str-messages",
+    "href": "slides/16_debugging.html#print-cat-str-messages",
+    "title": "MATH167R: Debugging",
+    "section": "print(), cat(), str(): messages",
+    "text": "print(), cat(), str(): messages\nUse print() statements to test out print() statements to see the values used during execution.\n\ni &lt;- function(d) {\n  print(d)\n  if (!is.numeric(d)) {\n    stop(\"`d` must be numeric\", call. = FALSE)\n  }\n  d + 10\n}\nf(\"a\")\n\n[1] \"a\"\n\n\nError: `d` must be numeric\n\n\n\nThis is a quick and easy way to find bugs quickly. Probably the most common first step when manually debugging."
+  },
+  {
+    "objectID": "slides/16_debugging.html#print-cat-str-messages-1",
+    "href": "slides/16_debugging.html#print-cat-str-messages-1",
+    "title": "MATH167R: Debugging",
+    "section": "print(), cat(), str(): messages",
+    "text": "print(), cat(), str(): messages\nTake your function, throw in a cat() statement to see what the function is seeing.\n\ni &lt;- function(d) {\n  cat(\"The value of input parameter d is:\", d, \"\\n\")\n  cat(\"The class of input parameter d is:\", class(d), \"\\n\")\n  if (!is.numeric(d)) {\n    stop(\"`d` must be numeric\", call. = FALSE)\n  }\n  d + 10\n}\nf(\"a\")\n\nThe value of input parameter d is: a \nThe class of input parameter d is: character \n\n\nError: `d` must be numeric"
+  },
+  {
+    "objectID": "slides/16_debugging.html#print-cat-str-messages-2",
+    "href": "slides/16_debugging.html#print-cat-str-messages-2",
+    "title": "MATH167R: Debugging",
+    "section": "print(), cat(), str(): messages",
+    "text": "print(), cat(), str(): messages\nWe can similarly use str():\n\ni &lt;- function(d) {\n  str(d)\n  if (!is.numeric(d)) {\n    stop(\"`d` must be numeric\", call. = FALSE)\n  }\n  d + 10\n}\nf(\"a\")\n\n chr \"a\"\n\n\nError: `d` must be numeric\n\n\nMore specifically, str() can be used to see the structure of what the function is seeing. This can often be more informative if the structure is not what you expect (a common source of bugs)."
+  },
+  {
+    "objectID": "slides/16_debugging.html#print-cat-str-messages-3",
+    "href": "slides/16_debugging.html#print-cat-str-messages-3",
+    "title": "MATH167R: Debugging",
+    "section": "print(), cat(), str(): messages",
+    "text": "print(), cat(), str(): messages\nThe main downside to these approaches is that it can get messy quickly if you use multiple print statements, and you cannot further investigate the object. However, many bugs come down to typos or other trivial errors, and print statements are often all you need."
+  },
+  {
+    "objectID": "slides/16_debugging.html#browser-interactive-debugger",
+    "href": "slides/16_debugging.html#browser-interactive-debugger",
+    "title": "MATH167R: Debugging",
+    "section": "browser(): Interactive debugger",
+    "text": "browser(): Interactive debugger\nSometimes, it may not be enough to just use print statements and locate a bug. You can get more information and interact with that information using browser(), an interactive debugger.\nWithin RStudio, you can also get right to an interactive debugger by clicking Rerun with Debug."
+  },
+  {
+    "objectID": "slides/16_debugging.html#browser-interactive-debugger-1",
+    "href": "slides/16_debugging.html#browser-interactive-debugger-1",
+    "title": "MATH167R: Debugging",
+    "section": "browser(): Interactive debugger",
+    "text": "browser(): Interactive debugger\nAlternatively, we can plug browser() into our function, as with the print statements.\n\ni &lt;- function(d) {\n  browser()\n  if (!is.numeric(d)) {\n    stop(\"`d` must be numeric\", call. = FALSE)\n  }\n  d + 10\n}\nf(\"a\")\n\nCalled from: i(c)\ndebug at &lt;text&gt;#3: if (!is.numeric(d)) {\n    stop(\"`d` must be numeric\", call. = FALSE)\n}\ndebug at &lt;text&gt;#4: stop(\"`d` must be numeric\", call. = FALSE)\n\n\nError: `d` must be numeric"
+  },
+  {
+    "objectID": "slides/16_debugging.html#browser-interactive-debugger-2",
+    "href": "slides/16_debugging.html#browser-interactive-debugger-2",
+    "title": "MATH167R: Debugging",
+    "section": "browser(): Interactive debugger",
+    "text": "browser(): Interactive debugger\nAfter you run a function with browser(), you will be inside of your function with an interactive debugger.\nYou will know it worked if you see a special prompt: Browse[1]&gt;.\nWe can see:\n\nThe environment within the function using the Environment pane\nThe call stack using the new Traceback pane\nSpecial interactive debugging commands"
+  },
+  {
+    "objectID": "slides/16_debugging.html#interactive-debugging-commands",
+    "href": "slides/16_debugging.html#interactive-debugging-commands",
+    "title": "MATH167R: Debugging",
+    "section": "Interactive debugging commands",
+    "text": "Interactive debugging commands\n\nNext, n: executes the next step in the function. (If you have a variable named n, use print(n) to display its value.)\nStep into works like next, but if the next step is a function, it will step into that function so you can explore it interactively. (Easy to get lost!)\nFinish, or f: finishes execution of the current loop or function. Useful to skip over long for loops you don’t need to interact with.\nContinue, c: leaves the debugger and continues execution of the function. Useful if you’ve fixed the bad state and want to check that the function proceeds correctly.\nStop, Q: exits the debugger and returns to the R prompt."
+  },
+  {
+    "objectID": "slides/16_debugging.html#interactive-debugging-commands-1",
+    "href": "slides/16_debugging.html#interactive-debugging-commands-1",
+    "title": "MATH167R: Debugging",
+    "section": "Interactive debugging commands",
+    "text": "Interactive debugging commands\n\nEnter (no text): repeat the previous interactive debugging command. Defaults to Next n if you haven’t used any debugging commands yet.\nwhere: prints stack trace of active calls (the interactive equivalent of traceback)."
+  },
+  {
+    "objectID": "slides/16_debugging.html#other-useful-things-to-do",
+    "href": "slides/16_debugging.html#other-useful-things-to-do",
+    "title": "MATH167R: Debugging",
+    "section": "Other useful things to do",
+    "text": "Other useful things to do\n\nls(): List the current environment. You can use this to browse everything that the function is able to see at that moment.\nstr(), print(): examine objects as the function sees them."
+  },
+  {
+    "objectID": "slides/16_debugging.html#a-warning",
+    "href": "slides/16_debugging.html#a-warning",
+    "title": "MATH167R: Debugging",
+    "section": "A warning",
+    "text": "A warning\nIf you execute the step of a function where the error occurs, you will exit interactive debugging mode, the error message will print, and you will be returned to the R prompt.\nThis can get annoying, because it stops you from interacting right when you hit the bug.\nStrategy: * Call browser() and execute until you hit the error. Remember exactly where it occurs. * Call browser() again and execute again, stopping just before triggering the error. * You can copy and paste the next line of code into the Browse console to trigger the error without exiting the interactive debugger."
+  },
+  {
+    "objectID": "slides/16_debugging.html#tips",
+    "href": "slides/16_debugging.html#tips",
+    "title": "MATH167R: Debugging",
+    "section": "Tips",
+    "text": "Tips\n\nWithin the debugging section, you are interacting with the exact environment R is using before the error is triggered.\nExamine each object one-by-one in the environment to make sure the structure matches expectations.\nIf you still can’t figure it out, s “Step into” the next function and repeat this process.\n\n# BROWSER DEMO 2\nloop_fun &lt;- function(x) {\n  # browser()\n  n &lt;- length(x)\n  y &lt;- rep(NA, n)\n  z &lt;- rep(NA, n)\n  for (i in 1:n) {\n    y[i] &lt;- x[i] * 2\n    z[i] &lt;- y[i] * 2\n  }\n  return(list(\"y\" = y, \"z\" = z))\n}\nloop_fun(1:5)\nloop_fun(diag(1:5))\n\nloop_fun &lt;- function(x) {\n  # browser()\n  n &lt;- length(x)\n  y &lt;- rep(NA, n)\n  z &lt;- rep(NA, n)\n  for (i in 1:n) {\n    y[i] &lt;- x[i] * 2\n    z[i] &lt;- y[i] * 2\n  }\n  return(list(\"y\" = y, \"z\" = z))\n}\nloop_fun(1:5)\n\n$y\n[1]  2  4  6  8 10\n\n$z\n[1]  4  8 12 16 20\n\nloop_fun(diag(1:5))\n\n$y\n [1]  2  0  0  0  0  0  4  0  0  0  0  0  6  0  0  0  0  0  8  0  0  0  0  0 10\n\n$z\n [1]  4  0  0  0  0  0  8  0  0  0  0  0 12  0  0  0  0  0 16  0  0  0  0  0 20"
+  },
+  {
+    "objectID": "slides/16_debugging.html#debugging-summary",
+    "href": "slides/16_debugging.html#debugging-summary",
+    "title": "MATH167R: Debugging",
+    "section": "Debugging Summary",
+    "text": "Debugging Summary\n1. Search online.\n2. Reset.\n3. Repeat.\n4. Locate:\n\nCall stack: traceback()\nNon-interactive messages: print(), cat(), str()\nInteractive debugging: browser(), debug(), debugonce(), trace()"
+  },
+  {
+    "objectID": "slides/16_debugging.html#debugging-resources",
+    "href": "slides/16_debugging.html#debugging-resources",
+    "title": "MATH167R: Debugging",
+    "section": "Debugging Resources",
+    "text": "Debugging Resources\n\nAdvanced R Debugging - Hadley Wickham\nWhat they Forgot to Teach You About R - Jennifer Bryan and Jim Hester\nDebugging Techniques in RStudio - Amanda Gadrow\nDebugging with RStudio Article - Jonathan McPherson\nIntroduction to debugging in R and RStudio - Jim Hester\nCheatsheet"
+  },
+  {
+    "objectID": "slides/17_data-analysis-functions.html#overview-of-today",
+    "href": "slides/17_data-analysis-functions.html#overview-of-today",
+    "title": "MATH167R: Programming for data analysis",
+    "section": "Overview of today",
+    "text": "Overview of today\n\nProgramming for data science\nFunctions for data analysis\nFunctional R programming with apply, lapply, mapply\nWorking with APIs\nWeb scraping"
+  },
+  {
+    "objectID": "slides/17_data-analysis-functions.html#programming-for-data-science",
+    "href": "slides/17_data-analysis-functions.html#programming-for-data-science",
+    "title": "MATH167R: Programming for data analysis",
+    "section": "Programming for data science",
+    "text": "Programming for data science\nIn the first half of the semester, we covered skills for exploratory data analysis: visualization and descriptive statistics.\nToday, we’ll combine those skills with programming concepts."
+  },
+  {
+    "objectID": "slides/17_data-analysis-functions.html#motivating-example",
+    "href": "slides/17_data-analysis-functions.html#motivating-example",
+    "title": "MATH167R: Programming for data analysis",
+    "section": "Motivating example",
+    "text": "Motivating example\nEach week,"
+  },
+  {
     "objectID": "slides/03_functions-vectors-matrices.html#warm-up",
     "href": "slides/03_functions-vectors-matrices.html#warm-up",
     "title": "MATH167R: Functions, vectors, and matrices",
@@ -1460,7 +1663,7 @@
     "href": "slides/14_vectorization-recursion.html#modifying-in-place",
     "title": "MATH167R: Vectorization and recursion",
     "section": "Modifying in place",
-    "text": "Modifying in place\nSometimes we wish to change the value of some object iteratively. In such cases, vectorizing code may not be possible.\nWhat do you expect the output of this code to be?\n\nx &lt;- numeric(10)\nfor (i in 1:length(x)) {\n  x[i] &lt;- sum(x[0:i])\n}\nx\n\n\n\n\n [1]  1  3  6 10 15 21 28 36 45 55\n\n\n\n\nThese are known as the triangular numbers."
+    "text": "Modifying in place\nSometimes we wish to change the value of some object iteratively. In such cases, vectorizing code may not be possible.\nWhat do you expect the output of this code to be?\n\nx &lt;- 1:10\nfor (i in 10:1) {\n  x[i] &lt;- sum(x[1:i])\n}\nx\n\n\n\n\n [1]  1  3  6 10 15 21 28 36 45 55\n\n\n\n\nThese are known as the triangular numbers."
   },
   {
     "objectID": "slides/14_vectorization-recursion.html#recursion",
@@ -2448,6 +2651,27 @@
     "title": "MATH167R: Spatial data analysis",
     "section": "Themes and customization",
     "text": "Themes and customization\n\nggplot(ca_counties, aes(fill = median_rent)) +\n  geom_sf() +\n  scale_fill_viridis_c(name = \"Median Rent\") +\n  ggtitle(\"Median 1BR rent by county, Bay Area, 2015\",\n           subtitle = \"based on Craigslist rental listings\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "slides/18_simulations.html#overview-of-today",
+    "href": "slides/18_simulations.html#overview-of-today",
+    "title": "MATH167R: Simulations",
+    "section": "Overview of today",
+    "text": "Overview of today\n\nRandom variables in R\nWriting simulations"
+  },
+  {
+    "objectID": "slides/18_simulations.html#random-walks",
+    "href": "slides/18_simulations.html#random-walks",
+    "title": "MATH167R: Simulations",
+    "section": "Random walks",
+    "text": "Random walks"
+  },
+  {
+    "objectID": "slides/18_simulations.html#gamblers-ruin",
+    "href": "slides/18_simulations.html#gamblers-ruin",
+    "title": "MATH167R: Simulations",
+    "section": "Gambler’s ruin",
+    "text": "Gambler’s ruin"
   },
   {
     "objectID": "slides/15_environment-scope.html#overview-of-today",
