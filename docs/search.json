@@ -63,6 +63,27 @@
     "text": "C. Exercises\n\nIn contrast to the usual mathematical interpretation of x = x + 1, which has no finite solution, the following assignment evaluates to a finite value. Explain.\n\nx &lt;- 1\nx &lt;- x + 1\nprint(x)\n\n[1] 2\n\n\nYOUR EXPLANATION HERE\nThe first expression below evaluates to a numeric value, but the second one causes an error. Explain.\n\nT + 1\n\n[1] 2\n\nT + \"Hello\"\n\nError in T + \"Hello\": non-numeric argument to binary operator\n\n\nYOUR EXPLANATION HERE\nCorrect the code below so example_chr is an object of the character class.\n\n# YOUR CODE HERE\nexample_chr &lt;- T\nclass(example_chr)\n\n[1] \"logical\"\n\n\nWhat questions do you have about R, RStudio, and RMarkdown?\n\nYour first question…\nYour second question…"
   },
   {
+    "objectID": "labs/08_lab.html",
+    "href": "labs/08_lab.html",
+    "title": "Lab 7",
+    "section": "",
+    "text": "Remember, you must submit both your .Rmd and the compiled .html in order to receive full credit! In addition, to receive full credit, your code output and plots must be correctly formatted."
+  },
+  {
+    "objectID": "labs/08_lab.html#a.-one-dimensional-random-walks",
+    "href": "labs/08_lab.html#a.-one-dimensional-random-walks",
+    "title": "Lab 7",
+    "section": "A. One-dimensional random walks",
+    "text": "A. One-dimensional random walks\n\nIn this part, you will simulate a one-dimensional random walk. Suppose you are at the point \\(x\\) at time \\(t\\). At time \\(t+1\\), you have a 50% chance of moving forwards to \\(x+1\\) and a 50% chance of moving backwards to \\(x-1\\). Assume that at time \\(t=0\\), you are at \\(x_0=0\\).\nWrite a function random_walk() that takes as input a single numeric \\(n\\) and simulates \\(n\\) steps of a one-dimensional random walk. The output should be a length vector of length \\(n+1\\) starting with 0 where the \\((i+1)\\)th entry represents the location of the random walker at time \\(t=i\\). For example, random_walk(5) may return the vector \\((0, 1, 2, 1, 2)\\).\nUse your function to generate a random walk of 100 steps and generate a line graph with \\(t=0,1,\\ldots, 100\\) on the x-axis and \\(x_0,\\ldots, x_{100}\\) on the y-axis."
+  },
+  {
+    "objectID": "labs/08_lab.html#b.-writing-a-simulation.",
+    "href": "labs/08_lab.html#b.-writing-a-simulation.",
+    "title": "Lab 7",
+    "section": "B. Writing a simulation.",
+    "text": "B. Writing a simulation."
+  },
+  {
     "objectID": "labs/04_lab.html",
     "href": "labs/04_lab.html",
     "title": "Lab 4",
@@ -119,11 +140,11 @@
     "text": "A. Skewness and Kurtosis\nSkewness describes how asymmetrical the distribution of a numerical variable is around its mean. Given observations \\(x_1,\\ldots, x_n\\), we can calculate the sample skewness \\(s\\) of a variable using the following formula:\n\\[s = \\frac{\\frac{1}{n}\\sum\\limits_{i=1}^n(x_i-\\overline{x})^3}{\\left[\\frac{1}{n}\\sum\\limits_{i=1}^n(x_i-\\overline{x})^2\\right]^{3/2}}\\] Kurtosis is a measure of the “tailedness” of the distribution of a numerical variable is around its mean. Higher values of kurtosis indicate more extreme outliers. Given observations \\(x_1,\\ldots, x_n\\), we can calculate the sample kurtosis \\(k\\) of a variable using the following formula:\n\\[k = \\frac{\\frac{1}{n}\\sum\\limits_{i=1}^n(x_i-\\overline{x})^4}{\\left[\\frac{1}{n}\\sum\\limits_{i=1}^n(x_i-\\overline{x})^2\\right]^{2}}-3\\]\n\nWrite a function skewness() that takes as input a numeric vector x and returns the sample skewness. There are functions in R that compute skewness, but you cannot use any of them–write your own implementation.\nWrite a function kurtosis() that takes as input a numeric vector x and returns the sample skewness. There are functions in R that compute kurtosis, but you cannot use any of them–write your own implementation.\nUse your function to compute the sample skewness of the arr_delay variable in the flights dataset contained in the nycflights13 package.\nUse your function to compute the sample kurtosis of the arr_delay variable in the flights dataset contained in the nycflights13 package."
   },
   {
-    "objectID": "labs/07_lab.html#b.-writing-a-simulation-function",
-    "href": "labs/07_lab.html#b.-writing-a-simulation-function",
+    "objectID": "labs/07_lab.html#b.-finding-an-error",
+    "href": "labs/07_lab.html#b.-finding-an-error",
     "title": "Lab 7",
-    "section": "B. Writing a simulation function",
-    "text": "B. Writing a simulation function\nIn this part, you will simulate a one-dimensional random walk. Suppose you are at the point \\(x\\) at time \\(t\\). At time \\(t+1\\), you have a 50% chance of moving forwards to \\(x+1\\) and a 50% chance of moving backwards to \\(x-1\\). Assume that at time \\(t=0\\), you are at \\(x_0=0\\).\n\nWrite a function random_walk() that takes as input a single numeric \\(n\\) and simulates \\(n\\) steps of a one-dimensional random walk. The output should be a length vector of length \\(n+1\\) starting with 0 where the \\((i+1)\\)th entry represents the location of the random walker at time \\(t=i\\). For example, random_walk(5) may return the vector \\((0, 1, 2, 1, 2)\\).\nUse your function to generate a random walk of 100 steps and generate a line graph with \\(t=0,1,\\ldots, 100\\) on the x-axis and \\(x_0,\\ldots, x_{100}\\) on the y-axis."
+    "section": "B. Finding an error",
+    "text": "B. Finding an error\nSuppose you have two teams of runners participating in a 5k. We wish to write a function that takes as input two vectors representing the times of the runners in each team and returns a list of two vectors representing the ranks of each team’s runners.\nFor example, if the first team’s times are c(16.8, 21.2, 19.1) and the second team’s times are c(17.2, 18.1, 20.0), the function should return c(1, 6, 4) for the first team and c(2, 3, 5) for the second team.\nBelow is a draft version of the function get_runner_ranks(). However, there is an error somewhere. Use any method we discussed in class to identify the error.\n\nget_runner_ranks &lt;- function(x, y) {\n  # combine all runner times\n  combined_times &lt;- c(x, y) \n  \n  # sort all runner times from fastest to slowest\n  sort(combined_times, decreasing = T)\n  \n  # create ranks vectors\n  ranks_x &lt;- numeric(length(x))\n  ranks_y &lt;- numeric(length(y))\n  \n  for (i in seq_along(ranks_x)) {\n    # look up rank of time i in x in combined_times\n    ranks_x[i] &lt;- match(x[i], combined_times)\n  }\n  \n  for (i in seq_along(ranks_y)) {\n    # look up rank of time i in y in combined_times\n    ranks_y[i] &lt;- match(y[i], combined_times)\n  }\n  \n  # return a list of first team and second team ranks\n  return(list(x = ranks_x, y = ranks_y))\n}\n\n\nBelow, write a corrected version of get_runner_ranks() and compute get_runner_ranks(c(16.8, 21.2, 19.1), c(17.2, 18.1, 20.0)).\n\n\nget_runner_ranks &lt;- function(x, y) {\n  # YOUR CODE HERE\n}\n\n\nExplain in your own words what the error was."
   },
   {
     "objectID": "labs/06_lab.html",
@@ -249,7 +270,7 @@
     "href": "index.html",
     "title": "MATH167R: Statistical Programming with R",
     "section": "",
-    "text": "Week\nDate\nTopic\nSlides\nCheck-in\nLab\n\n\n\n\n1\nM 8/21\nCourse Overview and Introduction to R\nSlides 01\nCheck-in 01\n\n\n\n\nW 8/23\nR fundamentals\nSlides 02\n\nLab 01\n\n\n2\nM 8/28\nR fundamentals\nSlides 03\nCheck-in 02\n\n\n\n\nW 8/30\nR fundamentals\nSlides 04\n\nLab 02\n\n\n3\nM 9/4\nLabor Day (No Class)\n\n\n\n\n\n\nW 9/6\nExploring data with R\nSlides 05\n\nLab 03\n\n\n4\nM 9/11\nExploring data with R\nSlides 06\nCheck-in 03\n\n\n\n\nW 9/13\nData visualization\nSlides 07\n\nLab 04\n\n\n5\nM 9/18\nData visualization\nSlides 08\nCheck-in 04\n\n\n\n\nW 9/20\nData visualization\nSlides 09\n\nLab 05\n\n\n6\nM 9/25\nData manipulation and management\nSlides 10\n\n\n\n\n\nW 9/27\nData manipulation and management\nSlides 11\n\n\n\n\n7\nM 10/2\nProgramming basics\nSlides 12\n\n\n\n\n\nW 10/4\nMidterm project\n\n\n\n\n\n8\nM 10/9\nProgramming basics\nSlides 13\nCheck-in 05\n\n\n\n\nW 10/11\nProgramming basics\nSlides 14\n\nLab 06\n\n\n9\nM 10/16\nProgramming basics\n\n\n\n\n\n\nW 10/18\nProgramming basics\n\n\n\n\n\n10\nM 10/23\nProgramming basics\n\n\n\n\n\n\nW 10/25\nProgramming basics\n\n\n\n\n\n11\nM 10/30\nSimulations\n\n\n\n\n\n\nW 11/1\nSimulations\n\n\n\n\n\n12\nM 11/6\nSimulations\n\n\n\n\n\n\nW 11/8\nStatistical inference\n\n\n\n\n\n13\nM 11/13\nStatistical inference\n\n\n\n\n\n\nW 11/15\nStatistical inference\n\n\n\n\n\n14\nM 11/20\nStatistical inference\n\n\n\n\n\n\nW 11/22\nThanksgiving (No Class)\n\n\n\n\n\n15\nM 11/27\nReal world data analysis\n\n\n\n\n\n\nW 11/29\nReal world data analysis\n\n\n\n\n\n16\nM 12/4\nReal world data analysis\n\n\n\n\n\n\nW 12/6\nFinal review"
+    "text": "Week\nDate\nTopic\nSlides\nCheck-in\nLab\n\n\n\n\n1\nM 8/21\nCourse Overview and Introduction to R\nSlides 01\nCheck-in 01\n\n\n\n\nW 8/23\nR fundamentals\nSlides 02\n\nLab 01\n\n\n2\nM 8/28\nR fundamentals\nSlides 03\nCheck-in 02\n\n\n\n\nW 8/30\nR fundamentals\nSlides 04\n\nLab 02\n\n\n3\nM 9/4\nLabor Day (No Class)\n\n\n\n\n\n\nW 9/6\nExploring data with R\nSlides 05\n\nLab 03\n\n\n4\nM 9/11\nExploring data with R\nSlides 06\nCheck-in 03\n\n\n\n\nW 9/13\nData visualization\nSlides 07\n\nLab 04\n\n\n5\nM 9/18\nData visualization\nSlides 08\nCheck-in 04\n\n\n\n\nW 9/20\nData visualization\nSlides 09\n\nLab 05\n\n\n6\nM 9/25\nData manipulation and management\nSlides 10\n\n\n\n\n\nW 9/27\nData manipulation and management\nSlides 11\n\n\n\n\n7\nM 10/2\nProgramming basics\nSlides 12\n\n\n\n\n\nW 10/4\nMidterm project\n\n\n\n\n\n8\nM 10/9\nProgramming basics\nSlides 13\nCheck-in 05\n\n\n\n\nW 10/11\nProgramming basics\nSlides 14\n\nLab 06\n\n\n9\nM 10/16\nProgramming basics\nSlides 15\nCheck-in 06\n\n\n\n\nW 10/18\nProgramming basics\nSlides 16\n\nLab 07\n\n\n10\nM 10/23\nProgramming basics\n\n\n\n\n\n\nW 10/25\nSimulations\n\n\n\n\n\n11\nM 10/30\nSimulations\n\n\n\n\n\n\nW 11/1\nSimulations\n\n\n\n\n\n12\nM 11/6\nSimulations\n\n\n\n\n\n\nW 11/8\nStatistical inference\n\n\n\n\n\n13\nM 11/13\nStatistical inference\n\n\n\n\n\n\nW 11/15\nStatistical inference\n\n\n\n\n\n14\nM 11/20\nStatistical inference\n\n\n\n\n\n\nW 11/22\nThanksgiving (No Class)\n\n\n\n\n\n15\nM 11/27\nReal world data analysis\n\n\n\n\n\n\nW 11/29\nReal world data analysis\n\n\n\n\n\n16\nM 12/4\nReal world data analysis\n\n\n\n\n\n\nW 12/6\nFinal review"
   },
   {
     "objectID": "slides/06_factors-groups.html#warm-up",
@@ -2657,7 +2678,63 @@
     "href": "slides/18_simulations.html#overview-of-today",
     "title": "MATH167R: Simulations",
     "section": "Overview of today",
-    "text": "Overview of today\n\nRandom variables in R\nWriting simulations"
+    "text": "Overview of today\n\nRandom variables in R\nThe r, p, d, and q functions\nWriting simulations"
+  },
+  {
+    "objectID": "slides/18_simulations.html#random-variables-in-r",
+    "href": "slides/18_simulations.html#random-variables-in-r",
+    "title": "MATH167R: Simulations",
+    "section": "Random variables in R",
+    "text": "Random variables in R\nWe have already seen"
+  },
+  {
+    "objectID": "slides/18_simulations.html#the-r-p-d-and-q-functions",
+    "href": "slides/18_simulations.html#the-r-p-d-and-q-functions",
+    "title": "MATH167R: Simulations",
+    "section": "The r, p, d, and q functions",
+    "text": "The r, p, d, and q functions\n\nrnorm() can be used to generate n random observations from a normal distribution:\n\n\nrnorm(n = 1, mean = 0, sd = 1)\n\n[1] 0.4004343\n\n\n\npnorm() can be used to compute the distribution function at a value q:\n\n\npnorm(q = 1, mean = 0, sd = 1)\n\n[1] 0.8413447\n\n\n\nqnorm() can be used to compute the quantile function at a percentile p:\n\n\nqnorm(p = .75, mean = 0, sd = 1)\n\n[1] 0.6744898\n\n\n\ndnorm() can be used to compute the density function at a value x:\n\n\ndnorm(x = .5, mean = 0, sd = 1)\n\n[1] 0.3520653"
+  },
+  {
+    "objectID": "slides/18_simulations.html#exercise",
+    "href": "slides/18_simulations.html#exercise",
+    "title": "MATH167R: Simulations",
+    "section": "Exercise",
+    "text": "Exercise\nSuppose we perform a hypothesis test using a normal distribution and obtain a z-score of -1.24. How would we compute the p-value?"
+  },
+  {
+    "objectID": "slides/18_simulations.html#random-seeds",
+    "href": "slides/18_simulations.html#random-seeds",
+    "title": "MATH167R: Simulations",
+    "section": "Random seeds",
+    "text": "Random seeds\nRemember that set.seed() can be used to ensure that you obtain the same results each time you run your code.\nFor example, if you include the command x &lt;- rnorm(1) in an .Rmd document with running set.seed(), each time you knit, you will produce a different value of x.\n\nset.seed(1022)\nrnorm(n = 1, mean = 0, sd = 1)\n\n[1] -0.6303919"
+  },
+  {
+    "objectID": "slides/18_simulations.html#writing-simulations",
+    "href": "slides/18_simulations.html#writing-simulations",
+    "title": "MATH167R: Simulations",
+    "section": "Writing simulations",
+    "text": "Writing simulations\nSuppose we wish to compute the expected value (or some other summary) of the gambler’s winnings. We can either:\n\nAnalytically compute the quantity of interest\nWrite code to repeatedly simulate values of the gambler’s winnings and then summarize these values"
+  },
+  {
+    "objectID": "slides/18_simulations.html#monte-carlo-methods",
+    "href": "slides/18_simulations.html#monte-carlo-methods",
+    "title": "MATH167R: Simulations",
+    "section": "Monte Carlo methods",
+    "text": "Monte Carlo methods"
+  },
+  {
+    "objectID": "slides/18_simulations.html#example-transformations-of-random-variables",
+    "href": "slides/18_simulations.html#example-transformations-of-random-variables",
+    "title": "MATH167R: Simulations",
+    "section": "Example: Transformations of random variables",
+    "text": "Example: Transformations of random variables\nSuppose \\(X_i\\sim N(0, 1)\\) for \\(1\\leq i\\leq n\\), for some \\(n\\). What is \\(E(\\mathrm{max}(X_1,\\ldots, X_n))?\\) How does \\(E(\\mathrm{max}(X_1,\\ldots, X_n))\\) change for different values of \\(n\\)?\n\nset.seed(1022)\nn_sim &lt;- 1000\nn &lt;- 10\nmaxes &lt;- numeric(n_sim)\nfor (i in 1:n_sim) {\n  maxes[i] &lt;- max(rnorm(n))\n}\nmean(maxes)\n\n[1] 1.547503\n\n\n\nWhat about for \\(n=100\\)? Should the expected maximum be larger or smaller?\n\n\n\nn_sim &lt;- 1000\nn &lt;- 100\nmaxes &lt;- numeric(n_sim)\nfor (i in 1:n_sim) {\n  maxes[i] &lt;- max(rnorm(n))\n}\nmean(maxes)\n\n[1] 2.51509"
+  },
+  {
+    "objectID": "slides/18_simulations.html#example-transformations-of-random-variables-1",
+    "href": "slides/18_simulations.html#example-transformations-of-random-variables-1",
+    "title": "MATH167R: Simulations",
+    "section": "Example: Transformations of random variables",
+    "text": "Example: Transformations of random variables\nSuppose \\(X\\sim N(0, 1)\\). What is \\(E(e^X)\\)?\n\ni &lt;- function(d) {\n  print(d)\n  if (!is.numeric(d)) {\n    stop(\"`d` must be numeric\", call. = FALSE)\n  }\n  d + 10\n}\nf(\"a\")\n\nError in f(\"a\"): could not find function \"f\""
   },
   {
     "objectID": "slides/18_simulations.html#random-walks",
@@ -3910,7 +3987,7 @@
     "href": "checkins/06_checkin.html",
     "title": "Check-in 6",
     "section": "",
-    "text": "Remember, you must submit both your .Rmd and the compiled .html in order to receive full credit! In addition, to receive full credit, your code output and plots must be correctly formatted.\n\nCollaborators\nINSERT NAMES OF ANY COLLABORATORS\n\n(Project Euler Problem 1) The natural numbers less than 10 that are divisible by 3 or 5 are 3, 5, 6, and 9. The sum of these numbers is 23. Write R code to compute the sum of all the numbers less than 1000 that are divisible by 3 or 5."
+    "text": "Remember, you must submit both your .Rmd and the compiled .html in order to receive full credit! In addition, to receive full credit, your code output and plots must be correctly formatted.\n\nCollaborators\nINSERT NAMES OF ANY COLLABORATORS\nGiven a vector \\(\\mathbf{x}=(x_1,\\ldots, x_n)\\) and a number \\(p\\geq 1\\), the vector p-norm is defined as\n\\[||\\mathbf{x}||_p=(|x_1|^p+\\cdots+|x_n|^p)^{1/p}\\]\nFor example, the vector 2-norm is given by\n\\[||\\mathbf{x}||_2=(|x_1|^2+\\cdots+|x_n|^2)^{1/2}\\]\nConsider the following code.\n\ncreate_p_norm &lt;- function(p = 2) {\n  return(\n    function(x) return(sum(abs(x) ^ p) ^ (1 / p))\n  )\n}\n\n\nExplain in your own words what the following code does:\n\n\nnorm_1 &lt;- create_p_norm(1)\nx &lt;- c(-1, 1, 2)\nnorm_1(x)\n\n[1] 4\n\n\n\nExplain in your own words what the following code does:\n\n\np &lt;- 3\nnorm_mystery &lt;- create_p_norm()\nx &lt;- c(-1, 1, 2)\nnorm_mystery(x)\n\n[1] 2.44949"
   },
   {
     "objectID": "checkins/01_first-checkin.html",
@@ -3932,6 +4009,13 @@
     "title": "Check-in 5",
     "section": "",
     "text": "Remember, you must submit both your .Rmd and the compiled .html in order to receive full credit! In addition, to receive full credit, your code output and plots must be correctly formatted.\n\nCollaborators\nINSERT NAMES OF ANY COLLABORATORS\n\n(Project Euler Problem 1) The natural numbers less than 10 that are divisible by 3 or 5 are 3, 5, 6, and 9. The sum of these numbers is 23. Write R code to compute the sum of all the numbers less than 1000 that are divisible by 3 or 5."
+  },
+  {
+    "objectID": "checkins/07_checkin.html",
+    "href": "checkins/07_checkin.html",
+    "title": "Check-in 7",
+    "section": "",
+    "text": "Remember, you must submit both your .Rmd and the compiled .html in order to receive full credit! In addition, to receive full credit, your code output and plots must be correctly formatted.\n\nCollaborators\nINSERT NAMES OF ANY COLLABORATORS\nUse the following code to create a list of four matrices:\n\nset.seed(100)\nmatrix_list &lt;- list(\n  A = diag(5),\n  B = matrix(rnorm(9), nrow = 3, ncol = 3),\n  C = matrix(c(1, 2, 3, 4), nrow = 2, ncol = 2),\n  D = diag(c(1:5))\n)\n\n\nUse the lapply function to create a list of length four containing the inverse of these four matrices.\nUse the sapply function to create a vector of length four containing the determinants of these four matrices."
   },
   {
     "objectID": "checkins/02_checkin.html",

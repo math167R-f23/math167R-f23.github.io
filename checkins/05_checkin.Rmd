@@ -4,6 +4,7 @@ author: "YOUR NAME HERE"
 date: "2023-10-09"
 format: 
   html:
+    embed-resources: true
     code-tools: true
     code-summary: "Code"
 ---
