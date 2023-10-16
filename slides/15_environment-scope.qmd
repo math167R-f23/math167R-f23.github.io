@@ -44,7 +44,7 @@ Most functions in R have three parts:
 
 -   `formals()`: the list of formal arguments
 
--   `body()`: the code inside the functio
+-   `body()`: the code inside the function
 
 -   `environment()`: the data structure that determines how objects and values are found when evaluating the function
 
@@ -310,6 +310,24 @@ f <- function() {
 f()
 f()
 ```
+
+
+## Super assignment
+
+The `<<-` operator doesn't create a variable in the current environment. It looks for a matching name in the parent environments. If it finds one, it updates that variable. If it doesn't, it creates a variable in the **global environment**.
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+#| error: TRUE
+x <- 0
+f <- function() {
+  x <<- 1
+}
+f()
+x
+```
+
 
 ## Practical tips
 

@@ -2769,7 +2769,7 @@
     "href": "slides/15_environment-scope.html#function-structure-in-r",
     "title": "MATH167R: Environment and Scope",
     "section": "Function structure in R",
-    "text": "Function structure in R\nMost functions in R have three parts:\n\nformals(): the list of formal arguments\nbody(): the code inside the functio\nenvironment(): the data structure that determines how objects and values are found when evaluating the function"
+    "text": "Function structure in R\nMost functions in R have three parts:\n\nformals(): the list of formal arguments\nbody(): the code inside the function\nenvironment(): the data structure that determines how objects and values are found when evaluating the function"
   },
   {
     "objectID": "slides/15_environment-scope.html#environments-and-scoping",
@@ -2868,6 +2868,13 @@
     "title": "MATH167R: Environment and Scope",
     "section": "A fresh start: function execution",
     "text": "A fresh start: function execution\nEach time you execute a function by calling it, a temporary environment is created.\nExercise: What will the following code return?\n\nf &lt;- function() {\n  if (!exists(\"a\")) {\n    a &lt;- 1\n  } else {\n    a &lt;- a + 1\n  }\n  a\n}\nf()\nf()\n\n\n\n\n[1] 1\n\n\n[1] 1"
+  },
+  {
+    "objectID": "slides/15_environment-scope.html#super-assignment",
+    "href": "slides/15_environment-scope.html#super-assignment",
+    "title": "MATH167R: Environment and Scope",
+    "section": "Super assignment",
+    "text": "Super assignment\nThe &lt;&lt;- operator doesn’t create a variable in the current environment. It looks for a matching name in the parent environments. If it finds one, it updates that variable. If it doesn’t, it creates a variable in the global environment.\n\nx &lt;- 0\nf &lt;- function() {\n  x &lt;&lt;- 1\n}\nf()\nx\n\n[1] 1"
   },
   {
     "objectID": "slides/15_environment-scope.html#practical-tips",

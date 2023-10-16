@@ -438,7 +438,7 @@ Peter Gao
 <p>Most functions in R have three parts:</p>
 <ul>
 <li><p><code>formals()</code>: the list of formal arguments</p></li>
-<li><p><code>body()</code>: the code inside the functio</p></li>
+<li><p><code>body()</code>: the code inside the function</p></li>
 <li><p><code>environment()</code>: the data structure that determines how objects and values are found when evaluating the function</p></li>
 </ul>
 </section>
@@ -627,6 +627,21 @@ Peter Gao
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
+</div>
+</div>
+</section>
+<section id="super-assignment" class="slide level2">
+<h2>Super assignment</h2>
+<p>The <code>&lt;&lt;-</code> operator doesn’t create a variable in the current environment. It looks for a matching name in the parent environments. If it finds one, it updates that variable. If it doesn’t, it creates a variable in the <strong>global environment</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb20-3"><a href="#cb20-3"></a>  x <span class="ot">&lt;&lt;-</span> <span class="dv">1</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a>}</span>
+<span id="cb20-5"><a href="#cb20-5"></a><span class="fu">f</span>()</span>
+<span id="cb20-6"><a href="#cb20-6"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
 </div>
 </div>
 </section>
