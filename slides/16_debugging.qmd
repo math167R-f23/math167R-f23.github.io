@@ -43,11 +43,11 @@ When you do repeat it, you should repeat it with a minimal working example. This
 -   No extraneous packages
 -   No unnecessary function calls
 
-Example: did your function break with a large data matrix of real-world data stored within a package? How about if you just use a `\(3 \times 3\)` matrix of `\(1\)`'s?
+Example: did your function break with a large data matrix of real-world data stored within a package? How about if you just use a $3\times 3$ matrix of $1$'s?
 
 ## Step 4: Locate
 
-If you weren't able to fix a bug the "easy" way (found the solution on Google or just needed a reset), and you have a minimal working example demonstrating your bug, then you are ready for the really hard part: finding the bug.
+If you weren't able to fix a bug the "easy" way (found the solution online or just needed a reset), and you have a minimal working example demonstrating your bug, then you are ready for the really hard part: finding the bug.
 
 Often (not always), once you find a bug, it is rather easy to fix.
 
@@ -224,11 +224,11 @@ f("a")
 
 . . .
 
-This is a quick and easy way to find bugs quickly. Probably the most common first step when manually debugging.
+This is a quick and easy way to find bugs quickly and should be probably your first step when manually debugging.
 
 ## `print(), cat(), str()`: messages
 
-Take your function, throw in a `cat()` statement to see what the function is seeing.
+Take your function and throw in a `cat()` statement to see what the function is seeing.
 
 ```{r}
 #| echo: TRUE
@@ -312,7 +312,7 @@ We can see:
 
 -   Next, `n`: executes the next step in the function. (If you have a variable named `n`, use `print(n)` to display its value.)
 
--   Step into works like next, but if the next step is a function, it will step into that function so you can explore it interactively. (Easy to get lost!)
+-   Step into, `s`, works like next, but if the next step is a function, it will step into that function so you can explore it interactively. (Easy to get lost!)
 
 -   Finish, or `f`: finishes execution of the current loop or function. Useful to skip over long for loops you don't need to interact with.
 
@@ -338,7 +338,9 @@ If you execute the step of a function where the error occurs, you will exit inte
 
 This can get annoying, because it stops you from interacting right when you hit the bug.
 
-Strategy: \* Call `browser()` and execute until you hit the error. Remember exactly where it occurs. \* Call `browser()` again and execute again, stopping just before triggering the error. \* You can copy and paste the next line of code into the `Browse` console to trigger the error without exiting the interactive debugger.
+Strategy: 
+* Call `browser()` and execute until you hit the error. Remember exactly where it occurs. 
+* Call `browser()` again and execute again, stopping just before triggering the error. * You can copy and paste the next line of code into the `Browse` console to trigger the error without exiting the interactive debugger.
 
 ## Tips
 
@@ -346,28 +348,35 @@ Strategy: \* Call `browser()` and execute until you hit the error. Remember exac
 -   Examine each object one-by-one in the environment to make sure the structure matches expectations.
 -   If you still can't figure it out, `s` "Step into" the next function and repeat this process.
 
-``` r
-# BROWSER DEMO 2
-loop_fun <- function(x) {
-  # browser()
-  n <- length(x)
-  y <- rep(NA, n)
-  z <- rep(NA, n)
-  for (i in 1:n) {
-    y[i] <- x[i] * 2
-    z[i] <- y[i] * 2
-  }
-  return(list("y" = y, "z" = z))
-}
-loop_fun(1:5)
-loop_fun(diag(1:5))
-```
+## Example
+
 
 ```{r}
 #| echo: TRUE
 #| eval: TRUE
 #| error: TRUE
-#| code-line-numbers: "2"
+create_p_norm <- function(p = 2) {
+  return(
+    function(x) return(sum(abs(x) ^ p) ^ (1 / p))
+  )
+}
+calculate_p_norm <- function(x, p) {
+  # browser()
+  norm_fn <- create_p_norm(p)
+  return(norm_fn(x))
+}
+calculate_p_norm(1:5, 1)
+```
+
+Within an interactive debugging environment, you can use `as.list(environment())` to see what is in the environment.
+
+## Example
+
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+#| error: TRUE
 loop_fun <- function(x) {
   # browser()
   n <- length(x)

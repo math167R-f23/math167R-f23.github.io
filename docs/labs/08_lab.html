@@ -9,7 +9,7 @@
 <meta name="author" content="YOUR NAME HERE">
 <meta name="dcterms.date" content="2023-10-18">
 
-<title>MATH167R - Lab 7</title>
+<title>MATH167R - Lab 8</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -4585,7 +4585,7 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
   </script>
 
 
-<meta property="og:title" content="MATH167R - Lab 7">
+<meta property="og:title" content="MATH167R - Lab 8">
 <meta property="og:description" content>
 <meta property="og:site-name" content="MATH167R">
 </head>
@@ -4677,8 +4677,8 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
    
   <ul>
   <li><a href="#collaborators" id="toc-collaborators" class="nav-link active" data-scroll-target="#collaborators">Collaborators</a></li>
-  <li><a href="#a.-one-dimensional-random-walks" id="toc-a.-one-dimensional-random-walks" class="nav-link" data-scroll-target="#a.-one-dimensional-random-walks">A. One-dimensional random walks</a></li>
-  <li><a href="#b.-writing-a-simulation." id="toc-b.-writing-a-simulation." class="nav-link" data-scroll-target="#b.-writing-a-simulation.">B. Writing a simulation.</a></li>
+  <li><a href="#a.-writing-a-simulation." id="toc-a.-writing-a-simulation." class="nav-link" data-scroll-target="#a.-writing-a-simulation.">A. Writing a simulation.</a></li>
+  <li><a href="#b.-one-dimensional-random-walks" id="toc-b.-one-dimensional-random-walks" class="nav-link" data-scroll-target="#b.-one-dimensional-random-walks">B. One-dimensional random walks</a></li>
   </ul>
 </nav>
     </div>
@@ -4687,7 +4687,7 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Lab 7</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Lab 8</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -4721,16 +4721,22 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># LOAD ANY RELEVANT PACKAGES HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="a.-one-dimensional-random-walks" class="level2">
-<h2 class="anchored" data-anchor-id="a.-one-dimensional-random-walks">A. One-dimensional random walks</h2>
+<section id="a.-writing-a-simulation." class="level2">
+<h2 class="anchored" data-anchor-id="a.-writing-a-simulation.">A. Writing a simulation.</h2>
+<p>Suppose <span class="math inline">\(X_i\sim \mathrm{N}(0, 1)\)</span> for <span class="math inline">\(1\leq i\leq n\)</span>, for some <span class="math inline">\(n\)</span>.</p>
 <ol type="1">
-<li><p>In this part, you will simulate a one-dimensional random walk. Suppose you are at the point <span class="math inline">\(x\)</span> at time <span class="math inline">\(t\)</span>. At time <span class="math inline">\(t+1\)</span>, you have a 50% chance of moving forwards to <span class="math inline">\(x+1\)</span> and a 50% chance of moving backwards to <span class="math inline">\(x-1\)</span>. Assume that at time <span class="math inline">\(t=0\)</span>, you are at <span class="math inline">\(x_0=0\)</span>.</p></li>
-<li><p>Write a function <code>random_walk()</code> that takes as input a single numeric <span class="math inline">\(n\)</span> and simulates <span class="math inline">\(n\)</span> steps of a one-dimensional random walk. The output should be a length vector of length <span class="math inline">\(n+1\)</span> starting with 0 where the <span class="math inline">\((i+1)\)</span>th entry represents the location of the random walker at time <span class="math inline">\(t=i\)</span>. For example, <code>random_walk(5)</code> may return the vector <span class="math inline">\((0, 1, 2, 1, 2)\)</span>.</p></li>
-<li><p>Use your function to generate a random walk of 100 steps and generate a line graph with <span class="math inline">\(t=0,1,\ldots, 100\)</span> on the x-axis and <span class="math inline">\(x_0,\ldots, x_{100}\)</span> on the y-axis.</p></li>
+<li><p>For <span class="math inline">\(n=10, 20, 40, 80, 160, 320, 640, 1280\)</span>, carry out a simulation to estimate <span class="math inline">\(E(\mathrm{max}(X_1,\ldots, X_n))\)</span>. For each value of <span class="math inline">\(n\)</span>, simulate 1000 values of <span class="math inline">\(\mathrm{max}(X_1,\ldots, X_n)\)</span> and compute their mean. Store these means in a vector.</p></li>
+<li><p>Create a line graph with <span class="math inline">\(n\)</span> on the x-axis and your simulation-based estimates of <span class="math inline">\(E(\mathrm{max}(X_1,\ldots, X_n))\)</span> on the y-axis. Comment on your findings. Does there seem to be an upper limit of <span class="math inline">\(E(\mathrm{max}(X_1,\ldots, X_n))\)</span>?</p></li>
 </ol>
 </section>
-<section id="b.-writing-a-simulation." class="level2">
-<h2 class="anchored" data-anchor-id="b.-writing-a-simulation.">B. Writing a simulation.</h2>
+<section id="b.-one-dimensional-random-walks" class="level2">
+<h2 class="anchored" data-anchor-id="b.-one-dimensional-random-walks">B. One-dimensional random walks</h2>
+<p>In this part, you will simulate a one-dimensional random walk. Suppose you are at the point <span class="math inline">\(x\)</span> at time <span class="math inline">\(t\)</span>. At time <span class="math inline">\(t+1\)</span>, the probability of moving forwards to <span class="math inline">\(x+1\)</span> is <span class="math inline">\(p\)</span> and the chance of moving backwards to <span class="math inline">\(x-1\)</span> is <span class="math inline">\(1-p\)</span>. Assume that at time <span class="math inline">\(t=1\)</span>, you are at <span class="math inline">\(x_1=0\)</span>.</p>
+<ol start="3" type="1">
+<li><p>Write a function <code>random_walk()</code> that takes as input a numeric <span class="math inline">\(n_steps\)</span> and a numeric <span class="math inline">\(p\)</span> and simulates <span class="math inline">\(n_steps\)</span> steps of the one-dimensional random walk with forward probability <span class="math inline">\(p\)</span>. You may have other input arguments if desired. The output should be a length vector of length <span class="math inline">\(n_steps\)</span> starting with 0 where the <span class="math inline">\(i\)</span>th entry represents the location of the random walker at time <span class="math inline">\(t=i\)</span>. For example, <code>random_walk(5, .5)</code> may return the vector <span class="math inline">\((0, 1, 2, 1, 2)\)</span>.</p></li>
+<li><p>Use your function to generate a random walk of 500 steps with probability <span class="math inline">\(.6\)</span> and generate a line graph with <span class="math inline">\(t=0,1,\ldots, 100\)</span> on the x-axis and <span class="math inline">\(x_0,\ldots, x_{100}\)</span> on the y-axis.</p></li>
+<li><p>Use your function to generate two more random walks of 500 steps with probability <span class="math inline">\(.6\)</span> and create a line graph with all three of your random walks, using different colors for each walk.</p></li>
+</ol>
 
 
 <!-- -->
@@ -5023,7 +5029,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class>
 <div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;Lab 7&quot;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;Lab 8&quot;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> &quot;YOUR NAME HERE&quot;</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> &quot;2023-10-18&quot;</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
@@ -5041,16 +5047,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co"># LOAD ANY RELEVANT PACKAGES HERE</span></span>
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="fu">## A. One-dimensional random walks</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>In this part, you will simulate a one-dimensional random walk. Suppose you are at the point $x$ at time $t$. At time $t+1$, you have a 50% chance of moving forwards to $x+1$ and a 50% chance of moving backwards to $x-1$. Assume that at time $t=0$, you are at $x_0=0$.</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Write a function <span class="in">`random_walk()`</span> that takes as input a single numeric $n$ and simulates $n$ steps of a one-dimensional random walk. The output should be a length vector of length $n+1$ starting with 0 where the $(i+1)$th entry represents the location of the random walker at time $t=i$. For example, <span class="in">`random_walk(5)`</span> may return the vector $(0, 1, 2, 1, 2)$.</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Use your function to generate a random walk of 100 steps and generate a line graph with $t=0,1,\ldots, 100$ on the x-axis and $x_0,\ldots, x_{100}$ on the y-axis.</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="fu">## A. Writing a simulation.</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>Suppose $X_i\sim \mathrm{N}(0, 1)$ for $1\leq i\leq n$, for some $n$. </span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>For $n=10, 20, 40, 80, 160, 320, 640, 1280$, carry out a simulation to estimate $E(\mathrm{max}(X_1,\ldots, X_n))$. For each value of $n$, simulate 1000 values of $\mathrm{max}(X_1,\ldots, X_n)$ and compute their mean. Store these means in a vector.</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Create a line graph with $n$ on the x-axis and your simulation-based estimates of $E(\mathrm{max}(X_1,\ldots, X_n))$ on the y-axis. Comment on your findings. Does there seem to be an upper limit of $E(\mathrm{max}(X_1,\ldots, X_n))$?</span>
 <span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="fu">## B. Writing a simulation.</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="fu">## B. One-dimensional random walks</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>In this part, you will simulate a one-dimensional random walk. Suppose you are at the point $x$ at time $t$. At time $t+1$, the probability of moving forwards to $x+1$ is $p$ and the chance of moving backwards to $x-1$ is $1-p$. Assume that at time $t=1$, you are at $x_1=0$.</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Write a function <span class="in">`random_walk()`</span> that takes as input a numeric $n_steps$ and a numeric $p$ and simulates $n_steps$ steps of the one-dimensional random walk with forward probability $p$. You may have other input arguments if desired. The output should be a length vector of length $n_steps$ starting with 0 where the $i$th entry represents the location of the random walker at time $t=i$. For example, <span class="in">`random_walk(5, .5)`</span> may return the vector $(0, 1, 2, 1, 2)$. </span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Use your function to generate a random walk of 500 steps with probability $.6$ and generate a line graph with $t=0,1,\ldots, 100$ on the x-axis and $x_0,\ldots, x_{100}$ on the y-axis.</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Use your function to generate two more random walks of 500 steps with probability $.6$ and create a line graph with all three of your random walks, using different colors for each walk.</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

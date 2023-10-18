@@ -29,6 +29,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -319,6 +384,9 @@
       margin-right: 0; 
     }
   </style>
+  
+  <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
+  <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <meta property="og:title" content="MATH167R - MATH167R: Programming for data analysis">
 <meta property="og:site-name" content="MATH167R">
 </head>
@@ -342,10 +410,9 @@ Peter Gao
 <h2>Overview of today</h2>
 <ul>
 <li>Programming for data science</li>
-<li>Functions for data analysis</li>
 <li>Functional R programming with <code>apply</code>, <code>lapply</code>, <code>mapply</code></li>
 <li>Working with APIs</li>
-<li>Web scraping</li>
+<li>Looping through many files</li>
 </ul>
 </section>
 <section id="programming-for-data-science" class="slide level2">
@@ -355,7 +422,1437 @@ Peter Gao
 </section>
 <section id="motivating-example" class="slide level2">
 <h2>Motivating example</h2>
-<p>Each week,</p>
+<p>Each week, the New York Times publishes a list of the bestselling books in the US. Suppose we want to know:</p>
+<ul>
+<li><p>How long has the current #1 book been #1?</p></li>
+<li><p>How many different books have been on the bestseller list this month?</p></li>
+</ul>
+<p>Alternatively, suppose that we wish to create a visualization/analysis that we can easily update each week when the data is released.</p>
+
+<img data-src="images/bestsellers.png" class="r-stretch quarto-figure-center"></section>
+<section id="motivating-example-1" class="slide level2">
+<h2>Motivating example</h2>
+<p>Ideally, we can write functions that will allow us to produce results automatically each week for new data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="do">## skeleton </span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>update_analysis <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="co"># load new data</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>  results <span class="ot">&lt;-</span> <span class="fu">load_data</span>() <span class="sc">|&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>    <span class="fu">clean_data</span>() <span class="sc">|&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>    <span class="fu">update_visualizations</span>() </span>
+<span id="cb1-7"><a href="#cb1-7"></a>  <span class="fu">return</span>(results)</span>
+<span id="cb1-8"><a href="#cb1-8"></a>}</span>
+<span id="cb1-9"><a href="#cb1-9"></a>load_data <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb1-10"><a href="#cb1-10"></a>  <span class="co"># BODY OF FUNCTION</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>}</span>
+<span id="cb1-12"><a href="#cb1-12"></a>clean_data <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb1-13"><a href="#cb1-13"></a>  <span class="co"># BODY OF FUNCTION</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a>}</span>
+<span id="cb1-15"><a href="#cb1-15"></a>update_visualizations <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb1-16"><a href="#cb1-16"></a>  <span class="co"># BODY OF FUNCTION</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="functional-programming" class="slide level2">
+<h2>Functional programming</h2>
+<p>Today we’ll discuss some tools in R for running these kinds of automated analyses. In particular, we’ll focus on using R for <strong>functional programming</strong>.</p>
+<p>Functional programming is a paradigm that focuses on writing and composing functions to perform tasks. Functional programming is an example of a <strong>declarative</strong> programming style which focuses on specifying <strong>what</strong> a program should accomplish, rather than <strong>how</strong>. On the other hand, <strong>imperative</strong> programming focuses on describing <strong>how</strong> a program operates.</p>
+</section>
+<section id="functional-programming-1" class="slide level2">
+<h2>Functional programming</h2>
+<p>The benefits of functional programming include:</p>
+<ul>
+<li>Tasks are broken up into modular functions that can be analyzed in isolation</li>
+<li>Tasks may be easier to optimise or parallelize</li>
+<li>Unexpected side effects are avoided</li>
+</ul>
+<p>Some downsides include:</p>
+<ul>
+<li>Functional programming may be less efficient than imperative programming</li>
+<li>Less transparency about how tasks are executed</li>
+</ul>
+</section>
+<section id="functional-programming-2" class="slide level2">
+<h2>Functional programming</h2>
+<p>Many functional languages require functions to be pure, meaning that:</p>
+<ul>
+<li>The output of a function depends only on the inputs, so if you call it with the same inputs, you get the same outputs.</li>
+<li>Functions have no side effects like changing the values of variables in the global environment.</li>
+</ul>
+<p>R doesn’t require functions to be pure, but writing pure functions can help make your code understandable, at least in terms of clarifying <strong>what</strong> each function does.</p>
+</section>
+<section id="imperative-vs.-declarative" class="slide level2">
+<h2>Imperative vs.&nbsp;declarative</h2>
+<h3 id="imperative-programming-for-loop">Imperative programming: <code>for</code> loop</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>out <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="cf">for</span> (i <span class="cf">in</span> x) {</span>
+<span id="cb2-4"><a href="#cb2-4"></a>  out <span class="ot">&lt;-</span> out <span class="sc">+</span> i</span>
+<span id="cb2-5"><a href="#cb2-5"></a>}</span>
+<span id="cb2-6"><a href="#cb2-6"></a>out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 55</code></pre>
+</div>
+</div>
+<h3 id="declarative-programming">Declarative programming</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">sum</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 55</code></pre>
+</div>
+</div>
+</section>
+<section id="example-a-complicated-for-loop" class="slide level2">
+<h2>Example: a complicated <code>for</code> loop</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Not the most transparent code</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="fu">data</span>(penguins)</span>
+<span id="cb6-4"><a href="#cb6-4"></a>penguins<span class="sc">$</span>centered_mass <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">unique</span>(penguins<span class="sc">$</span>species)) {</span>
+<span id="cb6-6"><a href="#cb6-6"></a>  current_data <span class="ot">&lt;-</span> penguins[penguins<span class="sc">$</span>species <span class="sc">==</span> i,]</span>
+<span id="cb6-7"><a href="#cb6-7"></a>  species_mean_mass <span class="ot">&lt;-</span> <span class="fu">mean</span>(current_data<span class="sc">$</span>body_mass_g, <span class="at">na.rm =</span> T)</span>
+<span id="cb6-8"><a href="#cb6-8"></a>  penguins<span class="sc">$</span>centered_mass[penguins<span class="sc">$</span>species <span class="sc">==</span> i] <span class="ot">&lt;-</span> </span>
+<span id="cb6-9"><a href="#cb6-9"></a>    current_data<span class="sc">$</span>body_mass_g <span class="sc">-</span> current_data<span class="sc">$</span>body_mass_g</span>
+<span id="cb6-10"><a href="#cb6-10"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="example-a-functional-programming-approach" class="slide level2">
+<h2>Example: a functional programming approach</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb7-2"><a href="#cb7-2"></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>  <span class="fu">mutate</span>(<span class="at">centered_mass =</span> body_mass_g <span class="sc">-</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> T)) <span class="sc">|&gt;</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>  <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="functionals" class="slide level2">
+<h2>Functionals</h2>
+<p>Functionals are functions that takes a function (and potentially other parameters) as input and returns a vector as output. For example, here is a simple functional. What do you think the following code does?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>randomize <span class="ot">&lt;-</span> <span class="cf">function</span>(f) <span class="fu">f</span>(<span class="fu">runif</span>(<span class="dv">1000</span>))</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">randomize</span>(mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4928786</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Functionals are often used to replace <code>for</code> loops.</p>
+<p>The main drawback of <code>for</code> loops is that they are not expressive, meaning that they do not clearly commmunicate a high level goal. Functionals can more clearly communicate their purpose.</p>
+</div>
+</section>
+<section id="lapply-apply-a-function-to-every-element-of-a-list" class="slide level2">
+<h2><code>lapply()</code>: Apply a function to every element of a list</h2>
+<p>The <code>lapply()</code> function takes two arguments, <code>X</code> (an atomic vector or list), and a function <code>FUN</code> that can be applied to element of <code>X</code>. <code>lapply()</code> returns a list.</p>
+<p>Remember, we can think of every data frame as a list of columns.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">lapply</span>(penguins, class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$species
+[1] "factor"
+
+$island
+[1] "factor"
+
+$bill_length_mm
+[1] "numeric"
+
+$bill_depth_mm
+[1] "numeric"
+
+$flipper_length_mm
+[1] "integer"
+
+$body_mass_g
+[1] "integer"
+
+$sex
+[1] "factor"
+
+$year
+[1] "integer"
+
+$centered_mass
+[1] "numeric"</code></pre>
+</div>
+</div>
+</section>
+<section id="lapply-apply-a-function-to-every-element-of-a-list-1" class="slide level2">
+<h2><code>lapply()</code>: Apply a function to every element of a list</h2>
+<p>Note that <code>lapply()</code> always returns a list. We can use the <code>unlist()</code> function to turn this into a vector (but be careful).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">unlist</span>(<span class="fu">lapply</span>(penguins, class))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          species            island    bill_length_mm     bill_depth_mm 
+         "factor"          "factor"         "numeric"         "numeric" 
+flipper_length_mm       body_mass_g               sex              year 
+        "integer"         "integer"          "factor"         "integer" 
+    centered_mass 
+        "numeric" </code></pre>
+</div>
+</div>
+</section>
+<section id="lapply-apply-a-function-to-every-element-of-a-list-2" class="slide level2">
+<h2><code>lapply()</code>: Apply a function to every element of a list</h2>
+<p><code>lapply()</code> is especially helpful when we have datasets of different sizes:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Create 20 random datasets</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>l <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">20</span>, <span class="fu">runif</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">1</span>)), <span class="at">simplify =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb14-3"><a href="#cb14-3"></a>l</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] 0.87306152 0.85223769 0.06712008 0.12193749 0.13510046 0.62740048 0.07419518
+[8] 0.72919883
+
+[[2]]
+[1] 0.5395983 0.8760807 0.6156735 0.6073299 0.3225718
+
+[[3]]
+[1] 0.8670103 0.2355548 0.6355358
+
+[[4]]
+[1] 0.8232178 0.2141814 0.6687725
+
+[[5]]
+[1] 0.0397221 0.3136149 0.8295299 0.2684607 0.3972689
+
+[[6]]
+[1] 0.89417213 0.45182901 0.12627546 0.97169646 0.43744779 0.06554336 0.07715606
+[8] 0.78290732
+
+[[7]]
+[1] 0.5964421 0.2143424 0.5177009 0.1914434 0.4941709
+
+[[8]]
+[1] 0.8866041
+
+[[9]]
+ [1] 0.7803077 0.5917532 0.9806806 0.1144853 0.4793890 0.9529362 0.8859475
+ [8] 0.4954286 0.2226848 0.9090873
+
+[[10]]
+[1] 0.1800986 0.1987025 0.4810538 0.9260921 0.3727641 0.5027083 0.9926577
+
+[[11]]
+ [1] 0.8900777 0.9133231 0.3841164 0.7853146 0.4203979 0.5167608 0.5466724
+ [8] 0.8374141 0.7048031 0.9167894
+
+[[12]]
+[1] 0.27359559 0.27359211 0.70154652 0.31286517 0.39502275 0.03708779
+
+[[13]]
+[1] 0.2239756 0.4730703 0.5679416
+
+[[14]]
+[1] 0.8766527 0.3868703
+
+[[15]]
+[1] 0.7909508 0.6770709 0.0923680 0.8484024 0.6888545
+
+[[16]]
+[1] 0.9721165 0.5904753 0.4610299 0.3040906 0.1803451 0.5613271 0.5149192
+[8] 0.3107605
+
+[[17]]
+[1] 0.7318437 0.7215229
+
+[[18]]
+[1] 0.2940522 0.8736661 0.3404826 0.1615037 0.5842473 0.7677702 0.6001430
+[8] 0.9336931 0.5478258
+
+[[19]]
+[1] 0.2540997 0.2759096 0.1413580 0.9088075 0.2446925 0.3056284 0.8328029
+[8] 0.3412259 0.1398447
+
+[[20]]
+[1] 0.65156965 0.95716825 0.38740135 0.06622155</code></pre>
+</div>
+</div>
+</section>
+<section id="lapply-apply-a-function-to-every-element-of-a-list-3" class="slide level2">
+<h2><code>lapply()</code>: Apply a function to every element of a list</h2>
+<p>We can use <code>lapply()</code> to summarize all of our datasets:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Print the length of each dataset</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="fu">unlist</span>(<span class="fu">lapply</span>(l, length))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  8  5  3  3  5  8  5  1 10  7 10  6  3  2  5  8  2  9  9  4</code></pre>
+</div>
+</div>
+</section>
+<section id="vapply" class="slide level2">
+<h2><code>vapply()</code></h2>
+<p>There are many other variants of <code>lapply()</code>, including <code>mapply()</code>, <code>sapply()</code>, and <code>vapply()</code>. The only one we will cover today is <code>vapply()</code>, which returns a vector or matrix instead of a list. When we use <code>vapply()</code>, we specify an additional parameter, <code>FUN.VALUE</code> which specifies a templaet for the return value from <code>FUN</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Print the length of each dataset</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="fu">vapply</span>(l, length, <span class="at">FUN.VALUE =</span> <span class="fu">numeric</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  8  5  3  3  5  8  5  1 10  7 10  6  3  2  5  8  2  9  9  4</code></pre>
+</div>
+</div>
+</section>
+<section id="back-to-our-motivating-example" class="slide level2">
+<h2>Back to our motivating example</h2>
+
+<img data-src="images/bestsellers.png" class="r-stretch quarto-figure-center"><p>First, let’s get the data for each week over the last three months. To do so, we need to access the New York Times API (application programming interface)</p>
+<p>APIs allow programs to interact–one of the most common usages is for automatically downloading data using code.</p>
+</section>
+<section id="apis-for-getting-data" class="slide level2">
+<h2>APIs for getting data</h2>
+<p>To use the New York Times API, we need to:</p>
+<ul>
+<li>Make an account and obtain an API key (an ID that will tell the New York Times who is downloading their data)</li>
+<li>Review the documentation to identify the relevant <strong>endpoints</strong>.</li>
+<li>Review any rules about usage/limits.</li>
+</ul>
+</section>
+<section id="api-endpoints" class="slide level2">
+<h2>API endpoints</h2>
+<p>APIs provide endpoints, which are addresses from which we can obtain the relevant data.</p>
+
+<img data-src="images/bestsellers-api-info.png" class="r-stretch"></section>
+<section id="api-rate-limits" class="slide level2">
+<h2>API rate limits</h2>
+<p>In order to prevent users from abusing these services, many APIs have limits on how quickly a user can download data.</p>
+
+<img data-src="images/bestsellers-api.png" class="r-stretch"></section>
+<section id="downloading-the-current-list" class="slide level2">
+<h2>Downloading the current list</h2>
+<div class="cell" data-hash="17_data-analysis-functions_cache/revealjs/unnamed-chunk-13_c0e23a3cbe218891afba04a65cdf2c78">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="fu">library</span>(jsonlite)</span>
+<span id="cb20-3"><a href="#cb20-3"></a>api_key <span class="ot">&lt;-</span> <span class="fu">readLines</span>(<span class="st">"~/Dropbox/teaching/math167R-f23/internal/nyt-key.txt"</span>)</span>
+<span id="cb20-4"><a href="#cb20-4"></a>current_list <span class="ot">&lt;-</span> jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>(</span>
+<span id="cb20-5"><a href="#cb20-5"></a>  <span class="fu">paste0</span>(</span>
+<span id="cb20-6"><a href="#cb20-6"></a>    <span class="st">"https://api.nytimes.com/svc/books/v3/lists/2023-10-22/hardcover-fiction.json?api-key="</span>,</span>
+<span id="cb20-7"><a href="#cb20-7"></a>    api_key</span>
+<span id="cb20-8"><a href="#cb20-8"></a>  )</span>
+<span id="cb20-9"><a href="#cb20-9"></a>)<span class="sc">$</span>results<span class="sc">$</span>books</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="17_data-analysis-functions_cache/revealjs/unnamed-chunk-14_a7ff9fa8bad1bed3b5da8ed4373bfe92">
+<div class="cell-output-display">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:360px; ">
+<table class="table table-striped" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">title</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">author</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">publisher</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">rank</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">rank_last_week</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">weeks_on_list</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">FOURTH WING</td>
+<td style="text-align: left;">Rebecca Yarros</td>
+<td style="text-align: left;">Red Tower</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">22</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">JUDGMENT PREY</td>
+<td style="text-align: left;">John Sandford</td>
+<td style="text-align: left;">Putnam</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HOLLY</td>
+<td style="text-align: left;">Stephen King</td>
+<td style="text-align: left;">Scribner</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">LESSONS IN CHEMISTRY</td>
+<td style="text-align: left;">Bonnie Garmus</td>
+<td style="text-align: left;">Doubleday</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">74</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">THRONE OF THE FALLEN</td>
+<td style="text-align: left;">Kerri Maniscalco</td>
+<td style="text-align: left;">Little, Brown</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SECOND ACT</td>
+<td style="text-align: left;">Danielle Steel</td>
+<td style="text-align: left;">Delacorte</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">12 MONTHS TO LIVE</td>
+<td style="text-align: left;">James Patterson and Mike Lupica</td>
+<td style="text-align: left;">Little, Brown</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">STARLING HOUSE</td>
+<td style="text-align: left;">Alix E. Harrow</td>
+<td style="text-align: left;">Tor</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TOM LAKE</td>
+<td style="text-align: left;">Ann Patchett</td>
+<td style="text-align: left;">Harper</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">THE ARMOR OF LIGHT</td>
+<td style="text-align: left;">Ken Follett</td>
+<td style="text-align: left;">Viking</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DEMON COPPERHEAD</td>
+<td style="text-align: left;">Barbara Kingsolver</td>
+<td style="text-align: left;">Harper</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">49</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">THE HURRICANE WARS</td>
+<td style="text-align: left;">Thea Guanzon</td>
+<td style="text-align: left;">Harper Voyager</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">YUMI AND THE NIGHTMARE PAINTER</td>
+<td style="text-align: left;">Brandon Sanderson</td>
+<td style="text-align: left;">Tor</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">THE COVENANT OF WATER</td>
+<td style="text-align: left;">Abraham Verghese</td>
+<td style="text-align: left;">Grove</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">23</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">OUT THERE SCREAMING</td>
+<td style="text-align: left;">edited Jordan Peele and John Joseph Adams</td>
+<td style="text-align: left;">Random House</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+</section>
+<section id="downloading-the-past-three-months-data" class="slide level2">
+<h2>Downloading the past three months’ data</h2>
+<div class="cell" data-hash="17_data-analysis-functions_cache/revealjs/download.data_7ebb56e113b14febbbd1b65d5cf7e70c">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>dates <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">as.Date</span>(<span class="st">"2023-10-22"</span>), <span class="fu">as.Date</span>(<span class="st">"2023-08-01"</span>), <span class="at">by =</span> <span class="sc">-</span><span class="dv">7</span>)</span>
+<span id="cb21-2"><a href="#cb21-2"></a>bestseller_lists <span class="ot">&lt;-</span> <span class="fu">lapply</span>(</span>
+<span id="cb21-3"><a href="#cb21-3"></a>  dates,</span>
+<span id="cb21-4"><a href="#cb21-4"></a>  <span class="cf">function</span>(x) {</span>
+<span id="cb21-5"><a href="#cb21-5"></a>    <span class="co"># slow down execution by waiting 12 seconds</span></span>
+<span id="cb21-6"><a href="#cb21-6"></a>    <span class="fu">Sys.sleep</span>(<span class="dv">12</span>)</span>
+<span id="cb21-7"><a href="#cb21-7"></a>    jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>(</span>
+<span id="cb21-8"><a href="#cb21-8"></a>      <span class="fu">paste0</span>(</span>
+<span id="cb21-9"><a href="#cb21-9"></a>        <span class="st">"https://api.nytimes.com/svc/books/v3/lists/"</span>,</span>
+<span id="cb21-10"><a href="#cb21-10"></a>        x,</span>
+<span id="cb21-11"><a href="#cb21-11"></a>        <span class="st">"/hardcover-fiction.json?api-key="</span>,</span>
+<span id="cb21-12"><a href="#cb21-12"></a>        api_key</span>
+<span id="cb21-13"><a href="#cb21-13"></a>      )</span>
+<span id="cb21-14"><a href="#cb21-14"></a>    )<span class="sc">$</span>results<span class="sc">$</span>books</span>
+<span id="cb21-15"><a href="#cb21-15"></a>  }</span>
+<span id="cb21-16"><a href="#cb21-16"></a>)</span>
+<span id="cb21-17"><a href="#cb21-17"></a><span class="fu">names</span>(bestseller_lists) <span class="ot">&lt;-</span> dates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="looping-through-many-data-files" class="slide level2">
+<h2>Looping through many data files</h2>
+<p>What if we want to get the #1 book for the last 12 weeks?</p>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">vapply</span>(bestseller_lists, <span class="cf">function</span>(x) x<span class="sc">$</span>title[<span class="dv">1</span>], <span class="fu">character</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>   2023-10-22    2023-10-15    2023-10-08    2023-10-01    2023-09-24 
+"FOURTH WING" "FOURTH WING" "FOURTH WING"       "HOLLY"       "HOLLY" 
+   2023-09-17    2023-09-10    2023-09-03    2023-08-27    2023-08-20 
+"FOURTH WING" "FOURTH WING"    "TOM LAKE" "FOURTH WING" "FOURTH WING" 
+   2023-08-13    2023-08-06 
+"FOURTH WING" "FOURTH WING" </code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="looping-through-many-data-files-1" class="slide level2">
+<h2>Looping through many data files</h2>
+<p>Suppose we wish to see the performance of the current #1 book over the last 12 weeks:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>top_book_data <span class="ot">&lt;-</span> <span class="fu">lapply</span>(bestseller_lists, <span class="cf">function</span>(x) x[x<span class="sc">$</span>title <span class="sc">==</span> <span class="st">"FOURTH WING"</span>, ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<p>We can use the <code>bind_rows()</code> to create a data frame combining all the entries in this list. The <code>.id</code> argument creates a column from the list’s names. We can convert these names into a <code>Date</code> variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>top_book_data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(top_book_data, <span class="at">.id =</span> <span class="st">"date"</span>)</span>
+<span id="cb25-2"><a href="#cb25-2"></a>top_book_data<span class="sc">$</span>date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(top_book_data<span class="sc">$</span>date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="looping-through-many-data-files-2" class="slide level2">
+<h2>Looping through many data files</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="fu">ggplot</span>(top_book_data, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> rank)) <span class="sc">+</span> </span>
+<span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb26-4"><a href="#cb26-4"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">trans =</span> <span class="st">"reverse"</span>) <span class="sc">+</span></span>
+<span id="cb26-5"><a href="#cb26-5"></a>  <span class="fu">xlab</span>(<span class="st">"Date"</span>) <span class="sc">+</span></span>
+<span id="cb26-6"><a href="#cb26-6"></a>  <span class="fu">ylab</span>(<span class="st">"Rank"</span>) <span class="sc">+</span></span>
+<span id="cb26-7"><a href="#cb26-7"></a>  <span class="fu">ggtitle</span>(<span class="fu">paste0</span>(<span class="st">"NYT Best Seller Rank of "</span>, top_book_data<span class="sc">$</span>title[<span class="dv">1</span>])) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="17_data-analysis-functions_files/figure-revealjs/unnamed-chunk-19-1.png" width="960" class="r-stretch"></section>
+<section id="looping-through-many-data-files-3" class="slide level2">
+<h2>Looping through many data files</h2>
+<p>We can also pull the top 5 books from each list:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>$`2023-10-22`
+  rank rank_last_week weeks_on_list asterisk dagger primary_isbn10
+1    1              1            22        0      0     1649374046
+2    2              0             1        0      0     0593542819
+3    3              4             5        0      0     1668016133
+4    4              8            74        0      0     038554734X
+5    5              0             1        0      0           None
+  primary_isbn13     publisher
+1  9781649374042     Red Tower
+2  9780593542811        Putnam
+3  9781668016138      Scribner
+4  9780385547345     Doubleday
+5  9780316568920 Little, Brown
+                                                                                                                                            description
+1                      Violet Sorrengail is urged by the commanding general, who also is her mother, to become a candidate for the elite dragon riders.
+2                             The 33rd book in the Prey series. Davenport and Flowers investigate the murder of a federal judge and his two young sons.
+3 The private detective Holly Gibney investigates whether a married pair of octogenarian academics had anything to do with Bonnie Dahl’s disappearance.
+4                                                  A scientist and single mother living in California in the 1960s becomes a star on a TV cooking show.
+5                                Camilla Antonius and the Prince of Envy try to avoid falling in love while journeying together through the Underworld.
+  price                title           author         contributor
+1  0.00          FOURTH WING   Rebecca Yarros   by Rebecca Yarros
+2  0.00        JUDGMENT PREY    John Sandford    by John Sandford
+3  0.00                HOLLY     Stephen King     by Stephen King
+4  0.00 LESSONS IN CHEMISTRY    Bonnie Garmus    by Bonnie Garmus
+5  0.00 THRONE OF THE FALLEN Kerri Maniscalco by Kerri Maniscalco
+  contributor_note
+1                 
+2                 
+3                 
+4                 
+5                 
+                                                            book_image
+1 https://storage.googleapis.com/du-prd/books/images/9781649374042.jpg
+2 https://storage.googleapis.com/du-prd/books/images/9780593542811.jpg
+3 https://storage.googleapis.com/du-prd/books/images/9781668016138.jpg
+4 https://storage.googleapis.com/du-prd/books/images/9780385547345.jpg
+5 https://storage.googleapis.com/du-prd/books/images/9780316568920.jpg
+  book_image_width book_image_height
+1              309               500
+2              331               500
+3              327               500
+4              328               500
+5              323               500
+                                    amazon_product_url age_group
+1 https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20          
+2 https://www.amazon.com/dp/0593542819?tag=NYTBSREV-20          
+3 https://www.amazon.com/dp/1668016133?tag=NYTBSREV-20          
+4 https://www.amazon.com/dp/038554734X?tag=NYTBSREV-20          
+5 https://www.amazon.com/dp/0316557293?tag=NYTBSREV-20          
+  book_review_link first_chapter_link sunday_review_link article_chapter_link
+1                                                                            
+2                                                                            
+3                                                                            
+4                                                                            
+5                                                                            
+                                                                                                       isbns
+1 1649374046, 1649374089, 1705085059, 1705085032, 9781649374042, 9781649374080, 9781705085059, 9781705085035
+2                                                       0593542819, 0593542827, 9780593542811, 9780593542828
+3                            1668016133, 1668014955, 1797161407, 9781668016138, 9781668014950, 9781797161402
+4 038554734X, 0593507533, 0385547374, 0593862406, 9780385547345, 9780593507537, 9780385547376, 9780593862407
+5                                                       0316557293, 031655751X, 9780316557290, 9780316557511
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         buy_links
+1                Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20, https://goto.applebooks.apple/9781649374042?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781649374042, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FFOURTH%2BWING%2FRebecca%2BYarros%2F9781649374042, https://bookshop.org/a/3546/9781649374042, https://www.indiebound.org/book/9781649374042?aff=NYT
+2               Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/0593542819?tag=NYTBSREV-20, https://goto.applebooks.apple/9780593542811?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780593542811, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FJUDGMENT%2BPREY%2FJohn%2BSandford%2F9780593542811, https://bookshop.org/a/3546/9780593542811, https://www.indiebound.org/book/9780593542811?aff=NYT
+3                          Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1668016133?tag=NYTBSREV-20, https://goto.applebooks.apple/9781668016138?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781668016138, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FHOLLY%2FStephen%2BKing%2F9781668016138, https://bookshop.org/a/3546/9781668016138, https://www.indiebound.org/book/9781668016138?aff=NYT
+4      Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/038554734X?tag=NYTBSREV-20, https://goto.applebooks.apple/9780385547345?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780385547345, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FLESSONS%2BIN%2BCHEMISTRY%2FBonnie%2BGarmus%2F9780385547345, https://bookshop.org/a/3546/9780385547345, https://www.indiebound.org/book/9780385547345?aff=NYT
+5 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/0316557293?tag=NYTBSREV-20, https://goto.applebooks.apple/9780316568920?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780316568920, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FTHRONE%2BOF%2BTHE%2BFALLEN%2FKerri%2BManiscalco%2F9780316568920, https://bookshop.org/a/3546/9780316568920, https://www.indiebound.org/book/9780316568920?aff=NYT
+                                         book_uri
+1 nyt://book/106c2cf0-7d20-51b1-bad4-91c3ebcd131a
+2 nyt://book/0dfbdfc8-86ba-5616-a3fb-697390a00f32
+3 nyt://book/24a09504-4f13-5e38-a4a0-f6b8978e5ca7
+4 nyt://book/717e0ead-9782-567d-af27-d9a6cfb1856f
+5 nyt://book/f5959c5e-890e-52a4-894f-0f36332625c3
+
+$`2023-10-15`
+  rank rank_last_week weeks_on_list asterisk dagger primary_isbn10
+1    1              1            21        0      0     1649374046
+2    2              0             1        0      0     0316572101
+3    3              0             1        0      0     0525954996
+4    4              2             4        0      0     1668016133
+5    5              0             1        0      0     0316405698
+  primary_isbn13     publisher
+1  9781649374042     Red Tower
+2  9780316572101    Mulholland
+3  9780525954996        Viking
+4  9781668016138      Scribner
+5  9780316405690 Little, Brown
+                                                                                                                                            description
+1                      Violet Sorrengail is urged by the commanding general, who also is her mother, to become a candidate for the elite dragon riders.
+2    The seventh book in the Cormoran Strike series. Strike's business partner, Robin Ellacott, goes inside a cult to rescue someone who has joined it.
+3                The fifth book in the Kingsbridge series. Change and turmoil affect various aspects of society in the latter part of the 18th century.
+4 The private detective Holly Gibney investigates whether a married pair of octogenarian academics had anything to do with Bonnie Dahl’s disappearance.
+5                                                   A criminal defense attorney who received a terminal diagnosis might be in danger of being murdered.
+  price              title                          author
+1  0.00        FOURTH WING                  Rebecca Yarros
+2  0.00  THE RUNNING GRAVE                Robert Galbraith
+3  0.00 THE ARMOR OF LIGHT                     Ken Follett
+4  0.00              HOLLY                    Stephen King
+5  0.00  12 MONTHS TO LIVE James Patterson and Mike Lupica
+                         contributor contributor_note
+1                  by Rebecca Yarros                 
+2                by Robert Galbraith                 
+3                     by Ken Follett                 
+4                    by Stephen King                 
+5 by James Patterson and Mike Lupica                 
+                                                            book_image
+1 https://storage.googleapis.com/du-prd/books/images/9781649374042.jpg
+2 https://storage.googleapis.com/du-prd/books/images/9780316572101.jpg
+3 https://storage.googleapis.com/du-prd/books/images/9780525954996.jpg
+4 https://storage.googleapis.com/du-prd/books/images/9781668016138.jpg
+5 https://storage.googleapis.com/du-prd/books/images/9780316405690.jpg
+  book_image_width book_image_height
+1              309               500
+2              321               500
+3              330               500
+4              327               500
+5              322               500
+                                    amazon_product_url age_group
+1 https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20          
+2 https://www.amazon.com/dp/0316572101?tag=NYTBSREV-20          
+3 https://www.amazon.com/dp/0525954996?tag=NYTBSREV-20          
+4 https://www.amazon.com/dp/1668016133?tag=NYTBSREV-20          
+5 https://www.amazon.com/dp/0316405698?tag=NYTBSREV-20          
+  book_review_link first_chapter_link sunday_review_link article_chapter_link
+1                                                                            
+2                                                                            
+3                                                                            
+4                                                                            
+5                                                                            
+                                                                                                       isbns
+1 1649374046, 1649374089, 1705085059, 1705085032, 9781649374042, 9781649374080, 9781705085059, 9781705085035
+2 0316572101, 0316572659, 0316572136, 1668635194, 9780316572101, 9780316572651, 9780316572132, 9781668635193
+3                                                       0525954996, 059365532X, 9780525954996, 9780593655320
+4                            1668016133, 1668014955, 1797161407, 9781668016138, 9781668014950, 9781797161402
+5                                                       0316405698, 0316405795, 9780316405690, 9780316405799
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           buy_links
+1                                  Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20, https://goto.applebooks.apple/9781649374042?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781649374042, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FFOURTH%2BWING%2FRebecca%2BYarros%2F9781649374042, https://bookshop.org/a/3546/9781649374042, https://www.indiebound.org/book/9781649374042?aff=NYT
+2                        Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/0316572101?tag=NYTBSREV-20, https://goto.applebooks.apple/9780316572101?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780316572101, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FTHE%2BRUNNING%2BGRAVE%2FRobert%2BGalbraith%2F9780316572101, https://bookshop.org/a/3546/9780316572101, https://www.indiebound.org/book/9780316572101?aff=NYT
+3                          Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/0525954996?tag=NYTBSREV-20, https://goto.applebooks.apple/9780525954996?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780525954996, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FTHE%2BARMOR%2BOF%2BLIGHT%2FKen%2BFollett%2F9780525954996, https://bookshop.org/a/3546/9780525954996, https://www.indiebound.org/book/9780525954996?aff=NYT
+4                                            Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1668016133?tag=NYTBSREV-20, https://goto.applebooks.apple/9781668016138?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781668016138, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FHOLLY%2FStephen%2BKing%2F9781668016138, https://bookshop.org/a/3546/9781668016138, https://www.indiebound.org/book/9781668016138?aff=NYT
+5 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/0316405698?tag=NYTBSREV-20, https://goto.applebooks.apple/9780316405690?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780316405690, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2F12%2BMONTHS%2BTO%2BLIVE%2FJames%2BPatterson%2Band%2BMike%2BLupica%2F9780316405690, https://bookshop.org/a/3546/9780316405690, https://www.indiebound.org/book/9780316405690?aff=NYT
+                                         book_uri
+1 nyt://book/106c2cf0-7d20-51b1-bad4-91c3ebcd131a
+2 nyt://book/137879b3-bba7-5131-b67f-8c299b35a8e5
+3 nyt://book/155373ee-247b-58fd-b6bc-ca6ed976ef23
+4 nyt://book/24a09504-4f13-5e38-a4a0-f6b8978e5ca7
+5 nyt://book/83c70590-6b64-5e72-8c6d-29f4ef483edb
+
+$`2023-10-08`
+  rank rank_last_week weeks_on_list asterisk dagger primary_isbn10
+1    1              2            20        0      0     1649374046
+2    2              1             3        0      0     1668016133
+3    3              0             1        0      0     0593299426
+4    4              4             8        0      0     006332752X
+5    5              5            72        0      0     038554734X
+  primary_isbn13     publisher
+1  9781649374042     Red Tower
+2  9781668016138      Scribner
+3  9780593299425 Pamela Dorman
+4  9780063327528        Harper
+5  9780385547345     Doubleday
+                                                                                                                                                   description
+1                             Violet Sorrengail is urged by the commanding general, who also is her mother, to become a candidate for the elite dragon riders.
+2        The private detective Holly Gibney investigates whether a married pair of octogenarian academics had anything to do with Bonnie Dahl’s disappearance.
+3 The fourth book in the Thursday Murder Club series. When an old friend is killed, the gang comes up against drug dealers, art forgers and online fraudsters.
+4                      Three daughters, who return to their family orchard in the spring of 2020, learn about their mother’s relationship with a famous actor.
+5                                                         A scientist and single mother living in California in the 1960s becomes a star on a TV cooking show.
+  price                 title         author       contributor contributor_note
+1  0.00           FOURTH WING Rebecca Yarros by Rebecca Yarros                 
+2  0.00                 HOLLY   Stephen King   by Stephen King                 
+3  0.00 THE LAST DEVIL TO DIE  Richard Osman  by Richard Osman                 
+4  0.00              TOM LAKE   Ann Patchett   by Ann Patchett                 
+5  0.00  LESSONS IN CHEMISTRY  Bonnie Garmus  by Bonnie Garmus                 
+                                                            book_image
+1 https://storage.googleapis.com/du-prd/books/images/9781649374042.jpg
+2 https://storage.googleapis.com/du-prd/books/images/9781668016138.jpg
+3 https://storage.googleapis.com/du-prd/books/images/9780593299425.jpg
+4 https://storage.googleapis.com/du-prd/books/images/9780063327528.jpg
+5 https://storage.googleapis.com/du-prd/books/images/9780385547345.jpg
+  book_image_width book_image_height
+1              309               500
+2              327               500
+3              331               500
+4              331               500
+5              328               500
+                                    amazon_product_url age_group
+1 https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20          
+2 https://www.amazon.com/dp/1668016133?tag=NYTBSREV-20          
+3 https://www.amazon.com/dp/0593299426?tag=NYTBSREV-20          
+4 https://www.amazon.com/dp/006332752X?tag=NYTBSREV-20          
+5 https://www.amazon.com/dp/038554734X?tag=NYTBSREV-20          
+  book_review_link first_chapter_link sunday_review_link article_chapter_link
+1                                                                            
+2                                                                            
+3                                                                            
+4                                                                            
+5                                                                            
+                                                                                                       isbns
+1 1649374046, 1649374089, 1705085059, 1705085032, 9781649374042, 9781649374080, 9781705085059, 9781705085035
+2                            1668016133, 1668014955, 1797161407, 9781668016138, 9781668014950, 9781797161402
+3                            0593299426, 0593299434, 0593789571, 9780593299425, 9780593299432, 9780593789575
+4                                                       006332752X, 0063327546, 9780063327528, 9780063327542
+5 038554734X, 0593507533, 0385547374, 0593862406, 9780385547345, 9780593507537, 9780385547376, 9780593862407
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         buy_links
+1                Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20, https://goto.applebooks.apple/9781649374042?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781649374042, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FFOURTH%2BWING%2FRebecca%2BYarros%2F9781649374042, https://bookshop.org/a/3546/9781649374042, https://www.indiebound.org/book/9781649374042?aff=NYT
+2                          Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1668016133?tag=NYTBSREV-20, https://goto.applebooks.apple/9781668016138?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781668016138, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FHOLLY%2FStephen%2BKing%2F9781668016138, https://bookshop.org/a/3546/9781668016138, https://www.indiebound.org/book/9781668016138?aff=NYT
+3 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/0593299426?tag=NYTBSREV-20, https://goto.applebooks.apple/9780593299425?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780593299425, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FTHE%2BLAST%2BDEVIL%2BTO%2BDIE%2FRichard%2BOsman%2F9780593299425, https://bookshop.org/a/3546/9780593299425, https://www.indiebound.org/book/9780593299425?aff=NYT
+4                     Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/006332752X?tag=NYTBSREV-20, https://goto.applebooks.apple/9780063327528?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780063327528, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FTOM%2BLAKE%2FAnn%2BPatchett%2F9780063327528, https://bookshop.org/a/3546/9780063327528, https://www.indiebound.org/book/9780063327528?aff=NYT
+5      Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/038554734X?tag=NYTBSREV-20, https://goto.applebooks.apple/9780385547345?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780385547345, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FLESSONS%2BIN%2BCHEMISTRY%2FBonnie%2BGarmus%2F9780385547345, https://bookshop.org/a/3546/9780385547345, https://www.indiebound.org/book/9780385547345?aff=NYT
+                                         book_uri
+1 nyt://book/106c2cf0-7d20-51b1-bad4-91c3ebcd131a
+2 nyt://book/24a09504-4f13-5e38-a4a0-f6b8978e5ca7
+3 nyt://book/26d0eb1a-d664-57d9-b97e-bd60f9a52546
+4 nyt://book/2430a2de-ff8f-5a25-88f8-50bd8137fa92
+5 nyt://book/717e0ead-9782-567d-af27-d9a6cfb1856f
+
+$`2023-10-01`
+  rank rank_last_week weeks_on_list asterisk dagger primary_isbn10
+1    1              1             2        0      0     1668016133
+2    2              2            19        0      0     1649374046
+3    3              0             1        0      0     1982164999
+4    4              4             7        0      0     006332752X
+5    5              6            71        0      0     038554734X
+  primary_isbn13           publisher
+1  9781668016138            Scribner
+2  9781649374042           Red Tower
+3  9781982164997 Atria/Emily Bestler
+4  9780063327528              Harper
+5  9780385547345           Doubleday
+                                                                                                                                            description
+1 The private detective Holly Gibney investigates whether a married pair of octogenarian academics had anything to do with Bonnie Dahl’s disappearance.
+2                      Violet Sorrengail is urged by the commanding general, who also is her mother, to become a candidate for the elite dragon riders.
+3                                      The 22nd book in the Mitch Rapp series. Rapp and his team try to foil a plot by Russia without being discovered.
+4               Three daughters, who return to their family orchard in the spring of 2020, learn about their mother’s relationship with a famous actor.
+5                                                  A scientist and single mother living in California in the 1960s becomes a star on a TV cooking show.
+  price                 title         author       contributor contributor_note
+1  0.00                 HOLLY   Stephen King   by Stephen King                 
+2  0.00           FOURTH WING Rebecca Yarros by Rebecca Yarros                 
+3  0.00 VINCE FLYNN: CODE RED     Kyle Mills     by Kyle Mills                 
+4  0.00              TOM LAKE   Ann Patchett   by Ann Patchett                 
+5  0.00  LESSONS IN CHEMISTRY  Bonnie Garmus  by Bonnie Garmus                 
+                                                            book_image
+1 https://storage.googleapis.com/du-prd/books/images/9781668016138.jpg
+2 https://storage.googleapis.com/du-prd/books/images/9781649374042.jpg
+3 https://storage.googleapis.com/du-prd/books/images/9781982164997.jpg
+4 https://storage.googleapis.com/du-prd/books/images/9780063327528.jpg
+5 https://storage.googleapis.com/du-prd/books/images/9780385547345.jpg
+  book_image_width book_image_height
+1              327               500
+2              309               500
+3              329               500
+4              331               500
+5              328               500
+                                    amazon_product_url age_group
+1 https://www.amazon.com/dp/1668016133?tag=NYTBSREV-20          
+2 https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20          
+3 https://www.amazon.com/dp/1982164999?tag=NYTBSREV-20          
+4 https://www.amazon.com/dp/006332752X?tag=NYTBSREV-20          
+5 https://www.amazon.com/dp/038554734X?tag=NYTBSREV-20          
+  book_review_link first_chapter_link sunday_review_link article_chapter_link
+1                                                                            
+2                                                                            
+3                                                                            
+4                                                                            
+5                                                                            
+                                                                                                       isbns
+1                            1668016133, 1668014955, 1797161407, 9781668016138, 9781668014950, 9781797161402
+2 1649374046, 1649374089, 1705085059, 1705085032, 9781649374042, 9781649374080, 9781705085059, 9781705085035
+3                            1982164999, 1982165022, 1797161423, 9781982164997, 9781982165024, 9781797161426
+4                                                       006332752X, 0063327546, 9780063327528, 9780063327542
+5 038554734X, 0593507533, 0385547374, 0593862406, 9780385547345, 9780593507537, 9780385547376, 9780593862407
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        buy_links
+1                         Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1668016133?tag=NYTBSREV-20, https://goto.applebooks.apple/9781668016138?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781668016138, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FHOLLY%2FStephen%2BKing%2F9781668016138, https://bookshop.org/a/3546/9781668016138, https://www.indiebound.org/book/9781668016138?aff=NYT
+2               Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20, https://goto.applebooks.apple/9781649374042?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781649374042, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FFOURTH%2BWING%2FRebecca%2BYarros%2F9781649374042, https://bookshop.org/a/3546/9781649374042, https://www.indiebound.org/book/9781649374042?aff=NYT
+3 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1982164999?tag=NYTBSREV-20, https://goto.applebooks.apple/9781982164997?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781982164997, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FVINCE%2BFLYNN%253A%2BCODE%2BRED%2FKyle%2BMills%2F9781982164997, https://bookshop.org/a/3546/9781982164997, https://www.indiebound.org/book/9781982164997?aff=NYT
+4                    Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/006332752X?tag=NYTBSREV-20, https://goto.applebooks.apple/9780063327528?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780063327528, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FTOM%2BLAKE%2FAnn%2BPatchett%2F9780063327528, https://bookshop.org/a/3546/9780063327528, https://www.indiebound.org/book/9780063327528?aff=NYT
+5     Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/038554734X?tag=NYTBSREV-20, https://goto.applebooks.apple/9780385547345?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780385547345, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FLESSONS%2BIN%2BCHEMISTRY%2FBonnie%2BGarmus%2F9780385547345, https://bookshop.org/a/3546/9780385547345, https://www.indiebound.org/book/9780385547345?aff=NYT
+                                         book_uri
+1 nyt://book/24a09504-4f13-5e38-a4a0-f6b8978e5ca7
+2 nyt://book/106c2cf0-7d20-51b1-bad4-91c3ebcd131a
+3 nyt://book/89c2b16d-16dc-5c79-901e-8c2b02e9ea53
+4 nyt://book/2430a2de-ff8f-5a25-88f8-50bd8137fa92
+5 nyt://book/717e0ead-9782-567d-af27-d9a6cfb1856f
+
+$`2023-09-24`
+  rank rank_last_week weeks_on_list asterisk dagger primary_isbn10
+1    1              0             1        0      0     1668016133
+2    2              1            18        0      0     1649374046
+3    3              0             1        0      0     1250284090
+4    4              2             6        0      0     006332752X
+5    5              0             1        0      0     198217921X
+  primary_isbn13    publisher
+1  9781668016138     Scribner
+2  9781649374042    Red Tower
+3  9781250284099 St. Martin's
+4  9780063327528       Harper
+5  9781982179212        Atria
+                                                                                                                                            description
+1 The private detective Holly Gibney investigates whether a married pair of octogenarian academics had anything to do with Bonnie Dahl’s disappearance.
+2                      Violet Sorrengail is urged by the commanding general, who also is her mother, to become a candidate for the elite dragon riders.
+3                                                 The 57th book of the In Death series. Eve Dallas looks into the death of an internal affairs captain.
+4               Three daughters, who return to their family orchard in the spring of 2020, learn about their mother’s relationship with a famous actor.
+5                    Suspicions and accusations complicate a sheriff’s investigation of a wealthy landowner’s murder in a small Minnesota town in 1958.
+  price                 title               author             contributor
+1  0.00                 HOLLY         Stephen King         by Stephen King
+2  0.00           FOURTH WING       Rebecca Yarros       by Rebecca Yarros
+3  0.00      PAYBACK IN DEATH            J.D. Robb            by J.D. Robb
+4  0.00              TOM LAKE         Ann Patchett         by Ann Patchett
+5  0.00 THE RIVER WE REMEMBER William Kent Krueger by William Kent Krueger
+  contributor_note
+1                 
+2                 
+3                 
+4                 
+5                 
+                                                            book_image
+1 https://storage.googleapis.com/du-prd/books/images/9781668016138.jpg
+2 https://storage.googleapis.com/du-prd/books/images/9781649374042.jpg
+3 https://storage.googleapis.com/du-prd/books/images/9781250284099.jpg
+4 https://storage.googleapis.com/du-prd/books/images/9780063327528.jpg
+5 https://storage.googleapis.com/du-prd/books/images/9781982179212.jpg
+  book_image_width book_image_height
+1              327               500
+2              309               500
+3              329               500
+4              331               500
+5              331               500
+                                    amazon_product_url age_group
+1 https://www.amazon.com/dp/1668016133?tag=NYTBSREV-20          
+2 https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20          
+3 https://www.amazon.com/dp/1250284090?tag=NYTBSREV-20          
+4 https://www.amazon.com/dp/006332752X?tag=NYTBSREV-20          
+5 https://www.amazon.com/dp/198217921X?tag=NYTBSREV-20          
+  book_review_link first_chapter_link sunday_review_link article_chapter_link
+1                                                                            
+2                                                                            
+3                                                                            
+4                                                                            
+5                                                                            
+                                                                                                       isbns
+1                            1668016133, 1668014955, 1797161407, 9781668016138, 9781668014950, 9781797161402
+2 1649374046, 1649374089, 1705085059, 1705085032, 9781649374042, 9781649374080, 9781705085059, 9781705085035
+3                            1250284090, 1250284104, 1250902274, 9781250284099, 9781250284105, 9781250902276
+4                                                       006332752X, 0063327546, 9780063327528, 9780063327542
+5                                                       198217921X, 1982179236, 9781982179212, 9781982179236
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                buy_links
+1                                 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1668016133?tag=NYTBSREV-20, https://goto.applebooks.apple/9781668016138?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781668016138, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FHOLLY%2FStephen%2BKing%2F9781668016138, https://bookshop.org/a/3546/9781668016138, https://www.indiebound.org/book/9781668016138?aff=NYT
+2                       Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20, https://goto.applebooks.apple/9781649374042?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781649374042, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FFOURTH%2BWING%2FRebecca%2BYarros%2F9781649374042, https://bookshop.org/a/3546/9781649374042, https://www.indiebound.org/book/9781649374042?aff=NYT
+3                     Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1250284090?tag=NYTBSREV-20, https://goto.applebooks.apple/9781250284099?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781250284099, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FPAYBACK%2BIN%2BDEATH%2FJ.D.%2BRobb%2F9781250284099, https://bookshop.org/a/3546/9781250284099, https://www.indiebound.org/book/9781250284099?aff=NYT
+4                            Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/006332752X?tag=NYTBSREV-20, https://goto.applebooks.apple/9780063327528?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780063327528, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FTOM%2BLAKE%2FAnn%2BPatchett%2F9780063327528, https://bookshop.org/a/3546/9780063327528, https://www.indiebound.org/book/9780063327528?aff=NYT
+5 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/198217921X?tag=NYTBSREV-20, https://goto.applebooks.apple/9781982179212?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781982179212, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FTHE%2BRIVER%2BWE%2BREMEMBER%2FWilliam%2BKent%2BKrueger%2F9781982179212, https://bookshop.org/a/3546/9781982179212, https://www.indiebound.org/book/9781982179212?aff=NYT
+                                         book_uri
+1 nyt://book/24a09504-4f13-5e38-a4a0-f6b8978e5ca7
+2 nyt://book/106c2cf0-7d20-51b1-bad4-91c3ebcd131a
+3 nyt://book/07352477-277c-5e66-93af-32c37926ccbe
+4 nyt://book/2430a2de-ff8f-5a25-88f8-50bd8137fa92
+5 nyt://book/4b74319c-f0d4-5bcc-a5a2-774c893d7e07
+
+$`2023-09-17`
+  rank rank_last_week weeks_on_list asterisk dagger primary_isbn10
+1    1              1            17        0      0     1649374046
+2    2              2             5        0      0     006332752X
+3    3              4            69        0      0     038554734X
+4    4              5            44        0      0     0063251922
+5    5              0             1        0      0     1668033429
+  primary_isbn13 publisher
+1  9781649374042 Red Tower
+2  9780063327528    Harper
+3  9780385547345 Doubleday
+4  9780063251922    Harper
+5  9781668033425     Atria
+                                                                                                                                                      description
+1                                Violet Sorrengail is urged by the commanding general, who also is her mother, to become a candidate for the elite dragon riders.
+2                         Three daughters, who return to their family orchard in the spring of 2020, learn about their mother’s relationship with a famous actor.
+3                                                            A scientist and single mother living in California in the 1960s becomes a star on a TV cooking show.
+4                Winner of a 2023 Pulitzer Prize for fiction. A reimagining of Charles Dickens’s “David Copperfield” set in the mountains of southern Appalachia.
+5 As her wedding to a man she met at a childhood weight-loss camp approaches, Abby goes on a cycling trip to Niagara Falls in a group that includes an old fling.
+  price                title             author           contributor
+1  0.00          FOURTH WING     Rebecca Yarros     by Rebecca Yarros
+2  0.00             TOM LAKE       Ann Patchett       by Ann Patchett
+3  0.00 LESSONS IN CHEMISTRY      Bonnie Garmus      by Bonnie Garmus
+4  0.00     DEMON COPPERHEAD Barbara Kingsolver by Barbara Kingsolver
+5  0.00        THE BREAKAWAY    Jennifer Weiner    by Jennifer Weiner
+  contributor_note
+1                 
+2                 
+3                 
+4                 
+5                 
+                                                            book_image
+1 https://storage.googleapis.com/du-prd/books/images/9781649374042.jpg
+2 https://storage.googleapis.com/du-prd/books/images/9780063327528.jpg
+3 https://storage.googleapis.com/du-prd/books/images/9780385547345.jpg
+4 https://storage.googleapis.com/du-prd/books/images/9780063251922.jpg
+5 https://storage.googleapis.com/du-prd/books/images/9781668033425.jpg
+  book_image_width book_image_height
+1              309               500
+2              331               500
+3              328               500
+4              329               500
+5              329               500
+                                    amazon_product_url age_group
+1 https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20          
+2 https://www.amazon.com/dp/006332752X?tag=NYTBSREV-20          
+3 https://www.amazon.com/dp/038554734X?tag=NYTBSREV-20          
+4 https://www.amazon.com/dp/0063251922?tag=NYTBSREV-20          
+5 https://www.amazon.com/dp/1668033429?tag=NYTBSREV-20          
+  book_review_link first_chapter_link sunday_review_link article_chapter_link
+1                                                                            
+2                                                                            
+3                                                                            
+4                                                                            
+5                                                                            
+                                                                                                       isbns
+1 1649374046, 1649374089, 1705085059, 1705085032, 9781649374042, 9781649374080, 9781705085059, 9781705085035
+2                                                       006332752X, 0063327546, 9780063327528, 9780063327542
+3 038554734X, 0593507533, 0385547374, 0593862406, 9780385547345, 9780593507537, 9780385547376, 9780593862407
+4                            0063251922, 006325199X, 0063251981, 9780063251922, 9780063251991, 9780063251984
+5                                                       1668033429, 1668033445, 9781668033425, 9781668033449
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    buy_links
+1           Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20, https://goto.applebooks.apple/9781649374042?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781649374042, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FFOURTH%2BWING%2FRebecca%2BYarros%2F9781649374042, https://bookshop.org/a/3546/9781649374042, https://www.indiebound.org/book/9781649374042?aff=NYT
+2                Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/006332752X?tag=NYTBSREV-20, https://goto.applebooks.apple/9780063327528?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780063327528, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FTOM%2BLAKE%2FAnn%2BPatchett%2F9780063327528, https://bookshop.org/a/3546/9780063327528, https://www.indiebound.org/book/9780063327528?aff=NYT
+3 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/038554734X?tag=NYTBSREV-20, https://goto.applebooks.apple/9780385547345?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780385547345, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FLESSONS%2BIN%2BCHEMISTRY%2FBonnie%2BGarmus%2F9780385547345, https://bookshop.org/a/3546/9780385547345, https://www.indiebound.org/book/9780385547345?aff=NYT
+4  Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/0063251922?tag=NYTBSREV-20, https://goto.applebooks.apple/9780063251922?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780063251922, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FDEMON%2BCOPPERHEAD%2FBarbara%2BKingsolver%2F9780063251922, https://bookshop.org/a/3546/9780063251922, https://www.indiebound.org/book/9780063251922?aff=NYT
+5        Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1668033429?tag=NYTBSREV-20, https://goto.applebooks.apple/9781668033425?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781668033425, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FTHE%2BBREAKAWAY%2FJennifer%2BWeiner%2F9781668033425, https://bookshop.org/a/3546/9781668033425, https://www.indiebound.org/book/9781668033425?aff=NYT
+                                         book_uri
+1 nyt://book/106c2cf0-7d20-51b1-bad4-91c3ebcd131a
+2 nyt://book/2430a2de-ff8f-5a25-88f8-50bd8137fa92
+3 nyt://book/717e0ead-9782-567d-af27-d9a6cfb1856f
+4 nyt://book/dd6e4f9d-d082-552d-b888-7276a25b5aca
+5 nyt://book/6ba5e702-5f6b-51fc-b156-d722c8e74c0c
+
+$`2023-09-10`
+  rank rank_last_week weeks_on_list asterisk dagger primary_isbn10
+1    1              2            16        0      0     1649374046
+2    2              1             4        0      0     006332752X
+3    3              0             1        0      0     1538736829
+4    4              3            68        0      0     038554734X
+5    5              5            43        0      0     0063251922
+  primary_isbn13     publisher
+1  9781649374042     Red Tower
+2  9780063327528        Harper
+3  9781538736821 Grand Central
+4  9780385547345     Doubleday
+5  9780063251922        Harper
+                                                                                                                                        description
+1                  Violet Sorrengail is urged by the commanding general, who also is her mother, to become a candidate for the elite dragon riders.
+2           Three daughters, who return to their family orchard in the spring of 2020, learn about their mother’s relationship with a famous actor.
+3 The fourth book in the Nora Kelly series. Kelly and Swanson search for the ninth victim of a gruesome and bizarre incident that occurred in 2008.
+4                                              A scientist and single mother living in California in the 1960s becomes a star on a TV cooking show.
+5  Winner of a 2023 Pulitzer Prize for fiction. A reimagining of Charles Dickens’s “David Copperfield” set in the mountains of southern Appalachia.
+  price                title                            author
+1  0.00          FOURTH WING                    Rebecca Yarros
+2  0.00             TOM LAKE                      Ann Patchett
+3  0.00        DEAD MOUNTAIN Douglas Preston and Lincoln Child
+4  0.00 LESSONS IN CHEMISTRY                     Bonnie Garmus
+5  0.00     DEMON COPPERHEAD                Barbara Kingsolver
+                           contributor contributor_note
+1                    by Rebecca Yarros                 
+2                      by Ann Patchett                 
+3 by Douglas Preston and Lincoln Child                 
+4                     by Bonnie Garmus                 
+5                by Barbara Kingsolver                 
+                                                            book_image
+1 https://storage.googleapis.com/du-prd/books/images/9781649374042.jpg
+2 https://storage.googleapis.com/du-prd/books/images/9780063327528.jpg
+3 https://storage.googleapis.com/du-prd/books/images/9781538736821.jpg
+4 https://storage.googleapis.com/du-prd/books/images/9780385547345.jpg
+5 https://storage.googleapis.com/du-prd/books/images/9780063251922.jpg
+  book_image_width book_image_height
+1              309               500
+2              331               500
+3              331               500
+4              328               500
+5              329               500
+                                    amazon_product_url age_group
+1 https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20          
+2 https://www.amazon.com/dp/006332752X?tag=NYTBSREV-20          
+3 https://www.amazon.com/dp/1538736829?tag=NYTBSREV-20          
+4 https://www.amazon.com/dp/038554734X?tag=NYTBSREV-20          
+5 https://www.amazon.com/dp/0063251922?tag=NYTBSREV-20          
+  book_review_link first_chapter_link sunday_review_link article_chapter_link
+1                                                                            
+2                                                                            
+3                                                                            
+4                                                                            
+5                                                                            
+                                                                                                       isbns
+1 1649374046, 1649374089, 1705085059, 1705085032, 9781649374042, 9781649374080, 9781705085059, 9781705085035
+2                                                       006332752X, 0063327546, 9780063327528, 9780063327542
+3                            1538736829, 1538742535, 1538736837, 9781538736821, 9781538742532, 9781538736838
+4 038554734X, 0593507533, 0385547374, 0593862406, 9780385547345, 9780593507537, 9780385547376, 9780593862407
+5                            0063251922, 006325199X, 0063251981, 9780063251922, 9780063251991, 9780063251984
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     buy_links
+1                            Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20, https://goto.applebooks.apple/9781649374042?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781649374042, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FFOURTH%2BWING%2FRebecca%2BYarros%2F9781649374042, https://bookshop.org/a/3546/9781649374042, https://www.indiebound.org/book/9781649374042?aff=NYT
+2                                 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/006332752X?tag=NYTBSREV-20, https://goto.applebooks.apple/9780063327528?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780063327528, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FTOM%2BLAKE%2FAnn%2BPatchett%2F9780063327528, https://bookshop.org/a/3546/9780063327528, https://www.indiebound.org/book/9780063327528?aff=NYT
+3 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1538736829?tag=NYTBSREV-20, https://goto.applebooks.apple/9781538736821?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781538736821, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FDEAD%2BMOUNTAIN%2FDouglas%2BPreston%2Band%2BLincoln%2BChild%2F9781538736821, https://bookshop.org/a/3546/9781538736821, https://www.indiebound.org/book/9781538736821?aff=NYT
+4                  Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/038554734X?tag=NYTBSREV-20, https://goto.applebooks.apple/9780385547345?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780385547345, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FLESSONS%2BIN%2BCHEMISTRY%2FBonnie%2BGarmus%2F9780385547345, https://bookshop.org/a/3546/9780385547345, https://www.indiebound.org/book/9780385547345?aff=NYT
+5                   Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/0063251922?tag=NYTBSREV-20, https://goto.applebooks.apple/9780063251922?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780063251922, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FDEMON%2BCOPPERHEAD%2FBarbara%2BKingsolver%2F9780063251922, https://bookshop.org/a/3546/9780063251922, https://www.indiebound.org/book/9780063251922?aff=NYT
+                                         book_uri
+1 nyt://book/106c2cf0-7d20-51b1-bad4-91c3ebcd131a
+2 nyt://book/2430a2de-ff8f-5a25-88f8-50bd8137fa92
+3 nyt://book/34d795e7-0dd7-568e-9b1f-35ba71a2b529
+4 nyt://book/717e0ead-9782-567d-af27-d9a6cfb1856f
+5 nyt://book/dd6e4f9d-d082-552d-b888-7276a25b5aca
+
+$`2023-09-03`
+  rank rank_last_week weeks_on_list asterisk dagger primary_isbn10
+1    1              2             3        0      0     006332752X
+2    2              1            15        0      0     1649374046
+3    3              6            67        0      0     038554734X
+4    4              0             1        0      0     0316404896
+5    5              7            42        0      0     0063251922
+  primary_isbn13     publisher
+1  9780063327528        Harper
+2  9781649374042     Red Tower
+3  9780385547345     Doubleday
+4  9780316404891 Little, Brown
+5  9780063251922        Harper
+                                                                                                                                       description
+1          Three daughters, who return to their family orchard in the spring of 2020, learn about their mother’s relationship with a famous actor.
+2                 Violet Sorrengail is urged by the commanding general, who also is her mother, to become a candidate for the elite dragon riders.
+3                                             A scientist and single mother living in California in the 1960s becomes a star on a TV cooking show.
+4                                        The Eagles’ starting quarterback is murdered and his wife, a Grammy-winning singer, is the prime suspect.
+5 Winner of a 2023 Pulitzer Prize for fiction. A reimagining of Charles Dickens’s “David Copperfield” set in the mountains of southern Appalachia.
+  price                title                                 author
+1  0.00             TOM LAKE                           Ann Patchett
+2  0.00          FOURTH WING                         Rebecca Yarros
+3  0.00 LESSONS IN CHEMISTRY                          Bonnie Garmus
+4  0.00          LION &amp; LAMB James Patterson and Duane Swierczynski
+5  0.00     DEMON COPPERHEAD                     Barbara Kingsolver
+                                contributor contributor_note
+1                           by Ann Patchett                 
+2                         by Rebecca Yarros                 
+3                          by Bonnie Garmus                 
+4 by James Patterson and Duane Swierczynski                 
+5                     by Barbara Kingsolver                 
+                                                            book_image
+1 https://storage.googleapis.com/du-prd/books/images/9780063327528.jpg
+2 https://storage.googleapis.com/du-prd/books/images/9781649374042.jpg
+3 https://storage.googleapis.com/du-prd/books/images/9780385547345.jpg
+4 https://storage.googleapis.com/du-prd/books/images/9780316404891.jpg
+5 https://storage.googleapis.com/du-prd/books/images/9780063251922.jpg
+  book_image_width book_image_height
+1              331               500
+2              309               500
+3              328               500
+4              322               500
+5              329               500
+                                    amazon_product_url age_group
+1 https://www.amazon.com/dp/006332752X?tag=NYTBSREV-20          
+2 https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20          
+3 https://www.amazon.com/dp/038554734X?tag=NYTBSREV-20          
+4 https://www.amazon.com/dp/0316404896?tag=NYTBSREV-20          
+5 https://www.amazon.com/dp/0063251922?tag=NYTBSREV-20          
+  book_review_link first_chapter_link sunday_review_link article_chapter_link
+1                                                                            
+2                                                                            
+3                                                                            
+4                                                                            
+5                                                                            
+                                                                                                       isbns
+1                                                       006332752X, 0063327546, 9780063327528, 9780063327542
+2 1649374046, 1649374089, 1705085059, 1705085032, 9781649374042, 9781649374080, 9781705085059, 9781705085035
+3 038554734X, 0593507533, 0385547374, 0593862406, 9780385547345, 9780593507537, 9780385547376, 9780593862407
+4                                                       0316404896, 0316404993, 9780316404891, 9780316404990
+5                            0063251922, 006325199X, 0063251981, 9780063251922, 9780063251991, 9780063251984
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              buy_links
+1                                          Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/006332752X?tag=NYTBSREV-20, https://goto.applebooks.apple/9780063327528?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780063327528, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FTOM%2BLAKE%2FAnn%2BPatchett%2F9780063327528, https://bookshop.org/a/3546/9780063327528, https://www.indiebound.org/book/9780063327528?aff=NYT
+2                                     Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20, https://goto.applebooks.apple/9781649374042?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781649374042, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FFOURTH%2BWING%2FRebecca%2BYarros%2F9781649374042, https://bookshop.org/a/3546/9781649374042, https://www.indiebound.org/book/9781649374042?aff=NYT
+3                           Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/038554734X?tag=NYTBSREV-20, https://goto.applebooks.apple/9780385547345?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780385547345, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FLESSONS%2BIN%2BCHEMISTRY%2FBonnie%2BGarmus%2F9780385547345, https://bookshop.org/a/3546/9780385547345, https://www.indiebound.org/book/9780385547345?aff=NYT
+4 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/0316404896?tag=NYTBSREV-20, https://goto.applebooks.apple/9780316404891?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780316404891, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FLION%2B%2526%2BLAMB%2FJames%2BPatterson%2Band%2BDuane%2BSwierczynski%2F9780316404891, https://bookshop.org/a/3546/9780316404891, https://www.indiebound.org/book/9780316404891?aff=NYT
+5                            Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/0063251922?tag=NYTBSREV-20, https://goto.applebooks.apple/9780063251922?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780063251922, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FDEMON%2BCOPPERHEAD%2FBarbara%2BKingsolver%2F9780063251922, https://bookshop.org/a/3546/9780063251922, https://www.indiebound.org/book/9780063251922?aff=NYT
+                                         book_uri
+1 nyt://book/2430a2de-ff8f-5a25-88f8-50bd8137fa92
+2 nyt://book/106c2cf0-7d20-51b1-bad4-91c3ebcd131a
+3 nyt://book/717e0ead-9782-567d-af27-d9a6cfb1856f
+4 nyt://book/abaeff13-c919-5345-9608-3df8831cef98
+5 nyt://book/dd6e4f9d-d082-552d-b888-7276a25b5aca
+
+$`2023-08-27`
+  rank rank_last_week weeks_on_list asterisk dagger primary_isbn10
+1    1              1            14        0      0     1649374046
+2    2              2             2        0      0     006332752X
+3    3              0             1        0      0     0593422945
+4    4              0             1        0      0     1982179007
+5    5              0             1        0      0     198482192X
+  primary_isbn13 publisher
+1  9781649374042 Red Tower
+2  9780063327528    Harper
+3  9780593422946 Riverhead
+4  9781982179007     Atria
+5  9781984821928 Delacorte
+                                                                                                                              description
+1        Violet Sorrengail is urged by the commanding general, who also is her mother, to become a candidate for the elite dragon riders.
+2 Three daughters, who return to their family orchard in the spring of 2020, learn about their mother’s relationship with a famous actor.
+3              Secrets held by the residents of a dilapidated neighborhood come to life when a skeleton is found at the bottom of a well.
+4                      After meeting a woman who shares the same birthday, Alix Summer becomes the subject of her own true crime podcast.
+5                          A best-selling author inherits an estate near London from her uncle and contemplates embracing a new identity.
+  price                            title         author       contributor
+1  0.00                      FOURTH WING Rebecca Yarros by Rebecca Yarros
+2  0.00                         TOM LAKE   Ann Patchett   by Ann Patchett
+3  0.00 THE HEAVEN &amp; EARTH GROCERY STORE  James McBride  by James McBride
+4  0.00             NONE OF THIS IS TRUE    Lisa Jewell    by Lisa Jewell
+5  0.00                        HAPPINESS Danielle Steel by Danielle Steel
+  contributor_note
+1                 
+2                 
+3                 
+4                 
+5                 
+                                                            book_image
+1 https://storage.googleapis.com/du-prd/books/images/9781649374042.jpg
+2 https://storage.googleapis.com/du-prd/books/images/9780063327528.jpg
+3 https://storage.googleapis.com/du-prd/books/images/9780593422946.jpg
+4 https://storage.googleapis.com/du-prd/books/images/9781982179007.jpg
+5 https://storage.googleapis.com/du-prd/books/images/9781984821928.jpg
+  book_image_width book_image_height
+1              309               500
+2              331               500
+3              331               500
+4              329               500
+5              328               500
+                                    amazon_product_url age_group
+1 https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20          
+2 https://www.amazon.com/dp/006332752X?tag=NYTBSREV-20          
+3 https://www.amazon.com/dp/0593422945?tag=NYTBSREV-20          
+4 https://www.amazon.com/dp/1982179007?tag=NYTBSREV-20          
+5 https://www.amazon.com/dp/198482192X?tag=NYTBSREV-20          
+  book_review_link first_chapter_link sunday_review_link article_chapter_link
+1                                                                            
+2                                                                            
+3                                                                            
+4                                                                            
+5                                                                            
+                                                                                                       isbns
+1 1649374046, 1649374089, 1705085059, 1705085032, 9781649374042, 9781649374080, 9781705085059, 9781705085035
+2                                                       006332752X, 0063327546, 9780063327528, 9780063327542
+3 0593422945, 0593422961, 0593684125, 0593684141, 9780593422946, 9780593422960, 9780593684122, 9780593684146
+4                                                       1982179007, 1982179023, 9781982179007, 9781982179021
+5                                                       198482192X, 1984821938, 9781984821928, 9781984821935
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          buy_links
+1                                 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20, https://goto.applebooks.apple/9781649374042?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781649374042, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FFOURTH%2BWING%2FRebecca%2BYarros%2F9781649374042, https://bookshop.org/a/3546/9781649374042, https://www.indiebound.org/book/9781649374042?aff=NYT
+2                                      Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/006332752X?tag=NYTBSREV-20, https://goto.applebooks.apple/9780063327528?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780063327528, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FTOM%2BLAKE%2FAnn%2BPatchett%2F9780063327528, https://bookshop.org/a/3546/9780063327528, https://www.indiebound.org/book/9780063327528?aff=NYT
+3 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/0593422945?tag=NYTBSREV-20, https://goto.applebooks.apple/9780593422946?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780593422946, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FTHE%2BHEAVEN%2B%2526%2BEARTH%2BGROCERY%2BSTORE%2FJames%2BMcBride%2F9780593422946, https://bookshop.org/a/3546/9780593422946, https://www.indiebound.org/book/9780593422946?aff=NYT
+4                     Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1982179007?tag=NYTBSREV-20, https://goto.applebooks.apple/9781982179007?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781982179007, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FNONE%2BOF%2BTHIS%2BIS%2BTRUE%2FLisa%2BJewell%2F9781982179007, https://bookshop.org/a/3546/9781982179007, https://www.indiebound.org/book/9781982179007?aff=NYT
+5                                     Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/198482192X?tag=NYTBSREV-20, https://goto.applebooks.apple/9781984821928?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781984821928, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FHAPPINESS%2FDanielle%2BSteel%2F9781984821928, https://bookshop.org/a/3546/9781984821928, https://www.indiebound.org/book/9781984821928?aff=NYT
+                                         book_uri
+1 nyt://book/106c2cf0-7d20-51b1-bad4-91c3ebcd131a
+2 nyt://book/2430a2de-ff8f-5a25-88f8-50bd8137fa92
+3 nyt://book/7d47b076-7ad7-539c-a051-6664384636b9
+4 nyt://book/f0840066-0941-51e8-9487-1ecf6a62d99e
+5 nyt://book/c1b9d0df-7459-5d41-9a0e-f71289d1de05
+
+$`2023-08-20`
+  rank rank_last_week weeks_on_list asterisk dagger primary_isbn10
+1    1              1            13        0      0     1649374046
+2    2              0             1        0      0     006332752X
+3    3              4            65        0      0     038554734X
+4    4              0             1        0      0     1538742942
+5    5              6            14        0      0     0802162177
+  primary_isbn13     publisher
+1  9781649374042     Red Tower
+2  9780063327528        Harper
+3  9780385547345     Doubleday
+4  9781538742945 Grand Central
+5  9780802162175         Grove
+                                                                                                                              description
+1        Violet Sorrengail is urged by the commanding general, who also is her mother, to become a candidate for the elite dragon riders.
+2 Three daughters, who return to their family orchard in the spring of 2020, learn about their mother’s relationship with a famous actor.
+3                                    A scientist and single mother living in California in the 1960s becomes a star on a TV cooking show.
+4        A shooting at a Texas county fair leads to an unexpected connection between a children’s book author and a corporate consultant.
+5                     Three generations of a family living on South India’s Malabar Coast suffer the loss of a family member by drowning.
+  price                 title           author         contributor
+1  0.00           FOURTH WING   Rebecca Yarros   by Rebecca Yarros
+2  0.00              TOM LAKE     Ann Patchett     by Ann Patchett
+3  0.00  LESSONS IN CHEMISTRY    Bonnie Garmus    by Bonnie Garmus
+4  0.00        OUT OF NOWHERE     Sandra Brown     by Sandra Brown
+5  0.00 THE COVENANT OF WATER Abraham Verghese by Abraham Verghese
+  contributor_note
+1                 
+2                 
+3                 
+4                 
+5                 
+                                                            book_image
+1 https://storage.googleapis.com/du-prd/books/images/9781649374042.jpg
+2 https://storage.googleapis.com/du-prd/books/images/9780063327528.jpg
+3 https://storage.googleapis.com/du-prd/books/images/9780385547345.jpg
+4 https://storage.googleapis.com/du-prd/books/images/9781538742945.jpg
+5 https://storage.googleapis.com/du-prd/books/images/9780802162175.jpg
+  book_image_width book_image_height
+1              309               500
+2              331               500
+3              328               500
+4              331               500
+5              320               500
+                                    amazon_product_url age_group
+1 https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20          
+2 https://www.amazon.com/dp/006332752X?tag=NYTBSREV-20          
+3 https://www.amazon.com/dp/038554734X?tag=NYTBSREV-20          
+4 https://www.amazon.com/dp/1538742942?tag=NYTBSREV-20          
+5 https://www.amazon.com/dp/0802162177?tag=NYTBSREV-20          
+  book_review_link first_chapter_link sunday_review_link article_chapter_link
+1                                                                            
+2                                                                            
+3                                                                            
+4                                                                            
+5                                                                            
+                                                                                                       isbns
+1 1649374046, 1649374089, 1705085059, 1705085032, 9781649374042, 9781649374080, 9781705085059, 9781705085035
+2                                                       006332752X, 0063327546, 9780063327528, 9780063327542
+3 038554734X, 0593507533, 0385547374, 0593862406, 9780385547345, 9780593507537, 9780385547376, 9780593862407
+4                                                       1538742942, 1538742977, 9781538742945, 9781538742976
+5                            0802162177, 1705070248, 1705070221, 9780802162175, 9781705070246, 9781705070222
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          buy_links
+1                 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20, https://goto.applebooks.apple/9781649374042?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781649374042, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FFOURTH%2BWING%2FRebecca%2BYarros%2F9781649374042, https://bookshop.org/a/3546/9781649374042, https://www.indiebound.org/book/9781649374042?aff=NYT
+2                      Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/006332752X?tag=NYTBSREV-20, https://goto.applebooks.apple/9780063327528?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780063327528, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FTOM%2BLAKE%2FAnn%2BPatchett%2F9780063327528, https://bookshop.org/a/3546/9780063327528, https://www.indiebound.org/book/9780063327528?aff=NYT
+3       Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/038554734X?tag=NYTBSREV-20, https://goto.applebooks.apple/9780385547345?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780385547345, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FLESSONS%2BIN%2BCHEMISTRY%2FBonnie%2BGarmus%2F9780385547345, https://bookshop.org/a/3546/9780385547345, https://www.indiebound.org/book/9780385547345?aff=NYT
+4              Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1538742942?tag=NYTBSREV-20, https://goto.applebooks.apple/9781538742945?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781538742945, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FOUT%2BOF%2BNOWHERE%2FSandra%2BBrown%2F9781538742945, https://bookshop.org/a/3546/9781538742945, https://www.indiebound.org/book/9781538742945?aff=NYT
+5 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/0802162177?tag=NYTBSREV-20, https://goto.applebooks.apple/9780802162175?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780802162175, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FTHE%2BCOVENANT%2BOF%2BWATER%2FAbraham%2BVerghese%2F9780802162175, https://bookshop.org/a/3546/9780802162175, https://www.indiebound.org/book/9780802162175?aff=NYT
+                                         book_uri
+1 nyt://book/106c2cf0-7d20-51b1-bad4-91c3ebcd131a
+2 nyt://book/2430a2de-ff8f-5a25-88f8-50bd8137fa92
+3 nyt://book/717e0ead-9782-567d-af27-d9a6cfb1856f
+4 nyt://book/1a425c9f-4d89-5699-8810-478ed011884c
+5 nyt://book/5ebf1d34-4c68-560a-8330-7e65bedaaa1a
+
+$`2023-08-13`
+  rank rank_last_week weeks_on_list asterisk dagger primary_isbn10
+1    1              1            12        0      0     1649374046
+2    2              0             1        0      0     0425285979
+3    3              0             1        0      0     1982182199
+4    4              3            64        0      0     038554734X
+5    5              4            14        0      0     0593441273
+  primary_isbn13           publisher
+1  9781649374042           Red Tower
+2  9780425285978             Del Rey
+3  9781982182199 Atria/Emily Bestler
+4  9780385547345           Doubleday
+5  9780593441275             Berkley
+                                                                                                                                                      description
+1                                Violet Sorrengail is urged by the commanding general, who also is her mother, to become a candidate for the elite dragon riders.
+2                    The sixth book in the Red Rising series. Darrow goes on an interplanetary adventure in the hope of defending Mars from conquest by Lysander.
+3 The 22nd book in the Scot Harvath series. When American aid workers are killed amid other atrocities in Ukraine, America’s top spy is sent to set things right.
+4                                                            A scientist and single mother living in California in the 1960s becomes a star on a TV cooking show.
+5                                                      A former couple pretend to be together for the sake of their friends during their annual getaway in Maine.
+  price                title         author       contributor contributor_note
+1  0.00          FOURTH WING Rebecca Yarros by Rebecca Yarros                 
+2  0.00        LIGHT BRINGER   Pierce Brown   by Pierce Brown                 
+3  0.00            DEAD FALL      Brad Thor      by Brad Thor                 
+4  0.00 LESSONS IN CHEMISTRY  Bonnie Garmus  by Bonnie Garmus                 
+5  0.00          HAPPY PLACE    Emily Henry    by Emily Henry                 
+                                                            book_image
+1 https://storage.googleapis.com/du-prd/books/images/9781649374042.jpg
+2 https://storage.googleapis.com/du-prd/books/images/9780425285978.jpg
+3 https://storage.googleapis.com/du-prd/books/images/9781982182199.jpg
+4 https://storage.googleapis.com/du-prd/books/images/9780385547345.jpg
+5 https://storage.googleapis.com/du-prd/books/images/9780593441275.jpg
+  book_image_width book_image_height
+1              309               500
+2              329               500
+3              327               500
+4              328               500
+5              331               500
+                                    amazon_product_url age_group
+1 https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20          
+2 https://www.amazon.com/dp/0425285979?tag=NYTBSREV-20          
+3 https://www.amazon.com/dp/1982182199?tag=NYTBSREV-20          
+4 https://www.amazon.com/dp/038554734X?tag=NYTBSREV-20          
+5 https://www.amazon.com/dp/0593441273?tag=NYTBSREV-20          
+  book_review_link first_chapter_link sunday_review_link article_chapter_link
+1                                                                            
+2                                                                            
+3                                                                            
+4                                                                            
+5                                                                            
+                                                                                                       isbns
+1 1649374046, 1649374089, 1705085059, 1705085032, 9781649374042, 9781649374080, 9781705085059, 9781705085035
+2 0425285979, 0425285987, 1980036071, 1665001739, 9780425285978, 9780425285985, 9781980036074, 9781665001731
+3                                                       1982182199, 1982182229, 9781982182199, 9781982182229
+4 038554734X, 0593507533, 0385547374, 0593862406, 9780385547345, 9780593507537, 9780385547376, 9780593862407
+5 0593441273, 0593441206, 0593675118, 0593740149, 9780593441275, 9780593441206, 9780593675113, 9780593740149
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    buy_links
+1           Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20, https://goto.applebooks.apple/9781649374042?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781649374042, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FFOURTH%2BWING%2FRebecca%2BYarros%2F9781649374042, https://bookshop.org/a/3546/9781649374042, https://www.indiebound.org/book/9781649374042?aff=NYT
+2           Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/0425285979?tag=NYTBSREV-20, https://goto.applebooks.apple/9780425285978?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780425285978, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FLIGHT%2BBRINGER%2FPierce%2BBrown%2F9780425285978, https://bookshop.org/a/3546/9780425285978, https://www.indiebound.org/book/9780425285978?aff=NYT
+3                  Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1982182199?tag=NYTBSREV-20, https://goto.applebooks.apple/9781982182199?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781982182199, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FDEAD%2BFALL%2FBrad%2BThor%2F9781982182199, https://bookshop.org/a/3546/9781982182199, https://www.indiebound.org/book/9781982182199?aff=NYT
+4 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/038554734X?tag=NYTBSREV-20, https://goto.applebooks.apple/9780385547345?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780385547345, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FLESSONS%2BIN%2BCHEMISTRY%2FBonnie%2BGarmus%2F9780385547345, https://bookshop.org/a/3546/9780385547345, https://www.indiebound.org/book/9780385547345?aff=NYT
+5              Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/0593441273?tag=NYTBSREV-20, https://goto.applebooks.apple/9780593441275?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780593441275, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FHAPPY%2BPLACE%2FEmily%2BHenry%2F9780593441275, https://bookshop.org/a/3546/9780593441275, https://www.indiebound.org/book/9780593441275?aff=NYT
+                                         book_uri
+1 nyt://book/106c2cf0-7d20-51b1-bad4-91c3ebcd131a
+2 nyt://book/47e427d7-eb07-52f1-93cf-be37722c1d4b
+3 nyt://book/1ad7885c-f581-505e-885b-5772361c729e
+4 nyt://book/717e0ead-9782-567d-af27-d9a6cfb1856f
+5 nyt://book/9ab3a59a-e572-5452-ae0c-eedeadb05831
+
+$`2023-08-06`
+  rank rank_last_week weeks_on_list asterisk dagger primary_isbn10
+1    1              1            11        0      0     1649374046
+2    2              0             1        0      0     0062834878
+3    3              3            63        0      0     038554734X
+4    4              2            13        0      0     0593441273
+5    5              6            12        0      0     0802162177
+  primary_isbn13 publisher
+1  9781649374042 Red Tower
+2  9780062834874    Harper
+3  9780385547345 Doubleday
+4  9780593441275   Berkley
+5  9780802162175     Grove
+                                                                                                                                                                description
+1                                          Violet Sorrengail is urged by the commanding general, who also is her mother, to become a candidate for the elite dragon riders.
+2 The 23rd book in the Gabriel Allon series. The art restorer teams up with a thief to find a missing painting and works to prevent a conflict between Russia and the West.
+3                                                                      A scientist and single mother living in California in the 1960s becomes a star on a TV cooking show.
+4                                                                A former couple pretend to be together for the sake of their friends during their annual getaway in Maine.
+5                                                       Three generations of a family living on South India’s Malabar Coast suffer the loss of a family member by drowning.
+  price                 title           author         contributor
+1  0.00           FOURTH WING   Rebecca Yarros   by Rebecca Yarros
+2  0.00         THE COLLECTOR     Daniel Silva     by Daniel Silva
+3  0.00  LESSONS IN CHEMISTRY    Bonnie Garmus    by Bonnie Garmus
+4  0.00           HAPPY PLACE      Emily Henry      by Emily Henry
+5  0.00 THE COVENANT OF WATER Abraham Verghese by Abraham Verghese
+  contributor_note
+1                 
+2                 
+3                 
+4                 
+5                 
+                                                            book_image
+1 https://storage.googleapis.com/du-prd/books/images/9781649374042.jpg
+2 https://storage.googleapis.com/du-prd/books/images/9780062834874.jpg
+3 https://storage.googleapis.com/du-prd/books/images/9780385547345.jpg
+4 https://storage.googleapis.com/du-prd/books/images/9780593441275.jpg
+5 https://storage.googleapis.com/du-prd/books/images/9780802162175.jpg
+  book_image_width book_image_height
+1              309               500
+2              331               500
+3              328               500
+4              331               500
+5              320               500
+                                    amazon_product_url age_group
+1 https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20          
+2 https://www.amazon.com/dp/0062834878?tag=NYTBSREV-20          
+3 https://www.amazon.com/dp/038554734X?tag=NYTBSREV-20          
+4 https://www.amazon.com/dp/0593441273?tag=NYTBSREV-20          
+5 https://www.amazon.com/dp/0802162177?tag=NYTBSREV-20          
+  book_review_link first_chapter_link sunday_review_link article_chapter_link
+1                                                                            
+2                                                                            
+3                                                                            
+4                                                                            
+5                                                                            
+                                                                                                       isbns
+1 1649374046, 1649374089, 1705085059, 1705085032, 9781649374042, 9781649374080, 9781705085059, 9781705085035
+2                                                       0062834878, 0062834932, 9780062834874, 9780062834935
+3 038554734X, 0593507533, 0385547374, 0593862406, 9780385547345, 9780593507537, 9780385547376, 9780593862407
+4 0593441273, 0593441206, 0593675118, 0593740149, 9780593441275, 9780593441206, 9780593675113, 9780593740149
+5                            0802162177, 1705070248, 1705070221, 9780802162175, 9781705070246, 9781705070222
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          buy_links
+1                 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20, https://goto.applebooks.apple/9781649374042?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781649374042, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FFOURTH%2BWING%2FRebecca%2BYarros%2F9781649374042, https://bookshop.org/a/3546/9781649374042, https://www.indiebound.org/book/9781649374042?aff=NYT
+2                 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/0062834878?tag=NYTBSREV-20, https://goto.applebooks.apple/9780062834874?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780062834874, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FTHE%2BCOLLECTOR%2FDaniel%2BSilva%2F9780062834874, https://bookshop.org/a/3546/9780062834874, https://www.indiebound.org/book/9780062834874?aff=NYT
+3       Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/038554734X?tag=NYTBSREV-20, https://goto.applebooks.apple/9780385547345?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780385547345, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FLESSONS%2BIN%2BCHEMISTRY%2FBonnie%2BGarmus%2F9780385547345, https://bookshop.org/a/3546/9780385547345, https://www.indiebound.org/book/9780385547345?aff=NYT
+4                    Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/0593441273?tag=NYTBSREV-20, https://goto.applebooks.apple/9780593441275?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780593441275, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FHAPPY%2BPLACE%2FEmily%2BHenry%2F9780593441275, https://bookshop.org/a/3546/9780593441275, https://www.indiebound.org/book/9780593441275?aff=NYT
+5 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/0802162177?tag=NYTBSREV-20, https://goto.applebooks.apple/9780802162175?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9780802162175, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FTHE%2BCOVENANT%2BOF%2BWATER%2FAbraham%2BVerghese%2F9780802162175, https://bookshop.org/a/3546/9780802162175, https://www.indiebound.org/book/9780802162175?aff=NYT
+                                         book_uri
+1 nyt://book/106c2cf0-7d20-51b1-bad4-91c3ebcd131a
+2 nyt://book/c894e4dd-3e61-536d-8c70-edd0cd4665bd
+3 nyt://book/717e0ead-9782-567d-af27-d9a6cfb1856f
+4 nyt://book/9ab3a59a-e572-5452-ae0c-eedeadb05831
+5 nyt://book/5ebf1d34-4c68-560a-8330-7e65bedaaa1a</code></pre>
+</div>
+</div>
+</section>
+<section id="updating-results-for-new-data" class="slide level2">
+<h2>Updating results for new data</h2>
+<p>Finally, we can combine some of these functions into a larger function that we can run every week to update our results.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>download_data <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb28-2"><a href="#cb28-2"></a>  <span class="co"># automatically pull today's date</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a>  dates <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">Sys.Date</span>(), <span class="at">by =</span> <span class="sc">-</span><span class="dv">7</span>, <span class="at">length.out =</span> <span class="dv">12</span>)</span>
+<span id="cb28-4"><a href="#cb28-4"></a>  bestseller_lists <span class="ot">&lt;-</span> <span class="fu">lapply</span>(</span>
+<span id="cb28-5"><a href="#cb28-5"></a>    dates,</span>
+<span id="cb28-6"><a href="#cb28-6"></a>    <span class="cf">function</span>(x) {</span>
+<span id="cb28-7"><a href="#cb28-7"></a>      <span class="co"># slow down execution by waiting 12 seconds</span></span>
+<span id="cb28-8"><a href="#cb28-8"></a>      <span class="fu">Sys.sleep</span>(<span class="dv">12</span>)</span>
+<span id="cb28-9"><a href="#cb28-9"></a>      jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>(</span>
+<span id="cb28-10"><a href="#cb28-10"></a>        <span class="fu">paste0</span>(</span>
+<span id="cb28-11"><a href="#cb28-11"></a>          <span class="st">"https://api.nytimes.com/svc/books/v3/lists/"</span>,</span>
+<span id="cb28-12"><a href="#cb28-12"></a>          x,</span>
+<span id="cb28-13"><a href="#cb28-13"></a>          <span class="st">"/hardcover-fiction.json?api-key="</span>,</span>
+<span id="cb28-14"><a href="#cb28-14"></a>          api_key</span>
+<span id="cb28-15"><a href="#cb28-15"></a>        )</span>
+<span id="cb28-16"><a href="#cb28-16"></a>      )<span class="sc">$</span>results<span class="sc">$</span>books</span>
+<span id="cb28-17"><a href="#cb28-17"></a>    }</span>
+<span id="cb28-18"><a href="#cb28-18"></a>  )</span>
+<span id="cb28-19"><a href="#cb28-19"></a>  <span class="fu">names</span>(bestseller_lists) <span class="ot">&lt;-</span> dates</span>
+<span id="cb28-20"><a href="#cb28-20"></a>  <span class="fu">return</span>(bestseller_lists)</span>
+<span id="cb28-21"><a href="#cb28-21"></a>}</span>
+<span id="cb28-22"><a href="#cb28-22"></a>generate_plot <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb28-23"><a href="#cb28-23"></a>  <span class="co"># Add code here . . .</span></span>
+<span id="cb28-24"><a href="#cb28-24"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 <div class="footer footer-default">
 
