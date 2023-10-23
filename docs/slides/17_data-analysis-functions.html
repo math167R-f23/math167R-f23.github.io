@@ -514,7 +514,7 @@ Peter Gao
 <span id="cb6-6"><a href="#cb6-6"></a>  current_data <span class="ot">&lt;-</span> penguins[penguins<span class="sc">$</span>species <span class="sc">==</span> i,]</span>
 <span id="cb6-7"><a href="#cb6-7"></a>  species_mean_mass <span class="ot">&lt;-</span> <span class="fu">mean</span>(current_data<span class="sc">$</span>body_mass_g, <span class="at">na.rm =</span> T)</span>
 <span id="cb6-8"><a href="#cb6-8"></a>  penguins<span class="sc">$</span>centered_mass[penguins<span class="sc">$</span>species <span class="sc">==</span> i] <span class="ot">&lt;-</span> </span>
-<span id="cb6-9"><a href="#cb6-9"></a>    current_data<span class="sc">$</span>body_mass_g <span class="sc">-</span> current_data<span class="sc">$</span>body_mass_g</span>
+<span id="cb6-9"><a href="#cb6-9"></a>    current_data<span class="sc">$</span>body_mass_g <span class="sc">-</span> species_mean_mass</span>
 <span id="cb6-10"><a href="#cb6-10"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -538,7 +538,7 @@ Peter Gao
 <div class="fragment">
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4928786</code></pre>
+<pre><code>[1] 0.4935702</code></pre>
 </div>
 </div>
 </div>
@@ -607,71 +607,73 @@ flipper_length_mm       body_mass_g               sex              year
 <span id="cb14-3"><a href="#cb14-3"></a>l</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
-[1] 0.87306152 0.85223769 0.06712008 0.12193749 0.13510046 0.62740048 0.07419518
-[8] 0.72919883
+[1] 0.22913094 0.89447011 0.66234251 0.26704370 0.04632693 0.99596326
 
 [[2]]
-[1] 0.5395983 0.8760807 0.6156735 0.6073299 0.3225718
+[1] 0.2774895 0.1106958 0.2430937 0.8181313 0.1156207
 
 [[3]]
-[1] 0.8670103 0.2355548 0.6355358
+[1] 0.6232570 0.3344266 0.9411924 0.5950501 0.1890185 0.5298665 0.2754627
+[8] 0.2886369
 
 [[4]]
-[1] 0.8232178 0.2141814 0.6687725
+[1] 0.78971612 0.14631911 0.09925479
 
 [[5]]
-[1] 0.0397221 0.3136149 0.8295299 0.2684607 0.3972689
+[1] 0.857574019 0.193942466 0.677459108 0.283781232 0.397493351 0.002677285
+[7] 0.111105646 0.326998760 0.088568758
 
 [[6]]
-[1] 0.89417213 0.45182901 0.12627546 0.97169646 0.43744779 0.06554336 0.07715606
-[8] 0.78290732
+[1] 0.7575332 0.5769006 0.5146926 0.8180293 0.7249813 0.3411288 0.2131103
+[8] 0.7389235
 
 [[7]]
-[1] 0.5964421 0.2143424 0.5177009 0.1914434 0.4941709
+[1] 0.6677609 0.4683948 0.2288156 0.8912410 0.2892990 0.7205585 0.3202009
+[8] 0.7245299 0.3595851
 
 [[8]]
-[1] 0.8866041
+[1] 0.26219332 0.62363475 0.18053267 0.23990816 0.05376367 0.23200254 0.75003544
+[8] 0.93495250
 
 [[9]]
- [1] 0.7803077 0.5917532 0.9806806 0.1144853 0.4793890 0.9529362 0.8859475
- [8] 0.4954286 0.2226848 0.9090873
+[1] 0.002750255
 
 [[10]]
-[1] 0.1800986 0.1987025 0.4810538 0.9260921 0.3727641 0.5027083 0.9926577
+[1] 0.004309468 0.046045064 0.411681989
 
 [[11]]
- [1] 0.8900777 0.9133231 0.3841164 0.7853146 0.4203979 0.5167608 0.5466724
- [8] 0.8374141 0.7048031 0.9167894
+[1] 0.7098194 0.2273283 0.3031614 0.5794456
 
 [[12]]
-[1] 0.27359559 0.27359211 0.70154652 0.31286517 0.39502275 0.03708779
+[1] 0.280259
 
 [[13]]
-[1] 0.2239756 0.4730703 0.5679416
+[1] 0.63889361 0.11453693 0.90912312 0.04758009 0.14032907
 
 [[14]]
-[1] 0.8766527 0.3868703
+[1] 0.20749264 0.80320874 0.50319660 0.57040637 0.21418484 0.39702264 0.02834379
+[8] 0.70238209
 
 [[15]]
-[1] 0.7909508 0.6770709 0.0923680 0.8484024 0.6888545
+[1] 0.39695129 0.04267738 0.88779250 0.49259608 0.84066900
 
 [[16]]
-[1] 0.9721165 0.5904753 0.4610299 0.3040906 0.1803451 0.5613271 0.5149192
-[8] 0.3107605
+[1] 0.9388403 0.3258938 0.1651335 0.6911089 0.1735805
 
 [[17]]
-[1] 0.7318437 0.7215229
+[1] 0.8088932 0.6334512 0.6863245 0.3083770 0.3447503 0.4783412 0.6123037
+[8] 0.1680414
 
 [[18]]
-[1] 0.2940522 0.8736661 0.3404826 0.1615037 0.5842473 0.7677702 0.6001430
-[8] 0.9336931 0.5478258
+[1] 0.4285283 0.5682818 0.8447963 0.0690410 0.3408927 0.0904826 0.5780925
+[8] 0.7717053
 
 [[19]]
-[1] 0.2540997 0.2759096 0.1413580 0.9088075 0.2446925 0.3056284 0.8328029
-[8] 0.3412259 0.1398447
+ [1] 0.779401233 0.486195183 0.129553160 0.465151328 0.409248706 0.142588083
+ [7] 0.392511292 0.008705453 0.389909852 0.786942943
 
 [[20]]
-[1] 0.65156965 0.95716825 0.38740135 0.06622155</code></pre>
+[1] 0.2808393</code></pre>
 </div>
 </div>
 </section>
@@ -682,18 +684,18 @@ flipper_length_mm       body_mass_g               sex              year
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Print the length of each dataset</span></span>
 <span id="cb16-2"><a href="#cb16-2"></a><span class="fu">unlist</span>(<span class="fu">lapply</span>(l, length))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  8  5  3  3  5  8  5  1 10  7 10  6  3  2  5  8  2  9  9  4</code></pre>
+<pre><code> [1]  6  5  8  3  9  8  9  8  1  3  4  1  5  8  5  5  8  8 10  1</code></pre>
 </div>
 </div>
 </section>
 <section id="vapply" class="slide level2">
 <h2><code>vapply()</code></h2>
-<p>There are many other variants of <code>lapply()</code>, including <code>mapply()</code>, <code>sapply()</code>, and <code>vapply()</code>. The only one we will cover today is <code>vapply()</code>, which returns a vector or matrix instead of a list. When we use <code>vapply()</code>, we specify an additional parameter, <code>FUN.VALUE</code> which specifies a templaet for the return value from <code>FUN</code>.</p>
+<p>There are many other variants of <code>lapply()</code>, including <code>mapply()</code>, <code>sapply()</code>, and <code>vapply()</code>. The only one we will cover today is <code>vapply()</code>, which returns a vector or matrix instead of a list. When we use <code>vapply()</code>, we specify an additional parameter, <code>FUN.VALUE</code> which specifies a template for the return value from <code>FUN</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Print the length of each dataset</span></span>
 <span id="cb18-2"><a href="#cb18-2"></a><span class="fu">vapply</span>(l, length, <span class="at">FUN.VALUE =</span> <span class="fu">numeric</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  8  5  3  3  5  8  5  1 10  7 10  6  3  2  5  8  2  9  9  4</code></pre>
+<pre><code> [1]  6  5  8  3  9  8  9  8  1  3  4  1  5  8  5  5  8  8 10  1</code></pre>
 </div>
 </div>
 </section>
@@ -924,33 +926,327 @@ flipper_length_mm       body_mass_g               sex              year
 <h2>Looping through many data files</h2>
 <p>Suppose we wish to see the performance of the current #1 book over the last 12 weeks:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>top_book_data <span class="ot">&lt;-</span> <span class="fu">lapply</span>(bestseller_lists, <span class="cf">function</span>(x) x[x<span class="sc">$</span>title <span class="sc">==</span> <span class="st">"FOURTH WING"</span>, ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="fragment">
-<p>We can use the <code>bind_rows()</code> to create a data frame combining all the entries in this list. The <code>.id</code> argument creates a column from the list’s names. We can convert these names into a <code>Date</code> variable.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>top_book_data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(top_book_data, <span class="at">.id =</span> <span class="st">"date"</span>)</span>
-<span id="cb25-2"><a href="#cb25-2"></a>top_book_data<span class="sc">$</span>date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(top_book_data<span class="sc">$</span>date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>top_book_data <span class="ot">&lt;-</span> </span>
+<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">lapply</span>(bestseller_lists, <span class="cf">function</span>(x) x[x<span class="sc">$</span>title <span class="sc">==</span> <span class="st">"FOURTH WING"</span>, ])</span>
+<span id="cb24-3"><a href="#cb24-3"></a>top_book_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$`2023-10-22`
+  rank rank_last_week weeks_on_list asterisk dagger primary_isbn10
+1    1              1            22        0      0     1649374046
+  primary_isbn13 publisher
+1  9781649374042 Red Tower
+                                                                                                                       description
+1 Violet Sorrengail is urged by the commanding general, who also is her mother, to become a candidate for the elite dragon riders.
+  price       title         author       contributor contributor_note
+1  0.00 FOURTH WING Rebecca Yarros by Rebecca Yarros                 
+                                                            book_image
+1 https://storage.googleapis.com/du-prd/books/images/9781649374042.jpg
+  book_image_width book_image_height
+1              309               500
+                                    amazon_product_url age_group
+1 https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20          
+  book_review_link first_chapter_link sunday_review_link article_chapter_link
+1                                                                            
+                                                                                                       isbns
+1 1649374046, 1649374089, 1705085059, 1705085032, 9781649374042, 9781649374080, 9781705085059, 9781705085035
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          buy_links
+1 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20, https://goto.applebooks.apple/9781649374042?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781649374042, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FFOURTH%2BWING%2FRebecca%2BYarros%2F9781649374042, https://bookshop.org/a/3546/9781649374042, https://www.indiebound.org/book/9781649374042?aff=NYT
+                                         book_uri
+1 nyt://book/106c2cf0-7d20-51b1-bad4-91c3ebcd131a
+
+$`2023-10-15`
+  rank rank_last_week weeks_on_list asterisk dagger primary_isbn10
+1    1              1            21        0      0     1649374046
+  primary_isbn13 publisher
+1  9781649374042 Red Tower
+                                                                                                                       description
+1 Violet Sorrengail is urged by the commanding general, who also is her mother, to become a candidate for the elite dragon riders.
+  price       title         author       contributor contributor_note
+1  0.00 FOURTH WING Rebecca Yarros by Rebecca Yarros                 
+                                                            book_image
+1 https://storage.googleapis.com/du-prd/books/images/9781649374042.jpg
+  book_image_width book_image_height
+1              309               500
+                                    amazon_product_url age_group
+1 https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20          
+  book_review_link first_chapter_link sunday_review_link article_chapter_link
+1                                                                            
+                                                                                                       isbns
+1 1649374046, 1649374089, 1705085059, 1705085032, 9781649374042, 9781649374080, 9781705085059, 9781705085035
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          buy_links
+1 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20, https://goto.applebooks.apple/9781649374042?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781649374042, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FFOURTH%2BWING%2FRebecca%2BYarros%2F9781649374042, https://bookshop.org/a/3546/9781649374042, https://www.indiebound.org/book/9781649374042?aff=NYT
+                                         book_uri
+1 nyt://book/106c2cf0-7d20-51b1-bad4-91c3ebcd131a
+
+$`2023-10-08`
+  rank rank_last_week weeks_on_list asterisk dagger primary_isbn10
+1    1              2            20        0      0     1649374046
+  primary_isbn13 publisher
+1  9781649374042 Red Tower
+                                                                                                                       description
+1 Violet Sorrengail is urged by the commanding general, who also is her mother, to become a candidate for the elite dragon riders.
+  price       title         author       contributor contributor_note
+1  0.00 FOURTH WING Rebecca Yarros by Rebecca Yarros                 
+                                                            book_image
+1 https://storage.googleapis.com/du-prd/books/images/9781649374042.jpg
+  book_image_width book_image_height
+1              309               500
+                                    amazon_product_url age_group
+1 https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20          
+  book_review_link first_chapter_link sunday_review_link article_chapter_link
+1                                                                            
+                                                                                                       isbns
+1 1649374046, 1649374089, 1705085059, 1705085032, 9781649374042, 9781649374080, 9781705085059, 9781705085035
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          buy_links
+1 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20, https://goto.applebooks.apple/9781649374042?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781649374042, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FFOURTH%2BWING%2FRebecca%2BYarros%2F9781649374042, https://bookshop.org/a/3546/9781649374042, https://www.indiebound.org/book/9781649374042?aff=NYT
+                                         book_uri
+1 nyt://book/106c2cf0-7d20-51b1-bad4-91c3ebcd131a
+
+$`2023-10-01`
+  rank rank_last_week weeks_on_list asterisk dagger primary_isbn10
+2    2              2            19        0      0     1649374046
+  primary_isbn13 publisher
+2  9781649374042 Red Tower
+                                                                                                                       description
+2 Violet Sorrengail is urged by the commanding general, who also is her mother, to become a candidate for the elite dragon riders.
+  price       title         author       contributor contributor_note
+2  0.00 FOURTH WING Rebecca Yarros by Rebecca Yarros                 
+                                                            book_image
+2 https://storage.googleapis.com/du-prd/books/images/9781649374042.jpg
+  book_image_width book_image_height
+2              309               500
+                                    amazon_product_url age_group
+2 https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20          
+  book_review_link first_chapter_link sunday_review_link article_chapter_link
+2                                                                            
+                                                                                                       isbns
+2 1649374046, 1649374089, 1705085059, 1705085032, 9781649374042, 9781649374080, 9781705085059, 9781705085035
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          buy_links
+2 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20, https://goto.applebooks.apple/9781649374042?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781649374042, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FFOURTH%2BWING%2FRebecca%2BYarros%2F9781649374042, https://bookshop.org/a/3546/9781649374042, https://www.indiebound.org/book/9781649374042?aff=NYT
+                                         book_uri
+2 nyt://book/106c2cf0-7d20-51b1-bad4-91c3ebcd131a
+
+$`2023-09-24`
+  rank rank_last_week weeks_on_list asterisk dagger primary_isbn10
+2    2              1            18        0      0     1649374046
+  primary_isbn13 publisher
+2  9781649374042 Red Tower
+                                                                                                                       description
+2 Violet Sorrengail is urged by the commanding general, who also is her mother, to become a candidate for the elite dragon riders.
+  price       title         author       contributor contributor_note
+2  0.00 FOURTH WING Rebecca Yarros by Rebecca Yarros                 
+                                                            book_image
+2 https://storage.googleapis.com/du-prd/books/images/9781649374042.jpg
+  book_image_width book_image_height
+2              309               500
+                                    amazon_product_url age_group
+2 https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20          
+  book_review_link first_chapter_link sunday_review_link article_chapter_link
+2                                                                            
+                                                                                                       isbns
+2 1649374046, 1649374089, 1705085059, 1705085032, 9781649374042, 9781649374080, 9781705085059, 9781705085035
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          buy_links
+2 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20, https://goto.applebooks.apple/9781649374042?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781649374042, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FFOURTH%2BWING%2FRebecca%2BYarros%2F9781649374042, https://bookshop.org/a/3546/9781649374042, https://www.indiebound.org/book/9781649374042?aff=NYT
+                                         book_uri
+2 nyt://book/106c2cf0-7d20-51b1-bad4-91c3ebcd131a
+
+$`2023-09-17`
+  rank rank_last_week weeks_on_list asterisk dagger primary_isbn10
+1    1              1            17        0      0     1649374046
+  primary_isbn13 publisher
+1  9781649374042 Red Tower
+                                                                                                                       description
+1 Violet Sorrengail is urged by the commanding general, who also is her mother, to become a candidate for the elite dragon riders.
+  price       title         author       contributor contributor_note
+1  0.00 FOURTH WING Rebecca Yarros by Rebecca Yarros                 
+                                                            book_image
+1 https://storage.googleapis.com/du-prd/books/images/9781649374042.jpg
+  book_image_width book_image_height
+1              309               500
+                                    amazon_product_url age_group
+1 https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20          
+  book_review_link first_chapter_link sunday_review_link article_chapter_link
+1                                                                            
+                                                                                                       isbns
+1 1649374046, 1649374089, 1705085059, 1705085032, 9781649374042, 9781649374080, 9781705085059, 9781705085035
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          buy_links
+1 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20, https://goto.applebooks.apple/9781649374042?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781649374042, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FFOURTH%2BWING%2FRebecca%2BYarros%2F9781649374042, https://bookshop.org/a/3546/9781649374042, https://www.indiebound.org/book/9781649374042?aff=NYT
+                                         book_uri
+1 nyt://book/106c2cf0-7d20-51b1-bad4-91c3ebcd131a
+
+$`2023-09-10`
+  rank rank_last_week weeks_on_list asterisk dagger primary_isbn10
+1    1              2            16        0      0     1649374046
+  primary_isbn13 publisher
+1  9781649374042 Red Tower
+                                                                                                                       description
+1 Violet Sorrengail is urged by the commanding general, who also is her mother, to become a candidate for the elite dragon riders.
+  price       title         author       contributor contributor_note
+1  0.00 FOURTH WING Rebecca Yarros by Rebecca Yarros                 
+                                                            book_image
+1 https://storage.googleapis.com/du-prd/books/images/9781649374042.jpg
+  book_image_width book_image_height
+1              309               500
+                                    amazon_product_url age_group
+1 https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20          
+  book_review_link first_chapter_link sunday_review_link article_chapter_link
+1                                                                            
+                                                                                                       isbns
+1 1649374046, 1649374089, 1705085059, 1705085032, 9781649374042, 9781649374080, 9781705085059, 9781705085035
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          buy_links
+1 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20, https://goto.applebooks.apple/9781649374042?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781649374042, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FFOURTH%2BWING%2FRebecca%2BYarros%2F9781649374042, https://bookshop.org/a/3546/9781649374042, https://www.indiebound.org/book/9781649374042?aff=NYT
+                                         book_uri
+1 nyt://book/106c2cf0-7d20-51b1-bad4-91c3ebcd131a
+
+$`2023-09-03`
+  rank rank_last_week weeks_on_list asterisk dagger primary_isbn10
+2    2              1            15        0      0     1649374046
+  primary_isbn13 publisher
+2  9781649374042 Red Tower
+                                                                                                                       description
+2 Violet Sorrengail is urged by the commanding general, who also is her mother, to become a candidate for the elite dragon riders.
+  price       title         author       contributor contributor_note
+2  0.00 FOURTH WING Rebecca Yarros by Rebecca Yarros                 
+                                                            book_image
+2 https://storage.googleapis.com/du-prd/books/images/9781649374042.jpg
+  book_image_width book_image_height
+2              309               500
+                                    amazon_product_url age_group
+2 https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20          
+  book_review_link first_chapter_link sunday_review_link article_chapter_link
+2                                                                            
+                                                                                                       isbns
+2 1649374046, 1649374089, 1705085059, 1705085032, 9781649374042, 9781649374080, 9781705085059, 9781705085035
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          buy_links
+2 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20, https://goto.applebooks.apple/9781649374042?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781649374042, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FFOURTH%2BWING%2FRebecca%2BYarros%2F9781649374042, https://bookshop.org/a/3546/9781649374042, https://www.indiebound.org/book/9781649374042?aff=NYT
+                                         book_uri
+2 nyt://book/106c2cf0-7d20-51b1-bad4-91c3ebcd131a
+
+$`2023-08-27`
+  rank rank_last_week weeks_on_list asterisk dagger primary_isbn10
+1    1              1            14        0      0     1649374046
+  primary_isbn13 publisher
+1  9781649374042 Red Tower
+                                                                                                                       description
+1 Violet Sorrengail is urged by the commanding general, who also is her mother, to become a candidate for the elite dragon riders.
+  price       title         author       contributor contributor_note
+1  0.00 FOURTH WING Rebecca Yarros by Rebecca Yarros                 
+                                                            book_image
+1 https://storage.googleapis.com/du-prd/books/images/9781649374042.jpg
+  book_image_width book_image_height
+1              309               500
+                                    amazon_product_url age_group
+1 https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20          
+  book_review_link first_chapter_link sunday_review_link article_chapter_link
+1                                                                            
+                                                                                                       isbns
+1 1649374046, 1649374089, 1705085059, 1705085032, 9781649374042, 9781649374080, 9781705085059, 9781705085035
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          buy_links
+1 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20, https://goto.applebooks.apple/9781649374042?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781649374042, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FFOURTH%2BWING%2FRebecca%2BYarros%2F9781649374042, https://bookshop.org/a/3546/9781649374042, https://www.indiebound.org/book/9781649374042?aff=NYT
+                                         book_uri
+1 nyt://book/106c2cf0-7d20-51b1-bad4-91c3ebcd131a
+
+$`2023-08-20`
+  rank rank_last_week weeks_on_list asterisk dagger primary_isbn10
+1    1              1            13        0      0     1649374046
+  primary_isbn13 publisher
+1  9781649374042 Red Tower
+                                                                                                                       description
+1 Violet Sorrengail is urged by the commanding general, who also is her mother, to become a candidate for the elite dragon riders.
+  price       title         author       contributor contributor_note
+1  0.00 FOURTH WING Rebecca Yarros by Rebecca Yarros                 
+                                                            book_image
+1 https://storage.googleapis.com/du-prd/books/images/9781649374042.jpg
+  book_image_width book_image_height
+1              309               500
+                                    amazon_product_url age_group
+1 https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20          
+  book_review_link first_chapter_link sunday_review_link article_chapter_link
+1                                                                            
+                                                                                                       isbns
+1 1649374046, 1649374089, 1705085059, 1705085032, 9781649374042, 9781649374080, 9781705085059, 9781705085035
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          buy_links
+1 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20, https://goto.applebooks.apple/9781649374042?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781649374042, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FFOURTH%2BWING%2FRebecca%2BYarros%2F9781649374042, https://bookshop.org/a/3546/9781649374042, https://www.indiebound.org/book/9781649374042?aff=NYT
+                                         book_uri
+1 nyt://book/106c2cf0-7d20-51b1-bad4-91c3ebcd131a
+
+$`2023-08-13`
+  rank rank_last_week weeks_on_list asterisk dagger primary_isbn10
+1    1              1            12        0      0     1649374046
+  primary_isbn13 publisher
+1  9781649374042 Red Tower
+                                                                                                                       description
+1 Violet Sorrengail is urged by the commanding general, who also is her mother, to become a candidate for the elite dragon riders.
+  price       title         author       contributor contributor_note
+1  0.00 FOURTH WING Rebecca Yarros by Rebecca Yarros                 
+                                                            book_image
+1 https://storage.googleapis.com/du-prd/books/images/9781649374042.jpg
+  book_image_width book_image_height
+1              309               500
+                                    amazon_product_url age_group
+1 https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20          
+  book_review_link first_chapter_link sunday_review_link article_chapter_link
+1                                                                            
+                                                                                                       isbns
+1 1649374046, 1649374089, 1705085059, 1705085032, 9781649374042, 9781649374080, 9781705085059, 9781705085035
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          buy_links
+1 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20, https://goto.applebooks.apple/9781649374042?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781649374042, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FFOURTH%2BWING%2FRebecca%2BYarros%2F9781649374042, https://bookshop.org/a/3546/9781649374042, https://www.indiebound.org/book/9781649374042?aff=NYT
+                                         book_uri
+1 nyt://book/106c2cf0-7d20-51b1-bad4-91c3ebcd131a
+
+$`2023-08-06`
+  rank rank_last_week weeks_on_list asterisk dagger primary_isbn10
+1    1              1            11        0      0     1649374046
+  primary_isbn13 publisher
+1  9781649374042 Red Tower
+                                                                                                                       description
+1 Violet Sorrengail is urged by the commanding general, who also is her mother, to become a candidate for the elite dragon riders.
+  price       title         author       contributor contributor_note
+1  0.00 FOURTH WING Rebecca Yarros by Rebecca Yarros                 
+                                                            book_image
+1 https://storage.googleapis.com/du-prd/books/images/9781649374042.jpg
+  book_image_width book_image_height
+1              309               500
+                                    amazon_product_url age_group
+1 https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20          
+  book_review_link first_chapter_link sunday_review_link article_chapter_link
+1                                                                            
+                                                                                                       isbns
+1 1649374046, 1649374089, 1705085059, 1705085032, 9781649374042, 9781649374080, 9781705085059, 9781705085035
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          buy_links
+1 Amazon, Apple Books, Barnes and Noble, Books-A-Million, Bookshop, IndieBound, https://www.amazon.com/dp/1649374046?tag=NYTBSREV-20, https://goto.applebooks.apple/9781649374042?at=10lIEQ, https://www.anrdoezrs.net/click-7990613-11819508?url=https%3A%2F%2Fwww.barnesandnoble.com%2Fw%2F%3Fean%3D9781649374042, https://www.anrdoezrs.net/click-7990613-35140?url=https%3A%2F%2Fwww.booksamillion.com%2Fp%2FFOURTH%2BWING%2FRebecca%2BYarros%2F9781649374042, https://bookshop.org/a/3546/9781649374042, https://www.indiebound.org/book/9781649374042?aff=NYT
+                                         book_uri
+1 nyt://book/106c2cf0-7d20-51b1-bad4-91c3ebcd131a</code></pre>
 </div>
 </div>
 </section>
 <section id="looping-through-many-data-files-2" class="slide level2">
 <h2>Looping through many data files</h2>
+<p>We can use the <code>bind_rows()</code> to create a data frame combining all the entries in this list. The <code>.id</code> argument creates a column from the list’s names. We can convert these names into a <code>Date</code> variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb26-2"><a href="#cb26-2"></a><span class="fu">ggplot</span>(top_book_data, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> rank)) <span class="sc">+</span> </span>
-<span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb26-4"><a href="#cb26-4"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">trans =</span> <span class="st">"reverse"</span>) <span class="sc">+</span></span>
-<span id="cb26-5"><a href="#cb26-5"></a>  <span class="fu">xlab</span>(<span class="st">"Date"</span>) <span class="sc">+</span></span>
-<span id="cb26-6"><a href="#cb26-6"></a>  <span class="fu">ylab</span>(<span class="st">"Rank"</span>) <span class="sc">+</span></span>
-<span id="cb26-7"><a href="#cb26-7"></a>  <span class="fu">ggtitle</span>(<span class="fu">paste0</span>(<span class="st">"NYT Best Seller Rank of "</span>, top_book_data<span class="sc">$</span>title[<span class="dv">1</span>])) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>top_book_data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(top_book_data, <span class="at">.id =</span> <span class="st">"date"</span>)</span>
+<span id="cb26-2"><a href="#cb26-2"></a>top_book_data<span class="sc">$</span>date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(top_book_data<span class="sc">$</span>date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="looping-through-many-data-files-3" class="slide level2">
+<h2>Looping through many data files</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="fu">ggplot</span>(top_book_data, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> rank)) <span class="sc">+</span> </span>
+<span id="cb27-3"><a href="#cb27-3"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb27-4"><a href="#cb27-4"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">trans =</span> <span class="st">"reverse"</span>) <span class="sc">+</span></span>
+<span id="cb27-5"><a href="#cb27-5"></a>  <span class="fu">xlab</span>(<span class="st">"Date"</span>) <span class="sc">+</span></span>
+<span id="cb27-6"><a href="#cb27-6"></a>  <span class="fu">ylab</span>(<span class="st">"Rank"</span>) <span class="sc">+</span></span>
+<span id="cb27-7"><a href="#cb27-7"></a>  <span class="fu">ggtitle</span>(<span class="fu">paste0</span>(<span class="st">"NYT Best Seller Rank of "</span>, top_book_data<span class="sc">$</span>title[<span class="dv">1</span>])) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="17_data-analysis-functions_files/figure-revealjs/unnamed-chunk-19-1.png" width="960" class="r-stretch"></section>
-<section id="looping-through-many-data-files-3" class="slide level2">
+<section id="looping-through-many-data-files-4" class="slide level2">
 <h2>Looping through many data files</h2>
 <p>We can also pull the top 5 books from each list:</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>top_5s <span class="ot">&lt;-</span> <span class="fu">lapply</span>(bestseller_lists, <span class="cf">function</span>(x) x[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, ])</span>
+<span id="cb28-2"><a href="#cb28-2"></a>top_5s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$`2023-10-22`
   rank rank_last_week weeks_on_list asterisk dagger primary_isbn10
@@ -1828,30 +2124,30 @@ $`2023-08-06`
 <h2>Updating results for new data</h2>
 <p>Finally, we can combine some of these functions into a larger function that we can run every week to update our results.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>download_data <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb28-2"><a href="#cb28-2"></a>  <span class="co"># automatically pull today's date</span></span>
-<span id="cb28-3"><a href="#cb28-3"></a>  dates <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">Sys.Date</span>(), <span class="at">by =</span> <span class="sc">-</span><span class="dv">7</span>, <span class="at">length.out =</span> <span class="dv">12</span>)</span>
-<span id="cb28-4"><a href="#cb28-4"></a>  bestseller_lists <span class="ot">&lt;-</span> <span class="fu">lapply</span>(</span>
-<span id="cb28-5"><a href="#cb28-5"></a>    dates,</span>
-<span id="cb28-6"><a href="#cb28-6"></a>    <span class="cf">function</span>(x) {</span>
-<span id="cb28-7"><a href="#cb28-7"></a>      <span class="co"># slow down execution by waiting 12 seconds</span></span>
-<span id="cb28-8"><a href="#cb28-8"></a>      <span class="fu">Sys.sleep</span>(<span class="dv">12</span>)</span>
-<span id="cb28-9"><a href="#cb28-9"></a>      jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>(</span>
-<span id="cb28-10"><a href="#cb28-10"></a>        <span class="fu">paste0</span>(</span>
-<span id="cb28-11"><a href="#cb28-11"></a>          <span class="st">"https://api.nytimes.com/svc/books/v3/lists/"</span>,</span>
-<span id="cb28-12"><a href="#cb28-12"></a>          x,</span>
-<span id="cb28-13"><a href="#cb28-13"></a>          <span class="st">"/hardcover-fiction.json?api-key="</span>,</span>
-<span id="cb28-14"><a href="#cb28-14"></a>          api_key</span>
-<span id="cb28-15"><a href="#cb28-15"></a>        )</span>
-<span id="cb28-16"><a href="#cb28-16"></a>      )<span class="sc">$</span>results<span class="sc">$</span>books</span>
-<span id="cb28-17"><a href="#cb28-17"></a>    }</span>
-<span id="cb28-18"><a href="#cb28-18"></a>  )</span>
-<span id="cb28-19"><a href="#cb28-19"></a>  <span class="fu">names</span>(bestseller_lists) <span class="ot">&lt;-</span> dates</span>
-<span id="cb28-20"><a href="#cb28-20"></a>  <span class="fu">return</span>(bestseller_lists)</span>
-<span id="cb28-21"><a href="#cb28-21"></a>}</span>
-<span id="cb28-22"><a href="#cb28-22"></a>generate_plot <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb28-23"><a href="#cb28-23"></a>  <span class="co"># Add code here . . .</span></span>
-<span id="cb28-24"><a href="#cb28-24"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>download_data <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb30-2"><a href="#cb30-2"></a>  <span class="co"># automatically pull today's date</span></span>
+<span id="cb30-3"><a href="#cb30-3"></a>  dates <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">Sys.Date</span>(), <span class="at">by =</span> <span class="sc">-</span><span class="dv">7</span>, <span class="at">length.out =</span> <span class="dv">12</span>)</span>
+<span id="cb30-4"><a href="#cb30-4"></a>  bestseller_lists <span class="ot">&lt;-</span> <span class="fu">lapply</span>(</span>
+<span id="cb30-5"><a href="#cb30-5"></a>    dates,</span>
+<span id="cb30-6"><a href="#cb30-6"></a>    <span class="cf">function</span>(x) {</span>
+<span id="cb30-7"><a href="#cb30-7"></a>      <span class="co"># slow down execution by waiting 12 seconds</span></span>
+<span id="cb30-8"><a href="#cb30-8"></a>      <span class="fu">Sys.sleep</span>(<span class="dv">12</span>)</span>
+<span id="cb30-9"><a href="#cb30-9"></a>      jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>(</span>
+<span id="cb30-10"><a href="#cb30-10"></a>        <span class="fu">paste0</span>(</span>
+<span id="cb30-11"><a href="#cb30-11"></a>          <span class="st">"https://api.nytimes.com/svc/books/v3/lists/"</span>,</span>
+<span id="cb30-12"><a href="#cb30-12"></a>          x,</span>
+<span id="cb30-13"><a href="#cb30-13"></a>          <span class="st">"/hardcover-fiction.json?api-key="</span>,</span>
+<span id="cb30-14"><a href="#cb30-14"></a>          api_key</span>
+<span id="cb30-15"><a href="#cb30-15"></a>        )</span>
+<span id="cb30-16"><a href="#cb30-16"></a>      )<span class="sc">$</span>results<span class="sc">$</span>books</span>
+<span id="cb30-17"><a href="#cb30-17"></a>    }</span>
+<span id="cb30-18"><a href="#cb30-18"></a>  )</span>
+<span id="cb30-19"><a href="#cb30-19"></a>  <span class="fu">names</span>(bestseller_lists) <span class="ot">&lt;-</span> dates</span>
+<span id="cb30-20"><a href="#cb30-20"></a>  <span class="fu">return</span>(bestseller_lists)</span>
+<span id="cb30-21"><a href="#cb30-21"></a>}</span>
+<span id="cb30-22"><a href="#cb30-22"></a>generate_plot <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb30-23"><a href="#cb30-23"></a>  <span class="co"># Add code here . . .</span></span>
+<span id="cb30-24"><a href="#cb30-24"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 <div class="footer footer-default">

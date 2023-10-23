@@ -122,7 +122,7 @@ for (i in unique(penguins$species)) {
   current_data <- penguins[penguins$species == i,]
   species_mean_mass <- mean(current_data$body_mass_g, na.rm = T)
   penguins$centered_mass[penguins$species == i] <- 
-    current_data$body_mass_g - current_data$body_mass_g
+    current_data$body_mass_g - species_mean_mass
 }
 ```
 
@@ -213,7 +213,7 @@ unlist(lapply(l, length))
 
 ## `vapply()`
 
-There are many other variants of `lapply()`, including `mapply()`, `sapply()`, and `vapply()`. The only one we will cover today is `vapply()`, which returns a vector or matrix instead of a list. When we use `vapply()`, we specify an additional parameter, `FUN.VALUE` which specifies a templaet for the return value from `FUN`.
+There are many other variants of `lapply()`, including `mapply()`, `sapply()`, and `vapply()`. The only one we will cover today is `vapply()`, which returns a vector or matrix instead of a list. When we use `vapply()`, we specify an additional parameter, `FUN.VALUE` which specifies a template for the return value from `FUN`.
 
 ```{r}
 #| echo: TRUE
@@ -243,7 +243,6 @@ To use the New York Times API, we need to:
 APIs provide endpoints, which are addresses from which we can obtain the relevant data.
 
 ![](images/bestsellers-api-info.png)
-
 
 ## API rate limits
 
@@ -278,6 +277,7 @@ current_list |>
   kableExtra::kable_styling("striped", full_width = T) |> 
   kableExtra::scroll_box(height = "360px")
 ```
+
 ## Downloading the past three months' data
 
 ```{r download.data}
@@ -327,16 +327,18 @@ vapply(bestseller_lists, function(x) x$title[1], character(1))
 
 Suppose we wish to see the performance of the current #1 book over the last 12 weeks:
 
-
 ```{r}
 #| echo: TRUE
 #| eval: TRUE
-top_book_data <- lapply(bestseller_lists, function(x) x[x$title == "FOURTH WING", ])
+top_book_data <- 
+  lapply(bestseller_lists, function(x) x[x$title == "FOURTH WING", ])
+top_book_data
 ```
 
-. . .
+## Looping through many data files
 
 We can use the `bind_rows()` to create a data frame combining all the entries in this list. The `.id` argument creates a column from the list's names. We can convert these names into a `Date` variable.
+
 ```{r}
 #| echo: TRUE
 #| eval: TRUE
@@ -363,10 +365,11 @@ ggplot(top_book_data, aes(x = date, y = rank)) +
 We can also pull the top 5 books from each list:
 
 ```{r}
+#| echo: TRUE
+#| eval: TRUE
 top_5s <- lapply(bestseller_lists, function(x) x[1:5, ])
 top_5s
 ```
-
 
 ## Updating results for new data
 
