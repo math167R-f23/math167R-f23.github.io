@@ -30,7 +30,7 @@ Suppose $X_i\sim \mathrm{N}(0, 1)$ for $1\leq i\leq n$, for some $n$.
 
 In this part, you will simulate a one-dimensional random walk. Suppose you are at the point $x$ at time $t$. At time $t+1$, the probability of moving forwards to $x+1$ is $p$ and the chance of moving backwards to $x-1$ is $1-p$. Assume that at time $t=1$, you are at $x_1=0$.
 
-3. Write a function `random_walk()` that takes as input a numeric $n_steps$ and a numeric $p$ and simulates $n_steps$ steps of the one-dimensional random walk with forward probability $p$. You may have other input arguments if desired. The output should be a length vector of length $n_steps$ starting with 0 where the $i$th entry represents the location of the random walker at time $t=i$. For example, `random_walk(5, .5)` may return the vector $(0, 1, 2, 1, 2)$. 
+3. Write a function `random_walk()` that takes as input a numeric $n_steps$ and a numeric $p$ and simulates `n_steps` steps of the one-dimensional random walk with forward probability $p$. You may have other input arguments if desired. The output should be a length vector of length `n_steps` starting with 0 where the $i$th entry represents the location of the random walker at time $t=i$. For example, `random_walk(5, .5)` may return the vector $(0, 1, 2, 1, 2)$. 
 
 4. Use your function to generate a random walk of 500 steps with probability $.6$ and generate a line graph with $t=0,1,\ldots, 100$ on the x-axis and $x_0,\ldots, x_{100}$ on the y-axis.
 
