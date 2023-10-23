@@ -1,5 +1,5 @@
 ---
-title: "MATH167R: Simulations"
+title: "MATH167R: Sampling distributions"
 author: "Peter Gao"
 format: 
   revealjs:
@@ -9,397 +9,217 @@ editor: visual
 
 ## Overview of today
 
-- Random walks continued
-- Gambler's ruin
--   Permutation tests
--   Timing code
+-   Sampling distributions
+-   Bootstrap distributions
 
-## Warm up: Estimating $\pi$
+## Sampling distributions
 
-The area of a radius 1 circle is $\pi$. How could we use simulation to estimate $\pi$?
+Without explicitly saying so, we have been simulating sampling distributions during our simulations.
 
-```{r random_points}
-#| echo: TRUE
-#| eval: TRUE
-#| cache: TRUE
-#| message: FALSE
-#| warning: FALSE
-library(tidyverse)
-random_points <- data.frame(x = runif(100000, -1, 1),
-                            y = runif(100000, -1, 1))
-random_points |> summarize(pi_est = 4 * mean(x^2 + y^2 <= 1))
-```
+Recall: A sampling distribution is the probability distribution of a sample-based statistic.
 
-## Random walks continued
+Example: If $X_1,\ldots, X_{100}$ are iid random variables with variance $1$, what is the distribution of the sample mean $\overline{X}$?
 
-Recall the following code for a one-dimensional random walk:
+## Simulating a sampling distribution
 
-```{r random_walk_functional}
-#| echo: TRUE
-#| eval: TRUE
-#| cache: TRUE
-take_step <- function() {
-  return(sample(c(1, -1), 1))
-}
-walk_randomly <- function(start, n_steps) {
-  if (n_steps <= 1) {
-    return(start)
-  }
-  x <- c(start, walk_randomly(start + take_step(), n_steps - 1))
-  return(x)
-}
-plot(1:100, walk_randomly(0, 100), type = "l",
-     xlab = "Step", ylab = "x",
-     main = "A one-dimensional random walk")
-```
+Example simulation: Suppose $X_1,\ldots, X_{100}\sim N(0,1)$.
 
-## Random walks continued
-
-We can use this simulation code to learn a number of things about random walks:
-
-
-
-We have already seen a number of functions for generating random variables such as `sample()` and `rnorm()`. 
-
-Today, we will expand on these functions and related functions for studying random variables and begin using them to write various simulations.
-
-## The `r`, `p`, `d`, and `q` functions
-
-1.  `rnorm()` can be used to generate `n` random observations from a normal distribution:
-
-```{r}
-#| echo: TRUE
-#| eval: TRUE
-rnorm(n = 1, mean = 0, sd = 1)
-```
-
-2.  `pnorm()` can be used to compute the distribution function at a value `q`:
-
-```{r}
-#| echo: TRUE
-#| eval: TRUE
-pnorm(q = 1, mean = 0, sd = 1)
-```
-
-3.  `qnorm()` can be used to compute the quantile function at a percentile `p`:
-
-```{r}
-#| echo: TRUE
-#| eval: TRUE
-qnorm(p = .75, mean = 0, sd = 1)
-```
-
-4.  `dnorm()` can be used to compute the density function at a value `x`:
-
-```{r}
-#| echo: TRUE
-#| eval: TRUE
-dnorm(x = .5, mean = 0, sd = 1)
-```
-
-## Exercise
-
-Suppose we perform a two-sided hypothesis test using a normal distribution and obtain a z-score of 1.24. How would we compute the p-value?
-
-. . .
-
-```{r}
-#| echo: TRUE
-#| eval: TRUE
-2 * (1 - pnorm(q = 1.24, mean = 0, sd = 1))
-```
-
-. . .
-
-Suppose we perform a two-sided hypothesis test using a normal distribution and obtain a z-score of -2.12. How would we compute the p-value?
-
-. . .
-
-```{r}
-#| echo: TRUE
-#| eval: TRUE
-2 * pnorm(q = 2.12, mean = 0, sd = 1)
-```
-
-## Random seeds
-
-Remember that `set.seed()` can be used to ensure that you obtain the same results each time you run your code.
-
-For example, if you include the command `x <- rnorm(1)` in an .Rmd document with running `set.seed()`, each time you knit, you will produce a different value of `x`.
-
-```{r}
-#| echo: TRUE
-#| eval: TRUE
-set.seed(1022)
-rnorm(n = 1, mean = 0, sd = 1)
-```
-
-
-
-## Monte Carlo methods
-
-Monte Carlo methods or Monte Carlo experiments use repeated random sampling to obtain numerical results or to approximate quantities of interest.
-
-Monte Carlo experiments are often used to:
-
-* approximate integrals
-* generate draws from a probability distribution
-* optimize functions stochastically
-
-## Example: Transformations of random variables
-
-Suppose $X\sim N(0, 1)$. What is $E(e^X)$?
-
-We could use the change of variable formula to compute the expectation. Or we could use simulation to approximate this quantity. Asymptotic analysis is needed to study the convergence of our approximation.
-
-```{r}
-#| echo: TRUE
-#| eval: TRUE
-#| error: TRUE
-n_sim <- 1000
-n <- 100
-exp_X <- numeric(n_sim)
-for (i in 1:n_sim) {
-  exp_X[i] <- exp(rnorm(n))
-}
-mean(exp_X)
-```
-
-## Example: Maximum of random variables
-
-Suppose $X_i\sim \mathrm{Exponential}(1)$ for $1\leq i\leq n$, for some $n$. 
-
-* What is $E(\mathrm{max}(X_1,\ldots, X_n))?$ 
-* How does $E(\mathrm{max}(X_1,\ldots, X_n))$ change for different values of $n$?
-
-```{r}
-#| echo: TRUE
-#| eval: TRUE
-set.seed(1022)
-n_sim <- 1000
-n <- 10
-maxes <- numeric(n_sim)
-for (i in 1:n_sim) {
-  maxes[i] <- max(rexp(n, rate = 1))
-}
-mean(maxes)
-```
-
-. . .
-
-What about for $n=100$? Should the expected maximum be larger or smaller?
-
-## Example: Maximum of random variables
-
-```{r}
-#| echo: TRUE
-#| eval: TRUE
-n_sim <- 1000
-n <- 100
-maxes <- numeric(n_sim)
-for (i in 1:n_sim) {
-  maxes[i] <- max(rexp(n, rate = 1))
-}
-mean(maxes)
-```
-
-## `replicate()` for repeated evaluation
-
-In the previous code, we have been using `for` loops, which explicitly and repeatedly change global variables.
-
-We can alternatively use the `replicate()` function to repeatedly evaluate an expression and in particular to repeatedly generate data. The data will be automatically organized into a matrix or vector.
-
-## `replicate()` for repeated evaluation
-
-For example, we can generate `n` exponential random variables and take their maximum:
-
-```{r}
-#| echo: TRUE
-#| eval: TRUE
-replicate(10, rexp(10)) # matrix output
-replicate(10, max(rexp(10))) # vector output
-```
-
-. . .
-
-Using `replicate()`, the previous simulation is just
-
-```{r}
-#| echo: TRUE
-#| eval: TRUE
-maxes <- replicate(1000, max(rexp(n)))
-mean(maxes)
-```
-
-## Example: Maximum of random variables
-
-We can repeat this for many different values of `n`. 
-```{r declarative.sim}
-#| echo: TRUE
-#| eval: TRUE
-#| cache: TRUE
-n_sim <- 1000
-n_values <- c(10, 25, 50, 100, 250, 500, 1000)
-max_by_n <- c()
-for (n in n_values) {
-  maxes <- numeric(n_sim)
-  for (i in 1:n_sim) {
-    maxes[i] <- max(rexp(n, rate = 1))
-  }
-  max_by_n <- c(max_by_n, mean(maxes))
-}
-max_by_n
-```
-
-## Example: Maximum of random variables
-
-Note that we can write the maximum of exponentials simulation using `replicate()`:
-
-```{r functional.sim}
-#| echo: TRUE
-#| eval: TRUE
-#| cache: TRUE
-max_by_n <- vapply(
-  n_values, 
-  function(n) mean(replicate(n_sim, max(rexp(n, rate = 1)))), 
-  numeric(1)
-)
-max_by_n
-```
-
-## Example: Maximum of random variables
-
-It turns out that $\mathrm{max}(X_1,\ldots, X_n)$ can be modeled using a Gumbel distribution (after being transformed). Below, we plot the empirical mean and approximate the theoretical expectation (for large $n$).
-
-```{r plot_results}
-#| echo: TRUE
-#| eval: TRUE
-#| cache: TRUE
-plot(n_values, max_by_n,
-     type = "l",
-     xlab = "n", ylab = "Maximum",
-     main = paste0("Sample mean of maximums (black)",
-                   "and theoretical expectation (red)"))
-lines(n_values, -digamma(1) + log(n_values), col = "red")
-```
-
-## Random walks
-
-Random walks are stochastic processes that describe a sequence of random steps on some space.
-
-A simple example is the one-dimensional random walk on the integer number line which starts at 0 and for each step, moves forward (+1) or backward (-1) with equal probability.
-
-
-## Random walks
-
-We can easily simulate a one-dimensional random walk:
-
-```{r random_walk}
+```{r sample_mean}
 #| echo: TRUE
 #| eval: TRUE
 #| cache: TRUE
 set.seed(123)
-n_steps <- 100
-x <- numeric(n_steps)
-x[1] <- 0
-for (i in 2:n_steps) {
-  x[i] <- x[i - 1] + sample(c(1, -1), 1)
-}
+Xbar <- replicate(10000, mean(rnorm(100)))
+hist(Xbar, main = "Sampling distribution of mean of 100 N(0, 1) variables")
 ```
 
-. . .
-We can then plot our results
+## Simulating a sampling distribution
 
-```{r random_walk_plot}
+What if $X_1,\ldots, X_{100}\sim \mathrm{Exp}(1)$?
+
+```{r sample_mean_exp}
 #| echo: TRUE
 #| eval: TRUE
 #| cache: TRUE
-plot(1:n_steps, x, type = "l",
-     xlab = "Step", ylab = "x",
-     main = "A one-dimensional random walk")
+set.seed(123)
+Xbar <- replicate(10000, mean(rexp(100, rate = 1)))
+hist(Xbar, main = "Sampling distribution of mean of 100 Exponential(1) variables")
 ```
 
-## A more functional version with recursion
+## Simulating a sampling distribution
 
-We can also adopt a more functional approach:
+What if $X_1,\ldots, X_{100}\sim \mathrm{Poisson}(1)$?
 
-```{r random_walk_functional}
+```{r sample_mean_pois}
 #| echo: TRUE
 #| eval: TRUE
 #| cache: TRUE
-take_step <- function() {
-  return(sample(c(1, -1), 1))
-}
-walk_randomly <- function(start, n_steps) {
-  if (n_steps <= 1) {
-    return(start)
-  }
-  x <- c(start, walk_randomly(start + take_step(), n_steps - 1))
-  return(x)
-}
-plot(1:100, walk_randomly(0, 100), type = "l",
-     xlab = "Step", ylab = "x",
-     main = "A one-dimensional random walk")
+set.seed(123)
+Xbar <- replicate(10000, mean(rpois(100, lambda = 1)))
+hist(Xbar, main = "Sampling distribution of mean of 100 Poisson(1) variables")
 ```
 
+## Simulating a sampling distribution
 
-## A two-dimensional random walk
+By the central limit theorem, all of these sampling distributions are asymptotically Gaussian with variance 1 (though the mean values differ between the three). Since $n=100$ is fairly large (for these examples), all of the previous examples are close to Gaussian.
 
-A two-dimensional random walk takes place on the integer grid, where at each step, we can either walk north, south, east, or west.
+What about if $n$ is smaller? Or if we consider other distributions?
 
-```{r 2d_random_walk_functional}
+Simulation is a powerful strategy for testing out methods:
+
+-   Suppose you wish to know... is $n$ large?
+-   Create a simulation that generates data that looks like your real world data.
+-   Evaluate whether the results are reasonable/accurate using simulated data.
+
+## Smaller sample sizes
+
+```{r smaller_sample}
 #| echo: TRUE
 #| eval: TRUE
 #| cache: TRUE
-take_step_2d <- function() {
-  steps <- rbind(c(0, 1),
-                 c(0, -1), 
-                 c(1, 0),
-                 c(-1, 0))
-  return(steps[sample(1:4, 1), ])
-}
-walk_randomly_2d <- function(start, n_steps) {
-  if (n_steps <= 1) {
-    return(start)
-  }
-  x <- rbind(start, walk_randomly_2d(start + take_step_2d(), n_steps - 1))
-  rownames(x) <- NULL
-  return(x)
-}
-n_steps <- 100
-coords <- walk_randomly_2d(c(0, 0), n_steps)
-coords
+set.seed(123)
+Xbar_normal <- replicate(10000, mean(rnorm(10)))
+Xbar_exp <- replicate(10000, mean(rexp(10, rate = 1)))
+Xbar_poisson <- replicate(10000, mean(rpois(10, lambda = 1)))
+par(mfrow = c(1, 3))
+hist(Xbar_normal, main = "N(0, 1)")
+hist(Xbar_exp, main = "Exp(1)")
+hist(Xbar_poisson, main = "Poisson(1)")
 ```
 
-## A two-dimensional random walk
+## Other statistics
 
-We can use `geom_path()` to illustrate the path taken by the random walker:
+What if we want the sampling distribution of the maximum? For each of these population models, the sampling distribution of the maximum is different.
 
-```{r 2d_random_walk_functional_plot}
+```{r max_sampling_dist}
+#| echo: TRUE
+#| eval: TRUE
+#| cache: TRUE
+set.seed(123)
+Xmax_normal <- replicate(10000, max(rnorm(10)))
+Xmax_exp <- replicate(10000, max(rexp(10, rate = 1)))
+Xmax_poisson <- replicate(10000, max(rpois(10, lambda = 1)))
+par(mfrow = c(1, 3))
+hist(Xmax_normal, main = "N(0, 1)")
+hist(Xmax_exp, main = "Exp(1)")
+hist(Xmax_poisson, main = "Poisson(1)")
+```
+
+## Transformations
+
+We can easily simulate sampling distributions for statistics summarizing the distribution of random variables that are defined as transformations of other random variables.
+
+```{r mean_transformed}
+#| echo: TRUE
+#| eval: TRUE
+#| cache: TRUE
+set.seed(123)
+Xbar_normal <- replicate(10000, mean(rnorm(10) ^ 2))
+Xbar_exp <- replicate(10000, mean(rexp(10, rate = 1) ^ 2))
+Xbar_poisson <- replicate(10000, mean(rpois(10, lambda = 1) ^ 2))
+par(mfrow = c(1, 3))
+hist(Xbar_normal, main = "N(0, 1) squared")
+hist(Xbar_exp, main = "Exp(1) squared")
+hist(Xbar_poisson, main = "Poisson(1) squared")
+```
+
+## Exercise
+
+-   Write code to create a histogram of the sampling distribution of the sample mean $\overline{Y}$ of $Y_1,\ldots, Y_{10}$ where $Y_i=\sin(X_i)$ and $X_1,\ldots, X_{10}$ are iid Uniform(0, 1) random variables.
+
+## Resampling methods
+
+The previous simulations are all based on parametric models (normal, exponential, Poisson). However, we can also simulate sampling distributions without parametric assumptions on the data generating mechanism.
+
+Suppose we know $X_1,\ldots, X_{20}\sim \mathrm{Exp}(1)$. The sampling distribution can be simulated as follows:
+
+```{r exp_samp_dist}
+#| echo: TRUE
+#| eval: TRUE
+#| cache: TRUE
+set.seed(123)
+Xbar_exp <- replicate(10000, mean(rexp(20, rate = 1)))
+hist(Xbar_exp)
+```
+
+## Resampling methods
+
+What if we observe $X_1,\ldots, X_{20}$, but we don't know that $X_i$ is exponentially distributed? We could just try the normal approximation to approximate the sampling distribution:
+
+```{r exp_samp_dist_2, fig.height = 4, fig.width = 5}
+#| echo: TRUE
+#| eval: TRUE
+#| cache: TRUE
+X <- rexp(20, rate = 1)
+x_axis <- seq(0, 3, length.out = 1000)
+
+# plot "true" simulated sampling distribution
+hist(Xbar_exp, freq = F, ylim = c(0, 3))
+
+# plot normal theory
+lines(x_axis, dnorm(x_axis, mean = mean(X), sd = sd(X) / sqrt(20)), col = 'red')
+```
+
+## Bootstrap samples
+
+Bootstrapping is a resampling method that uses random samples with replacement from the sample data to approximate the sampling distribution of sample-based statistics.
+
+```{r exp_samp_dist_3}
+#| echo: TRUE
+#| eval: TRUE
+#| cache: TRUE
+print(sort(X))
+# sample with replacement from X
+X_resample <- sample(X, size = 20, replace = TRUE)
+print(sort(X_resample))
+```
+
+## Bootstrap samples
+
+We can repeatedly resample from $X$, then compute the resample sample means and plot the distribution:
+
+```{r exp_samp_dist_4}
+#| echo: TRUE
+#| eval: TRUE
+#| cache: TRUE
+bootstrap_Xbar <- replicate(10000, mean(sample(X, size = 20, replace = TRUE)))
+hist(bootstrap_Xbar)
+```
+
+## Bootstrap samples
+
+We can compare the bootstrap sampling distributions and true sampling distributions. In this case, the bootstrap does not seem that different from the normal approximation.
+
+```{r exp_samp_dist_5}
 #| echo: TRUE
 #| eval: TRUE
 #| cache: TRUE
 library(ggplot2)
-coords_dat <- data.frame(x = coords[, 1],
-                         y = coords[, 2],
-                         step = 1:n_steps)
-ggplot(coords_dat, aes(x = x, y = y, color = step)) + geom_path()
+plot_dat <-
+  data.frame(Xbar = c(Xbar_exp, bootstrap_Xbar),
+             source = rep(c("Parametric (Exp)", "Bootstrap"), each = 10000))
+ggplot(plot_dat, aes(x = Xbar, color = source)) +
+  geom_density() +
+  geom_function(fun = dnorm, 
+                args = list(mean = mean(X), sd = sd(X) / sqrt(20)),
+                aes(color = "Parametric (Normal)")) 
 ```
-```{r}
-knitr::knit_exit()
-```
 
-## A two-dimensional random walk
+## Bootstrap confidence intervals
 
-We can use the `gganimate` package to animate our visualization:
+We can take appropriate quantiles of the bootstrap samples to construct a bootstrap confidence interval using the `quantile()` function:
 
-```{r 2d_random_walk_functional_anim}
+```{r exp_samp_dist_6}
 #| echo: TRUE
 #| eval: TRUE
 #| cache: TRUE
-library(gganimate)
-anim_walk <- ggplot(coords_dat, aes(x = x, y = y, color = step)) +
-  geom_path() +
-  transition_reveal(along = step)
-animate(anim_walk)
+quantile(bootstrap_Xbar, probs = c(.025, .975))
 ```
+
+## Why bootstrap?
+
+In this case, inference based on bootstrapping does not seem better than the normal approximation based on the central limit theorem.
+
+However, for many cases, we may not have a simple parametric approximation to the true sampling distribution. For example, suppose we wish to compute the sampling distribution of the sample median.
+
+Note however that the bootstrap may not work well for all statistics, such as the minimum (why not?).

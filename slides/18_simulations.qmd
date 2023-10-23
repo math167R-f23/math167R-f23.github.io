@@ -16,7 +16,7 @@ editor: visual
 
 ## Random variables in R
 
-We have already seen a number of functions for generating random variables such as `sample()` and `rnorm()`. 
+We have already seen a number of functions for generating random variables such as `sample()` and `rnorm()`.
 
 Today, we will expand on these functions and related functions for studying random variables and begin using them to write various simulations.
 
@@ -91,17 +91,15 @@ set.seed(1022)
 rnorm(n = 1, mean = 0, sd = 1)
 ```
 
-
-
 ## Monte Carlo methods
 
 Monte Carlo methods or Monte Carlo experiments use repeated random sampling to obtain numerical results or to approximate quantities of interest.
 
 Monte Carlo experiments are often used to:
 
-* approximate integrals
-* generate draws from a probability distribution
-* optimize functions stochastically
+-   approximate integrals
+-   generate draws from a probability distribution
+-   optimize functions stochastically
 
 ## Example: Transformations of random variables
 
@@ -124,10 +122,10 @@ mean(exp_X)
 
 ## Example: Maximum of random variables
 
-Suppose $X_i\sim \mathrm{Exponential}(1)$ for $1\leq i\leq n$, for some $n$. 
+Suppose $X_i\sim \mathrm{Exponential}(1)$ for $1\leq i\leq n$, for some $n$.
 
-* What is $E(\mathrm{max}(X_1,\ldots, X_n))?$ 
-* How does $E(\mathrm{max}(X_1,\ldots, X_n))$ change for different values of $n$?
+-   What is $E(\mathrm{max}(X_1,\ldots, X_n))?$
+-   How does $E(\mathrm{max}(X_1,\ldots, X_n))$ change for different values of $n$?
 
 ```{r}
 #| echo: TRUE
@@ -190,7 +188,8 @@ mean(maxes)
 
 ## Example: Maximum of random variables
 
-We can repeat this for many different values of `n`. 
+We can repeat this for many different values of `n`.
+
 ```{r declarative.sim}
 #| echo: TRUE
 #| eval: TRUE
@@ -246,7 +245,6 @@ Random walks are stochastic processes that describe a sequence of random steps o
 
 A simple example is the one-dimensional random walk on the integer number line which starts at 0 and for each step, moves forward (+1) or backward (-1) with equal probability.
 
-
 ## Random walks
 
 We can easily simulate a one-dimensional random walk:
@@ -264,8 +262,7 @@ for (i in 2:n_steps) {
 }
 ```
 
-. . .
-We can then plot our results
+. . . We can then plot our results
 
 ```{r random_walk_plot}
 #| echo: TRUE
@@ -287,18 +284,17 @@ We can also adopt a more functional approach:
 take_step <- function() {
   return(sample(c(1, -1), 1))
 }
-walk_randomly <- function(start, n_steps) {
+walk_randomly <- function(n_steps, start = 0) {
   if (n_steps <= 1) {
     return(start)
   }
-  x <- c(start, walk_randomly(start + take_step(), n_steps - 1))
+  x <- c(start, walk_randomly(n_steps - 1, start + take_step()))
   return(x)
 }
-plot(1:100, walk_randomly(0, 100), type = "l",
+plot(1:100, walk_randomly(100), type = "l",
      xlab = "Step", ylab = "x",
      main = "A one-dimensional random walk")
 ```
-
 
 ## A two-dimensional random walk
 
@@ -315,16 +311,16 @@ take_step_2d <- function() {
                  c(-1, 0))
   return(steps[sample(1:4, 1), ])
 }
-walk_randomly_2d <- function(start, n_steps) {
+walk_randomly_2d <- function(n_steps, start = c(0, 0)) {
   if (n_steps <= 1) {
     return(start)
   }
-  x <- rbind(start, walk_randomly_2d(start + take_step_2d(), n_steps - 1))
+  x <- rbind(start, walk_randomly_2d(n_steps - 1, start + take_step_2d()))
   rownames(x) <- NULL
   return(x)
 }
 n_steps <- 100
-coords <- walk_randomly_2d(c(0, 0), n_steps)
+coords <- walk_randomly_2d(n_steps)
 coords
 ```
 
@@ -342,6 +338,7 @@ coords_dat <- data.frame(x = coords[, 1],
                          step = 1:n_steps)
 ggplot(coords_dat, aes(x = x, y = y, color = step)) + geom_path()
 ```
+
 ```{r}
 knitr::knit_exit()
 ```
