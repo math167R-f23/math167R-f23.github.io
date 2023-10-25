@@ -425,7 +425,7 @@ Peter Gao
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">1</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -1.237972</code></pre>
+<pre><code>[1] -0.1332198</code></pre>
 </div>
 </div>
 <ol start="2" type="1">
@@ -597,14 +597,15 @@ Peter Gao
  [9] 2.302169 1.573989</code></pre>
 </div>
 </div>
-<div class="fragment">
-<p>Using <code>replicate()</code>, the previous simulation is just</p>
+</section>
+<section id="replicate-for-repeated-evaluation-2" class="slide level2">
+<h2><code>replicate()</code> for repeated evaluation</h2>
+<p>Using <code>replicate()</code>, the previous simulation is just:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>maxes <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">max</span>(<span class="fu">rexp</span>(n)))</span>
 <span id="cb25-2"><a href="#cb25-2"></a><span class="fu">mean</span>(maxes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5.222014</code></pre>
-</div>
 </div>
 </div>
 </section>

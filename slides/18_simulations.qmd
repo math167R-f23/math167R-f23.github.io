@@ -175,9 +175,9 @@ replicate(10, rexp(10)) # matrix output
 replicate(10, max(rexp(10))) # vector output
 ```
 
-. . .
+## `replicate()` for repeated evaluation
 
-Using `replicate()`, the previous simulation is just
+Using `replicate()`, the previous simulation is just:
 
 ```{r}
 #| echo: TRUE
