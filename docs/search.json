@@ -46,14 +46,42 @@
     "href": "labs/09_lab.html#a.-bootstrapping-the-sampling-distribution-of-the-median",
     "title": "Lab 9",
     "section": "A. Bootstrapping the sampling distribution of the median",
-    "text": "A. Bootstrapping the sampling distribution of the median\n\nUsing the penguins dataset in the palmerpenguins package, construct a confidence interval for the mean body_mass_g for female Adelie penguins based on the using a normal distribution based on the central limit theorem. You should compute the confidence interval without using confint().\nConstruct a bootstrap confidence interval for the mean body_mass_g for female Adelie penguins using 10000 resamples.\nConstruct a bootstrap confidence interval for the median body_mass_g for female Adelie penguins using 10000 resamples."
+    "text": "A. Bootstrapping the sampling distribution of the median\n\nUsing the penguins dataset in the palmerpenguins package, construct a confidence interval for the mean body_mass_g for female Adelie penguins based on using a normal distribution based on the central limit theorem. You should compute the confidence interval without using confint().\nConstruct a bootstrap confidence interval for the mean body_mass_g for female Adelie penguins using 10000 resamples.\nConstruct a bootstrap confidence interval for the median body_mass_g for female Adelie penguins using 10000 resamples."
   },
   {
-    "objectID": "labs/09_lab.html#b.-simulation",
-    "href": "labs/09_lab.html#b.-simulation",
+    "objectID": "labs/09_lab.html#b.-simulations",
+    "href": "labs/09_lab.html#b.-simulations",
     "title": "Lab 9",
-    "section": "B. Simulation",
-    "text": "B. Simulation\n\nSuppose that \\(Y\\sim \\mathrm{Poisson}(X)\\) where \\(X\\sim \\mathrm{Exponential}(1)\\). Use simulation to estimate \\(E(Y)\\)."
+    "section": "B. Simulations",
+    "text": "B. Simulations\n\nSuppose that \\(Y\\sim \\mathrm{Poisson}(X)\\) where \\(X\\sim \\mathrm{Exponential}(1)\\). Use simulation to estimate \\(E(Y)\\) and \\(\\mathrm{Var}(Y)\\).\nFor this question, you will write a simulation to test the frequentist coverage of a 95% confidence interval for a proportion based on the normal approximation.\n\nFirst, write a function that takes two inputs: n and p. Your function should randomly generate some \\(X\\sim \\mathrm{Binomial}(n, p)\\), compute \\(\\widehat{p}= X/n\\), and then compute the corresponding normal distribution-based confidence interval for \\(p\\) based on your sample \\(\\widehat{p}\\). Your function should return TRUE if \\(p\\) is in the confidence interval. You may use the following formula for the confidence interval:\n\n\\[\\widehat{p}\\pm z_{.975}\\sqrt{\\frac{\\widehat{p}(1-\\widehat{p})}{n}}\\]\n\nNext, write a second function that takes three inputs: n, p, and n_runs, representing the number of times to run your simulation. This function should use your function from (a) to simulate n_runs binomial random variables and return the proportion of the n_runs for which \\(p\\) is contained in the confidence interval.\nTest your function from (b) with n = 20, p = .5, and n_runs = 1000.\nUse your simulation code to investigate the following questions: For what values of n and p is the frequentist coverage close to the expected 95% value? For what values of n and p is the frequentist coverage very different to the expected 95% value?"
+  },
+  {
+    "objectID": "labs/10_lab.html",
+    "href": "labs/10_lab.html",
+    "title": "Lab 10",
+    "section": "",
+    "text": "Remember, you must submit both your .Rmd and the compiled .html in order to receive full credit! In addition, to receive full credit, your code output and plots must be correctly formatted."
+  },
+  {
+    "objectID": "labs/10_lab.html#a.-hypothesis-testing",
+    "href": "labs/10_lab.html#a.-hypothesis-testing",
+    "title": "Lab 10",
+    "section": "A. Hypothesis Testing",
+    "text": "A. Hypothesis Testing\n\nUse the following code to obtain the Hawaiian Airlines and Alaska Airlines flights from the nycflights13 package.\n\n\nlibrary(tidyverse)\nlibrary(nycflights13)\ndata(\"flights\")\nflights_sample &lt;- flights |&gt; \n  filter(carrier %in% c(\"HA\", \"AS\"))\n\n\nCompute a 95% confidence interval for the mean arr_delay for Alaska Airlines flights. Interpret your results.\nCompute a 95% confidence interval for the mean arr_delay for Hawaiian Airlines flights. Interpret your results.\nConsider the null hypothesis that the mean arr_delay for Alaska is equal to the mean arr_delay for Hawaiian and the alternative hypothesis that the mean arr_delay values are different for the two airlines. Perform an appropriate hypothesis test and interpret your results."
+  },
+  {
+    "objectID": "labs/10_lab.html#b.-linear-regression",
+    "href": "labs/10_lab.html#b.-linear-regression",
+    "title": "Lab 10",
+    "section": "B. Linear Regression",
+    "text": "B. Linear Regression\n\nResearchers at the University of Texas in Austin, Texas tried to figure out what causes differences in instructor teaching evaluation scores. Use the following code to load data on 463 courses. A full description of the data can be found here.\n\n\nevals &lt;- readr::read_csv(\"https://www.openintro.org/book/statdata/evals.csv\")\n\n\nCarry out a linear regression with score as the response variable and age as the single explanatory variable. Interpret your results.\nExtend your regression model by adding an additional explanatory variable. What happens to your results? Are the new \\(p\\)-values appropriate to use?"
+  },
+  {
+    "objectID": "labs/10_lab.html#c.-power-simulation",
+    "href": "labs/10_lab.html#c.-power-simulation",
+    "title": "Lab 10",
+    "section": "C. Power simulation",
+    "text": "C. Power simulation\n\nFor this question, you will write a simulation to estimate the power of a one-sample \\(t\\)-test for a population mean for varying effect sizes, \\(\\alpha\\), and sample sizes. In particular, assume that we are testing the hypotheses \\(H_0: \\mu = 0\\) and \\(H_a: \\mu \\not=0\\).\n\nWrite a function that takes four inputs: mu, sigma, alpha, and n. Your function should randomly simulate a sample of n normal random variables with mean mu and standard deviation sigma and then compute the appropriate test \\(t\\)-statistic, treating the mean and standard deviation as unknown. You should then compare your test statistic with a \\(t\\) distribution and obtain the \\(P\\)-value of your hypothesis test. Based on alpha, return TRUE if the null hypothesis is rejected and FALSE if the null hypothesis is not rejected.\nRun your function 1000 times to estimate the power when mu = 1, sigma = 1, alpha = .05 and n = 10.\nRun your function 1000 times to estimate the power when mu = 0.5, sigma = 1, alpha = .05 and n = 10. Compare with your results from (b)."
   },
   {
     "objectID": "labs/01_first-R-lab.html",
@@ -291,7 +319,7 @@
     "href": "index.html",
     "title": "MATH167R: Statistical Programming with R",
     "section": "",
-    "text": "Week\nDate\nTopic\nSlides\nCheck-in\nLab\n\n\n\n\n1\nM 8/21\nCourse Overview and Introduction to R\nSlides 01\nCheck-in 01\n\n\n\n\nW 8/23\nR fundamentals\nSlides 02\n\nLab 01\n\n\n2\nM 8/28\nR fundamentals\nSlides 03\nCheck-in 02\n\n\n\n\nW 8/30\nR fundamentals\nSlides 04\n\nLab 02\n\n\n3\nM 9/4\nLabor Day (No Class)\n\n\n\n\n\n\nW 9/6\nExploring data with R\nSlides 05\n\nLab 03\n\n\n4\nM 9/11\nExploring data with R\nSlides 06\nCheck-in 03\n\n\n\n\nW 9/13\nData visualization\nSlides 07\n\nLab 04\n\n\n5\nM 9/18\nData visualization\nSlides 08\nCheck-in 04\n\n\n\n\nW 9/20\nData visualization\nSlides 09\n\nLab 05\n\n\n6\nM 9/25\nData manipulation and management\nSlides 10\n\n\n\n\n\nW 9/27\nData manipulation and management\nSlides 11\n\n\n\n\n7\nM 10/2\nProgramming basics\nSlides 12\n\n\n\n\n\nW 10/4\nMidterm project\n\n\n\n\n\n8\nM 10/9\nProgramming basics\nSlides 13\nCheck-in 05\n\n\n\n\nW 10/11\nProgramming basics\nSlides 14\n\nLab 06\n\n\n9\nM 10/16\nProgramming basics\nSlides 15\nCheck-in 06\n\n\n\n\nW 10/18\nProgramming basics\nSlides 16\n\nLab 07\n\n\n10\nM 10/23\nProgramming basics\nSlides 17\nCheck-in 07\n\n\n\n\nW 10/25\nSimulations\nSlides 18\n\nLab 08\n\n\n11\nM 10/30\nSimulations\n\n\n\n\n\n\nW 11/1\nSimulations\n\n\n\n\n\n12\nM 11/6\nSimulations\n\n\n\n\n\n\nW 11/8\nStatistical inference\n\n\n\n\n\n13\nM 11/13\nStatistical inference\n\n\n\n\n\n\nW 11/15\nStatistical inference\n\n\n\n\n\n14\nM 11/20\nStatistical inference\n\n\n\n\n\n\nW 11/22\nThanksgiving (No Class)\n\n\n\n\n\n15\nM 11/27\nReal world data analysis\n\n\n\n\n\n\nW 11/29\nReal world data analysis\n\n\n\n\n\n16\nM 12/4\nReal world data analysis\n\n\n\n\n\n\nW 12/6\nFinal review"
+    "text": "Week\nDate\nTopic\nSlides\nCheck-in\nLab\n\n\n\n\n1\nM 8/21\nCourse Overview and Introduction to R\nSlides 01\nCheck-in 01\n\n\n\n\nW 8/23\nR fundamentals\nSlides 02\n\nLab 01\n\n\n2\nM 8/28\nR fundamentals\nSlides 03\nCheck-in 02\n\n\n\n\nW 8/30\nR fundamentals\nSlides 04\n\nLab 02\n\n\n3\nM 9/4\nLabor Day (No Class)\n\n\n\n\n\n\nW 9/6\nExploring data with R\nSlides 05\n\nLab 03\n\n\n4\nM 9/11\nExploring data with R\nSlides 06\nCheck-in 03\n\n\n\n\nW 9/13\nData visualization\nSlides 07\n\nLab 04\n\n\n5\nM 9/18\nData visualization\nSlides 08\nCheck-in 04\n\n\n\n\nW 9/20\nData visualization\nSlides 09\n\nLab 05\n\n\n6\nM 9/25\nData manipulation and management\nSlides 10\n\n\n\n\n\nW 9/27\nData manipulation and management\nSlides 11\n\n\n\n\n7\nM 10/2\nProgramming basics\nSlides 12\n\n\n\n\n\nW 10/4\nMidterm project\n\n\n\n\n\n8\nM 10/9\nProgramming basics\nSlides 13\nCheck-in 05\n\n\n\n\nW 10/11\nProgramming basics\nSlides 14\n\nLab 06\n\n\n9\nM 10/16\nProgramming basics\nSlides 15\nCheck-in 06\n\n\n\n\nW 10/18\nProgramming basics\nSlides 16\n\nLab 07\n\n\n10\nM 10/23\nProgramming basics\nSlides 17\nCheck-in 07\n\n\n\n\nW 10/25\nSimulations\nSlides 18\n\nLab 08\n\n\n11\nM 10/30\nSimulations\nSlides 19\nCheck-in 08\n\n\n\n\nW 11/1\nSimulations\nSlides 20\n\nLab 09\n\n\n12\nM 11/6\nSimulations\n\n\n\n\n\n\nW 11/8\nStatistical inference\n\n\n\n\n\n13\nM 11/13\nStatistical inference\n\n\n\n\n\n\nW 11/15\nStatistical inference\n\n\n\n\n\n14\nM 11/20\nStatistical inference\n\n\n\n\n\n\nW 11/22\nThanksgiving (No Class)\n\n\n\n\n\n15\nM 11/27\nReal world data analysis\n\n\n\n\n\n\nW 11/29\nReal world data analysis\n\n\n\n\n\n16\nM 12/4\nReal world data analysis\n\n\n\n\n\n\nW 12/6\nFinal review"
   },
   {
     "objectID": "slides/06_factors-groups.html#warm-up",
@@ -488,6 +516,391 @@
     "title": "MATH167R: Factors and Categorical Data",
     "section": "Movies data",
     "text": "Movies data\n\ngenre_medians &lt;- movies |&gt;\n  group_by(genre) |&gt;\n  summarize(median_budget = median(production_budget),\n            median_domestic = median(domestic_gross),\n            median_ww = median(worldwide_gross),\n            median_return = median(return)) |&gt;\n  ungroup()"
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#overview-of-today",
+    "href": "slides/21_confidence-intervals.html#overview-of-today",
+    "title": "MATH167R: Statistical inference",
+    "section": "Overview of today",
+    "text": "Overview of today\n\nReview of law of large numbers\nReview of central limit theorem\nReview of confidence intervals\nComputing confidence intervals in R\nSimulations with confidence intervals"
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#law-of-large-numbers",
+    "href": "slides/21_confidence-intervals.html#law-of-large-numbers",
+    "title": "MATH167R: Statistical inference",
+    "section": "Law of large numbers",
+    "text": "Law of large numbers\nWe have been using simulations to estimate \\(E(Y)\\) where \\(Y\\) is some random variable. Why does this work?\nReview: The law of large numbers, informally speaking, states that if we perform the same experiment many times, the average of the observed results will be close to the expected value (and will get closer as we increase the number of trials).\n\nThe LLN can be formalized as follows: if \\(X_1,\\ldots, X_n\\) are iid random variables with expected value \\(\\mu\\), then the sample mean \\(\\overline{X}_n\\) will converge to \\(\\mu\\) (in probability or almost surely)."
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#law-of-large-numbers-simulation",
+    "href": "slides/21_confidence-intervals.html#law-of-large-numbers-simulation",
+    "title": "MATH167R: Statistical inference",
+    "section": "Law of large numbers simulation",
+    "text": "Law of large numbers simulation\n\nset.seed(1028)\ndice_rolls &lt;- sample(1:6, 1000, replace = TRUE)\nsample_avg &lt;- sapply(1:length(dice_rolls), function(i) mean(dice_rolls[1:i]))\nplot(1:1000, sample_avg, type = \"l\", col = \"red\",\n     xlab = \"Rolls\", ylab = \"Average\")\nabline(h = 3.5, col = \"blue\")"
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#central-limit-theorem",
+    "href": "slides/21_confidence-intervals.html#central-limit-theorem",
+    "title": "MATH167R: Statistical inference",
+    "section": "Central limit theorem",
+    "text": "Central limit theorem\nWhat does the central limit theorem say?\n\nLet \\(X_1,\\ldots, X_n\\) be a random sample from a distribution with mean \\(\\mu\\) and variance \\(\\sigma^2\\). Then if \\(n\\) is sufficiently large, \\(\\overline{X}_n\\) has approximately a normal distribution with\n\n\\(E(\\overline{X}_n)=\\mu\\)\n\\(\\mathrm{Var}(\\overline{X}_n)=\\sigma^2/n\\).\n\nThe larger the value of \\(n\\), the better the approximation. (Devore p. 232)."
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#central-limit-theorem-1",
+    "href": "slides/21_confidence-intervals.html#central-limit-theorem-1",
+    "title": "MATH167R: Statistical inference",
+    "section": "Central limit theorem",
+    "text": "Central limit theorem\nSuppose \\(X_1,\\ldots, X_{10}\\sim N(2, 4)\\):\n\nlibrary(ggplot2)\nXbars &lt;- data.frame(Xbar = replicate(1000, mean(rnorm(10, mean = 2, sd = 2))))\nggplot(Xbars, aes(x = Xbar)) + \n  geom_histogram(aes(y = ..density..)) + \n  geom_function(fun = dnorm, args = list(mean = 2, sd = 2 / sqrt(10)), color = \"red\")"
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#central-limit-theorem-2",
+    "href": "slides/21_confidence-intervals.html#central-limit-theorem-2",
+    "title": "MATH167R: Statistical inference",
+    "section": "Central limit theorem",
+    "text": "Central limit theorem\nWhat if \\(n = 5\\)?\n\nn &lt;- 5\nXbars &lt;- data.frame(Xbar = replicate(1000, mean(rnorm(n, mean = 2, sd = 2))))\nggplot(Xbars, aes(x = Xbar)) + \n  geom_histogram(aes(y = ..density..)) + \n  geom_function(fun = dnorm, args = list(mean = 2, sd = 2 / sqrt(n)), color = \"red\")\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`."
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#central-limit-theorem-3",
+    "href": "slides/21_confidence-intervals.html#central-limit-theorem-3",
+    "title": "MATH167R: Statistical inference",
+    "section": "Central limit theorem",
+    "text": "Central limit theorem\nWhat if \\(n = 5\\), but \\(X_1,\\ldots, X_{5}\\sim \\mathrm{Exp}(1)\\):\n\nn &lt;- 5\nXbars &lt;- data.frame(Xbar = replicate(1000, mean(rexp(n, rate = 1))))\nggplot(Xbars, aes(x = Xbar)) + \n  geom_histogram(aes(y = ..density..)) + \n  geom_function(fun = dnorm, args = list(mean = 1, sd = 1 / sqrt(n)), color = \"red\")"
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#exercise",
+    "href": "slides/21_confidence-intervals.html#exercise",
+    "title": "MATH167R: Statistical inference",
+    "section": "Exercise",
+    "text": "Exercise\nHow can you break the central limit theorem?\nLet \\(X_1,\\ldots, X_n\\) be a random sample from a distribution with mean \\(\\mu\\) and variance \\(\\sigma^2\\). Then if \\(n\\) is sufficiently large, \\(\\overline{X}_n\\) has approximately a normal distribution with \\(E(\\overline{X}_n)=\\mu\\) and \\(\\mathrm{Var}(\\overline{X}_n)=\\sigma^2/n\\). The larger the value of \\(n\\), the better the approximation. (Devore p. 232).\n\nWhat assumptions can you break?"
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#confidence-intervals",
+    "href": "slides/21_confidence-intervals.html#confidence-intervals",
+    "title": "MATH167R: Statistical inference",
+    "section": "Confidence intervals",
+    "text": "Confidence intervals\nLast class, we talked about bootstrap confidence intervals, but today we will return to the classic statistical theory for constructing confidence intervals."
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#a-simple-example-normal-population",
+    "href": "slides/21_confidence-intervals.html#a-simple-example-normal-population",
+    "title": "MATH167R: Statistical inference",
+    "section": "A simple example: Normal population",
+    "text": "A simple example: Normal population\nA simple case is for constructing confidence intervals for a normally distributed population variable. If we assume\n\nThe population distribution is normal\nThe value of the population standard deviation \\(\\sigma\\) is known\n\nGiven samples \\(X_1,\\ldots, X_n\\), we can compute \\(\\overline{X}_n\\) and then\n\\[\\frac{\\overline{X}_n-\\mu}{\\sigma/\\sqrt{n}}\\sim N(0, 1)\\]"
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#a-simple-example-normal-population-1",
+    "href": "slides/21_confidence-intervals.html#a-simple-example-normal-population-1",
+    "title": "MATH167R: Statistical inference",
+    "section": "A simple example: Normal population",
+    "text": "A simple example: Normal population\nWe can thus compute a 95% confidence interval:\n\\[P\\left(-1.96&lt; \\frac{\\overline{X}_n-\\mu}{\\sigma/\\sqrt{n}}&lt;1.96\\right)=.95\\]\nAlgebraic manipulation yields\n\\[P\\left(\\overline{X}_n-1.96\\frac{\\sigma}{\\sqrt{n}}&lt;\\mu&lt;\\overline{X}_n+1.96\\frac{\\sigma}{\\sqrt{n}}\\right)=.95\\]\nThe final interval can be written as \\(\\overline{X}_n\\pm 1.96(\\sigma/\\sqrt{n})\\)."
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#a-simple-example-normal-population-2",
+    "href": "slides/21_confidence-intervals.html#a-simple-example-normal-population-2",
+    "title": "MATH167R: Statistical inference",
+    "section": "A simple example: Normal population",
+    "text": "A simple example: Normal population\nIn general, for a \\(100(1-\\alpha)\\%\\) confidence interval, we can use\n\\[P\\left(-z_{\\alpha/2}&lt; \\frac{\\overline{X}_n-\\mu}{\\sigma/\\sqrt{n}}&lt;z_{\\alpha/2}\\right)=1-\\alpha\\]\nwhere \\(z_{\\alpha/2}\\) is defined by \\(1 - P(Z\\leq z_{\\alpha/2})=\\alpha/2\\). This yields the interval\n\\[\\overline{X}_n\\pm z_{\\alpha/2}(\\sigma/\\sqrt{n})\\]"
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#interpretation",
+    "href": "slides/21_confidence-intervals.html#interpretation",
+    "title": "MATH167R: Statistical inference",
+    "section": "Interpretation",
+    "text": "Interpretation\nConsider the equation\n\\[P\\left(\\overline{X}_n-1.96\\frac{\\sigma}{\\sqrt{n}}&lt;\\mu&lt;\\overline{X}_n+1.96\\frac{\\sigma}{\\sqrt{n}}\\right)=.95\\]\nWhich elements of this equation are random?\n\nRemember, \\(\\overline{X}_n\\) and thus the interval itself are random. Prior to observing the data and computing \\(\\overline{X}_n\\), there is a .95 probability that the interval will include the true value of \\(\\mu\\).\n\n\nHowever, we cannot say anything about the probability that any particular confidence interval contains \\(\\mu\\)."
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#example-devore-7.1",
+    "href": "slides/21_confidence-intervals.html#example-devore-7.1",
+    "title": "MATH167R: Statistical inference",
+    "section": "Example (Devore 7.1)",
+    "text": "Example (Devore 7.1)\nA sample of \\(n=31\\) trained typists was selected, and the preferred keyboard height was determined for each typist. The resulting sample average preferred height was \\(x=80.0\\)cm.\nAssuming that the preferred height is normally distributed with \\(\\sigma = 2.0\\)cm, obtain a 95% confidence interval (interval of plausible values) for \\(\\mu\\), the true average preferred height.\n\n\\[\\overline{X}_n\\pm 1.96\\frac{2.0}{\\sqrt{31}}=80.0\\pm .7=(79.3, 80.7)\\]"
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#simulating-many-confidence-intervals",
+    "href": "slides/21_confidence-intervals.html#simulating-many-confidence-intervals",
+    "title": "MATH167R: Statistical inference",
+    "section": "Simulating many confidence intervals",
+    "text": "Simulating many confidence intervals\n\nn &lt;- 30 # sample size\nmu &lt;- 10 # unknown true mean\nsigma &lt;- 2 # known standard deviation\nXbars &lt;- replicate(100, mean(rnorm(n, mean = mu, sd = sigma)))\ncoverage_rate &lt;- mean(abs(Xbars - mu) &lt; 1.96 * sigma / sqrt(n))\ncoverage_rate\n\n[1] 0.92"
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#simulating-many-confidence-intervals-1",
+    "href": "slides/21_confidence-intervals.html#simulating-many-confidence-intervals-1",
+    "title": "MATH167R: Statistical inference",
+    "section": "Simulating many confidence intervals",
+    "text": "Simulating many confidence intervals\nCode to visualize all of our confidence intervals:\n\nlibrary(tidyverse)\nplot_dat &lt;- data.frame(id = 1:100,\n                       Xbar = Xbars) |&gt;\n  mutate(upper = Xbar + 1.96 * sigma / sqrt(n),\n         lower = Xbar - 1.96 * sigma / sqrt(n))\nggplot(plot_dat, \n       aes(x = id, y = Xbar, \n           color = abs(Xbars - mu) &lt; 1.96 * sigma / sqrt(n))) + \n  geom_errorbar(aes(ymin = lower, ymax = upper)) +\n  geom_abline(intercept = mu, slope = 0) + \n  theme(legend.position = \"none\")"
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#simulating-many-confidence-intervals-2",
+    "href": "slides/21_confidence-intervals.html#simulating-many-confidence-intervals-2",
+    "title": "MATH167R: Statistical inference",
+    "section": "Simulating many confidence intervals",
+    "text": "Simulating many confidence intervals"
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#large-sample-confidence-intervals",
+    "href": "slides/21_confidence-intervals.html#large-sample-confidence-intervals",
+    "title": "MATH167R: Statistical inference",
+    "section": "Large-sample confidence intervals",
+    "text": "Large-sample confidence intervals\nWhat if we do not know whether the population distribution is normal? Provided \\(n\\) is sufficiently large, the CLT implies that \\(\\overline{X}_n\\) is approximately normal regardless of the population distribution.\nWhat if we do not know \\(\\sigma?\\) Again, provided \\(n\\) is sufficiently large, we can replace \\(\\sigma\\) with the sample standard deviation \\(S\\).\nWe obtain the confidence interval formula:\n\\[\\overline{X}_n\\pm z_{\\alpha/2}(S/\\sqrt{n})\\]"
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#simulating-many-confidence-intervals-3",
+    "href": "slides/21_confidence-intervals.html#simulating-many-confidence-intervals-3",
+    "title": "MATH167R: Statistical inference",
+    "section": "Simulating many confidence intervals",
+    "text": "Simulating many confidence intervals\n\nn &lt;- 30 # sample size\nlambda &lt;- 10\nsample_stats_poisson &lt;- function() {\n  x &lt;- rpois(n, lambda)\n  return(c(mean(x), sd(x)))\n}\nstats &lt;- replicate(100, sample_stats_poisson())\nstats[, 1:5] # print out first five simulation results\n\n          [,1]      [,2]      [,3]     [,4]     [,5]\n[1,] 10.666667 10.733333 10.500000 9.633333 9.800000\n[2,]  2.940013  2.702915  2.933164 2.953471 3.252585\n\ncoverage_rate &lt;- mean(abs(stats[1,] - mu) &lt; 1.96 * stats[2,] / sqrt(n))\ncoverage_rate\n\n[1] 0.98"
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#when-n-is-small-but-sigma-unknown-t-intervals",
+    "href": "slides/21_confidence-intervals.html#when-n-is-small-but-sigma-unknown-t-intervals",
+    "title": "MATH167R: Statistical inference",
+    "section": "When \\(n\\) is small but \\(\\sigma\\) unknown: \\(t\\)-intervals",
+    "text": "When \\(n\\) is small but \\(\\sigma\\) unknown: \\(t\\)-intervals\nWhat about when \\(n\\) is small, but \\(\\sigma\\) is unknown? Assuming again that the population distribution is normal,\n\\[T=\\frac{\\overline{X}_n-\\mu}{S/\\sqrt{n}}\\]\nhas a \\(t\\) distribution with \\(n-1\\) degrees of freedom. We can thus use the confidence interval\n\\[\\overline{X}_n\\pm t_{\\alpha/2, n-1}(S/\\sqrt{n})\\] where \\(P(T\\leq t_{p, n-1})=p\\) when \\(T\\) follows a \\(t\\)-distribution with \\(n-1\\) degrees of freedom."
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#assessing-normality-of-the-population-distribution",
+    "href": "slides/21_confidence-intervals.html#assessing-normality-of-the-population-distribution",
+    "title": "MATH167R: Statistical inference",
+    "section": "Assessing normality of the population distribution",
+    "text": "Assessing normality of the population distribution\nHow can we tell if the population distribution is normal? One simple check is to use a quantile-quantile (QQ) plot.\n\nUsing your data, estimate the quantiles using the empirical distribution.\nCompare the sample quantiles with the quantiles of a known distribution (often normal).\nIf the sample and theoretical quantiles appear to fall on a line, then the empirical distribution function will be similar to (a scaled version of) the theoretical distribution function."
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#example-precipitation",
+    "href": "slides/21_confidence-intervals.html#example-precipitation",
+    "title": "MATH167R: Statistical inference",
+    "section": "Example: Precipitation",
+    "text": "Example: Precipitation\nThe precip dataset includes annual precipitation in inches for a number of US cities. Is this normally distributed?\n\nhead(precip)\n\n     Mobile      Juneau     Phoenix Little Rock Los Angeles  Sacramento \n       67.0        54.7         7.0        48.5        14.0        17.2 \n\nhist(precip)"
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#example-precipitation-1",
+    "href": "slides/21_confidence-intervals.html#example-precipitation-1",
+    "title": "MATH167R: Statistical inference",
+    "section": "Example: Precipitation",
+    "text": "Example: Precipitation\nThe qqnorm() function can be used to compare the empirical/sample quantiles and the theoretical quantiles of a standard normal. The qqline() function adds a line that passes through the first and third quartiles.\n\nqqnorm(precip, ylab = \"Precipitation [in/yr] for 70 US cities\", pch = 16)\nqqline(precip)"
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#using-r-to-compute-confidence-intervals",
+    "href": "slides/21_confidence-intervals.html#using-r-to-compute-confidence-intervals",
+    "title": "MATH167R: Statistical inference",
+    "section": "Using R to compute confidence intervals",
+    "text": "Using R to compute confidence intervals\nGenerally, if you are only doing a simple normal-based or \\(t\\)-based confidence interval for a mean, I recommend computing \\(\\overline{X}_n\\) and \\(S\\) using mean() and sd(), and then computing the confidence interval by hand.\nYou can also use the t.test() function to compute the appropriate \\(t\\)-interval for a population mean:\n\nprecip_t &lt;- t.test(precip, conf.level = 0.95)\nprecip_ci &lt;- precip_t$conf.int # get confidence interval\nprecip_ci\n\n[1] 31.61748 38.15395\nattr(,\"conf.level\")\n[1] 0.95"
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#comparing-t-based-and-bootstrap-confidence-intervals",
+    "href": "slides/21_confidence-intervals.html#comparing-t-based-and-bootstrap-confidence-intervals",
+    "title": "MATH167R: Statistical inference",
+    "section": "Comparing \\(t\\)-based and bootstrap confidence intervals",
+    "text": "Comparing \\(t\\)-based and bootstrap confidence intervals\n\nbootstrap_Xbar &lt;- \n  replicate(10000, mean(sample(precip, size = length(precip), replace = TRUE)))\nquantile(bootstrap_Xbar, probs = c(.025, .975))\n\n    2.5%    97.5% \n31.78282 38.07286 \n\nprecip_ci\n\n[1] 31.61748 38.15395\nattr(,\"conf.level\")\n[1] 0.95\n\n\n\nIn this case, since \\(n\\) is large, the non-normality is not a big deal."
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#confidence-intervals-for-proportions",
+    "href": "slides/21_confidence-intervals.html#confidence-intervals-for-proportions",
+    "title": "MATH167R: Statistical inference",
+    "section": "Confidence intervals for proportions",
+    "text": "Confidence intervals for proportions\nFor large \\(n\\), the following confidence interval is often used for a population proportion:\n\\[\\widehat{p}\\pm z_{\\alpha/2}\\sqrt{\\frac{\\widehat{p}(1-\\widehat{p})}{n}}\\]\nNote that this formula only gives an approximate CI becaue of the use of \\(\\widehat{p}\\) when estimating the standard error of \\(\\widehat{p}\\)"
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#other-confidence-intervals",
+    "href": "slides/21_confidence-intervals.html#other-confidence-intervals",
+    "title": "MATH167R: Statistical inference",
+    "section": "Other confidence intervals",
+    "text": "Other confidence intervals\nR has implementations for confidence intervals for many types of population parameters, including for non-normally distributed populations. Always carefully read the documentation before using these functions."
+  },
+  {
+    "objectID": "slides/22_hypothesis-testing.html#overview-of-today",
+    "href": "slides/22_hypothesis-testing.html#overview-of-today",
+    "title": "MATH167R: Hypothesis testing",
+    "section": "Overview of today",
+    "text": "Overview of today\n\nReview of hypothesis testing\nType I and II error\nHypothesis tests in R\nReproducibility"
+  },
+  {
+    "objectID": "slides/22_hypothesis-testing.html#motivation",
+    "href": "slides/22_hypothesis-testing.html#motivation",
+    "title": "MATH167R: Hypothesis testing",
+    "section": "Motivation",
+    "text": "Motivation\nHypothesis testing always begins with a scientific question of interest. Suppose we have a coin, and we want to test whether or not it is fair. We might flip the coin over and over and record the results, and then measure the proportion of times we got a heads.\nWe can state this experiment more formally. Let \\(X_1,...,X_n\\) be \\(n\\) random variables corresponding to an indicator of whether a coin flip is heads (i.e. \\(X_i = 1\\) if the \\(i\\)th flip is heads, \\(0\\) if tails). We don’t know the true probability that our coin lands on heads, so we may say that \\[X_i \\stackrel{iid}{\\sim} \\mathrm{Binomial}(1, p),\\] with unknown probability parameter \\(p\\)."
+  },
+  {
+    "objectID": "slides/22_hypothesis-testing.html#motivation-1",
+    "href": "slides/22_hypothesis-testing.html#motivation-1",
+    "title": "MATH167R: Hypothesis testing",
+    "section": "Motivation",
+    "text": "Motivation\nWe are interested in whether our coin is fair, which corresponds to \\(p=1/2\\). This hypothesis we are interested in testing will be our null hypothesis, denoted \\(H_0\\) (pronounced “H-naught” or “H-zero”).\nAlternatively, we may think that our coin is biased in either direction (i.e. either lands on heads too often or lands on tails too often). This corresponds to \\(p \\neq 1/2\\). This is our alternative hypothesis, denoted \\(H_a\\) (or sometimes \\(H_1\\)).\nThus, our hypothesis test is as follows:\n\\[\\begin{align}\nH_0: p&=1/2\\\\\nH_a: p&\\neq 1/2\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/22_hypothesis-testing.html#the-hypotheses",
+    "href": "slides/22_hypothesis-testing.html#the-hypotheses",
+    "title": "MATH167R: Hypothesis testing",
+    "section": "The hypotheses",
+    "text": "The hypotheses\nIn general, we can think of\n\nNull hypothesis \\(H_0\\): our default assumption to be tested, our baseline, no relationships/differences/values of our parameters of interest. Assumed to be true unless evidence suggests otherwise!\nAlternative hypothesis \\(H_a\\): the alternative to our null, something interesting is happening in our data, our scientific hypothesis of interest\n\nAn important note: for the most part, these are broad generalizations, not formal definitions.\nIt is not always the case that the alternative is “interesting” and the null is not."
+  },
+  {
+    "objectID": "slides/22_hypothesis-testing.html#hypothesis-testing",
+    "href": "slides/22_hypothesis-testing.html#hypothesis-testing",
+    "title": "MATH167R: Hypothesis testing",
+    "section": "Hypothesis testing",
+    "text": "Hypothesis testing\nWe always assume that our null hypothesis is true to compute the null distribution.\nOur question is whether our data provides sufficient evidence to reject the null \\(H_0\\).\nFor example, if we flipped our coin 100 times and observed 99 heads, we probably would reject our null hypothesis that the coin is fair. If instead we flipped our coin 100 times and observed 52 heads, we probably would not conclude that we have enough evidence to reject our null hypothesis, and maintain our baseline assumption that the coin is fair."
+  },
+  {
+    "objectID": "slides/22_hypothesis-testing.html#hypothesis-testing-1",
+    "href": "slides/22_hypothesis-testing.html#hypothesis-testing-1",
+    "title": "MATH167R: Hypothesis testing",
+    "section": "Hypothesis testing",
+    "text": "Hypothesis testing\nWhere we assume something is true, and then observe whether or not the evidence (data) supports this assumption.\nIn hypothesis testing, we never, ever, ever examine whether our evidence supports our scientific hypothesis (the alternative). We only examine whether it supports rejecting a baseline assumption (the null)."
+  },
+  {
+    "objectID": "slides/22_hypothesis-testing.html#statistical-inference",
+    "href": "slides/22_hypothesis-testing.html#statistical-inference",
+    "title": "MATH167R: Hypothesis testing",
+    "section": "Statistical inference",
+    "text": "Statistical inference\n\nStatistical inference: using information from a sample to draw inferences about a population.\nUsually we are interested in studying/estimating a population parameter: a numerical characteristic of our population/model.\nExample of a model/population: an infinite sequence of coin flips distributed \\(Bin(1, p)\\).\nExample of a parameter: the probability of heads \\(p\\)."
+  },
+  {
+    "objectID": "slides/22_hypothesis-testing.html#estimates-and-estimators",
+    "href": "slides/22_hypothesis-testing.html#estimates-and-estimators",
+    "title": "MATH167R: Hypothesis testing",
+    "section": "Estimates and Estimators",
+    "text": "Estimates and Estimators\nWe use estimators to calculate estimates for our parameters.\n\nEstimator: a function of our data (for example, the sample mean)\nEstimate: the actually observed value of our estimator, anumber calculated from our data (for example, an observed sample mean of 52)."
+  },
+  {
+    "objectID": "slides/22_hypothesis-testing.html#example",
+    "href": "slides/22_hypothesis-testing.html#example",
+    "title": "MATH167R: Hypothesis testing",
+    "section": "Example",
+    "text": "Example\nBack to our example, recall that we aim to test\n\\[\\begin{align}\nH_0: p&=1/2\\\\\nH_a: p&\\neq 1/2\n\\end{align}\\]\nusing a random variable representing a heads \\[X_i \\stackrel{iid}{\\sim} Bin(1, p).\\] Let’s assume that we have the patience to flip our coin \\(n=100\\) times."
+  },
+  {
+    "objectID": "slides/22_hypothesis-testing.html#example-flipping-coins",
+    "href": "slides/22_hypothesis-testing.html#example-flipping-coins",
+    "title": "MATH167R: Hypothesis testing",
+    "section": "Example: flipping coins",
+    "text": "Example: flipping coins\nInstead of actually flipping the coin, let’s carry out this example in R.\n\nset.seed(302)\n# the true population parameter (in practice, we don't know this).\np &lt;- 0.6\n# simulate 100 coin flips\ncoin_flips &lt;- rbinom(100, size = 1, prob = p)\nhead(coin_flips)\n\n[1] 1 0 0 1 1 1\n\nsum(coin_flips)\n\n[1] 61\n\n\nWe observed 61 heads out of 100 coin flips.\nThis is our test statistic, a statistic calculated from our sample data which we will use to evaluate our hypotheses."
+  },
+  {
+    "objectID": "slides/22_hypothesis-testing.html#example-flipping-coins-1",
+    "href": "slides/22_hypothesis-testing.html#example-flipping-coins-1",
+    "title": "MATH167R: Hypothesis testing",
+    "section": "Example: flipping coins",
+    "text": "Example: flipping coins\nWe observed 61 heads out of 100 coin flips.\nIs this unusual enough to reject \\(H_0\\)?\nIn order to answer this, we must ask ourselves: if we assume \\(H_0\\) is true, how unlikely is what we observed? Before we conduct our experiment, we must decide what cut-off we would like to use to determine whether or not to reject \\(H_0\\). This cut-off is typically denoted by the greek letter \\(\\alpha\\).\nTypically, we reject \\(H_0\\) if the probability of observing a test statistic as or more extreme than what we observed is less than 5%. We will use this cut-off, even though it is arbitrary.\nThus, we set \\(\\alpha = 0.05\\)."
+  },
+  {
+    "objectID": "slides/22_hypothesis-testing.html#example-flipping-coins-2",
+    "href": "slides/22_hypothesis-testing.html#example-flipping-coins-2",
+    "title": "MATH167R: Hypothesis testing",
+    "section": "Example: flipping coins",
+    "text": "Example: flipping coins\nWe can use pbinom() to calculate the probability of observing a test statistic as extreme or more extreme than 61.\n\n“as extreme or more extreme”: Our alternative \\(H_a: p \\neq 1/2\\) means that we are interested in deviations in either direction. Thus, we must consider not only the probability of observing more than 61 heads, but also the probability of observing less than 39 heads, because this is just as extreme in the other direction."
+  },
+  {
+    "objectID": "slides/22_hypothesis-testing.html#example-flipping-coins-3",
+    "href": "slides/22_hypothesis-testing.html#example-flipping-coins-3",
+    "title": "MATH167R: Hypothesis testing",
+    "section": "Example: flipping coins",
+    "text": "Example: flipping coins\nNote that lower.tail = TRUE is the default, and returns the probability of observing a value less than or equal to the value that we input. Thus, when lower.tail = FALSE, we return the probability of observing a value strictly greater than the value that we input. We want the probability of observing a value greater than or equal to the value that we input. Thus, we subtract 1 to make sure this value is included in our probability."
+  },
+  {
+    "objectID": "slides/22_hypothesis-testing.html#example-flipping-coins-4",
+    "href": "slides/22_hypothesis-testing.html#example-flipping-coins-4",
+    "title": "MATH167R: Hypothesis testing",
+    "section": "Example: flipping coins",
+    "text": "Example: flipping coins\n\n# record test statistic\ntest_stat &lt;- sum(coin_flips)\n# record how \"extreme\" our test statistic is\ndiff_from_exp &lt;- abs(50 - test_stat)\n# first component: lower tail\n# second component: upper tail\np_val &lt;- pbinom(50 - diff_from_exp, size = 100, prob = 0.5) +\n  pbinom(50 + diff_from_exp - 1, size = 100, prob = 0.5, lower.tail = FALSE) \nround(p_val, 3)\n\n[1] 0.035\n\n\nNote that lower.tail = TRUE is the default, and returns the probability of observing a value less than or equal to the value that we input. Thus, when lower.tail = FALSE, we return the probability of observing a value strictly greater than the value that we input. We want the probability of observing a value greater than or equal to the value that we input. Thus, we subtract 1 to make sure this value is included in our probability.\n\\(P(\\text{test statistic equally or more extreme than observed}|H_0) =\\) 0.035."
+  },
+  {
+    "objectID": "slides/22_hypothesis-testing.html#example-flipping-coins-5",
+    "href": "slides/22_hypothesis-testing.html#example-flipping-coins-5",
+    "title": "MATH167R: Hypothesis testing",
+    "section": "Example: flipping coins",
+    "text": "Example: flipping coins\n\\(P(\\text{test statistic equally or more extreme than observed}|H_0) =\\) 0.035.\nThis is less than our pre-determined cut-off of 0.05, so we conclude that our results are statistically significant. This means that we reject \\(H_0\\) and have evidence to support our alternative hypothesis \\(H_a\\), that our coin is biased. With that conclusion, we have completed our hypothesis test.\nNote that we do not conclude that \\(H_0\\) is false, or that \\(H_a\\) is true. We only state our conclusion in terms of sufficient evidence to reject the null or insufficient evidence to reject the null."
+  },
+  {
+    "objectID": "slides/22_hypothesis-testing.html#interpreting-p-values",
+    "href": "slides/22_hypothesis-testing.html#interpreting-p-values",
+    "title": "MATH167R: Hypothesis testing",
+    "section": "Interpreting \\(P\\)-values",
+    "text": "Interpreting \\(P\\)-values\nRemember, a \\(P\\)-value is not the probability our null hypothesis is true. A \\(P\\)-value only describes the probability of observing results as extreme or more extreme than our results under the null distribution.\nProblems begin when our null distribution is misspecified (for example, when assumptions are broken)."
+  },
+  {
+    "objectID": "slides/22_hypothesis-testing.html#visualizing-p-values",
+    "href": "slides/22_hypothesis-testing.html#visualizing-p-values",
+    "title": "MATH167R: Hypothesis testing",
+    "section": "Visualizing \\(P\\)-values",
+    "text": "Visualizing \\(P\\)-values\n\n(Devore)"
+  },
+  {
+    "objectID": "slides/22_hypothesis-testing.html#summary-hypothesis-testing",
+    "href": "slides/22_hypothesis-testing.html#summary-hypothesis-testing",
+    "title": "MATH167R: Hypothesis testing",
+    "section": "Summary: hypothesis testing",
+    "text": "Summary: hypothesis testing\n\nDefine null and alternative hypotheses.\nCompute a test statistic for which the null distribution is known.\nCompare the test statistic with the null distribution to obtain a P-value."
+  },
+  {
+    "objectID": "slides/22_hypothesis-testing.html#example-two-sample-t-test",
+    "href": "slides/22_hypothesis-testing.html#example-two-sample-t-test",
+    "title": "MATH167R: Hypothesis testing",
+    "section": "Example: two sample \\(t\\)-test",
+    "text": "Example: two sample \\(t\\)-test\n\nHypotheses:\n\n\\[\\begin{align}\nH_0: \\mu_x-\\mu_y &= 0\\\\\nH_a: \\mu_x-\\mu_y&\\neq 0\n\\end{align}\\]\n\nCompute sample means \\(\\overline{X}\\) and \\(\\overline{Y}\\) and the test statistic \\(T=\\frac{\\overline{X}-\\overline{Y}}{s_p\\sqrt{1/n_x+1/n_y}}\\) (assuming equal variances). Here, \\(s_p\\) is the pooled variance estimate.\nCompare \\(T\\) with a t-distribution with \\(n_1+n_2-2\\) degrees of freedom."
+  },
+  {
+    "objectID": "slides/22_hypothesis-testing.html#t.test-t-tests-in-r",
+    "href": "slides/22_hypothesis-testing.html#t.test-t-tests-in-r",
+    "title": "MATH167R: Hypothesis testing",
+    "section": "t.test(): t-tests in R",
+    "text": "t.test(): t-tests in R\nConducting t-tests in R is very easy using the function t.test(). For a two sample t-test to compare the means of two samples, just provide the two samples in R. Here I use randomly simulated data. This performs a test of the form:\n\\[\n\\begin{align}\nH_0: \\mu_x &= \\mu_y\\\\\nH_a: \\mu_x &\\neq  \\mu_y\n\\end{align}\n\\]\n\nset.seed(302)\nx &lt;- rnorm(10, mean = 0, sd = 1)\ny &lt;- rnorm(10, mean = 1.5, sd = 1)\nt.test(x, y)\n\n\n    Welch Two Sample t-test\n\ndata:  x and y\nt = -1.5143, df = 16.95, p-value = 0.1484\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -1.627018  0.267543\nsample estimates:\nmean of x mean of y \n0.3492983 1.0290359"
+  },
+  {
+    "objectID": "slides/22_hypothesis-testing.html#t.test-t-tests-in-r-1",
+    "href": "slides/22_hypothesis-testing.html#t.test-t-tests-in-r-1",
+    "title": "MATH167R: Hypothesis testing",
+    "section": "t.test(): t-tests in R",
+    "text": "t.test(): t-tests in R\nNote that we can also test one-sided hypotheses:\n\\[\n\\begin{align}\nH_0: \\mu_x &= \\mu_y\\\\\nH_a: \\mu_x &&lt; \\mu_y\n\\end{align}\n\\]\n\nt.test(x, y, alternative = \"less\")\n\n\n    Welch Two Sample t-test\n\ndata:  x and y\nt = -1.5143, df = 16.95, p-value = 0.07419\nalternative hypothesis: true difference in means is less than 0\n95 percent confidence interval:\n      -Inf 0.1012809\nsample estimates:\nmean of x mean of y \n0.3492983 1.0290359"
+  },
+  {
+    "objectID": "slides/22_hypothesis-testing.html#t.test-t-tests-in-r-2",
+    "href": "slides/22_hypothesis-testing.html#t.test-t-tests-in-r-2",
+    "title": "MATH167R: Hypothesis testing",
+    "section": "t.test(): t-tests in R",
+    "text": "t.test(): t-tests in R\nWe can also use a one sample t-test to compare the means of one sample to some hypothesized value.\nThis performs a test of the form:\n\\[\n\\begin{align}\nH_0: \\mu_x &= 0\\\\\nH_a: \\mu_x &\\neq 0\n\\end{align}\n\\]\n\nt.test(x, mu = 0)\n\n\n    One Sample t-test\n\ndata:  x\nt = 0.98472, df = 9, p-value = 0.3505\nalternative hypothesis: true mean is not equal to 0\n95 percent confidence interval:\n -0.4531331  1.1517298\nsample estimates:\nmean of x \n0.3492983"
+  },
+  {
+    "objectID": "slides/22_hypothesis-testing.html#type-i-and-ii-errors",
+    "href": "slides/22_hypothesis-testing.html#type-i-and-ii-errors",
+    "title": "MATH167R: Hypothesis testing",
+    "section": "Type I and II errors",
+    "text": "Type I and II errors\n\nA type I error consists of rejecting the null hypothesis when it is true.\nA type II error involves not rejecting the null hypothesis when it is false.\n\n\nWhich is worse?\n\n\nIt probably depends on the scenario."
+  },
+  {
+    "objectID": "slides/22_hypothesis-testing.html#type-i-errors",
+    "href": "slides/22_hypothesis-testing.html#type-i-errors",
+    "title": "MATH167R: Hypothesis testing",
+    "section": "Type I errors",
+    "text": "Type I errors\nType I errors are false positives–we obtain a “statistically significant” result via chance.\nNote that we typically control the type I error through the significance level \\(\\alpha\\).\n\\[\\Large \\alpha = P(\\text{reject } H_0 | H_0 \\textrm{ true}))\\]\n\\[\\Large 1-\\alpha = P(\\text{don't reject } H_0 | H_0 \\textrm{ true})\\]"
+  },
+  {
+    "objectID": "slides/22_hypothesis-testing.html#type-ii-errors",
+    "href": "slides/22_hypothesis-testing.html#type-ii-errors",
+    "title": "MATH167R: Hypothesis testing",
+    "section": "Type II errors",
+    "text": "Type II errors\nType 2 errors are false negatives–we incorrectly fail to reject the null hypothesis when the null hypothesis is actually false.\n\\[ P(\\text{type 2 error}) =  P(\\text{fail to reject } H_0 | H_0 \\text{ is false})\\]\nType 2 error also gives us the concept of power, the probability of correctly rejecting the null.\n\\[ \\text{Power} = P(\\text{reject } H_0 | H_0 \\text{ is false})\\]"
+  },
+  {
+    "objectID": "slides/22_hypothesis-testing.html#type-i-and-ii-errors-1",
+    "href": "slides/22_hypothesis-testing.html#type-i-and-ii-errors-1",
+    "title": "MATH167R: Hypothesis testing",
+    "section": "Type I and II errors",
+    "text": "Type I and II errors\n\nWe can decrease the probability of a Type II errors by increasing our Type I error.\nWe can decrease the probability of a Type II error without sacrificing Type I error by increasing our sample size."
+  },
+  {
+    "objectID": "slides/22_hypothesis-testing.html#reproducibility-and-p-hacking",
+    "href": "slides/22_hypothesis-testing.html#reproducibility-and-p-hacking",
+    "title": "MATH167R: Hypothesis testing",
+    "section": "Reproducibility and P-hacking",
+    "text": "Reproducibility and P-hacking\nIn many scientific settings, there has been an emphasis on producing results with statistically significant p-values. However, note that by repeatedly performing hypothesis tests, you are very likely to produce statistically significant results, even if the null hypothesis is true.\nThis has led to a crisis in replication, in which the results of many scientific studies are difficult or impossible to replicate."
+  },
+  {
+    "objectID": "slides/22_hypothesis-testing.html#reproducibility-and-p-hacking-1",
+    "href": "slides/22_hypothesis-testing.html#reproducibility-and-p-hacking-1",
+    "title": "MATH167R: Hypothesis testing",
+    "section": "Reproducibility and P-hacking",
+    "text": "Reproducibility and P-hacking\nP-hacking refers to the practice of repeatedly performing hypothesis tests (and potentially manipulating the data) until a statistically significant P-values is obtained. Usually, only this final result is published, without mentioning all of the manipulations that came before.\nFor this reason, it’s crucial to document carefully everything you do in the data analysis pipeline to ensure that your work is taken seriously. Publishing code and data can help others to reproduce your research."
   },
   {
     "objectID": "slides/02_functions-expressions.html#review",
@@ -2072,6 +2485,125 @@
     "text": "Recursive functions: Prime factorization\nChallenge: write a function factorize() that takes as input a natural number n and returns its prime factorization.\n\nHow might we get started with this question?"
   },
   {
+    "objectID": "slides/24_power-simulations.html#overview-of-today",
+    "href": "slides/24_power-simulations.html#overview-of-today",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Overview of today",
+    "text": "Overview of today\n\nSimulations for power analysis\nSimulations to assess impact of misspecification"
+  },
+  {
+    "objectID": "slides/24_power-simulations.html#sampling-distributions",
+    "href": "slides/24_power-simulations.html#sampling-distributions",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Sampling distributions",
+    "text": "Sampling distributions\nWithout explicitly saying so, we have been simulating sampling distributions during our simulations.\nRecall: A sampling distribution is the probability distribution of a sample-based statistic.\nExample: If \\(X_1,\\ldots, X_{100}\\) are iid random variables with variance \\(1\\), what is the distribution of the sample mean \\(\\overline{X}\\)?"
+  },
+  {
+    "objectID": "slides/24_power-simulations.html#simulating-a-sampling-distribution",
+    "href": "slides/24_power-simulations.html#simulating-a-sampling-distribution",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Simulating a sampling distribution",
+    "text": "Simulating a sampling distribution\nExample simulation: Suppose \\(X_1,\\ldots, X_{100}\\sim N(0,1)\\).\n\nset.seed(123)\nXbar &lt;- replicate(10000, mean(rnorm(100)))\nhist(Xbar, main = \"Sampling distribution of mean of 100 N(0, 1) variables\")"
+  },
+  {
+    "objectID": "slides/24_power-simulations.html#simulating-a-sampling-distribution-1",
+    "href": "slides/24_power-simulations.html#simulating-a-sampling-distribution-1",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Simulating a sampling distribution",
+    "text": "Simulating a sampling distribution\nWhat if \\(X_1,\\ldots, X_{100}\\sim \\mathrm{Exp}(1)\\)?\n\nset.seed(123)\nXbar &lt;- replicate(10000, mean(rexp(100, rate = 1)))\nhist(Xbar, main = \"Sampling distribution of mean of 100 Exponential(1) variables\")"
+  },
+  {
+    "objectID": "slides/24_power-simulations.html#simulating-a-sampling-distribution-2",
+    "href": "slides/24_power-simulations.html#simulating-a-sampling-distribution-2",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Simulating a sampling distribution",
+    "text": "Simulating a sampling distribution\nWhat if \\(X_1,\\ldots, X_{100}\\sim \\mathrm{Poisson}(1)\\)?\n\nset.seed(123)\nXbar &lt;- replicate(10000, mean(rpois(100, lambda = 1)))\nhist(Xbar, main = \"Sampling distribution of mean of 100 Poisson(1) variables\")"
+  },
+  {
+    "objectID": "slides/24_power-simulations.html#simulating-a-sampling-distribution-3",
+    "href": "slides/24_power-simulations.html#simulating-a-sampling-distribution-3",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Simulating a sampling distribution",
+    "text": "Simulating a sampling distribution\nBy the central limit theorem, all of these sampling distributions are asymptotically Gaussian with variance 1 (though the mean values differ between the three). Since \\(n=100\\) is fairly large (for these examples), all of the previous examples are close to Gaussian.\nWhat about if \\(n\\) is smaller? Or if we consider other distributions?\nSimulation is a powerful strategy for testing out methods:\n\nSuppose you wish to know… is \\(n\\) large?\nCreate a simulation that generates data that looks like your real world data.\nEvaluate whether the results are reasonable/accurate using simulated data."
+  },
+  {
+    "objectID": "slides/24_power-simulations.html#smaller-sample-sizes",
+    "href": "slides/24_power-simulations.html#smaller-sample-sizes",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Smaller sample sizes",
+    "text": "Smaller sample sizes\n\nset.seed(123)\nXbar_normal &lt;- replicate(10000, mean(rnorm(10)))\nXbar_exp &lt;- replicate(10000, mean(rexp(10, rate = 1)))\nXbar_poisson &lt;- replicate(10000, mean(rpois(10, lambda = 1)))\npar(mfrow = c(1, 3))\nhist(Xbar_normal, main = \"N(0, 1)\")\nhist(Xbar_exp, main = \"Exp(1)\")\nhist(Xbar_poisson, main = \"Poisson(1)\")"
+  },
+  {
+    "objectID": "slides/24_power-simulations.html#other-statistics",
+    "href": "slides/24_power-simulations.html#other-statistics",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Other statistics",
+    "text": "Other statistics\nWhat if we want the sampling distribution of the maximum? For each of these population models, the sampling distribution of the maximum is different.\n\nset.seed(123)\nXmax_normal &lt;- replicate(10000, max(rnorm(10)))\nXmax_exp &lt;- replicate(10000, max(rexp(10, rate = 1)))\nXmax_poisson &lt;- replicate(10000, max(rpois(10, lambda = 1)))\npar(mfrow = c(1, 3))\nhist(Xmax_normal, main = \"N(0, 1)\")\nhist(Xmax_exp, main = \"Exp(1)\")\nhist(Xmax_poisson, main = \"Poisson(1)\")"
+  },
+  {
+    "objectID": "slides/24_power-simulations.html#transformations",
+    "href": "slides/24_power-simulations.html#transformations",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Transformations",
+    "text": "Transformations\nWe can easily simulate sampling distributions for statistics summarizing the distribution of random variables that are defined as transformations of other random variables.\n\nset.seed(123)\nXbar_normal &lt;- replicate(10000, mean(rnorm(10) ^ 2))\nXbar_exp &lt;- replicate(10000, mean(rexp(10, rate = 1) ^ 2))\nXbar_poisson &lt;- replicate(10000, mean(rpois(10, lambda = 1) ^ 2))\npar(mfrow = c(1, 3))\nhist(Xbar_normal, main = \"N(0, 1) squared\")\nhist(Xbar_exp, main = \"Exp(1) squared\")\nhist(Xbar_poisson, main = \"Poisson(1) squared\")"
+  },
+  {
+    "objectID": "slides/24_power-simulations.html#exercise",
+    "href": "slides/24_power-simulations.html#exercise",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Exercise",
+    "text": "Exercise\n\nWrite code to create a histogram of the sampling distribution of the sample mean \\(\\overline{Y}\\) of \\(Y_1,\\ldots, Y_{10}\\) where \\(Y_i=\\sin(X_i)\\) and \\(X_1,\\ldots, X_{10}\\) are iid Uniform(0, 1) random variables."
+  },
+  {
+    "objectID": "slides/24_power-simulations.html#resampling-methods",
+    "href": "slides/24_power-simulations.html#resampling-methods",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Resampling methods",
+    "text": "Resampling methods\nThe previous simulations are all based on parametric models (normal, exponential, Poisson). However, we can also simulate sampling distributions without parametric assumptions on the data generating mechanism.\nSuppose we know \\(X_1,\\ldots, X_{20}\\sim \\mathrm{Exp}(1)\\). The sampling distribution can be simulated as follows:\n\nset.seed(123)\nXbar_exp &lt;- replicate(10000, mean(rexp(20, rate = 1)))\nhist(Xbar_exp)"
+  },
+  {
+    "objectID": "slides/24_power-simulations.html#resampling-methods-1",
+    "href": "slides/24_power-simulations.html#resampling-methods-1",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Resampling methods",
+    "text": "Resampling methods\nWhat if we observe \\(X_1,\\ldots, X_{20}\\), but we don’t know that \\(X_i\\) is exponentially distributed? We could just try the normal approximation to approximate the sampling distribution:\n\nX &lt;- rexp(20, rate = 1)\nx_axis &lt;- seq(0, 3, length.out = 1000)\n\n# plot \"true\" simulated sampling distribution\nhist(Xbar_exp, freq = F, ylim = c(0, 3))\n\n# plot normal theory\nlines(x_axis, dnorm(x_axis, mean = mean(X), sd = sd(X) / sqrt(20)), col = 'red')"
+  },
+  {
+    "objectID": "slides/24_power-simulations.html#bootstrap-samples",
+    "href": "slides/24_power-simulations.html#bootstrap-samples",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Bootstrap samples",
+    "text": "Bootstrap samples\nBootstrapping is a resampling method that uses random samples with replacement from the sample data to approximate the sampling distribution of sample-based statistics.\n\nprint(sort(X))\n\n [1] 0.00816693 0.06263315 0.11949335 0.12600941 0.14474580 0.14660666\n [7] 0.15582213 0.17485277 0.23514296 0.35492087 0.48980207 0.52215538\n[13] 0.72200938 1.27034542 1.56551624 1.74866229 1.82459209 1.84311722\n[19] 2.14225230 2.24995288\n\n# sample with replacement from X\nX_resample &lt;- sample(X, size = 20, replace = TRUE)\nprint(sort(X_resample))\n\n [1] 0.06263315 0.11949335 0.11949335 0.11949335 0.11949335 0.12600941\n [7] 0.14474580 0.14474580 0.15582213 0.15582213 0.17485277 0.35492087\n[13] 0.35492087 0.48980207 0.72200938 0.72200938 1.56551624 2.14225230\n[19] 2.24995288 2.24995288"
+  },
+  {
+    "objectID": "slides/24_power-simulations.html#bootstrap-samples-1",
+    "href": "slides/24_power-simulations.html#bootstrap-samples-1",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Bootstrap samples",
+    "text": "Bootstrap samples\nWe can repeatedly resample from \\(X\\), then compute the resample sample means and plot the distribution:\n\nbootstrap_Xbar &lt;- replicate(10000, mean(sample(X, size = 20, replace = TRUE)))\nhist(bootstrap_Xbar)"
+  },
+  {
+    "objectID": "slides/24_power-simulations.html#bootstrap-samples-2",
+    "href": "slides/24_power-simulations.html#bootstrap-samples-2",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Bootstrap samples",
+    "text": "Bootstrap samples\nWe can compare the bootstrap sampling distributions and true sampling distributions. In this case, the bootstrap does not seem that different from the normal approximation.\n\nlibrary(ggplot2)\nplot_dat &lt;-\n  data.frame(Xbar = c(Xbar_exp, bootstrap_Xbar),\n             source = rep(c(\"Parametric (Exp)\", \"Bootstrap\"), each = 10000))\nggplot(plot_dat, aes(x = Xbar, color = source)) +\n  geom_density() +\n  geom_function(fun = dnorm, \n                args = list(mean = mean(X), sd = sd(X) / sqrt(20)),\n                aes(color = \"Parametric (Normal)\"))"
+  },
+  {
+    "objectID": "slides/24_power-simulations.html#bootstrap-confidence-intervals",
+    "href": "slides/24_power-simulations.html#bootstrap-confidence-intervals",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Bootstrap confidence intervals",
+    "text": "Bootstrap confidence intervals\nWe can take appropriate quantiles of the bootstrap samples to construct a bootstrap confidence interval using the quantile() function:\n\nquantile(bootstrap_Xbar, probs = c(.025, .975))\n\n    2.5%    97.5% \n0.467759 1.157051"
+  },
+  {
+    "objectID": "slides/24_power-simulations.html#why-bootstrap",
+    "href": "slides/24_power-simulations.html#why-bootstrap",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Why bootstrap?",
+    "text": "Why bootstrap?\nIn this case, inference based on bootstrapping does not seem better than the normal approximation based on the central limit theorem.\nHowever, for many cases, we may not have a simple parametric approximation to the true sampling distribution. For example, suppose we wish to compute the sampling distribution of the sample median.\nNote however that the bootstrap may not work well for all statistics, such as the minimum (why not?)."
+  },
+  {
     "objectID": "slides/12_programming-basics.html#overview-of-today",
     "href": "slides/12_programming-basics.html#overview-of-today",
     "title": "MATH167R: Programming Basics",
@@ -3423,6 +3955,125 @@
     "text": "Practical tips\nRemember:\n\nName masking: names defined within a function mask names defined outside the function.\nFree variables: Free variables are searched for first in the environment where the function is defined.\nKnitting an R Markdown document: R Markdown documents are self-contained, so when you knit, you cannot access anything in the global environment you were working in.\nFunction execution environments: Function execution environments are generally temporary, so whatever happens within a function does not affect the global environment."
   },
   {
+    "objectID": "slides/26_prediction.html#overview-of-today",
+    "href": "slides/26_prediction.html#overview-of-today",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Overview of today",
+    "text": "Overview of today\n\nanova\nChi squared tests"
+  },
+  {
+    "objectID": "slides/26_prediction.html#sampling-distributions",
+    "href": "slides/26_prediction.html#sampling-distributions",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Sampling distributions",
+    "text": "Sampling distributions\nWithout explicitly saying so, we have been simulating sampling distributions during our simulations.\nRecall: A sampling distribution is the probability distribution of a sample-based statistic.\nExample: If \\(X_1,\\ldots, X_{100}\\) are iid random variables with variance \\(1\\), what is the distribution of the sample mean \\(\\overline{X}\\)?"
+  },
+  {
+    "objectID": "slides/26_prediction.html#simulating-a-sampling-distribution",
+    "href": "slides/26_prediction.html#simulating-a-sampling-distribution",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Simulating a sampling distribution",
+    "text": "Simulating a sampling distribution\nExample simulation: Suppose \\(X_1,\\ldots, X_{100}\\sim N(0,1)\\).\n\nset.seed(123)\nXbar &lt;- replicate(10000, mean(rnorm(100)))\nhist(Xbar, main = \"Sampling distribution of mean of 100 N(0, 1) variables\")"
+  },
+  {
+    "objectID": "slides/26_prediction.html#simulating-a-sampling-distribution-1",
+    "href": "slides/26_prediction.html#simulating-a-sampling-distribution-1",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Simulating a sampling distribution",
+    "text": "Simulating a sampling distribution\nWhat if \\(X_1,\\ldots, X_{100}\\sim \\mathrm{Exp}(1)\\)?\n\nset.seed(123)\nXbar &lt;- replicate(10000, mean(rexp(100, rate = 1)))\nhist(Xbar, main = \"Sampling distribution of mean of 100 Exponential(1) variables\")"
+  },
+  {
+    "objectID": "slides/26_prediction.html#simulating-a-sampling-distribution-2",
+    "href": "slides/26_prediction.html#simulating-a-sampling-distribution-2",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Simulating a sampling distribution",
+    "text": "Simulating a sampling distribution\nWhat if \\(X_1,\\ldots, X_{100}\\sim \\mathrm{Poisson}(1)\\)?\n\nset.seed(123)\nXbar &lt;- replicate(10000, mean(rpois(100, lambda = 1)))\nhist(Xbar, main = \"Sampling distribution of mean of 100 Poisson(1) variables\")"
+  },
+  {
+    "objectID": "slides/26_prediction.html#simulating-a-sampling-distribution-3",
+    "href": "slides/26_prediction.html#simulating-a-sampling-distribution-3",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Simulating a sampling distribution",
+    "text": "Simulating a sampling distribution\nBy the central limit theorem, all of these sampling distributions are asymptotically Gaussian with variance 1 (though the mean values differ between the three). Since \\(n=100\\) is fairly large (for these examples), all of the previous examples are close to Gaussian.\nWhat about if \\(n\\) is smaller? Or if we consider other distributions?\nSimulation is a powerful strategy for testing out methods:\n\nSuppose you wish to know… is \\(n\\) large?\nCreate a simulation that generates data that looks like your real world data.\nEvaluate whether the results are reasonable/accurate using simulated data."
+  },
+  {
+    "objectID": "slides/26_prediction.html#smaller-sample-sizes",
+    "href": "slides/26_prediction.html#smaller-sample-sizes",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Smaller sample sizes",
+    "text": "Smaller sample sizes\n\nset.seed(123)\nXbar_normal &lt;- replicate(10000, mean(rnorm(10)))\nXbar_exp &lt;- replicate(10000, mean(rexp(10, rate = 1)))\nXbar_poisson &lt;- replicate(10000, mean(rpois(10, lambda = 1)))\npar(mfrow = c(1, 3))\nhist(Xbar_normal, main = \"N(0, 1)\")\nhist(Xbar_exp, main = \"Exp(1)\")\nhist(Xbar_poisson, main = \"Poisson(1)\")"
+  },
+  {
+    "objectID": "slides/26_prediction.html#other-statistics",
+    "href": "slides/26_prediction.html#other-statistics",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Other statistics",
+    "text": "Other statistics\nWhat if we want the sampling distribution of the maximum? For each of these population models, the sampling distribution of the maximum is different.\n\nset.seed(123)\nXmax_normal &lt;- replicate(10000, max(rnorm(10)))\nXmax_exp &lt;- replicate(10000, max(rexp(10, rate = 1)))\nXmax_poisson &lt;- replicate(10000, max(rpois(10, lambda = 1)))\npar(mfrow = c(1, 3))\nhist(Xmax_normal, main = \"N(0, 1)\")\nhist(Xmax_exp, main = \"Exp(1)\")\nhist(Xmax_poisson, main = \"Poisson(1)\")"
+  },
+  {
+    "objectID": "slides/26_prediction.html#transformations",
+    "href": "slides/26_prediction.html#transformations",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Transformations",
+    "text": "Transformations\nWe can easily simulate sampling distributions for statistics summarizing the distribution of random variables that are defined as transformations of other random variables.\n\nset.seed(123)\nXbar_normal &lt;- replicate(10000, mean(rnorm(10) ^ 2))\nXbar_exp &lt;- replicate(10000, mean(rexp(10, rate = 1) ^ 2))\nXbar_poisson &lt;- replicate(10000, mean(rpois(10, lambda = 1) ^ 2))\npar(mfrow = c(1, 3))\nhist(Xbar_normal, main = \"N(0, 1) squared\")\nhist(Xbar_exp, main = \"Exp(1) squared\")\nhist(Xbar_poisson, main = \"Poisson(1) squared\")"
+  },
+  {
+    "objectID": "slides/26_prediction.html#exercise",
+    "href": "slides/26_prediction.html#exercise",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Exercise",
+    "text": "Exercise\n\nWrite code to create a histogram of the sampling distribution of the sample mean \\(\\overline{Y}\\) of \\(Y_1,\\ldots, Y_{10}\\) where \\(Y_i=\\sin(X_i)\\) and \\(X_1,\\ldots, X_{10}\\) are iid Uniform(0, 1) random variables."
+  },
+  {
+    "objectID": "slides/26_prediction.html#resampling-methods",
+    "href": "slides/26_prediction.html#resampling-methods",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Resampling methods",
+    "text": "Resampling methods\nThe previous simulations are all based on parametric models (normal, exponential, Poisson). However, we can also simulate sampling distributions without parametric assumptions on the data generating mechanism.\nSuppose we know \\(X_1,\\ldots, X_{20}\\sim \\mathrm{Exp}(1)\\). The sampling distribution can be simulated as follows:\n\nset.seed(123)\nXbar_exp &lt;- replicate(10000, mean(rexp(20, rate = 1)))\nhist(Xbar_exp)"
+  },
+  {
+    "objectID": "slides/26_prediction.html#resampling-methods-1",
+    "href": "slides/26_prediction.html#resampling-methods-1",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Resampling methods",
+    "text": "Resampling methods\nWhat if we observe \\(X_1,\\ldots, X_{20}\\), but we don’t know that \\(X_i\\) is exponentially distributed? We could just try the normal approximation to approximate the sampling distribution:\n\nX &lt;- rexp(20, rate = 1)\nx_axis &lt;- seq(0, 3, length.out = 1000)\n\n# plot \"true\" simulated sampling distribution\nhist(Xbar_exp, freq = F, ylim = c(0, 3))\n\n# plot normal theory\nlines(x_axis, dnorm(x_axis, mean = mean(X), sd = sd(X) / sqrt(20)), col = 'red')"
+  },
+  {
+    "objectID": "slides/26_prediction.html#bootstrap-samples",
+    "href": "slides/26_prediction.html#bootstrap-samples",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Bootstrap samples",
+    "text": "Bootstrap samples\nBootstrapping is a resampling method that uses random samples with replacement from the sample data to approximate the sampling distribution of sample-based statistics.\n\nprint(sort(X))\n\n [1] 0.00816693 0.06263315 0.11949335 0.12600941 0.14474580 0.14660666\n [7] 0.15582213 0.17485277 0.23514296 0.35492087 0.48980207 0.52215538\n[13] 0.72200938 1.27034542 1.56551624 1.74866229 1.82459209 1.84311722\n[19] 2.14225230 2.24995288\n\n# sample with replacement from X\nX_resample &lt;- sample(X, size = 20, replace = TRUE)\nprint(sort(X_resample))\n\n [1] 0.06263315 0.11949335 0.11949335 0.11949335 0.11949335 0.12600941\n [7] 0.14474580 0.14474580 0.15582213 0.15582213 0.17485277 0.35492087\n[13] 0.35492087 0.48980207 0.72200938 0.72200938 1.56551624 2.14225230\n[19] 2.24995288 2.24995288"
+  },
+  {
+    "objectID": "slides/26_prediction.html#bootstrap-samples-1",
+    "href": "slides/26_prediction.html#bootstrap-samples-1",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Bootstrap samples",
+    "text": "Bootstrap samples\nWe can repeatedly resample from \\(X\\), then compute the resample sample means and plot the distribution:\n\nbootstrap_Xbar &lt;- replicate(10000, mean(sample(X, size = 20, replace = TRUE)))\nhist(bootstrap_Xbar)"
+  },
+  {
+    "objectID": "slides/26_prediction.html#bootstrap-samples-2",
+    "href": "slides/26_prediction.html#bootstrap-samples-2",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Bootstrap samples",
+    "text": "Bootstrap samples\nWe can compare the bootstrap sampling distributions and true sampling distributions. In this case, the bootstrap does not seem that different from the normal approximation.\n\nlibrary(ggplot2)\nplot_dat &lt;-\n  data.frame(Xbar = c(Xbar_exp, bootstrap_Xbar),\n             source = rep(c(\"Parametric (Exp)\", \"Bootstrap\"), each = 10000))\nggplot(plot_dat, aes(x = Xbar, color = source)) +\n  geom_density() +\n  geom_function(fun = dnorm, \n                args = list(mean = mean(X), sd = sd(X) / sqrt(20)),\n                aes(color = \"Parametric (Normal)\"))"
+  },
+  {
+    "objectID": "slides/26_prediction.html#bootstrap-confidence-intervals",
+    "href": "slides/26_prediction.html#bootstrap-confidence-intervals",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Bootstrap confidence intervals",
+    "text": "Bootstrap confidence intervals\nWe can take appropriate quantiles of the bootstrap samples to construct a bootstrap confidence interval using the quantile() function:\n\nquantile(bootstrap_Xbar, probs = c(.025, .975))\n\n    2.5%    97.5% \n0.467759 1.157051"
+  },
+  {
+    "objectID": "slides/26_prediction.html#why-bootstrap",
+    "href": "slides/26_prediction.html#why-bootstrap",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Why bootstrap?",
+    "text": "Why bootstrap?\nIn this case, inference based on bootstrapping does not seem better than the normal approximation based on the central limit theorem.\nHowever, for many cases, we may not have a simple parametric approximation to the true sampling distribution. For example, suppose we wish to compute the sampling distribution of the sample median.\nNote however that the bootstrap may not work well for all statistics, such as the minimum (why not?)."
+  },
+  {
     "objectID": "slides/02_fundamentals.html#warm-up",
     "href": "slides/02_fundamentals.html#warm-up",
     "title": "MATH167R: Overview",
@@ -3582,6 +4233,307 @@
     "title": "MATH167R: Overview",
     "section": "Quotes and Strings",
     "text": "Quotes and Strings\nUse \", not ', for quoting text. The only exception is when the text already contains double quotes and no single quotes."
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#overview-of-today",
+    "href": "slides/23_linear-regression.html#overview-of-today",
+    "title": "MATH167R: Linear regression",
+    "section": "Overview of today",
+    "text": "Overview of today\n\nCovariance and correlation\nLinear regression"
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#relating-numerical-variables",
+    "href": "slides/23_linear-regression.html#relating-numerical-variables",
+    "title": "MATH167R: Linear regression",
+    "section": "Relating numerical variables",
+    "text": "Relating numerical variables"
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#regression-methods",
+    "href": "slides/23_linear-regression.html#regression-methods",
+    "title": "MATH167R: Linear regression",
+    "section": "Regression methods",
+    "text": "Regression methods\nLet’s assume we have some data \\(X_1,\\ldots,X_p, Y\\) where \\(X_1,\\ldots,X_p\\) are \\(p\\) independent variables/explanatory variables/covariates/predictors and \\(Y\\) is the dependent variables/response/outcome. We want to know the relationship between our covariates and our response, we can do this with a method called regression. Regression provides us with a statistical method to conduct inference and prediction."
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#regression-methods-1",
+    "href": "slides/23_linear-regression.html#regression-methods-1",
+    "title": "MATH167R: Linear regression",
+    "section": "Regression methods",
+    "text": "Regression methods\n\ninference: assess the relationship between our variables, our statistical model as a whole, predictor importance\n\nWhat is the relationship between sleep and GPA?\nIs parents’ education or parents’ income more important for explaining income?\n\nprediction: predict new/future outcomes from new/future covariates\n\nCan we predict test scores based on hours spent studying?"
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#why-is-it-called-regression",
+    "href": "slides/23_linear-regression.html#why-is-it-called-regression",
+    "title": "MATH167R: Linear regression",
+    "section": "Why is it called regression?",
+    "text": "Why is it called regression?"
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#linear-regression",
+    "href": "slides/23_linear-regression.html#linear-regression",
+    "title": "MATH167R: Linear regression",
+    "section": "Linear Regression",
+    "text": "Linear Regression\nGiven our response \\(Y\\) and our predictors \\(X_1, \\ldots, X_p\\), a linear regression model takes the form:\n\\[\n\\begin{align}\nY &= \\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_p X_p + \\epsilon,\\\\\n\\epsilon &\\sim N(0,\\sigma^2)\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#matrix-notation",
+    "href": "slides/23_linear-regression.html#matrix-notation",
+    "title": "MATH167R: Linear regression",
+    "section": "Matrix Notation",
+    "text": "Matrix Notation\nWe can fully write out a linear regression model\n\\[\n\\begin{equation}\n\\begin{bmatrix} y_1 \\\\ y_2\\\\ \\vdots \\\\ y_n \\end{bmatrix} =\n\\begin{bmatrix} 1 & x_{1,1} & \\cdots & x_{1,k}\\\\\n1 & x_{2,1} & \\cdots & x_{2, k}\\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\n1 & x_{n,1} & \\cdots & x_{n, k}\\end{bmatrix}\n\\begin{bmatrix} \\beta_0 \\\\ \\beta_1 \\\\ \\vdots \\\\ \\beta_{k} \\end{bmatrix} +\n\\begin{bmatrix} \\epsilon_1 \\\\ \\epsilon_2 \\\\ \\vdots \\\\ \\epsilon_{n} \\end{bmatrix}\n\\end{equation}\n\\]\nThis can also be expressed in matrix form:\n\\[\n\\begin{align}\n\\mathbf{Y} &= \\mathbf{X}\\beta + \\epsilon,\\\\\n\\epsilon&\\sim N(0,1)\n\\end{align}\n\\]\n\n\\(\\mathbf{Y} \\in \\mathbb{R}^{n \\times 1}\\): an n-dimensional vector of the response\n\\(\\mathbf{X} \\in \\mathbb{R}^{n \\times (k+1)}\\): a \\(((k+1)\\times n)\\) matrix of the predictors (including intercept)\n\\(\\beta \\in \\mathbb{R}^{((k+1)\\times 1)}\\): a \\((k+1)\\)-dimensional vector of regression parameters\n\\(\\epsilon \\in \\mathbb{R}^{n \\times 1}\\): an n-dimensional vector of the error term"
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#large-epsilon-error-term",
+    "href": "slides/23_linear-regression.html#large-epsilon-error-term",
+    "title": "MATH167R: Linear regression",
+    "section": "\\(\\large \\epsilon\\): Error term",
+    "text": "\\(\\large \\epsilon\\): Error term\n\\(\\epsilon\\), pronounced epsilon, represents the error term of our model. We can model \\(Y\\) as a linear function of the \\(X\\)’s, but in the real world, the relationship won’t always be perfect. There is noise! It can come from\n\nMeasurement error in the \\(X\\)’s\nMeasurement error in the \\(Y\\)’s\nUnobserved/missing variables in the model\nDeviations in the true model from linearity\nTrue randomness\n\nIn linear regression, we assume that this error term is normally distributed with mean zero and variance \\(\\sigma^2\\)."
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#large-beta_0-intercept",
+    "href": "slides/23_linear-regression.html#large-beta_0-intercept",
+    "title": "MATH167R: Linear regression",
+    "section": "\\(\\large \\beta_0\\): Intercept",
+    "text": "\\(\\large \\beta_0\\): Intercept\n\\(\\beta_0\\) is the intercept term of our model. Notice that\n\\[\\large \\mathbb{E}[Y|X_1 = X_2 = \\cdots = X_p = 0] = \\beta_0\\]\nThus, \\(\\beta_0\\) is the expected value of our response if all the covariates are equal to \\(0\\)! This is also known as the y-intercept of our model."
+  },
+  {
+    "objectID": "slides/27_cross-validation.html#overview-of-today",
+    "href": "slides/27_cross-validation.html#overview-of-today",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Overview of today",
+    "text": "Overview of today\n\nanova\nChi squared tests"
+  },
+  {
+    "objectID": "slides/27_cross-validation.html#sampling-distributions",
+    "href": "slides/27_cross-validation.html#sampling-distributions",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Sampling distributions",
+    "text": "Sampling distributions\nWithout explicitly saying so, we have been simulating sampling distributions during our simulations.\nRecall: A sampling distribution is the probability distribution of a sample-based statistic.\nExample: If \\(X_1,\\ldots, X_{100}\\) are iid random variables with variance \\(1\\), what is the distribution of the sample mean \\(\\overline{X}\\)?"
+  },
+  {
+    "objectID": "slides/27_cross-validation.html#simulating-a-sampling-distribution",
+    "href": "slides/27_cross-validation.html#simulating-a-sampling-distribution",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Simulating a sampling distribution",
+    "text": "Simulating a sampling distribution\nExample simulation: Suppose \\(X_1,\\ldots, X_{100}\\sim N(0,1)\\).\n\nset.seed(123)\nXbar &lt;- replicate(10000, mean(rnorm(100)))\nhist(Xbar, main = \"Sampling distribution of mean of 100 N(0, 1) variables\")"
+  },
+  {
+    "objectID": "slides/27_cross-validation.html#simulating-a-sampling-distribution-1",
+    "href": "slides/27_cross-validation.html#simulating-a-sampling-distribution-1",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Simulating a sampling distribution",
+    "text": "Simulating a sampling distribution\nWhat if \\(X_1,\\ldots, X_{100}\\sim \\mathrm{Exp}(1)\\)?\n\nset.seed(123)\nXbar &lt;- replicate(10000, mean(rexp(100, rate = 1)))\nhist(Xbar, main = \"Sampling distribution of mean of 100 Exponential(1) variables\")"
+  },
+  {
+    "objectID": "slides/27_cross-validation.html#simulating-a-sampling-distribution-2",
+    "href": "slides/27_cross-validation.html#simulating-a-sampling-distribution-2",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Simulating a sampling distribution",
+    "text": "Simulating a sampling distribution\nWhat if \\(X_1,\\ldots, X_{100}\\sim \\mathrm{Poisson}(1)\\)?\n\nset.seed(123)\nXbar &lt;- replicate(10000, mean(rpois(100, lambda = 1)))\nhist(Xbar, main = \"Sampling distribution of mean of 100 Poisson(1) variables\")"
+  },
+  {
+    "objectID": "slides/27_cross-validation.html#simulating-a-sampling-distribution-3",
+    "href": "slides/27_cross-validation.html#simulating-a-sampling-distribution-3",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Simulating a sampling distribution",
+    "text": "Simulating a sampling distribution\nBy the central limit theorem, all of these sampling distributions are asymptotically Gaussian with variance 1 (though the mean values differ between the three). Since \\(n=100\\) is fairly large (for these examples), all of the previous examples are close to Gaussian.\nWhat about if \\(n\\) is smaller? Or if we consider other distributions?\nSimulation is a powerful strategy for testing out methods:\n\nSuppose you wish to know… is \\(n\\) large?\nCreate a simulation that generates data that looks like your real world data.\nEvaluate whether the results are reasonable/accurate using simulated data."
+  },
+  {
+    "objectID": "slides/27_cross-validation.html#smaller-sample-sizes",
+    "href": "slides/27_cross-validation.html#smaller-sample-sizes",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Smaller sample sizes",
+    "text": "Smaller sample sizes\n\nset.seed(123)\nXbar_normal &lt;- replicate(10000, mean(rnorm(10)))\nXbar_exp &lt;- replicate(10000, mean(rexp(10, rate = 1)))\nXbar_poisson &lt;- replicate(10000, mean(rpois(10, lambda = 1)))\npar(mfrow = c(1, 3))\nhist(Xbar_normal, main = \"N(0, 1)\")\nhist(Xbar_exp, main = \"Exp(1)\")\nhist(Xbar_poisson, main = \"Poisson(1)\")"
+  },
+  {
+    "objectID": "slides/27_cross-validation.html#other-statistics",
+    "href": "slides/27_cross-validation.html#other-statistics",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Other statistics",
+    "text": "Other statistics\nWhat if we want the sampling distribution of the maximum? For each of these population models, the sampling distribution of the maximum is different.\n\nset.seed(123)\nXmax_normal &lt;- replicate(10000, max(rnorm(10)))\nXmax_exp &lt;- replicate(10000, max(rexp(10, rate = 1)))\nXmax_poisson &lt;- replicate(10000, max(rpois(10, lambda = 1)))\npar(mfrow = c(1, 3))\nhist(Xmax_normal, main = \"N(0, 1)\")\nhist(Xmax_exp, main = \"Exp(1)\")\nhist(Xmax_poisson, main = \"Poisson(1)\")"
+  },
+  {
+    "objectID": "slides/27_cross-validation.html#transformations",
+    "href": "slides/27_cross-validation.html#transformations",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Transformations",
+    "text": "Transformations\nWe can easily simulate sampling distributions for statistics summarizing the distribution of random variables that are defined as transformations of other random variables.\n\nset.seed(123)\nXbar_normal &lt;- replicate(10000, mean(rnorm(10) ^ 2))\nXbar_exp &lt;- replicate(10000, mean(rexp(10, rate = 1) ^ 2))\nXbar_poisson &lt;- replicate(10000, mean(rpois(10, lambda = 1) ^ 2))\npar(mfrow = c(1, 3))\nhist(Xbar_normal, main = \"N(0, 1) squared\")\nhist(Xbar_exp, main = \"Exp(1) squared\")\nhist(Xbar_poisson, main = \"Poisson(1) squared\")"
+  },
+  {
+    "objectID": "slides/27_cross-validation.html#exercise",
+    "href": "slides/27_cross-validation.html#exercise",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Exercise",
+    "text": "Exercise\n\nWrite code to create a histogram of the sampling distribution of the sample mean \\(\\overline{Y}\\) of \\(Y_1,\\ldots, Y_{10}\\) where \\(Y_i=\\sin(X_i)\\) and \\(X_1,\\ldots, X_{10}\\) are iid Uniform(0, 1) random variables."
+  },
+  {
+    "objectID": "slides/27_cross-validation.html#resampling-methods",
+    "href": "slides/27_cross-validation.html#resampling-methods",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Resampling methods",
+    "text": "Resampling methods\nThe previous simulations are all based on parametric models (normal, exponential, Poisson). However, we can also simulate sampling distributions without parametric assumptions on the data generating mechanism.\nSuppose we know \\(X_1,\\ldots, X_{20}\\sim \\mathrm{Exp}(1)\\). The sampling distribution can be simulated as follows:\n\nset.seed(123)\nXbar_exp &lt;- replicate(10000, mean(rexp(20, rate = 1)))\nhist(Xbar_exp)"
+  },
+  {
+    "objectID": "slides/27_cross-validation.html#resampling-methods-1",
+    "href": "slides/27_cross-validation.html#resampling-methods-1",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Resampling methods",
+    "text": "Resampling methods\nWhat if we observe \\(X_1,\\ldots, X_{20}\\), but we don’t know that \\(X_i\\) is exponentially distributed? We could just try the normal approximation to approximate the sampling distribution:\n\nX &lt;- rexp(20, rate = 1)\nx_axis &lt;- seq(0, 3, length.out = 1000)\n\n# plot \"true\" simulated sampling distribution\nhist(Xbar_exp, freq = F, ylim = c(0, 3))\n\n# plot normal theory\nlines(x_axis, dnorm(x_axis, mean = mean(X), sd = sd(X) / sqrt(20)), col = 'red')"
+  },
+  {
+    "objectID": "slides/27_cross-validation.html#bootstrap-samples",
+    "href": "slides/27_cross-validation.html#bootstrap-samples",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Bootstrap samples",
+    "text": "Bootstrap samples\nBootstrapping is a resampling method that uses random samples with replacement from the sample data to approximate the sampling distribution of sample-based statistics.\n\nprint(sort(X))\n\n [1] 0.00816693 0.06263315 0.11949335 0.12600941 0.14474580 0.14660666\n [7] 0.15582213 0.17485277 0.23514296 0.35492087 0.48980207 0.52215538\n[13] 0.72200938 1.27034542 1.56551624 1.74866229 1.82459209 1.84311722\n[19] 2.14225230 2.24995288\n\n# sample with replacement from X\nX_resample &lt;- sample(X, size = 20, replace = TRUE)\nprint(sort(X_resample))\n\n [1] 0.06263315 0.11949335 0.11949335 0.11949335 0.11949335 0.12600941\n [7] 0.14474580 0.14474580 0.15582213 0.15582213 0.17485277 0.35492087\n[13] 0.35492087 0.48980207 0.72200938 0.72200938 1.56551624 2.14225230\n[19] 2.24995288 2.24995288"
+  },
+  {
+    "objectID": "slides/27_cross-validation.html#bootstrap-samples-1",
+    "href": "slides/27_cross-validation.html#bootstrap-samples-1",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Bootstrap samples",
+    "text": "Bootstrap samples\nWe can repeatedly resample from \\(X\\), then compute the resample sample means and plot the distribution:\n\nbootstrap_Xbar &lt;- replicate(10000, mean(sample(X, size = 20, replace = TRUE)))\nhist(bootstrap_Xbar)"
+  },
+  {
+    "objectID": "slides/27_cross-validation.html#bootstrap-samples-2",
+    "href": "slides/27_cross-validation.html#bootstrap-samples-2",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Bootstrap samples",
+    "text": "Bootstrap samples\nWe can compare the bootstrap sampling distributions and true sampling distributions. In this case, the bootstrap does not seem that different from the normal approximation.\n\nlibrary(ggplot2)\nplot_dat &lt;-\n  data.frame(Xbar = c(Xbar_exp, bootstrap_Xbar),\n             source = rep(c(\"Parametric (Exp)\", \"Bootstrap\"), each = 10000))\nggplot(plot_dat, aes(x = Xbar, color = source)) +\n  geom_density() +\n  geom_function(fun = dnorm, \n                args = list(mean = mean(X), sd = sd(X) / sqrt(20)),\n                aes(color = \"Parametric (Normal)\"))"
+  },
+  {
+    "objectID": "slides/27_cross-validation.html#bootstrap-confidence-intervals",
+    "href": "slides/27_cross-validation.html#bootstrap-confidence-intervals",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Bootstrap confidence intervals",
+    "text": "Bootstrap confidence intervals\nWe can take appropriate quantiles of the bootstrap samples to construct a bootstrap confidence interval using the quantile() function:\n\nquantile(bootstrap_Xbar, probs = c(.025, .975))\n\n    2.5%    97.5% \n0.467759 1.157051"
+  },
+  {
+    "objectID": "slides/27_cross-validation.html#why-bootstrap",
+    "href": "slides/27_cross-validation.html#why-bootstrap",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Why bootstrap?",
+    "text": "Why bootstrap?\nIn this case, inference based on bootstrapping does not seem better than the normal approximation based on the central limit theorem.\nHowever, for many cases, we may not have a simple parametric approximation to the true sampling distribution. For example, suppose we wish to compute the sampling distribution of the sample median.\nNote however that the bootstrap may not work well for all statistics, such as the minimum (why not?)."
+  },
+  {
+    "objectID": "slides/25_advanced-hypothesis-tests.html#overview-of-today",
+    "href": "slides/25_advanced-hypothesis-tests.html#overview-of-today",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Overview of today",
+    "text": "Overview of today\n\nanova\nChi squared tests"
+  },
+  {
+    "objectID": "slides/25_advanced-hypothesis-tests.html#sampling-distributions",
+    "href": "slides/25_advanced-hypothesis-tests.html#sampling-distributions",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Sampling distributions",
+    "text": "Sampling distributions\nWithout explicitly saying so, we have been simulating sampling distributions during our simulations.\nRecall: A sampling distribution is the probability distribution of a sample-based statistic.\nExample: If \\(X_1,\\ldots, X_{100}\\) are iid random variables with variance \\(1\\), what is the distribution of the sample mean \\(\\overline{X}\\)?"
+  },
+  {
+    "objectID": "slides/25_advanced-hypothesis-tests.html#simulating-a-sampling-distribution",
+    "href": "slides/25_advanced-hypothesis-tests.html#simulating-a-sampling-distribution",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Simulating a sampling distribution",
+    "text": "Simulating a sampling distribution\nExample simulation: Suppose \\(X_1,\\ldots, X_{100}\\sim N(0,1)\\).\n\nset.seed(123)\nXbar &lt;- replicate(10000, mean(rnorm(100)))\nhist(Xbar, main = \"Sampling distribution of mean of 100 N(0, 1) variables\")"
+  },
+  {
+    "objectID": "slides/25_advanced-hypothesis-tests.html#simulating-a-sampling-distribution-1",
+    "href": "slides/25_advanced-hypothesis-tests.html#simulating-a-sampling-distribution-1",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Simulating a sampling distribution",
+    "text": "Simulating a sampling distribution\nWhat if \\(X_1,\\ldots, X_{100}\\sim \\mathrm{Exp}(1)\\)?\n\nset.seed(123)\nXbar &lt;- replicate(10000, mean(rexp(100, rate = 1)))\nhist(Xbar, main = \"Sampling distribution of mean of 100 Exponential(1) variables\")"
+  },
+  {
+    "objectID": "slides/25_advanced-hypothesis-tests.html#simulating-a-sampling-distribution-2",
+    "href": "slides/25_advanced-hypothesis-tests.html#simulating-a-sampling-distribution-2",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Simulating a sampling distribution",
+    "text": "Simulating a sampling distribution\nWhat if \\(X_1,\\ldots, X_{100}\\sim \\mathrm{Poisson}(1)\\)?\n\nset.seed(123)\nXbar &lt;- replicate(10000, mean(rpois(100, lambda = 1)))\nhist(Xbar, main = \"Sampling distribution of mean of 100 Poisson(1) variables\")"
+  },
+  {
+    "objectID": "slides/25_advanced-hypothesis-tests.html#simulating-a-sampling-distribution-3",
+    "href": "slides/25_advanced-hypothesis-tests.html#simulating-a-sampling-distribution-3",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Simulating a sampling distribution",
+    "text": "Simulating a sampling distribution\nBy the central limit theorem, all of these sampling distributions are asymptotically Gaussian with variance 1 (though the mean values differ between the three). Since \\(n=100\\) is fairly large (for these examples), all of the previous examples are close to Gaussian.\nWhat about if \\(n\\) is smaller? Or if we consider other distributions?\nSimulation is a powerful strategy for testing out methods:\n\nSuppose you wish to know… is \\(n\\) large?\nCreate a simulation that generates data that looks like your real world data.\nEvaluate whether the results are reasonable/accurate using simulated data."
+  },
+  {
+    "objectID": "slides/25_advanced-hypothesis-tests.html#smaller-sample-sizes",
+    "href": "slides/25_advanced-hypothesis-tests.html#smaller-sample-sizes",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Smaller sample sizes",
+    "text": "Smaller sample sizes\n\nset.seed(123)\nXbar_normal &lt;- replicate(10000, mean(rnorm(10)))\nXbar_exp &lt;- replicate(10000, mean(rexp(10, rate = 1)))\nXbar_poisson &lt;- replicate(10000, mean(rpois(10, lambda = 1)))\npar(mfrow = c(1, 3))\nhist(Xbar_normal, main = \"N(0, 1)\")\nhist(Xbar_exp, main = \"Exp(1)\")\nhist(Xbar_poisson, main = \"Poisson(1)\")"
+  },
+  {
+    "objectID": "slides/25_advanced-hypothesis-tests.html#other-statistics",
+    "href": "slides/25_advanced-hypothesis-tests.html#other-statistics",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Other statistics",
+    "text": "Other statistics\nWhat if we want the sampling distribution of the maximum? For each of these population models, the sampling distribution of the maximum is different.\n\nset.seed(123)\nXmax_normal &lt;- replicate(10000, max(rnorm(10)))\nXmax_exp &lt;- replicate(10000, max(rexp(10, rate = 1)))\nXmax_poisson &lt;- replicate(10000, max(rpois(10, lambda = 1)))\npar(mfrow = c(1, 3))\nhist(Xmax_normal, main = \"N(0, 1)\")\nhist(Xmax_exp, main = \"Exp(1)\")\nhist(Xmax_poisson, main = \"Poisson(1)\")"
+  },
+  {
+    "objectID": "slides/25_advanced-hypothesis-tests.html#transformations",
+    "href": "slides/25_advanced-hypothesis-tests.html#transformations",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Transformations",
+    "text": "Transformations\nWe can easily simulate sampling distributions for statistics summarizing the distribution of random variables that are defined as transformations of other random variables.\n\nset.seed(123)\nXbar_normal &lt;- replicate(10000, mean(rnorm(10) ^ 2))\nXbar_exp &lt;- replicate(10000, mean(rexp(10, rate = 1) ^ 2))\nXbar_poisson &lt;- replicate(10000, mean(rpois(10, lambda = 1) ^ 2))\npar(mfrow = c(1, 3))\nhist(Xbar_normal, main = \"N(0, 1) squared\")\nhist(Xbar_exp, main = \"Exp(1) squared\")\nhist(Xbar_poisson, main = \"Poisson(1) squared\")"
+  },
+  {
+    "objectID": "slides/25_advanced-hypothesis-tests.html#exercise",
+    "href": "slides/25_advanced-hypothesis-tests.html#exercise",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Exercise",
+    "text": "Exercise\n\nWrite code to create a histogram of the sampling distribution of the sample mean \\(\\overline{Y}\\) of \\(Y_1,\\ldots, Y_{10}\\) where \\(Y_i=\\sin(X_i)\\) and \\(X_1,\\ldots, X_{10}\\) are iid Uniform(0, 1) random variables."
+  },
+  {
+    "objectID": "slides/25_advanced-hypothesis-tests.html#resampling-methods",
+    "href": "slides/25_advanced-hypothesis-tests.html#resampling-methods",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Resampling methods",
+    "text": "Resampling methods\nThe previous simulations are all based on parametric models (normal, exponential, Poisson). However, we can also simulate sampling distributions without parametric assumptions on the data generating mechanism.\nSuppose we know \\(X_1,\\ldots, X_{20}\\sim \\mathrm{Exp}(1)\\). The sampling distribution can be simulated as follows:\n\nset.seed(123)\nXbar_exp &lt;- replicate(10000, mean(rexp(20, rate = 1)))\nhist(Xbar_exp)"
+  },
+  {
+    "objectID": "slides/25_advanced-hypothesis-tests.html#resampling-methods-1",
+    "href": "slides/25_advanced-hypothesis-tests.html#resampling-methods-1",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Resampling methods",
+    "text": "Resampling methods\nWhat if we observe \\(X_1,\\ldots, X_{20}\\), but we don’t know that \\(X_i\\) is exponentially distributed? We could just try the normal approximation to approximate the sampling distribution:\n\nX &lt;- rexp(20, rate = 1)\nx_axis &lt;- seq(0, 3, length.out = 1000)\n\n# plot \"true\" simulated sampling distribution\nhist(Xbar_exp, freq = F, ylim = c(0, 3))\n\n# plot normal theory\nlines(x_axis, dnorm(x_axis, mean = mean(X), sd = sd(X) / sqrt(20)), col = 'red')"
+  },
+  {
+    "objectID": "slides/25_advanced-hypothesis-tests.html#bootstrap-samples",
+    "href": "slides/25_advanced-hypothesis-tests.html#bootstrap-samples",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Bootstrap samples",
+    "text": "Bootstrap samples\nBootstrapping is a resampling method that uses random samples with replacement from the sample data to approximate the sampling distribution of sample-based statistics.\n\nprint(sort(X))\n\n [1] 0.00816693 0.06263315 0.11949335 0.12600941 0.14474580 0.14660666\n [7] 0.15582213 0.17485277 0.23514296 0.35492087 0.48980207 0.52215538\n[13] 0.72200938 1.27034542 1.56551624 1.74866229 1.82459209 1.84311722\n[19] 2.14225230 2.24995288\n\n# sample with replacement from X\nX_resample &lt;- sample(X, size = 20, replace = TRUE)\nprint(sort(X_resample))\n\n [1] 0.06263315 0.11949335 0.11949335 0.11949335 0.11949335 0.12600941\n [7] 0.14474580 0.14474580 0.15582213 0.15582213 0.17485277 0.35492087\n[13] 0.35492087 0.48980207 0.72200938 0.72200938 1.56551624 2.14225230\n[19] 2.24995288 2.24995288"
+  },
+  {
+    "objectID": "slides/25_advanced-hypothesis-tests.html#bootstrap-samples-1",
+    "href": "slides/25_advanced-hypothesis-tests.html#bootstrap-samples-1",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Bootstrap samples",
+    "text": "Bootstrap samples\nWe can repeatedly resample from \\(X\\), then compute the resample sample means and plot the distribution:\n\nbootstrap_Xbar &lt;- replicate(10000, mean(sample(X, size = 20, replace = TRUE)))\nhist(bootstrap_Xbar)"
+  },
+  {
+    "objectID": "slides/25_advanced-hypothesis-tests.html#bootstrap-samples-2",
+    "href": "slides/25_advanced-hypothesis-tests.html#bootstrap-samples-2",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Bootstrap samples",
+    "text": "Bootstrap samples\nWe can compare the bootstrap sampling distributions and true sampling distributions. In this case, the bootstrap does not seem that different from the normal approximation.\n\nlibrary(ggplot2)\nplot_dat &lt;-\n  data.frame(Xbar = c(Xbar_exp, bootstrap_Xbar),\n             source = rep(c(\"Parametric (Exp)\", \"Bootstrap\"), each = 10000))\nggplot(plot_dat, aes(x = Xbar, color = source)) +\n  geom_density() +\n  geom_function(fun = dnorm, \n                args = list(mean = mean(X), sd = sd(X) / sqrt(20)),\n                aes(color = \"Parametric (Normal)\"))"
+  },
+  {
+    "objectID": "slides/25_advanced-hypothesis-tests.html#bootstrap-confidence-intervals",
+    "href": "slides/25_advanced-hypothesis-tests.html#bootstrap-confidence-intervals",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Bootstrap confidence intervals",
+    "text": "Bootstrap confidence intervals\nWe can take appropriate quantiles of the bootstrap samples to construct a bootstrap confidence interval using the quantile() function:\n\nquantile(bootstrap_Xbar, probs = c(.025, .975))\n\n    2.5%    97.5% \n0.467759 1.157051"
+  },
+  {
+    "objectID": "slides/25_advanced-hypothesis-tests.html#why-bootstrap",
+    "href": "slides/25_advanced-hypothesis-tests.html#why-bootstrap",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Why bootstrap?",
+    "text": "Why bootstrap?\nIn this case, inference based on bootstrapping does not seem better than the normal approximation based on the central limit theorem.\nHowever, for many cases, we may not have a simple parametric approximation to the true sampling distribution. For example, suppose we wish to compute the sampling distribution of the sample median.\nNote however that the bootstrap may not work well for all statistics, such as the minimum (why not?)."
   },
   {
     "objectID": "slides/13_functions-loops.html#overview-of-today",
