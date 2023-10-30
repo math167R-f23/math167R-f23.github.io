@@ -1,5 +1,5 @@
 ---
-title: "MATH167R: Sampling distributions"
+title: "MATH167R: Permutation tests and power analysis"
 author: "Peter Gao"
 format: 
   revealjs:
@@ -9,8 +9,9 @@ editor: visual
 
 ## Overview of today
 
-- Simulations for power analysis
-- Simulations to assess impact of misspecification
+-   Permutation tests
+-   Simulations for power analysis
+-   Simulations to assess impact of misspecification
 
 ## Sampling distributions
 

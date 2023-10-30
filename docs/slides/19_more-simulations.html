@@ -420,8 +420,8 @@ Peter Gao
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-3"><a href="#cb1-3"></a>random_points <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">runif</span>(<span class="dv">100</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>),</span>
-<span id="cb1-4"><a href="#cb1-4"></a>                            <span class="at">y =</span> <span class="fu">runif</span>(<span class="dv">100</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb1-3"><a href="#cb1-3"></a>random_points <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">runif</span>(<span class="dv">500</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb1-4"><a href="#cb1-4"></a>                            <span class="at">y =</span> <span class="fu">runif</span>(<span class="dv">500</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
 <span id="cb1-5"><a href="#cb1-5"></a>random_points <span class="ot">&lt;-</span> random_points <span class="sc">|&gt;</span></span>
 <span id="cb1-6"><a href="#cb1-6"></a>  <span class="fu">mutate</span>(<span class="at">in_circle =</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> y<span class="sc">^</span><span class="dv">2</span> <span class="sc">&lt;</span> <span class="dv">1</span>)</span>
 <span id="cb1-7"><a href="#cb1-7"></a><span class="fu">ggplot</span>(random_points, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> in_circle)) <span class="sc">+</span> </span>
@@ -436,16 +436,15 @@ Peter Gao
 <img data-src="19_more-simulations_files/figure-revealjs/random_points_1-1.png" width="960" class="r-stretch"></section>
 <section id="warm-up-estimating-pi-2" class="slide level2">
 <h2>Warm up: Estimating <span class="math inline">\(\pi\)</span></h2>
-<div class="cell" data-hash="19_more-simulations_cache/revealjs/random_points_54a2dc1126ff1967aea6dc5412c54243">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-2"><a href="#cb2-2"></a>random_points <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">runif</span>(<span class="dv">100</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>),</span>
-<span id="cb2-3"><a href="#cb2-3"></a>                            <span class="at">y =</span> <span class="fu">runif</span>(<span class="dv">100</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb2-4"><a href="#cb2-4"></a>random_points <span class="ot">&lt;-</span> random_points <span class="sc">|&gt;</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>  <span class="fu">mutate</span>(<span class="at">in_circle =</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> y<span class="sc">^</span><span class="dv">2</span> <span class="sc">&lt;</span> <span class="dv">1</span>)</span>
-<span id="cb2-6"><a href="#cb2-6"></a>random_points <span class="sc">|&gt;</span> <span class="fu">summarize</span>(<span class="at">pi_est =</span> <span class="dv">4</span> <span class="sc">*</span> <span class="fu">mean</span>(in_circle))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="19_more-simulations_cache/revealjs/random_points_1c40bdcb31208d6f05ab0fa4ade97bec">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>random_points <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">runif</span>(<span class="dv">500</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb2-2"><a href="#cb2-2"></a>                            <span class="at">y =</span> <span class="fu">runif</span>(<span class="dv">500</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb2-3"><a href="#cb2-3"></a>random_points <span class="ot">&lt;-</span> random_points <span class="sc">|&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>  <span class="fu">mutate</span>(<span class="at">in_circle =</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> y<span class="sc">^</span><span class="dv">2</span> <span class="sc">&lt;</span> <span class="dv">1</span>)</span>
+<span id="cb2-5"><a href="#cb2-5"></a>random_points <span class="sc">|&gt;</span> <span class="fu">summarize</span>(<span class="at">pi_est =</span> <span class="dv">4</span> <span class="sc">*</span> <span class="fu">mean</span>(in_circle))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  pi_est
-1   2.92</code></pre>
+1    3.2</code></pre>
 </div>
 </div>
 </section>
@@ -482,9 +481,7 @@ Peter Gao
 </section>
 <section id="random-walks-continued-2" class="slide level2">
 <h2>Random walks continued</h2>
-<ol type="1">
-<li>If we consider a random walk of length <span class="math inline">\(n\)</span>, how often will the walker visit <span class="math inline">\(x=0\)</span>, on average?</li>
-</ol>
+<p><em>If we consider a random walk of length <span class="math inline">\(n\)</span>, how often will the walker visit <span class="math inline">\(x=0\)</span>, on average?</em></p>
 <p>Consider that the results of <code>walk_randomly(n_steps)</code> is a vector of length <code>n_steps</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
@@ -506,9 +503,7 @@ Peter Gao
 </section>
 <section id="random-walks-continued-3" class="slide level2">
 <h2>Random walks continued</h2>
-<ol type="1">
-<li>If we consider a random walk of length <span class="math inline">\(n\)</span>, how often will the walker visit <span class="math inline">\(x=0\)</span>, on average?</li>
-</ol>
+<p><em>If we consider a random walk of length <span class="math inline">\(n\)</span>, how often will the walker visit <span class="math inline">\(x=0\)</span>, on average?</em></p>
 <p>Now we can use <code>replicate()</code> to repeatedly evaluate our expression and then take the mean:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
@@ -520,9 +515,7 @@ Peter Gao
 </section>
 <section id="varying-n_steps-parameter" class="slide level2">
 <h2>Varying <code>n_steps</code> parameter</h2>
-<ol type="1">
-<li>If we consider a random walk of length <span class="math inline">\(n\)</span>, how often will the walker visit <span class="math inline">\(x=0\)</span>, on average?</li>
-</ol>
+<p><em>If we consider a random walk of length <span class="math inline">\(n\)</span>, how often will the walker visit <span class="math inline">\(x=0\)</span>, on average?</em></p>
 <div class="cell" data-hash="19_more-simulations_cache/revealjs/varying_n_steps_bd0e1c1fdb5536bbf842b6691df1ea18">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb11-2"><a href="#cb11-2"></a>ns <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">500</span>, <span class="dv">1000</span>) </span>
@@ -540,12 +533,12 @@ Peter Gao
 <section id="random-walks-continued-4" class="slide level2">
 <h2>Random walks continued</h2>
 <p>How could we adapt this code to answer the question:</p>
-<p><em>If we consider a random walk of length</em> <span class="math inline">\(n\)</span>, how often will the walker visit <span class="math inline">\(x=10\)</span>, on average?</p>
+<p><em>If we consider a random walk of length <span class="math inline">\(n\)</span>, how often will the walker visit <span class="math inline">\(x=10\)</span>, on average?</em></p>
 <p>As <span class="math inline">\(n\rightarrow\infty\)</span>, how will the expected number of visits to <span class="math inline">\(x=10\)</span> before step <span class="math inline">\(n\)</span> change?</p>
 </section>
 <section id="random-walks-continued-5" class="slide level2">
 <h2>Random walks continued</h2>
-<p><em>If we consider a random walk of length</em> <span class="math inline">\(n\)</span>, how often will the walker visit <span class="math inline">\(x=10\)</span>, on average?</p>
+<p><em>If we consider a random walk of length <span class="math inline">\(n\)</span>, how often will the walker visit <span class="math inline">\(x=10\)</span>, on average?</em></p>
 <div class="cell" data-hash="19_more-simulations_cache/revealjs/varying_n_steps_10_f6c0abfeeefb1ba320df04d7188ebdd0">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb12-2"><a href="#cb12-2"></a>ns <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">500</span>, <span class="dv">1000</span>) </span>
@@ -563,7 +556,7 @@ Peter Gao
 <section id="expected-time-of-return" class="slide level2">
 <h2>Expected time of return</h2>
 <p>Can we adapt this code to answer the following question?</p>
-<p><em>The walker starts at</em> <span class="math inline">\(x=0\)</span>. What is the expected length of time before the walker returns to <span class="math inline">\(x=0\)</span> (if it is finite)?</p>
+<p><em>The walker starts at <span class="math inline">\(x=0\)</span>. What is the expected length of time before the walker returns to <span class="math inline">\(x=0\)</span> (if it is finite)?</em></p>
 <p>We have to be a little clever here–we only ever compute a finite-length random walk.</p>
 <p>For any nonnegative integer valued random variable <span class="math inline">\(X\)</span>,</p>
 <p><span class="math display">\[E(X)=\sum_{n = 1}^\infty P(X&gt;n)\]</span></p>
@@ -605,8 +598,13 @@ Peter Gao
 </section>
 <section id="expected-time-of-return-3" class="slide level2">
 <h2>Expected time of return</h2>
-<p><em>The walker starts at</em> <span class="math inline">\(x=0\)</span>. What is the expected length of time before the walker returns to <span class="math inline">\(x=0\)</span> (if it is finite)?</p>
+<p><em>The walker starts at <span class="math inline">\(x=0\)</span>. What is the expected length of time before the walker returns to <span class="math inline">\(x=0\)</span> (if it is finite)?</em></p>
 <p>It turns out the expected length of time is infinite–a key example of why we have to be careful about using simulations to replace mathematical analysis.</p>
+</section>
+<section id="exercise" class="slide level2">
+<h2>Exercise</h2>
+<p>How would we write a simulation to answer the following question:</p>
+<p><em>What is the expected maximum value of <span class="math inline">\(|x_i|\)</span> for a random walk of length <span class="math inline">\(n\)</span>?</em></p>
 </section>
 <section id="timing-code" class="slide level2">
 <h2>Timing code</h2>

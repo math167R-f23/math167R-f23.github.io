@@ -29,8 +29,8 @@ Hint: what if we randomly generated points on a square?
 #| warning: FALSE
 library(tidyverse)
 library(ggplot2)
-random_points <- data.frame(x = runif(100, -1, 1),
-                            y = runif(100, -1, 1))
+random_points <- data.frame(x = runif(500, -1, 1),
+                            y = runif(500, -1, 1))
 random_points <- random_points |>
   mutate(in_circle = x^2 + y^2 < 1)
 ggplot(random_points, aes(x = x, y = y, color = in_circle)) + 
@@ -48,8 +48,8 @@ ggplot(random_points, aes(x = x, y = y, color = in_circle)) +
 #| warning: FALSE
 library(tidyverse)
 library(ggplot2)
-random_points <- data.frame(x = runif(100, -1, 1),
-                            y = runif(100, -1, 1))
+random_points <- data.frame(x = runif(500, -1, 1),
+                            y = runif(500, -1, 1))
 random_points <- random_points |>
   mutate(in_circle = x^2 + y^2 < 1)
 ggplot(random_points, aes(x = x, y = y, color = in_circle)) + 
@@ -65,9 +65,8 @@ ggplot(random_points, aes(x = x, y = y, color = in_circle)) +
 #| cache: TRUE
 #| message: FALSE
 #| warning: FALSE
-library(tidyverse)
-random_points <- data.frame(x = runif(100, -1, 1),
-                            y = runif(100, -1, 1))
+random_points <- data.frame(x = runif(500, -1, 1),
+                            y = runif(500, -1, 1))
 random_points <- random_points |>
   mutate(in_circle = x^2 + y^2 < 1)
 random_points |> summarize(pi_est = 4 * mean(in_circle))
@@ -111,7 +110,7 @@ We can use this simulation code to estimate a number of properties about random 
 
 ## Random walks continued
 
-1.  If we consider a random walk of length $n$, how often will the walker visit $x=0$, on average?
+*If we consider a random walk of length $n$, how often will the walker visit $x=0$, on average?*
 
 Consider that the results of `walk_randomly(n_steps)` is a vector of length `n_steps`.
 
@@ -135,7 +134,7 @@ sum(walk_randomly(20) == 0) - 1
 
 ## Random walks continued
 
-1.  If we consider a random walk of length $n$, how often will the walker visit $x=0$, on average?
+*If we consider a random walk of length $n$, how often will the walker visit $x=0$, on average?*
 
 Now we can use `replicate()` to repeatedly evaluate our expression and then take the mean:
 
@@ -148,7 +147,7 @@ mean(replicate(10000, sum(walk_randomly(20) == 0) - 1))
 
 ## Varying `n_steps` parameter
 
-1.  If we consider a random walk of length $n$, how often will the walker visit $x=0$, on average?
+*If we consider a random walk of length $n$, how often will the walker visit $x=0$, on average?*
 
 ```{r varying_n_steps}
 #| echo: TRUE
@@ -170,13 +169,13 @@ plot(ns, expected_returns, type = "l",
 
 How could we adapt this code to answer the question:
 
-*If we consider a random walk of length* $n$, how often will the walker visit $x=10$, on average?
+*If we consider a random walk of length $n$, how often will the walker visit $x=10$, on average?*
 
 As $n\rightarrow\infty$, how will the expected number of visits to $x=10$ before step $n$ change?
 
 ## Random walks continued
 
-*If we consider a random walk of length* $n$, how often will the walker visit $x=10$, on average?
+*If we consider a random walk of length $n$, how often will the walker visit $x=10$, on average?*
 
 ```{r varying_n_steps_10}
 #| echo: TRUE
@@ -194,11 +193,13 @@ plot(ns, expected_returns, type = "l",
      ylab = "Mean visits to x = 10")
 ```
 
+
+
 ## Expected time of return
 
 Can we adapt this code to answer the following question?
 
-*The walker starts at* $x=0$. What is the expected length of time before the walker returns to $x=0$ (if it is finite)?
+*The walker starts at $x=0$. What is the expected length of time before the walker returns to $x=0$ (if it is finite)?*
 
 We have to be a little clever here--we only ever compute a finite-length random walk.
 
@@ -241,9 +242,15 @@ cumsum(proportion_no_returns)
 
 ## Expected time of return
 
-*The walker starts at* $x=0$. What is the expected length of time before the walker returns to $x=0$ (if it is finite)?
+*The walker starts at $x=0$. What is the expected length of time before the walker returns to $x=0$ (if it is finite)?*
 
 It turns out the expected length of time is infinite--a key example of why we have to be careful about using simulations to replace mathematical analysis.
+
+## Exercise
+
+How would we write a simulation to answer the following question:
+
+*What is the expected maximum value of $|x_i|$ for a random walk of length $n$?*
 
 ## Timing code
 

@@ -29,6 +29,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -347,10 +412,48 @@ Peter Gao
 </section>
 <section id="relating-numerical-variables" class="slide level2">
 <h2>Relating numerical variables</h2>
+
+<img data-src="images/Screenshot 2023-10-29 at 10.20.45 AM.png" class="r-stretch"></section>
+<section id="covariance-and-correlation" class="slide level2">
+<h2>Covariance and correlation</h2>
+<p>In statistics, correlation and covariance usually refer to a specific type of association. * If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are linearly associated, then they are correlated.</p>
 </section>
+<section id="correlation" class="slide level2">
+<h2>Correlation</h2>
+<p>Correlation can also refer to the correlation coefficient.</p>
+<p>The (Pearson) correlation coefficient <span class="math inline">\(R\)</span> is a statistic between <span class="math inline">\(-1\)</span> and 1 that describes the strength and direction of the linear relationship between two variables.</p>
+<p><span class="math display">\[R = \frac{1}{n-1}\sum_{i=1}^n\frac{x_i-\overline{x}}{s_x}\frac{y_i-\overline{y}}{s_y}\]</span></p>
+<p>The sign of <span class="math inline">\(R\)</span> indicates the direction of the relationship. The absolute value of <span class="math inline">\(R\)</span> indicates the strength.</p>
+</section>
+<section id="correlation-and-covariance" class="slide level2">
+<h2>Correlation and covariance</h2>
+<div class="cell" data-hash="23_linear-regression_cache/revealjs/unnamed-chunk-1_f1b34837082466bf21625313c74acb63">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">attach</span>(mtcars)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">cor</span>(mpg, wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.8676594</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">cov</span>(mpg, wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -5.116685</code></pre>
+</div>
+</div>
+</section>
+<section id="pairs-plots-for-assessing-many-relationships" class="slide level2">
+<h2>Pairs plots for assessing many relationships</h2>
+<div class="cell" data-hash="23_linear-regression_cache/revealjs/unnamed-chunk-2_6bc769722d8b7a02c540356da5ff9564">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">pairs</span>(<span class="sc">~</span>mpg <span class="sc">+</span> hp <span class="sc">+</span> wt, mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="23_linear-regression_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
 <section id="regression-methods" class="slide level2">
 <h2>Regression methods</h2>
-<p>Let’s assume we have some data <span class="math inline">\(X_1,\ldots,X_p, Y\)</span> where <span class="math inline">\(X_1,\ldots,X_p\)</span> are <span class="math inline">\(p\)</span> <strong>independent variables/explanatory variables/covariates/predictors</strong> and <span class="math inline">\(Y\)</span> is the <strong>dependent variables/response/outcome</strong>. We want to know the relationship between our covariates and our response, we can do this with a method called <strong>regression</strong>. Regression provides us with a statistical method to conduct inference and prediction.</p>
+<p>Assume we have some data:</p>
+<ul>
+<li><span class="math inline">\(X_1,\ldots, X_p\)</span>: <span class="math inline">\(p\)</span> <strong>independent variables/explanatory variables/covariates/predictors</strong></li>
+<li><span class="math inline">\(Y\)</span>: the <strong>dependent variables/response/outcome</strong>.</li>
+</ul>
+<p>We want to know the relationship between our covariates and our response, we can do this with a method called <strong>regression</strong>. Regression provides us with a statistical method to conduct inference and prediction.</p>
 </section>
 <section id="regression-methods-1" class="slide level2">
 <h2>Regression methods</h2>
@@ -368,7 +471,8 @@ Peter Gao
 </section>
 <section id="why-is-it-called-regression" class="slide level2">
 <h2>Why is it called regression?</h2>
-</section>
+
+<img data-src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Galton%27s_correlation_diagram_1875.jpg" class="r-stretch quarto-figure-center"></section>
 <section id="linear-regression" class="slide level2">
 <h2>Linear Regression</h2>
 <p>Given our response <span class="math inline">\(Y\)</span> and our predictors <span class="math inline">\(X_1, \ldots, X_p\)</span>, a <strong>linear regression model</strong> takes the form:</p>
@@ -378,9 +482,26 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 \epsilon &amp;\sim N(0,\sigma^2)
 \end{align}
 \]</span></p>
+<p><strong>Note:</strong> If we wish to include a categorical covariate, we can add indicator variables for each category.</p>
 </section>
-<section id="matrix-notation" class="slide level2">
-<h2>Matrix Notation</h2>
+<section id="linear-regression-1" class="slide level2">
+<h2>Linear Regression</h2>
+<p><span class="math display">\[
+\begin{align}
+Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
+\epsilon &amp;\sim N(0,\sigma^2)
+\end{align}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(Y\)</span>: dependent variable, outcome, response</li>
+<li><span class="math inline">\(X_j\)</span>: independent variable, covariate, predictor</li>
+<li><span class="math inline">\(\beta_0\)</span>: Intercept</li>
+<li><span class="math inline">\(\beta_j\)</span>: coefficient, the expected difference in the response between two observations differing by one unit in <span class="math inline">\(X_j\)</span>, with all other covariates identical.</li>
+<li><span class="math inline">\(\epsilon\)</span>: error, noise, with mean <span class="math inline">\(0\)</span> and variance <span class="math inline">\(\sigma^2\)</span></li>
+</ul>
+</section>
+<section id="linear-regression-2" class="slide level2">
+<h2>Linear Regression</h2>
 <p>We can fully write out a linear regression model</p>
 <p><span class="math display">\[
 \begin{equation}
@@ -393,11 +514,14 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 \begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \vdots \\ \epsilon_{n} \end{bmatrix}
 \end{equation}
 \]</span></p>
+</section>
+<section id="matrix-notation" class="slide level2">
+<h2>Matrix Notation</h2>
 <p>This can also be expressed in matrix form:</p>
 <p><span class="math display">\[
 \begin{align}
 \mathbf{Y} &amp;= \mathbf{X}\beta + \epsilon,\\
-\epsilon&amp;\sim N(0,1)
+\epsilon &amp;\sim N(0,1)
 \end{align}
 \]</span></p>
 <ul>
@@ -419,29 +543,341 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 </ul>
 <p>In linear regression, we assume that this error term is normally distributed with mean zero and variance <span class="math inline">\(\sigma^2\)</span>.</p>
 </section>
-<section id="large-beta_0-intercept" class="slide level2">
-<h2><span class="math inline">\(\large \beta_0\)</span>: Intercept</h2>
+<section id="beta_0-intercept" class="slide level2">
+<h2><span class="math inline">\(\beta_0\)</span>: Intercept</h2>
 <p><span class="math inline">\(\beta_0\)</span> is the <strong>intercept term</strong> of our model. Notice that</p>
-<p><span class="math display">\[\large \mathbb{E}[Y|X_1 = X_2 = \cdots = X_p = 0] = \beta_0\]</span></p>
-<p>Thus, <span class="math inline">\(\beta_0\)</span> is the expected value of our response if all the covariates are equal to <span class="math inline">\(0\)</span>! This is also known as the y-intercept of our model.</p>
+<p><span class="math display">\[\mathbb{E}[Y|X_1 = X_2 = \cdots = X_p = 0] = \beta_0\]</span></p>
+<p>Thus, <span class="math inline">\(\beta_0\)</span> is the expected value of our response if all the covariates are equal to <span class="math inline">\(0\)</span>. This is also known as the y-intercept of our model.</p>
 </section>
-<section class="slide level2">
-
+<section id="x_j-independent-variable" class="slide level2">
+<h2><span class="math inline">\(X_j\)</span>: Independent variable</h2>
+<p><span class="math inline">\(X_j\)</span> represents the <span class="math inline">\(j\)</span><sup>th</sup> independent variable in our model. Notice that <span class="math display">\[\mathbb{E}[Y|X_1,\ldots, X_p] = \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p\]</span> What happens to this expectation if we increase <span class="math inline">\(X_j\)</span> by 1 unit, holding everything else constant?</p>
+<p>The conditional expectation of <span class="math inline">\(Y\)</span> increases by <span class="math inline">\(\beta_j\)</span>.</p>
 </section>
-<section>
-<section id="large-x_j-independent-variable" class="title-slide slide level1 center">
-<h1><span class="math inline">\(\large X_j\)</span>: Independent variable</h1>
-<p><span class="math inline">\(X_j\)</span> represents the <span class="math inline">\(j\)</span><sup>th</sup> independent variable in our model. Notice that <span class="math display">\[\large \mathbb{E}[Y|X_1,\ldots, X_p] = \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p\]</span> What happens to this expectation if we increase <span class="math inline">\(X_j\)</span> by 1 unit, holding everything else constant?</p>
-<p>–</p>
-<p>The conditional expectation of <span class="math inline">\(Y\)</span> increases by <span class="math inline">\(\beta_j\)</span>!</p>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section id="large-beta_j-coefficient" class="title-slide slide level1 center">
-<h1><span class="math inline">\(\large \beta_j\)</span>: Coefficient</h1>
+<section id="beta_j-coefficient" class="slide level2">
+<h2><span class="math inline">\(\beta_j\)</span>: Coefficient</h2>
 <p><span class="math inline">\(\beta_j\)</span> represents the <span class="math inline">\(j\)</span><sup>th</sup> regression coefficient in our model. From the previous slide, we saw that for every 1 unit increase in <span class="math inline">\(X_j\)</span>, holding all other variables constant, the expected value of the response increases by <span class="math inline">\(\beta_j\)</span>. From this we can derive an interpretation.</p>
-<p><strong>Interpretation of <span class="math inline">\(\beta_j\)</span>:</strong> the expected difference in the response between two observations differing by one unit in <span class="math inline">\(X_j\)</span>, with all other covariates identical.</p>
+<p><strong>Interpretation of</strong> <span class="math inline">\(\beta_j\)</span>: the expected difference in the response between two observations differing by one unit in <span class="math inline">\(X_j\)</span>, with all other covariates identical.</p>
+</section>
+<section id="lm-linear-model" class="slide level2">
+<h2><code>lm()</code>: Linear Model</h2>
+<p>We fit a linear regression model in R using <code>lm()</code>. The first argument is a <strong>formula</strong>, which is a type of R object. Formulas typically take the following form: <code>Y ~ X_1 + X_2 + ... + X_p</code>.</p>
+<p>The dependent variable, <code>Y</code> goes on the left-hand side of the tilde <code>~</code>, which marks the formula. The independent variables are added on the right-hand side. Using this formula will give us a model in the form of</p>
+<p><span class="math display">\[
+\begin{align}
+Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
+\epsilon &amp;\sim N(0,\sigma^2)
+\end{align}
+\]</span></p>
+</section>
+<section id="lm-linear-model-1" class="slide level2">
+<h2><code>lm()</code>: Linear Model</h2>
+<div class="cell" data-hash="23_linear-regression_cache/revealjs/unnamed-chunk-4_5e3bed56083108721793e955f67fbbaf">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">data</span>(mtcars)</span>
+<span id="cb6-2"><a href="#cb6-2"></a>my_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> wt, <span class="at">data =</span> mtcars)</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="fu">class</span>(my_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "lm"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>my_lm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mpg ~ hp + wt, data = mtcars)
+
+Coefficients:
+(Intercept)           hp           wt  
+   37.22727     -0.03177     -3.87783  </code></pre>
+</div>
+</div>
+</section>
+<section id="lm-linear-model-2" class="slide level2">
+<h2><code>lm()</code>: Linear Model</h2>
+<p>We can see from <code>names()</code> that <code>lm</code> objects contain a lot more than they print out by default.</p>
+<div class="cell" data-hash="23_linear-regression_cache/revealjs/unnamed-chunk-5_c681554a8784e5c6fe3eb255d7b1d17b">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">names</span>(my_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "coefficients"  "residuals"     "effects"       "rank"         
+ [5] "fitted.values" "assign"        "qr"            "df.residual"  
+ [9] "xlevels"       "call"          "terms"         "model"        </code></pre>
+</div>
+</div>
+</section>
+<section id="summary-model-summaries" class="slide level2">
+<h2><code>summary()</code> Model summaries</h2>
+<p><code>summary()</code> or <code>summary.lm()</code> gives us a summary of our <code>lm</code> object in R.</p>
+<ul>
+<li>The quantiles of the residuals: hopefully, they match a normal distribution.</li>
+<li>Coefficients, their standard errors, and their individual significances</li>
+<li>(Adjusted) R-squared value: how much of the overall variability in the response is explained by the model?</li>
+<li>F-statistic: hypothesis test for the significance of the overall model</li>
+</ul>
+</section>
+<section id="summary-model-summaries-1" class="slide level2">
+<h2><code>summary()</code> Model summaries</h2>
+<div class="cell" data-hash="23_linear-regression_cache/revealjs/unnamed-chunk-6_95654797d9ebd033fdef91bde19ee34c">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">summary</span>(my_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mpg ~ hp + wt, data = mtcars)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-3.941 -1.600 -0.182  1.050  5.854 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 37.22727    1.59879  23.285  &lt; 2e-16 ***
+hp          -0.03177    0.00903  -3.519  0.00145 ** 
+wt          -3.87783    0.63273  -6.129 1.12e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.593 on 29 degrees of freedom
+Multiple R-squared:  0.8268,    Adjusted R-squared:  0.8148 
+F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
+</div>
+</div>
+</section>
+<section id="plot-regression-model-diagnostics" class="slide level2">
+<h2><code>plot()</code>: Regression model diagnostics</h2>
+<p>Calling <code>plot(my_lm)</code> will return several diagnostic plots. Remember that we want our error term to look normally distributed with mean zero. We won’t go into all the details for this class, but here are some tips:</p>
+<ul>
+<li><strong>Residuals vs Fitted:</strong> these are your errors (residuals) plotted over the predicted outcome (fitted). Errors should be random, so here you want to see randomly scattered points with no discernable pattern. You want the trend line to be approximately horizontal.</li>
+<li><strong>Normal Q-Q plot:</strong> These are the quantiles of your errors against the quantiles of a normal distribution. In theory, your errors should be normally distributed, so you are hoping that points are mostly along the 45-degree <span class="math inline">\(y=x\)</span> line.</li>
+</ul>
+</section>
+<section id="plot-regression-model-diagnostics-1" class="slide level2">
+<h2><code>plot()</code>: Regression model diagnostics</h2>
+<ul>
+<li><strong>Scale-location:</strong> This looks at the magnitude of standardized residuals over the predicted outcome. Similar interpretation as residuals vs fitted. This can make it slightly easier to identify undesireable patterns.</li>
+<li><strong>Residuals vs leverage:</strong> This can help identify highly influential points, such as outliers. If points are outside dotted red lines, then removing them would noticeably alter your results. <em>Never just remove outliers!</em> If it’s real data, it’s valid and removing it will bias your results. It is much more important to understand why outliers are there than to remove them.</li>
+</ul>
+</section>
+<section id="plot-regression-model-diagnostics-2" class="slide level2">
+<h2><code>plot()</code>: Regression model diagnostics</h2>
+<div class="cell" data-hash="23_linear-regression_cache/revealjs/unnamed-chunk-7_d68854b8318cab295821e0aa6732a719">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">plot</span>(my_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+<img data-src="23_linear-regression_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<section id="plot-regression-model-diagnostics-3" class="slide level2">
+<h2><code>plot()</code>: Regression model diagnostics</h2>
+
+<img data-src="23_linear-regression_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
+<section id="plot-regression-model-diagnostics-4" class="slide level2">
+<h2><code>plot()</code>: Regression model diagnostics</h2>
+
+<img data-src="23_linear-regression_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
+<section id="plot-regression-model-diagnostics-5" class="slide level2">
+<h2><code>plot()</code>: Regression model diagnostics</h2>
+
+<img data-src="23_linear-regression_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
+<section id="coef-extract-coefficients" class="slide level2">
+<h2><code>coef()</code>: Extract coefficients</h2>
+<p>Use <code>coef()</code> to extract estimated coefficients as a vector.</p>
+<div class="cell" data-hash="23_linear-regression_cache/revealjs/unnamed-chunk-12_0f867153d10c068f9c90138810ee5a62">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">coef</span>(my_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(Intercept)          hp          wt 
+37.22727012 -0.03177295 -3.87783074 </code></pre>
+</div>
+</div>
+</section>
+<section id="fitted-extract-fitted-values" class="slide level2">
+<h2><code>fitted()</code> Extract fitted values</h2>
+<p>Use <code>fitted()</code> to extract the fitted/estimated values for the response. This can be useful to compare how our fitted values compare to the estimated values to help assess model fit.</p>
+<div class="cell" data-hash="23_linear-regression_cache/revealjs/unnamed-chunk-13_d3d65540de86caaf8ecc8abb45f3d5df">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb17-2"><a href="#cb17-2"></a>mod_fits <span class="ot">&lt;-</span> <span class="fu">fitted</span>(my_lm)</span>
+<span id="cb17-3"><a href="#cb17-3"></a>my_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">actual =</span> mtcars<span class="sc">$</span>mpg, <span class="at">fitted =</span> mod_fits)</span>
+<span id="cb17-4"><a href="#cb17-4"></a><span class="fu">ggplot</span>(my_df, <span class="fu">aes</span>(<span class="at">x =</span> fitted, <span class="at">y =</span> actual)) <span class="sc">+</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb17-6"><a href="#cb17-6"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lty =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb17-7"><a href="#cb17-7"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">15</span>) <span class="sc">+</span></span>
+<span id="cb17-8"><a href="#cb17-8"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Fitted values"</span>, <span class="at">y =</span> <span class="st">"Actual values"</span>, <span class="at">title =</span> <span class="st">"Actual vs. Fitted"</span>) <span class="sc">+</span></span>
+<span id="cb17-9"><a href="#cb17-9"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="fitted-extract-fitted-values-1" class="slide level2">
+<h2><code>fitted()</code> Extract fitted values</h2>
+
+<img data-src="23_linear-regression_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
+<section id="predict-predict-new-outcomes" class="slide level2">
+<h2><code>predict()</code>: Predict new outcomes</h2>
+<p>Use <code>predict()</code> to predict new outcomes given new explanatory variables. For example, pretend we observe two new cars with horsepowers of <code>100</code> and <code>150</code>, respectively, and weights of <code>3000</code> and <code>3500</code>, respectively.</p>
+<div class="cell" data-hash="23_linear-regression_cache/revealjs/unnamed-chunk-15_c38a1c7c4a8836e0fa921d1dc8a9ee83">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Note: wt is in 1000s of lbs</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>new_obs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">hp =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">150</span>), <span class="at">wt =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="fl">3.5</span>))</span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="fu">predict</span>(my_lm, new_obs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       1        2 
+22.41648 18.88892 </code></pre>
+</div>
+</div>
+<p>We’ll come back to prediction in future lectures.</p>
+</section>
+<section id="residuals-compute-residuals" class="slide level2">
+<h2><code>residuals()</code>: Compute residuals</h2>
+<p>Use <code>residuals()</code> to compute the residuals for fitted values.</p>
+<div class="cell" data-hash="23_linear-regression_cache/revealjs/unnamed-chunk-16_35e81c43879182b93cd6ff77665a18b3">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">residuals</span>(my_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Mazda RX4       Mazda RX4 Wag          Datsun 710      Hornet 4 Drive 
+        -2.57232940         -1.58348256         -2.47581872          0.13497989 
+  Hornet Sportabout             Valiant          Duster 360           Merc 240D 
+         0.37273336         -2.37381631         -1.29904236          1.51293266 
+           Merc 230            Merc 280           Merc 280C          Merc 450SE 
+         0.80632669         -0.77945988         -2.17945988          0.67463146 
+         Merc 450SL         Merc 450SLC  Cadillac Fleetwood Lincoln Continental 
+         0.25616901         -1.64993945          0.04479541          1.03726743 
+  Chrysler Imperial            Fiat 128         Honda Civic      Toyota Corolla 
+         5.50751301          5.80097202          1.08761978          5.85379085 
+      Toyota Corona    Dodge Challenger         AMC Javelin          Camaro Z28 
+        -3.08644148         -3.31136386         -3.94097947         -1.25202805 
+   Pontiac Firebird           Fiat X1-9       Porsche 914-2        Lotus Europa 
+         2.44325481         -0.32665313         -0.03737415          2.63023081 
+     Ford Pantera L        Ferrari Dino       Maserati Bora          Volvo 142E 
+        -0.74648866         -1.22541324          2.26052287         -1.58364943 </code></pre>
+</div>
+</div>
+</section>
+<section id="manipulating-formulas" class="slide level2">
+<h2>Manipulating formulas</h2>
+<p>Working with formulas in R can be somewhat confusing, so it is important to understand how formulas work to make sure you are fitting the intended model.</p>
+</section>
+<section id="section" class="slide level2">
+<h2><code>- 1</code></h2>
+<p>Use <code>- 1</code> to remove an intercept from your model. Only do this if you are very sure that what you are doing is appropriate. I don’t recommend doing this in practice.</p>
+<div class="cell" data-hash="23_linear-regression_cache/revealjs/unnamed-chunk-17_2f7ead78995bf2740cbc6f34a135828b">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>no_intercept <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> wt <span class="sc">-</span> <span class="dv">1</span>, <span class="at">data =</span> mtcars)</span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="fu">summary</span>(no_intercept)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mpg ~ hp + wt - 1, data = mtcars)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-19.407  -2.382   2.511   7.091  23.885 
+
+Coefficients:
+   Estimate Std. Error t value Pr(&gt;|t|)   
+hp -0.03394    0.03940  -0.861   0.3959   
+wt  6.84045    1.89425   3.611   0.0011 **
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 11.32 on 30 degrees of freedom
+Multiple R-squared:  0.7264,    Adjusted R-squared:  0.7082 
+F-statistic: 39.83 on 2 and 30 DF,  p-value: 3.599e-09</code></pre>
+</div>
+</div>
+</section>
+<section id="operator" class="slide level2">
+<h2><code>:</code> operator</h2>
+<p>Use <code>X1:X2</code> to include an interaction effect in your model. This is useful if you have reason to believe two covariates interact, such as gender and education in a wage model. In our case, we’ll assume horsepower and weight interact in their effect on mpg.</p>
+<p>Typically (always?), if you include an interaction effect, you should also include the marginal effects. You can do this automatically using <code>X1*X2</code>.</p>
+</section>
+<section id="operator-1" class="slide level2">
+<h2><code>:</code> operator</h2>
+<div class="cell" data-hash="23_linear-regression_cache/revealjs/unnamed-chunk-18_f0b2cc338df6343f90c0bc1b5d5fe9f9">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>interact <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp<span class="sc">:</span>wt, <span class="at">data =</span> mtcars)</span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="fu">summary</span>(interact)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mpg ~ hp:wt, data = mtcars)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.8831 -2.0952 -0.4577  1.2262  7.9282 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 27.745642   1.062236   26.12  &lt; 2e-16 ***
+hp:wt       -0.014872   0.001727   -8.61 1.32e-09 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 3.288 on 30 degrees of freedom
+Multiple R-squared:  0.7119,    Adjusted R-squared:  0.7023 
+F-statistic: 74.14 on 1 and 30 DF,  p-value: 1.321e-09</code></pre>
+</div>
+</div>
+</section>
+<section id="operator-2" class="slide level2">
+<h2><code>*</code> operator</h2>
+<div class="cell" data-hash="23_linear-regression_cache/revealjs/unnamed-chunk-19_d2ccfd0ebbad67a8755476c903cbe6d9">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>interact <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp<span class="sc">*</span>wt, <span class="at">data =</span> mtcars)</span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="fu">summary</span>(interact)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mpg ~ hp * wt, data = mtcars)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.0632 -1.6491 -0.7362  1.4211  4.5513 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 49.80842    3.60516  13.816 5.01e-14 ***
+hp          -0.12010    0.02470  -4.863 4.04e-05 ***
+wt          -8.21662    1.26971  -6.471 5.20e-07 ***
+hp:wt        0.02785    0.00742   3.753 0.000811 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.153 on 28 degrees of freedom
+Multiple R-squared:  0.8848,    Adjusted R-squared:  0.8724 
+F-statistic: 71.66 on 3 and 28 DF,  p-value: 2.981e-13</code></pre>
+</div>
+</div>
+</section>
+<section id="operator-3" class="slide level2">
+<h2><code>.</code> operator</h2>
+<p>Use <code>~ .</code> to include all non-response variables in the input data as independent variables.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mpg ~ ., data = mtcars)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.4506 -1.6044 -0.1196  1.2193  4.6271 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept) 12.30337   18.71788   0.657   0.5181  
+cyl         -0.11144    1.04502  -0.107   0.9161  
+disp         0.01334    0.01786   0.747   0.4635  
+hp          -0.02148    0.02177  -0.987   0.3350  
+drat         0.78711    1.63537   0.481   0.6353  
+wt          -3.71530    1.89441  -1.961   0.0633 .
+qsec         0.82104    0.73084   1.123   0.2739  
+vs           0.31776    2.10451   0.151   0.8814  
+am           2.52023    2.05665   1.225   0.2340  
+gear         0.65541    1.49326   0.439   0.6652  
+carb        -0.19942    0.82875  -0.241   0.8122  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.65 on 21 degrees of freedom
+Multiple R-squared:  0.869, Adjusted R-squared:  0.8066 
+F-statistic: 13.93 on 10 and 21 DF,  p-value: 3.793e-07</code></pre>
+</div>
+</div>
+</section>
+<section id="estimation" class="slide level2">
+<h2>Estimation</h2>
+<p>How do we choose/estimate <span class="math inline">\(\beta_{(k+1)\times1}\)</span>?</p>
+<p>Least squares finds the line that minimizes the squared distance between the points and the line, i.e.&nbsp;makes <span class="math display">\[\left[y_i - (\beta_0 + \beta_1 x_{i, 1} + \dots + \beta_k x_{i,k})\right]^2\]</span> as small as possible for all <span class="math inline">\(i = 1, \dots, n\)</span>.</p>
+<p>The vector <span class="math inline">\(\widehat{\beta}\)</span> that minimizes the sum of the squared distances is ()</p>
+<p><span class="math display">\[ \widehat{\beta}=\left(\mathbf{X}^T \mathbf{X} \right)^{-1}\mathbf{X}^T \mathbf{Y}.\]</span></p>
+<p>Note: In statistics, once we have estimated a parameter we put a “hat” on it, e.g.&nbsp;<span class="math inline">\(\widehat{\beta_0}\)</span> is the estimate of the true parameter <span class="math inline">\(\beta_0\)</span>.</p>
 
 <div class="footer footer-default">
 
