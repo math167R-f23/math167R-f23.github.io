@@ -32,6 +32,6 @@ In this part, you will simulate a one-dimensional random walk. Suppose you are a
 
 3. Write a function `random_walk()` that takes as input a numeric `n_steps` and a numeric $p$ and simulates `n_steps` steps of the one-dimensional random walk with forward probability $p$. You may have other input arguments if desired. The output should be a length vector of length `n_steps` starting with 0 where the $i$th entry represents the location of the random walker at time $t=i$. For example, `random_walk(5, .5)` may return the vector $(0, 1, 2, 1, 2)$. 
 
-4. Use your function to generate a random walk of 500 steps with probability $.6$ and generate a line graph with $t=0,1,\ldots, 100$ on the x-axis and $x_0,\ldots, x_{100}$ on the y-axis.
+4. Use your function to generate a random walk of 500 steps with probability $.6$ and generate a line graph with $t=1,\ldots, 500$ on the x-axis and $x_1,\ldots, x_{500}$ on the y-axis.
 
 5. Use your function to generate two more random walks of 500 steps with probability $.6$ and create a line graph with all three of your random walks, using different colors for each walk.
