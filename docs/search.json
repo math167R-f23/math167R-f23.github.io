@@ -707,6 +707,181 @@
     "text": "Other confidence intervals\nR has implementations for confidence intervals for many types of population parameters, including for non-normally distributed populations. Always carefully read the documentation before using these functions."
   },
   {
+    "objectID": "slides/23_hypothesis-testing-II.html#overview-of-today",
+    "href": "slides/23_hypothesis-testing-II.html#overview-of-today",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "Overview of today",
+    "text": "Overview of today\n\nReview of basic hypothesis tests\nPermutation tests\nSimulations for power analysis\nP-hacking simulations"
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#summary-hypothesis-testing",
+    "href": "slides/23_hypothesis-testing-II.html#summary-hypothesis-testing",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "Summary: hypothesis testing",
+    "text": "Summary: hypothesis testing\n\nDefine null and alternative hypotheses.\n\nex. \\(H_0:\\mu = 0\\) and \\(H_a:\\mu\\neq 0\\)\n\nCompute a test statistic for which the null sampling distribution is known (based on assumptions about the population/sample).\n\nex. \\(T=(\\overline{X}_n-\\mu)/(S^2/\\sqrt{n})\\sim t_{n-1}\\)\n\nCompare the test statistic with the null distribution to obtain a P-value.\n\nex. \\(P(|T|&gt;|t|)\\) where \\(t\\) is the observed test statistic."
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#permutation-tests",
+    "href": "slides/23_hypothesis-testing-II.html#permutation-tests",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "Permutation tests",
+    "text": "Permutation tests\nTypically, for hypothesis testing, we need to know the sampling distribution of the test statistic when the null hypothesis is true.\nIn some cases, we can derive the null sampling distribution analytically.\nWhat if we don’t know the sampling distribution under the null? A permutation test is simple way to estimate the sampling distribution for any test statistic, requiring only some exchangeability assumptions on the data."
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#permutation-tests-1",
+    "href": "slides/23_hypothesis-testing-II.html#permutation-tests-1",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "Permutation tests",
+    "text": "Permutation tests\nExample: Suppose we want to understand whether carrying a particular genetic variant affects an individual’s height \\(y\\).\n\ncarrier &lt;- rep(c(0,1), c(100,200))\n\n# an example where y is not independent of the gene\nnull_y &lt;- rnorm(300) \n# an example where y is dependent on the gene\nalt_y &lt;- rnorm(300, mean = carrier * 5)"
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#permutation-tests-2",
+    "href": "slides/23_hypothesis-testing-II.html#permutation-tests-2",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "Permutation tests",
+    "text": "Permutation tests\nIf the null hypothesis is true, the distribution of \\(Y\\) for the carriers should look the same as the distribution for the non-carriers. If we permute the labels repeatedly, we can get resampled datasets.\nIf the null hypothesis is true, the shuffled data sets will resemble the original dataset. If the null hypothesis is false, the shuffled dataset may not look like the real data."
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#null-hypothesis-true",
+    "href": "slides/23_hypothesis-testing-II.html#null-hypothesis-true",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "Null hypothesis true",
+    "text": "Null hypothesis true"
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#null-hypothesis-false",
+    "href": "slides/23_hypothesis-testing-II.html#null-hypothesis-false",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "Null hypothesis false",
+    "text": "Null hypothesis false"
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#permutation-tests-3",
+    "href": "slides/23_hypothesis-testing-II.html#permutation-tests-3",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "Permutation tests",
+    "text": "Permutation tests\n\nCalculate a test statistic based on the observed data.\nRepeatedly permute the group labels to create resamples. For each resample, compute the resample test statistic.\nCompare the observed data test statistic with the distribution of resampled test statistics."
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#permutation-tests-4",
+    "href": "slides/23_hypothesis-testing-II.html#permutation-tests-4",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "Permutation tests",
+    "text": "Permutation tests\nIn the case of our simulated data, we know the true distribution of the difference of sample means. We can thus use a \\(t\\)-test to perform our hypothesis test:\n\nt.test(null_y[carrier == 0], null_y[carrier == 1], var.equal=TRUE)\n\n\n    Two Sample t-test\n\ndata:  null_y[carrier == 0] and null_y[carrier == 1]\nt = 0.22205, df = 298, p-value = 0.8244\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -0.2209630  0.2771692\nsample estimates:\n mean of x  mean of y \n0.05332056 0.02521746"
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#permutation-tests-5",
+    "href": "slides/23_hypothesis-testing-II.html#permutation-tests-5",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "Permutation tests",
+    "text": "Permutation tests\nCompare with the \\(t\\)-test for the alternative hypothesis data:\n\nt.test(alt_y[carrier == 0], alt_y[carrier == 1], var.equal=TRUE)\n\n\n    Two Sample t-test\n\ndata:  alt_y[carrier == 0] and alt_y[carrier == 1]\nt = -41.009, df = 298, p-value &lt; 2.2e-16\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -5.170120 -4.696636\nsample estimates:\n mean of x  mean of y \n0.07434679 5.00772490"
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#permutation-tests-6",
+    "href": "slides/23_hypothesis-testing-II.html#permutation-tests-6",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "Permutation tests",
+    "text": "Permutation tests\nFor now, though, let’s pretend we don’t know the true null sampling distribution of our test statistic.\n\nset.seed(1)\nnull_diff &lt;- mean(null_y[carrier==1]) - mean(null_y[carrier==0])\nsingle_test &lt;- function(label, y) {\n  resample &lt;- sample(label)\n  # resample test statistic\n  mean(y[resample == 1]) - mean(y[resample == 0])\n}\ntest_stats_null &lt;- replicate(1000, single_test(carrier, null_y))"
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#permutation-tests-7",
+    "href": "slides/23_hypothesis-testing-II.html#permutation-tests-7",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "Permutation tests",
+    "text": "Permutation tests\n\nhist(test_stats_null)\nabline(v = null_diff, lwd=2, col=\"purple\")\n\nmean(abs(test_stats_null) &gt; abs(null_diff)) # P-value\n\n[1] 0.8"
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#permutation-tests-8",
+    "href": "slides/23_hypothesis-testing-II.html#permutation-tests-8",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "Permutation tests",
+    "text": "Permutation tests\nCompare with the case where the null hypothesis is false.\n\nset.seed(1)\nalt_diff &lt;- mean(alt_y[carrier==1]) - mean(alt_y[carrier==0])\ntest_stats_alt &lt;- replicate(1000, single_test(carrier, alt_y))\nhist(test_stats_alt, xlim = c(-0.5, 6))\nabline(v = alt_diff, lwd=2, col=\"purple\")\n\nmean(abs(test_stats_alt) &gt; abs(alt_diff)) # P-value\n\n[1] 0"
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#power-analysis",
+    "href": "slides/23_hypothesis-testing-II.html#power-analysis",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "Power analysis",
+    "text": "Power analysis\nRecall that the power of a hypothesis test is the probability of rejecting the null hypothesis when the null hypothesis is false.\nNote the power will depend on the size of the difference between the true sampling distribution and the null hypothesis sampling distribution."
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#one-sample-z-test",
+    "href": "slides/23_hypothesis-testing-II.html#one-sample-z-test",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "One sample \\(z\\)-test",
+    "text": "One sample \\(z\\)-test\nSuppose that \\(X_1,\\ldots, X_n\\sim N(\\mu, 1)\\).\nConsider the hypotheses \\(H_0:\\mu=0\\) and \\(H_a:\\mu\\neq 0\\).\nWe reject at the \\(\\alpha\\) significance level if \\[|\\overline{X}_n| &gt; \\frac{z_{\\alpha/2}}{\\sqrt{n}}\\]\nIf \\(\\mu=\\mu_a\\neq 0\\), then \\[\\overline{X}_n\\sim N\\left(\\mu_a, \\frac{1}{\\sqrt{n}}\\right)\\]"
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#one-sample-z-test-1",
+    "href": "slides/23_hypothesis-testing-II.html#one-sample-z-test-1",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "One sample \\(z\\)-test",
+    "text": "One sample \\(z\\)-test\n\\[\n\\begin{align}\nP\\left(|\\overline{X}_n| &gt; \\frac{z_{\\alpha/2}}{\\sqrt{n}}\\right)&=P\\left(\\overline{X}_n&gt; \\frac{z_{\\alpha/2}}{\\sqrt{n}}\\right) + P\\left(\\overline{X}_n &lt; -\\frac{z_{\\alpha/2}}{\\sqrt{n}}\\right)\\\\\n&=P\\left(\\frac{\\overline{X}_n-\\mu_a}{1/\\sqrt{n}}&gt; z_{\\alpha/2}-\\frac{\\mu_a}{1/\\sqrt{n}}\\right) \\\\\n&+ P\\left(\\frac{\\overline{X}_n-\\mu_a}{1/\\sqrt{n}}&lt;-z_{\\alpha/2}-\\frac{\\mu_a}{1/\\sqrt{n}}\\right)\\\\\n&=\\left(1-\\Phi\\left(z_{\\alpha/2}-\\frac{\\mu_a}{1/\\sqrt{n}}\\right)\\right)+\\Phi\\left(-z_{\\alpha/2}-\\frac{\\mu_a}{1/\\sqrt{n}}\\right)\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#one-sample-z-test-2",
+    "href": "slides/23_hypothesis-testing-II.html#one-sample-z-test-2",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "One sample \\(z\\)-test",
+    "text": "One sample \\(z\\)-test\n\none_sample_z_power &lt;- function(mu_a, alpha, n) {\n  z &lt;- qnorm(1 - alpha / 2)\n  return(1 - pnorm(z - mu_a * sqrt(n)) + pnorm(-z - mu_a * sqrt(n)))\n}\n\n# plot the power function\nx &lt;- data.frame(x = seq(-3, 3, length.out = 1000))\nggplot(x, aes(x = x)) + \n  geom_function(fun = one_sample_z_power, \n                aes(color = \"n = 5\"),\n                args = list(alpha = .05, n = 5)) +\n  geom_function(fun = one_sample_z_power, \n                aes(color = \"n = 10\"),\n                args = list(alpha = .05, n = 10)) +\n  geom_function(fun = one_sample_z_power, \n                aes(color = \"n = 20\"),\n                args = list(alpha = .05, n = 20)) +\n  xlab(\"True population mean\") + ylab(\"Power\") +\n  theme_bw()"
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#one-sample-z-test-3",
+    "href": "slides/23_hypothesis-testing-II.html#one-sample-z-test-3",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "One sample \\(z\\)-test",
+    "text": "One sample \\(z\\)-test"
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#using-simulations-to-estimate-power",
+    "href": "slides/23_hypothesis-testing-II.html#using-simulations-to-estimate-power",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "Using simulations to estimate power",
+    "text": "Using simulations to estimate power\n\nsimulate_test &lt;- function(mu_a, alpha, n) {\n  Xbar &lt;- mean(rnorm(n, mean = mu_a, sd = 1))\n  Z_score &lt;- Xbar * sqrt(n)\n  return(abs(Z_score) &gt; qnorm(1 - alpha / 2))\n}\npower_sim &lt;- function(mu_a, alpha, n) {\n  return(mean(replicate(1000, simulate_test(mu_a, alpha, n))))\n}\n\nmu_a &lt;- data.frame(mu_a = seq(-2.5, 2.5, length.out = 100))\nsample_sizes &lt;- c(5, 10, 20)\n\n# matrix of simulation results\nsim_results &lt;- \n  sapply(sample_sizes,\n         function(n) \n           sapply(mu_a$mu_a, \n                  function(mu)\n                    power_sim(mu, .05, n)))\n\nggplot(mu_a, aes(x = mu_a)) +\n  geom_line(aes(y = sim_results[, 1], color = \"n = 5\")) +\n  geom_line(aes(y = sim_results[, 2], color = \"n = 10\")) +\n  geom_line(aes(y = sim_results[, 3], color = \"n = 20\")) +\n  xlab(\"True population mean\") + ylab(\"Power\") +\n  theme_bw()"
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#using-simulations-to-estimate-power-1",
+    "href": "slides/23_hypothesis-testing-II.html#using-simulations-to-estimate-power-1",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "Using simulations to estimate power",
+    "text": "Using simulations to estimate power"
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#p-hacking-simulations",
+    "href": "slides/23_hypothesis-testing-II.html#p-hacking-simulations",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "P-hacking simulations",
+    "text": "P-hacking simulations\nP-hacking refers to the practice of repeatedly performing hypothesis tests (and potentially manipulating the data) until a statistically significant P-values is obtained. Usually, only this final result is published, without mentioning all of the manipulations that came before."
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#p-hacking-simulations-1",
+    "href": "slides/23_hypothesis-testing-II.html#p-hacking-simulations-1",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "P-hacking simulations",
+    "text": "P-hacking simulations\nSuppose we simulate 25 observations of 8 variables which we know to be uncorrelated.\n\nno_signal_data&lt;- matrix(rnorm(200), ncol = 8) # 25 x 8 matrix\npairs(no_signal_data) # pairwise scatter plots"
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#multiple-testing-simulations",
+    "href": "slides/23_hypothesis-testing-II.html#multiple-testing-simulations",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "Multiple testing simulations",
+    "text": "Multiple testing simulations\nWhat if we perform a hypothesis test to test whether the correlation is zero between each pair of variables using cor.test()? With only 8 variables, we have 28 potential comparisons, the probability that we will (falsely) reject the null is already:\n\n1 - (0.95) ^ 28\n\n[1] 0.7621731"
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#multiple-testing-simulations-1",
+    "href": "slides/23_hypothesis-testing-II.html#multiple-testing-simulations-1",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "Multiple testing simulations",
+    "text": "Multiple testing simulations\n\nset.seed(1029)\nno_signal_data&lt;- matrix(rnorm(200), ncol = 8) # 25 x 8 matrix\npairs_to_compare &lt;- combn(8, 2) # all combinations of 2 numbers from 1-8\np_values &lt;- c()\nfor (i in 1:ncol(pairs_to_compare)) {\n  index_1 &lt;- pairs_to_compare[1, i]\n  index_2 &lt;- pairs_to_compare[2, i]\n  test_res &lt;- \n    cor.test(no_signal_data[, index_1],\n             no_signal_data[, index_2])\n  p_values &lt;- c(p_values, test_res$p.value)\n}\nprint(min(p_values))\n\n[1] 0.006656272"
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#multiple-testing-simulations-2",
+    "href": "slides/23_hypothesis-testing-II.html#multiple-testing-simulations-2",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "Multiple testing simulations",
+    "text": "Multiple testing simulations\nFor this reason it is common to perform a correction to the hypothesis tests when many hypothesis tests are conducted.\nExample: The Bonferroni correction divides \\(\\alpha\\) by the number of tests performed to get the corrected significance level."
+  },
+  {
     "objectID": "slides/22_hypothesis-testing.html#overview-of-today",
     "href": "slides/22_hypothesis-testing.html#overview-of-today",
     "title": "MATH167R: Hypothesis testing",
@@ -1153,6 +1328,13 @@
     "title": "MATH167R: Simulations",
     "section": "Expected time of return",
     "text": "Expected time of return\nThe walker starts at \\(x=0\\). What is the expected length of time before the walker returns to \\(x=0\\) (if it is finite)?\nIt turns out the expected length of time is infinite–a key example of why we have to be careful about using simulations to replace mathematical analysis."
+  },
+  {
+    "objectID": "slides/19_more-simulations.html#exercise",
+    "href": "slides/19_more-simulations.html#exercise",
+    "title": "MATH167R: Simulations",
+    "section": "Exercise",
+    "text": "Exercise\nHow would we write a simulation to answer the following question:\nWhat is the expected maximum value of \\(|x_i|\\) for a random walk of length \\(n\\)?"
   },
   {
     "objectID": "slides/19_more-simulations.html#timing-code",
@@ -2051,6 +2233,286 @@
     "text": "Updating results for new data\nFinally, we can combine some of these functions into a larger function that we can run every week to update our results.\n\ndownload_data &lt;- function() {\n  # automatically pull today's date\n  dates &lt;- seq(Sys.Date(), by = -7, length.out = 12)\n  bestseller_lists &lt;- lapply(\n    dates,\n    function(x) {\n      # slow down execution by waiting 12 seconds\n      Sys.sleep(12)\n      jsonlite::fromJSON(\n        paste0(\n          \"https://api.nytimes.com/svc/books/v3/lists/\",\n          x,\n          \"/hardcover-fiction.json?api-key=\",\n          api_key\n        )\n      )$results$books\n    }\n  )\n  names(bestseller_lists) &lt;- dates\n  return(bestseller_lists)\n}\ngenerate_plot &lt;- function() {\n  # Add code here . . .\n}"
   },
   {
+    "objectID": "slides/24_linear-regression.html#overview-of-today",
+    "href": "slides/24_linear-regression.html#overview-of-today",
+    "title": "MATH167R: Linear regression",
+    "section": "Overview of today",
+    "text": "Overview of today\n\nCovariance and correlation\nLinear regression"
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#relating-numerical-variables",
+    "href": "slides/24_linear-regression.html#relating-numerical-variables",
+    "title": "MATH167R: Linear regression",
+    "section": "Relating numerical variables",
+    "text": "Relating numerical variables"
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#covariance-and-correlation",
+    "href": "slides/24_linear-regression.html#covariance-and-correlation",
+    "title": "MATH167R: Linear regression",
+    "section": "Covariance and correlation",
+    "text": "Covariance and correlation\nIn statistics, correlation and covariance usually refer to a specific type of association. * If \\(X\\) and \\(Y\\) are linearly associated, then they are correlated."
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#correlation",
+    "href": "slides/24_linear-regression.html#correlation",
+    "title": "MATH167R: Linear regression",
+    "section": "Correlation",
+    "text": "Correlation\nCorrelation can also refer to the correlation coefficient.\nThe (Pearson) correlation coefficient \\(R\\) is a statistic between \\(-1\\) and 1 that describes the strength and direction of the linear relationship between two variables.\n\\[R = \\frac{1}{n-1}\\sum_{i=1}^n\\frac{x_i-\\overline{x}}{s_x}\\frac{y_i-\\overline{y}}{s_y}\\]\nThe sign of \\(R\\) indicates the direction of the relationship. The absolute value of \\(R\\) indicates the strength."
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#correlation-and-covariance",
+    "href": "slides/24_linear-regression.html#correlation-and-covariance",
+    "title": "MATH167R: Linear regression",
+    "section": "Correlation and covariance",
+    "text": "Correlation and covariance\n\nattach(mtcars)\ncor(mpg, wt)\n\n[1] -0.8676594\n\ncov(mpg, wt)\n\n[1] -5.116685"
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#pairs-plots-for-assessing-many-relationships",
+    "href": "slides/24_linear-regression.html#pairs-plots-for-assessing-many-relationships",
+    "title": "MATH167R: Linear regression",
+    "section": "Pairs plots for assessing many relationships",
+    "text": "Pairs plots for assessing many relationships\n\npairs(~mpg + hp + wt, mtcars)"
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#regression-methods",
+    "href": "slides/24_linear-regression.html#regression-methods",
+    "title": "MATH167R: Linear regression",
+    "section": "Regression methods",
+    "text": "Regression methods\nAssume we have some data:\n\n\\(X_1,\\ldots, X_p\\): \\(p\\) independent variables/explanatory variables/covariates/predictors\n\\(Y\\): the dependent variables/response/outcome.\n\nWe want to know the relationship between our covariates and our response, we can do this with a method called regression. Regression provides us with a statistical method to conduct inference and prediction."
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#regression-methods-1",
+    "href": "slides/24_linear-regression.html#regression-methods-1",
+    "title": "MATH167R: Linear regression",
+    "section": "Regression methods",
+    "text": "Regression methods\n\ninference: assess the relationship between our variables, our statistical model as a whole, predictor importance\n\nWhat is the relationship between sleep and GPA?\nIs parents’ education or parents’ income more important for explaining income?\n\nprediction: predict new/future outcomes from new/future covariates\n\nCan we predict test scores based on hours spent studying?"
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#why-is-it-called-regression",
+    "href": "slides/24_linear-regression.html#why-is-it-called-regression",
+    "title": "MATH167R: Linear regression",
+    "section": "Why is it called regression?",
+    "text": "Why is it called regression?"
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#linear-regression",
+    "href": "slides/24_linear-regression.html#linear-regression",
+    "title": "MATH167R: Linear regression",
+    "section": "Linear Regression",
+    "text": "Linear Regression\nGiven our response \\(Y\\) and our predictors \\(X_1, \\ldots, X_p\\), a linear regression model takes the form:\n\\[\n\\begin{align}\nY &= \\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_p X_p + \\epsilon,\\\\\n\\epsilon &\\sim N(0,\\sigma^2)\n\\end{align}\n\\]\nNote: If we wish to include a categorical covariate, we can add indicator variables for each category."
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#linear-regression-1",
+    "href": "slides/24_linear-regression.html#linear-regression-1",
+    "title": "MATH167R: Linear regression",
+    "section": "Linear Regression",
+    "text": "Linear Regression\n\\[\n\\begin{align}\nY &= \\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_p X_p + \\epsilon,\\\\\n\\epsilon &\\sim N(0,\\sigma^2)\n\\end{align}\n\\]\n\n\\(Y\\): dependent variable, outcome, response\n\\(X_j\\): independent variable, covariate, predictor\n\\(\\beta_0\\): Intercept\n\\(\\beta_j\\): coefficient, the expected difference in the response between two observations differing by one unit in \\(X_j\\), with all other covariates identical.\n\\(\\epsilon\\): error, noise, with mean \\(0\\) and variance \\(\\sigma^2\\)"
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#linear-regression-2",
+    "href": "slides/24_linear-regression.html#linear-regression-2",
+    "title": "MATH167R: Linear regression",
+    "section": "Linear Regression",
+    "text": "Linear Regression\nWe can fully write out a linear regression model\n\\[\n\\begin{equation}\n\\begin{bmatrix} y_1 \\\\ y_2\\\\ \\vdots \\\\ y_n \\end{bmatrix} =\n\\begin{bmatrix} 1 & x_{1,1} & \\cdots & x_{1,k}\\\\\n1 & x_{2,1} & \\cdots & x_{2, k}\\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\n1 & x_{n,1} & \\cdots & x_{n, k}\\end{bmatrix}\n\\begin{bmatrix} \\beta_0 \\\\ \\beta_1 \\\\ \\vdots \\\\ \\beta_{k} \\end{bmatrix} +\n\\begin{bmatrix} \\epsilon_1 \\\\ \\epsilon_2 \\\\ \\vdots \\\\ \\epsilon_{n} \\end{bmatrix}\n\\end{equation}\n\\]"
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#matrix-notation",
+    "href": "slides/24_linear-regression.html#matrix-notation",
+    "title": "MATH167R: Linear regression",
+    "section": "Matrix Notation",
+    "text": "Matrix Notation\nThis can also be expressed in matrix form:\n\\[\n\\begin{align}\n\\mathbf{Y} &= \\mathbf{X}\\beta + \\epsilon,\\\\\n\\epsilon &\\sim N(0,1)\n\\end{align}\n\\]\n\n\\(\\mathbf{Y} \\in \\mathbb{R}^{n \\times 1}\\): an n-dimensional vector of the response\n\\(\\mathbf{X} \\in \\mathbb{R}^{n \\times (k+1)}\\): a \\(((k+1)\\times n)\\) matrix of the predictors (including intercept)\n\\(\\beta \\in \\mathbb{R}^{((k+1)\\times 1)}\\): a \\((k+1)\\)-dimensional vector of regression parameters\n\\(\\epsilon \\in \\mathbb{R}^{n \\times 1}\\): an n-dimensional vector of the error term"
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#large-epsilon-error-term",
+    "href": "slides/24_linear-regression.html#large-epsilon-error-term",
+    "title": "MATH167R: Linear regression",
+    "section": "\\(\\large \\epsilon\\): Error term",
+    "text": "\\(\\large \\epsilon\\): Error term\n\\(\\epsilon\\), pronounced epsilon, represents the error term of our model. We can model \\(Y\\) as a linear function of the \\(X\\)’s, but in the real world, the relationship won’t always be perfect. There is noise! It can come from\n\nMeasurement error in the \\(X\\)’s\nMeasurement error in the \\(Y\\)’s\nUnobserved/missing variables in the model\nDeviations in the true model from linearity\nTrue randomness\n\nIn linear regression, we assume that this error term is normally distributed with mean zero and variance \\(\\sigma^2\\)."
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#beta_0-intercept",
+    "href": "slides/24_linear-regression.html#beta_0-intercept",
+    "title": "MATH167R: Linear regression",
+    "section": "\\(\\beta_0\\): Intercept",
+    "text": "\\(\\beta_0\\): Intercept\n\\(\\beta_0\\) is the intercept term of our model. Notice that\n\\[\\mathbb{E}[Y|X_1 = X_2 = \\cdots = X_p = 0] = \\beta_0\\]\nThus, \\(\\beta_0\\) is the expected value of our response if all the covariates are equal to \\(0\\). This is also known as the y-intercept of our model."
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#x_j-independent-variable",
+    "href": "slides/24_linear-regression.html#x_j-independent-variable",
+    "title": "MATH167R: Linear regression",
+    "section": "\\(X_j\\): Independent variable",
+    "text": "\\(X_j\\): Independent variable\n\\(X_j\\) represents the \\(j\\)th independent variable in our model. Notice that \\[\\mathbb{E}[Y|X_1,\\ldots, X_p] = \\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_p X_p\\] What happens to this expectation if we increase \\(X_j\\) by 1 unit, holding everything else constant?\nThe conditional expectation of \\(Y\\) increases by \\(\\beta_j\\)."
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#beta_j-coefficient",
+    "href": "slides/24_linear-regression.html#beta_j-coefficient",
+    "title": "MATH167R: Linear regression",
+    "section": "\\(\\beta_j\\): Coefficient",
+    "text": "\\(\\beta_j\\): Coefficient\n\\(\\beta_j\\) represents the \\(j\\)th regression coefficient in our model. From the previous slide, we saw that for every 1 unit increase in \\(X_j\\), holding all other variables constant, the expected value of the response increases by \\(\\beta_j\\). From this we can derive an interpretation.\nInterpretation of \\(\\beta_j\\): the expected difference in the response between two observations differing by one unit in \\(X_j\\), with all other covariates identical."
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#lm-linear-model",
+    "href": "slides/24_linear-regression.html#lm-linear-model",
+    "title": "MATH167R: Linear regression",
+    "section": "lm(): Linear Model",
+    "text": "lm(): Linear Model\nWe fit a linear regression model in R using lm(). The first argument is a formula, which is a type of R object. Formulas typically take the following form: Y ~ X_1 + X_2 + ... + X_p.\nThe dependent variable, Y goes on the left-hand side of the tilde ~, which marks the formula. The independent variables are added on the right-hand side. Using this formula will give us a model in the form of\n\\[\n\\begin{align}\nY &= \\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_p X_p + \\epsilon,\\\\\n\\epsilon &\\sim N(0,\\sigma^2)\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#lm-linear-model-1",
+    "href": "slides/24_linear-regression.html#lm-linear-model-1",
+    "title": "MATH167R: Linear regression",
+    "section": "lm(): Linear Model",
+    "text": "lm(): Linear Model\n\ndata(mtcars)\nmy_lm &lt;- lm(mpg ~ hp + wt, data = mtcars)\nclass(my_lm)\n\n[1] \"lm\"\n\nmy_lm\n\n\nCall:\nlm(formula = mpg ~ hp + wt, data = mtcars)\n\nCoefficients:\n(Intercept)           hp           wt  \n   37.22727     -0.03177     -3.87783"
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#lm-linear-model-2",
+    "href": "slides/24_linear-regression.html#lm-linear-model-2",
+    "title": "MATH167R: Linear regression",
+    "section": "lm(): Linear Model",
+    "text": "lm(): Linear Model\nWe can see from names() that lm objects contain a lot more than they print out by default.\n\nnames(my_lm)\n\n [1] \"coefficients\"  \"residuals\"     \"effects\"       \"rank\"         \n [5] \"fitted.values\" \"assign\"        \"qr\"            \"df.residual\"  \n [9] \"xlevels\"       \"call\"          \"terms\"         \"model\""
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#summary-model-summaries",
+    "href": "slides/24_linear-regression.html#summary-model-summaries",
+    "title": "MATH167R: Linear regression",
+    "section": "summary() Model summaries",
+    "text": "summary() Model summaries\nsummary() or summary.lm() gives us a summary of our lm object in R.\n\nThe quantiles of the residuals: hopefully, they match a normal distribution.\nCoefficients, their standard errors, and their individual significances\n(Adjusted) R-squared value: how much of the overall variability in the response is explained by the model?\nF-statistic: hypothesis test for the significance of the overall model"
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#summary-model-summaries-1",
+    "href": "slides/24_linear-regression.html#summary-model-summaries-1",
+    "title": "MATH167R: Linear regression",
+    "section": "summary() Model summaries",
+    "text": "summary() Model summaries\n\nsummary(my_lm)\n\n\nCall:\nlm(formula = mpg ~ hp + wt, data = mtcars)\n\nResiduals:\n   Min     1Q Median     3Q    Max \n-3.941 -1.600 -0.182  1.050  5.854 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) 37.22727    1.59879  23.285  &lt; 2e-16 ***\nhp          -0.03177    0.00903  -3.519  0.00145 ** \nwt          -3.87783    0.63273  -6.129 1.12e-06 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 2.593 on 29 degrees of freedom\nMultiple R-squared:  0.8268,    Adjusted R-squared:  0.8148 \nF-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12"
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#plot-regression-model-diagnostics",
+    "href": "slides/24_linear-regression.html#plot-regression-model-diagnostics",
+    "title": "MATH167R: Linear regression",
+    "section": "plot(): Regression model diagnostics",
+    "text": "plot(): Regression model diagnostics\nCalling plot(my_lm) will return several diagnostic plots. Remember that we want our error term to look normally distributed with mean zero. We won’t go into all the details for this class, but here are some tips:\n\nResiduals vs Fitted: these are your errors (residuals) plotted over the predicted outcome (fitted). Errors should be random, so here you want to see randomly scattered points with no discernable pattern. You want the trend line to be approximately horizontal.\nNormal Q-Q plot: These are the quantiles of your errors against the quantiles of a normal distribution. In theory, your errors should be normally distributed, so you are hoping that points are mostly along the 45-degree \\(y=x\\) line."
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#plot-regression-model-diagnostics-1",
+    "href": "slides/24_linear-regression.html#plot-regression-model-diagnostics-1",
+    "title": "MATH167R: Linear regression",
+    "section": "plot(): Regression model diagnostics",
+    "text": "plot(): Regression model diagnostics\n\nScale-location: This looks at the magnitude of standardized residuals over the predicted outcome. Similar interpretation as residuals vs fitted. This can make it slightly easier to identify undesireable patterns.\nResiduals vs leverage: This can help identify highly influential points, such as outliers. If points are outside dotted red lines, then removing them would noticeably alter your results. Never just remove outliers! If it’s real data, it’s valid and removing it will bias your results. It is much more important to understand why outliers are there than to remove them."
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#plot-regression-model-diagnostics-2",
+    "href": "slides/24_linear-regression.html#plot-regression-model-diagnostics-2",
+    "title": "MATH167R: Linear regression",
+    "section": "plot(): Regression model diagnostics",
+    "text": "plot(): Regression model diagnostics\n\nplot(my_lm)"
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#plot-regression-model-diagnostics-3",
+    "href": "slides/24_linear-regression.html#plot-regression-model-diagnostics-3",
+    "title": "MATH167R: Linear regression",
+    "section": "plot(): Regression model diagnostics",
+    "text": "plot(): Regression model diagnostics"
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#plot-regression-model-diagnostics-4",
+    "href": "slides/24_linear-regression.html#plot-regression-model-diagnostics-4",
+    "title": "MATH167R: Linear regression",
+    "section": "plot(): Regression model diagnostics",
+    "text": "plot(): Regression model diagnostics"
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#plot-regression-model-diagnostics-5",
+    "href": "slides/24_linear-regression.html#plot-regression-model-diagnostics-5",
+    "title": "MATH167R: Linear regression",
+    "section": "plot(): Regression model diagnostics",
+    "text": "plot(): Regression model diagnostics"
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#coef-extract-coefficients",
+    "href": "slides/24_linear-regression.html#coef-extract-coefficients",
+    "title": "MATH167R: Linear regression",
+    "section": "coef(): Extract coefficients",
+    "text": "coef(): Extract coefficients\nUse coef() to extract estimated coefficients as a vector.\n\ncoef(my_lm)\n\n(Intercept)          hp          wt \n37.22727012 -0.03177295 -3.87783074"
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#fitted-extract-fitted-values",
+    "href": "slides/24_linear-regression.html#fitted-extract-fitted-values",
+    "title": "MATH167R: Linear regression",
+    "section": "fitted() Extract fitted values",
+    "text": "fitted() Extract fitted values\nUse fitted() to extract the fitted/estimated values for the response. This can be useful to compare how our fitted values compare to the estimated values to help assess model fit.\n\nlibrary(ggplot2)\nmod_fits &lt;- fitted(my_lm)\nmy_df &lt;- data.frame(actual = mtcars$mpg, fitted = mod_fits)\nggplot(my_df, aes(x = fitted, y = actual)) +\n  geom_point() +\n  geom_abline(slope = 1, intercept = 0, col = \"red\", lty = 2) + \n  theme_bw(base_size = 15) +\n  labs(x = \"Fitted values\", y = \"Actual values\", title = \"Actual vs. Fitted\") +\n  theme(plot.title = element_text(hjust = 0.5))"
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#fitted-extract-fitted-values-1",
+    "href": "slides/24_linear-regression.html#fitted-extract-fitted-values-1",
+    "title": "MATH167R: Linear regression",
+    "section": "fitted() Extract fitted values",
+    "text": "fitted() Extract fitted values"
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#predict-predict-new-outcomes",
+    "href": "slides/24_linear-regression.html#predict-predict-new-outcomes",
+    "title": "MATH167R: Linear regression",
+    "section": "predict(): Predict new outcomes",
+    "text": "predict(): Predict new outcomes\nUse predict() to predict new outcomes given new explanatory variables. For example, pretend we observe two new cars with horsepowers of 100 and 150, respectively, and weights of 3000 and 3500, respectively.\n\n# Note: wt is in 1000s of lbs\nnew_obs &lt;- data.frame(hp = c(100, 150), wt = c(3, 3.5))\npredict(my_lm, new_obs)\n\n       1        2 \n22.41648 18.88892 \n\n\nWe’ll come back to prediction in future lectures."
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#residuals-compute-residuals",
+    "href": "slides/24_linear-regression.html#residuals-compute-residuals",
+    "title": "MATH167R: Linear regression",
+    "section": "residuals(): Compute residuals",
+    "text": "residuals(): Compute residuals\nUse residuals() to compute the residuals for fitted values.\n\nresiduals(my_lm)\n\n          Mazda RX4       Mazda RX4 Wag          Datsun 710      Hornet 4 Drive \n        -2.57232940         -1.58348256         -2.47581872          0.13497989 \n  Hornet Sportabout             Valiant          Duster 360           Merc 240D \n         0.37273336         -2.37381631         -1.29904236          1.51293266 \n           Merc 230            Merc 280           Merc 280C          Merc 450SE \n         0.80632669         -0.77945988         -2.17945988          0.67463146 \n         Merc 450SL         Merc 450SLC  Cadillac Fleetwood Lincoln Continental \n         0.25616901         -1.64993945          0.04479541          1.03726743 \n  Chrysler Imperial            Fiat 128         Honda Civic      Toyota Corolla \n         5.50751301          5.80097202          1.08761978          5.85379085 \n      Toyota Corona    Dodge Challenger         AMC Javelin          Camaro Z28 \n        -3.08644148         -3.31136386         -3.94097947         -1.25202805 \n   Pontiac Firebird           Fiat X1-9       Porsche 914-2        Lotus Europa \n         2.44325481         -0.32665313         -0.03737415          2.63023081 \n     Ford Pantera L        Ferrari Dino       Maserati Bora          Volvo 142E \n        -0.74648866         -1.22541324          2.26052287         -1.58364943"
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#manipulating-formulas",
+    "href": "slides/24_linear-regression.html#manipulating-formulas",
+    "title": "MATH167R: Linear regression",
+    "section": "Manipulating formulas",
+    "text": "Manipulating formulas\nWorking with formulas in R can be somewhat confusing, so it is important to understand how formulas work to make sure you are fitting the intended model."
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#section",
+    "href": "slides/24_linear-regression.html#section",
+    "title": "MATH167R: Linear regression",
+    "section": "- 1",
+    "text": "- 1\nUse - 1 to remove an intercept from your model. Only do this if you are very sure that what you are doing is appropriate. I don’t recommend doing this in practice.\n\nno_intercept &lt;- lm(mpg ~ hp + wt - 1, data = mtcars)\nsummary(no_intercept)\n\n\nCall:\nlm(formula = mpg ~ hp + wt - 1, data = mtcars)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-19.407  -2.382   2.511   7.091  23.885 \n\nCoefficients:\n   Estimate Std. Error t value Pr(&gt;|t|)   \nhp -0.03394    0.03940  -0.861   0.3959   \nwt  6.84045    1.89425   3.611   0.0011 **\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 11.32 on 30 degrees of freedom\nMultiple R-squared:  0.7264,    Adjusted R-squared:  0.7082 \nF-statistic: 39.83 on 2 and 30 DF,  p-value: 3.599e-09"
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#operator",
+    "href": "slides/24_linear-regression.html#operator",
+    "title": "MATH167R: Linear regression",
+    "section": ": operator",
+    "text": ": operator\nUse X1:X2 to include an interaction effect in your model. This is useful if you have reason to believe two covariates interact, such as gender and education in a wage model. In our case, we’ll assume horsepower and weight interact in their effect on mpg.\nTypically (always?), if you include an interaction effect, you should also include the marginal effects. You can do this automatically using X1*X2."
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#operator-1",
+    "href": "slides/24_linear-regression.html#operator-1",
+    "title": "MATH167R: Linear regression",
+    "section": ": operator",
+    "text": ": operator\n\ninteract &lt;- lm(mpg ~ hp:wt, data = mtcars)\nsummary(interact)\n\n\nCall:\nlm(formula = mpg ~ hp:wt, data = mtcars)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-4.8831 -2.0952 -0.4577  1.2262  7.9282 \n\nCoefficients:\n             Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) 27.745642   1.062236   26.12  &lt; 2e-16 ***\nhp:wt       -0.014872   0.001727   -8.61 1.32e-09 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 3.288 on 30 degrees of freedom\nMultiple R-squared:  0.7119,    Adjusted R-squared:  0.7023 \nF-statistic: 74.14 on 1 and 30 DF,  p-value: 1.321e-09"
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#operator-2",
+    "href": "slides/24_linear-regression.html#operator-2",
+    "title": "MATH167R: Linear regression",
+    "section": "* operator",
+    "text": "* operator\n\ninteract &lt;- lm(mpg ~ hp*wt, data = mtcars)\nsummary(interact)\n\n\nCall:\nlm(formula = mpg ~ hp * wt, data = mtcars)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.0632 -1.6491 -0.7362  1.4211  4.5513 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) 49.80842    3.60516  13.816 5.01e-14 ***\nhp          -0.12010    0.02470  -4.863 4.04e-05 ***\nwt          -8.21662    1.26971  -6.471 5.20e-07 ***\nhp:wt        0.02785    0.00742   3.753 0.000811 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 2.153 on 28 degrees of freedom\nMultiple R-squared:  0.8848,    Adjusted R-squared:  0.8724 \nF-statistic: 71.66 on 3 and 28 DF,  p-value: 2.981e-13"
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#operator-3",
+    "href": "slides/24_linear-regression.html#operator-3",
+    "title": "MATH167R: Linear regression",
+    "section": ". operator",
+    "text": ". operator\nUse ~ . to include all non-response variables in the input data as independent variables.\n\n\n\nCall:\nlm(formula = mpg ~ ., data = mtcars)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.4506 -1.6044 -0.1196  1.2193  4.6271 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)  \n(Intercept) 12.30337   18.71788   0.657   0.5181  \ncyl         -0.11144    1.04502  -0.107   0.9161  \ndisp         0.01334    0.01786   0.747   0.4635  \nhp          -0.02148    0.02177  -0.987   0.3350  \ndrat         0.78711    1.63537   0.481   0.6353  \nwt          -3.71530    1.89441  -1.961   0.0633 .\nqsec         0.82104    0.73084   1.123   0.2739  \nvs           0.31776    2.10451   0.151   0.8814  \nam           2.52023    2.05665   1.225   0.2340  \ngear         0.65541    1.49326   0.439   0.6652  \ncarb        -0.19942    0.82875  -0.241   0.8122  \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 2.65 on 21 degrees of freedom\nMultiple R-squared:  0.869, Adjusted R-squared:  0.8066 \nF-statistic: 13.93 on 10 and 21 DF,  p-value: 3.793e-07"
+  },
+  {
+    "objectID": "slides/24_linear-regression.html#estimation",
+    "href": "slides/24_linear-regression.html#estimation",
+    "title": "MATH167R: Linear regression",
+    "section": "Estimation",
+    "text": "Estimation\nHow do we choose/estimate \\(\\beta_{(k+1)\\times1}\\)?\nLeast squares finds the line that minimizes the squared distance between the points and the line, i.e. makes \\[\\left[y_i - (\\beta_0 + \\beta_1 x_{i, 1} + \\dots + \\beta_k x_{i,k})\\right]^2\\] as small as possible for all \\(i = 1, \\dots, n\\).\nThe vector \\(\\widehat{\\beta}\\) that minimizes the sum of the squared distances is ()\n\\[ \\widehat{\\beta}=\\left(\\mathbf{X}^T \\mathbf{X} \\right)^{-1}\\mathbf{X}^T \\mathbf{Y}.\\]\nNote: In statistics, once we have estimated a parameter we put a “hat” on it, e.g. \\(\\widehat{\\beta_0}\\) is the estimate of the true parameter \\(\\beta_0\\)."
+  },
+  {
     "objectID": "slides/03_functions-vectors-matrices.html#warm-up",
     "href": "slides/03_functions-vectors-matrices.html#warm-up",
     "title": "MATH167R: Functions, vectors, and matrices",
@@ -2487,119 +2949,119 @@
   {
     "objectID": "slides/24_power-simulations.html#overview-of-today",
     "href": "slides/24_power-simulations.html#overview-of-today",
-    "title": "MATH167R: Sampling distributions",
+    "title": "MATH167R: Permutation tests and power analysis",
     "section": "Overview of today",
-    "text": "Overview of today\n\nSimulations for power analysis\nSimulations to assess impact of misspecification"
+    "text": "Overview of today\n\nPermutation tests\nSimulations for power analysis\nSimulations to assess impact of misspecification"
   },
   {
     "objectID": "slides/24_power-simulations.html#sampling-distributions",
     "href": "slides/24_power-simulations.html#sampling-distributions",
-    "title": "MATH167R: Sampling distributions",
+    "title": "MATH167R: Permutation tests and power analysis",
     "section": "Sampling distributions",
     "text": "Sampling distributions\nWithout explicitly saying so, we have been simulating sampling distributions during our simulations.\nRecall: A sampling distribution is the probability distribution of a sample-based statistic.\nExample: If \\(X_1,\\ldots, X_{100}\\) are iid random variables with variance \\(1\\), what is the distribution of the sample mean \\(\\overline{X}\\)?"
   },
   {
     "objectID": "slides/24_power-simulations.html#simulating-a-sampling-distribution",
     "href": "slides/24_power-simulations.html#simulating-a-sampling-distribution",
-    "title": "MATH167R: Sampling distributions",
+    "title": "MATH167R: Permutation tests and power analysis",
     "section": "Simulating a sampling distribution",
     "text": "Simulating a sampling distribution\nExample simulation: Suppose \\(X_1,\\ldots, X_{100}\\sim N(0,1)\\).\n\nset.seed(123)\nXbar &lt;- replicate(10000, mean(rnorm(100)))\nhist(Xbar, main = \"Sampling distribution of mean of 100 N(0, 1) variables\")"
   },
   {
     "objectID": "slides/24_power-simulations.html#simulating-a-sampling-distribution-1",
     "href": "slides/24_power-simulations.html#simulating-a-sampling-distribution-1",
-    "title": "MATH167R: Sampling distributions",
+    "title": "MATH167R: Permutation tests and power analysis",
     "section": "Simulating a sampling distribution",
     "text": "Simulating a sampling distribution\nWhat if \\(X_1,\\ldots, X_{100}\\sim \\mathrm{Exp}(1)\\)?\n\nset.seed(123)\nXbar &lt;- replicate(10000, mean(rexp(100, rate = 1)))\nhist(Xbar, main = \"Sampling distribution of mean of 100 Exponential(1) variables\")"
   },
   {
     "objectID": "slides/24_power-simulations.html#simulating-a-sampling-distribution-2",
     "href": "slides/24_power-simulations.html#simulating-a-sampling-distribution-2",
-    "title": "MATH167R: Sampling distributions",
+    "title": "MATH167R: Permutation tests and power analysis",
     "section": "Simulating a sampling distribution",
     "text": "Simulating a sampling distribution\nWhat if \\(X_1,\\ldots, X_{100}\\sim \\mathrm{Poisson}(1)\\)?\n\nset.seed(123)\nXbar &lt;- replicate(10000, mean(rpois(100, lambda = 1)))\nhist(Xbar, main = \"Sampling distribution of mean of 100 Poisson(1) variables\")"
   },
   {
     "objectID": "slides/24_power-simulations.html#simulating-a-sampling-distribution-3",
     "href": "slides/24_power-simulations.html#simulating-a-sampling-distribution-3",
-    "title": "MATH167R: Sampling distributions",
+    "title": "MATH167R: Permutation tests and power analysis",
     "section": "Simulating a sampling distribution",
     "text": "Simulating a sampling distribution\nBy the central limit theorem, all of these sampling distributions are asymptotically Gaussian with variance 1 (though the mean values differ between the three). Since \\(n=100\\) is fairly large (for these examples), all of the previous examples are close to Gaussian.\nWhat about if \\(n\\) is smaller? Or if we consider other distributions?\nSimulation is a powerful strategy for testing out methods:\n\nSuppose you wish to know… is \\(n\\) large?\nCreate a simulation that generates data that looks like your real world data.\nEvaluate whether the results are reasonable/accurate using simulated data."
   },
   {
     "objectID": "slides/24_power-simulations.html#smaller-sample-sizes",
     "href": "slides/24_power-simulations.html#smaller-sample-sizes",
-    "title": "MATH167R: Sampling distributions",
+    "title": "MATH167R: Permutation tests and power analysis",
     "section": "Smaller sample sizes",
     "text": "Smaller sample sizes\n\nset.seed(123)\nXbar_normal &lt;- replicate(10000, mean(rnorm(10)))\nXbar_exp &lt;- replicate(10000, mean(rexp(10, rate = 1)))\nXbar_poisson &lt;- replicate(10000, mean(rpois(10, lambda = 1)))\npar(mfrow = c(1, 3))\nhist(Xbar_normal, main = \"N(0, 1)\")\nhist(Xbar_exp, main = \"Exp(1)\")\nhist(Xbar_poisson, main = \"Poisson(1)\")"
   },
   {
     "objectID": "slides/24_power-simulations.html#other-statistics",
     "href": "slides/24_power-simulations.html#other-statistics",
-    "title": "MATH167R: Sampling distributions",
+    "title": "MATH167R: Permutation tests and power analysis",
     "section": "Other statistics",
     "text": "Other statistics\nWhat if we want the sampling distribution of the maximum? For each of these population models, the sampling distribution of the maximum is different.\n\nset.seed(123)\nXmax_normal &lt;- replicate(10000, max(rnorm(10)))\nXmax_exp &lt;- replicate(10000, max(rexp(10, rate = 1)))\nXmax_poisson &lt;- replicate(10000, max(rpois(10, lambda = 1)))\npar(mfrow = c(1, 3))\nhist(Xmax_normal, main = \"N(0, 1)\")\nhist(Xmax_exp, main = \"Exp(1)\")\nhist(Xmax_poisson, main = \"Poisson(1)\")"
   },
   {
     "objectID": "slides/24_power-simulations.html#transformations",
     "href": "slides/24_power-simulations.html#transformations",
-    "title": "MATH167R: Sampling distributions",
+    "title": "MATH167R: Permutation tests and power analysis",
     "section": "Transformations",
     "text": "Transformations\nWe can easily simulate sampling distributions for statistics summarizing the distribution of random variables that are defined as transformations of other random variables.\n\nset.seed(123)\nXbar_normal &lt;- replicate(10000, mean(rnorm(10) ^ 2))\nXbar_exp &lt;- replicate(10000, mean(rexp(10, rate = 1) ^ 2))\nXbar_poisson &lt;- replicate(10000, mean(rpois(10, lambda = 1) ^ 2))\npar(mfrow = c(1, 3))\nhist(Xbar_normal, main = \"N(0, 1) squared\")\nhist(Xbar_exp, main = \"Exp(1) squared\")\nhist(Xbar_poisson, main = \"Poisson(1) squared\")"
   },
   {
     "objectID": "slides/24_power-simulations.html#exercise",
     "href": "slides/24_power-simulations.html#exercise",
-    "title": "MATH167R: Sampling distributions",
+    "title": "MATH167R: Permutation tests and power analysis",
     "section": "Exercise",
     "text": "Exercise\n\nWrite code to create a histogram of the sampling distribution of the sample mean \\(\\overline{Y}\\) of \\(Y_1,\\ldots, Y_{10}\\) where \\(Y_i=\\sin(X_i)\\) and \\(X_1,\\ldots, X_{10}\\) are iid Uniform(0, 1) random variables."
   },
   {
     "objectID": "slides/24_power-simulations.html#resampling-methods",
     "href": "slides/24_power-simulations.html#resampling-methods",
-    "title": "MATH167R: Sampling distributions",
+    "title": "MATH167R: Permutation tests and power analysis",
     "section": "Resampling methods",
     "text": "Resampling methods\nThe previous simulations are all based on parametric models (normal, exponential, Poisson). However, we can also simulate sampling distributions without parametric assumptions on the data generating mechanism.\nSuppose we know \\(X_1,\\ldots, X_{20}\\sim \\mathrm{Exp}(1)\\). The sampling distribution can be simulated as follows:\n\nset.seed(123)\nXbar_exp &lt;- replicate(10000, mean(rexp(20, rate = 1)))\nhist(Xbar_exp)"
   },
   {
     "objectID": "slides/24_power-simulations.html#resampling-methods-1",
     "href": "slides/24_power-simulations.html#resampling-methods-1",
-    "title": "MATH167R: Sampling distributions",
+    "title": "MATH167R: Permutation tests and power analysis",
     "section": "Resampling methods",
     "text": "Resampling methods\nWhat if we observe \\(X_1,\\ldots, X_{20}\\), but we don’t know that \\(X_i\\) is exponentially distributed? We could just try the normal approximation to approximate the sampling distribution:\n\nX &lt;- rexp(20, rate = 1)\nx_axis &lt;- seq(0, 3, length.out = 1000)\n\n# plot \"true\" simulated sampling distribution\nhist(Xbar_exp, freq = F, ylim = c(0, 3))\n\n# plot normal theory\nlines(x_axis, dnorm(x_axis, mean = mean(X), sd = sd(X) / sqrt(20)), col = 'red')"
   },
   {
     "objectID": "slides/24_power-simulations.html#bootstrap-samples",
     "href": "slides/24_power-simulations.html#bootstrap-samples",
-    "title": "MATH167R: Sampling distributions",
+    "title": "MATH167R: Permutation tests and power analysis",
     "section": "Bootstrap samples",
     "text": "Bootstrap samples\nBootstrapping is a resampling method that uses random samples with replacement from the sample data to approximate the sampling distribution of sample-based statistics.\n\nprint(sort(X))\n\n [1] 0.00816693 0.06263315 0.11949335 0.12600941 0.14474580 0.14660666\n [7] 0.15582213 0.17485277 0.23514296 0.35492087 0.48980207 0.52215538\n[13] 0.72200938 1.27034542 1.56551624 1.74866229 1.82459209 1.84311722\n[19] 2.14225230 2.24995288\n\n# sample with replacement from X\nX_resample &lt;- sample(X, size = 20, replace = TRUE)\nprint(sort(X_resample))\n\n [1] 0.06263315 0.11949335 0.11949335 0.11949335 0.11949335 0.12600941\n [7] 0.14474580 0.14474580 0.15582213 0.15582213 0.17485277 0.35492087\n[13] 0.35492087 0.48980207 0.72200938 0.72200938 1.56551624 2.14225230\n[19] 2.24995288 2.24995288"
   },
   {
     "objectID": "slides/24_power-simulations.html#bootstrap-samples-1",
     "href": "slides/24_power-simulations.html#bootstrap-samples-1",
-    "title": "MATH167R: Sampling distributions",
+    "title": "MATH167R: Permutation tests and power analysis",
     "section": "Bootstrap samples",
     "text": "Bootstrap samples\nWe can repeatedly resample from \\(X\\), then compute the resample sample means and plot the distribution:\n\nbootstrap_Xbar &lt;- replicate(10000, mean(sample(X, size = 20, replace = TRUE)))\nhist(bootstrap_Xbar)"
   },
   {
     "objectID": "slides/24_power-simulations.html#bootstrap-samples-2",
     "href": "slides/24_power-simulations.html#bootstrap-samples-2",
-    "title": "MATH167R: Sampling distributions",
+    "title": "MATH167R: Permutation tests and power analysis",
     "section": "Bootstrap samples",
     "text": "Bootstrap samples\nWe can compare the bootstrap sampling distributions and true sampling distributions. In this case, the bootstrap does not seem that different from the normal approximation.\n\nlibrary(ggplot2)\nplot_dat &lt;-\n  data.frame(Xbar = c(Xbar_exp, bootstrap_Xbar),\n             source = rep(c(\"Parametric (Exp)\", \"Bootstrap\"), each = 10000))\nggplot(plot_dat, aes(x = Xbar, color = source)) +\n  geom_density() +\n  geom_function(fun = dnorm, \n                args = list(mean = mean(X), sd = sd(X) / sqrt(20)),\n                aes(color = \"Parametric (Normal)\"))"
   },
   {
     "objectID": "slides/24_power-simulations.html#bootstrap-confidence-intervals",
     "href": "slides/24_power-simulations.html#bootstrap-confidence-intervals",
-    "title": "MATH167R: Sampling distributions",
+    "title": "MATH167R: Permutation tests and power analysis",
     "section": "Bootstrap confidence intervals",
     "text": "Bootstrap confidence intervals\nWe can take appropriate quantiles of the bootstrap samples to construct a bootstrap confidence interval using the quantile() function:\n\nquantile(bootstrap_Xbar, probs = c(.025, .975))\n\n    2.5%    97.5% \n0.467759 1.157051"
   },
   {
     "objectID": "slides/24_power-simulations.html#why-bootstrap",
     "href": "slides/24_power-simulations.html#why-bootstrap",
-    "title": "MATH167R: Sampling distributions",
+    "title": "MATH167R: Permutation tests and power analysis",
     "section": "Why bootstrap?",
     "text": "Why bootstrap?\nIn this case, inference based on bootstrapping does not seem better than the normal approximation based on the central limit theorem.\nHowever, for many cases, we may not have a simple parametric approximation to the true sampling distribution. For example, suppose we wish to compute the sampling distribution of the sample median.\nNote however that the bootstrap may not work well for all statistics, such as the minimum (why not?)."
   },
@@ -3206,6 +3668,13 @@
     "text": "Smaller sample sizes\n\nset.seed(123)\nXbar_normal &lt;- replicate(10000, mean(rnorm(10)))\nXbar_exp &lt;- replicate(10000, mean(rexp(10, rate = 1)))\nXbar_poisson &lt;- replicate(10000, mean(rpois(10, lambda = 1)))\npar(mfrow = c(1, 3))\nhist(Xbar_normal, main = \"N(0, 1)\")\nhist(Xbar_exp, main = \"Exp(1)\")\nhist(Xbar_poisson, main = \"Poisson(1)\")"
   },
   {
+    "objectID": "slides/20_simulation-based-inference.html#smaller-sample-sizes-1",
+    "href": "slides/20_simulation-based-inference.html#smaller-sample-sizes-1",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Smaller sample sizes",
+    "text": "Smaller sample sizes"
+  },
+  {
     "objectID": "slides/20_simulation-based-inference.html#other-statistics",
     "href": "slides/20_simulation-based-inference.html#other-statistics",
     "title": "MATH167R: Sampling distributions",
@@ -3213,11 +3682,25 @@
     "text": "Other statistics\nWhat if we want the sampling distribution of the maximum? For each of these population models, the sampling distribution of the maximum is different.\n\nset.seed(123)\nXmax_normal &lt;- replicate(10000, max(rnorm(10)))\nXmax_exp &lt;- replicate(10000, max(rexp(10, rate = 1)))\nXmax_poisson &lt;- replicate(10000, max(rpois(10, lambda = 1)))\npar(mfrow = c(1, 3))\nhist(Xmax_normal, main = \"N(0, 1)\")\nhist(Xmax_exp, main = \"Exp(1)\")\nhist(Xmax_poisson, main = \"Poisson(1)\")"
   },
   {
+    "objectID": "slides/20_simulation-based-inference.html#other-statistics-1",
+    "href": "slides/20_simulation-based-inference.html#other-statistics-1",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Other statistics",
+    "text": "Other statistics\nWhat if we want the sampling distribution of the maximum? For each of these population models, the sampling distribution of the maximum is different."
+  },
+  {
     "objectID": "slides/20_simulation-based-inference.html#transformations",
     "href": "slides/20_simulation-based-inference.html#transformations",
     "title": "MATH167R: Sampling distributions",
     "section": "Transformations",
     "text": "Transformations\nWe can easily simulate sampling distributions for statistics summarizing the distribution of random variables that are defined as transformations of other random variables.\n\nset.seed(123)\nXbar_normal &lt;- replicate(10000, mean(rnorm(10) ^ 2))\nXbar_exp &lt;- replicate(10000, mean(rexp(10, rate = 1) ^ 2))\nXbar_poisson &lt;- replicate(10000, mean(rpois(10, lambda = 1) ^ 2))\npar(mfrow = c(1, 3))\nhist(Xbar_normal, main = \"N(0, 1) squared\")\nhist(Xbar_exp, main = \"Exp(1) squared\")\nhist(Xbar_poisson, main = \"Poisson(1) squared\")"
+  },
+  {
+    "objectID": "slides/20_simulation-based-inference.html#transformations-1",
+    "href": "slides/20_simulation-based-inference.html#transformations-1",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Transformations",
+    "text": "Transformations\nWe can easily simulate sampling distributions for statistics summarizing the distribution of random variables that are defined as transformations of other random variables."
   },
   {
     "objectID": "slides/20_simulation-based-inference.html#exercise",
@@ -3231,14 +3714,28 @@
     "href": "slides/20_simulation-based-inference.html#resampling-methods",
     "title": "MATH167R: Sampling distributions",
     "section": "Resampling methods",
-    "text": "Resampling methods\nThe previous simulations are all based on parametric models (normal, exponential, Poisson). However, we can also simulate sampling distributions without parametric assumptions on the data generating mechanism.\nSuppose we know \\(X_1,\\ldots, X_{20}\\sim \\mathrm{Exp}(1)\\). The sampling distribution can be simulated as follows:\n\nset.seed(123)\nXbar_exp &lt;- replicate(10000, mean(rexp(20, rate = 1)))\nhist(Xbar_exp)"
+    "text": "Resampling methods\nThe previous simulations are all based on parametric models (normal, exponential, Poisson). However, we can also simulate sampling distributions without parametric assumptions on the data generating mechanism."
   },
   {
     "objectID": "slides/20_simulation-based-inference.html#resampling-methods-1",
     "href": "slides/20_simulation-based-inference.html#resampling-methods-1",
     "title": "MATH167R: Sampling distributions",
     "section": "Resampling methods",
-    "text": "Resampling methods\nWhat if we observe \\(X_1,\\ldots, X_{20}\\), but we don’t know that \\(X_i\\) is exponentially distributed? We could just try the normal approximation to approximate the sampling distribution:\n\nX &lt;- rexp(20, rate = 1)\nx_axis &lt;- seq(0, 3, length.out = 1000)\n\n# plot \"true\" simulated sampling distribution\nhist(Xbar_exp, freq = F, ylim = c(0, 3))\n\n# plot normal theory\nlines(x_axis, dnorm(x_axis, mean = mean(X), sd = sd(X) / sqrt(20)), col = 'red')"
+    "text": "Resampling methods\nSuppose we know \\(X_1,\\ldots, X_{20}\\sim \\mathrm{Exp}(1)\\). The sampling distribution can be simulated as follows:\n\nset.seed(123)\nXbar_exp &lt;- replicate(10000, mean(rexp(20, rate = 1)))\nhist(Xbar_exp)"
+  },
+  {
+    "objectID": "slides/20_simulation-based-inference.html#resampling-methods-2",
+    "href": "slides/20_simulation-based-inference.html#resampling-methods-2",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Resampling methods",
+    "text": "Resampling methods\nWhat if we observe \\(X_1,\\ldots, X_{20}\\), but we don’t know that \\(X_i\\) is exponentially distributed? We could just try the normal approximation to approximate the sampling distribution.\n\nX &lt;- rexp(20, rate = 1)\nx_axis &lt;- seq(0, 3, length.out = 1000)\n\n# plot \"true\" simulated sampling distribution\nhist(Xbar_exp, freq = F, ylim = c(0, 3))\n\n# plot normal theory\nlines(x_axis, dnorm(x_axis, mean = mean(X), sd = sd(X) / sqrt(20)), col = 'red')"
+  },
+  {
+    "objectID": "slides/20_simulation-based-inference.html#resampling-methods-3",
+    "href": "slides/20_simulation-based-inference.html#resampling-methods-3",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Resampling methods",
+    "text": "Resampling methods"
   },
   {
     "objectID": "slides/20_simulation-based-inference.html#bootstrap-samples",
@@ -3260,6 +3757,13 @@
     "title": "MATH167R: Sampling distributions",
     "section": "Bootstrap samples",
     "text": "Bootstrap samples\nWe can compare the bootstrap sampling distributions and true sampling distributions. In this case, the bootstrap does not seem that different from the normal approximation.\n\nlibrary(ggplot2)\nplot_dat &lt;-\n  data.frame(Xbar = c(Xbar_exp, bootstrap_Xbar),\n             source = rep(c(\"Parametric (Exp)\", \"Bootstrap\"), each = 10000))\nggplot(plot_dat, aes(x = Xbar, color = source)) +\n  geom_density() +\n  geom_function(fun = dnorm, \n                args = list(mean = mean(X), sd = sd(X) / sqrt(20)),\n                aes(color = \"Parametric (Normal)\"))"
+  },
+  {
+    "objectID": "slides/20_simulation-based-inference.html#bootstrap-samples-3",
+    "href": "slides/20_simulation-based-inference.html#bootstrap-samples-3",
+    "title": "MATH167R: Sampling distributions",
+    "section": "Bootstrap samples",
+    "text": "Bootstrap samples\nWe can compare the bootstrap sampling distributions and true sampling distributions. In this case, the bootstrap does not seem that different from the normal approximation."
   },
   {
     "objectID": "slides/20_simulation-based-inference.html#bootstrap-confidence-intervals",
@@ -4249,6 +4753,34 @@
     "text": "Relating numerical variables"
   },
   {
+    "objectID": "slides/23_linear-regression.html#covariance-and-correlation",
+    "href": "slides/23_linear-regression.html#covariance-and-correlation",
+    "title": "MATH167R: Linear regression",
+    "section": "Covariance and correlation",
+    "text": "Covariance and correlation\nIn statistics, correlation and covariance usually refer to a specific type of association. * If \\(X\\) and \\(Y\\) are linearly associated, then they are correlated."
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#correlation",
+    "href": "slides/23_linear-regression.html#correlation",
+    "title": "MATH167R: Linear regression",
+    "section": "Correlation",
+    "text": "Correlation\nCorrelation can also refer to the correlation coefficient.\nThe (Pearson) correlation coefficient \\(R\\) is a statistic between \\(-1\\) and 1 that describes the strength and direction of the linear relationship between two variables.\n\\[R = \\frac{1}{n-1}\\sum_{i=1}^n\\frac{x_i-\\overline{x}}{s_x}\\frac{y_i-\\overline{y}}{s_y}\\]\nThe sign of \\(R\\) indicates the direction of the relationship. The absolute value of \\(R\\) indicates the strength."
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#correlation-and-covariance",
+    "href": "slides/23_linear-regression.html#correlation-and-covariance",
+    "title": "MATH167R: Linear regression",
+    "section": "Correlation and covariance",
+    "text": "Correlation and covariance\n\nattach(mtcars)\ncor(mpg, wt)\n\n[1] -0.8676594\n\ncov(mpg, wt)\n\n[1] -5.116685"
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#pairs-plots-for-assessing-many-relationships",
+    "href": "slides/23_linear-regression.html#pairs-plots-for-assessing-many-relationships",
+    "title": "MATH167R: Linear regression",
+    "section": "Pairs plots for assessing many relationships",
+    "text": "Pairs plots for assessing many relationships\n\npairs(~mpg + hp + wt, mtcars)"
+  },
+  {
     "objectID": "slides/23_linear-regression.html#regression-methods",
     "href": "slides/23_linear-regression.html#regression-methods",
     "title": "MATH167R: Linear regression",
@@ -4277,6 +4809,20 @@
     "text": "Linear Regression\nGiven our response \\(Y\\) and our predictors \\(X_1, \\ldots, X_p\\), a linear regression model takes the form:\n\\[\n\\begin{align}\nY &= \\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_p X_p + \\epsilon,\\\\\n\\epsilon &\\sim N(0,\\sigma^2)\n\\end{align}\n\\]\nNote: If we wish to include a categorical covariate, we can add indicator variables for each category."
   },
   {
+    "objectID": "slides/23_linear-regression.html#linear-regression-1",
+    "href": "slides/23_linear-regression.html#linear-regression-1",
+    "title": "MATH167R: Linear regression",
+    "section": "Linear Regression",
+    "text": "Linear Regression\n\\[\n\\begin{align}\nY &= \\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_p X_p + \\epsilon,\\\\\n\\epsilon &\\sim N(0,\\sigma^2)\n\\end{align}\n\\]\n\n\\(Y\\): dependent variable, outcome, response\n\\(X_j\\): independent variable, covariate, predictor\n\\(\\beta_0\\): Intercept\n\\(\\beta_j\\): coefficient, the expected difference in the response between two observations differing by one unit in \\(X_j\\), with all other covariates identical.\n\\(\\epsilon\\): error, noise, with mean \\(0\\) and variance \\(\\sigma^2\\)"
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#linear-regression-2",
+    "href": "slides/23_linear-regression.html#linear-regression-2",
+    "title": "MATH167R: Linear regression",
+    "section": "Linear Regression",
+    "text": "Linear Regression\nWe can fully write out a linear regression model\n\\[\n\\begin{equation}\n\\begin{bmatrix} y_1 \\\\ y_2\\\\ \\vdots \\\\ y_n \\end{bmatrix} =\n\\begin{bmatrix} 1 & x_{1,1} & \\cdots & x_{1,k}\\\\\n1 & x_{2,1} & \\cdots & x_{2, k}\\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\n1 & x_{n,1} & \\cdots & x_{n, k}\\end{bmatrix}\n\\begin{bmatrix} \\beta_0 \\\\ \\beta_1 \\\\ \\vdots \\\\ \\beta_{k} \\end{bmatrix} +\n\\begin{bmatrix} \\epsilon_1 \\\\ \\epsilon_2 \\\\ \\vdots \\\\ \\epsilon_{n} \\end{bmatrix}\n\\end{equation}\n\\]"
+  },
+  {
     "objectID": "slides/23_linear-regression.html#matrix-notation",
     "href": "slides/23_linear-regression.html#matrix-notation",
     "title": "MATH167R: Linear regression",
@@ -4291,11 +4837,186 @@
     "text": "\\(\\large \\epsilon\\): Error term\n\\(\\epsilon\\), pronounced epsilon, represents the error term of our model. We can model \\(Y\\) as a linear function of the \\(X\\)’s, but in the real world, the relationship won’t always be perfect. There is noise! It can come from\n\nMeasurement error in the \\(X\\)’s\nMeasurement error in the \\(Y\\)’s\nUnobserved/missing variables in the model\nDeviations in the true model from linearity\nTrue randomness\n\nIn linear regression, we assume that this error term is normally distributed with mean zero and variance \\(\\sigma^2\\)."
   },
   {
-    "objectID": "slides/23_linear-regression.html#large-beta_0-intercept",
-    "href": "slides/23_linear-regression.html#large-beta_0-intercept",
+    "objectID": "slides/23_linear-regression.html#beta_0-intercept",
+    "href": "slides/23_linear-regression.html#beta_0-intercept",
     "title": "MATH167R: Linear regression",
-    "section": "\\(\\large \\beta_0\\): Intercept",
-    "text": "\\(\\large \\beta_0\\): Intercept\n\\(\\beta_0\\) is the intercept term of our model. Notice that\n\\[\\large \\mathbb{E}[Y|X_1 = X_2 = \\cdots = X_p = 0] = \\beta_0\\]\nThus, \\(\\beta_0\\) is the expected value of our response if all the covariates are equal to \\(0\\)! This is also known as the y-intercept of our model."
+    "section": "\\(\\beta_0\\): Intercept",
+    "text": "\\(\\beta_0\\): Intercept\n\\(\\beta_0\\) is the intercept term of our model. Notice that\n\\[\\mathbb{E}[Y|X_1 = X_2 = \\cdots = X_p = 0] = \\beta_0\\]\nThus, \\(\\beta_0\\) is the expected value of our response if all the covariates are equal to \\(0\\). This is also known as the y-intercept of our model."
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#x_j-independent-variable",
+    "href": "slides/23_linear-regression.html#x_j-independent-variable",
+    "title": "MATH167R: Linear regression",
+    "section": "\\(X_j\\): Independent variable",
+    "text": "\\(X_j\\): Independent variable\n\\(X_j\\) represents the \\(j\\)th independent variable in our model. Notice that \\[\\mathbb{E}[Y|X_1,\\ldots, X_p] = \\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_p X_p\\] What happens to this expectation if we increase \\(X_j\\) by 1 unit, holding everything else constant?\nThe conditional expectation of \\(Y\\) increases by \\(\\beta_j\\)."
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#beta_j-coefficient",
+    "href": "slides/23_linear-regression.html#beta_j-coefficient",
+    "title": "MATH167R: Linear regression",
+    "section": "\\(\\beta_j\\): Coefficient",
+    "text": "\\(\\beta_j\\): Coefficient\n\\(\\beta_j\\) represents the \\(j\\)th regression coefficient in our model. From the previous slide, we saw that for every 1 unit increase in \\(X_j\\), holding all other variables constant, the expected value of the response increases by \\(\\beta_j\\). From this we can derive an interpretation.\nInterpretation of \\(\\beta_j\\): the expected difference in the response between two observations differing by one unit in \\(X_j\\), with all other covariates identical."
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#lm-linear-model",
+    "href": "slides/23_linear-regression.html#lm-linear-model",
+    "title": "MATH167R: Linear regression",
+    "section": "lm(): Linear Model",
+    "text": "lm(): Linear Model\nWe fit a linear regression model in R using lm(). The first argument is a formula, which is a type of R object. Formulas typically take the following form: Y ~ X_1 + X_2 + ... + X_p.\nThe dependent variable, Y goes on the left-hand side of the tilde ~, which marks the formula. The independent variables are added on the right-hand side. Using this formula will give us a model in the form of\n\\[\n\\begin{align}\nY &= \\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_p X_p + \\epsilon,\\\\\n\\epsilon &\\sim N(0,\\sigma^2)\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#lm-linear-model-1",
+    "href": "slides/23_linear-regression.html#lm-linear-model-1",
+    "title": "MATH167R: Linear regression",
+    "section": "lm(): Linear Model",
+    "text": "lm(): Linear Model\n\ndata(mtcars)\nmy_lm &lt;- lm(mpg ~ hp + wt, data = mtcars)\nclass(my_lm)\n\n[1] \"lm\"\n\nmy_lm\n\n\nCall:\nlm(formula = mpg ~ hp + wt, data = mtcars)\n\nCoefficients:\n(Intercept)           hp           wt  \n   37.22727     -0.03177     -3.87783"
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#lm-linear-model-2",
+    "href": "slides/23_linear-regression.html#lm-linear-model-2",
+    "title": "MATH167R: Linear regression",
+    "section": "lm(): Linear Model",
+    "text": "lm(): Linear Model\nWe can see from names() that lm objects contain a lot more than they print out by default.\n\nnames(my_lm)\n\n [1] \"coefficients\"  \"residuals\"     \"effects\"       \"rank\"         \n [5] \"fitted.values\" \"assign\"        \"qr\"            \"df.residual\"  \n [9] \"xlevels\"       \"call\"          \"terms\"         \"model\""
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#summary-model-summaries",
+    "href": "slides/23_linear-regression.html#summary-model-summaries",
+    "title": "MATH167R: Linear regression",
+    "section": "summary() Model summaries",
+    "text": "summary() Model summaries\nsummary() or summary.lm() gives us a summary of our lm object in R.\n\nThe quantiles of the residuals: hopefully, they match a normal distribution.\nCoefficients, their standard errors, and their individual significances\n(Adjusted) R-squared value: how much of the overall variability in the response is explained by the model?\nF-statistic: hypothesis test for the significance of the overall model"
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#summary-model-summaries-1",
+    "href": "slides/23_linear-regression.html#summary-model-summaries-1",
+    "title": "MATH167R: Linear regression",
+    "section": "summary() Model summaries",
+    "text": "summary() Model summaries\n\nsummary(my_lm)\n\n\nCall:\nlm(formula = mpg ~ hp + wt, data = mtcars)\n\nResiduals:\n   Min     1Q Median     3Q    Max \n-3.941 -1.600 -0.182  1.050  5.854 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) 37.22727    1.59879  23.285  &lt; 2e-16 ***\nhp          -0.03177    0.00903  -3.519  0.00145 ** \nwt          -3.87783    0.63273  -6.129 1.12e-06 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 2.593 on 29 degrees of freedom\nMultiple R-squared:  0.8268,    Adjusted R-squared:  0.8148 \nF-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12"
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#plot-regression-model-diagnostics",
+    "href": "slides/23_linear-regression.html#plot-regression-model-diagnostics",
+    "title": "MATH167R: Linear regression",
+    "section": "plot(): Regression model diagnostics",
+    "text": "plot(): Regression model diagnostics\nCalling plot(my_lm) will return several diagnostic plots. Remember that we want our error term to look normally distributed with mean zero. We won’t go into all the details for this class, but here are some tips:\n\nResiduals vs Fitted: these are your errors (residuals) plotted over the predicted outcome (fitted). Errors should be random, so here you want to see randomly scattered points with no discernable pattern. You want the trend line to be approximately horizontal.\nNormal Q-Q plot: These are the quantiles of your errors against the quantiles of a normal distribution. In theory, your errors should be normally distributed, so you are hoping that points are mostly along the 45-degree \\(y=x\\) line."
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#plot-regression-model-diagnostics-1",
+    "href": "slides/23_linear-regression.html#plot-regression-model-diagnostics-1",
+    "title": "MATH167R: Linear regression",
+    "section": "plot(): Regression model diagnostics",
+    "text": "plot(): Regression model diagnostics\n\nScale-location: This looks at the magnitude of standardized residuals over the predicted outcome. Similar interpretation as residuals vs fitted. This can make it slightly easier to identify undesireable patterns.\nResiduals vs leverage: This can help identify highly influential points, such as outliers. If points are outside dotted red lines, then removing them would noticeably alter your results. Never just remove outliers! If it’s real data, it’s valid and removing it will bias your results. It is much more important to understand why outliers are there than to remove them."
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#plot-regression-model-diagnostics-2",
+    "href": "slides/23_linear-regression.html#plot-regression-model-diagnostics-2",
+    "title": "MATH167R: Linear regression",
+    "section": "plot(): Regression model diagnostics",
+    "text": "plot(): Regression model diagnostics\n\nplot(my_lm)"
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#plot-regression-model-diagnostics-3",
+    "href": "slides/23_linear-regression.html#plot-regression-model-diagnostics-3",
+    "title": "MATH167R: Linear regression",
+    "section": "plot(): Regression model diagnostics",
+    "text": "plot(): Regression model diagnostics"
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#plot-regression-model-diagnostics-4",
+    "href": "slides/23_linear-regression.html#plot-regression-model-diagnostics-4",
+    "title": "MATH167R: Linear regression",
+    "section": "plot(): Regression model diagnostics",
+    "text": "plot(): Regression model diagnostics"
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#plot-regression-model-diagnostics-5",
+    "href": "slides/23_linear-regression.html#plot-regression-model-diagnostics-5",
+    "title": "MATH167R: Linear regression",
+    "section": "plot(): Regression model diagnostics",
+    "text": "plot(): Regression model diagnostics"
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#coef-extract-coefficients",
+    "href": "slides/23_linear-regression.html#coef-extract-coefficients",
+    "title": "MATH167R: Linear regression",
+    "section": "coef(): Extract coefficients",
+    "text": "coef(): Extract coefficients\nUse coef() to extract estimated coefficients as a vector.\n\ncoef(my_lm)\n\n(Intercept)          hp          wt \n37.22727012 -0.03177295 -3.87783074"
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#fitted-extract-fitted-values",
+    "href": "slides/23_linear-regression.html#fitted-extract-fitted-values",
+    "title": "MATH167R: Linear regression",
+    "section": "fitted() Extract fitted values",
+    "text": "fitted() Extract fitted values\nUse fitted() to extract the fitted/estimated values for the response. This can be useful to compare how our fitted values compare to the estimated values to help assess model fit.\n\nlibrary(ggplot2)\nmod_fits &lt;- fitted(my_lm)\nmy_df &lt;- data.frame(actual = mtcars$mpg, fitted = mod_fits)\nggplot(my_df, aes(x = fitted, y = actual)) +\n  geom_point() +\n  geom_abline(slope = 1, intercept = 0, col = \"red\", lty = 2) + \n  theme_bw(base_size = 15) +\n  labs(x = \"Fitted values\", y = \"Actual values\", title = \"Actual vs. Fitted\") +\n  theme(plot.title = element_text(hjust = 0.5))"
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#fitted-extract-fitted-values-1",
+    "href": "slides/23_linear-regression.html#fitted-extract-fitted-values-1",
+    "title": "MATH167R: Linear regression",
+    "section": "fitted() Extract fitted values",
+    "text": "fitted() Extract fitted values"
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#predict-predict-new-outcomes",
+    "href": "slides/23_linear-regression.html#predict-predict-new-outcomes",
+    "title": "MATH167R: Linear regression",
+    "section": "predict(): Predict new outcomes",
+    "text": "predict(): Predict new outcomes\nUse predict() to predict new outcomes given new explanatory variables. For example, pretend we observe two new cars with horsepowers of 100 and 150, respectively, and weights of 3000 and 3500, respectively.\n\n# Note: wt is in 1000s of lbs\nnew_obs &lt;- data.frame(hp = c(100, 150), wt = c(3, 3.5))\npredict(my_lm, new_obs)\n\n       1        2 \n22.41648 18.88892 \n\n\nWe’ll come back to prediction in future lectures."
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#residuals-compute-residuals",
+    "href": "slides/23_linear-regression.html#residuals-compute-residuals",
+    "title": "MATH167R: Linear regression",
+    "section": "residuals(): Compute residuals",
+    "text": "residuals(): Compute residuals\nUse residuals() to compute the residuals for fitted values.\n\nresiduals(my_lm)\n\n          Mazda RX4       Mazda RX4 Wag          Datsun 710      Hornet 4 Drive \n        -2.57232940         -1.58348256         -2.47581872          0.13497989 \n  Hornet Sportabout             Valiant          Duster 360           Merc 240D \n         0.37273336         -2.37381631         -1.29904236          1.51293266 \n           Merc 230            Merc 280           Merc 280C          Merc 450SE \n         0.80632669         -0.77945988         -2.17945988          0.67463146 \n         Merc 450SL         Merc 450SLC  Cadillac Fleetwood Lincoln Continental \n         0.25616901         -1.64993945          0.04479541          1.03726743 \n  Chrysler Imperial            Fiat 128         Honda Civic      Toyota Corolla \n         5.50751301          5.80097202          1.08761978          5.85379085 \n      Toyota Corona    Dodge Challenger         AMC Javelin          Camaro Z28 \n        -3.08644148         -3.31136386         -3.94097947         -1.25202805 \n   Pontiac Firebird           Fiat X1-9       Porsche 914-2        Lotus Europa \n         2.44325481         -0.32665313         -0.03737415          2.63023081 \n     Ford Pantera L        Ferrari Dino       Maserati Bora          Volvo 142E \n        -0.74648866         -1.22541324          2.26052287         -1.58364943"
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#manipulating-formulas",
+    "href": "slides/23_linear-regression.html#manipulating-formulas",
+    "title": "MATH167R: Linear regression",
+    "section": "Manipulating formulas",
+    "text": "Manipulating formulas\nWorking with formulas in R can be somewhat confusing, so it is important to understand how formulas work to make sure you are fitting the intended model."
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#section",
+    "href": "slides/23_linear-regression.html#section",
+    "title": "MATH167R: Linear regression",
+    "section": "- 1",
+    "text": "- 1\nUse - 1 to remove an intercept from your model. Only do this if you are very sure that what you are doing is appropriate. I don’t recommend doing this in practice.\n\nno_intercept &lt;- lm(mpg ~ hp + wt - 1, data = mtcars)\nsummary(no_intercept)\n\n\nCall:\nlm(formula = mpg ~ hp + wt - 1, data = mtcars)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-19.407  -2.382   2.511   7.091  23.885 \n\nCoefficients:\n   Estimate Std. Error t value Pr(&gt;|t|)   \nhp -0.03394    0.03940  -0.861   0.3959   \nwt  6.84045    1.89425   3.611   0.0011 **\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 11.32 on 30 degrees of freedom\nMultiple R-squared:  0.7264,    Adjusted R-squared:  0.7082 \nF-statistic: 39.83 on 2 and 30 DF,  p-value: 3.599e-09"
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#operator",
+    "href": "slides/23_linear-regression.html#operator",
+    "title": "MATH167R: Linear regression",
+    "section": ": operator",
+    "text": ": operator\nUse X1:X2 to include an interaction effect in your model. This is useful if you have reason to believe two covariates interact, such as gender and education in a wage model. In our case, we’ll assume horsepower and weight interact in their effect on mpg.\nTypically (always?), if you include an interaction effect, you should also include the marginal effects. You can do this automatically using X1*X2."
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#operator-1",
+    "href": "slides/23_linear-regression.html#operator-1",
+    "title": "MATH167R: Linear regression",
+    "section": ": operator",
+    "text": ": operator\n\ninteract &lt;- lm(mpg ~ hp:wt, data = mtcars)\nsummary(interact)\n\n\nCall:\nlm(formula = mpg ~ hp:wt, data = mtcars)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-4.8831 -2.0952 -0.4577  1.2262  7.9282 \n\nCoefficients:\n             Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) 27.745642   1.062236   26.12  &lt; 2e-16 ***\nhp:wt       -0.014872   0.001727   -8.61 1.32e-09 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 3.288 on 30 degrees of freedom\nMultiple R-squared:  0.7119,    Adjusted R-squared:  0.7023 \nF-statistic: 74.14 on 1 and 30 DF,  p-value: 1.321e-09"
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#operator-2",
+    "href": "slides/23_linear-regression.html#operator-2",
+    "title": "MATH167R: Linear regression",
+    "section": "* operator",
+    "text": "* operator\n\ninteract &lt;- lm(mpg ~ hp*wt, data = mtcars)\nsummary(interact)\n\n\nCall:\nlm(formula = mpg ~ hp * wt, data = mtcars)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.0632 -1.6491 -0.7362  1.4211  4.5513 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) 49.80842    3.60516  13.816 5.01e-14 ***\nhp          -0.12010    0.02470  -4.863 4.04e-05 ***\nwt          -8.21662    1.26971  -6.471 5.20e-07 ***\nhp:wt        0.02785    0.00742   3.753 0.000811 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 2.153 on 28 degrees of freedom\nMultiple R-squared:  0.8848,    Adjusted R-squared:  0.8724 \nF-statistic: 71.66 on 3 and 28 DF,  p-value: 2.981e-13"
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#operator-3",
+    "href": "slides/23_linear-regression.html#operator-3",
+    "title": "MATH167R: Linear regression",
+    "section": ". operator",
+    "text": ". operator\nUse ~ . to include all non-response variables in the input data as independent variables.\n\n\n\nCall:\nlm(formula = mpg ~ ., data = mtcars)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.4506 -1.6044 -0.1196  1.2193  4.6271 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)  \n(Intercept) 12.30337   18.71788   0.657   0.5181  \ncyl         -0.11144    1.04502  -0.107   0.9161  \ndisp         0.01334    0.01786   0.747   0.4635  \nhp          -0.02148    0.02177  -0.987   0.3350  \ndrat         0.78711    1.63537   0.481   0.6353  \nwt          -3.71530    1.89441  -1.961   0.0633 .\nqsec         0.82104    0.73084   1.123   0.2739  \nvs           0.31776    2.10451   0.151   0.8814  \nam           2.52023    2.05665   1.225   0.2340  \ngear         0.65541    1.49326   0.439   0.6652  \ncarb        -0.19942    0.82875  -0.241   0.8122  \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 2.65 on 21 degrees of freedom\nMultiple R-squared:  0.869, Adjusted R-squared:  0.8066 \nF-statistic: 13.93 on 10 and 21 DF,  p-value: 3.793e-07"
+  },
+  {
+    "objectID": "slides/23_linear-regression.html#estimation",
+    "href": "slides/23_linear-regression.html#estimation",
+    "title": "MATH167R: Linear regression",
+    "section": "Estimation",
+    "text": "Estimation\nHow do we choose/estimate \\(\\beta_{(k+1)\\times1}\\)?\nLeast squares finds the line that minimizes the squared distance between the points and the line, i.e. makes \\[\\left[y_i - (\\beta_0 + \\beta_1 x_{i, 1} + \\dots + \\beta_k x_{i,k})\\right]^2\\] as small as possible for all \\(i = 1, \\dots, n\\).\nThe vector \\(\\widehat{\\beta}\\) that minimizes the sum of the squared distances is ()\n\\[ \\widehat{\\beta}=\\left(\\mathbf{X}^T \\mathbf{X} \\right)^{-1}\\mathbf{X}^T \\mathbf{Y}.\\]\nNote: In statistics, once we have estimated a parameter we put a “hat” on it, e.g. \\(\\widehat{\\beta_0}\\) is the estimate of the true parameter \\(\\beta_0\\)."
   },
   {
     "objectID": "slides/27_cross-validation.html#overview-of-today",
@@ -5556,726 +6277,5 @@
     "title": "Check-in 4",
     "section": "A. Housing units data",
     "text": "A. Housing units data\n\nhousing_units &lt;- readr::read_csv(\"https://www2.census.gov/programs-surveys/popest/datasets/2010-2020/housing/HU-EST2020_ALL.csv\")\n\n1. Generate a line plot of the number of housing units in the entire United States from 2010 to 2020.\n2. Generate a line plot of the number of housing units in each of the four regions (Midwest, Northeast, South, and West) from 2010 to 2020, using a different color for each region."
-  },
-  {
-    "objectID": "slides/19_more-simulations.html#exercise",
-    "href": "slides/19_more-simulations.html#exercise",
-    "title": "MATH167R: Simulations",
-    "section": "Exercise",
-    "text": "Exercise\nHow would we write a simulation to answer the following question:\nWhat is the expected maximum value of \\(|x_i|\\) for a random walk of length \\(n\\)?"
-  },
-  {
-    "objectID": "slides/temp.html#overview-of-today",
-    "href": "slides/temp.html#overview-of-today",
-    "title": "MATH167R: Linear regression",
-    "section": "Overview of today",
-    "text": "Overview of today\n\nCovariance and correlation\nLinear regression"
-  },
-  {
-    "objectID": "slides/temp.html#relating-numerical-variables",
-    "href": "slides/temp.html#relating-numerical-variables",
-    "title": "MATH167R: Linear regression",
-    "section": "Relating numerical variables",
-    "text": "Relating numerical variables"
-  },
-  {
-    "objectID": "slides/temp.html#regression-methods",
-    "href": "slides/temp.html#regression-methods",
-    "title": "MATH167R: Linear regression",
-    "section": "Regression methods",
-    "text": "Regression methods\nAssume we have some data:\n\n\\(X_1,\\ldots, X_p\\): \\(p\\) independent variales/explanatory variables/covariates/predictors\n\\(Y\\): the dependent variables/response/outcome.\n\nWe want to know the relationship between our covariates and our response, we can do this with a method called regression. Regression provides us with a statistical method to conduct inference and prediction."
-  },
-  {
-    "objectID": "slides/temp.html#regression-methods-1",
-    "href": "slides/temp.html#regression-methods-1",
-    "title": "MATH167R: Linear regression",
-    "section": "Regression methods",
-    "text": "Regression methods\n\ninference: assess the relationship between our variables, our statistical model as a whole, predictor importance\n\nWhat is the relationship between sleep and GPA?\nIs parents’ education or parents’ income more important for explaining income?\n\nprediction: predict new/future outcomes from new/future covariates\n\nCan we predict test scores based on hours spent studying?"
-  },
-  {
-    "objectID": "slides/temp.html#why-is-it-called-regression",
-    "href": "slides/temp.html#why-is-it-called-regression",
-    "title": "MATH167R: Linear regression",
-    "section": "Why is it called regression?",
-    "text": "Why is it called regression?"
-  },
-  {
-    "objectID": "slides/temp.html#linear-regression",
-    "href": "slides/temp.html#linear-regression",
-    "title": "MATH167R: Linear regression",
-    "section": "Linear Regression",
-    "text": "Linear Regression\nGiven our response \\(Y\\) and our predictors \\(X_1, \\ldots, X_p\\), a linear regression model takes the form:\n\\[\n\\begin{align}\nY &= \\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_p X_p + \\epsilon,\\\\\n\\epsilon &\\sim N(0,\\sigma^2)\n\\end{align}\n\\]\nNote: If we wish to include a categorical covariate, we can add indicator variables for each category."
-  },
-  {
-    "objectID": "slides/temp.html#matrix-notation",
-    "href": "slides/temp.html#matrix-notation",
-    "title": "MATH167R: Linear regression",
-    "section": "Matrix Notation",
-    "text": "Matrix Notation\nThis can also be expressed in matrix form:\n\\[\n\\begin{align}\n\\mathbf{Y} &= \\mathbf{X}\\beta + \\epsilon,\\\\\n\\epsilon &\\sim N(0,1)\n\\end{align}\n\\]\n\n\\(\\mathbf{Y} \\in \\mathbb{R}^{n \\times 1}\\): an n-dimensional vector of the response\n\\(\\mathbf{X} \\in \\mathbb{R}^{n \\times (k+1)}\\): a \\(((k+1)\\times n)\\) matrix of the predictors (including intercept)\n\\(\\beta \\in \\mathbb{R}^{((k+1)\\times 1)}\\): a \\((k+1)\\)-dimensional vector of regression parameters\n\\(\\epsilon \\in \\mathbb{R}^{n \\times 1}\\): an n-dimensional vector of the error term"
-  },
-  {
-    "objectID": "slides/temp.html#large-epsilon-error-term",
-    "href": "slides/temp.html#large-epsilon-error-term",
-    "title": "MATH167R: Linear regression",
-    "section": "\\(\\large \\epsilon\\): Error term",
-    "text": "\\(\\large \\epsilon\\): Error term\n\\(\\epsilon\\), pronounced epsilon, represents the error term of our model. We can model \\(Y\\) as a linear function of the \\(X\\)’s, but in the real world, the relationship won’t always be perfect. There is noise! It can come from\n\nMeasurement error in the \\(X\\)’s\nMeasurement error in the \\(Y\\)’s\nUnobserved/missing variables in the model\nDeviations in the true model from linearity\nTrue randomness\n\nIn linear regression, we assume that this error term is normally distributed with mean zero and variance \\(\\sigma^2\\)."
-  },
-  {
-    "objectID": "slides/temp.html#large-beta_0-intercept",
-    "href": "slides/temp.html#large-beta_0-intercept",
-    "title": "MATH167R: Linear regression",
-    "section": "\\(\\large \\beta_0\\): Intercept",
-    "text": "\\(\\large \\beta_0\\): Intercept\n\\(\\beta_0\\) is the intercept term of our model. Notice that\n\\[\\large \\mathbb{E}[Y|X_1 = X_2 = \\cdots = X_p = 0] = \\beta_0\\]\nThus, \\(\\beta_0\\) is the expected value of our response if all the covariates are equal to \\(0\\)! This is also known as the y-intercept of our model."
-  },
-  {
-    "objectID": "slides/temp.html#large-x_j-independent-variable",
-    "href": "slides/temp.html#large-x_j-independent-variable",
-    "title": "MATH167R: Linear regression",
-    "section": "\\(\\large X_j\\): Independent variable",
-    "text": "\\(\\large X_j\\): Independent variable\n\\(X_j\\) represents the \\(j\\)th independent variable in our model. Notice that \\[\\large \\mathbb{E}[Y|X_1,\\ldots, X_p] = \\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_p X_p\\] What happens to this expectation if we increase \\(X_j\\) by 1 unit, holding everything else constant?\nThe conditional expectation of \\(Y\\) increases by \\(\\beta_j\\)!"
-  },
-  {
-    "objectID": "slides/temp.html#large-beta_j-coefficient",
-    "href": "slides/temp.html#large-beta_j-coefficient",
-    "title": "MATH167R: Linear regression",
-    "section": "\\(\\large \\beta_j\\): Coefficient",
-    "text": "\\(\\large \\beta_j\\): Coefficient\n\\(\\beta_j\\) represents the \\(j\\)th regression coefficient in our model. From the previous slide, we saw that for every 1 unit increase in \\(X_j\\), holding all other variables constant, the expected value of the response increases by \\(\\beta_j\\). From this we can derive an interpretation.\nInterpretation of \\(\\beta_j\\): the expected difference in the response between two observations differing by one unit in \\(X_j\\), with all other covariates identical."
-  },
-  {
-    "objectID": "slides/temp.html#x_j-independent-variable",
-    "href": "slides/temp.html#x_j-independent-variable",
-    "title": "MATH167R: Linear regression",
-    "section": "\\(X_j\\): Independent variable",
-    "text": "\\(X_j\\): Independent variable\n\\(X_j\\) represents the \\(j\\)th independent variable in our model. Notice that \\[\\mathbb{E}[Y|X_1,\\ldots, X_p] = \\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_p X_p\\] What happens to this expectation if we increase \\(X_j\\) by 1 unit, holding everything else constant?\nThe conditional expectation of \\(Y\\) increases by \\(\\beta_j\\)."
-  },
-  {
-    "objectID": "slides/temp.html#beta_j-coefficient",
-    "href": "slides/temp.html#beta_j-coefficient",
-    "title": "MATH167R: Linear regression",
-    "section": "\\(\\beta_j\\): Coefficient",
-    "text": "\\(\\beta_j\\): Coefficient\n\\(\\beta_j\\) represents the \\(j\\)th regression coefficient in our model. From the previous slide, we saw that for every 1 unit increase in \\(X_j\\), holding all other variables constant, the expected value of the response increases by \\(\\beta_j\\). From this we can derive an interpretation.\nInterpretation of \\(\\beta_j\\): the expected difference in the response between two observations differing by one unit in \\(X_j\\), with all other covariates identical."
-  },
-  {
-    "objectID": "slides/temp.html#linear-regression-1",
-    "href": "slides/temp.html#linear-regression-1",
-    "title": "MATH167R: Linear regression",
-    "section": "Linear Regression",
-    "text": "Linear Regression\n\\[\n\\begin{align}\nY &= \\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_p X_p + \\epsilon,\\\\\n\\epsilon &\\sim N(0,\\sigma^2)\n\\end{align}\n\\]\n\n\\(Y\\): dependent variable, outcome, response\n\\(X_j\\): independent variable, covariate, predictor\n\\(\\beta_0\\): Intercept\n\\(\\beta_j\\): coefficient, the expected difference in the response between two observations differing by one unit in \\(X_j\\), with all other covariates identical.\n\\(\\epsilon\\): error, noise, with mean \\(0\\) and variance \\(\\sigma^2\\)"
-  },
-  {
-    "objectID": "slides/temp.html#beta_0-intercept",
-    "href": "slides/temp.html#beta_0-intercept",
-    "title": "MATH167R: Linear regression",
-    "section": "\\(\\beta_0\\): Intercept",
-    "text": "\\(\\beta_0\\): Intercept\n\\(\\beta_0\\) is the intercept term of our model. Notice that\n\\[\\mathbb{E}[Y|X_1 = X_2 = \\cdots = X_p = 0] = \\beta_0\\]\nThus, \\(\\beta_0\\) is the expected value of our response if all the covariates are equal to \\(0\\). This is also known as the y-intercept of our model."
-  },
-  {
-    "objectID": "slides/temp.html#linear-regression-2",
-    "href": "slides/temp.html#linear-regression-2",
-    "title": "MATH167R: Linear regression",
-    "section": "Linear Regression",
-    "text": "Linear Regression\nWe can fully write out a linear regression model\n\\[\n\\begin{equation}\n\\begin{bmatrix} y_1 \\\\ y_2\\\\ \\vdots \\\\ y_n \\end{bmatrix} =\n\\begin{bmatrix} 1 & x_{1,1} & \\cdots & x_{1,k}\\\\\n1 & x_{2,1} & \\cdots & x_{2, k}\\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\n1 & x_{n,1} & \\cdots & x_{n, k}\\end{bmatrix}\n\\begin{bmatrix} \\beta_0 \\\\ \\beta_1 \\\\ \\vdots \\\\ \\beta_{k} \\end{bmatrix} +\n\\begin{bmatrix} \\epsilon_1 \\\\ \\epsilon_2 \\\\ \\vdots \\\\ \\epsilon_{n} \\end{bmatrix}\n\\end{equation}\n\\]"
-  },
-  {
-    "objectID": "slides/temp.html#lm-linear-model",
-    "href": "slides/temp.html#lm-linear-model",
-    "title": "MATH167R: Linear regression",
-    "section": "lm(): Linear Model",
-    "text": "lm(): Linear Model\nWe fit a linear regression model in R using lm(). The first argument is a formula, which is a type of R object. Formulas typically take the following form: Y ~ X_1 + X_2 + ... + X_p.\nThe dependent variable, Y goes on the left-hand side of the tilde ~, which marks the formula. The independent variables are added on the right-hand side. Using this formula will give us a model in the form of\n\\[\n\\begin{align}\nY &= \\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_p X_p + \\epsilon,\\\\\n\\epsilon &\\sim N(0,\\sigma^2)\n\\end{align}\n\\]"
-  },
-  {
-    "objectID": "slides/temp.html#lm-linear-model-1",
-    "href": "slides/temp.html#lm-linear-model-1",
-    "title": "MATH167R: Linear regression",
-    "section": "lm(): Linear Model",
-    "text": "lm(): Linear Model\n\ndata(mtcars)\nmy_lm &lt;- lm(mpg ~ hp + wt, data = mtcars)\nclass(my_lm)\n\n[1] \"lm\"\n\nmy_lm\n\n\nCall:\nlm(formula = mpg ~ hp + wt, data = mtcars)\n\nCoefficients:\n(Intercept)           hp           wt  \n   37.22727     -0.03177     -3.87783"
-  },
-  {
-    "objectID": "slides/temp.html#lm-linear-model-2",
-    "href": "slides/temp.html#lm-linear-model-2",
-    "title": "MATH167R: Linear regression",
-    "section": "lm(): Linear Model",
-    "text": "lm(): Linear Model\nWe can see from names() that lm objects contain a lot more than they print out by default.\n\nnames(my_lm)\n\n [1] \"coefficients\"  \"residuals\"     \"effects\"       \"rank\"         \n [5] \"fitted.values\" \"assign\"        \"qr\"            \"df.residual\"  \n [9] \"xlevels\"       \"call\"          \"terms\"         \"model\""
-  },
-  {
-    "objectID": "slides/temp.html#summary-model-summaries",
-    "href": "slides/temp.html#summary-model-summaries",
-    "title": "MATH167R: Linear regression",
-    "section": "summary() Model summaries",
-    "text": "summary() Model summaries\nsummary() or summary.lm() gives us a summary of our lm object in R.\n\nThe quantiles of the residuals: hopefully, they match a normal distribution.\nCoefficients, their standard errors, and their individual significances\n(Adjusted) R-squared value: how much of the overall variability in the response is explained by the model?\nF-statistic: hypothesis test for the significance of the overall model"
-  },
-  {
-    "objectID": "slides/temp.html#summary-model-summaries-1",
-    "href": "slides/temp.html#summary-model-summaries-1",
-    "title": "MATH167R: Linear regression",
-    "section": "summary() Model summaries",
-    "text": "summary() Model summaries\n\nsummary(my_lm)\n\n\nCall:\nlm(formula = mpg ~ hp + wt, data = mtcars)\n\nResiduals:\n   Min     1Q Median     3Q    Max \n-3.941 -1.600 -0.182  1.050  5.854 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) 37.22727    1.59879  23.285  &lt; 2e-16 ***\nhp          -0.03177    0.00903  -3.519  0.00145 ** \nwt          -3.87783    0.63273  -6.129 1.12e-06 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 2.593 on 29 degrees of freedom\nMultiple R-squared:  0.8268,    Adjusted R-squared:  0.8148 \nF-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12"
-  },
-  {
-    "objectID": "slides/temp.html#plot-regression-model-diagnostics",
-    "href": "slides/temp.html#plot-regression-model-diagnostics",
-    "title": "MATH167R: Linear regression",
-    "section": "plot(): Regression model diagnostics",
-    "text": "plot(): Regression model diagnostics\nCalling plot(my_lm) will return several diagnostic plots. Remember that we want our error term to look normally distributed with mean zero. We won’t go into all the details for this class, but here are some tips:\n\nResiduals vs Fitted: these are your errors (residuals) plotted over the predicted outcome (fitted). Errors should be random, so here you want to see randomly scattered points with no discernable pattern. You want the trend line to be approximately horizontal.\nNormal Q-Q plot: These are the quantiles of your errors against the quantiles of a normal distribution. In theory, your errors should be normally distributed, so you are hoping that points are mostly along the 45-degree \\(y=x\\) line."
-  },
-  {
-    "objectID": "slides/temp.html#plot-regression-model-diagnostics-1",
-    "href": "slides/temp.html#plot-regression-model-diagnostics-1",
-    "title": "MATH167R: Linear regression",
-    "section": "plot(): Regression model diagnostics",
-    "text": "plot(): Regression model diagnostics\n\nScale-location: This looks at the magnitude of standardized residuals over the predicted outcome. Similar interpretation as residuals vs fitted. This can make it slightly easier to identify undesireable patterns.\nResiduals vs leverage: This can help identify highly influential points, such as outliers. If points are outside dotted red lines, then removing them would noticeably alter your results. Never just remove outliers! If it’s real data, it’s valid and removing it will bias your results. It is much more important to understand why outliers are there than to remove them."
-  },
-  {
-    "objectID": "slides/temp.html#plot-regression-model-diagnostics-2",
-    "href": "slides/temp.html#plot-regression-model-diagnostics-2",
-    "title": "MATH167R: Linear regression",
-    "section": "plot(): Regression model diagnostics",
-    "text": "plot(): Regression model diagnostics\n\nplot(my_lm)"
-  },
-  {
-    "objectID": "slides/temp.html#plot-regression-model-diagnostics-3",
-    "href": "slides/temp.html#plot-regression-model-diagnostics-3",
-    "title": "MATH167R: Linear regression",
-    "section": "plot(): Regression model diagnostics",
-    "text": "plot(): Regression model diagnostics"
-  },
-  {
-    "objectID": "slides/temp.html#plot-regression-model-diagnostics-4",
-    "href": "slides/temp.html#plot-regression-model-diagnostics-4",
-    "title": "MATH167R: Linear regression",
-    "section": "plot(): Regression model diagnostics",
-    "text": "plot(): Regression model diagnostics"
-  },
-  {
-    "objectID": "slides/temp.html#plot-regression-model-diagnostics-5",
-    "href": "slides/temp.html#plot-regression-model-diagnostics-5",
-    "title": "MATH167R: Linear regression",
-    "section": "plot(): Regression model diagnostics",
-    "text": "plot(): Regression model diagnostics"
-  },
-  {
-    "objectID": "slides/temp.html#coef-extract-coefficients",
-    "href": "slides/temp.html#coef-extract-coefficients",
-    "title": "MATH167R: Linear regression",
-    "section": "coef(): Extract coefficients",
-    "text": "coef(): Extract coefficients\nUse coef() to extract estimated coefficients as a vector.\n\ncoef(my_lm)\n\n(Intercept)          hp          wt \n37.22727012 -0.03177295 -3.87783074"
-  },
-  {
-    "objectID": "slides/temp.html#fitted-extract-fitted-values",
-    "href": "slides/temp.html#fitted-extract-fitted-values",
-    "title": "MATH167R: Linear regression",
-    "section": "fitted() Extract fitted values",
-    "text": "fitted() Extract fitted values\nUse fitted() to extract the fitted/estimated values for the response. This can be useful to compare how our fitted values compare to the estimated values to help assess model fit.\n\nlibrary(ggplot2)\nmod_fits &lt;- fitted(my_lm)\nmy_df &lt;- data.frame(actual = mtcars$mpg, fitted = mod_fits)\nggplot(my_df, aes(x = fitted, y = actual)) +\n  geom_point() +\n  geom_abline(slope = 1, intercept = 0, col = \"red\", lty = 2) + \n  theme_bw(base_size = 15) +\n  labs(x = \"Fitted values\", y = \"Actual values\", title = \"Actual vs. Fitted\") +\n  theme(plot.title = element_text(hjust = 0.5))"
-  },
-  {
-    "objectID": "slides/temp.html#fitted-extract-fitted-values-1",
-    "href": "slides/temp.html#fitted-extract-fitted-values-1",
-    "title": "MATH167R: Linear regression",
-    "section": "fitted() Extract fitted values",
-    "text": "fitted() Extract fitted values"
-  },
-  {
-    "objectID": "slides/temp.html#predict-predict-new-outcomes",
-    "href": "slides/temp.html#predict-predict-new-outcomes",
-    "title": "MATH167R: Linear regression",
-    "section": "predict(): Predict new outcomes",
-    "text": "predict(): Predict new outcomes\nUse predict() to predict new outcomes given new explanatory variables. For example, pretend we observe two new cars with horsepowers of 100 and 150, respectively, and weights of 3000 and 3500, respectively.\n\n# Note: wt is in 1000s of lbs\nnew_obs &lt;- data.frame(hp = c(100, 150), wt = c(3, 3.5))\npredict(my_lm, new_obs)\n\n       1        2 \n22.41648 18.88892 \n\n\nWe’ll come back to prediction in future lectures."
-  },
-  {
-    "objectID": "slides/temp.html#residuals-compute-residuals",
-    "href": "slides/temp.html#residuals-compute-residuals",
-    "title": "MATH167R: Linear regression",
-    "section": "residuals(): Compute residuals",
-    "text": "residuals(): Compute residuals\nUse residuals() to compute the residuals for fitted values.\n\nresiduals(my_lm)\n\n          Mazda RX4       Mazda RX4 Wag          Datsun 710      Hornet 4 Drive \n        -2.57232940         -1.58348256         -2.47581872          0.13497989 \n  Hornet Sportabout             Valiant          Duster 360           Merc 240D \n         0.37273336         -2.37381631         -1.29904236          1.51293266 \n           Merc 230            Merc 280           Merc 280C          Merc 450SE \n         0.80632669         -0.77945988         -2.17945988          0.67463146 \n         Merc 450SL         Merc 450SLC  Cadillac Fleetwood Lincoln Continental \n         0.25616901         -1.64993945          0.04479541          1.03726743 \n  Chrysler Imperial            Fiat 128         Honda Civic      Toyota Corolla \n         5.50751301          5.80097202          1.08761978          5.85379085 \n      Toyota Corona    Dodge Challenger         AMC Javelin          Camaro Z28 \n        -3.08644148         -3.31136386         -3.94097947         -1.25202805 \n   Pontiac Firebird           Fiat X1-9       Porsche 914-2        Lotus Europa \n         2.44325481         -0.32665313         -0.03737415          2.63023081 \n     Ford Pantera L        Ferrari Dino       Maserati Bora          Volvo 142E \n        -0.74648866         -1.22541324          2.26052287         -1.58364943"
-  },
-  {
-    "objectID": "slides/temp.html#manipulating-formulas",
-    "href": "slides/temp.html#manipulating-formulas",
-    "title": "MATH167R: Linear regression",
-    "section": "Manipulating formulas",
-    "text": "Manipulating formulas\nWorking with formulas in R can be somewhat confusing, so it is important to understand how formulas work to make sure you are fitting the intended model."
-  },
-  {
-    "objectID": "slides/temp.html#section",
-    "href": "slides/temp.html#section",
-    "title": "MATH167R: Linear regression",
-    "section": "- 1",
-    "text": "- 1\nUse - 1 to remove an intercept from your model. Only do this if you are very sure that what you are doing is appropriate. I don’t recommend doing this in practice.\n\nno_intercept &lt;- lm(mpg ~ hp + wt - 1, data = mtcars)\nsummary(no_intercept)\n\n\nCall:\nlm(formula = mpg ~ hp + wt - 1, data = mtcars)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-19.407  -2.382   2.511   7.091  23.885 \n\nCoefficients:\n   Estimate Std. Error t value Pr(&gt;|t|)   \nhp -0.03394    0.03940  -0.861   0.3959   \nwt  6.84045    1.89425   3.611   0.0011 **\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 11.32 on 30 degrees of freedom\nMultiple R-squared:  0.7264,    Adjusted R-squared:  0.7082 \nF-statistic: 39.83 on 2 and 30 DF,  p-value: 3.599e-09"
-  },
-  {
-    "objectID": "slides/temp.html#operator",
-    "href": "slides/temp.html#operator",
-    "title": "MATH167R: Linear regression",
-    "section": ": operator",
-    "text": ": operator\nUse X1:X2 to include an interaction effect in your model. This is useful if you have reason to believe two covariates interact, such as gender and education in a wage model. In our case, we’ll assume horsepower and weight interact in their effect on mpg.\nTypically (always?), if you include an interaction effect, you should also include the marginal effects. You can do this automatically using X1*X2.\n\ninteract &lt;- lm(mpg ~ hp:wt, data = mtcars)\nsummary(interact)\n\n\nCall:\nlm(formula = mpg ~ hp:wt, data = mtcars)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-4.8831 -2.0952 -0.4577  1.2262  7.9282 \n\nCoefficients:\n             Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) 27.745642   1.062236   26.12  &lt; 2e-16 ***\nhp:wt       -0.014872   0.001727   -8.61 1.32e-09 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 3.288 on 30 degrees of freedom\nMultiple R-squared:  0.7119,    Adjusted R-squared:  0.7023 \nF-statistic: 74.14 on 1 and 30 DF,  p-value: 1.321e-09"
-  },
-  {
-    "objectID": "slides/temp.html#operator-1",
-    "href": "slides/temp.html#operator-1",
-    "title": "MATH167R: Linear regression",
-    "section": "* operator",
-    "text": "* operator\n\ninteract &lt;- lm(mpg ~ hp*wt, data = mtcars)\nsummary(interact)\n\n\nCall:\nlm(formula = mpg ~ hp * wt, data = mtcars)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.0632 -1.6491 -0.7362  1.4211  4.5513 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) 49.80842    3.60516  13.816 5.01e-14 ***\nhp          -0.12010    0.02470  -4.863 4.04e-05 ***\nwt          -8.21662    1.26971  -6.471 5.20e-07 ***\nhp:wt        0.02785    0.00742   3.753 0.000811 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 2.153 on 28 degrees of freedom\nMultiple R-squared:  0.8848,    Adjusted R-squared:  0.8724 \nF-statistic: 71.66 on 3 and 28 DF,  p-value: 2.981e-13"
-  },
-  {
-    "objectID": "slides/temp.html#operator-2",
-    "href": "slides/temp.html#operator-2",
-    "title": "MATH167R: Linear regression",
-    "section": ". operator",
-    "text": ". operator\nUse ~ . to include all non-response variables in the input data as independent variables.\n\n\n\nCall:\nlm(formula = mpg ~ ., data = mtcars)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.4506 -1.6044 -0.1196  1.2193  4.6271 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)  \n(Intercept) 12.30337   18.71788   0.657   0.5181  \ncyl         -0.11144    1.04502  -0.107   0.9161  \ndisp         0.01334    0.01786   0.747   0.4635  \nhp          -0.02148    0.02177  -0.987   0.3350  \ndrat         0.78711    1.63537   0.481   0.6353  \nwt          -3.71530    1.89441  -1.961   0.0633 .\nqsec         0.82104    0.73084   1.123   0.2739  \nvs           0.31776    2.10451   0.151   0.8814  \nam           2.52023    2.05665   1.225   0.2340  \ngear         0.65541    1.49326   0.439   0.6652  \ncarb        -0.19942    0.82875  -0.241   0.8122  \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 2.65 on 21 degrees of freedom\nMultiple R-squared:  0.869, Adjusted R-squared:  0.8066 \nF-statistic: 13.93 on 10 and 21 DF,  p-value: 3.793e-07"
-  },
-  {
-    "objectID": "slides/temp.html#matrix-notation-1",
-    "href": "slides/temp.html#matrix-notation-1",
-    "title": "MATH167R: Linear regression",
-    "section": "Matrix Notation",
-    "text": "Matrix Notation\nWe can fully write out a linear regression model\n\\[\n\\begin{equation}\n\\begin{bmatrix} y_1 \\\\ y_2\\\\ \\vdots \\\\ y_n \\end{bmatrix} =\n\\begin{bmatrix} 1 & x_{1,1} & \\cdots & x_{1,k}\\\\\n1 & x_{2,1} & \\cdots & x_{2, k}\\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\n1 & x_{n,1} & \\cdots & x_{n, k}\\end{bmatrix}\n\\begin{bmatrix} \\beta_0 \\\\ \\beta_1 \\\\ \\vdots \\\\ \\beta_{k} \\end{bmatrix} +\n\\begin{bmatrix} \\epsilon_1 \\\\ \\epsilon_2 \\\\ \\vdots \\\\ \\epsilon_{n} \\end{bmatrix}\n\\end{equation}\n\\]\nThis can also be expressed in matrix form.\n\\[\n\\begin{align}\n\\mathbf{Y} &= \\mathbf{X}\\beta + \\epsilon,\\\\\n\\epsilon&\\sim N(0,1)\n\\end{align}\n\\]\n\n\\(\\mathbf{Y} \\in \\mathbb{R}^{n \\times 1}\\) an n-dimensional vector of the response\n\\(\\mathbf{X} \\in \\mathbb{R}^{n \\times (k+1)}\\): a \\(((k+1)\\times n)\\) matrix of the predictors (including intercept)\n\\(\\beta \\in \\mathbb{R}^{((k+1)\\times 1)}\\): a \\((k+1)\\)-dimensional vector of regression parameters\n\\(\\epsilon \\in \\mathbb{R}^{n \\times 1}\\): an n-dimensional vector of the error term"
-  },
-  {
-    "objectID": "slides/temp.html#estimation",
-    "href": "slides/temp.html#estimation",
-    "title": "MATH167R: Linear regression",
-    "section": "Estimation",
-    "text": "Estimation\nHow do we choose/estimate \\(\\beta_{(k+1)\\times1}\\)?\nLeast squares finds the line that minimizes the squared distance between the points and the line, i.e. makes \\[\\left[y_i - (\\beta_0 + \\beta_1 x_{i, 1} + \\dots + \\beta_k x_{i,k})\\right]^2\\] as small as possible for all \\(i = 1, \\dots, n\\).\nThe vector \\(\\widehat{\\beta}\\) that minimizes the sum of the squared distances is ()\n\\[ \\widehat{\\beta}=\\left(\\mathbf{X}^T \\mathbf{X} \\right)^{-1}\\mathbf{X}^T \\mathbf{Y}.\\]\nNote: In statistics, once we have estimated a parameter we put a “hat” on it, e.g. \\(\\widehat{\\beta_0}\\) is the estimate of the true parameter \\(\\beta_0\\)."
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#covariance-and-correlation",
-    "href": "slides/23_linear-regression.html#covariance-and-correlation",
-    "title": "MATH167R: Linear regression",
-    "section": "Covariance and correlation",
-    "text": "Covariance and correlation\nIn statistics, correlation and covariance usually refer to a specific type of association. * If \\(X\\) and \\(Y\\) are linearly associated, then they are correlated."
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#correlation",
-    "href": "slides/23_linear-regression.html#correlation",
-    "title": "MATH167R: Linear regression",
-    "section": "Correlation",
-    "text": "Correlation\nCorrelation can also refer to the correlation coefficient.\nThe (Pearson) correlation coefficient \\(R\\) is a statistic between \\(-1\\) and 1 that describes the strength and direction of the linear relationship between two variables.\n\\[R = \\frac{1}{n-1}\\sum_{i=1}^n\\frac{x_i-\\overline{x}}{s_x}\\frac{y_i-\\overline{y}}{s_y}\\]\nThe sign of \\(R\\) indicates the direction of the relationship. The absolute value of \\(R\\) indicates the strength."
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#correlation-and-covariance",
-    "href": "slides/23_linear-regression.html#correlation-and-covariance",
-    "title": "MATH167R: Linear regression",
-    "section": "Correlation and covariance",
-    "text": "Correlation and covariance\n\nattach(mtcars)\ncor(mpg, wt)\n\n[1] -0.8676594\n\ncov(mpg, wt)\n\n[1] -5.116685"
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#pairs-plots-for-assessing-many-relationships",
-    "href": "slides/23_linear-regression.html#pairs-plots-for-assessing-many-relationships",
-    "title": "MATH167R: Linear regression",
-    "section": "Pairs plots for assessing many relationships",
-    "text": "Pairs plots for assessing many relationships\n\npairs(~mpg + hp + wt, mtcars)"
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#linear-regression-1",
-    "href": "slides/23_linear-regression.html#linear-regression-1",
-    "title": "MATH167R: Linear regression",
-    "section": "Linear Regression",
-    "text": "Linear Regression\n\\[\n\\begin{align}\nY &= \\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_p X_p + \\epsilon,\\\\\n\\epsilon &\\sim N(0,\\sigma^2)\n\\end{align}\n\\]\n\n\\(Y\\): dependent variable, outcome, response\n\\(X_j\\): independent variable, covariate, predictor\n\\(\\beta_0\\): Intercept\n\\(\\beta_j\\): coefficient, the expected difference in the response between two observations differing by one unit in \\(X_j\\), with all other covariates identical.\n\\(\\epsilon\\): error, noise, with mean \\(0\\) and variance \\(\\sigma^2\\)"
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#linear-regression-2",
-    "href": "slides/23_linear-regression.html#linear-regression-2",
-    "title": "MATH167R: Linear regression",
-    "section": "Linear Regression",
-    "text": "Linear Regression\nWe can fully write out a linear regression model\n\\[\n\\begin{equation}\n\\begin{bmatrix} y_1 \\\\ y_2\\\\ \\vdots \\\\ y_n \\end{bmatrix} =\n\\begin{bmatrix} 1 & x_{1,1} & \\cdots & x_{1,k}\\\\\n1 & x_{2,1} & \\cdots & x_{2, k}\\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\n1 & x_{n,1} & \\cdots & x_{n, k}\\end{bmatrix}\n\\begin{bmatrix} \\beta_0 \\\\ \\beta_1 \\\\ \\vdots \\\\ \\beta_{k} \\end{bmatrix} +\n\\begin{bmatrix} \\epsilon_1 \\\\ \\epsilon_2 \\\\ \\vdots \\\\ \\epsilon_{n} \\end{bmatrix}\n\\end{equation}\n\\]"
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#beta_0-intercept",
-    "href": "slides/23_linear-regression.html#beta_0-intercept",
-    "title": "MATH167R: Linear regression",
-    "section": "\\(\\beta_0\\): Intercept",
-    "text": "\\(\\beta_0\\): Intercept\n\\(\\beta_0\\) is the intercept term of our model. Notice that\n\\[\\mathbb{E}[Y|X_1 = X_2 = \\cdots = X_p = 0] = \\beta_0\\]\nThus, \\(\\beta_0\\) is the expected value of our response if all the covariates are equal to \\(0\\). This is also known as the y-intercept of our model."
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#x_j-independent-variable",
-    "href": "slides/23_linear-regression.html#x_j-independent-variable",
-    "title": "MATH167R: Linear regression",
-    "section": "\\(X_j\\): Independent variable",
-    "text": "\\(X_j\\): Independent variable\n\\(X_j\\) represents the \\(j\\)th independent variable in our model. Notice that \\[\\mathbb{E}[Y|X_1,\\ldots, X_p] = \\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_p X_p\\] What happens to this expectation if we increase \\(X_j\\) by 1 unit, holding everything else constant?\nThe conditional expectation of \\(Y\\) increases by \\(\\beta_j\\)."
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#beta_j-coefficient",
-    "href": "slides/23_linear-regression.html#beta_j-coefficient",
-    "title": "MATH167R: Linear regression",
-    "section": "\\(\\beta_j\\): Coefficient",
-    "text": "\\(\\beta_j\\): Coefficient\n\\(\\beta_j\\) represents the \\(j\\)th regression coefficient in our model. From the previous slide, we saw that for every 1 unit increase in \\(X_j\\), holding all other variables constant, the expected value of the response increases by \\(\\beta_j\\). From this we can derive an interpretation.\nInterpretation of \\(\\beta_j\\): the expected difference in the response between two observations differing by one unit in \\(X_j\\), with all other covariates identical."
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#lm-linear-model",
-    "href": "slides/23_linear-regression.html#lm-linear-model",
-    "title": "MATH167R: Linear regression",
-    "section": "lm(): Linear Model",
-    "text": "lm(): Linear Model\nWe fit a linear regression model in R using lm(). The first argument is a formula, which is a type of R object. Formulas typically take the following form: Y ~ X_1 + X_2 + ... + X_p.\nThe dependent variable, Y goes on the left-hand side of the tilde ~, which marks the formula. The independent variables are added on the right-hand side. Using this formula will give us a model in the form of\n\\[\n\\begin{align}\nY &= \\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_p X_p + \\epsilon,\\\\\n\\epsilon &\\sim N(0,\\sigma^2)\n\\end{align}\n\\]"
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#lm-linear-model-1",
-    "href": "slides/23_linear-regression.html#lm-linear-model-1",
-    "title": "MATH167R: Linear regression",
-    "section": "lm(): Linear Model",
-    "text": "lm(): Linear Model\n\ndata(mtcars)\nmy_lm &lt;- lm(mpg ~ hp + wt, data = mtcars)\nclass(my_lm)\n\n[1] \"lm\"\n\nmy_lm\n\n\nCall:\nlm(formula = mpg ~ hp + wt, data = mtcars)\n\nCoefficients:\n(Intercept)           hp           wt  \n   37.22727     -0.03177     -3.87783"
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#lm-linear-model-2",
-    "href": "slides/23_linear-regression.html#lm-linear-model-2",
-    "title": "MATH167R: Linear regression",
-    "section": "lm(): Linear Model",
-    "text": "lm(): Linear Model\nWe can see from names() that lm objects contain a lot more than they print out by default.\n\nnames(my_lm)\n\n [1] \"coefficients\"  \"residuals\"     \"effects\"       \"rank\"         \n [5] \"fitted.values\" \"assign\"        \"qr\"            \"df.residual\"  \n [9] \"xlevels\"       \"call\"          \"terms\"         \"model\""
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#summary-model-summaries",
-    "href": "slides/23_linear-regression.html#summary-model-summaries",
-    "title": "MATH167R: Linear regression",
-    "section": "summary() Model summaries",
-    "text": "summary() Model summaries\nsummary() or summary.lm() gives us a summary of our lm object in R.\n\nThe quantiles of the residuals: hopefully, they match a normal distribution.\nCoefficients, their standard errors, and their individual significances\n(Adjusted) R-squared value: how much of the overall variability in the response is explained by the model?\nF-statistic: hypothesis test for the significance of the overall model"
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#summary-model-summaries-1",
-    "href": "slides/23_linear-regression.html#summary-model-summaries-1",
-    "title": "MATH167R: Linear regression",
-    "section": "summary() Model summaries",
-    "text": "summary() Model summaries\n\nsummary(my_lm)\n\n\nCall:\nlm(formula = mpg ~ hp + wt, data = mtcars)\n\nResiduals:\n   Min     1Q Median     3Q    Max \n-3.941 -1.600 -0.182  1.050  5.854 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) 37.22727    1.59879  23.285  &lt; 2e-16 ***\nhp          -0.03177    0.00903  -3.519  0.00145 ** \nwt          -3.87783    0.63273  -6.129 1.12e-06 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 2.593 on 29 degrees of freedom\nMultiple R-squared:  0.8268,    Adjusted R-squared:  0.8148 \nF-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12"
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#plot-regression-model-diagnostics",
-    "href": "slides/23_linear-regression.html#plot-regression-model-diagnostics",
-    "title": "MATH167R: Linear regression",
-    "section": "plot(): Regression model diagnostics",
-    "text": "plot(): Regression model diagnostics\nCalling plot(my_lm) will return several diagnostic plots. Remember that we want our error term to look normally distributed with mean zero. We won’t go into all the details for this class, but here are some tips:\n\nResiduals vs Fitted: these are your errors (residuals) plotted over the predicted outcome (fitted). Errors should be random, so here you want to see randomly scattered points with no discernable pattern. You want the trend line to be approximately horizontal.\nNormal Q-Q plot: These are the quantiles of your errors against the quantiles of a normal distribution. In theory, your errors should be normally distributed, so you are hoping that points are mostly along the 45-degree \\(y=x\\) line."
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#plot-regression-model-diagnostics-1",
-    "href": "slides/23_linear-regression.html#plot-regression-model-diagnostics-1",
-    "title": "MATH167R: Linear regression",
-    "section": "plot(): Regression model diagnostics",
-    "text": "plot(): Regression model diagnostics\n\nScale-location: This looks at the magnitude of standardized residuals over the predicted outcome. Similar interpretation as residuals vs fitted. This can make it slightly easier to identify undesireable patterns.\nResiduals vs leverage: This can help identify highly influential points, such as outliers. If points are outside dotted red lines, then removing them would noticeably alter your results. Never just remove outliers! If it’s real data, it’s valid and removing it will bias your results. It is much more important to understand why outliers are there than to remove them."
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#plot-regression-model-diagnostics-2",
-    "href": "slides/23_linear-regression.html#plot-regression-model-diagnostics-2",
-    "title": "MATH167R: Linear regression",
-    "section": "plot(): Regression model diagnostics",
-    "text": "plot(): Regression model diagnostics\n\nplot(my_lm)"
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#plot-regression-model-diagnostics-3",
-    "href": "slides/23_linear-regression.html#plot-regression-model-diagnostics-3",
-    "title": "MATH167R: Linear regression",
-    "section": "plot(): Regression model diagnostics",
-    "text": "plot(): Regression model diagnostics"
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#plot-regression-model-diagnostics-4",
-    "href": "slides/23_linear-regression.html#plot-regression-model-diagnostics-4",
-    "title": "MATH167R: Linear regression",
-    "section": "plot(): Regression model diagnostics",
-    "text": "plot(): Regression model diagnostics"
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#plot-regression-model-diagnostics-5",
-    "href": "slides/23_linear-regression.html#plot-regression-model-diagnostics-5",
-    "title": "MATH167R: Linear regression",
-    "section": "plot(): Regression model diagnostics",
-    "text": "plot(): Regression model diagnostics"
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#coef-extract-coefficients",
-    "href": "slides/23_linear-regression.html#coef-extract-coefficients",
-    "title": "MATH167R: Linear regression",
-    "section": "coef(): Extract coefficients",
-    "text": "coef(): Extract coefficients\nUse coef() to extract estimated coefficients as a vector.\n\ncoef(my_lm)\n\n(Intercept)          hp          wt \n37.22727012 -0.03177295 -3.87783074"
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#fitted-extract-fitted-values",
-    "href": "slides/23_linear-regression.html#fitted-extract-fitted-values",
-    "title": "MATH167R: Linear regression",
-    "section": "fitted() Extract fitted values",
-    "text": "fitted() Extract fitted values\nUse fitted() to extract the fitted/estimated values for the response. This can be useful to compare how our fitted values compare to the estimated values to help assess model fit.\n\nlibrary(ggplot2)\nmod_fits &lt;- fitted(my_lm)\nmy_df &lt;- data.frame(actual = mtcars$mpg, fitted = mod_fits)\nggplot(my_df, aes(x = fitted, y = actual)) +\n  geom_point() +\n  geom_abline(slope = 1, intercept = 0, col = \"red\", lty = 2) + \n  theme_bw(base_size = 15) +\n  labs(x = \"Fitted values\", y = \"Actual values\", title = \"Actual vs. Fitted\") +\n  theme(plot.title = element_text(hjust = 0.5))"
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#fitted-extract-fitted-values-1",
-    "href": "slides/23_linear-regression.html#fitted-extract-fitted-values-1",
-    "title": "MATH167R: Linear regression",
-    "section": "fitted() Extract fitted values",
-    "text": "fitted() Extract fitted values"
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#predict-predict-new-outcomes",
-    "href": "slides/23_linear-regression.html#predict-predict-new-outcomes",
-    "title": "MATH167R: Linear regression",
-    "section": "predict(): Predict new outcomes",
-    "text": "predict(): Predict new outcomes\nUse predict() to predict new outcomes given new explanatory variables. For example, pretend we observe two new cars with horsepowers of 100 and 150, respectively, and weights of 3000 and 3500, respectively.\n\n# Note: wt is in 1000s of lbs\nnew_obs &lt;- data.frame(hp = c(100, 150), wt = c(3, 3.5))\npredict(my_lm, new_obs)\n\n       1        2 \n22.41648 18.88892 \n\n\nWe’ll come back to prediction in future lectures."
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#residuals-compute-residuals",
-    "href": "slides/23_linear-regression.html#residuals-compute-residuals",
-    "title": "MATH167R: Linear regression",
-    "section": "residuals(): Compute residuals",
-    "text": "residuals(): Compute residuals\nUse residuals() to compute the residuals for fitted values.\n\nresiduals(my_lm)\n\n          Mazda RX4       Mazda RX4 Wag          Datsun 710      Hornet 4 Drive \n        -2.57232940         -1.58348256         -2.47581872          0.13497989 \n  Hornet Sportabout             Valiant          Duster 360           Merc 240D \n         0.37273336         -2.37381631         -1.29904236          1.51293266 \n           Merc 230            Merc 280           Merc 280C          Merc 450SE \n         0.80632669         -0.77945988         -2.17945988          0.67463146 \n         Merc 450SL         Merc 450SLC  Cadillac Fleetwood Lincoln Continental \n         0.25616901         -1.64993945          0.04479541          1.03726743 \n  Chrysler Imperial            Fiat 128         Honda Civic      Toyota Corolla \n         5.50751301          5.80097202          1.08761978          5.85379085 \n      Toyota Corona    Dodge Challenger         AMC Javelin          Camaro Z28 \n        -3.08644148         -3.31136386         -3.94097947         -1.25202805 \n   Pontiac Firebird           Fiat X1-9       Porsche 914-2        Lotus Europa \n         2.44325481         -0.32665313         -0.03737415          2.63023081 \n     Ford Pantera L        Ferrari Dino       Maserati Bora          Volvo 142E \n        -0.74648866         -1.22541324          2.26052287         -1.58364943"
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#manipulating-formulas",
-    "href": "slides/23_linear-regression.html#manipulating-formulas",
-    "title": "MATH167R: Linear regression",
-    "section": "Manipulating formulas",
-    "text": "Manipulating formulas\nWorking with formulas in R can be somewhat confusing, so it is important to understand how formulas work to make sure you are fitting the intended model."
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#section",
-    "href": "slides/23_linear-regression.html#section",
-    "title": "MATH167R: Linear regression",
-    "section": "- 1",
-    "text": "- 1\nUse - 1 to remove an intercept from your model. Only do this if you are very sure that what you are doing is appropriate. I don’t recommend doing this in practice.\n\nno_intercept &lt;- lm(mpg ~ hp + wt - 1, data = mtcars)\nsummary(no_intercept)\n\n\nCall:\nlm(formula = mpg ~ hp + wt - 1, data = mtcars)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-19.407  -2.382   2.511   7.091  23.885 \n\nCoefficients:\n   Estimate Std. Error t value Pr(&gt;|t|)   \nhp -0.03394    0.03940  -0.861   0.3959   \nwt  6.84045    1.89425   3.611   0.0011 **\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 11.32 on 30 degrees of freedom\nMultiple R-squared:  0.7264,    Adjusted R-squared:  0.7082 \nF-statistic: 39.83 on 2 and 30 DF,  p-value: 3.599e-09"
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#operator",
-    "href": "slides/23_linear-regression.html#operator",
-    "title": "MATH167R: Linear regression",
-    "section": ": operator",
-    "text": ": operator\nUse X1:X2 to include an interaction effect in your model. This is useful if you have reason to believe two covariates interact, such as gender and education in a wage model. In our case, we’ll assume horsepower and weight interact in their effect on mpg.\nTypically (always?), if you include an interaction effect, you should also include the marginal effects. You can do this automatically using X1*X2."
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#operator-1",
-    "href": "slides/23_linear-regression.html#operator-1",
-    "title": "MATH167R: Linear regression",
-    "section": ": operator",
-    "text": ": operator\n\ninteract &lt;- lm(mpg ~ hp:wt, data = mtcars)\nsummary(interact)\n\n\nCall:\nlm(formula = mpg ~ hp:wt, data = mtcars)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-4.8831 -2.0952 -0.4577  1.2262  7.9282 \n\nCoefficients:\n             Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) 27.745642   1.062236   26.12  &lt; 2e-16 ***\nhp:wt       -0.014872   0.001727   -8.61 1.32e-09 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 3.288 on 30 degrees of freedom\nMultiple R-squared:  0.7119,    Adjusted R-squared:  0.7023 \nF-statistic: 74.14 on 1 and 30 DF,  p-value: 1.321e-09"
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#operator-2",
-    "href": "slides/23_linear-regression.html#operator-2",
-    "title": "MATH167R: Linear regression",
-    "section": "* operator",
-    "text": "* operator\n\ninteract &lt;- lm(mpg ~ hp*wt, data = mtcars)\nsummary(interact)\n\n\nCall:\nlm(formula = mpg ~ hp * wt, data = mtcars)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.0632 -1.6491 -0.7362  1.4211  4.5513 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) 49.80842    3.60516  13.816 5.01e-14 ***\nhp          -0.12010    0.02470  -4.863 4.04e-05 ***\nwt          -8.21662    1.26971  -6.471 5.20e-07 ***\nhp:wt        0.02785    0.00742   3.753 0.000811 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 2.153 on 28 degrees of freedom\nMultiple R-squared:  0.8848,    Adjusted R-squared:  0.8724 \nF-statistic: 71.66 on 3 and 28 DF,  p-value: 2.981e-13"
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#estimation",
-    "href": "slides/23_linear-regression.html#estimation",
-    "title": "MATH167R: Linear regression",
-    "section": "Estimation",
-    "text": "Estimation\nHow do we choose/estimate \\(\\beta_{(k+1)\\times1}\\)?\nLeast squares finds the line that minimizes the squared distance between the points and the line, i.e. makes \\[\\left[y_i - (\\beta_0 + \\beta_1 x_{i, 1} + \\dots + \\beta_k x_{i,k})\\right]^2\\] as small as possible for all \\(i = 1, \\dots, n\\).\nThe vector \\(\\widehat{\\beta}\\) that minimizes the sum of the squared distances is ()\n\\[ \\widehat{\\beta}=\\left(\\mathbf{X}^T \\mathbf{X} \\right)^{-1}\\mathbf{X}^T \\mathbf{Y}.\\]\nNote: In statistics, once we have estimated a parameter we put a “hat” on it, e.g. \\(\\widehat{\\beta_0}\\) is the estimate of the true parameter \\(\\beta_0\\)."
-  },
-  {
-    "objectID": "slides/23_linear-regression.html#operator-3",
-    "href": "slides/23_linear-regression.html#operator-3",
-    "title": "MATH167R: Linear regression",
-    "section": ". operator",
-    "text": ". operator\nUse ~ . to include all non-response variables in the input data as independent variables.\n\n\n\nCall:\nlm(formula = mpg ~ ., data = mtcars)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-3.4506 -1.6044 -0.1196  1.2193  4.6271 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)  \n(Intercept) 12.30337   18.71788   0.657   0.5181  \ncyl         -0.11144    1.04502  -0.107   0.9161  \ndisp         0.01334    0.01786   0.747   0.4635  \nhp          -0.02148    0.02177  -0.987   0.3350  \ndrat         0.78711    1.63537   0.481   0.6353  \nwt          -3.71530    1.89441  -1.961   0.0633 .\nqsec         0.82104    0.73084   1.123   0.2739  \nvs           0.31776    2.10451   0.151   0.8814  \nam           2.52023    2.05665   1.225   0.2340  \ngear         0.65541    1.49326   0.439   0.6652  \ncarb        -0.19942    0.82875  -0.241   0.8122  \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 2.65 on 21 degrees of freedom\nMultiple R-squared:  0.869, Adjusted R-squared:  0.8066 \nF-statistic: 13.93 on 10 and 21 DF,  p-value: 3.793e-07"
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#overview-of-today",
-    "href": "slides/23_hypothesis-testing-II.html#overview-of-today",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "Overview of today",
-    "text": "Overview of today\n\nReview of basic hypothesis tests\nPermutation tests\nSimulations for power analysis\nP-hacking simulations"
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#summary-hypothesis-testing",
-    "href": "slides/23_hypothesis-testing-II.html#summary-hypothesis-testing",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "Summary: hypothesis testing",
-    "text": "Summary: hypothesis testing\n\nDefine null and alternative hypotheses.\n\nex. \\(H_0:\\mu = 0\\) and \\(H_a:\\mu\\neq 0\\)\n\nCompute a test statistic for which the null sampling distribution is known (based on assumptions about the population/sample).\n\nex. \\(T=(\\overline{X}_n-\\mu)/(S^2/\\sqrt{n})\\sim t_{n-1}\\)\n\nCompare the test statistic with the null distribution to obtain a P-value.\n\nex. \\(P(|T|&gt;|t|)\\) where \\(t\\) is the observed test statistic."
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#power-analysis",
-    "href": "slides/23_hypothesis-testing-II.html#power-analysis",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "Power analysis",
-    "text": "Power analysis\nRecall that the power of a hypothesis test is the probability of rejecting the null hypothesis when the null hypothesis is false.\nNote the power will depend on the size of the difference between the true sampling distribution and the null hypothesis sampling distribution."
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#overview-of-tests",
-    "href": "slides/23_hypothesis-testing-II.html#overview-of-tests",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "Overview of tests",
-    "text": "Overview of tests\n\nOne sample \\(z\\)-test for a population mean: Normal population with known SD\nOne sample \\(t\\)-test for a population mean: Normal population with unknown SD (small sample) or large sample with unknown Sd\nTwo sample \\(z\\)-test for difference in means\nTwo sample \\(t\\)-test for difference in means\nTwo sample tests for difference in proportions"
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#permutation-tests",
-    "href": "slides/23_hypothesis-testing-II.html#permutation-tests",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "Permutation tests",
-    "text": "Permutation tests\nTypically, for hypothesis testing, we need to know the sampling distribution of the test statistic when the null hypothesis is true.\nIn some cases, we can derive the null sampling distribution analytically.\nWhat if we don’t know the sampling distribution under the null? A permutation test is simple way to estimate the sampling distribution for any test statistic, requiring only some exchangeability assumptions on the data."
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#permutation-tests-1",
-    "href": "slides/23_hypothesis-testing-II.html#permutation-tests-1",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "Permutation tests",
-    "text": "Permutation tests\nExample: Suppose we want to understand whether carrying a particular genetic variant affects an individual’s height \\(y\\).\n\ncarrier &lt;- rep(c(0,1), c(100,200))\n\n# an example where y is not independent of the gene\nnull_y &lt;- rnorm(300) \n# an example where y is dependent on the gene\nalt_y &lt;- rnorm(300, mean = carrier * 5)"
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#data",
-    "href": "slides/23_hypothesis-testing-II.html#data",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "Data",
-    "text": "Data"
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#p-hacking",
-    "href": "slides/23_hypothesis-testing-II.html#p-hacking",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "P-Hacking",
-    "text": "P-Hacking"
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#data-1",
-    "href": "slides/23_hypothesis-testing-II.html#data-1",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "Data",
-    "text": "Data"
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#permutation-tests-2",
-    "href": "slides/23_hypothesis-testing-II.html#permutation-tests-2",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "Permutation tests",
-    "text": "Permutation tests\nIf the null hypothesis is true, the distribution of \\(Y\\) for the carriers should look the same as the distribution for the non-carriers. If we permute the labels repeatedly, we can get resampled datasets.\nIf the null hypothesis is true, the shuffled data sets will resemble the original dataset. If the null hypothesis is false, the shuffled dataset may not look like the real data."
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#null-hypothesis-true",
-    "href": "slides/23_hypothesis-testing-II.html#null-hypothesis-true",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "Null hypothesis true",
-    "text": "Null hypothesis true"
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#null-hypothesis-false",
-    "href": "slides/23_hypothesis-testing-II.html#null-hypothesis-false",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "Null hypothesis false",
-    "text": "Null hypothesis false"
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#permutation-tests-3",
-    "href": "slides/23_hypothesis-testing-II.html#permutation-tests-3",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "Permutation tests",
-    "text": "Permutation tests\n\nCalculate a test statistic based on the observed data.\nRepeatedly permute the group labels to create resamples. For each resample, compute the resample test statistic.\nCompare the observed data test statistic with the distribution of resampled test statistics."
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#permutation-tests-4",
-    "href": "slides/23_hypothesis-testing-II.html#permutation-tests-4",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "Permutation tests",
-    "text": "Permutation tests\nIn the case of our simulated data, we know the true distribution of the difference of sample means. We can thus use a \\(t\\)-test to perform our hypothesis test:\n\nt.test(null_y[carrier == 0], null_y[carrier == 1], var.equal=TRUE)\n\n\n    Two Sample t-test\n\ndata:  null_y[carrier == 0] and null_y[carrier == 1]\nt = 0.22205, df = 298, p-value = 0.8244\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -0.2209630  0.2771692\nsample estimates:\n mean of x  mean of y \n0.05332056 0.02521746"
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#permutation-tests-5",
-    "href": "slides/23_hypothesis-testing-II.html#permutation-tests-5",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "Permutation tests",
-    "text": "Permutation tests\nCompare with the \\(t\\)-test for the alternative hypothesis data:\n\nt.test(alt_y[carrier == 0], alt_y[carrier == 1], var.equal=TRUE)\n\n\n    Two Sample t-test\n\ndata:  alt_y[carrier == 0] and alt_y[carrier == 1]\nt = -41.009, df = 298, p-value &lt; 2.2e-16\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -5.170120 -4.696636\nsample estimates:\n mean of x  mean of y \n0.07434679 5.00772490"
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#permutation-tests-6",
-    "href": "slides/23_hypothesis-testing-II.html#permutation-tests-6",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "Permutation tests",
-    "text": "Permutation tests\nFor now, though, let’s pretend we don’t know the true null sampling distribution of our test statistic.\n\nset.seed(1)\nnull_diff &lt;- mean(null_y[carrier==1]) - mean(null_y[carrier==0])\nsingle_test &lt;- function(label, y) {\n  resample &lt;- sample(label)\n  # resample test statistic\n  mean(y[resample == 1]) - mean(y[resample == 0])\n}\ntest_stats_null &lt;- replicate(1000, single_test(carrier, null_y))"
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#permutation-tests-7",
-    "href": "slides/23_hypothesis-testing-II.html#permutation-tests-7",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "Permutation tests",
-    "text": "Permutation tests\n\nhist(test_stats_null)\nabline(v = null_diff, lwd=2, col=\"purple\")\n\nmean(abs(test_stats_null) &gt; abs(null_diff)) # P-value\n\n[1] 0.8"
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#permutation-tests-8",
-    "href": "slides/23_hypothesis-testing-II.html#permutation-tests-8",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "Permutation tests",
-    "text": "Permutation tests\nCompare with the case where the null hypothesis is false.\n\nset.seed(1)\nalt_diff &lt;- mean(alt_y[carrier==1]) - mean(alt_y[carrier==0])\ntest_stats_alt &lt;- replicate(1000, single_test(carrier, alt_y))\nhist(test_stats_alt, xlim = c(-0.5, 6))\nabline(v = alt_diff, lwd=2, col=\"purple\")\n\nmean(abs(test_stats_alt) &gt; abs(alt_diff)) # P-value\n\n[1] 0"
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#one-sample-z-test",
-    "href": "slides/23_hypothesis-testing-II.html#one-sample-z-test",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "One sample \\(z\\)-test",
-    "text": "One sample \\(z\\)-test\nSuppose that \\(X_1,\\ldots, X_n\\sim N(\\mu, 1)\\).\nConsider the hypotheses \\(H_0:\\mu=0\\) and \\(H_a:\\mu\\neq 0\\).\nWe reject at the \\(\\alpha\\) significance level if \\[|\\overline{X}_n| &gt; \\frac{z_{\\alpha/2}}{\\sqrt{n}}\\]\nIf \\(\\mu=\\mu_a\\neq 0\\), then \\[\\overline{X}_n\\sim N\\left(\\mu_a, \\frac{1}{\\sqrt{n}}\\right)\\]"
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#one-sample-z-test-1",
-    "href": "slides/23_hypothesis-testing-II.html#one-sample-z-test-1",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "One sample \\(z\\)-test",
-    "text": "One sample \\(z\\)-test\n\\[\n\\begin{align}\nP\\left(|\\overline{X}_n| &gt; \\frac{z_{\\alpha/2}}{\\sqrt{n}}\\right)&=P\\left(\\overline{X}_n&gt; \\frac{z_{\\alpha/2}}{\\sqrt{n}}\\right) + P\\left(\\overline{X}_n &lt; -\\frac{z_{\\alpha/2}}{\\sqrt{n}}\\right)\\\\\n&=P\\left(\\frac{\\overline{X}_n-\\mu_a}{1/\\sqrt{n}}&gt; z_{\\alpha/2}-\\frac{\\mu_a}{1/\\sqrt{n}}\\right) \\\\\n&+ P\\left(\\frac{\\overline{X}_n-\\mu_a}{1/\\sqrt{n}}&lt;-z_{\\alpha/2}-\\frac{\\mu_a}{1/\\sqrt{n}}\\right)\\\\\n&=\\left(1-\\Phi\\left(z_{\\alpha/2}-\\frac{\\mu_a}{1/\\sqrt{n}}\\right)\\right)+\\Phi\\left(-z_{\\alpha/2}-\\frac{\\mu_a}{1/\\sqrt{n}}\\right)\n\\end{align}\n\\]"
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#one-sample-z-test-2",
-    "href": "slides/23_hypothesis-testing-II.html#one-sample-z-test-2",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "One sample \\(z\\)-test",
-    "text": "One sample \\(z\\)-test\n\none_sample_z_power &lt;- function(mu_a, alpha, n) {\n  z &lt;- qnorm(1 - alpha / 2)\n  return(1 - pnorm(z - mu_a * sqrt(n)) + pnorm(-z - mu_a * sqrt(n)))\n}\n\n# plot the power function\nx &lt;- data.frame(x = seq(-3, 3, length.out = 1000))\nggplot(x, aes(x = x)) + \n  geom_function(fun = one_sample_z_power, \n                aes(color = \"n = 5\"),\n                args = list(alpha = .05, n = 5)) +\n  geom_function(fun = one_sample_z_power, \n                aes(color = \"n = 10\"),\n                args = list(alpha = .05, n = 10)) +\n  geom_function(fun = one_sample_z_power, \n                aes(color = \"n = 20\"),\n                args = list(alpha = .05, n = 20)) +\n  xlab(\"True population mean\") + ylab(\"Power\") +\n  theme_bw()"
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#one-sample-z-test-3",
-    "href": "slides/23_hypothesis-testing-II.html#one-sample-z-test-3",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "One sample \\(z\\)-test",
-    "text": "One sample \\(z\\)-test"
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#using-simulations-to-estimate-power",
-    "href": "slides/23_hypothesis-testing-II.html#using-simulations-to-estimate-power",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "Using simulations to estimate power",
-    "text": "Using simulations to estimate power\n\nsimulate_test &lt;- function(mu_a, alpha, n) {\n  Xbar &lt;- mean(rnorm(n, mean = mu_a, sd = 1))\n  Z_score &lt;- Xbar * sqrt(n)\n  return(abs(Z_score) &gt; qnorm(1 - alpha / 2))\n}\npower_sim &lt;- function(mu_a, alpha, n) {\n  return(mean(replicate(1000, simulate_test(mu_a, alpha, n))))\n}\n\nmu_a &lt;- data.frame(mu_a = seq(-2.5, 2.5, length.out = 100))\nsample_sizes &lt;- c(5, 10, 20)\n\n# matrix of simulation results\nsim_results &lt;- \n  sapply(sample_sizes,\n         function(n) \n           sapply(mu_a$mu_a, \n                  function(mu)\n                    power_sim(mu, .05, n)))\n\nggplot(mu_a, aes(x = mu_a)) +\n  geom_line(aes(y = sim_results[, 1], color = \"n = 5\")) +\n  geom_line(aes(y = sim_results[, 2], color = \"n = 10\")) +\n  geom_line(aes(y = sim_results[, 3], color = \"n = 20\")) +\n  xlab(\"True population mean\") + ylab(\"Power\") +\n  theme_bw()"
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#using-simulations-to-estimate-power-1",
-    "href": "slides/23_hypothesis-testing-II.html#using-simulations-to-estimate-power-1",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "Using simulations to estimate power",
-    "text": "Using simulations to estimate power"
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#p-hacking-simulations",
-    "href": "slides/23_hypothesis-testing-II.html#p-hacking-simulations",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "P-hacking simulations",
-    "text": "P-hacking simulations\nP-hacking refers to the practice of repeatedly performing hypothesis tests (and potentially manipulating the data) until a statistically significant P-values is obtained. Usually, only this final result is published, without mentioning all of the manipulations that came before."
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#p-hacking-simulations-1",
-    "href": "slides/23_hypothesis-testing-II.html#p-hacking-simulations-1",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "P-hacking simulations",
-    "text": "P-hacking simulations\nSuppose we simulate 25 observations of 8 variables which we know to be uncorrelated.\n\nno_signal_data&lt;- matrix(rnorm(200), ncol = 8) # 25 x 8 matrix\npairs(no_signal_data) # pairwise scatter plots"
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#p-hacking-simulations-2",
-    "href": "slides/23_hypothesis-testing-II.html#p-hacking-simulations-2",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "P-hacking simulations",
-    "text": "P-hacking simulations\n\nset.seed(1029)\nno_signal_data&lt;- matrix(rnorm(200), ncol = 8) # 25 x 8 matrix\npairs_to_compare &lt;- combn(8, 2) # all combinations of 2 numbers from 1-8\np_values &lt;- c()\nfor (i in 1:ncol(pairs_to_compare)) {\n  index_1 &lt;- pairs_to_compare[1, i]\n  index_2 &lt;- pairs_to_compare[2, i]\n  test_res &lt;- \n    cor.test(no_signal_data[, index_1],\n             no_signal_data[, index_2])\n  p_values &lt;- c(p_values, test_res$p.value)\n}\nprint(min(p_values))\n\n[1] 0.006656272"
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#p-hacking-simulations-3",
-    "href": "slides/23_hypothesis-testing-II.html#p-hacking-simulations-3",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "P-hacking simulations",
-    "text": "P-hacking simulations\n\n\n[1] 0.05529448"
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#multiple-testing-simulations",
-    "href": "slides/23_hypothesis-testing-II.html#multiple-testing-simulations",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "Multiple testing simulations",
-    "text": "Multiple testing simulations\nWhat if we perform a hypothesis test to test whether the correlation is zero between each pair of variables using cor.test()? With only 8 variables, we have 28 potential comparisons, the probability that we will (falsely) reject the null is already:\n\n1 - (0.95) ^ 28\n\n[1] 0.7621731"
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#multiple-testing-simulations-1",
-    "href": "slides/23_hypothesis-testing-II.html#multiple-testing-simulations-1",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "Multiple testing simulations",
-    "text": "Multiple testing simulations\n\nset.seed(1029)\nno_signal_data&lt;- matrix(rnorm(200), ncol = 8) # 25 x 8 matrix\npairs_to_compare &lt;- combn(8, 2) # all combinations of 2 numbers from 1-8\np_values &lt;- c()\nfor (i in 1:ncol(pairs_to_compare)) {\n  index_1 &lt;- pairs_to_compare[1, i]\n  index_2 &lt;- pairs_to_compare[2, i]\n  test_res &lt;- \n    cor.test(no_signal_data[, index_1],\n             no_signal_data[, index_2])\n  p_values &lt;- c(p_values, test_res$p.value)\n}\nprint(min(p_values))\n\n[1] 0.006656272"
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-II.html#multiple-testing-simulations-2",
-    "href": "slides/23_hypothesis-testing-II.html#multiple-testing-simulations-2",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "Multiple testing simulations",
-    "text": "Multiple testing simulations\nFor this reason it is common to perform a correction to the hypothesis tests when many hypothesis tests are conducted.\nExample: The Bonferroni correction divides \\(\\alpha\\) by the number of tests performed to get the corrected significance level."
   }
 ]

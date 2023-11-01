@@ -75,6 +75,23 @@ Simulation is a powerful strategy for testing out methods:
 
 ```{r smaller_sample}
 #| echo: TRUE
+#| eval: FALSE
+#| cache: TRUE
+set.seed(123)
+Xbar_normal <- replicate(10000, mean(rnorm(10)))
+Xbar_exp <- replicate(10000, mean(rexp(10, rate = 1)))
+Xbar_poisson <- replicate(10000, mean(rpois(10, lambda = 1)))
+par(mfrow = c(1, 3))
+hist(Xbar_normal, main = "N(0, 1)")
+hist(Xbar_exp, main = "Exp(1)")
+hist(Xbar_poisson, main = "Poisson(1)")
+```
+
+
+## Smaller sample sizes
+
+```{r smaller_sample2}
+#| echo: FALSE
 #| eval: TRUE
 #| cache: TRUE
 set.seed(123)
@@ -93,6 +110,24 @@ What if we want the sampling distribution of the maximum? For each of these popu
 
 ```{r max_sampling_dist}
 #| echo: TRUE
+#| eval: FALSE
+#| cache: TRUE
+set.seed(123)
+Xmax_normal <- replicate(10000, max(rnorm(10)))
+Xmax_exp <- replicate(10000, max(rexp(10, rate = 1)))
+Xmax_poisson <- replicate(10000, max(rpois(10, lambda = 1)))
+par(mfrow = c(1, 3))
+hist(Xmax_normal, main = "N(0, 1)")
+hist(Xmax_exp, main = "Exp(1)")
+hist(Xmax_poisson, main = "Poisson(1)")
+```
+
+## Other statistics
+
+What if we want the sampling distribution of the maximum? For each of these population models, the sampling distribution of the maximum is different.
+
+```{r max_sampling_dist2}
+#| echo: FALSE
 #| eval: TRUE
 #| cache: TRUE
 set.seed(123)
@@ -111,6 +146,24 @@ We can easily simulate sampling distributions for statistics summarizing the dis
 
 ```{r mean_transformed}
 #| echo: TRUE
+#| eval: FALSE
+#| cache: TRUE
+set.seed(123)
+Xbar_normal <- replicate(10000, mean(rnorm(10) ^ 2))
+Xbar_exp <- replicate(10000, mean(rexp(10, rate = 1) ^ 2))
+Xbar_poisson <- replicate(10000, mean(rpois(10, lambda = 1) ^ 2))
+par(mfrow = c(1, 3))
+hist(Xbar_normal, main = "N(0, 1) squared")
+hist(Xbar_exp, main = "Exp(1) squared")
+hist(Xbar_poisson, main = "Poisson(1) squared")
+```
+
+## Transformations
+
+We can easily simulate sampling distributions for statistics summarizing the distribution of random variables that are defined as transformations of other random variables.
+
+```{r mean_transformed2}
+#| echo: FALSE
 #| eval: TRUE
 #| cache: TRUE
 set.seed(123)
@@ -131,6 +184,8 @@ hist(Xbar_poisson, main = "Poisson(1) squared")
 
 The previous simulations are all based on parametric models (normal, exponential, Poisson). However, we can also simulate sampling distributions without parametric assumptions on the data generating mechanism.
 
+## Resampling methods
+
 Suppose we know $X_1,\ldots, X_{20}\sim \mathrm{Exp}(1)$. The sampling distribution can be simulated as follows:
 
 ```{r exp_samp_dist}
@@ -144,10 +199,26 @@ hist(Xbar_exp)
 
 ## Resampling methods
 
-What if we observe $X_1,\ldots, X_{20}$, but we don't know that $X_i$ is exponentially distributed? We could just try the normal approximation to approximate the sampling distribution:
+What if we observe $X_1,\ldots, X_{20}$, but we don't know that $X_i$ is exponentially distributed? We could just try the normal approximation to approximate the sampling distribution.
 
 ```{r exp_samp_dist_2, fig.height = 4, fig.width = 5}
 #| echo: TRUE
+#| eval: FALSE
+#| cache: TRUE
+X <- rexp(20, rate = 1)
+x_axis <- seq(0, 3, length.out = 1000)
+
+# plot "true" simulated sampling distribution
+hist(Xbar_exp, freq = F, ylim = c(0, 3))
+
+# plot normal theory
+lines(x_axis, dnorm(x_axis, mean = mean(X), sd = sd(X) / sqrt(20)), col = 'red')
+```
+
+## Resampling methods
+
+```{r exp_samp_dist_22, fig.height = 4, fig.width = 5}
+#| echo: FALSE
 #| eval: TRUE
 #| cache: TRUE
 X <- rexp(20, rate = 1)
@@ -192,6 +263,25 @@ We can compare the bootstrap sampling distributions and true sampling distributi
 
 ```{r exp_samp_dist_5}
 #| echo: TRUE
+#| eval: FALSE
+#| cache: TRUE
+library(ggplot2)
+plot_dat <-
+  data.frame(Xbar = c(Xbar_exp, bootstrap_Xbar),
+             source = rep(c("Parametric (Exp)", "Bootstrap"), each = 10000))
+ggplot(plot_dat, aes(x = Xbar, color = source)) +
+  geom_density() +
+  geom_function(fun = dnorm, 
+                args = list(mean = mean(X), sd = sd(X) / sqrt(20)),
+                aes(color = "Parametric (Normal)")) 
+```
+
+## Bootstrap samples
+
+We can compare the bootstrap sampling distributions and true sampling distributions. In this case, the bootstrap does not seem that different from the normal approximation.
+
+```{r exp_samp_dist_52}
+#| echo: FALSE
 #| eval: TRUE
 #| cache: TRUE
 library(ggplot2)

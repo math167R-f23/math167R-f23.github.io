@@ -477,7 +477,7 @@ H_a: p&amp;\neq 1/2
 <section id="example-flipping-coins" class="slide level2">
 <h2>Example: flipping coins</h2>
 <p>Instead of actually flipping the coin, let’s carry out this example in R.</p>
-<div class="cell" data-hash="22_hypothesis-testing_cache/html/unnamed-chunk-1_6d9479d722e55ff43ebd570c167f5d38">
+<div class="cell" data-hash="22_hypothesis-testing_cache/revealjs/unnamed-chunk-1_2121ce22ce4e1ccb445d1ce94de866a4">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">set.seed</span>(<span class="dv">302</span>)</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co"># the true population parameter (in practice, we don't know this).</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a>p <span class="ot">&lt;-</span> <span class="fl">0.6</span></span>
@@ -516,7 +516,7 @@ H_a: p&amp;\neq 1/2
 </section>
 <section id="example-flipping-coins-4" class="slide level2">
 <h2>Example: flipping coins</h2>
-<div class="cell" data-hash="22_hypothesis-testing_cache/html/unnamed-chunk-2_e7ae7b7ef6a5495bc9e30da55cf82891">
+<div class="cell" data-hash="22_hypothesis-testing_cache/revealjs/unnamed-chunk-2_8bfdb7b30494963c2f948dcd39c8a612">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># record test statistic</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>test_stat <span class="ot">&lt;-</span> <span class="fu">sum</span>(coin_flips)</span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="co"># record how "extreme" our test statistic is</span></span>
@@ -579,7 +579,7 @@ H_0: \mu_x &amp;= \mu_y\\
 H_a: \mu_x &amp;\neq  \mu_y
 \end{align}
 \]</span></p>
-<div class="cell" data-hash="22_hypothesis-testing_cache/html/unnamed-chunk-3_f0f617b509c6df69e9a25907583cb3e2">
+<div class="cell" data-hash="22_hypothesis-testing_cache/revealjs/unnamed-chunk-3_89ad5adfa100a95dfcbb96f06d73a288">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">set.seed</span>(<span class="dv">302</span>)</span>
 <span id="cb7-2"><a href="#cb7-2"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
 <span id="cb7-3"><a href="#cb7-3"></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="fl">1.5</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
@@ -608,7 +608,7 @@ H_0: \mu_x &amp;= \mu_y\\
 H_a: \mu_x &amp;&lt; \mu_y
 \end{align}
 \]</span></p>
-<div class="cell" data-hash="22_hypothesis-testing_cache/html/unnamed-chunk-4_06e1f079764e5441f32a2b1da5d5705c">
+<div class="cell" data-hash="22_hypothesis-testing_cache/revealjs/unnamed-chunk-4_27c3aa6090d3757bf4c57cb56a4bd819">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">t.test</span>(x, y, <span class="at">alternative =</span> <span class="st">"less"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -635,7 +635,7 @@ H_0: \mu_x &amp;= 0\\
 H_a: \mu_x &amp;\neq 0
 \end{align}
 \]</span></p>
-<div class="cell" data-hash="22_hypothesis-testing_cache/html/unnamed-chunk-5_e0bfb35aa329e47eebfa5a11ee2f325f">
+<div class="cell" data-hash="22_hypothesis-testing_cache/revealjs/unnamed-chunk-5_fbb1595af6bd2677e463a377f4f7bb70">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">t.test</span>(x, <span class="at">mu =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -911,6 +911,44 @@ mean of x
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
