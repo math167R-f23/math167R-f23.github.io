@@ -524,7 +524,7 @@ Peter Gao
 </section>
 <section id="resampling-methods-1" class="slide level2">
 <h2>Resampling methods</h2>
-<p>Suppose we know <span class="math inline">\(X_1,\ldots, X_{20}\sim \mathrm{Exp}(1)\)</span>. The sampling distribution can be simulated as follows:</p>
+<p>Suppose we know <span class="math inline">\(X_1,\ldots, X_{20}\sim \mathrm{Exp}(1)\)</span>. The sampling distribution of the sample mean can be simulated as follows:</p>
 <div class="cell" data-hash="20_simulation-based-inference_cache/revealjs/exp_samp_dist_4696476d7f17ad03fce33caa4345ca1c">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb7-2"><a href="#cb7-2"></a>Xbar_exp <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">10000</span>, <span class="fu">mean</span>(<span class="fu">rexp</span>(<span class="dv">20</span>, <span class="at">rate =</span> <span class="dv">1</span>)))</span>
@@ -575,30 +575,31 @@ Peter Gao
 <section id="bootstrap-samples-1" class="slide level2">
 <h2>Bootstrap samples</h2>
 <p>We can repeatedly resample from <span class="math inline">\(X\)</span>, then compute the resample sample means and plot the distribution:</p>
-<div class="cell" data-hash="20_simulation-based-inference_cache/revealjs/exp_samp_dist_4_7bafd29948e29fa31de73b2793666f19">
+<div class="cell" data-hash="20_simulation-based-inference_cache/revealjs/exp_samp_dist_4_bd63992daed5d1494fb08777bd93ac31">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>bootstrap_Xbar <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">10000</span>, <span class="fu">mean</span>(<span class="fu">sample</span>(X, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)))</span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">hist</span>(bootstrap_Xbar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">hist</span>(bootstrap_Xbar <span class="sc">-</span> <span class="fu">mean</span>(X) <span class="sc">+</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="20_simulation-based-inference_files/figure-revealjs/exp_samp_dist_4-1.png" width="960" class="r-stretch"></section>
 <section id="bootstrap-samples-2" class="slide level2">
 <h2>Bootstrap samples</h2>
-<p>We can compare the bootstrap sampling distributions and true sampling distributions. In this case, the bootstrap does not seem that different from the normal approximation.</p>
-<div class="cell" data-hash="20_simulation-based-inference_cache/revealjs/exp_samp_dist_5_4ce078cf4168cd79414f579369131b91">
+<p>We can compare the bootstrap sampling distributions and true sampling distributions for <span class="math inline">\(\overline{X}-E(\overline{X})\)</span>.</p>
+<div class="cell" data-hash="20_simulation-based-inference_cache/revealjs/exp_samp_dist_5_cee6c39b94d87a7668e513364a43cc66">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb14-2"><a href="#cb14-2"></a>plot_dat <span class="ot">&lt;-</span></span>
-<span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">data.frame</span>(<span class="at">Xbar =</span> <span class="fu">c</span>(Xbar_exp, bootstrap_Xbar),</span>
+<span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">data.frame</span>(<span class="at">Xbar =</span> <span class="fu">c</span>(Xbar_exp <span class="sc">-</span> <span class="dv">1</span>, bootstrap_Xbar <span class="sc">-</span> <span class="fu">mean</span>(X)),</span>
 <span id="cb14-4"><a href="#cb14-4"></a>             <span class="at">source =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Parametric (Exp)"</span>, <span class="st">"Bootstrap"</span>), <span class="at">each =</span> <span class="dv">10000</span>))</span>
 <span id="cb14-5"><a href="#cb14-5"></a><span class="fu">ggplot</span>(plot_dat, <span class="fu">aes</span>(<span class="at">x =</span> Xbar, <span class="at">color =</span> source)) <span class="sc">+</span></span>
 <span id="cb14-6"><a href="#cb14-6"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
 <span id="cb14-7"><a href="#cb14-7"></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> dnorm, </span>
-<span id="cb14-8"><a href="#cb14-8"></a>                <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="fu">mean</span>(X), <span class="at">sd =</span> <span class="fu">sd</span>(X) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">20</span>)),</span>
-<span id="cb14-9"><a href="#cb14-9"></a>                <span class="fu">aes</span>(<span class="at">color =</span> <span class="st">"Parametric (Normal)"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-8"><a href="#cb14-8"></a>                <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">20</span>)),</span>
+<span id="cb14-9"><a href="#cb14-9"></a>                <span class="fu">aes</span>(<span class="at">color =</span> <span class="st">"Parametric (Normal)"</span>)) <span class="sc">+</span></span>
+<span id="cb14-10"><a href="#cb14-10"></a>  <span class="fu">xlab</span>(<span class="st">"Xbar - E(Xbar)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="bootstrap-samples-3" class="slide level2">
 <h2>Bootstrap samples</h2>
-<p>We can compare the bootstrap sampling distributions and true sampling distributions. In this case, the bootstrap does not seem that different from the normal approximation.</p>
+<p>We can compare the bootstrap sampling distributions and true sampling distributions for <span class="math inline">\(\overline{X}-E(\overline{X})\)</span>.</p>
 
 <img data-src="20_simulation-based-inference_files/figure-revealjs/exp_samp_dist_52-1.png" width="960" class="r-stretch"></section>
 <section id="bootstrap-confidence-intervals" class="slide level2">

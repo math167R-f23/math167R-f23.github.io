@@ -319,7 +319,7 @@
     "href": "index.html",
     "title": "MATH167R: Statistical Programming with R",
     "section": "",
-    "text": "Week\nDate\nTopic\nSlides\nCheck-in\nLab\n\n\n\n\n1\nM 8/21\nCourse Overview and Introduction to R\nSlides 01\nCheck-in 01\n\n\n\n\nW 8/23\nR fundamentals\nSlides 02\n\nLab 01\n\n\n2\nM 8/28\nR fundamentals\nSlides 03\nCheck-in 02\n\n\n\n\nW 8/30\nR fundamentals\nSlides 04\n\nLab 02\n\n\n3\nM 9/4\nLabor Day (No Class)\n\n\n\n\n\n\nW 9/6\nExploring data with R\nSlides 05\n\nLab 03\n\n\n4\nM 9/11\nExploring data with R\nSlides 06\nCheck-in 03\n\n\n\n\nW 9/13\nData visualization\nSlides 07\n\nLab 04\n\n\n5\nM 9/18\nData visualization\nSlides 08\nCheck-in 04\n\n\n\n\nW 9/20\nData visualization\nSlides 09\n\nLab 05\n\n\n6\nM 9/25\nData manipulation and management\nSlides 10\n\n\n\n\n\nW 9/27\nData manipulation and management\nSlides 11\n\n\n\n\n7\nM 10/2\nProgramming basics\nSlides 12\n\n\n\n\n\nW 10/4\nMidterm project\n\n\n\n\n\n8\nM 10/9\nProgramming basics\nSlides 13\nCheck-in 05\n\n\n\n\nW 10/11\nProgramming basics\nSlides 14\n\nLab 06\n\n\n9\nM 10/16\nProgramming basics\nSlides 15\nCheck-in 06\n\n\n\n\nW 10/18\nProgramming basics\nSlides 16\n\nLab 07\n\n\n10\nM 10/23\nProgramming basics\nSlides 17\nCheck-in 07\n\n\n\n\nW 10/25\nSimulations\nSlides 18\n\nLab 08\n\n\n11\nM 10/30\nSimulations\nSlides 19\nCheck-in 08\n\n\n\n\nW 11/1\nSimulations\nSlides 20\n\nLab 09\n\n\n12\nM 11/6\nSimulations\n\n\n\n\n\n\nW 11/8\nStatistical inference\n\n\n\n\n\n13\nM 11/13\nStatistical inference\n\n\n\n\n\n\nW 11/15\nStatistical inference\n\n\n\n\n\n14\nM 11/20\nStatistical inference\n\n\n\n\n\n\nW 11/22\nThanksgiving (No Class)\n\n\n\n\n\n15\nM 11/27\nReal world data analysis\n\n\n\n\n\n\nW 11/29\nReal world data analysis\n\n\n\n\n\n16\nM 12/4\nReal world data analysis\n\n\n\n\n\n\nW 12/6\nFinal review"
+    "text": "Week\nDate\nTopic\nSlides\nCheck-in\nLab\n\n\n\n\n1\nM 8/21\nCourse Overview and Introduction to R\nSlides 01\nCheck-in 01\n\n\n\n\nW 8/23\nR fundamentals\nSlides 02\n\nLab 01\n\n\n2\nM 8/28\nR fundamentals\nSlides 03\nCheck-in 02\n\n\n\n\nW 8/30\nR fundamentals\nSlides 04\n\nLab 02\n\n\n3\nM 9/4\nLabor Day (No Class)\n\n\n\n\n\n\nW 9/6\nExploring data with R\nSlides 05\n\nLab 03\n\n\n4\nM 9/11\nExploring data with R\nSlides 06\nCheck-in 03\n\n\n\n\nW 9/13\nData visualization\nSlides 07\n\nLab 04\n\n\n5\nM 9/18\nData visualization\nSlides 08\nCheck-in 04\n\n\n\n\nW 9/20\nData visualization\nSlides 09\n\nLab 05\n\n\n6\nM 9/25\nData manipulation and management\nSlides 10\n\n\n\n\n\nW 9/27\nData manipulation and management\nSlides 11\n\n\n\n\n7\nM 10/2\nProgramming basics\nSlides 12\n\n\n\n\n\nW 10/4\nMidterm project\n\n\n\n\n\n8\nM 10/9\nProgramming basics\nSlides 13\nCheck-in 05\n\n\n\n\nW 10/11\nProgramming basics\nSlides 14\n\nLab 06\n\n\n9\nM 10/16\nProgramming basics\nSlides 15\nCheck-in 06\n\n\n\n\nW 10/18\nProgramming basics\nSlides 16\n\nLab 07\n\n\n10\nM 10/23\nProgramming basics\nSlides 17\nCheck-in 07\n\n\n\n\nW 10/25\nSimulations\nSlides 18\n\nLab 08\n\n\n11\nM 10/30\nSimulations\nSlides 19\nCheck-in 08\n\n\n\n\nW 11/1\nSimulations\nSlides 20\n\nLab 09\n\n\n12\nM 11/6\nSimulations\nSlides 21\nCheck-in 09\n\n\n\n\nW 11/8\nStatistical inference\nSlides 22\n\n\n\n\n13\nM 11/13\nStatistical inference\n\n\n\n\n\n\nW 11/15\nStatistical inference\n\n\n\n\n\n14\nM 11/20\nStatistical inference\n\n\n\n\n\n\nW 11/22\nThanksgiving (No Class)\n\n\n\n\n\n15\nM 11/27\nReal world data analysis\n\n\n\n\n\n\nW 11/29\nReal world data analysis\n\n\n\n\n\n16\nM 12/4\nReal world data analysis\n\n\n\n\n\n\nW 12/6\nFinal review"
   },
   {
     "objectID": "slides/06_factors-groups.html#warm-up",
@@ -697,7 +697,7 @@
     "href": "slides/21_confidence-intervals.html#confidence-intervals-for-proportions",
     "title": "MATH167R: Statistical inference",
     "section": "Confidence intervals for proportions",
-    "text": "Confidence intervals for proportions\nFor large \\(n\\), the following confidence interval is often used for a population proportion:\n\\[\\widehat{p}\\pm z_{\\alpha/2}\\sqrt{\\frac{\\widehat{p}(1-\\widehat{p})}{n}}\\]\nNote that this formula only gives an approximate CI becaue of the use of \\(\\widehat{p}\\) when estimating the standard error of \\(\\widehat{p}\\)"
+    "text": "Confidence intervals for proportions\nFor large \\(n\\), the following confidence interval is often used for a population proportion:\n\\[\\widehat{p}\\pm z_{\\alpha/2}\\sqrt{\\frac{\\widehat{p}(1-\\widehat{p})}{n}}\\]\nNote that this formula only gives an approximate CI because of the use of \\(\\widehat{p}\\) when estimating the standard error of \\(\\widehat{p}\\)."
   },
   {
     "objectID": "slides/21_confidence-intervals.html#other-confidence-intervals",
@@ -719,6 +719,34 @@
     "title": "MATH167R: Hypothesis Testing",
     "section": "Summary: hypothesis testing",
     "text": "Summary: hypothesis testing\n\nDefine null and alternative hypotheses.\n\nex. \\(H_0:\\mu = 0\\) and \\(H_a:\\mu\\neq 0\\)\n\nCompute a test statistic for which the null sampling distribution is known (based on assumptions about the population/sample).\n\nex. \\(T=(\\overline{X}_n-\\mu)/(S^2/\\sqrt{n})\\sim t_{n-1}\\)\n\nCompare the test statistic with the null distribution to obtain a P-value.\n\nex. \\(P(|T|&gt;|t|)\\) where \\(t\\) is the observed test statistic."
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#example-two-sample-z-test",
+    "href": "slides/23_hypothesis-testing-II.html#example-two-sample-z-test",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "Example: Two-sample \\(z\\)-test",
+    "text": "Example: Two-sample \\(z\\)-test\nAssumptions:\n\n\\(X_1, \\ldots, X_m\\) is a random sample from a distribution with mean \\(\\mu_1\\) and variance \\(\\sigma_1^2\\).\n\\(Y_1, \\ldots, Y_n\\) is a random sample from a distribution with mean \\(\\mu_2\\) and variance \\(\\sigma_2^2\\).\nThe \\(X\\) and \\(Y\\) samples are independent of one another.\nThe sample sizes are adequately large (usually appropriate if \\(m&gt;40\\) and \\(n&gt;40\\).\n\nHypotheses:\n\nH_0: \\(\\mu_1=\\mu_2\\)\nH_a: \\(\\mu_1\\not=\\mu_2\\)"
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#example-two-sample-z-test-1",
+    "href": "slides/23_hypothesis-testing-II.html#example-two-sample-z-test-1",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "Example: Two-sample \\(z\\)-test",
+    "text": "Example: Two-sample \\(z\\)-test\nUnder these assumptions, \\(\\overline{X}-\\overline{Y}\\) is approximately normal and the test statistic \\[Z=\\frac{\\overline{X}-\\overline{Y}-(\\mu_1-\\mu_2)}{\\sqrt{\\frac{S_1^2}{m}+\\frac{S_2^2}{n}}}\\] has approximately a standard normal distribution when \\(H_0\\) is true."
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#example-two-sample-t-test",
+    "href": "slides/23_hypothesis-testing-II.html#example-two-sample-t-test",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "Example: Two-sample \\(t\\)-test",
+    "text": "Example: Two-sample \\(t\\)-test\nWhen the samples are small, but the population distributions are approximately normal, the standardized test statistic \\[T=\\frac{\\overline{X}-\\overline{Y}-(\\mu_1-\\mu_2)}{\\sqrt{\\frac{S_1^2}{m}+\\frac{S_2^2}{n}}}\\] has approximately a \\(t\\) distribution with df \\(v\\) estimated from the data by\n\\[\\nu =\\frac{\\left(\\frac{s_1^2}{m}+\\frac{s_2^2}{n}\\right)^2}{\\frac{(s_1^2/m)^2}{m-1}+\\frac{(s_2^2/n)^2}{n-1}}\\]"
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#example-two-sample-t-test-1",
+    "href": "slides/23_hypothesis-testing-II.html#example-two-sample-t-test-1",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "Example: Two-sample \\(t\\)-test",
+    "text": "Example: Two-sample \\(t\\)-test\nWe can use the sleep data in R, which contains Student’s example data on the effect of two sleeping drugs on 10 patients, to test out the t.test() function.\n\nt.test(extra ~ group, data = sleep)\n\n\n    Welch Two Sample t-test\n\ndata:  extra by group\nt = -1.8608, df = 17.776, p-value = 0.07939\nalternative hypothesis: true difference in means between group 1 and group 2 is not equal to 0\n95 percent confidence interval:\n -3.3654832  0.2054832\nsample estimates:\nmean in group 1 mean in group 2 \n           0.75            2.33"
   },
   {
     "objectID": "slides/23_hypothesis-testing-II.html#permutation-tests",
@@ -767,14 +795,14 @@
     "href": "slides/23_hypothesis-testing-II.html#permutation-tests-4",
     "title": "MATH167R: Hypothesis Testing",
     "section": "Permutation tests",
-    "text": "Permutation tests\nIn the case of our simulated data, we know the true distribution of the difference of sample means. We can thus use a \\(t\\)-test to perform our hypothesis test:\n\nt.test(null_y[carrier == 0], null_y[carrier == 1], var.equal=TRUE)\n\n\n    Two Sample t-test\n\ndata:  null_y[carrier == 0] and null_y[carrier == 1]\nt = 0.22205, df = 298, p-value = 0.8244\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -0.2209630  0.2771692\nsample estimates:\n mean of x  mean of y \n0.05332056 0.02521746"
+    "text": "Permutation tests\nIn the case of our simulated data, we know the true distribution of the difference of sample means. We can thus use a \\(t\\)-test to perform our hypothesis test:\n\nt.test(null_y[carrier == 0], null_y[carrier == 1], var.equal=TRUE)\n\n\n    Two Sample t-test\n\ndata:  null_y[carrier == 0] and null_y[carrier == 1]\nt = -0.59611, df = 298, p-value = 0.5516\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -0.3250301  0.1739007\nsample estimates:\n  mean of x   mean of y \n0.001384385 0.076949044"
   },
   {
     "objectID": "slides/23_hypothesis-testing-II.html#permutation-tests-5",
     "href": "slides/23_hypothesis-testing-II.html#permutation-tests-5",
     "title": "MATH167R: Hypothesis Testing",
     "section": "Permutation tests",
-    "text": "Permutation tests\nCompare with the \\(t\\)-test for the alternative hypothesis data:\n\nt.test(alt_y[carrier == 0], alt_y[carrier == 1], var.equal=TRUE)\n\n\n    Two Sample t-test\n\ndata:  alt_y[carrier == 0] and alt_y[carrier == 1]\nt = -41.009, df = 298, p-value &lt; 2.2e-16\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -5.170120 -4.696636\nsample estimates:\n mean of x  mean of y \n0.07434679 5.00772490"
+    "text": "Permutation tests\nCompare with the \\(t\\)-test for the alternative hypothesis data:\n\nt.test(alt_y[carrier == 0], alt_y[carrier == 1], var.equal=TRUE)\n\n\n    Two Sample t-test\n\ndata:  alt_y[carrier == 0] and alt_y[carrier == 1]\nt = -40.006, df = 298, p-value &lt; 2.2e-16\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -5.195450 -4.708274\nsample estimates:\n  mean of x   mean of y \n-0.03923244  4.91262958"
   },
   {
     "objectID": "slides/23_hypothesis-testing-II.html#permutation-tests-6",
@@ -788,7 +816,7 @@
     "href": "slides/23_hypothesis-testing-II.html#permutation-tests-7",
     "title": "MATH167R: Hypothesis Testing",
     "section": "Permutation tests",
-    "text": "Permutation tests\n\nhist(test_stats_null)\nabline(v = null_diff, lwd=2, col=\"purple\")\n\nmean(abs(test_stats_null) &gt; abs(null_diff)) # P-value\n\n[1] 0.8"
+    "text": "Permutation tests\n\nhist(test_stats_null)\nabline(v = null_diff, lwd=2, col=\"purple\")\n\nmean(abs(test_stats_null) &gt; abs(null_diff)) # P-value\n\n[1] 0.554"
   },
   {
     "objectID": "slides/23_hypothesis-testing-II.html#permutation-tests-8",
@@ -3721,7 +3749,7 @@
     "href": "slides/20_simulation-based-inference.html#resampling-methods-1",
     "title": "MATH167R: Sampling distributions",
     "section": "Resampling methods",
-    "text": "Resampling methods\nSuppose we know \\(X_1,\\ldots, X_{20}\\sim \\mathrm{Exp}(1)\\). The sampling distribution can be simulated as follows:\n\nset.seed(123)\nXbar_exp &lt;- replicate(10000, mean(rexp(20, rate = 1)))\nhist(Xbar_exp)"
+    "text": "Resampling methods\nSuppose we know \\(X_1,\\ldots, X_{20}\\sim \\mathrm{Exp}(1)\\). The sampling distribution of the sample mean can be simulated as follows:\n\nset.seed(123)\nXbar_exp &lt;- replicate(10000, mean(rexp(20, rate = 1)))\nhist(Xbar_exp)"
   },
   {
     "objectID": "slides/20_simulation-based-inference.html#resampling-methods-2",
@@ -3749,21 +3777,21 @@
     "href": "slides/20_simulation-based-inference.html#bootstrap-samples-1",
     "title": "MATH167R: Sampling distributions",
     "section": "Bootstrap samples",
-    "text": "Bootstrap samples\nWe can repeatedly resample from \\(X\\), then compute the resample sample means and plot the distribution:\n\nbootstrap_Xbar &lt;- replicate(10000, mean(sample(X, size = 20, replace = TRUE)))\nhist(bootstrap_Xbar)"
+    "text": "Bootstrap samples\nWe can repeatedly resample from \\(X\\), then compute the resample sample means and plot the distribution:\n\nbootstrap_Xbar &lt;- replicate(10000, mean(sample(X, size = 20, replace = TRUE)))\nhist(bootstrap_Xbar - mean(X) + 1)"
   },
   {
     "objectID": "slides/20_simulation-based-inference.html#bootstrap-samples-2",
     "href": "slides/20_simulation-based-inference.html#bootstrap-samples-2",
     "title": "MATH167R: Sampling distributions",
     "section": "Bootstrap samples",
-    "text": "Bootstrap samples\nWe can compare the bootstrap sampling distributions and true sampling distributions. In this case, the bootstrap does not seem that different from the normal approximation.\n\nlibrary(ggplot2)\nplot_dat &lt;-\n  data.frame(Xbar = c(Xbar_exp, bootstrap_Xbar),\n             source = rep(c(\"Parametric (Exp)\", \"Bootstrap\"), each = 10000))\nggplot(plot_dat, aes(x = Xbar, color = source)) +\n  geom_density() +\n  geom_function(fun = dnorm, \n                args = list(mean = mean(X), sd = sd(X) / sqrt(20)),\n                aes(color = \"Parametric (Normal)\"))"
+    "text": "Bootstrap samples\nWe can compare the bootstrap sampling distributions and true sampling distributions for \\(\\overline{X}-E(\\overline{X})\\).\n\nlibrary(ggplot2)\nplot_dat &lt;-\n  data.frame(Xbar = c(Xbar_exp - 1, bootstrap_Xbar - mean(X)),\n             source = rep(c(\"Parametric (Exp)\", \"Bootstrap\"), each = 10000))\nggplot(plot_dat, aes(x = Xbar, color = source)) +\n  geom_density() +\n  geom_function(fun = dnorm, \n                args = list(mean = 0, sd = 1 / sqrt(20)),\n                aes(color = \"Parametric (Normal)\")) +\n  xlab(\"Xbar - E(Xbar)\")"
   },
   {
     "objectID": "slides/20_simulation-based-inference.html#bootstrap-samples-3",
     "href": "slides/20_simulation-based-inference.html#bootstrap-samples-3",
     "title": "MATH167R: Sampling distributions",
     "section": "Bootstrap samples",
-    "text": "Bootstrap samples\nWe can compare the bootstrap sampling distributions and true sampling distributions. In this case, the bootstrap does not seem that different from the normal approximation."
+    "text": "Bootstrap samples\nWe can compare the bootstrap sampling distributions and true sampling distributions for \\(\\overline{X}-E(\\overline{X})\\)."
   },
   {
     "objectID": "slides/20_simulation-based-inference.html#bootstrap-confidence-intervals",
@@ -4326,6 +4354,209 @@
     "text": "A two-dimensional random walk\nWe can use geom_path() to illustrate the path taken by the random walker:\n\nlibrary(ggplot2)\ncoords_dat &lt;- data.frame(x = coords[, 1],\n                         y = coords[, 2],\n                         step = 1:n_steps)\nggplot(coords_dat, aes(x = x, y = y, color = step)) + geom_path()"
   },
   {
+    "objectID": "slides/25_advanced-statistics.html#overview-of-today",
+    "href": "slides/25_advanced-statistics.html#overview-of-today",
+    "title": "MATH167R: Advanced statistical methods",
+    "section": "Overview of today",
+    "text": "Overview of today\n\nANOVA\nThe \\(F\\)-test for Regression Analysis\nLogistic regression"
+  },
+  {
+    "objectID": "slides/25_advanced-statistics.html#analysis-of-variance",
+    "href": "slides/25_advanced-statistics.html#analysis-of-variance",
+    "title": "MATH167R: Advanced statistical methods",
+    "section": "Analysis of Variance",
+    "text": "Analysis of Variance\nThe analysis of variance or ANOVA is a collection of statistical methods used to compare two or more groups to assess the differences between group means.\nThe simplest ANOVA provides a test of whether two or more population means are equivalent. As such the ANOVA is a generalization of the two sample \\(t\\)-test.\nANOVA is typically said to be introduced by Ronald Fisher, who applied the method to study the variation in crop yield related to different fertiliser treatments."
+  },
+  {
+    "objectID": "slides/25_advanced-statistics.html#one-way-anova",
+    "href": "slides/25_advanced-statistics.html#one-way-anova",
+    "title": "MATH167R: Advanced statistical methods",
+    "section": "One-way ANOVA",
+    "text": "One-way ANOVA\nOne-way ANOVA or single-factor ANOVA is used to compare two or more population means. Let \\(I\\) be the number of groups/populations and \\(\\mu_I\\) to be the population mean of the response of interest for group \\(I\\).\nHypotheses:\n\n\\(H_0:\\mu_1=\\ldots=\\mu_I\\)\n\\(H_a: \\text{at least two of the means are different}\\)\n\nAssumptions:\n\nThe population distributions are all normal with the same variance \\(\\sigma^2\\)."
+  },
+  {
+    "objectID": "slides/25_advanced-statistics.html#test-statistic",
+    "href": "slides/25_advanced-statistics.html#test-statistic",
+    "title": "MATH167R: Advanced statistical methods",
+    "section": "Test Statistic",
+    "text": "Test Statistic\nThe \\(F\\) test is commonly used to compare the causes of the total variation. In particular, the \\(F\\) test statistic is defined as\n\\[F=\\frac{\\text{variance between groups}}{\\text{variance within groups}}\\]\nIf \\(F\\) is large, then there may be evidence to reject the hypothesis that the group means are all equal."
+  },
+  {
+    "objectID": "slides/25_advanced-statistics.html#test-statistic-1",
+    "href": "slides/25_advanced-statistics.html#test-statistic-1",
+    "title": "MATH167R: Advanced statistical methods",
+    "section": "Test Statistic",
+    "text": "Test Statistic\n\\[F=\\frac{\\text{variance between groups}}{\\text{variance within groups}}=\\frac{\n\\text{Mean Square for Treatments}}{\\text{Mean Square for Error}}\\]\nIn a balanced design, where each group has the same number of \\(J\\) samples, and \\(X_{i, j}\\) denotes the \\(j\\)th measurement from group \\(i\\), the mean square terms have the following formulas:\n\\[\\text{Mean Square for Treatments}=\\frac{J}{I-1}\\sum_i(\\overline{X}_i-\\overline{X}_{\\cdot\\cdot})^2\\]\nwhere \\(\\overline{X}_i\\) is the sample group mean and \\(\\overline{X}_{\\cdot\\cdot}\\) is the overall sample mean.\n\\[\\text{Mean Square for Error}=\\frac{S_1^2+S_2^2+\\cdots+S_I^2}{I}\\]"
+  },
+  {
+    "objectID": "slides/25_advanced-statistics.html#example-plantgrowth",
+    "href": "slides/25_advanced-statistics.html#example-plantgrowth",
+    "title": "MATH167R: Advanced statistical methods",
+    "section": "Example: PlantGrowth",
+    "text": "Example: PlantGrowth\nThe PlantGrowth data provides results from an experiment comparing plant growth under a control and two different treatment conditions.\n\nboxplot(weight ~ group, data = PlantGrowth, main = \"PlantGrowth data\",\n        ylab = \"Dried weight of plants\", col = \"lightgray\")"
+  },
+  {
+    "objectID": "slides/25_advanced-statistics.html#example-plantgrowth-1",
+    "href": "slides/25_advanced-statistics.html#example-plantgrowth-1",
+    "title": "MATH167R: Advanced statistical methods",
+    "section": "Example: PlantGrowth",
+    "text": "Example: PlantGrowth\n\nanova_res &lt;- anova(lm(weight ~ group, data = PlantGrowth))\nanova_res\n\nAnalysis of Variance Table\n\nResponse: weight\n          Df  Sum Sq Mean Sq F value  Pr(&gt;F)  \ngroup      2  3.7663  1.8832  4.8461 0.01591 *\nResiduals 27 10.4921  0.3886                  \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+  },
+  {
+    "objectID": "slides/25_advanced-statistics.html#obtaining-a-p-value-with-an-f-test-statistic",
+    "href": "slides/25_advanced-statistics.html#obtaining-a-p-value-with-an-f-test-statistic",
+    "title": "MATH167R: Advanced statistical methods",
+    "section": "Obtaining a \\(p\\)-value with an \\(F\\)-test statistic",
+    "text": "Obtaining a \\(p\\)-value with an \\(F\\)-test statistic\nWhen \\(H_0\\) is true, \\(F\\) follows an \\(F\\)-distribution with \\(\\nu_1=I-1\\) and \\(\\nu_2=I(J-1)\\).\n\nlibrary(ggplot2)\nx &lt;- data.frame(x = seq(0, 8, length.out = 3))\nggplot(x, aes(x = x)) + \n  geom_function(fun = df, args = list(df1 = 2, df2 = 27)) + \n  geom_vline(xintercept = anova_res$`F value`, color = \"red\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "slides/25_advanced-statistics.html#the-f-distribution",
+    "href": "slides/25_advanced-statistics.html#the-f-distribution",
+    "title": "MATH167R: Advanced statistical methods",
+    "section": "The \\(F\\)-distribution",
+    "text": "The \\(F\\)-distribution\nThe \\(F\\) distribution has two parameters:\n\nnumerator degrees of freedom \\(\\nu_1\\)\ndenominator degrees of freedom \\(\\nu_2\\)\n\nThe \\(F\\) distribution was derived as the ratio of (scaled) chi-square random variables and is frequently used to model the null distribution of test statistics.\n\\[F = \\frac{U_1/d_1}{U_2/d_2}\\]\nwhere \\(U_1\\) is chi-square with \\(d_1\\) degrees of freedom, \\(U_2\\) is chi-square with \\(d_2\\) degrees of freedom, and \\(U_1\\) and \\(U_2\\) are independent."
+  },
+  {
+    "objectID": "slides/25_advanced-statistics.html#example-emails",
+    "href": "slides/25_advanced-statistics.html#example-emails",
+    "title": "MATH167R: Advanced statistical methods",
+    "section": "Example: Emails",
+    "text": "Example: Emails\nThe PlantGrowth data provides results from an experiment comparing plant growth under a control and two different treatment conditions.\n\nemails &lt;- read.csv(\"https://www.openintro.org/data/csv/email50.csv\")\nboxplot(num_char ~ spam, data = emails, main = \"Emails data\",\n        ylab = \"Length of email (characters)\", col = \"lightgray\")"
+  },
+  {
+    "objectID": "slides/25_advanced-statistics.html#example-plantgrowth-2",
+    "href": "slides/25_advanced-statistics.html#example-plantgrowth-2",
+    "title": "MATH167R: Advanced statistical methods",
+    "section": "Example: PlantGrowth",
+    "text": "Example: PlantGrowth\n\nanova_res &lt;- anova(lm(num_char ~ spam, data = emails))\nanova_res\n\nAnalysis of Variance Table\n\nResponse: num_char\n          Df Sum Sq Mean Sq F value Pr(&gt;F)\nspam       1    0.1   0.052   3e-04 0.9863\nResiduals 48 8441.3 175.860"
+  },
+  {
+    "objectID": "slides/25_advanced-statistics.html#the-general-linear-f-test",
+    "href": "slides/25_advanced-statistics.html#the-general-linear-f-test",
+    "title": "MATH167R: Advanced statistical methods",
+    "section": "The General Linear \\(F\\)-test",
+    "text": "The General Linear \\(F\\)-test\nIn general, the anova() function can be used to test the fit of a model for sample data.\nFor a simple linear regression case, the \\(F\\) test can be used to compare a full model of the form\n\\[y_i = (\\beta_0+\\beta_1x_{i1})+\\epsilon_i\\]\nwith a reduced model:\n\\[y_i=\\beta_0+\\epsilon_i\\]\nHypotheses:\n\n\\(H_0:y_i=\\beta_0+\\epsilon_i\\)\n\\(H_a: y_i=\\beta_0+\\beta_1x_{i1}+\\epsilon_i\\)"
+  },
+  {
+    "objectID": "slides/25_advanced-statistics.html#example-mtcars",
+    "href": "slides/25_advanced-statistics.html#example-mtcars",
+    "title": "MATH167R: Advanced statistical methods",
+    "section": "Example: mtcars",
+    "text": "Example: mtcars\n\nmy_lm &lt;- lm(mpg ~ wt, data = mtcars)\nanova(my_lm)\n\nAnalysis of Variance Table\n\nResponse: mpg\n          Df Sum Sq Mean Sq F value    Pr(&gt;F)    \nwt         1 847.73  847.73  91.375 1.294e-10 ***\nResiduals 30 278.32    9.28                      \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\nNote that this is equivalent to the Wald test for the coefficient for wt in the univariate case:\n\nsummary(my_lm)\n\n\nCall:\nlm(formula = mpg ~ wt, data = mtcars)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-4.5432 -2.3647 -0.1252  1.4096  6.8727 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)  37.2851     1.8776  19.858  &lt; 2e-16 ***\nwt           -5.3445     0.5591  -9.559 1.29e-10 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 3.046 on 30 degrees of freedom\nMultiple R-squared:  0.7528,    Adjusted R-squared:  0.7446 \nF-statistic: 91.38 on 1 and 30 DF,  p-value: 1.294e-10"
+  },
+  {
+    "objectID": "slides/25_advanced-statistics.html#the-general-linear-f-test-1",
+    "href": "slides/25_advanced-statistics.html#the-general-linear-f-test-1",
+    "title": "MATH167R: Advanced statistical methods",
+    "section": "The General Linear \\(F\\)-test",
+    "text": "The General Linear \\(F\\)-test\nMore generally the \\(F\\)-test can be used to test sets of nested models, when a reduced model can be compared with a full model.\nHypotheses:\n\n\\(H_0: \\text{reduced model true}\\)\n\\(H_a: \\text{full model fits better}\\)"
+  },
+  {
+    "objectID": "slides/25_advanced-statistics.html#example-mtcars-1",
+    "href": "slides/25_advanced-statistics.html#example-mtcars-1",
+    "title": "MATH167R: Advanced statistical methods",
+    "section": "Example: mtcars",
+    "text": "Example: mtcars\n\nmy_lm &lt;- lm(mpg ~ hp + wt, data = mtcars)\nanova(my_lm)\n\nAnalysis of Variance Table\n\nResponse: mpg\n          Df Sum Sq Mean Sq F value    Pr(&gt;F)    \nhp         1 678.37  678.37 100.862 5.987e-11 ***\nwt         1 252.63  252.63  37.561 1.120e-06 ***\nResiduals 29 195.05    6.73                      \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\nWhen we have more than one explanatory variable, the \\(F\\)-test is different from the univariate Wald test.\n\nsummary(my_lm)\n\n\nCall:\nlm(formula = mpg ~ hp + wt, data = mtcars)\n\nResiduals:\n   Min     1Q Median     3Q    Max \n-3.941 -1.600 -0.182  1.050  5.854 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) 37.22727    1.59879  23.285  &lt; 2e-16 ***\nhp          -0.03177    0.00903  -3.519  0.00145 ** \nwt          -3.87783    0.63273  -6.129 1.12e-06 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 2.593 on 29 degrees of freedom\nMultiple R-squared:  0.8268,    Adjusted R-squared:  0.8148 \nF-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12"
+  },
+  {
+    "objectID": "slides/25_advanced-statistics.html#example-mtcars-2",
+    "href": "slides/25_advanced-statistics.html#example-mtcars-2",
+    "title": "MATH167R: Advanced statistical methods",
+    "section": "Example: mtcars",
+    "text": "Example: mtcars\nWe can explicitly specify the full and reduced models:\n\nmy_lm_full &lt;- lm(mpg ~ hp + wt, data = mtcars)\nmy_lm_reduced &lt;- lm(mpg ~ 1, data = mtcars)\nanova(my_lm_full, my_lm_reduced)\n\nAnalysis of Variance Table\n\nModel 1: mpg ~ hp + wt\nModel 2: mpg ~ 1\n  Res.Df     RSS Df Sum of Sq      F    Pr(&gt;F)    \n1     29  195.05                                  \n2     31 1126.05 -2      -931 69.211 9.109e-12 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+  },
+  {
+    "objectID": "slides/25_advanced-statistics.html#logistic-regression",
+    "href": "slides/25_advanced-statistics.html#logistic-regression",
+    "title": "MATH167R: Advanced statistical methods",
+    "section": "Logistic regression",
+    "text": "Logistic regression\nWhen we have binary outcomes \\(Y_1,\\ldots, Y_n\\) where \\(Y_i\\in \\{0, 1\\}\\) for all \\(i\\), it may be inappropriate to use linear regression to model the relationships between \\(Y\\) and covariates \\(X\\).\nLogistic regression can be used to relate the probability that \\(Y_i=1\\) to available covariates."
+  },
+  {
+    "objectID": "slides/25_advanced-statistics.html#logistic-regression-1",
+    "href": "slides/25_advanced-statistics.html#logistic-regression-1",
+    "title": "MATH167R: Advanced statistical methods",
+    "section": "Logistic regression",
+    "text": "Logistic regression\nModel:\n\\[P(Y_i=1)=p_i\\] \\[\\text{logit}(p_i)=\\log\\left(\\frac{p_i}{1-p_i}\\right)=\\mathbf{x}_i^\\top\\boldsymbol\\beta\\] where \\(\\mathbf{X}_i\\) is the covariate vector for individual \\(i\\) and \\(\\boldsymbol\\beta\\) is a vector of regression covariates.\nNote that the logit transformation has domain \\((0,1)\\) and range \\((-\\infty, \\infty)\\)."
+  },
+  {
+    "objectID": "slides/25_advanced-statistics.html#logistic-regression-2",
+    "href": "slides/25_advanced-statistics.html#logistic-regression-2",
+    "title": "MATH167R: Advanced statistical methods",
+    "section": "Logistic regression",
+    "text": "Logistic regression\nWhen we have only one covariate \\(x\\), the model is as follows:\n\\[\\text{logit}(p(x))=\\log\\left(\\frac{p(x)}{1-p(x)}\\right)=\\beta_0+\\beta_1 x\\]\nwhere \\(p(x)\\) represents the probability that an individual with covariate value \\(x\\) experiences the response/event of interest."
+  },
+  {
+    "objectID": "slides/25_advanced-statistics.html#example-challenger-disaster",
+    "href": "slides/25_advanced-statistics.html#example-challenger-disaster",
+    "title": "MATH167R: Advanced statistical methods",
+    "section": "Example: Challenger disaster",
+    "text": "Example: Challenger disaster\nOn January 28, 1986, the Challenger space shuttle suffered an accident shortly after launch, killing all crew members on board. An investigation suspected that damage to a set of critical parts called O-rings caused the disaster. It is believed that the damage is related to the temperature at launch time. The following data summarize data on O-rings for 23 shuttle missions.\n\norings &lt;- readr::read_csv(\"https://www.openintro.org/data/csv/orings.csv\")\nhead(orings)\n\n# A tibble: 6 × 4\n  mission temperature damaged undamaged\n    &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;\n1       1          53       5         1\n2       2          57       1         5\n3       3          58       1         5\n4       4          63       1         5\n5       5          66       0         6\n6       6          67       0         6"
+  },
+  {
+    "objectID": "slides/25_advanced-statistics.html#example-challenger-disaster-1",
+    "href": "slides/25_advanced-statistics.html#example-challenger-disaster-1",
+    "title": "MATH167R: Advanced statistical methods",
+    "section": "Example: Challenger disaster",
+    "text": "Example: Challenger disaster\nThis plot visualizes the empirical proportion of damaged O-rings for each mission:\n\nplot((damaged / 6) ~ temperature, data = orings, pch = 16,\n     ylab = \"Proportion of O-rings damaged\", xlab = \"Temperature (F)\")"
+  },
+  {
+    "objectID": "slides/25_advanced-statistics.html#example-challenger-disaster-2",
+    "href": "slides/25_advanced-statistics.html#example-challenger-disaster-2",
+    "title": "MATH167R: Advanced statistical methods",
+    "section": "Example: Challenger disaster",
+    "text": "Example: Challenger disaster\nThe glm() function can be used to fit generalized linear models including logistic regression models. The family argument is used to specify the distribution of the response variable (in this case, binomial for a logistic rgression).\n\norings_res &lt;- glm((damaged &gt; 0) ~ temperature, data = orings, family = binomial)\nsummary(orings_res)\n\n\nCall:\nglm(formula = (damaged &gt; 0) ~ temperature, family = binomial, \n    data = orings)\n\nCoefficients:\n            Estimate Std. Error z value Pr(&gt;|z|)  \n(Intercept)  15.0429     7.3786   2.039   0.0415 *\ntemperature  -0.2322     0.1082  -2.145   0.0320 *\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 28.267  on 22  degrees of freedom\nResidual deviance: 20.315  on 21  degrees of freedom\nAIC: 24.315\n\nNumber of Fisher Scoring iterations: 5"
+  },
+  {
+    "objectID": "slides/25_advanced-statistics.html#example-challenger-disaster-3",
+    "href": "slides/25_advanced-statistics.html#example-challenger-disaster-3",
+    "title": "MATH167R: Advanced statistical methods",
+    "section": "Example: Challenger disaster",
+    "text": "Example: Challenger disaster\nHere, our estimate of \\(\\beta_0\\) is \\(b_0=15.04\\) and our estimate of \\(\\beta_1\\) is \\(b_1=-.23\\).\nWe can interpret \\(\\beta_1\\) as follows: for each additional degree of ambient temperature, the log-odds of experiencing an O-ring failure decreases by \\(.23\\).\nIn other words, the odds changes by a factor of \\(\\exp(.2322)\\approx.79\\) as temperature increases by one degree.\nNote that the \\(p\\)-value for \\(\\beta_1\\) is significant at the \\(.05\\) level, suggesting evidence that temperature is associated with O-ring failure."
+  },
+  {
+    "objectID": "slides/25_advanced-statistics.html#example-challenger-disaster-4",
+    "href": "slides/25_advanced-statistics.html#example-challenger-disaster-4",
+    "title": "MATH167R: Advanced statistical methods",
+    "section": "Example: Challenger disaster",
+    "text": "Example: Challenger disaster\nWe can use many of the functions we used with lm objects, including:\n\nfitted() returns the predicted probabilities for a logistic regression\npredict() can be used to generate predictions\nplot() returns a series of diagnostic plots\nresiduals() returns residuals–not that these are not usually the typical observed minus predicted residuals.\nanova() can be used to assess the model fit for glm objects."
+  },
+  {
+    "objectID": "slides/25_advanced-statistics.html#example-challenger-disaster-5",
+    "href": "slides/25_advanced-statistics.html#example-challenger-disaster-5",
+    "title": "MATH167R: Advanced statistical methods",
+    "section": "Example: Challenger disaster",
+    "text": "Example: Challenger disaster\n\nfitted(orings_res)\n\n         1          2          3          4          5          6          7 \n0.93924781 0.85931657 0.82884484 0.60268105 0.43049313 0.37472428 0.37472428 \n         8          9         10         11         12         13         14 \n0.37472428 0.32209405 0.27362105 0.22996826 0.22996826 0.22996826 0.22996826 \n        15         16         17         18         19         20         21 \n0.15804910 0.12954602 0.08554356 0.08554356 0.06904407 0.06904407 0.04454055 \n        22         23 \n0.03564141 0.02270329"
+  },
+  {
+    "objectID": "slides/25_advanced-statistics.html#example-challenger-disaster-6",
+    "href": "slides/25_advanced-statistics.html#example-challenger-disaster-6",
+    "title": "MATH167R: Advanced statistical methods",
+    "section": "Example: Challenger disaster",
+    "text": "Example: Challenger disaster\n\nbase_res &lt;- glm((damaged &gt; 0) ~ 1, data = orings, family = binomial)\nanova(orings_res, base_res, test = \"F\")\n\nAnalysis of Deviance Table\n\nModel 1: (damaged &gt; 0) ~ temperature\nModel 2: (damaged &gt; 0) ~ 1\n  Resid. Df Resid. Dev Df Deviance     F   Pr(&gt;F)   \n1        21     20.315                              \n2        22     28.267 -1   -7.952 7.952 0.004804 **\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+  },
+  {
+    "objectID": "slides/25_advanced-statistics.html#fishers-exact-test",
+    "href": "slides/25_advanced-statistics.html#fishers-exact-test",
+    "title": "MATH167R: Advanced statistical methods",
+    "section": "Fisher’s exact test",
+    "text": "Fisher’s exact test\nAgresti (1990): A British woman claimed to be able to distinguish whether milk or tea was added to the cup first. To test, she was given 8 cups of tea, in four of which milk was added first. The null hypothesis is that there is no association between the true order of pouring and the woman’s guess. The alternative that there is a positive association (that the odds ratio is greater than 1)."
+  },
+  {
+    "objectID": "slides/25_advanced-statistics.html#fishers-exact-test-1",
+    "href": "slides/25_advanced-statistics.html#fishers-exact-test-1",
+    "title": "MATH167R: Advanced statistical methods",
+    "section": "Fisher’s exact test",
+    "text": "Fisher’s exact test\n\nTeaTasting &lt;-\n  matrix(c(3, 1, 1, 3),\n         nrow = 2,\n         dimnames = list(Guess = c(\"Milk\", \"Tea\"),\n                         Truth = c(\"Milk\", \"Tea\")))\nfisher.test(TeaTasting, alternative = \"greater\")\n\n\n    Fisher's Exact Test for Count Data\n\ndata:  TeaTasting\np-value = 0.2429\nalternative hypothesis: true odds ratio is greater than 1\n95 percent confidence interval:\n 0.3135693       Inf\nsample estimates:\nodds ratio \n  6.408309"
+  },
+  {
+    "objectID": "slides/25_advanced-statistics.html#simulations",
+    "href": "slides/25_advanced-statistics.html#simulations",
+    "title": "MATH167R: Advanced statistical methods",
+    "section": "Simulations",
+    "text": "Simulations"
+  },
+  {
     "objectID": "slides/15_environment-scope.html#overview-of-today",
     "href": "slides/15_environment-scope.html#overview-of-today",
     "title": "MATH167R: Environment and Scope",
@@ -4461,121 +4692,394 @@
   {
     "objectID": "slides/26_prediction.html#overview-of-today",
     "href": "slides/26_prediction.html#overview-of-today",
-    "title": "MATH167R: Sampling distributions",
+    "title": "MATH167R: Prediction",
     "section": "Overview of today",
-    "text": "Overview of today\n\nanova\nChi squared tests"
+    "text": "Overview of today\n\nTraining and Testing\nCross-validation\nStatistical Prediction Algorithms\n\nGoal: Learn the concepts, terminology, and techniques in statistical prediction."
   },
   {
-    "objectID": "slides/26_prediction.html#sampling-distributions",
-    "href": "slides/26_prediction.html#sampling-distributions",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Sampling distributions",
-    "text": "Sampling distributions\nWithout explicitly saying so, we have been simulating sampling distributions during our simulations.\nRecall: A sampling distribution is the probability distribution of a sample-based statistic.\nExample: If \\(X_1,\\ldots, X_{100}\\) are iid random variables with variance \\(1\\), what is the distribution of the sample mean \\(\\overline{X}\\)?"
+    "objectID": "slides/26_prediction.html#acknowledgement",
+    "href": "slides/26_prediction.html#acknowledgement",
+    "title": "MATH167R: Prediction",
+    "section": "Acknowledgement",
+    "text": "Acknowledgement\nThis lecture borrows heavily from the Ryan Tibshirani’s Statistical Prediction lecture for Statistical Computing at Carnegie Mellon University."
   },
   {
-    "objectID": "slides/26_prediction.html#simulating-a-sampling-distribution",
-    "href": "slides/26_prediction.html#simulating-a-sampling-distribution",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Simulating a sampling distribution",
-    "text": "Simulating a sampling distribution\nExample simulation: Suppose \\(X_1,\\ldots, X_{100}\\sim N(0,1)\\).\n\nset.seed(123)\nXbar &lt;- replicate(10000, mean(rnorm(100)))\nhist(Xbar, main = \"Sampling distribution of mean of 100 N(0, 1) variables\")"
+    "objectID": "slides/26_prediction.html#recall-regression",
+    "href": "slides/26_prediction.html#recall-regression",
+    "title": "MATH167R: Prediction",
+    "section": "Recall: Regression",
+    "text": "Recall: Regression\nAssume we have some data:\n\n\\(X_1,\\ldots, X_p\\): \\(p\\) independent variables/explanatory variables/covariates/predictors\n\\(Y\\): the dependent variables/response/outcome.\n\nWe want to know the relationship between our covariates and our response, we can do this with a method called regression. Regression provides us with a statistical method to conduct inference and prediction."
   },
   {
-    "objectID": "slides/26_prediction.html#simulating-a-sampling-distribution-1",
-    "href": "slides/26_prediction.html#simulating-a-sampling-distribution-1",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Simulating a sampling distribution",
-    "text": "Simulating a sampling distribution\nWhat if \\(X_1,\\ldots, X_{100}\\sim \\mathrm{Exp}(1)\\)?\n\nset.seed(123)\nXbar &lt;- replicate(10000, mean(rexp(100, rate = 1)))\nhist(Xbar, main = \"Sampling distribution of mean of 100 Exponential(1) variables\")"
+    "objectID": "slides/26_prediction.html#recall-regression-1",
+    "href": "slides/26_prediction.html#recall-regression-1",
+    "title": "MATH167R: Prediction",
+    "section": "Recall: Regression",
+    "text": "Recall: Regression\n\ninference: assess the relationship between our variables, our statistical model as a whole, predictor importance\n\nWhat is the relationship between sleep and GPA?\nIs parents’ education or parents’ income more important for explaining income?\n\nprediction: predict new/future outcomes from new/future covariates\n\nCan we predict test scores based on hours spent studying?"
   },
   {
-    "objectID": "slides/26_prediction.html#simulating-a-sampling-distribution-2",
-    "href": "slides/26_prediction.html#simulating-a-sampling-distribution-2",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Simulating a sampling distribution",
-    "text": "Simulating a sampling distribution\nWhat if \\(X_1,\\ldots, X_{100}\\sim \\mathrm{Poisson}(1)\\)?\n\nset.seed(123)\nXbar &lt;- replicate(10000, mean(rpois(100, lambda = 1)))\nhist(Xbar, main = \"Sampling distribution of mean of 100 Poisson(1) variables\")"
+    "objectID": "slides/26_prediction.html#linear-regression",
+    "href": "slides/26_prediction.html#linear-regression",
+    "title": "MATH167R: Prediction",
+    "section": "Linear Regression",
+    "text": "Linear Regression\nGiven our response \\(Y\\) and our predictors \\(X_1, \\ldots, X_p\\), a linear regression model takes the form:\n\\[\n\\begin{align}\nY &= \\beta_0 + \\beta_1 X_1 + \\cdots + \\beta_p X_p + \\epsilon,\\\\\n\\epsilon &\\sim N(0,\\sigma^2)\n\\end{align}\n\\]\nPreviously, we focused on using this model for inference (e.g. \\(H_0: \\beta_1 = 0\\)). Today, we are shifting our focus to prediction."
   },
   {
-    "objectID": "slides/26_prediction.html#simulating-a-sampling-distribution-3",
-    "href": "slides/26_prediction.html#simulating-a-sampling-distribution-3",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Simulating a sampling distribution",
-    "text": "Simulating a sampling distribution\nBy the central limit theorem, all of these sampling distributions are asymptotically Gaussian with variance 1 (though the mean values differ between the three). Since \\(n=100\\) is fairly large (for these examples), all of the previous examples are close to Gaussian.\nWhat about if \\(n\\) is smaller? Or if we consider other distributions?\nSimulation is a powerful strategy for testing out methods:\n\nSuppose you wish to know… is \\(n\\) large?\nCreate a simulation that generates data that looks like your real world data.\nEvaluate whether the results are reasonable/accurate using simulated data."
+    "objectID": "slides/26_prediction.html#statistical-prediction",
+    "href": "slides/26_prediction.html#statistical-prediction",
+    "title": "MATH167R: Prediction",
+    "section": "Statistical Prediction",
+    "text": "Statistical Prediction\nOften, we use a linear model even when we know that the assumptions for inference are broken: for example, when errors are not normally distributed.\nThough the model may be wrong, it may still be useful for learning about the relationship between response and covariates.\nIn addition, we can use a working model for prediction."
   },
   {
-    "objectID": "slides/26_prediction.html#smaller-sample-sizes",
-    "href": "slides/26_prediction.html#smaller-sample-sizes",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Smaller sample sizes",
-    "text": "Smaller sample sizes\n\nset.seed(123)\nXbar_normal &lt;- replicate(10000, mean(rnorm(10)))\nXbar_exp &lt;- replicate(10000, mean(rexp(10, rate = 1)))\nXbar_poisson &lt;- replicate(10000, mean(rpois(10, lambda = 1)))\npar(mfrow = c(1, 3))\nhist(Xbar_normal, main = \"N(0, 1)\")\nhist(Xbar_exp, main = \"Exp(1)\")\nhist(Xbar_poisson, main = \"Poisson(1)\")"
+    "objectID": "slides/26_prediction.html#training-and-testing-data",
+    "href": "slides/26_prediction.html#training-and-testing-data",
+    "title": "MATH167R: Prediction",
+    "section": "Training and testing data",
+    "text": "Training and testing data\nWhen training predictive algorithms, it is common to split your data into two categories:\nTraining data: data used to train/fit our model\nTest data: data used to evaluate/test the performance of our model\nSuppose we have training data \\(X_{i1}, \\ \\ldots,\\ X_{ip}, Y_i, \\ i = 1,\\ldots,n\\) which we use to estimate regression coefficents \\(\\hat\\beta_0, \\ \\hat\\beta_1, \\ldots \\hat\\beta_p\\) (Recall: we use \\(\\hat{}\\) “hats” to indicate estimates)."
   },
   {
-    "objectID": "slides/26_prediction.html#other-statistics",
-    "href": "slides/26_prediction.html#other-statistics",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Other statistics",
-    "text": "Other statistics\nWhat if we want the sampling distribution of the maximum? For each of these population models, the sampling distribution of the maximum is different.\n\nset.seed(123)\nXmax_normal &lt;- replicate(10000, max(rnorm(10)))\nXmax_exp &lt;- replicate(10000, max(rexp(10, rate = 1)))\nXmax_poisson &lt;- replicate(10000, max(rpois(10, lambda = 1)))\npar(mfrow = c(1, 3))\nhist(Xmax_normal, main = \"N(0, 1)\")\nhist(Xmax_exp, main = \"Exp(1)\")\nhist(Xmax_poisson, main = \"Poisson(1)\")"
+    "objectID": "slides/26_prediction.html#making-predictions",
+    "href": "slides/26_prediction.html#making-predictions",
+    "title": "MATH167R: Prediction",
+    "section": "Making predictions",
+    "text": "Making predictions\nNow suppose we are given new testing data \\(X^*_1,\\ \\ldots, X^*_{p}\\) and asked to predict the associated \\(Y^∗\\). Using our estimated linear model, the prediction is: \\[\\widehat{Y}^* = \\hat\\beta_0 + \\hat{\\beta}_1 X^*_1 + \\cdots + \\hat{\\beta}_p X^*_p\\]\nGiven our prediction\n\\[\\hat{Y} = \\hat\\beta_0 + \\hat{\\beta}_1 X^*_1 + \\cdots + \\hat{\\beta}_p X^*_p\\] We define the mean squared error, or mean squared prediction error, as\n\\[\\mathbb{E}[(Y^* -\\hat{Y}^*)^2].\\]\nIn other words, the test error is defined as the expected squared difference between a new prediction and the truth, where the expectation is taken over the population distribution of test data."
   },
   {
-    "objectID": "slides/26_prediction.html#transformations",
-    "href": "slides/26_prediction.html#transformations",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Transformations",
-    "text": "Transformations\nWe can easily simulate sampling distributions for statistics summarizing the distribution of random variables that are defined as transformations of other random variables.\n\nset.seed(123)\nXbar_normal &lt;- replicate(10000, mean(rnorm(10) ^ 2))\nXbar_exp &lt;- replicate(10000, mean(rexp(10, rate = 1) ^ 2))\nXbar_poisson &lt;- replicate(10000, mean(rpois(10, lambda = 1) ^ 2))\npar(mfrow = c(1, 3))\nhist(Xbar_normal, main = \"N(0, 1) squared\")\nhist(Xbar_exp, main = \"Exp(1) squared\")\nhist(Xbar_poisson, main = \"Poisson(1) squared\")"
+    "objectID": "slides/26_prediction.html#test-error",
+    "href": "slides/26_prediction.html#test-error",
+    "title": "MATH167R: Prediction",
+    "section": "Test error",
+    "text": "Test error\nMean squared prediction error: \\(\\mathbb{E}[(Y^* -\\hat{Y}^*)^2],\\) the expected squared difference between a new prediction and the truth.\nThe MSPE quantifies the predictive power of our model, but we do not actually have access to the full poulation distribution.\nAs such, we must estimate the MSPE using our data in order to use it to assess our model.\nIn particular, we could use the MSPE for:\n\npredictive assessment: understanding the magnitude of errors we should expect when making future predictions\nmodel/method selection: choosing among multiple candidate models."
   },
   {
-    "objectID": "slides/26_prediction.html#exercise",
-    "href": "slides/26_prediction.html#exercise",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Exercise",
-    "text": "Exercise\n\nWrite code to create a histogram of the sampling distribution of the sample mean \\(\\overline{Y}\\) of \\(Y_1,\\ldots, Y_{10}\\) where \\(Y_i=\\sin(X_i)\\) and \\(X_1,\\ldots, X_{10}\\) are iid Uniform(0, 1) random variables."
+    "objectID": "slides/26_prediction.html#training-error",
+    "href": "slides/26_prediction.html#training-error",
+    "title": "MATH167R: Prediction",
+    "section": "Training Error",
+    "text": "Training Error\nA natural estimator for the test error might be the observed average training error:\n\\[\\dfrac{1}{n}\\sum_{i=1}^n (Y_i - \\hat{Y}_i)^2.\\]\nCan you think of a problem with this approach?\n\nIn general, this will be too optimistic. Why? We obtained parameter estimates \\(\\widehat{\\beta}_0,\\ \\ldots,\\ \\widehat{\\beta}_p\\) based on our training data."
   },
   {
-    "objectID": "slides/26_prediction.html#resampling-methods",
-    "href": "slides/26_prediction.html#resampling-methods",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Resampling methods",
-    "text": "Resampling methods\nThe previous simulations are all based on parametric models (normal, exponential, Poisson). However, we can also simulate sampling distributions without parametric assumptions on the data generating mechanism.\nSuppose we know \\(X_1,\\ldots, X_{20}\\sim \\mathrm{Exp}(1)\\). The sampling distribution can be simulated as follows:\n\nset.seed(123)\nXbar_exp &lt;- replicate(10000, mean(rexp(20, rate = 1)))\nhist(Xbar_exp)"
+    "objectID": "slides/26_prediction.html#training-error-1",
+    "href": "slides/26_prediction.html#training-error-1",
+    "title": "MATH167R: Prediction",
+    "section": "Training Error",
+    "text": "Training Error\nMore specifically (with a linear regression model), we chose parameters to minimize the squared errors (hence, least squares).\nWe cannot expect this error rate to generalize to test data.\nCritically, the more complex our model, the more optimistic our training data will be as an estimate for our test data"
   },
   {
-    "objectID": "slides/26_prediction.html#resampling-methods-1",
-    "href": "slides/26_prediction.html#resampling-methods-1",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Resampling methods",
-    "text": "Resampling methods\nWhat if we observe \\(X_1,\\ldots, X_{20}\\), but we don’t know that \\(X_i\\) is exponentially distributed? We could just try the normal approximation to approximate the sampling distribution:\n\nX &lt;- rexp(20, rate = 1)\nx_axis &lt;- seq(0, 3, length.out = 1000)\n\n# plot \"true\" simulated sampling distribution\nhist(Xbar_exp, freq = F, ylim = c(0, 3))\n\n# plot normal theory\nlines(x_axis, dnorm(x_axis, mean = mean(X), sd = sd(X) / sqrt(20)), col = 'red')"
+    "objectID": "slides/26_prediction.html#example-training-error-vs-test-error",
+    "href": "slides/26_prediction.html#example-training-error-vs-test-error",
+    "title": "MATH167R: Prediction",
+    "section": "Example: Training Error vs Test Error",
+    "text": "Example: Training Error vs Test Error\n\nlibrary(ggpubr)\n# generate data\nset.seed(302)\nn &lt;- 30\nx &lt;- sort(runif(n, -3, 3))\ny &lt;- 2*x + 2*rnorm(n)\nx_test &lt;- sort(runif(n, -3, 3))\ny_test &lt;- 2*x_test + 2*rnorm(n)\ndf_train &lt;- data.frame(\"x\" = x, \"y\" = y)\ndf_test &lt;- data.frame(\"x\" = x_test, \"y\" = y_test)\n\n# store a theme\nmy_theme &lt;- theme_bw(base_size = 16) + \n  theme(plot.title = element_text(hjust = 0.5, face = \"bold\"),\n        plot.subtitle = element_text(hjust = 0.5))\n\n# generate plots\ng_train &lt;- ggplot(df_train, aes(x = x, y = y)) + geom_point() +\n  xlim(-3, 3) + ylim(min(y, y_test), max(y, y_test)) + \n  labs(title = \"Training Data\") + my_theme\ng_test &lt;- ggplot(df_test, aes(x = x, y = y)) + geom_point() +\n  xlim(-3, 3) + ylim(min(y, y_test), max(y, y_test)) + \n  labs(title = \"Test Data\") + my_theme\nggarrange(g_train, g_test) # from ggpubr, to put side-by-side"
   },
   {
-    "objectID": "slides/26_prediction.html#bootstrap-samples",
-    "href": "slides/26_prediction.html#bootstrap-samples",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Bootstrap samples",
-    "text": "Bootstrap samples\nBootstrapping is a resampling method that uses random samples with replacement from the sample data to approximate the sampling distribution of sample-based statistics.\n\nprint(sort(X))\n\n [1] 0.00816693 0.06263315 0.11949335 0.12600941 0.14474580 0.14660666\n [7] 0.15582213 0.17485277 0.23514296 0.35492087 0.48980207 0.52215538\n[13] 0.72200938 1.27034542 1.56551624 1.74866229 1.82459209 1.84311722\n[19] 2.14225230 2.24995288\n\n# sample with replacement from X\nX_resample &lt;- sample(X, size = 20, replace = TRUE)\nprint(sort(X_resample))\n\n [1] 0.06263315 0.11949335 0.11949335 0.11949335 0.11949335 0.12600941\n [7] 0.14474580 0.14474580 0.15582213 0.15582213 0.17485277 0.35492087\n[13] 0.35492087 0.48980207 0.72200938 0.72200938 1.56551624 2.14225230\n[19] 2.24995288 2.24995288"
+    "objectID": "slides/26_prediction.html#example-training-error-vs-test-error-1",
+    "href": "slides/26_prediction.html#example-training-error-vs-test-error-1",
+    "title": "MATH167R: Prediction",
+    "section": "Example: Training Error vs Test Error",
+    "text": "Example: Training Error vs Test Error"
   },
   {
-    "objectID": "slides/26_prediction.html#bootstrap-samples-1",
-    "href": "slides/26_prediction.html#bootstrap-samples-1",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Bootstrap samples",
-    "text": "Bootstrap samples\nWe can repeatedly resample from \\(X\\), then compute the resample sample means and plot the distribution:\n\nbootstrap_Xbar &lt;- replicate(10000, mean(sample(X, size = 20, replace = TRUE)))\nhist(bootstrap_Xbar)"
+    "objectID": "slides/26_prediction.html#example-training-error-vs-test-error-2",
+    "href": "slides/26_prediction.html#example-training-error-vs-test-error-2",
+    "title": "MATH167R: Prediction",
+    "section": "Example: Training Error vs Test Error",
+    "text": "Example: Training Error vs Test Error\n\n# Fit linear model and calculate training error\nlm_fit &lt;- lm(y ~ x, data = df_train)\nyhat_train &lt;- predict(lm_fit)\n# (y_i - yhat_i)^2\ntrain_err &lt;- mean((df_train$y - yhat_train)^2)\n\n# Calculate testing error\nyhat_test &lt;- predict(lm_fit, data.frame(x = df_test$x))\ntest_err &lt;- mean((df_test$y - yhat_test)^2)\n\n# Add linear model and error text to plot\ng_train2 &lt;- g_train + \n  labs(subtitle = paste(\"Training error:\", round(train_err, 3))) +\n  geom_line(aes(y = fitted(lm_fit)), col = \"red\", lwd = 1.5)\ng_test2 &lt;- g_test + \n  labs(subtitle = paste(\"Test error:\", round(test_err, 3))) +\n  geom_line(aes(y = fitted(lm_fit), x = df_train$x), col = \"red\", lwd = 1.5)\n\nggarrange(g_train2, g_test2)"
   },
   {
-    "objectID": "slides/26_prediction.html#bootstrap-samples-2",
-    "href": "slides/26_prediction.html#bootstrap-samples-2",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Bootstrap samples",
-    "text": "Bootstrap samples\nWe can compare the bootstrap sampling distributions and true sampling distributions. In this case, the bootstrap does not seem that different from the normal approximation.\n\nlibrary(ggplot2)\nplot_dat &lt;-\n  data.frame(Xbar = c(Xbar_exp, bootstrap_Xbar),\n             source = rep(c(\"Parametric (Exp)\", \"Bootstrap\"), each = 10000))\nggplot(plot_dat, aes(x = Xbar, color = source)) +\n  geom_density() +\n  geom_function(fun = dnorm, \n                args = list(mean = mean(X), sd = sd(X) / sqrt(20)),\n                aes(color = \"Parametric (Normal)\"))"
+    "objectID": "slides/26_prediction.html#example-training-error-vs-test-error-for-linear-model",
+    "href": "slides/26_prediction.html#example-training-error-vs-test-error-for-linear-model",
+    "title": "MATH167R: Prediction",
+    "section": "Example: Training Error vs Test Error for linear model",
+    "text": "Example: Training Error vs Test Error for linear model"
   },
   {
-    "objectID": "slides/26_prediction.html#bootstrap-confidence-intervals",
-    "href": "slides/26_prediction.html#bootstrap-confidence-intervals",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Bootstrap confidence intervals",
-    "text": "Bootstrap confidence intervals\nWe can take appropriate quantiles of the bootstrap samples to construct a bootstrap confidence interval using the quantile() function:\n\nquantile(bootstrap_Xbar, probs = c(.025, .975))\n\n    2.5%    97.5% \n0.467759 1.157051"
+    "objectID": "slides/26_prediction.html#example-degree-5-polynomial",
+    "href": "slides/26_prediction.html#example-degree-5-polynomial",
+    "title": "MATH167R: Prediction",
+    "section": "Example: Degree 5 polynomial",
+    "text": "Example: Degree 5 polynomial\n\n# Fit 5 degree polynomial and calculate training error\nlm_fit_5 &lt;- lm(y ~ poly(x, 5), data = df_train)\nyhat_train_5 &lt;- predict(lm_fit_5)\ntrain_err_5 &lt;- mean((df_train$y - yhat_train_5)^2)\n\n# Calculate testing error\nyhat_test_5 &lt;- predict(lm_fit_5, data.frame(x = df_test$x))\ntest_err_5 &lt;- mean((df_test$y - yhat_test_5)^2)\n\n# Create smooth line for plotting\nx_fit &lt;- data.frame(x = seq(-3, 3, length = 100))\nline_fit &lt;- data.frame(x = x_fit, y = predict(lm_fit_5, newdata = x_fit))\n                       \n# Add linear model and error text to plot\ng_train3 &lt;- g_train + \n  labs(subtitle = paste(\"Training error:\", round(train_err_5, 3))) +\n  geom_line(data = line_fit, aes(y = y, x = x), col = \"red\", lwd = 1.5)\ng_test3 &lt;- g_test + \n  labs(subtitle = paste(\"Test error:\", round(test_err_5, 3))) +\n  geom_line(data = line_fit, aes(y = y, x = x), col = \"red\", lwd = 1.5)\n\nggarrange(g_train3, g_test3)"
   },
   {
-    "objectID": "slides/26_prediction.html#why-bootstrap",
-    "href": "slides/26_prediction.html#why-bootstrap",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Why bootstrap?",
-    "text": "Why bootstrap?\nIn this case, inference based on bootstrapping does not seem better than the normal approximation based on the central limit theorem.\nHowever, for many cases, we may not have a simple parametric approximation to the true sampling distribution. For example, suppose we wish to compute the sampling distribution of the sample median.\nNote however that the bootstrap may not work well for all statistics, such as the minimum (why not?)."
+    "objectID": "slides/26_prediction.html#example-degree-5-polynomial-1",
+    "href": "slides/26_prediction.html#example-degree-5-polynomial-1",
+    "title": "MATH167R: Prediction",
+    "section": "Example: Degree 5 polynomial",
+    "text": "Example: Degree 5 polynomial"
+  },
+  {
+    "objectID": "slides/26_prediction.html#example-degree-10-polynomial",
+    "href": "slides/26_prediction.html#example-degree-10-polynomial",
+    "title": "MATH167R: Prediction",
+    "section": "Example: Degree 10 polynomial",
+    "text": "Example: Degree 10 polynomial\n\n# Fit 10 degree polynomial and calculate training error\nlm_fit_10 &lt;- lm(y ~ poly(x, 10), data = df_train)\nyhat_train_10 &lt;- predict(lm_fit_10)\ntrain_err_10 &lt;- mean((df_train$y - yhat_train_10)^2)\n\n# Calculate testing error\nyhat_test_10 &lt;- predict(lm_fit_10, data.frame(x = df_test$x))\ntest_err_10 &lt;- mean((df_test$y - yhat_test_10)^2)\n\n# Create smooth line for plotting\nx_fit &lt;- data.frame(x = seq(-3, 3, length = 100))\nline_fit &lt;- data.frame(x = x_fit, y = predict(lm_fit_10, newdata = x_fit))\n                       \n# Add linear model and error text to plot\ng_train4 &lt;- g_train + \n  labs(subtitle = paste(\"Training error:\", round(train_err_10, 3))) +\n  geom_line(data = line_fit, aes(y = y, x = x), col = \"red\", lwd = 1.5)\ng_test4 &lt;- g_test + \n  labs(subtitle = paste(\"Test error:\", round(test_err_10, 3))) +\n  geom_line(data = line_fit, aes(y = y, x = x), col = \"red\", lwd = 1.5)\n\nggarrange(g_train4, g_test4)"
+  },
+  {
+    "objectID": "slides/26_prediction.html#example-degree-10-polynomial-1",
+    "href": "slides/26_prediction.html#example-degree-10-polynomial-1",
+    "title": "MATH167R: Prediction",
+    "section": "Example: Degree 10 polynomial",
+    "text": "Example: Degree 10 polynomial"
+  },
+  {
+    "objectID": "slides/26_prediction.html#example-degree-15-polynomial",
+    "href": "slides/26_prediction.html#example-degree-15-polynomial",
+    "title": "MATH167R: Prediction",
+    "section": "Example: Degree 15 polynomial",
+    "text": "Example: Degree 15 polynomial\n\n# Fit 15 degree polynomial and calculate training error\nlm_fit_15 &lt;- lm(y ~ poly(x, 15), data = df_train)\nyhat_train_15 &lt;- predict(lm_fit_15)\ntrain_err_15 &lt;- mean((df_train$y - yhat_train_15)^2)\n\n# Calculate testing error\nyhat_test_15 &lt;- predict(lm_fit_15, data.frame(x = df_test$x))\ntest_err_15 &lt;- mean((df_test$y - yhat_test_15)^2)\n\n# Create smooth line for plotting\nx_fit &lt;- data.frame(x = seq(-3, 3, length = 100))\nline_fit &lt;- data.frame(x = x_fit, y = predict(lm_fit_15, newdata = x_fit))\n                       \n# Add linear model and error text to plot\ng_train5 &lt;- g_train + \n  labs(subtitle = paste(\"Training error:\", round(train_err_15, 3))) +\n  geom_line(data = line_fit, aes(y = y, x = x), col = \"red\", lwd = 1.5)\ng_test5 &lt;- g_test + \n  labs(subtitle = paste(\"Test error:\", round(test_err_15, 3))) +\n  geom_line(data = line_fit, aes(y = y, x = x), col = \"red\", lwd = 1.5)\n\nggarrange(g_train5, g_test5)"
+  },
+  {
+    "objectID": "slides/26_prediction.html#example-degree-15-polynomial-1",
+    "href": "slides/26_prediction.html#example-degree-15-polynomial-1",
+    "title": "MATH167R: Prediction",
+    "section": "Example: Degree 15 polynomial",
+    "text": "Example: Degree 15 polynomial"
+  },
+  {
+    "objectID": "slides/26_prediction.html#bias-variance-tradeoff",
+    "href": "slides/26_prediction.html#bias-variance-tradeoff",
+    "title": "MATH167R: Prediction",
+    "section": "Bias-Variance Tradeoff",
+    "text": "Bias-Variance Tradeoff\nThe formula for test error can be decomposed as a function of the bias and variance of our estimates.\n\nBias: the expected difference between our estimate and the truth\nVariance: the variability of our estimate of the truth"
+  },
+  {
+    "objectID": "slides/26_prediction.html#bias-variance-tradeoff-1",
+    "href": "slides/26_prediction.html#bias-variance-tradeoff-1",
+    "title": "MATH167R: Prediction",
+    "section": "Bias-Variance Tradeoff",
+    "text": "Bias-Variance Tradeoff\n\nImage Credit: An Introduction to Statistical Learning by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani"
+  },
+  {
+    "objectID": "slides/26_prediction.html#bias-variance-tradeoff-2",
+    "href": "slides/26_prediction.html#bias-variance-tradeoff-2",
+    "title": "MATH167R: Prediction",
+    "section": "Bias-Variance Tradeoff",
+    "text": "Bias-Variance Tradeoff\n\nBias: underfitting, error from missing relevant relationships\nVariance: overfitting, error from high sensitivity\n\n\nImage Source"
+  },
+  {
+    "objectID": "slides/26_prediction.html#bias-variance-tradeoff-3",
+    "href": "slides/26_prediction.html#bias-variance-tradeoff-3",
+    "title": "MATH167R: Prediction",
+    "section": "Bias-Variance Tradeoff",
+    "text": "Bias-Variance Tradeoff\n\nImage Source"
+  },
+  {
+    "objectID": "slides/26_prediction.html#bias-variance-tradeoff-4",
+    "href": "slides/26_prediction.html#bias-variance-tradeoff-4",
+    "title": "MATH167R: Prediction",
+    "section": "Bias-Variance Tradeoff",
+    "text": "Bias-Variance Tradeoff\nIt is easy to fit a model with extremely low variance and extremely high bias, or extremely low bias and extremely high variance, but these models will not have a good test error. Ideally, we would like an estimate that has both low bias and low variance, but this is not always possible!\nAs a general rule of thumb, as we increase the complexity of our model, the bias will decrease but the variance will increase. You can think of our bias decreasing because we are training our model to be more specific to our training data. You can think of the variance increasing because our model will be overfit, and will vary substantially with new training data."
+  },
+  {
+    "objectID": "slides/26_prediction.html#sample-splitting",
+    "href": "slides/26_prediction.html#sample-splitting",
+    "title": "MATH167R: Prediction",
+    "section": "Sample-splitting",
+    "text": "Sample-splitting\nWhere do we get our “training data” and our “test data” in practice? We can’t just simulate more data for our test data in the real world. In practice, we use a technique called sample-splitting:\n\nSplit the data set into two (or more…) parts\nFirst part of data: train the model/method\nSecond part of data: make predictions\nEvaluate observed test error"
+  },
+  {
+    "objectID": "slides/26_prediction.html#sample-splitting-1",
+    "href": "slides/26_prediction.html#sample-splitting-1",
+    "title": "MATH167R: Prediction",
+    "section": "Sample-splitting",
+    "text": "Sample-splitting\n\nlibrary(forcats)\n# Generate data\nset.seed(302)\nn &lt;- 50\nx &lt;- sort(runif(n, -3, 3))\ny &lt;- 2*x + 2*rnorm(n)\n\n# Randomly split data into two parts\ninds &lt;- sample(rep(1:2, length = n))\nsplit &lt;- as.factor(inds) %&gt;%\n  fct_recode(Training = \"1\", Test = \"2\")\ndata &lt;- data.frame(\"x\" = x, \"y\" = y, \"split\" = split)\n\ng_split &lt;- ggplot(data, aes(x = x, y = y, color = split)) + geom_point() +\n  labs(title = \"Sample-splitting\") + my_theme\ng_split"
+  },
+  {
+    "objectID": "slides/26_prediction.html#sample-splitting-2",
+    "href": "slides/26_prediction.html#sample-splitting-2",
+    "title": "MATH167R: Prediction",
+    "section": "Sample-splitting",
+    "text": "Sample-splitting"
+  },
+  {
+    "objectID": "slides/26_prediction.html#sample-splitting-3",
+    "href": "slides/26_prediction.html#sample-splitting-3",
+    "title": "MATH167R: Prediction",
+    "section": "Sample-splitting",
+    "text": "Sample-splitting\n\n# Train on the training split\ndata_train &lt;- data %&gt;% filter(split == \"Training\")\nlm_1 &lt;- lm(y ~ x, data = data_train)\nlm_10 &lt;- lm(y ~ poly(x, 10), data = data_train)\n\n# Predict on the second half\ndata_test &lt;- data |&gt; dplyr::filter(split == \"Test\")\npred_1 &lt;- predict(lm_1, data.frame(x = data_test$x))\npred_10 &lt;- predict(lm_10, data.frame(x = data_test$x))\n\n# Calculate test error\ntest_err_1 &lt;- mean((data_test$y - pred_1)^2)\ntest_err_10 &lt;- mean((data_test$y - pred_10)^2)"
+  },
+  {
+    "objectID": "slides/26_prediction.html#sample-splitting-4",
+    "href": "slides/26_prediction.html#sample-splitting-4",
+    "title": "MATH167R: Prediction",
+    "section": "Sample-splitting",
+    "text": "Sample-splitting\n\n# Create smooth lines for plotting\nx_fit &lt;- data.frame(x = seq(min(data$x), max(data$x), length = 100))\nline_fit_1 &lt;- data.frame(x = x_fit, y = predict(lm_1, newdata = x_fit))\nline_fit_10 &lt;- data.frame(x = x_fit, y = predict(lm_10, newdata = x_fit))\n                       \n# Add linear model and error text to plot\ng_split1 &lt;- g_split + \n  labs(subtitle = paste(\"Degree 1 Test error:\", round(test_err_1, 3))) +\n  geom_line(data = line_fit_1, aes(y = y, x = x), col = \"black\", lwd = 1.5)\ng_split10 &lt;- g_split + \n  labs(subtitle = paste(\"Degree 10 Test error:\", round(test_err_10, 3))) +\n  geom_line(data = line_fit_10, aes(y = y, x = x), col = \"black\", lwd = 1.5)\n\nggarrange(g_split1, g_split10, common.legend = TRUE, legend = \"bottom\")"
+  },
+  {
+    "objectID": "slides/26_prediction.html#sample-splitting-5",
+    "href": "slides/26_prediction.html#sample-splitting-5",
+    "title": "MATH167R: Prediction",
+    "section": "Sample-splitting",
+    "text": "Sample-splitting"
+  },
+  {
+    "objectID": "slides/26_prediction.html#sample-splitting-6",
+    "href": "slides/26_prediction.html#sample-splitting-6",
+    "title": "MATH167R: Prediction",
+    "section": "Sample-splitting",
+    "text": "Sample-splitting\nSample-splitting gives us a powerful tool to evaluate the performance of estimator on data that was not used to train it. Of course, this comes at the cost of sacrificing some of our data that could be used in order to train a model with as much information as possible, but this is a sacrifice we must make in practice if we want to appropriately evaluate the predictive performance of our models/methods!\nHowever, we can do better than just splitting our data in half."
+  },
+  {
+    "objectID": "slides/26_prediction.html#k-fold-cross-validation",
+    "href": "slides/26_prediction.html#k-fold-cross-validation",
+    "title": "MATH167R: Prediction",
+    "section": "k-fold Cross-validation",
+    "text": "k-fold Cross-validation\nIn general, the process of \\(k\\)-fold cross-validation is as follows:\n\nSplit data into \\(k\\) parts (folds)\nUse all but 1 fold as your training data and fit the model\nUse the remaining fold for your test data and make predictions\nSwitch which fold is your test data and repeat steps 2 and 3 until all folds have been test data (k times)\nCompute squared error\n\nCommonly, we use \\(k=5\\) and \\(k=10\\)."
+  },
+  {
+    "objectID": "slides/26_prediction.html#k-fold-cross-validation-1",
+    "href": "slides/26_prediction.html#k-fold-cross-validation-1",
+    "title": "MATH167R: Prediction",
+    "section": "k-fold Cross-validation",
+    "text": "k-fold Cross-validation"
+  },
+  {
+    "objectID": "slides/26_prediction.html#k-fold-cross-validation-2",
+    "href": "slides/26_prediction.html#k-fold-cross-validation-2",
+    "title": "MATH167R: Prediction",
+    "section": "k-fold Cross-validation",
+    "text": "k-fold Cross-validation\nFor each split, we calculate the out-of-sample mean squared prediction error. For example, for the first split, we calculate\n\\[MSE_1 = \\dfrac{1}{m}\\sum_{j = 1}^{m} (Y_{j,test} - \\hat{Y}_{j,test})^2,\\] where \\(m\\) is the number of observations in the test set.\nThen we calculate the cross-validation estimate of our test error\n\\[CV_{(k)} = \\dfrac{1}{k}\\sum_{i=1}^{k}MSE_i.\\]\nIn words, our cross-validation estimate of the test error is the average of the mean squared errors across the splits!"
+  },
+  {
+    "objectID": "slides/26_prediction.html#leave-one-out-cross-validation",
+    "href": "slides/26_prediction.html#leave-one-out-cross-validation",
+    "title": "MATH167R: Prediction",
+    "section": "Leave-One-Out Cross-Validation",
+    "text": "Leave-One-Out Cross-Validation\nLeave-one-out cross-validation (LOOCV) is a special instance of \\(k\\)-fold cross-validation where \\(k\\) is equal to the sample size \\(n\\). This means you fit \\(n\\) different models using \\(n-1\\) data points for your training data, and then test on the remaining individual data point."
+  },
+  {
+    "objectID": "slides/26_prediction.html#bias-variance-tradeoff-5",
+    "href": "slides/26_prediction.html#bias-variance-tradeoff-5",
+    "title": "MATH167R: Prediction",
+    "section": "Bias-variance Tradeoff",
+    "text": "Bias-variance Tradeoff\nLOOCV strengths in that it uses as much data as possible to train the model while still having out-of-sample test data. Thus, it will provide approximately unbiased estimates of the test error, and is the best choice for minimizing bias.\nHowever, LOOCV has one major drawback: variance. Because it fits \\(n\\) models, each of which is trained on almost identical training data, the outputs of the models are highly correlated. All other things being equal, the mean of correlated observations has a higher variance than the mean of uncorrelated observations. Thus, LOOCV has higher variance than \\(k\\)-fold CV with \\(k&lt;n\\).\nAs a rule of thumb, stick to \\(k=5\\) and \\(k=10\\). These values tend to result in an ideal balance in terms of the bias-variance tradeoff."
+  },
+  {
+    "objectID": "slides/26_prediction.html#what-to-do-after-cross-validation",
+    "href": "slides/26_prediction.html#what-to-do-after-cross-validation",
+    "title": "MATH167R: Prediction",
+    "section": "What to do after cross-validation?",
+    "text": "What to do after cross-validation?\nWe use cross-validation as a method to evaluate our model, not to build our model! Thus, once we have used \\(k\\)-fold cross-validation to come up with a reasonable estimate of our out-of-sample test-error (and perhaps to choose among several models based on this test error), we use the full data to train our final predictive model.\nThus, using cross-validation, we are able to build a model based on our full data, and still evaluate the performance of our model on out-of-sample data!"
+  },
+  {
+    "objectID": "slides/26_prediction.html#k-fold-cross-validation-example",
+    "href": "slides/26_prediction.html#k-fold-cross-validation-example",
+    "title": "MATH167R: Prediction",
+    "section": "k-fold Cross-validation Example",
+    "text": "k-fold Cross-validation Example\n\nset.seed(302)\n# Split data in 5 parts, randomly\nk &lt;- 5\ninds &lt;- sample(rep(1:k, length = n))\n# Use data from before\ndata &lt;- data.frame(\"x\" = x, \"y\" = y, \"split\" = inds)\n\n# Empty matrix to store predictions, 2 columns for 2 models\npred_mat &lt;- matrix(NA, n, 2)\nfor (i in 1:k) {\n  data_train &lt;- data |&gt; dplyr::filter(split != i)\n  data_test &lt;- data |&gt; dplyr::filter(split == i)\n  \n  # Train our models\n  lm_1_cv &lt;- lm(y ~ x, data = data_train)\n  lm_10_cv &lt;- lm(y ~ poly(x, 10), data = data_train)\n  \n  # Record predictions\n  pred_mat[inds == i, 1] &lt;- predict(lm_1_cv, data.frame(x = data_test$x))\n  pred_mat[inds == i, 2] &lt;- predict(lm_10_cv, data.frame(x = data_test$x))\n}\n\n# Compute average MSE to get CV error\ncv_err &lt;- colMeans((pred_mat - data$y)^2)"
+  },
+  {
+    "objectID": "slides/26_prediction.html#k-fold-cross-validation-example-1",
+    "href": "slides/26_prediction.html#k-fold-cross-validation-example-1",
+    "title": "MATH167R: Prediction",
+    "section": "k-fold Cross-validation Example",
+    "text": "k-fold Cross-validation Example\n\n# Create predictive model\nlm_1 &lt;- lm(y ~ x, data = data)\nlm_10 &lt;- lm(y ~ poly(x, 10), data = data)\n\n# Create smooth lines for plotting\nx_fit &lt;- data.frame(x = seq(min(data$x), max(data$x), length = 100))\nline_fit_1 &lt;- data.frame(x = x_fit, y = predict(lm_1, newdata = x_fit))\nline_fit_10 &lt;- data.frame(x = x_fit, y = predict(lm_10, newdata = x_fit))\n\n# Recode split for legend\ndata &lt;- data %&gt;% \n  mutate(Fold = fct_recode(as.factor(split), \"Fold 1\" = \"1\", \"Fold 2\" = \"2\",\n                           \"Fold 3\" = \"3\", \"Fold 4\" = \"4\", \"Fold 5\" = \"5\"))\n\ng_cv &lt;- ggplot(data, aes(x = x, y = y, color = Fold)) + geom_point() +\n  labs(title = \"Cross-validation\") + my_theme\ng_cv1 &lt;- g_cv + \n  labs(subtitle = paste(\"Degree 1 CV error:\", round(cv_err[1], 3))) +\n  geom_line(data = line_fit_1, aes(y = y, x = x), col = \"black\", lwd = 1.5)\ng_cv10 &lt;- g_cv + \n  labs(subtitle = paste(\"Degree 10 CV error:\", round(cv_err[2], 3))) +\n  geom_line(data = line_fit_10, aes(y = y, x = x), col = \"black\", lwd = 1.5)\nggarrange(g_cv1, g_cv10, common.legend = TRUE, legend = \"bottom\")"
+  },
+  {
+    "objectID": "slides/26_prediction.html#k-fold-cross-validation-example-2",
+    "href": "slides/26_prediction.html#k-fold-cross-validation-example-2",
+    "title": "MATH167R: Prediction",
+    "section": "k-fold Cross-validation Example",
+    "text": "k-fold Cross-validation Example"
+  },
+  {
+    "objectID": "slides/26_prediction.html#statistical-prediction-algorithms",
+    "href": "slides/26_prediction.html#statistical-prediction-algorithms",
+    "title": "MATH167R: Prediction",
+    "section": "Statistical Prediction Algorithms",
+    "text": "Statistical Prediction Algorithms\nWe’ve talked about how regression can be used for both statistical inference and prediction. We are now going to shift to talk about algorithms designed specifically for statistical prediction.\nWe will discuss only a few methods for this course to teach you about the principles of how they work. This will serve as an introduction to topics you may encounter if you venture further into fields such as machine learning."
+  },
+  {
+    "objectID": "slides/26_prediction.html#statistical-prediction-algorithms-1",
+    "href": "slides/26_prediction.html#statistical-prediction-algorithms-1",
+    "title": "MATH167R: Prediction",
+    "section": "Statistical Prediction Algorithms",
+    "text": "Statistical Prediction Algorithms\nThe normal distribution, specified by parameters for the mean and the variance, is an example of a parametric model. We are now going to discuss some non-parametric models. As the name implies, these models have no parameters at all.\nNon-parametric models are not motivated by assuming a distribution about the data. Instead, the focus is often on pure prediction. How can we use data to help us classify and predict the world around us? For the most part, many of these methods would have been impossible before the rise of high-powered computing."
+  },
+  {
+    "objectID": "slides/26_prediction.html#k-nearest-neighbors",
+    "href": "slides/26_prediction.html#k-nearest-neighbors",
+    "title": "MATH167R: Prediction",
+    "section": "k-nearest neighbors",
+    "text": "k-nearest neighbors\nk-nearest neighbors is a non-parametric prediction algorithm.\n\nInput: training data \\(X_i = (X_{i1}, \\ldots, X_{ip})\\) and output class \\(Y_i\\) for \\(i = 1,\\ldots, n\\)\nInput: test data \\(X^* = (X^*_1, \\ldots, X^*_p)\\) with unknown output class \\(Y^*\\)\nAlgorithm: Find \\(X_{(1)},\\ldots, X_{(k)}\\), the \\(k\\) nearest points to \\(X^*\\)\nOutput: Predicted class \\(\\hat{Y}^*\\), the most common class from \\(X_{(1)},\\ldots, X_{(k)}\\)"
+  },
+  {
+    "objectID": "slides/26_prediction.html#k-nearest-neighbors-1",
+    "href": "slides/26_prediction.html#k-nearest-neighbors-1",
+    "title": "MATH167R: Prediction",
+    "section": "k-nearest neighbors",
+    "text": "k-nearest neighbors\nThis method is simple and highly flexible, but it can also be slow and inappropriate for certain settings.\n\nImage Credit: An Introduction to Statistical Learning by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani"
+  },
+  {
+    "objectID": "slides/26_prediction.html#k-nearest-neighbors-2",
+    "href": "slides/26_prediction.html#k-nearest-neighbors-2",
+    "title": "MATH167R: Prediction",
+    "section": "k-nearest neighbors",
+    "text": "k-nearest neighbors\n\nImage Credit: An Introduction to Statistical Learning by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani"
+  },
+  {
+    "objectID": "slides/26_prediction.html#choosing-k",
+    "href": "slides/26_prediction.html#choosing-k",
+    "title": "MATH167R: Prediction",
+    "section": "Choosing k",
+    "text": "Choosing k\nWhat happens when \\(k=1\\)? \\(k = n\\)?\nIn order to choose an “optimal” \\(k\\), it is common to use cross-validation:\n\nFor \\(k=1,\\ldots,n\\) (or a more restrictive range), fit \\(k\\)-nearest neighbors\nUse cross-validation to identify \\(k\\) with the minimum test error\nRe-train a \\(k\\)-nearest neighbor model using all the data with optimal choice of \\(k\\)\n\nCross-validation is a great tool to choose values for tuning parameters across a number of algorithms, not just \\(k\\)-nearest neighbors!"
+  },
+  {
+    "objectID": "slides/26_prediction.html#choosing-k-1",
+    "href": "slides/26_prediction.html#choosing-k-1",
+    "title": "MATH167R: Prediction",
+    "section": "Choosing k",
+    "text": "Choosing k\n\nTest error is minimized at about \\(k=10\\).\nImage Credit: An Introduction to Statistical Learning by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani"
+  },
+  {
+    "objectID": "slides/26_prediction.html#trees",
+    "href": "slides/26_prediction.html#trees",
+    "title": "MATH167R: Prediction",
+    "section": "Trees",
+    "text": "Trees\nInstead of classifying based on neighboring data points in the training data, we can classify based on splits in our covariates.\n\nInput: training data \\(X_i = (X_{i1}, \\ldots, X_{ip})\\) and output class/value \\(Y_i\\) for \\(i = 1,\\ldots, n\\)\nInput: test data \\(X^* = (X^*_1, \\ldots, X^*_p)\\) with unknown output class/value \\(Y^*\\)\nAlgorithm: Identify splits in \\(X_i\\) that best predict \\(Y_i\\)\nOutput: Predicted class/value \\(\\hat{Y}^*\\) using splits"
+  },
+  {
+    "objectID": "slides/26_prediction.html#trees-1",
+    "href": "slides/26_prediction.html#trees-1",
+    "title": "MATH167R: Prediction",
+    "section": "Trees",
+    "text": "Trees\nTrees to predict class are referred to as classification trees. Trees to predict quantitative output are referred to as regression trees.\nThis algorithm is easy, efficient, and interpretable, but it is not as flexible as \\(k\\)-nearest neighbors.\n\nImage source"
+  },
+  {
+    "objectID": "slides/26_prediction.html#random-forest",
+    "href": "slides/26_prediction.html#random-forest",
+    "title": "MATH167R: Prediction",
+    "section": "Random Forest",
+    "text": "Random Forest\nIn practice, we don’t typically predict with a single tree. Instead, we combine multiple trees and take the average/most common of their predictions. Keeping with the tree metaphor, this is referred to as the random forest algorithm."
+  },
+  {
+    "objectID": "slides/26_prediction.html#random-forest-1",
+    "href": "slides/26_prediction.html#random-forest-1",
+    "title": "MATH167R: Prediction",
+    "section": "Random Forest",
+    "text": "Random Forest\n\nImage source"
+  },
+  {
+    "objectID": "slides/26_prediction.html#random-forest-2",
+    "href": "slides/26_prediction.html#random-forest-2",
+    "title": "MATH167R: Prediction",
+    "section": "Random Forest",
+    "text": "Random Forest\n\nImage source"
+  },
+  {
+    "objectID": "slides/26_prediction.html#variable-importance",
+    "href": "slides/26_prediction.html#variable-importance",
+    "title": "MATH167R: Prediction",
+    "section": "Variable Importance",
+    "text": "Variable Importance\nOne major benefit of tree-based prediction algorithms is that they provide a powerful and interpretable tool for assessing variable importance. For example, we can look across all trees in a random forest, assess how often variables were used for splitting and how helpful those splits were for prediction, and identify the variables that improve our predictions the most!\n(For more on this, see the Gini index. I highly recommend the book I’ve been using for some of these images, “An Introduction to Statistical Learning” by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani.)"
+  },
+  {
+    "objectID": "slides/26_prediction.html#statistical-prediction-algorithms-2",
+    "href": "slides/26_prediction.html#statistical-prediction-algorithms-2",
+    "title": "MATH167R: Prediction",
+    "section": "Statistical Prediction Algorithms",
+    "text": "Statistical Prediction Algorithms\nThis was a very brief overfiew of a very small subset of the algorithms used for statistical prediction. Other common examples include:\n\nneural networks,\nsupport vector machines,\nkernel classifiers,\nBayesian classifiers,  \\(\\ \\ \\ \\ \\ \\ \\ \\vdots\\)\n\nThese algorithms, and related topics, are likely things that you will cover if you take courses more focused on machine learning."
   },
   {
     "objectID": "slides/02_fundamentals.html#warm-up",
@@ -5133,125 +5637,6 @@
   {
     "objectID": "slides/27_cross-validation.html#why-bootstrap",
     "href": "slides/27_cross-validation.html#why-bootstrap",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Why bootstrap?",
-    "text": "Why bootstrap?\nIn this case, inference based on bootstrapping does not seem better than the normal approximation based on the central limit theorem.\nHowever, for many cases, we may not have a simple parametric approximation to the true sampling distribution. For example, suppose we wish to compute the sampling distribution of the sample median.\nNote however that the bootstrap may not work well for all statistics, such as the minimum (why not?)."
-  },
-  {
-    "objectID": "slides/25_advanced-hypothesis-tests.html#overview-of-today",
-    "href": "slides/25_advanced-hypothesis-tests.html#overview-of-today",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Overview of today",
-    "text": "Overview of today\n\nanova\nChi squared tests"
-  },
-  {
-    "objectID": "slides/25_advanced-hypothesis-tests.html#sampling-distributions",
-    "href": "slides/25_advanced-hypothesis-tests.html#sampling-distributions",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Sampling distributions",
-    "text": "Sampling distributions\nWithout explicitly saying so, we have been simulating sampling distributions during our simulations.\nRecall: A sampling distribution is the probability distribution of a sample-based statistic.\nExample: If \\(X_1,\\ldots, X_{100}\\) are iid random variables with variance \\(1\\), what is the distribution of the sample mean \\(\\overline{X}\\)?"
-  },
-  {
-    "objectID": "slides/25_advanced-hypothesis-tests.html#simulating-a-sampling-distribution",
-    "href": "slides/25_advanced-hypothesis-tests.html#simulating-a-sampling-distribution",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Simulating a sampling distribution",
-    "text": "Simulating a sampling distribution\nExample simulation: Suppose \\(X_1,\\ldots, X_{100}\\sim N(0,1)\\).\n\nset.seed(123)\nXbar &lt;- replicate(10000, mean(rnorm(100)))\nhist(Xbar, main = \"Sampling distribution of mean of 100 N(0, 1) variables\")"
-  },
-  {
-    "objectID": "slides/25_advanced-hypothesis-tests.html#simulating-a-sampling-distribution-1",
-    "href": "slides/25_advanced-hypothesis-tests.html#simulating-a-sampling-distribution-1",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Simulating a sampling distribution",
-    "text": "Simulating a sampling distribution\nWhat if \\(X_1,\\ldots, X_{100}\\sim \\mathrm{Exp}(1)\\)?\n\nset.seed(123)\nXbar &lt;- replicate(10000, mean(rexp(100, rate = 1)))\nhist(Xbar, main = \"Sampling distribution of mean of 100 Exponential(1) variables\")"
-  },
-  {
-    "objectID": "slides/25_advanced-hypothesis-tests.html#simulating-a-sampling-distribution-2",
-    "href": "slides/25_advanced-hypothesis-tests.html#simulating-a-sampling-distribution-2",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Simulating a sampling distribution",
-    "text": "Simulating a sampling distribution\nWhat if \\(X_1,\\ldots, X_{100}\\sim \\mathrm{Poisson}(1)\\)?\n\nset.seed(123)\nXbar &lt;- replicate(10000, mean(rpois(100, lambda = 1)))\nhist(Xbar, main = \"Sampling distribution of mean of 100 Poisson(1) variables\")"
-  },
-  {
-    "objectID": "slides/25_advanced-hypothesis-tests.html#simulating-a-sampling-distribution-3",
-    "href": "slides/25_advanced-hypothesis-tests.html#simulating-a-sampling-distribution-3",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Simulating a sampling distribution",
-    "text": "Simulating a sampling distribution\nBy the central limit theorem, all of these sampling distributions are asymptotically Gaussian with variance 1 (though the mean values differ between the three). Since \\(n=100\\) is fairly large (for these examples), all of the previous examples are close to Gaussian.\nWhat about if \\(n\\) is smaller? Or if we consider other distributions?\nSimulation is a powerful strategy for testing out methods:\n\nSuppose you wish to know… is \\(n\\) large?\nCreate a simulation that generates data that looks like your real world data.\nEvaluate whether the results are reasonable/accurate using simulated data."
-  },
-  {
-    "objectID": "slides/25_advanced-hypothesis-tests.html#smaller-sample-sizes",
-    "href": "slides/25_advanced-hypothesis-tests.html#smaller-sample-sizes",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Smaller sample sizes",
-    "text": "Smaller sample sizes\n\nset.seed(123)\nXbar_normal &lt;- replicate(10000, mean(rnorm(10)))\nXbar_exp &lt;- replicate(10000, mean(rexp(10, rate = 1)))\nXbar_poisson &lt;- replicate(10000, mean(rpois(10, lambda = 1)))\npar(mfrow = c(1, 3))\nhist(Xbar_normal, main = \"N(0, 1)\")\nhist(Xbar_exp, main = \"Exp(1)\")\nhist(Xbar_poisson, main = \"Poisson(1)\")"
-  },
-  {
-    "objectID": "slides/25_advanced-hypothesis-tests.html#other-statistics",
-    "href": "slides/25_advanced-hypothesis-tests.html#other-statistics",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Other statistics",
-    "text": "Other statistics\nWhat if we want the sampling distribution of the maximum? For each of these population models, the sampling distribution of the maximum is different.\n\nset.seed(123)\nXmax_normal &lt;- replicate(10000, max(rnorm(10)))\nXmax_exp &lt;- replicate(10000, max(rexp(10, rate = 1)))\nXmax_poisson &lt;- replicate(10000, max(rpois(10, lambda = 1)))\npar(mfrow = c(1, 3))\nhist(Xmax_normal, main = \"N(0, 1)\")\nhist(Xmax_exp, main = \"Exp(1)\")\nhist(Xmax_poisson, main = \"Poisson(1)\")"
-  },
-  {
-    "objectID": "slides/25_advanced-hypothesis-tests.html#transformations",
-    "href": "slides/25_advanced-hypothesis-tests.html#transformations",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Transformations",
-    "text": "Transformations\nWe can easily simulate sampling distributions for statistics summarizing the distribution of random variables that are defined as transformations of other random variables.\n\nset.seed(123)\nXbar_normal &lt;- replicate(10000, mean(rnorm(10) ^ 2))\nXbar_exp &lt;- replicate(10000, mean(rexp(10, rate = 1) ^ 2))\nXbar_poisson &lt;- replicate(10000, mean(rpois(10, lambda = 1) ^ 2))\npar(mfrow = c(1, 3))\nhist(Xbar_normal, main = \"N(0, 1) squared\")\nhist(Xbar_exp, main = \"Exp(1) squared\")\nhist(Xbar_poisson, main = \"Poisson(1) squared\")"
-  },
-  {
-    "objectID": "slides/25_advanced-hypothesis-tests.html#exercise",
-    "href": "slides/25_advanced-hypothesis-tests.html#exercise",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Exercise",
-    "text": "Exercise\n\nWrite code to create a histogram of the sampling distribution of the sample mean \\(\\overline{Y}\\) of \\(Y_1,\\ldots, Y_{10}\\) where \\(Y_i=\\sin(X_i)\\) and \\(X_1,\\ldots, X_{10}\\) are iid Uniform(0, 1) random variables."
-  },
-  {
-    "objectID": "slides/25_advanced-hypothesis-tests.html#resampling-methods",
-    "href": "slides/25_advanced-hypothesis-tests.html#resampling-methods",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Resampling methods",
-    "text": "Resampling methods\nThe previous simulations are all based on parametric models (normal, exponential, Poisson). However, we can also simulate sampling distributions without parametric assumptions on the data generating mechanism.\nSuppose we know \\(X_1,\\ldots, X_{20}\\sim \\mathrm{Exp}(1)\\). The sampling distribution can be simulated as follows:\n\nset.seed(123)\nXbar_exp &lt;- replicate(10000, mean(rexp(20, rate = 1)))\nhist(Xbar_exp)"
-  },
-  {
-    "objectID": "slides/25_advanced-hypothesis-tests.html#resampling-methods-1",
-    "href": "slides/25_advanced-hypothesis-tests.html#resampling-methods-1",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Resampling methods",
-    "text": "Resampling methods\nWhat if we observe \\(X_1,\\ldots, X_{20}\\), but we don’t know that \\(X_i\\) is exponentially distributed? We could just try the normal approximation to approximate the sampling distribution:\n\nX &lt;- rexp(20, rate = 1)\nx_axis &lt;- seq(0, 3, length.out = 1000)\n\n# plot \"true\" simulated sampling distribution\nhist(Xbar_exp, freq = F, ylim = c(0, 3))\n\n# plot normal theory\nlines(x_axis, dnorm(x_axis, mean = mean(X), sd = sd(X) / sqrt(20)), col = 'red')"
-  },
-  {
-    "objectID": "slides/25_advanced-hypothesis-tests.html#bootstrap-samples",
-    "href": "slides/25_advanced-hypothesis-tests.html#bootstrap-samples",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Bootstrap samples",
-    "text": "Bootstrap samples\nBootstrapping is a resampling method that uses random samples with replacement from the sample data to approximate the sampling distribution of sample-based statistics.\n\nprint(sort(X))\n\n [1] 0.00816693 0.06263315 0.11949335 0.12600941 0.14474580 0.14660666\n [7] 0.15582213 0.17485277 0.23514296 0.35492087 0.48980207 0.52215538\n[13] 0.72200938 1.27034542 1.56551624 1.74866229 1.82459209 1.84311722\n[19] 2.14225230 2.24995288\n\n# sample with replacement from X\nX_resample &lt;- sample(X, size = 20, replace = TRUE)\nprint(sort(X_resample))\n\n [1] 0.06263315 0.11949335 0.11949335 0.11949335 0.11949335 0.12600941\n [7] 0.14474580 0.14474580 0.15582213 0.15582213 0.17485277 0.35492087\n[13] 0.35492087 0.48980207 0.72200938 0.72200938 1.56551624 2.14225230\n[19] 2.24995288 2.24995288"
-  },
-  {
-    "objectID": "slides/25_advanced-hypothesis-tests.html#bootstrap-samples-1",
-    "href": "slides/25_advanced-hypothesis-tests.html#bootstrap-samples-1",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Bootstrap samples",
-    "text": "Bootstrap samples\nWe can repeatedly resample from \\(X\\), then compute the resample sample means and plot the distribution:\n\nbootstrap_Xbar &lt;- replicate(10000, mean(sample(X, size = 20, replace = TRUE)))\nhist(bootstrap_Xbar)"
-  },
-  {
-    "objectID": "slides/25_advanced-hypothesis-tests.html#bootstrap-samples-2",
-    "href": "slides/25_advanced-hypothesis-tests.html#bootstrap-samples-2",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Bootstrap samples",
-    "text": "Bootstrap samples\nWe can compare the bootstrap sampling distributions and true sampling distributions. In this case, the bootstrap does not seem that different from the normal approximation.\n\nlibrary(ggplot2)\nplot_dat &lt;-\n  data.frame(Xbar = c(Xbar_exp, bootstrap_Xbar),\n             source = rep(c(\"Parametric (Exp)\", \"Bootstrap\"), each = 10000))\nggplot(plot_dat, aes(x = Xbar, color = source)) +\n  geom_density() +\n  geom_function(fun = dnorm, \n                args = list(mean = mean(X), sd = sd(X) / sqrt(20)),\n                aes(color = \"Parametric (Normal)\"))"
-  },
-  {
-    "objectID": "slides/25_advanced-hypothesis-tests.html#bootstrap-confidence-intervals",
-    "href": "slides/25_advanced-hypothesis-tests.html#bootstrap-confidence-intervals",
-    "title": "MATH167R: Sampling distributions",
-    "section": "Bootstrap confidence intervals",
-    "text": "Bootstrap confidence intervals\nWe can take appropriate quantiles of the bootstrap samples to construct a bootstrap confidence interval using the quantile() function:\n\nquantile(bootstrap_Xbar, probs = c(.025, .975))\n\n    2.5%    97.5% \n0.467759 1.157051"
-  },
-  {
-    "objectID": "slides/25_advanced-hypothesis-tests.html#why-bootstrap",
-    "href": "slides/25_advanced-hypothesis-tests.html#why-bootstrap",
     "title": "MATH167R: Sampling distributions",
     "section": "Why bootstrap?",
     "text": "Why bootstrap?\nIn this case, inference based on bootstrapping does not seem better than the normal approximation based on the central limit theorem.\nHowever, for many cases, we may not have a simple parametric approximation to the true sampling distribution. For example, suppose we wish to compute the sampling distribution of the sample median.\nNote however that the bootstrap may not work well for all statistics, such as the minimum (why not?)."
@@ -6228,6 +6613,34 @@
     "title": "Check-in 5",
     "section": "",
     "text": "Remember, you must submit both your .Rmd and the compiled .html in order to receive full credit! In addition, to receive full credit, your code output and plots must be correctly formatted.\n\nCollaborators\nINSERT NAMES OF ANY COLLABORATORS\n\n(Project Euler Problem 1) The natural numbers less than 10 that are divisible by 3 or 5 are 3, 5, 6, and 9. The sum of these numbers is 23. Write R code to compute the sum of all the numbers less than 1000 that are divisible by 3 or 5."
+  },
+  {
+    "objectID": "checkins/10_checkin.html",
+    "href": "checkins/10_checkin.html",
+    "title": "Check-in 9",
+    "section": "",
+    "text": "Remember, you must submit both your .Rmd and the compiled .html in order to receive full credit! In addition, to receive full credit, your code output and plots must be correctly formatted."
+  },
+  {
+    "objectID": "checkins/10_checkin.html#part-1.-training-and-test-error-10-points",
+    "href": "checkins/10_checkin.html#part-1.-training-and-test-error-10-points",
+    "title": "Check-in 9",
+    "section": "Part 1. Training and Test Error (10 points)",
+    "text": "Part 1. Training and Test Error (10 points)\nUse the following code to generate data:\n\nlibrary(ggplot2)\n# generate data\nset.seed(302)\nn &lt;- 30\nx &lt;- sort(runif(n, -3, 3))\ny &lt;- 2*x + 2*rnorm(n)\nx_test &lt;- sort(runif(n, -3, 3))\ny_test &lt;- 2*x_test + 2*rnorm(n)\ndf_train &lt;- data.frame(\"x\" = x, \"y\" = y)\ndf_test &lt;- data.frame(\"x\" = x_test, \"y\" = y_test)\n\n# store a theme\nmy_theme &lt;- theme_bw(base_size = 16) + \n  theme(plot.title = element_text(hjust = 0.5, face = \"bold\"),\n        plot.subtitle = element_text(hjust = 0.5))\n\n# generate plots\ng_train &lt;- ggplot(df_train, aes(x = x, y = y)) + geom_point() +\n  xlim(-3, 3) + ylim(min(y, y_test), max(y, y_test)) + \n  labs(title = \"Training Data\") + my_theme\ng_test &lt;- ggplot(df_test, aes(x = x, y = y)) + geom_point() +\n  xlim(-3, 3) + ylim(min(y, y_test), max(y, y_test)) + \n  labs(title = \"Test Data\") + my_theme\ng_train\n\n\n\ng_test\n\n\n\n\n1a. For every k in between 1 and 10, fit a degree-k polynomial linear regression model with y as the response and x as the explanatory variable(s). (Hint: Use poly(), as in the lecture slides.)\n1b. For each model from (a), record the training error. Then predict y_test using x_test and also record the test error.\n1c. Present the 10 values for both training error and test error on a single table. Comment on what you notice about the relative magnitudes of training and test error, as well as the trends in both types of error as \\(k\\) increases.\n1d. If you were going to choose a model based on training error, which would you choose? Plot the data, colored by split. Add a line to the plot representing your selection for model fit. Add a subtitle to this plot with the (rounded!) test error. (Hint: See Lecture Slides 9 for example code.)\n1e. If you were going to choose a model based on test error, which would you choose? Plot the data, colored by split. Add a line to the plot representing your selection for model fit. Add a subtitle to this plot with the (rounded!) test error.\n1f. What do you notice about the shape of the curves from part (d) and (e)? Which model do you think has lower bias? Lower variance? Why?"
+  },
+  {
+    "objectID": "checkins/10_checkin.html#part-2.-k-nearest-neighbors-cross-validation-10-points",
+    "href": "checkins/10_checkin.html#part-2.-k-nearest-neighbors-cross-validation-10-points",
+    "title": "Check-in 9",
+    "section": "Part 2. k-Nearest Neighbors Cross-Validation (10 points)",
+    "text": "Part 2. k-Nearest Neighbors Cross-Validation (10 points)\nFor this part, note that there are tidyverse methods to perform cross-validation in R (see the rsample package). However, your goal is to understand and be able to implement the algorithm “by hand”, meaning that automated procedures from the rsample package, or similar packages, will not be accepted.\nTo begin, load in the popular penguins data set from the package palmerpenguins.\n\nlibrary(palmerpenguins)\ndata(package = \"palmerpenguins\")\n\nOur goal here is to predict output class species using covariates bill_length_mm, bill_depth_mm, flipper_length_mm, and body_mass_g. All your code should be within a function my_knn_cv.\nInput:\n\ntrain: input data frame\ncl: true class value of your training data\nk_nn: integer representing the number of neighbors\nk_cv: integer representing the number of folds\n\nPlease note the distinction between k_nn and k_cv!\nOutput: a list with objects\n\nclass: a vector of the predicted class \\(\\hat{Y}_{i}\\) for all observations\ncv_err: a numeric with the cross-validation misclassification error\n\nYou will need to include the following steps:\n\nWithin your function, define a variable fold that randomly assigns observations to folds \\(1,\\ldots,k\\) with equal probability. (Hint: see the example code on the slides for k-fold cross validation)\nIterate through \\(i = 1:k\\).\n\nWithin each iteration, use knn() from the class package to predict the class of the \\(i\\)th fold using all other folds as the training data.\nAlso within each iteration, record the prediction and the misclassification rate (a value between 0 and 1 representing the proportion of observations that were classified incorrectly).\n\nAfter you have done the above steps for all \\(k\\) iterations, store the vector class as the output of knn() with the full data as both the training and the test data, and the value cv_error as the average misclassification rate from your cross validation.\n\nSubmission: To prove your function works, apply it to the penguins data. Predict output class species using covariates bill_length_mm, bill_depth_mm, flipper_length_mm, and body_mass_g. Use \\(5\\)-fold cross validation (k_cv = 5). Use a table to show the cv_err values for 1-nearest neighbor and 5-nearest neighbors (k_nn = 1 and k_nn = 5). Comment on which value had lower CV misclassification error and which had lower training set error (compare your output class to the true class, penguins$species)."
+  },
+  {
+    "objectID": "checkins/09_checkin.html",
+    "href": "checkins/09_checkin.html",
+    "title": "Check-in 9",
+    "section": "",
+    "text": "Remember, you must submit both your .Rmd and the compiled .html in order to receive full credit! In addition, to receive full credit, your code output and plots must be correctly formatted.\n\nCollaborators\nINSERT NAMES OF ANY COLLABORATORS\n\n(Devore Section 7.2 #5) Assume that the helium porosity (in percentage) of coal samples taken from any particular seam is normally distributed with true standard deviation .75. Compute a 90% CI for the true average porosity of a certain seam if the average porosity for 20 specimens from the seam was 4.85.\nThe trees data set provides measurements for a sample of 31 felled black cherry trees. Based on this sample, create a 95% confidence interval for the population mean girth. You may use the command data(trees) to download this data."
   },
   {
     "objectID": "checkins/07_checkin.html",

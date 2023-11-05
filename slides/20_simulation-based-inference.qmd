@@ -186,7 +186,7 @@ The previous simulations are all based on parametric models (normal, exponential
 
 ## Resampling methods
 
-Suppose we know $X_1,\ldots, X_{20}\sim \mathrm{Exp}(1)$. The sampling distribution can be simulated as follows:
+Suppose we know $X_1,\ldots, X_{20}\sim \mathrm{Exp}(1)$. The sampling distribution of the sample mean can be simulated as follows:
 
 ```{r exp_samp_dist}
 #| echo: TRUE
@@ -228,7 +228,7 @@ x_axis <- seq(0, 3, length.out = 1000)
 hist(Xbar_exp, freq = F, ylim = c(0, 3))
 
 # plot normal theory
-lines(x_axis, dnorm(x_axis, mean = mean(X), sd = sd(X) / sqrt(20)), col = 'red')
+lines(x_axis, dnorm(x_axis, mean = 1, sd = 1 / sqrt(20)), col = 'red')
 ```
 
 ## Bootstrap samples
@@ -254,12 +254,12 @@ We can repeatedly resample from $X$, then compute the resample sample means and 
 #| eval: TRUE
 #| cache: TRUE
 bootstrap_Xbar <- replicate(10000, mean(sample(X, size = 20, replace = TRUE)))
-hist(bootstrap_Xbar)
+hist(bootstrap_Xbar - mean(X) + 1)
 ```
 
 ## Bootstrap samples
 
-We can compare the bootstrap sampling distributions and true sampling distributions. In this case, the bootstrap does not seem that different from the normal approximation.
+We can compare the bootstrap sampling distributions and true sampling distributions for $\overline{X}-E(\overline{X})$.
 
 ```{r exp_samp_dist_5}
 #| echo: TRUE
@@ -267,18 +267,19 @@ We can compare the bootstrap sampling distributions and true sampling distributi
 #| cache: TRUE
 library(ggplot2)
 plot_dat <-
-  data.frame(Xbar = c(Xbar_exp, bootstrap_Xbar),
+  data.frame(Xbar = c(Xbar_exp - 1, bootstrap_Xbar - mean(X)),
              source = rep(c("Parametric (Exp)", "Bootstrap"), each = 10000))
 ggplot(plot_dat, aes(x = Xbar, color = source)) +
   geom_density() +
   geom_function(fun = dnorm, 
-                args = list(mean = mean(X), sd = sd(X) / sqrt(20)),
-                aes(color = "Parametric (Normal)")) 
+                args = list(mean = 0, sd = 1 / sqrt(20)),
+                aes(color = "Parametric (Normal)")) +
+  xlab("Xbar - E(Xbar)")
 ```
 
 ## Bootstrap samples
 
-We can compare the bootstrap sampling distributions and true sampling distributions. In this case, the bootstrap does not seem that different from the normal approximation.
+We can compare the bootstrap sampling distributions and true sampling distributions for $\overline{X}-E(\overline{X})$.
 
 ```{r exp_samp_dist_52}
 #| echo: FALSE
@@ -286,13 +287,14 @@ We can compare the bootstrap sampling distributions and true sampling distributi
 #| cache: TRUE
 library(ggplot2)
 plot_dat <-
-  data.frame(Xbar = c(Xbar_exp, bootstrap_Xbar),
+  data.frame(Xbar = c(Xbar_exp - 1, bootstrap_Xbar - mean(X)),
              source = rep(c("Parametric (Exp)", "Bootstrap"), each = 10000))
 ggplot(plot_dat, aes(x = Xbar, color = source)) +
   geom_density() +
   geom_function(fun = dnorm, 
-                args = list(mean = mean(X), sd = sd(X) / sqrt(20)),
-                aes(color = "Parametric (Normal)")) 
+                args = list(mean = 0, sd = 1 / sqrt(20)),
+                aes(color = "Parametric (Normal)")) +
+  xlab("Xbar - E(Xbar)")
 ```
 
 ## Bootstrap confidence intervals

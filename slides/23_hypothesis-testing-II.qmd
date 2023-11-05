@@ -29,6 +29,47 @@ editor: visual
     - ex. $P(|T|>|t|)$ where $t$ is the observed test statistic.
   
 
+## Example: Two-sample $z$-test
+
+
+**Assumptions**:
+
+1. $X_1, \ldots, X_m$ is a random sample from a distribution with mean $\mu_1$ and variance $\sigma_1^2$.
+2. $Y_1, \ldots, Y_n$ is a random sample from a distribution with mean $\mu_2$ and variance $\sigma_2^2$.
+3. The $X$ and $Y$ samples are independent of one another.
+4. The sample sizes are adequately large (usually appropriate if $m>40$ and $n>40$.
+
+**Hypotheses**:
+
+* H_0: $\mu_1=\mu_2$
+* H_a: $\mu_1\not=\mu_2$
+
+## Example: Two-sample $z$-test
+
+Under these assumptions, $\overline{X}-\overline{Y}$ is approximately normal and the test statistic
+$$Z=\frac{\overline{X}-\overline{Y}-(\mu_1-\mu_2)}{\sqrt{\frac{S_1^2}{m}+\frac{S_2^2}{n}}}$$
+has approximately a standard normal distribution when $H_0$ is true.
+
+## Example: Two-sample $t$-test
+
+When the samples are small, but the population distributions are approximately normal, the standardized test statistic 
+$$T=\frac{\overline{X}-\overline{Y}-(\mu_1-\mu_2)}{\sqrt{\frac{S_1^2}{m}+\frac{S_2^2}{n}}}$$
+has approximately a $t$ distribution with df $v$ estimated from the data by
+
+$$\nu =\frac{\left(\frac{s_1^2}{m}+\frac{s_2^2}{n}\right)^2}{\frac{(s_1^2/m)^2}{m-1}+\frac{(s_2^2/n)^2}{n-1}}$$
+
+## Example: Two-sample $t$-test
+
+We can use the `sleep` data in R, which contains Student's example data on the effect of two sleeping drugs on 10 patients, to test out the `t.test()` function.
+
+```{r}
+#| eval: true
+#| echo: true
+#| message: false
+#| warning: false
+t.test(extra ~ group, data = sleep)
+```
+
 ## Permutation tests
 
 Typically, for hypothesis testing, we need to know the sampling distribution of the test statistic when the null hypothesis is true. 

@@ -339,7 +339,7 @@ For large $n$, the following confidence interval is often used for a population 
 
 $$\widehat{p}\pm z_{\alpha/2}\sqrt{\frac{\widehat{p}(1-\widehat{p})}{n}}$$
 
-Note that this formula only gives an approximate CI becaue of the use of $\widehat{p}$ when estimating the standard error of $\widehat{p}$
+Note that this formula only gives an approximate CI because of the use of $\widehat{p}$ when estimating the standard error of $\widehat{p}$.
 
 ## Other confidence intervals
 
