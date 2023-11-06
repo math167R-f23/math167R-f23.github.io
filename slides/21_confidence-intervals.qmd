@@ -302,6 +302,49 @@ qqnorm(precip, ylab = "Precipitation [in/yr] for 70 US cities", pch = 16)
 qqline(precip)
 ```
 
+## Example: Penguins
+
+```{r peng.qq, fig.asp=.8, fig.width = 5, fig.align = "center"}
+#| echo: TRUE
+#| eval: TRUE
+#| cache: TRUE
+library(palmerpenguins)
+data(penguins)
+qqnorm(penguins$bill_length_mm, ylab = "Penguin bill lengths", pch = 16)
+qqline(penguins$bill_length_mm)
+```
+## Example: Penguins
+
+
+```{r peng.hist.2, fig.asp=.8, fig.width = 5, fig.align = "center"}
+#| echo: TRUE
+#| eval: TRUE
+#| cache: TRUE
+hist(penguins$bill_length_mm)
+```
+
+## Example: Penguins
+
+
+```{r peng.qq.2, fig.asp=.8, fig.width = 5, fig.align = "center"}
+#| echo: TRUE
+#| eval: TRUE
+#| cache: TRUE
+adelie <- penguins |> dplyr::filter(species == "Adelie")
+qqnorm(adelie$bill_length_mm, ylab = "Penguin bill lengths", pch = 16)
+qqline(adelie$bill_length_mm)
+```
+
+## Example: Penguins
+
+
+```{r peng.hist.3, fig.asp=.8, fig.width = 5, fig.align = "center"}
+#| echo: TRUE
+#| eval: TRUE
+#| cache: TRUE
+hist(adelie$bill_length_mm)
+```
+
 ## Using R to compute confidence intervals
 
 Generally, if you are only doing a simple normal-based or $t$-based confidence interval for a mean, I recommend computing $\overline{X}_n$ and $S$ using `mean()` and `sd()`, and then computing the confidence interval by hand.

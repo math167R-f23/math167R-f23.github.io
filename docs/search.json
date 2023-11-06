@@ -557,7 +557,7 @@
     "href": "slides/21_confidence-intervals.html#central-limit-theorem-2",
     "title": "MATH167R: Statistical inference",
     "section": "Central limit theorem",
-    "text": "Central limit theorem\nWhat if \\(n = 5\\)?\n\nn &lt;- 5\nXbars &lt;- data.frame(Xbar = replicate(1000, mean(rnorm(n, mean = 2, sd = 2))))\nggplot(Xbars, aes(x = Xbar)) + \n  geom_histogram(aes(y = ..density..)) + \n  geom_function(fun = dnorm, args = list(mean = 2, sd = 2 / sqrt(n)), color = \"red\")\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`."
+    "text": "Central limit theorem\nWhat if \\(n = 5\\)?\n\nn &lt;- 5\nXbars &lt;- data.frame(Xbar = replicate(1000, mean(rnorm(n, mean = 2, sd = 2))))\nggplot(Xbars, aes(x = Xbar)) + \n  geom_histogram(aes(y = ..density..)) + \n  geom_function(fun = dnorm, args = list(mean = 2, sd = 2 / sqrt(n)), color = \"red\")"
   },
   {
     "objectID": "slides/21_confidence-intervals.html#central-limit-theorem-3",
@@ -648,7 +648,7 @@
     "href": "slides/21_confidence-intervals.html#simulating-many-confidence-intervals-3",
     "title": "MATH167R: Statistical inference",
     "section": "Simulating many confidence intervals",
-    "text": "Simulating many confidence intervals\n\nn &lt;- 30 # sample size\nlambda &lt;- 10\nsample_stats_poisson &lt;- function() {\n  x &lt;- rpois(n, lambda)\n  return(c(mean(x), sd(x)))\n}\nstats &lt;- replicate(100, sample_stats_poisson())\nstats[, 1:5] # print out first five simulation results\n\n          [,1]      [,2]      [,3]     [,4]     [,5]\n[1,] 10.666667 10.733333 10.500000 9.633333 9.800000\n[2,]  2.940013  2.702915  2.933164 2.953471 3.252585\n\ncoverage_rate &lt;- mean(abs(stats[1,] - mu) &lt; 1.96 * stats[2,] / sqrt(n))\ncoverage_rate\n\n[1] 0.98"
+    "text": "Simulating many confidence intervals\n\nn &lt;- 30 # sample size\nlambda &lt;- 10\nsample_stats_poisson &lt;- function() {\n  x &lt;- rpois(n, lambda)\n  return(c(mean(x), sd(x)))\n}\nstats &lt;- replicate(100, sample_stats_poisson())\nstats[, 1:5] # print out first five simulation results\n\n          [,1]     [,2]     [,3]     [,4]      [,5]\n[1,] 10.300000 9.966667 9.800000 9.633333 10.066667\n[2,]  3.131046 3.699798 3.188341 2.846454  3.061815\n\ncoverage_rate &lt;- mean(abs(stats[1,] - mu) &lt; 1.96 * stats[2,] / sqrt(n))\ncoverage_rate\n\n[1] 0.98"
   },
   {
     "objectID": "slides/21_confidence-intervals.html#when-n-is-small-but-sigma-unknown-t-intervals",
@@ -679,6 +679,34 @@
     "text": "Example: Precipitation\nThe qqnorm() function can be used to compare the empirical/sample quantiles and the theoretical quantiles of a standard normal. The qqline() function adds a line that passes through the first and third quartiles.\n\nqqnorm(precip, ylab = \"Precipitation [in/yr] for 70 US cities\", pch = 16)\nqqline(precip)"
   },
   {
+    "objectID": "slides/21_confidence-intervals.html#example-penguins",
+    "href": "slides/21_confidence-intervals.html#example-penguins",
+    "title": "MATH167R: Statistical inference",
+    "section": "Example: Penguins",
+    "text": "Example: Penguins\n\nlibrary(palmerpenguins)\ndata(penguins)\nqqnorm(penguins$bill_length_mm, ylab = \"Penguin bill lengths\", pch = 16)\nqqline(penguins$bill_length_mm)"
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#example-penguins-1",
+    "href": "slides/21_confidence-intervals.html#example-penguins-1",
+    "title": "MATH167R: Statistical inference",
+    "section": "Example: Penguins",
+    "text": "Example: Penguins\n\nhist(penguins$bill_length_mm)"
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#example-penguins-2",
+    "href": "slides/21_confidence-intervals.html#example-penguins-2",
+    "title": "MATH167R: Statistical inference",
+    "section": "Example: Penguins",
+    "text": "Example: Penguins\n\nadelie &lt;- penguins |&gt; dplyr::filter(species == \"Adelie\")\nqqnorm(adelie$bill_length_mm, ylab = \"Penguin bill lengths\", pch = 16)\nqqline(adelie$bill_length_mm)"
+  },
+  {
+    "objectID": "slides/21_confidence-intervals.html#example-penguins-3",
+    "href": "slides/21_confidence-intervals.html#example-penguins-3",
+    "title": "MATH167R: Statistical inference",
+    "section": "Example: Penguins",
+    "text": "Example: Penguins\n\nhist(adelie$bill_length_mm)"
+  },
+  {
     "objectID": "slides/21_confidence-intervals.html#using-r-to-compute-confidence-intervals",
     "href": "slides/21_confidence-intervals.html#using-r-to-compute-confidence-intervals",
     "title": "MATH167R: Statistical inference",
@@ -690,7 +718,7 @@
     "href": "slides/21_confidence-intervals.html#comparing-t-based-and-bootstrap-confidence-intervals",
     "title": "MATH167R: Statistical inference",
     "section": "Comparing \\(t\\)-based and bootstrap confidence intervals",
-    "text": "Comparing \\(t\\)-based and bootstrap confidence intervals\n\nbootstrap_Xbar &lt;- \n  replicate(10000, mean(sample(precip, size = length(precip), replace = TRUE)))\nquantile(bootstrap_Xbar, probs = c(.025, .975))\n\n    2.5%    97.5% \n31.78282 38.07286 \n\nprecip_ci\n\n[1] 31.61748 38.15395\nattr(,\"conf.level\")\n[1] 0.95\n\n\n\nIn this case, since \\(n\\) is large, the non-normality is not a big deal."
+    "text": "Comparing \\(t\\)-based and bootstrap confidence intervals\n\nbootstrap_Xbar &lt;- \n  replicate(10000, mean(sample(precip, size = length(precip), replace = TRUE)))\nquantile(bootstrap_Xbar, probs = c(.025, .975))\n\n    2.5%    97.5% \n31.76421 38.07000 \n\nprecip_ci\n\n[1] 31.61748 38.15395\nattr(,\"conf.level\")\n[1] 0.95\n\n\n\nIn this case, since \\(n\\) is large, the non-normality is not a big deal."
   },
   {
     "objectID": "slides/21_confidence-intervals.html#confidence-intervals-for-proportions",
