@@ -19,6 +19,7 @@ editor: source
 ## Covariance and correlation
 
 In statistics, correlation and covariance usually refer to a specific type of association.
+
 * If $X$ and $Y$ are linearly associated, then they are correlated.
 
 ## Correlation

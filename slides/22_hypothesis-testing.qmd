@@ -150,6 +150,8 @@ p_val <- pbinom(50 - diff_from_exp, size = 100, prob = 0.5) +
 round(p_val, 3)
 ```
 
+## Example: flipping coins
+
 Note that `lower.tail = TRUE` is the default, and returns the probability of observing a value *less than or equal to* the value that we input. Thus, when `lower.tail = FALSE`, we return the probability of observing a value *strictly greater than* the value that we input. We want the probability of observing a value *greater than or equal to* the value that we input. Thus, we subtract 1 to make sure this value is included in our probability.
 
 $P(\text{test statistic equally or more extreme than observed}|H_0) =$ `r round(p_val, 3)`.
@@ -201,6 +203,8 @@ H_0: \mu_x &= \mu_y\\
 H_a: \mu_x &\neq  \mu_y 
 \end{align}
 $$
+
+## `t.test()`: t-tests in R
 
 ```{r}
 #| echo: TRUE

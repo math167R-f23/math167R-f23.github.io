@@ -1,14 +1,6 @@
 /*-- scss:defaults --*/
 /*-- https://quarto.org/docs/presentations/revealjs/themes.html --*/
 @import 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap';
-
-$font-family-sans-serif: "Atkinson Hyperlegible";
-$presentation-font-size-root: 32px;
-$presentation-font-smaller: 0.85;
-$presentation-line-height: 1.5;
-$presentation-heading-line-height: 1.4;
-$presentation-h1-font-size: 1.6em;
-$presentation-h2-font-size: 1.3em;
 $white: #fff !default;
 $grey-dk-000: #959396 !default;
 $grey-dk-100: #5c5962 !default;
@@ -39,12 +31,22 @@ $red-000: #f77e7e !default;
 $red-100: #f96e65 !default;
 $red-200: #e94c4c !default;
 $red-300: #dd2e2e !default;
+
+
+$font-family-sans-serif: "Atkinson Hyperlegible";
+$presentation-font-size-root: 32px;
+$presentation-font-smaller: 0.85;
+
+$presentation-line-height: 1.5;
+$presentation-heading-color: $white !default;
+$presentation-heading-line-height: 1.4;
+$presentation-h1-font-size: 1.6em;
+$presentation-h2-font-size: 1.3em;
+$code-block-font-size: .75em;
+
 // colors
 $link-color: $purple-100 !default;
 $selection-bg: #26351c !default;
-
-// headings
-$presentation-heading-color: #383d3d !default;
 
 /*-- scss:rules --*/
 strong {
@@ -52,5 +54,36 @@ strong {
   color: $red-300;
 }
 .reveal p {
-   margin-bottom: 2rem;
+   margin-top: 2rem;
+   margin-bottom: 1rem;
+}
+.reveal h1 {
+  color: $body-color !important;
+}
+.reveal h2 {
+  background-color: #0055A2 !important;
+  width: 200vw;
+  position: relative;
+  left: -20vw;
+  padding-left: 20vw;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  margin-bottom: 1vw;
+}
+h2 code {
+  color: $white !important;
+}
+.cell {
+   margin-top: 2rem;
+   margin-bottom: 1rem;
+}
+
+.cell-output {
+   margin-top: 2rem;
+   margin-bottom: 1rem;
+}
+
+.ul .ol {
+   margin-top: 2rem;
+   margin-bottom: 1rem;
 }

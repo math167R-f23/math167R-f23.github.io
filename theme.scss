@@ -74,7 +74,7 @@ $red-300: #dd2e2e !default;
   text-decoration: none;
   font-size: 80%;
 }
-a { 
+a.label { 
   color: $white;
 }
 a.label:hover { 
@@ -107,5 +107,8 @@ a.label:hover {
 }
 .center {
   text-align: center;
+}
+.sidebar-title {
+  color: $white;
 }
 

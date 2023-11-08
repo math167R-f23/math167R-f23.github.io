@@ -56,44 +56,44 @@
         -khtml-user-select: none; -moz-user-select: none;
         -ms-user-select: none; user-select: none;
         padding: 0 4px; width: 4em;
-        color: #aaaaaa;
+        color: #767676;
       }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #767676;  padding-left: 4px; }
     div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
+      { color: #545454; background-color: #fefefe; }
     @media screen {
     pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
     }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
+    code span { color: #545454; } /* Normal */
+    code span.al { color: #7928a1; } /* Alert */
+    code span.an { color: #696969; } /* Annotation */
+    code span.at { color: #a55a00; } /* Attribute */
+    code span.bn { color: #7928a1; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
+    code span.cf { color: #d91e18; } /* ControlFlow */
+    code span.ch { color: #008000; } /* Char */
+    code span.cn { color: #d91e18; } /* Constant */
+    code span.co { color: #696969; } /* Comment */
+    code span.cv { color: #696969; font-style: italic; } /* CommentVar */
+    code span.do { color: #696969; font-style: italic; } /* Documentation */
+    code span.dt { color: #7928a1; } /* DataType */
+    code span.dv { color: #7928a1; } /* DecVal */
+    code span.er { color: #7928a1; } /* Error */
     code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+    code span.fl { color: #a55a00; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #696969; } /* Information */
+    code span.kw { color: #d91e18; } /* Keyword */
+    code span.op { color: #00769e; } /* Operator */
+    code span.ot { color: #d91e18; } /* Other */
+    code span.pp { color: #7928a1; } /* Preprocessor */
+    code span.sc { color: #00769e; } /* SpecialChar */
+    code span.ss { color: #008000; } /* SpecialString */
+    code span.st { color: #008000; } /* String */
+    code span.va { color: #a55a00; } /* Variable */
+    code span.vs { color: #008000; } /* VerbatimString */
+    code span.wa { color: #696969; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -530,10 +530,13 @@ H_a: p&amp;\neq 1/2
 <pre><code>[1] 0.035</code></pre>
 </div>
 </div>
+</section>
+<section id="example-flipping-coins-5" class="slide level2">
+<h2>Example: flipping coins</h2>
 <p>Note that <code>lower.tail = TRUE</code> is the default, and returns the probability of observing a value <em>less than or equal to</em> the value that we input. Thus, when <code>lower.tail = FALSE</code>, we return the probability of observing a value <em>strictly greater than</em> the value that we input. We want the probability of observing a value <em>greater than or equal to</em> the value that we input. Thus, we subtract 1 to make sure this value is included in our probability.</p>
 <p><span class="math inline">\(P(\text{test statistic equally or more extreme than observed}|H_0) =\)</span> 0.035.</p>
 </section>
-<section id="example-flipping-coins-5" class="slide level2">
+<section id="example-flipping-coins-6" class="slide level2">
 <h2>Example: flipping coins</h2>
 <p><span class="math inline">\(P(\text{test statistic equally or more extreme than observed}|H_0) =\)</span> 0.035.</p>
 <p>This is less than our pre-determined cut-off of 0.05, so we conclude that our results are <strong>statistically significant</strong>. This means that we reject <span class="math inline">\(H_0\)</span> and have evidence to support our alternative hypothesis <span class="math inline">\(H_a\)</span>, that our coin is biased. With that conclusion, we have completed our hypothesis test.</p>
@@ -579,6 +582,9 @@ H_0: \mu_x &amp;= \mu_y\\
 H_a: \mu_x &amp;\neq  \mu_y
 \end{align}
 \]</span></p>
+</section>
+<section id="t.test-t-tests-in-r-1" class="slide level2">
+<h2><code>t.test()</code>: t-tests in R</h2>
 <div class="cell" data-hash="22_hypothesis-testing_cache/revealjs/unnamed-chunk-3_89ad5adfa100a95dfcbb96f06d73a288">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">set.seed</span>(<span class="dv">302</span>)</span>
 <span id="cb7-2"><a href="#cb7-2"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
@@ -599,7 +605,7 @@ mean of x mean of y
 </div>
 </div>
 </section>
-<section id="t.test-t-tests-in-r-1" class="slide level2">
+<section id="t.test-t-tests-in-r-2" class="slide level2">
 <h2><code>t.test()</code>: t-tests in R</h2>
 <p>Note that we can also test <strong>one-sided</strong> hypotheses:</p>
 <p><span class="math display">\[
@@ -625,7 +631,7 @@ mean of x mean of y
 </div>
 </div>
 </section>
-<section id="t.test-t-tests-in-r-2" class="slide level2">
+<section id="t.test-t-tests-in-r-3" class="slide level2">
 <h2><code>t.test()</code>: t-tests in R</h2>
 <p>We can also use a <strong>one sample t-test</strong> to compare the means of one sample to some hypothesized value.</p>
 <p>This performs a test of the form:</p>

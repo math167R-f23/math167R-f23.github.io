@@ -35,6 +35,9 @@ format:
     code-copy: true
     code-overflow: wrap
     toc: true
+    highlight-style: a11y
+  revealjs:
+    highlight-style: a11y
 
 freeze: auto
 
