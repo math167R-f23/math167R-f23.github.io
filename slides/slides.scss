@@ -34,7 +34,7 @@ $red-300: #dd2e2e !default;
 
 
 $font-family-sans-serif: "Atkinson Hyperlegible";
-$presentation-font-size-root: 32px;
+$presentation-font-size-root: 30px;
 $presentation-font-smaller: 0.85;
 
 $presentation-line-height: 1.5;
@@ -54,7 +54,7 @@ strong {
   color: $red-300;
 }
 .reveal p {
-   margin-top: 2rem;
+   margin-top: 1.5rem;
    margin-bottom: 1rem;
 }
 .reveal h1 {
@@ -74,16 +74,16 @@ h2 code {
   color: $white !important;
 }
 .cell {
-   margin-top: 2rem;
+   margin-top: 1.5rem;
    margin-bottom: 1rem;
 }
 
 .cell-output {
-   margin-top: 2rem;
+   margin-top: 1.5rem;
    margin-bottom: 1rem;
 }
 
 .ul .ol {
-   margin-top: 2rem;
+   margin-top: 1.5rem;
    margin-bottom: 1rem;
 }

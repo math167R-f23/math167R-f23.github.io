@@ -107,9 +107,7 @@ head(coin_flips)
 sum(coin_flips)
 ```
 
-We observed `r sum(coin_flips)` heads out of 100 coin flips.
-
-This is our **test statistic**, a statistic calculated from our sample data which we will use to evaluate our hypotheses.
+We observed `r sum(coin_flips)` heads out of 100 coin flips. This is our **test statistic**, a statistic calculated from our sample data which we will use to evaluate our hypotheses.
 
 ## Example: flipping coins
 
@@ -246,6 +244,8 @@ H_0: \mu_x &= 0\\
 H_a: \mu_x &\neq 0
 \end{align}
 $$
+
+## `t.test()`: t-tests in R
 
 ```{r}
 #| echo: TRUE

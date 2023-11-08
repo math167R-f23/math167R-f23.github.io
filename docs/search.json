@@ -1005,7 +1005,7 @@
     "href": "slides/22_hypothesis-testing.html#example-flipping-coins",
     "title": "MATH167R: Hypothesis testing",
     "section": "Example: flipping coins",
-    "text": "Example: flipping coins\nInstead of actually flipping the coin, let’s carry out this example in R.\n\nset.seed(302)\n# the true population parameter (in practice, we don't know this).\np &lt;- 0.6\n# simulate 100 coin flips\ncoin_flips &lt;- rbinom(100, size = 1, prob = p)\nhead(coin_flips)\n\n[1] 1 0 0 1 1 1\n\nsum(coin_flips)\n\n[1] 61\n\n\nWe observed 61 heads out of 100 coin flips.\nThis is our test statistic, a statistic calculated from our sample data which we will use to evaluate our hypotheses."
+    "text": "Example: flipping coins\nInstead of actually flipping the coin, let’s carry out this example in R.\n\nset.seed(302)\n# the true population parameter (in practice, we don't know this).\np &lt;- 0.6\n# simulate 100 coin flips\ncoin_flips &lt;- rbinom(100, size = 1, prob = p)\nhead(coin_flips)\n\n[1] 1 0 0 1 1 1\n\nsum(coin_flips)\n\n[1] 61\n\n\nWe observed 61 heads out of 100 coin flips. This is our test statistic, a statistic calculated from our sample data which we will use to evaluate our hypotheses."
   },
   {
     "objectID": "slides/22_hypothesis-testing.html#example-flipping-coins-1",
@@ -1103,7 +1103,14 @@
     "href": "slides/22_hypothesis-testing.html#t.test-t-tests-in-r-3",
     "title": "MATH167R: Hypothesis testing",
     "section": "t.test(): t-tests in R",
-    "text": "t.test(): t-tests in R\nWe can also use a one sample t-test to compare the means of one sample to some hypothesized value.\nThis performs a test of the form:\n\\[\n\\begin{align}\nH_0: \\mu_x &= 0\\\\\nH_a: \\mu_x &\\neq 0\n\\end{align}\n\\]\n\nt.test(x, mu = 0)\n\n\n    One Sample t-test\n\ndata:  x\nt = 0.98472, df = 9, p-value = 0.3505\nalternative hypothesis: true mean is not equal to 0\n95 percent confidence interval:\n -0.4531331  1.1517298\nsample estimates:\nmean of x \n0.3492983"
+    "text": "t.test(): t-tests in R\nWe can also use a one sample t-test to compare the means of one sample to some hypothesized value.\nThis performs a test of the form:\n\\[\n\\begin{align}\nH_0: \\mu_x &= 0\\\\\nH_a: \\mu_x &\\neq 0\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "slides/22_hypothesis-testing.html#t.test-t-tests-in-r-4",
+    "href": "slides/22_hypothesis-testing.html#t.test-t-tests-in-r-4",
+    "title": "MATH167R: Hypothesis testing",
+    "section": "t.test(): t-tests in R",
+    "text": "t.test(): t-tests in R\n\nt.test(x, mu = 0)\n\n\n    One Sample t-test\n\ndata:  x\nt = 0.98472, df = 9, p-value = 0.3505\nalternative hypothesis: true mean is not equal to 0\n95 percent confidence interval:\n -0.4531331  1.1517298\nsample estimates:\nmean of x \n0.3492983"
   },
   {
     "objectID": "slides/22_hypothesis-testing.html#type-i-and-ii-errors",
