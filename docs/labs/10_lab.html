@@ -4736,25 +4736,26 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 <ol start="2" type="1">
 <li><p>Compute a 95% confidence interval for the mean <code>arr_delay</code> for Alaska Airlines flights. Interpret your results.</p></li>
 <li><p>Compute a 95% confidence interval for the mean <code>arr_delay</code> for Hawaiian Airlines flights. Interpret your results.</p></li>
+<li><p>Compute a 95% confidence interval for the proportion of flights for which <code>arr_delay &gt; 0</code> for Hawaiian Airlines flights. Interpret your results.</p></li>
 <li><p>Consider the null hypothesis that the mean <code>arr_delay</code> for Alaska is equal to the mean <code>arr_delay</code> for Hawaiian and the alternative hypothesis that the mean <code>arr_delay</code> values are different for the two airlines. Perform an appropriate hypothesis test and interpret your results.</p></li>
 </ol>
 </section>
 <section id="b.-linear-regression" class="level2">
 <h2 class="anchored" data-anchor-id="b.-linear-regression">B. Linear Regression</h2>
-<ol start="5" type="1">
+<ol start="6" type="1">
 <li>Researchers at the University of Texas in Austin, Texas tried to figure out what causes differences in instructor teaching evaluation scores. Use the following code to load data on 463 courses. A full description of the data can be found <a href="https://www.openintro.org/book/statdata/?data=evals">here</a>.</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>evals <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;https://www.openintro.org/book/statdata/evals.csv&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ol start="6" type="1">
+<ol start="7" type="1">
 <li><p>Carry out a linear regression with <code>score</code> as the response variable and <code>age</code> as the single explanatory variable. Interpret your results.</p></li>
 <li><p>Extend your regression model by adding an additional explanatory variable. What happens to your results? Are the new <span class="math inline">\(p\)</span>-values appropriate to use?</p></li>
 </ol>
 </section>
 <section id="c.-power-simulation" class="level2">
 <h2 class="anchored" data-anchor-id="c.-power-simulation">C. Power simulation</h2>
-<ol start="8" type="1">
+<ol start="9" type="1">
 <li><p>For this question, you will write a simulation to estimate the power of a one-sample <span class="math inline">\(t\)</span>-test for a population mean for varying effect sizes, <span class="math inline">\(\alpha\)</span>, and sample sizes. In particular, assume that we are testing the hypotheses <span class="math inline">\(H_0: \mu = 0\)</span> and <span class="math inline">\(H_a: \mu \not=0\)</span>.</p>
 <ol type="a">
 <li><p>Write a function that takes four inputs: <code>mu</code>, <code>sigma</code>, <code>alpha</code>, and <code>n</code>. Your function should randomly simulate a sample of <code>n</code> normal random variables with mean <code>mu</code> and standard deviation <code>sigma</code> and then compute the appropriate test <span class="math inline">\(t\)</span>-statistic, treating the mean and standard deviation as unknown. You should then compare your test statistic with a <span class="math inline">\(t\)</span> distribution and obtain the <span class="math inline">\(P\)</span>-value of your hypothesis test. Based on <code>alpha</code>, return <code>TRUE</code> if the null hypothesis is rejected and <code>FALSE</code> if the null hypothesis is not rejected.</p></li>
@@ -5089,29 +5090,31 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Compute a 95% confidence interval for the mean <span class="in">`arr_delay`</span> for Hawaiian Airlines flights. Interpret your results.</span>
 <span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Consider the null hypothesis that the mean <span class="in">`arr_delay`</span> for Alaska is equal to the mean <span class="in">`arr_delay`</span> for Hawaiian and the alternative hypothesis that the mean <span class="in">`arr_delay`</span> values are different for the two airlines. Perform an appropriate hypothesis test and interpret your results.</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Compute a 95% confidence interval for the proportion of flights for which <span class="in">`arr_delay &gt; 0`</span> for Hawaiian Airlines flights. Interpret your results.</span>
 <span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="fu">## B. Linear Regression</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Consider the null hypothesis that the mean <span class="in">`arr_delay`</span> for Alaska is equal to the mean <span class="in">`arr_delay`</span> for Hawaiian and the alternative hypothesis that the mean <span class="in">`arr_delay`</span> values are different for the two airlines. Perform an appropriate hypothesis test and interpret your results.</span>
 <span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Researchers at the University of Texas in Austin, Texas tried to figure out what causes differences in instructor teaching evaluation scores. Use the following code to load data on 463 courses. A full description of the data can be found <span class="co">[</span><span class="ot">here</span><span class="co">](https://www.openintro.org/book/statdata/?data=evals)</span>.</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="fu">## B. Linear Regression</span></span>
 <span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, warning = F, message = F}</span></span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>evals <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;https://www.openintro.org/book/statdata/evals.csv&quot;</span>)</span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>Carry out a linear regression with <span class="in">`score`</span> as the response variable and <span class="in">`age`</span> as the single explanatory variable. Interpret your results.</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>Researchers at the University of Texas in Austin, Texas tried to figure out what causes differences in instructor teaching evaluation scores. Use the following code to load data on 463 courses. A full description of the data can be found <span class="co">[</span><span class="ot">here</span><span class="co">](https://www.openintro.org/book/statdata/?data=evals)</span>.</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, warning = F, message = F}</span></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>evals <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;https://www.openintro.org/book/statdata/evals.csv&quot;</span>)</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a><span class="ss">7. </span>Extend your regression model by adding an additional explanatory variable. What happens to your results? Are the new $p$-values appropriate to use?</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a><span class="ss">7. </span>Carry out a linear regression with <span class="in">`score`</span> as the response variable and <span class="in">`age`</span> as the single explanatory variable. Interpret your results.</span>
 <span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a><span class="fu">## C. Power simulation</span></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a><span class="ss">8. </span>Extend your regression model by adding an additional explanatory variable. What happens to your results? Are the new $p$-values appropriate to use?</span>
 <span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a><span class="ss">8. </span>For this question, you will write a simulation to estimate the power of a one-sample $t$-test for a population mean for varying effect sizes, $\alpha$, and sample sizes. In particular, assume that we are testing the hypotheses $H_0: \mu = 0$ and $H_a: \mu \not=0$.</span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a><span class="fu">## C. Power simulation</span></span>
 <span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>    a. Write a function that takes four inputs: <span class="in">`mu`</span>, <span class="in">`sigma`</span>, <span class="in">`alpha`</span>, and <span class="in">`n`</span>. Your function should randomly simulate a sample of <span class="in">`n`</span> normal random variables with mean <span class="in">`mu`</span> and standard deviation <span class="in">`sigma`</span> and then compute the appropriate test $t$-statistic, treating the mean and standard deviation as unknown. You should then compare your test statistic with a $t$ distribution and obtain the $P$-value of your hypothesis test. Based on <span class="in">`alpha`</span>, return <span class="in">`TRUE`</span> if the null hypothesis is rejected and <span class="in">`FALSE`</span> if the null hypothesis is not rejected.</span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>    b. Run your function 1000 times to estimate the power when <span class="in">`mu = 1`</span>, <span class="in">`sigma = 1`</span>, <span class="in">`alpha = .05`</span> and <span class="in">`n = 10`</span>.</span>
-<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>    c. Run your function 1000 times to estimate the power when <span class="in">`mu = 0.5`</span>, <span class="in">`sigma = 1`</span>, <span class="in">`alpha = .05`</span> and <span class="in">`n = 10`</span>. Compare with your results from (b).</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a><span class="ss">9. </span>For this question, you will write a simulation to estimate the power of a one-sample $t$-test for a population mean for varying effect sizes, $\alpha$, and sample sizes. In particular, assume that we are testing the hypotheses $H_0: \mu = 0$ and $H_a: \mu \not=0$.</span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>    a. Write a function that takes four inputs: <span class="in">`mu`</span>, <span class="in">`sigma`</span>, <span class="in">`alpha`</span>, and <span class="in">`n`</span>. Your function should randomly simulate a sample of <span class="in">`n`</span> normal random variables with mean <span class="in">`mu`</span> and standard deviation <span class="in">`sigma`</span> and then compute the appropriate test $t$-statistic, treating the mean and standard deviation as unknown. You should then compare your test statistic with a $t$ distribution and obtain the $P$-value of your hypothesis test. Based on <span class="in">`alpha`</span>, return <span class="in">`TRUE`</span> if the null hypothesis is rejected and <span class="in">`FALSE`</span> if the null hypothesis is not rejected.</span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>    b. Run your function 1000 times to estimate the power when <span class="in">`mu = 1`</span>, <span class="in">`sigma = 1`</span>, <span class="in">`alpha = .05`</span> and <span class="in">`n = 10`</span>.</span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>    c. Run your function 1000 times to estimate the power when <span class="in">`mu = 0.5`</span>, <span class="in">`sigma = 1`</span>, <span class="in">`alpha = .05`</span> and <span class="in">`n = 10`</span>. Compare with your results from (b).</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

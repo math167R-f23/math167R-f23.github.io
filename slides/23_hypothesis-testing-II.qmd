@@ -16,45 +16,39 @@ editor: visual
 
 ## Summary: hypothesis testing
 
-1.  Define null and alternative hypotheses. 
+1.  Define null and alternative hypotheses.
 
-    - ex. $H_0:\mu = 0$ and $H_a:\mu\neq 0$
-    
+    -   ex. $H_0:\mu = 0$ and $H_a:\mu\neq 0$
+
 2.  Compute a test statistic for which the null sampling distribution is known (based on assumptions about the population/sample).
 
-    - ex. $T=(\overline{X}_n-\mu)/(S^2/\sqrt{n})\sim t_{n-1}$
+    -   ex. $T=(\overline{X}_n-\mu)/(S^2/\sqrt{n})\sim t_{n-1}$
 
 3.  Compare the test statistic with the null distribution to obtain a P-value.
 
-    - ex. $P(|T|>|t|)$ where $t$ is the observed test statistic.
-  
+    -   ex. $P(|T|>|t|)$ where $t$ is the observed test statistic.
 
 ## Example: Two-sample $z$-test
-
 
 **Assumptions**:
 
-1. $X_1, \ldots, X_m$ is a random sample from a distribution with mean $\mu_1$ and variance $\sigma_1^2$.
-2. $Y_1, \ldots, Y_n$ is a random sample from a distribution with mean $\mu_2$ and variance $\sigma_2^2$.
-3. The $X$ and $Y$ samples are independent of one another.
-4. The sample sizes are adequately large (usually appropriate if $m>40$ and $n>40$.
+1.  $X_1, \ldots, X_m$ is a random sample from a distribution with mean $\mu_1$ and variance $\sigma_1^2$.
+2.  $Y_1, \ldots, Y_n$ is a random sample from a distribution with mean $\mu_2$ and variance $\sigma_2^2$.
+3.  The $X$ and $Y$ samples are independent of one another.
+4.  The sample sizes are adequately large (usually appropriate if $m>40$ and $n>40$.
 
 **Hypotheses**:
 
-* H_0: $\mu_1=\mu_2$
-* H_a: $\mu_1\not=\mu_2$
+-   H_0: $\mu_1=\mu_2$
+-   H_a: $\mu_1\not=\mu_2$
 
 ## Example: Two-sample $z$-test
 
-Under these assumptions, $\overline{X}-\overline{Y}$ is approximately normal and the test statistic
-$$Z=\frac{\overline{X}-\overline{Y}-(\mu_1-\mu_2)}{\sqrt{\frac{S_1^2}{m}+\frac{S_2^2}{n}}}$$
-has approximately a standard normal distribution when $H_0$ is true.
+Under these assumptions, $\overline{X}-\overline{Y}$ is approximately normal and the test statistic $$Z=\frac{\overline{X}-\overline{Y}-(\mu_1-\mu_2)}{\sqrt{\frac{S_1^2}{m}+\frac{S_2^2}{n}}}$$ has approximately a standard normal distribution when $H_0$ is true.
 
 ## Example: Two-sample $t$-test
 
-When the samples are small, but the population distributions are approximately normal, the standardized test statistic 
-$$T=\frac{\overline{X}-\overline{Y}-(\mu_1-\mu_2)}{\sqrt{\frac{S_1^2}{m}+\frac{S_2^2}{n}}}$$
-has approximately a $t$ distribution with df $v$ estimated from the data by
+When the samples are small, but the population distributions are approximately normal, the standardized test statistic $$T=\frac{\overline{X}-\overline{Y}-(\mu_1-\mu_2)}{\sqrt{\frac{S_1^2}{m}+\frac{S_2^2}{n}}}$$ has approximately a $t$ distribution with df $v$ estimated from the data by
 
 $$\nu =\frac{\left(\frac{s_1^2}{m}+\frac{s_2^2}{n}\right)^2}{\frac{(s_1^2/m)^2}{m-1}+\frac{(s_2^2/n)^2}{n-1}}$$
 
@@ -72,11 +66,11 @@ t.test(extra ~ group, data = sleep)
 
 ## Permutation tests
 
-Typically, for hypothesis testing, we need to know the sampling distribution of the test statistic when the null hypothesis is true. 
+Typically, for hypothesis testing, we need to know the sampling distribution of the test statistic when the null hypothesis is true.
 
 In some cases, we can derive the null sampling distribution analytically.
 
-**What if we don't know the sampling distribution under the null?** A permutation test is  simple way to estimate the sampling distribution for any test statistic, requiring only some exchangeability assumptions on the data.
+**What if we don't know the sampling distribution under the null?** A permutation test is simple way to estimate the sampling distribution for any test statistic, requiring only some exchangeability assumptions on the data.
 
 ## Permutation tests
 
@@ -98,7 +92,6 @@ alt_y <- rnorm(300, mean = carrier * 5)
 If the null hypothesis is true, the distribution of $Y$ for the carriers should look the same as the distribution for the non-carriers. If we **permute** the labels repeatedly, we can get resampled datasets.
 
 If the null hypothesis is true, the shuffled data sets will resemble the original dataset. If the null hypothesis is false, the shuffled dataset may not look like the real data.
-
 
 ## Null hypothesis true
 
@@ -188,14 +181,13 @@ ggplot(plot_dat, aes(x = Variable, y = id, fill = Variable)) +
 
 ## Permutation tests
 
-1. Calculate a test statistic based on the observed data.
-2. Repeatedly permute the group labels to create resamples. For each resample, compute the resample test statistic.
-3. Compare the observed data test statistic with the distribution of resampled test statistics.
+1.  Calculate a test statistic based on the observed data.
+2.  Repeatedly permute the group labels to create resamples. For each resample, compute the resample test statistic.
+3.  Compare the observed data test statistic with the distribution of resampled test statistics.
 
 ## Permutation tests
 
 In the case of our simulated data, we know the true distribution of the difference of sample means. We can thus use a $t$-test to perform our hypothesis test:
-
 
 ```{r}
 #| eval: true
@@ -232,7 +224,6 @@ test_stats_null <- replicate(1000, single_test(carrier, null_y))
 
 ## Permutation tests
 
-
 ```{r}
 #| eval: true
 #| echo: true
@@ -244,7 +235,6 @@ mean(abs(test_stats_null) > abs(null_diff)) # P-value
 ## Permutation tests
 
 Compare with the case where the null hypothesis is false.
-
 
 ```{r}
 #| eval: true
@@ -267,7 +257,7 @@ Note the power will depend on the size of the difference between the true sampli
 
 Suppose that $X_1,\ldots, X_n\sim N(\mu, 1)$.
 
-Consider the hypotheses $H_0:\mu=0$ and $H_a:\mu\neq 0$. 
+Consider the hypotheses $H_0:\mu=0$ and $H_a:\mu\neq 0$.
 
 We reject at the $\alpha$ significance level if $$|\overline{X}_n| > \frac{z_{\alpha/2}}{\sqrt{n}}$$
 
@@ -309,6 +299,7 @@ ggplot(x, aes(x = x)) +
   xlab("True population mean") + ylab("Power") +
   theme_bw()
 ```
+
 ## One sample $z$-test
 
 ```{r}
@@ -405,7 +396,6 @@ ggplot(mu_a, aes(x = mu_a)) +
 
 ## P-hacking simulations
 
-
 **P-hacking** refers to the practice of repeatedly performing hypothesis tests (and potentially manipulating the data) until a statistically significant P-values is obtained. Usually, only this final result is published, without mentioning all of the manipulations that came before.
 
 ## P-hacking simulations
@@ -451,7 +441,6 @@ for (i in 1:ncol(pairs_to_compare)) {
 }
 print(min(p_values))
 ```
-
 
 ## Multiple testing simulations
 

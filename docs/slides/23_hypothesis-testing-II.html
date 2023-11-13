@@ -499,11 +499,11 @@ mean in group 1 mean in group 2
 <section id="null-hypothesis-true" class="slide level2">
 <h2>Null hypothesis true</h2>
 
-<img data-src="23_hypothesis-testing-II_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<img data-src="23_hypothesis-testing-II_files/figure-html/unnamed-chunk-3-1.png" width="672" class="r-stretch"></section>
 <section id="null-hypothesis-false" class="slide level2">
 <h2>Null hypothesis false</h2>
 
-<img data-src="23_hypothesis-testing-II_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
+<img data-src="23_hypothesis-testing-II_files/figure-html/unnamed-chunk-4-1.png" width="672" class="r-stretch"></section>
 <section id="permutation-tests-3" class="slide level2">
 <h2>Permutation tests</h2>
 <ol type="1">
@@ -522,13 +522,13 @@ mean in group 1 mean in group 2
     Two Sample t-test
 
 data:  null_y[carrier == 0] and null_y[carrier == 1]
-t = -0.59611, df = 298, p-value = 0.5516
+t = -0.066258, df = 298, p-value = 0.9472
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- -0.3250301  0.1739007
+ -0.2412448  0.2255293
 sample estimates:
   mean of x   mean of y 
-0.001384385 0.076949044 </code></pre>
+-0.03895142 -0.03109367 </code></pre>
 </div>
 </div>
 </section>
@@ -542,13 +542,13 @@ sample estimates:
     Two Sample t-test
 
 data:  alt_y[carrier == 0] and alt_y[carrier == 1]
-t = -40.006, df = 298, p-value &lt; 2.2e-16
+t = -40.783, df = 298, p-value &lt; 2.2e-16
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- -5.195450 -4.708274
+ -5.168072 -4.692271
 sample estimates:
   mean of x   mean of y 
--0.03923244  4.91262958 </code></pre>
+-0.01644989  4.91372155 </code></pre>
 </div>
 </div>
 </section>
@@ -574,10 +574,10 @@ sample estimates:
 
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">mean</span>(<span class="fu">abs</span>(test_stats_null) <span class="sc">&gt;</span> <span class="fu">abs</span>(null_diff)) <span class="co"># P-value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.554</code></pre>
+<pre><code>[1] 0.931</code></pre>
 </div>
 </div>
-<img data-src="23_hypothesis-testing-II_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<img data-src="23_hypothesis-testing-II_files/figure-html/unnamed-chunk-8-1.png" width="672" class="r-stretch"></section>
 <section id="permutation-tests-8" class="slide level2">
 <h2>Permutation tests</h2>
 <p>Compare with the case where the null hypothesis is false.</p>
@@ -593,7 +593,7 @@ sample estimates:
 <pre><code>[1] 0</code></pre>
 </div>
 </div>
-<img data-src="23_hypothesis-testing-II_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
+<img data-src="23_hypothesis-testing-II_files/figure-html/unnamed-chunk-9-1.png" width="672" class="r-stretch"></section>
 <section id="power-analysis" class="slide level2">
 <h2>Power analysis</h2>
 <p>Recall that the power of a hypothesis test is the probability of rejecting the null hypothesis when the null hypothesis is false.</p>
@@ -644,10 +644,10 @@ P\left(|\overline{X}_n| &gt; \frac{z_{\alpha/2}}{\sqrt{n}}\right)&amp;=P\left(\o
 <section id="one-sample-z-test-3" class="slide level2">
 <h2>One sample <span class="math inline">\(z\)</span>-test</h2>
 
-<img data-src="23_hypothesis-testing-II_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
+<img data-src="23_hypothesis-testing-II_files/figure-html/unnamed-chunk-11-1.png" width="672" class="r-stretch"></section>
 <section id="using-simulations-to-estimate-power" class="slide level2">
 <h2>Using simulations to estimate power</h2>
-<div class="cell" data-hash="23_hypothesis-testing-II_cache/revealjs/power.sim_a981c6598dee417e5db45c067ecc14fd">
+<div class="cell" data-hash="23_hypothesis-testing-II_cache/html/power.sim_683aa31a84287c3ce999e5df73ae005f">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>simulate_test <span class="ot">&lt;-</span> <span class="cf">function</span>(mu_a, alpha, n) {</span>
 <span id="cb16-2"><a href="#cb16-2"></a>  Xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">rnorm</span>(n, <span class="at">mean =</span> mu_a, <span class="at">sd =</span> <span class="dv">1</span>))</span>
 <span id="cb16-3"><a href="#cb16-3"></a>  Z_score <span class="ot">&lt;-</span> Xbar <span class="sc">*</span> <span class="fu">sqrt</span>(n)</span>
@@ -679,7 +679,7 @@ P\left(|\overline{X}_n| &gt; \frac{z_{\alpha/2}}{\sqrt{n}}\right)&amp;=P\left(\o
 <section id="using-simulations-to-estimate-power-1" class="slide level2">
 <h2>Using simulations to estimate power</h2>
 
-<img data-src="23_hypothesis-testing-II_files/figure-revealjs/power.sim.eval-1.png" width="960" class="r-stretch"></section>
+<img data-src="23_hypothesis-testing-II_files/figure-html/power.sim.eval-1.png" width="672" class="r-stretch"></section>
 <section id="p-hacking-simulations" class="slide level2">
 <h2>P-hacking simulations</h2>
 <p><strong>P-hacking</strong> refers to the practice of repeatedly performing hypothesis tests (and potentially manipulating the data) until a statistically significant P-values is obtained. Usually, only this final result is published, without mentioning all of the manipulations that came before.</p>
@@ -687,16 +687,16 @@ P\left(|\overline{X}_n| &gt; \frac{z_{\alpha/2}}{\sqrt{n}}\right)&amp;=P\left(\o
 <section id="p-hacking-simulations-1" class="slide level2">
 <h2>P-hacking simulations</h2>
 <p>Suppose we simulate 25 observations of 8 variables which we know to be uncorrelated.</p>
-<div class="cell" data-hash="23_hypothesis-testing-II_cache/revealjs/phack.sim_e60282c81b803c6ba5a216a501cf0228">
+<div class="cell" data-hash="23_hypothesis-testing-II_cache/html/phack.sim_264ed5474711686e1c75bddb2fe963ab">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>no_signal_data<span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">200</span>), <span class="at">ncol =</span> <span class="dv">8</span>) <span class="co"># 25 x 8 matrix</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a><span class="fu">pairs</span>(no_signal_data) <span class="co"># pairwise scatter plots</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="23_hypothesis-testing-II_files/figure-revealjs/phack.sim-1.png" width="960" class="r-stretch"></section>
+<img data-src="23_hypothesis-testing-II_files/figure-html/phack.sim-1.png" width="672" class="r-stretch"></section>
 <section id="multiple-testing-simulations" class="slide level2">
 <h2>Multiple testing simulations</h2>
 <p>What if we perform a hypothesis test to test whether the correlation is zero between each pair of variables using <code>cor.test()</code>? With only 8 variables, we have 28 potential comparisons, the probability that we will (falsely) reject the null is already:</p>
-<div class="cell" data-hash="23_hypothesis-testing-II_cache/revealjs/comp_cfd29a198fa43e90595d54d0f43e24b4">
+<div class="cell" data-hash="23_hypothesis-testing-II_cache/html/comp_5f53d4f0eb91e4b62a7fd01143674665">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="dv">1</span> <span class="sc">-</span> (<span class="fl">0.95</span>) <span class="sc">^</span> <span class="dv">28</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7621731</code></pre>
@@ -705,7 +705,7 @@ P\left(|\overline{X}_n| &gt; \frac{z_{\alpha/2}}{\sqrt{n}}\right)&amp;=P\left(\o
 </section>
 <section id="multiple-testing-simulations-1" class="slide level2">
 <h2>Multiple testing simulations</h2>
-<div class="cell" data-hash="23_hypothesis-testing-II_cache/revealjs/phack.sim.p_18ed59b73fc0003f4ac6a9e6308437f7">
+<div class="cell" data-hash="23_hypothesis-testing-II_cache/html/phack.sim.p_24c525ff218cb0e3bd14583290474abc">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">set.seed</span>(<span class="dv">1029</span>)</span>
 <span id="cb20-2"><a href="#cb20-2"></a>no_signal_data<span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">200</span>), <span class="at">ncol =</span> <span class="dv">8</span>) <span class="co"># 25 x 8 matrix</span></span>
 <span id="cb20-3"><a href="#cb20-3"></a>pairs_to_compare <span class="ot">&lt;-</span> <span class="fu">combn</span>(<span class="dv">8</span>, <span class="dv">2</span>) <span class="co"># all combinations of 2 numbers from 1-8</span></span>
@@ -944,44 +944,6 @@ P\left(|\overline{X}_n| &gt; \frac{z_{\alpha/2}}{\sqrt{n}}\right)&amp;=P\left(\o
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
