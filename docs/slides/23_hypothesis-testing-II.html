@@ -488,7 +488,7 @@ mean in group 1 mean in group 2
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>carrier <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">100</span>,<span class="dv">200</span>))</span>
 <span id="cb3-2"><a href="#cb3-2"></a></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="co"># an example where y is not independent of the gene</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co"># an example where y is independent of the gene</span></span>
 <span id="cb3-4"><a href="#cb3-4"></a>null_y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">300</span>) </span>
 <span id="cb3-5"><a href="#cb3-5"></a><span class="co"># an example where y is dependent on the gene</span></span>
 <span id="cb3-6"><a href="#cb3-6"></a>alt_y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">300</span>, <span class="at">mean =</span> carrier <span class="sc">*</span> <span class="dv">5</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -525,13 +525,13 @@ mean in group 1 mean in group 2
     Two Sample t-test
 
 data:  null_y[carrier == 0] and null_y[carrier == 1]
-t = -0.9345, df = 298, p-value = 0.3508
+t = -0.20376, df = 298, p-value = 0.8387
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- -0.3441115  0.1225249
+ -0.2703315  0.2196040
 sample estimates:
-   mean of x    mean of y 
--0.001780347  0.109012939 </code></pre>
+ mean of x  mean of y 
+0.08703446 0.11239820 </code></pre>
 </div>
 </div>
 </section>
@@ -545,13 +545,13 @@ sample estimates:
     Two Sample t-test
 
 data:  alt_y[carrier == 0] and alt_y[carrier == 1]
-t = -40.932, df = 298, p-value &lt; 2.2e-16
+t = -42.775, df = 298, p-value &lt; 2.2e-16
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- -5.033499 -4.571692
+ -5.360905 -4.889319
 sample estimates:
-mean of x mean of y 
-0.1987507 5.0013462 </code></pre>
+ mean of x  mean of y 
+0.01365367 5.13876563 </code></pre>
 </div>
 </div>
 </section>
@@ -577,7 +577,7 @@ mean of x mean of y
 
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">mean</span>(<span class="fu">abs</span>(test_stats_null) <span class="sc">&gt;</span> <span class="fu">abs</span>(null_diff)) <span class="co"># P-value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.353</code></pre>
+<pre><code>[1] 0.828</code></pre>
 </div>
 </div>
 <img data-src="23_hypothesis-testing-II_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
@@ -690,7 +690,7 @@ P\left(|\overline{X}_n| &gt; \frac{z_{\alpha/2}}{\sqrt{n}}\right)&amp;=P\left(\o
 <section id="p-hacking-simulations-1" class="slide level2">
 <h2>P-hacking simulations</h2>
 <p>Suppose we simulate 25 observations of 8 variables which we know to be uncorrelated.</p>
-<div class="cell" data-hash="23_hypothesis-testing-II_cache/revealjs/phack.sim_e08f53c48343cff385c8109db383c682">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>no_signal_data <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">200</span>), <span class="at">ncol =</span> <span class="dv">8</span>) <span class="co"># 25 x 8 matrix</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a><span class="fu">pairs</span>(no_signal_data) <span class="co"># pairwise scatter plots</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
@@ -737,7 +737,7 @@ P\left(|\overline{X}_n| &gt; \frac{z_{\alpha/2}}{\sqrt{n}}\right)&amp;=P\left(\o
 </section>
 <section id="multiple-testing-simulations-2" class="slide level2">
 <h2>Multiple testing simulations</h2>
-<p>For this reason it is common to perform a correction to the hypothesis tests when many hypothesis tests are conducted.</p>
+<p>For this reason it is common to perform a correction to the p-values when many hypothesis tests are conducted.</p>
 <p><strong>Example</strong>: The Bonferroni correction divides <span class="math inline">\(\alpha\)</span> by the number of tests performed to get the corrected significance level.</p>
 
 <div class="footer footer-default">

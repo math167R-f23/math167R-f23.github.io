@@ -795,7 +795,7 @@
     "href": "slides/23_hypothesis-testing-II.html#permutation-tests-1",
     "title": "MATH167R: Hypothesis Testing",
     "section": "Permutation tests",
-    "text": "Permutation tests\nExample: Suppose we want to understand whether carrying a particular genetic variant affects an individual’s height \\(y\\).\n\ncarrier &lt;- rep(c(0,1), c(100,200))\n\n# an example where y is not independent of the gene\nnull_y &lt;- rnorm(300) \n# an example where y is dependent on the gene\nalt_y &lt;- rnorm(300, mean = carrier * 5)"
+    "text": "Permutation tests\nExample: Suppose we want to understand whether carrying a particular genetic variant affects an individual’s height \\(y\\).\n\ncarrier &lt;- rep(c(0,1), c(100,200))\n\n# an example where y is independent of the gene\nnull_y &lt;- rnorm(300) \n# an example where y is dependent on the gene\nalt_y &lt;- rnorm(300, mean = carrier * 5)"
   },
   {
     "objectID": "slides/23_hypothesis-testing-II.html#permutation-tests-2",
@@ -830,14 +830,14 @@
     "href": "slides/23_hypothesis-testing-II.html#permutation-tests-4",
     "title": "MATH167R: Hypothesis Testing",
     "section": "Permutation tests",
-    "text": "Permutation tests\nIn the case of our simulated data, we know the true distribution of the difference of sample means. We can thus use a \\(t\\)-test to perform our hypothesis test:\n\nt.test(null_y[carrier == 0], null_y[carrier == 1], var.equal=TRUE)\n\n\n    Two Sample t-test\n\ndata:  null_y[carrier == 0] and null_y[carrier == 1]\nt = -0.9345, df = 298, p-value = 0.3508\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -0.3441115  0.1225249\nsample estimates:\n   mean of x    mean of y \n-0.001780347  0.109012939"
+    "text": "Permutation tests\nIn the case of our simulated data, we know the true distribution of the difference of sample means. We can thus use a \\(t\\)-test to perform our hypothesis test:\n\nt.test(null_y[carrier == 0], null_y[carrier == 1], var.equal=TRUE)\n\n\n    Two Sample t-test\n\ndata:  null_y[carrier == 0] and null_y[carrier == 1]\nt = -0.20376, df = 298, p-value = 0.8387\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -0.2703315  0.2196040\nsample estimates:\n mean of x  mean of y \n0.08703446 0.11239820"
   },
   {
     "objectID": "slides/23_hypothesis-testing-II.html#permutation-tests-5",
     "href": "slides/23_hypothesis-testing-II.html#permutation-tests-5",
     "title": "MATH167R: Hypothesis Testing",
     "section": "Permutation tests",
-    "text": "Permutation tests\nCompare with the \\(t\\)-test for the alternative hypothesis data:\n\nt.test(alt_y[carrier == 0], alt_y[carrier == 1], var.equal=TRUE)\n\n\n    Two Sample t-test\n\ndata:  alt_y[carrier == 0] and alt_y[carrier == 1]\nt = -40.932, df = 298, p-value &lt; 2.2e-16\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -5.033499 -4.571692\nsample estimates:\nmean of x mean of y \n0.1987507 5.0013462"
+    "text": "Permutation tests\nCompare with the \\(t\\)-test for the alternative hypothesis data:\n\nt.test(alt_y[carrier == 0], alt_y[carrier == 1], var.equal=TRUE)\n\n\n    Two Sample t-test\n\ndata:  alt_y[carrier == 0] and alt_y[carrier == 1]\nt = -42.775, df = 298, p-value &lt; 2.2e-16\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -5.360905 -4.889319\nsample estimates:\n mean of x  mean of y \n0.01365367 5.13876563"
   },
   {
     "objectID": "slides/23_hypothesis-testing-II.html#permutation-tests-6",
@@ -851,7 +851,7 @@
     "href": "slides/23_hypothesis-testing-II.html#permutation-tests-7",
     "title": "MATH167R: Hypothesis Testing",
     "section": "Permutation tests",
-    "text": "Permutation tests\n\nhist(test_stats_null)\nabline(v = null_diff, lwd=2, col=\"purple\")\n\nmean(abs(test_stats_null) &gt; abs(null_diff)) # P-value\n\n[1] 0.353"
+    "text": "Permutation tests\n\nhist(test_stats_null)\nabline(v = null_diff, lwd=2, col=\"purple\")\n\nmean(abs(test_stats_null) &gt; abs(null_diff)) # P-value\n\n[1] 0.828"
   },
   {
     "objectID": "slides/23_hypothesis-testing-II.html#permutation-tests-8",
@@ -949,7 +949,7 @@
     "href": "slides/23_hypothesis-testing-II.html#multiple-testing-simulations-2",
     "title": "MATH167R: Hypothesis Testing",
     "section": "Multiple testing simulations",
-    "text": "Multiple testing simulations\nFor this reason it is common to perform a correction to the hypothesis tests when many hypothesis tests are conducted.\nExample: The Bonferroni correction divides \\(\\alpha\\) by the number of tests performed to get the corrected significance level."
+    "text": "Multiple testing simulations\nFor this reason it is common to perform a correction to the p-values when many hypothesis tests are conducted.\nExample: The Bonferroni correction divides \\(\\alpha\\) by the number of tests performed to get the corrected significance level."
   },
   {
     "objectID": "slides/22_hypothesis-testing.html#overview-of-today",
