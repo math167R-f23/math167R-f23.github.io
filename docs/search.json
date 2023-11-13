@@ -753,11 +753,18 @@
     "href": "slides/23_hypothesis-testing-II.html#example-two-sample-z-test",
     "title": "MATH167R: Hypothesis Testing",
     "section": "Example: Two-sample \\(z\\)-test",
-    "text": "Example: Two-sample \\(z\\)-test\nAssumptions:\n\n\\(X_1, \\ldots, X_m\\) is a random sample from a distribution with mean \\(\\mu_1\\) and variance \\(\\sigma_1^2\\).\n\\(Y_1, \\ldots, Y_n\\) is a random sample from a distribution with mean \\(\\mu_2\\) and variance \\(\\sigma_2^2\\).\nThe \\(X\\) and \\(Y\\) samples are independent of one another.\nThe sample sizes are adequately large (usually appropriate if \\(m&gt;40\\) and \\(n&gt;40\\).\n\nHypotheses:\n\nH_0: \\(\\mu_1=\\mu_2\\)\nH_a: \\(\\mu_1\\not=\\mu_2\\)"
+    "text": "Example: Two-sample \\(z\\)-test\nAssumptions:\n\n\\(X_1, \\ldots, X_m\\) is a random sample from a distribution with mean \\(\\mu_1\\) and variance \\(\\sigma_1^2\\).\n\\(Y_1, \\ldots, Y_n\\) is a random sample from a distribution with mean \\(\\mu_2\\) and variance \\(\\sigma_2^2\\).\nThe \\(X\\) and \\(Y\\) samples are independent of one another.\nThe sample sizes are adequately large (usually appropriate if \\(m&gt;40\\) and \\(n&gt;40\\)."
   },
   {
     "objectID": "slides/23_hypothesis-testing-II.html#example-two-sample-z-test-1",
     "href": "slides/23_hypothesis-testing-II.html#example-two-sample-z-test-1",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "Example: Two-sample \\(z\\)-test",
+    "text": "Example: Two-sample \\(z\\)-test\nHypotheses:\n\nH_0: \\(\\mu_1=\\mu_2\\)\nH_a: \\(\\mu_1\\not=\\mu_2\\)"
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#example-two-sample-z-test-2",
+    "href": "slides/23_hypothesis-testing-II.html#example-two-sample-z-test-2",
     "title": "MATH167R: Hypothesis Testing",
     "section": "Example: Two-sample \\(z\\)-test",
     "text": "Example: Two-sample \\(z\\)-test\nUnder these assumptions, \\(\\overline{X}-\\overline{Y}\\) is approximately normal and the test statistic \\[Z=\\frac{\\overline{X}-\\overline{Y}-(\\mu_1-\\mu_2)}{\\sqrt{\\frac{S_1^2}{m}+\\frac{S_2^2}{n}}}\\] has approximately a standard normal distribution when \\(H_0\\) is true."
@@ -823,14 +830,14 @@
     "href": "slides/23_hypothesis-testing-II.html#permutation-tests-4",
     "title": "MATH167R: Hypothesis Testing",
     "section": "Permutation tests",
-    "text": "Permutation tests\nIn the case of our simulated data, we know the true distribution of the difference of sample means. We can thus use a \\(t\\)-test to perform our hypothesis test:\n\nt.test(null_y[carrier == 0], null_y[carrier == 1], var.equal=TRUE)\n\n\n    Two Sample t-test\n\ndata:  null_y[carrier == 0] and null_y[carrier == 1]\nt = -0.066258, df = 298, p-value = 0.9472\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -0.2412448  0.2255293\nsample estimates:\n  mean of x   mean of y \n-0.03895142 -0.03109367"
+    "text": "Permutation tests\nIn the case of our simulated data, we know the true distribution of the difference of sample means. We can thus use a \\(t\\)-test to perform our hypothesis test:\n\nt.test(null_y[carrier == 0], null_y[carrier == 1], var.equal=TRUE)\n\n\n    Two Sample t-test\n\ndata:  null_y[carrier == 0] and null_y[carrier == 1]\nt = -0.9345, df = 298, p-value = 0.3508\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -0.3441115  0.1225249\nsample estimates:\n   mean of x    mean of y \n-0.001780347  0.109012939"
   },
   {
     "objectID": "slides/23_hypothesis-testing-II.html#permutation-tests-5",
     "href": "slides/23_hypothesis-testing-II.html#permutation-tests-5",
     "title": "MATH167R: Hypothesis Testing",
     "section": "Permutation tests",
-    "text": "Permutation tests\nCompare with the \\(t\\)-test for the alternative hypothesis data:\n\nt.test(alt_y[carrier == 0], alt_y[carrier == 1], var.equal=TRUE)\n\n\n    Two Sample t-test\n\ndata:  alt_y[carrier == 0] and alt_y[carrier == 1]\nt = -40.783, df = 298, p-value &lt; 2.2e-16\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -5.168072 -4.692271\nsample estimates:\n  mean of x   mean of y \n-0.01644989  4.91372155"
+    "text": "Permutation tests\nCompare with the \\(t\\)-test for the alternative hypothesis data:\n\nt.test(alt_y[carrier == 0], alt_y[carrier == 1], var.equal=TRUE)\n\n\n    Two Sample t-test\n\ndata:  alt_y[carrier == 0] and alt_y[carrier == 1]\nt = -40.932, df = 298, p-value &lt; 2.2e-16\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -5.033499 -4.571692\nsample estimates:\nmean of x mean of y \n0.1987507 5.0013462"
   },
   {
     "objectID": "slides/23_hypothesis-testing-II.html#permutation-tests-6",
@@ -844,7 +851,7 @@
     "href": "slides/23_hypothesis-testing-II.html#permutation-tests-7",
     "title": "MATH167R: Hypothesis Testing",
     "section": "Permutation tests",
-    "text": "Permutation tests\n\nhist(test_stats_null)\nabline(v = null_diff, lwd=2, col=\"purple\")\n\nmean(abs(test_stats_null) &gt; abs(null_diff)) # P-value\n\n[1] 0.931"
+    "text": "Permutation tests\n\nhist(test_stats_null)\nabline(v = null_diff, lwd=2, col=\"purple\")\n\nmean(abs(test_stats_null) &gt; abs(null_diff)) # P-value\n\n[1] 0.353"
   },
   {
     "objectID": "slides/23_hypothesis-testing-II.html#permutation-tests-8",
@@ -914,7 +921,14 @@
     "href": "slides/23_hypothesis-testing-II.html#p-hacking-simulations-1",
     "title": "MATH167R: Hypothesis Testing",
     "section": "P-hacking simulations",
-    "text": "P-hacking simulations\nSuppose we simulate 25 observations of 8 variables which we know to be uncorrelated.\n\nno_signal_data&lt;- matrix(rnorm(200), ncol = 8) # 25 x 8 matrix\npairs(no_signal_data) # pairwise scatter plots"
+    "text": "P-hacking simulations\nSuppose we simulate 25 observations of 8 variables which we know to be uncorrelated.\n\nno_signal_data &lt;- matrix(rnorm(200), ncol = 8) # 25 x 8 matrix\npairs(no_signal_data) # pairwise scatter plots"
+  },
+  {
+    "objectID": "slides/23_hypothesis-testing-II.html#p-hacking-simulations-2",
+    "href": "slides/23_hypothesis-testing-II.html#p-hacking-simulations-2",
+    "title": "MATH167R: Hypothesis Testing",
+    "section": "P-hacking simulations",
+    "text": "P-hacking simulations\n\nno_signal_data &lt;- matrix(rnorm(200), ncol = 8) # 25 x 8 matrix\npairs(no_signal_data) # pairwise scatter plots"
   },
   {
     "objectID": "slides/23_hypothesis-testing-II.html#multiple-testing-simulations",

@@ -37,6 +37,10 @@ editor: visual
 3.  The $X$ and $Y$ samples are independent of one another.
 4.  The sample sizes are adequately large (usually appropriate if $m>40$ and $n>40$.
 
+
+## Example: Two-sample $z$-test
+
+
 **Hypotheses**:
 
 -   H_0: $\mu_1=\mu_2$
@@ -402,11 +406,21 @@ ggplot(mu_a, aes(x = mu_a)) +
 
 Suppose we simulate 25 observations of 8 variables which we know to be uncorrelated.
 
-```{r phack.sim}
+```{r phack.sim, eval = F, echo = T}
 #| eval: true
 #| echo: true
 #| cache: true
-no_signal_data<- matrix(rnorm(200), ncol = 8) # 25 x 8 matrix
+no_signal_data <- matrix(rnorm(200), ncol = 8) # 25 x 8 matrix
+pairs(no_signal_data) # pairwise scatter plots
+```
+
+## P-hacking simulations
+
+```{r phack.sim.eval, eval = T, echo = F}
+#| eval: true
+#| echo: true
+#| cache: true
+no_signal_data <- matrix(rnorm(200), ncol = 8) # 25 x 8 matrix
 pairs(no_signal_data) # pairwise scatter plots
 ```
 
