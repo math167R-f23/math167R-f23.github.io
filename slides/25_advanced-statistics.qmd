@@ -25,18 +25,18 @@ ANOVA is typically said to be introduced by Ronald Fisher, who applied the metho
 
 One-way ANOVA or single-factor ANOVA is used to compare two or more population means. Let $I$ be the number of groups/populations and $\mu_I$ to be the population mean of the response of interest for group $I$.
 
-**Hypotheses**: 
+**Hypotheses**:
 
-* $H_0:\mu_1=\ldots=\mu_I$
-* $H_a: \text{at least two of the means are different}$
+-   $H_0:\mu_1=\ldots=\mu_I$
+-   $H_a: \text{at least two of the means are different}$
 
-**Assumptions**: 
+**Assumptions**:
 
-* The population distributions are all normal with the same variance $\sigma^2$.
+-   The population distributions are all normal with the same variance $\sigma^2$.
 
 ## Test Statistic
 
-The $F$ test is commonly used to compare the causes of the total variation. In particular, the $F$ test statistic is defined as 
+The $F$ test is commonly used to compare the causes of the total variation. In particular, the $F$ test statistic is defined as
 
 $$F=\frac{\text{variance between groups}}{\text{variance within groups}}$$
 
@@ -95,8 +95,8 @@ ggplot(x, aes(x = x)) +
 
 The $F$ distribution has two parameters:
 
-* numerator degrees of freedom $\nu_1$
-* denominator degrees of freedom $\nu_2$
+-   numerator degrees of freedom $\nu_1$
+-   denominator degrees of freedom $\nu_2$
 
 The $F$ distribution was derived as the ratio of (scaled) chi-square random variables and is frequently used to model the null distribution of test statistics.
 
@@ -104,9 +104,9 @@ $$F = \frac{U_1/d_1}{U_2/d_2}$$
 
 where $U_1$ is chi-square with $d_1$ degrees of freedom, $U_2$ is chi-square with $d_2$ degrees of freedom, and $U_1$ and $U_2$ are independent.
 
-## Example: Emails
+## Example: `emails`
 
-The `PlantGrowth` data provides results from an experiment comparing plant growth under a control and two different treatment conditions.
+The `emails` data provides information on emails categorized as spam and non-spam.
 
 ```{r}
 #| echo: TRUE
@@ -116,7 +116,7 @@ boxplot(num_char ~ spam, data = emails, main = "Emails data",
         ylab = "Length of email (characters)", col = "lightgray")
 ```
 
-## Example: `PlantGrowth`
+## Example: `emails`
 
 ```{r}
 #| echo: TRUE
@@ -124,6 +124,7 @@ boxplot(num_char ~ spam, data = emails, main = "Emails data",
 anova_res <- anova(lm(num_char ~ spam, data = emails))
 anova_res
 ```
+
 ## The General Linear $F$-test
 
 In general, the `anova()` function can be used to test the fit of a model for sample data.
@@ -136,10 +137,22 @@ with a **reduced** model:
 
 $$y_i=\beta_0+\epsilon_i$$
 
-**Hypotheses**: 
+**Hypotheses**:
 
-* $H_0:y_i=\beta_0+\epsilon_i$
-* $H_a: y_i=\beta_0+\beta_1x_{i1}+\epsilon_i$
+-   $H_0:y_i=\beta_0+\epsilon_i$
+-   $H_a: y_i=\beta_0+\beta_1x_{i1}+\epsilon_i$
+
+## The General Linear $F$-test
+
+Let $p_{full}$ be the number of parameters in the full model and $p_{reduced}$ be the number of parameters in the reduced model.
+
+Let $SSE_{full}$ and $SSE_{reduced}$ be the sum of squared errors for the full and reduced models, respectively.
+
+$$
+F = \frac{(SSE_{reduced}-SSE_{full})/(p_{full}-p_{reduced})}{SSE_{full}/p_{full}}
+$$
+
+Then $F$ follows an $F$ distribution with $p_{full}-p_{reduced}$ and $p_{full}$ degrees of freedom.
 
 ## Example: `mtcars`
 
@@ -150,6 +163,8 @@ $$y_i=\beta_0+\epsilon_i$$
 my_lm <- lm(mpg ~ wt, data = mtcars)
 anova(my_lm)
 ```
+
+## Example: `mtcars`
 
 Note that this is equivalent to the Wald test for the coefficient for `wt` in the univariate case:
 
@@ -164,10 +179,10 @@ summary(my_lm)
 
 More generally the $F$-test can be used to test sets of nested models, when a reduced model can be compared with a full model.
 
-**Hypotheses**: 
+**Hypotheses**:
 
-* $H_0: \text{reduced model true}$
-* $H_a: \text{full model fits better}$
+-   $H_0: \text{reduced model true}$
+-   $H_a: \text{full model fits better}$
 
 ## Example: `mtcars`
 
@@ -179,7 +194,7 @@ my_lm <- lm(mpg ~ hp + wt, data = mtcars)
 anova(my_lm)
 ```
 
-When we have more than one explanatory variable, the $F$-test is different from the univariate Wald test. 
+When we have more than one explanatory variable, the $F$-test is different from the univariate Wald test.
 
 ```{r}
 #| echo: TRUE
@@ -205,15 +220,13 @@ anova(my_lm_full, my_lm_reduced)
 
 When we have binary outcomes $Y_1,\ldots, Y_n$ where $Y_i\in \{0, 1\}$ for all $i$, it may be inappropriate to use linear regression to model the relationships between $Y$ and covariates $X$.
 
-**Logistic regression** can be used to relate the **probability** that $Y_i=1$ to available covariates. 
+**Logistic regression** can be used to relate the **probability** that $Y_i=1$ to available covariates.
 
 ## Logistic regression
 
 **Model:**
 
-$$P(Y_i=1)=p_i$$
-$$\text{logit}(p_i)=\log\left(\frac{p_i}{1-p_i}\right)=\mathbf{x}_i^\top\boldsymbol\beta$$
-where $\mathbf{X}_i$ is the covariate vector for individual $i$ and $\boldsymbol\beta$ is a vector of regression covariates.
+$$P(Y_i=1)=p_i$$ $$\text{logit}(p_i)=\log\left(\frac{p_i}{1-p_i}\right)=\mathbf{x}_i^\top\boldsymbol\beta$$ where $\mathbf{X}_i$ is the covariate vector for individual $i$ and $\boldsymbol\beta$ is a vector of regression covariates.
 
 Note that the logit transformation has domain $(0,1)$ and range $(-\infty, \infty)$.
 
@@ -222,7 +235,6 @@ Note that the logit transformation has domain $(0,1)$ and range $(-\infty, \inft
 When we have only one covariate $x$, the model is as follows:
 
 $$\text{logit}(p(x))=\log\left(\frac{p(x)}{1-p(x)}\right)=\beta_0+\beta_1 x$$
-
 
 where $p(x)$ represents the probability that an individual with covariate value $x$ experiences the response/event of interest.
 
@@ -267,13 +279,14 @@ The `glm()` function can be used to fit generalized linear models including logi
 orings_res <- glm((damaged > 0) ~ temperature, data = orings, family = binomial)
 summary(orings_res)
 ```
+
 ## Example: *Challenger* disaster
 
-Here, our estimate of $\beta_0$ is $b_0=15.04$ and our estimate of $\beta_1$ is $b_1=-.23$. 
+Here, our estimate of $\beta_0$ is $b_0=15.04$ and our estimate of $\beta_1$ is $b_1=-.23$.
 
-We can interpret $\beta_1$ as follows: for each additional degree of ambient temperature, the log-odds of experiencing an O-ring failure decreases by $.23$. 
+We can interpret $\beta_1$ as follows: for each additional degree of ambient temperature, the log-odds of experiencing an O-ring failure decreases by $.23$.
 
-In other words, the odds changes by a factor of $\exp(.2322)\approx.79$ as temperature increases by one degree.
+In other words, the odds changes by a factor of $\exp(.23)\approx.79$ as temperature increases by one degree.
 
 Note that the $p$-value for $\beta_1$ is significant at the $.05$ level, suggesting evidence that temperature is associated with O-ring failure.
 
@@ -281,11 +294,11 @@ Note that the $p$-value for $\beta_1$ is significant at the $.05$ level, suggest
 
 We can use many of the functions we used with `lm` objects, including:
 
-* `fitted()` returns the predicted probabilities for a logistic regression
-* `predict()` can be used to generate predictions
-* `plot()` returns a series of diagnostic plots
-* `residuals()` returns residuals--not that these are not usually the typical observed minus predicted residuals.
-* `anova()` can be used to assess the model fit for `glm` objects.
+-   `fitted()` returns the predicted probabilities for a logistic regression
+-   `predict()` can be used to generate predictions
+-   `plot()` returns a series of diagnostic plots
+-   `residuals()` returns residuals--not that these are not usually the typical observed minus predicted residuals.
+-   `anova()` can be used to assess the model fit for `glm` objects.
 
 ## Example: *Challenger* disaster
 
@@ -314,8 +327,7 @@ anova(orings_res, base_res, test = "F")
 
 ## Fisher's exact test
 
-*Agresti (1990): A British woman claimed to be able to distinguish whether milk or tea was added to the cup first.  To test, she was given 8 cups of tea, in four of which milk was added first.  The null hypothesis is that there is no association between the true order of pouring and the woman's guess. The alternative that there is a positive association (that the odds ratio is greater than 1).*
-
+*Agresti (1990): A British woman claimed to be able to distinguish whether milk or tea was added to the cup first. To test, she was given 8 cups of tea, in four of which milk was added first. The null hypothesis is that there is no association between the true order of pouring and the woman's guess. The alternative that there is a positive association (that the odds ratio is greater than 1).*
 
 ## Fisher's exact test
 
@@ -330,8 +342,3 @@ TeaTasting <-
                          Truth = c("Milk", "Tea")))
 fisher.test(TeaTasting, alternative = "greater")
 ```
-
-
-
-
-## Simulations

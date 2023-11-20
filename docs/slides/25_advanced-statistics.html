@@ -496,8 +496,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>where <span class="math inline">\(U_1\)</span> is chi-square with <span class="math inline">\(d_1\)</span> degrees of freedom, <span class="math inline">\(U_2\)</span> is chi-square with <span class="math inline">\(d_2\)</span> degrees of freedom, and <span class="math inline">\(U_1\)</span> and <span class="math inline">\(U_2\)</span> are independent.</p>
 </section>
 <section id="example-emails" class="slide level2">
-<h2>Example: Emails</h2>
-<p>The <code>PlantGrowth</code> data provides results from an experiment comparing plant growth under a control and two different treatment conditions.</p>
+<h2>Example: <code>emails</code></h2>
+<p>The <code>emails</code> data provides information on emails categorized as spam and non-spam.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>emails <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://www.openintro.org/data/csv/email50.csv"</span>)</span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="fu">boxplot</span>(num_char <span class="sc">~</span> spam, <span class="at">data =</span> emails, <span class="at">main =</span> <span class="st">"Emails data"</span>,</span>
@@ -505,8 +505,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 
 </div>
 <img data-src="25_advanced-statistics_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
-<section id="example-plantgrowth-2" class="slide level2">
-<h2>Example: <code>PlantGrowth</code></h2>
+<section id="example-emails-1" class="slide level2">
+<h2>Example: <code>emails</code></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>anova_res <span class="ot">&lt;-</span> <span class="fu">anova</span>(<span class="fu">lm</span>(num_char <span class="sc">~</span> spam, <span class="at">data =</span> emails))</span>
 <span id="cb6-2"><a href="#cb6-2"></a>anova_res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -533,6 +533,15 @@ Residuals 48 8441.3 175.860               </code></pre>
 <li><span class="math inline">\(H_a: y_i=\beta_0+\beta_1x_{i1}+\epsilon_i\)</span></li>
 </ul>
 </section>
+<section id="the-general-linear-f-test-1" class="slide level2">
+<h2>The General Linear <span class="math inline">\(F\)</span>-test</h2>
+<p>Let <span class="math inline">\(p_{full}\)</span> be the number of parameters in the full model and <span class="math inline">\(p_{reduced}\)</span> be the number of parameters in the reduced model.</p>
+<p>Let <span class="math inline">\(SSE_{full}\)</span> and <span class="math inline">\(SSE_{reduced}\)</span> be the sum of squared errors for the full and reduced models, respectively.</p>
+<p><span class="math display">\[
+F = \frac{(SSE_{reduced}-SSE_{full})/(p_{full}-p_{reduced})}{SSE_{full}/p_{full}}
+\]</span></p>
+<p>Then <span class="math inline">\(F\)</span> follows an <span class="math inline">\(F\)</span> distribution with <span class="math inline">\(p_{full}-p_{reduced}\)</span> and <span class="math inline">\(p_{full}\)</span> degrees of freedom.</p>
+</section>
 <section id="example-mtcars" class="slide level2">
 <h2>Example: <code>mtcars</code></h2>
 <div class="cell" data-hash="25_advanced-statistics_cache/revealjs/unnamed-chunk-6_fc0669dbc59445fad52164a0f7ffa8ff">
@@ -549,6 +558,9 @@ Residuals 30 278.32    9.28
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
+</section>
+<section id="example-mtcars-1" class="slide level2">
+<h2>Example: <code>mtcars</code></h2>
 <p>Note that this is equivalent to the Wald test for the coefficient for <code>wt</code> in the univariate case:</p>
 <div class="cell" data-hash="25_advanced-statistics_cache/revealjs/unnamed-chunk-7_019af16f285e2d0263baeaa0d958d784">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">summary</span>(my_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -574,7 +586,7 @@ F-statistic: 91.38 on 1 and 30 DF,  p-value: 1.294e-10</code></pre>
 </div>
 </div>
 </section>
-<section id="the-general-linear-f-test-1" class="slide level2">
+<section id="the-general-linear-f-test-2" class="slide level2">
 <h2>The General Linear <span class="math inline">\(F\)</span>-test</h2>
 <p>More generally the <span class="math inline">\(F\)</span>-test can be used to test sets of nested models, when a reduced model can be compared with a full model.</p>
 <p><strong>Hypotheses</strong>:</p>
@@ -583,7 +595,7 @@ F-statistic: 91.38 on 1 and 30 DF,  p-value: 1.294e-10</code></pre>
 <li><span class="math inline">\(H_a: \text{full model fits better}\)</span></li>
 </ul>
 </section>
-<section id="example-mtcars-1" class="slide level2">
+<section id="example-mtcars-2" class="slide level2">
 <h2>Example: <code>mtcars</code></h2>
 <div class="cell" data-hash="25_advanced-statistics_cache/revealjs/unnamed-chunk-8_ea9eb877deeb2a4594bf659f6453bf19">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>my_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> wt, <span class="at">data =</span> mtcars)</span>
@@ -626,7 +638,7 @@ F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 </div>
 </div>
 </section>
-<section id="example-mtcars-2" class="slide level2">
+<section id="example-mtcars-3" class="slide level2">
 <h2>Example: <code>mtcars</code></h2>
 <p>We can explicitly specify the full and reduced models:</p>
 <div class="cell" data-hash="25_advanced-statistics_cache/revealjs/unnamed-chunk-10_63e21054965ef28f44e6220c82d0cc88">
@@ -724,7 +736,7 @@ Number of Fisher Scoring iterations: 5</code></pre>
 <h2>Example: <em>Challenger</em> disaster</h2>
 <p>Here, our estimate of <span class="math inline">\(\beta_0\)</span> is <span class="math inline">\(b_0=15.04\)</span> and our estimate of <span class="math inline">\(\beta_1\)</span> is <span class="math inline">\(b_1=-.23\)</span>.</p>
 <p>We can interpret <span class="math inline">\(\beta_1\)</span> as follows: for each additional degree of ambient temperature, the log-odds of experiencing an O-ring failure decreases by <span class="math inline">\(.23\)</span>.</p>
-<p>In other words, the odds changes by a factor of <span class="math inline">\(\exp(.2322)\approx.79\)</span> as temperature increases by one degree.</p>
+<p>In other words, the odds changes by a factor of <span class="math inline">\(\exp(.23)\approx.79\)</span> as temperature increases by one degree.</p>
 <p>Note that the <span class="math inline">\(p\)</span>-value for <span class="math inline">\(\beta_1\)</span> is significant at the <span class="math inline">\(.05\)</span> level, suggesting evidence that temperature is associated with O-ring failure.</p>
 </section>
 <section id="example-challenger-disaster-4" class="slide level2">
@@ -804,9 +816,6 @@ odds ratio
   6.408309 </code></pre>
 </div>
 </div>
-</section>
-<section id="simulations" class="slide level2">
-<h2>Simulations</h2>
 
 <div class="footer footer-default">
 
