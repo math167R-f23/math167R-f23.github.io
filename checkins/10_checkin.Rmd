@@ -54,7 +54,7 @@ g_test
 **1b.** For each model from (a), record the training error. Then predict `y_test` using `x_test` and also record the test error.
 
 **1c.** If you were going to choose a model based on training error, which would you choose? Plot the data, colored by split. Add a line to the plot representing your selection for model fit. Add a subtitle to this plot with the (rounded!) test error.
-(*Hint: See Lecture Slides 9 for example code.*)
+(*Hint: See Lecture Slides for example code.*)
 
 **1d.** If you were going to choose a model based on test error, which would you choose? Plot the data, colored by split. Add a line to the plot representing your selection for model fit. Add a subtitle to this plot with the (rounded!) test error.
 
