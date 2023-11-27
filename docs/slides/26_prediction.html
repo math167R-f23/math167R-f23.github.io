@@ -414,7 +414,7 @@ Peter Gao
 </section>
 <section id="acknowledgement" class="slide level2">
 <h2>Acknowledgement</h2>
-<p>This lecture borrows heavily from the Ryan Tibshirani’s <a href="http://www.stat.cmu.edu/~ryantibs/statcomp/lectures/prediction.html">Statistical Prediction lecture</a> for Statistical Computing at Carnegie Mellon University.</p>
+<p>This lecture draws from Ryan Tibshirani’s <a href="http://www.stat.cmu.edu/~ryantibs/statcomp/lectures/prediction.html">Statistical Prediction lecture</a> for Statistical Computing at Carnegie Mellon University.</p>
 </section>
 <section>
 <section id="training-and-testing" class="title-slide slide level1 center">
@@ -429,6 +429,9 @@ Peter Gao
 <li><span class="math inline">\(Y\)</span>: the <strong>dependent variables/response/outcome</strong>.</li>
 </ul>
 <p>We want to know the relationship between our covariates and our response, we can do this with a method called <strong>regression</strong>. Regression provides us with a statistical method to conduct inference and prediction.</p>
+<div class="fragment">
+<p>What is the difference between inference and prediction?</p>
+</div>
 </section>
 <section id="recall-regression-1" class="slide level2">
 <h2>Recall: Regression</h2>
@@ -666,10 +669,17 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 </section>
 <section id="bias-variance-tradeoff-1" class="slide level2">
 <h2>Bias-Variance Tradeoff</h2>
+<p>For example, suppose <span class="math inline">\(Y^*=\mu+\epsilon\)</span> where <span class="math inline">\(\epsilon\)</span> is mean zero random error with variance <span class="math inline">\(\sigma^2\)</span>:</p>
+<p><span class="math display">\[\begin{align}\mathbb{E}[(Y^* -\hat{Y}^*)^2]&amp;=\mathbb{E}(Y^{*2})-2\mathbb{E}(Y^*\hat{Y}^*)+\mathbb{E}(\hat{Y}^{*2})\\
+&amp;=\mu^2+\sigma^2-2\mu\mathbb{E}(\hat{Y}^*)+\mathrm{Var}(\hat{Y}^{*})+\mathbb{E}(\hat{Y}^{*2})\\
+&amp;=(\mu -\mathbb{E}(\hat{Y}^*))^2+\sigma^2+\mathrm{Var}(\hat{Y}^{*}) \end{align}\]</span></p>
+</section>
+<section id="bias-variance-tradeoff-2" class="slide level2">
+<h2>Bias-Variance Tradeoff</h2>
 <p><img src="images/bvtradeoff.png" height="500"></p>
 <p>Image Credit: An Introduction to Statistical Learning by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani</p>
 </section>
-<section id="bias-variance-tradeoff-2" class="slide level2">
+<section id="bias-variance-tradeoff-3" class="slide level2">
 <h2>Bias-Variance Tradeoff</h2>
 <ul>
 <li><p><strong>Bias:</strong> underfitting, error from missing relevant relationships</p></li>
@@ -678,12 +688,12 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 <p><img src="images/underover1.png" height="300"></p>
 <p><a href="https://medium.com/greyatom/what-is-underfitting-and-overfitting-in-machine-learning-and-how-to-deal-with-it-6803a989c76">Image Source</a></p>
 </section>
-<section id="bias-variance-tradeoff-3" class="slide level2">
+<section id="bias-variance-tradeoff-4" class="slide level2">
 <h2>Bias-Variance Tradeoff</h2>
 <p><img src="images/underover2.png" height="300"></p>
 <p><a href="https://medium.com/greyatom/what-is-underfitting-and-overfitting-in-machine-learning-and-how-to-deal-with-it-6803a989c76">Image Source</a></p>
 </section>
-<section id="bias-variance-tradeoff-4" class="slide level2">
+<section id="bias-variance-tradeoff-5" class="slide level2">
 <h2>Bias-Variance Tradeoff</h2>
 <p>It is easy to fit a model with extremely low variance and extremely high bias, or extremely low bias and extremely high variance, but these models will not have a good test error. Ideally, we would like an estimate that has both low bias and low variance, but this is not always possible!</p>
 <p>As a general rule of thumb, as we increase the complexity of our model, the bias will decrease but the variance will increase. You can think of our bias decreasing because we are training our model to be more specific to our training data. You can think of the variance increasing because our model will be overfit, and will vary substantially with new training data.</p>
@@ -802,7 +812,7 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 <h2>Leave-One-Out Cross-Validation</h2>
 <p>Leave-one-out cross-validation (LOOCV) is a special instance of <span class="math inline">\(k\)</span>-fold cross-validation where <span class="math inline">\(k\)</span> is equal to the sample size <span class="math inline">\(n\)</span>. This means you fit <span class="math inline">\(n\)</span> different models using <span class="math inline">\(n-1\)</span> data points for your training data, and then test on the remaining individual data point.</p>
 </section>
-<section id="bias-variance-tradeoff-5" class="slide level2">
+<section id="bias-variance-tradeoff-6" class="slide level2">
 <h2>Bias-variance Tradeoff</h2>
 <p>LOOCV strengths in that it uses as much data as possible to train the model while still having out-of-sample test data. Thus, it will provide approximately unbiased estimates of the test error, and is the best choice for minimizing bias.</p>
 <p>However, LOOCV has one major drawback: variance. Because it fits <span class="math inline">\(n\)</span> models, each of which is trained on almost identical training data, the outputs of the models are highly correlated. All other things being equal, the mean of correlated observations has a higher variance than the mean of uncorrelated observations. Thus, LOOCV has higher variance than <span class="math inline">\(k\)</span>-fold CV with <span class="math inline">\(k&lt;n\)</span>.</p>
@@ -956,7 +966,7 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 <section id="variable-importance" class="slide level2">
 <h2>Variable Importance</h2>
 <p>One major benefit of tree-based prediction algorithms is that they provide a powerful and interpretable tool for assessing <strong>variable importance</strong>. For example, we can look across all trees in a random forest, assess how often variables were used for splitting and how helpful those splits were for prediction, and identify the variables that improve our predictions the most!</p>
-<p>(For more on this, see the <em>Gini index</em>. I highly recommend the book I’ve been using for some of these images, “An Introduction to Statistical Learning” by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani.)</p>
+<p>(For more on this, see the <em>Gini index</em> and “An Introduction to Statistical Learning” by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani.)</p>
 </section>
 <section id="statistical-prediction-algorithms-2" class="slide level2">
 <h2>Statistical Prediction Algorithms</h2>
@@ -965,7 +975,8 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 <li>neural networks,</li>
 <li>support vector machines,</li>
 <li>kernel classifiers,</li>
-<li>Bayesian classifiers, <br> <span class="math inline">\(\ \ \ \ \ \ \ \vdots\)</span></li>
+<li>Bayesian classifiers,</li>
+<li>and more…</li>
 </ul>
 <p>These algorithms, and related topics, are likely things that you will cover if you take courses more focused on machine learning.</p>
 

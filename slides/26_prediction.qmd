@@ -17,7 +17,7 @@ editor: source
 
 ## Acknowledgement
 
-This lecture borrows heavily from the Ryan Tibshirani's [Statistical Prediction lecture](http://www.stat.cmu.edu/~ryantibs/statcomp/lectures/prediction.html) for Statistical Computing at Carnegie Mellon University.
+This lecture draws from Ryan Tibshirani's [Statistical Prediction lecture](http://www.stat.cmu.edu/~ryantibs/statcomp/lectures/prediction.html) for Statistical Computing at Carnegie Mellon University.
 
 # Training and Testing
 
@@ -30,6 +30,10 @@ Assume we have some data:
 
 We want to know the relationship between our covariates and our response, we can do this with a method called **regression**. Regression provides us with a statistical method to conduct inference and prediction.
 
+. . .
+
+What is the difference between inference and prediction?
+
 ## Recall: Regression
 
 -   **inference:** assess the relationship between our variables, our statistical model as a whole, predictor importance
@@ -37,7 +41,7 @@ We want to know the relationship between our covariates and our response, we can
     -   Is parents' education or parents' income more important for explaining income?
 -   **prediction:** predict new/future outcomes from new/future covariates
     -   Can we predict test scores based on hours spent studying?
-
+    
 ## Linear Regression
 
 Given our response $Y$ and our predictors $X_1, \ldots, X_p$, a **linear regression model** takes the form:
@@ -389,6 +393,14 @@ The formula for test error can be decomposed as a function of the bias and varia
 -   **Bias:** the expected difference between our estimate and the truth
 
 -   **Variance:** the variability of our estimate of the truth
+
+## Bias-Variance Tradeoff
+
+For example, suppose $Y^*=\mu+\epsilon$ where $\epsilon$ is mean zero random error with variance $\sigma^2$:
+
+$$\begin{align}\mathbb{E}[(Y^* -\hat{Y}^*)^2]&=\mathbb{E}(Y^{*2})-2\mathbb{E}(Y^*\hat{Y}^*)+\mathbb{E}(\hat{Y}^{*2})\\
+&=\mu^2+\sigma^2-2\mu\mathbb{E}(\hat{Y}^*)+\mathrm{Var}(\hat{Y}^{*})+\mathbb{E}(\hat{Y}^{*2})\\
+&=(\mu -\mathbb{E}(\hat{Y}^*))^2+\sigma^2+\mathrm{Var}(\hat{Y}^{*}) \end{align}$$
 
 ## Bias-Variance Tradeoff
 
@@ -770,7 +782,7 @@ In practice, we don't typically predict with a single tree. Instead, we combine 
 
 One major benefit of tree-based prediction algorithms is that they provide a powerful and interpretable tool for assessing **variable importance**. For example, we can look across all trees in a random forest, assess how often variables were used for splitting and how helpful those splits were for prediction, and identify the variables that improve our predictions the most!
 
-(For more on this, see the *Gini index*. I highly recommend the book I've been using for some of these images, "An Introduction to Statistical Learning" by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani.)
+(For more on this, see the *Gini index* and "An Introduction to Statistical Learning" by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani.)
 
 ## Statistical Prediction Algorithms
 
@@ -779,6 +791,7 @@ This was a very brief overfiew of a very small subset of the algorithms used for
 -   neural networks,
 -   support vector machines,
 -   kernel classifiers,
--   Bayesian classifiers, <br> $\ \ \ \ \ \ \ \vdots$
+-   Bayesian classifiers, 
+-   and more... 
 
 These algorithms, and related topics, are likely things that you will cover if you take courses more focused on machine learning.

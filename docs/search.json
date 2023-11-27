@@ -4652,14 +4652,14 @@
     "href": "slides/26_prediction.html#acknowledgement",
     "title": "MATH167R: Prediction",
     "section": "Acknowledgement",
-    "text": "Acknowledgement\nThis lecture borrows heavily from the Ryan Tibshirani’s Statistical Prediction lecture for Statistical Computing at Carnegie Mellon University."
+    "text": "Acknowledgement\nThis lecture draws from Ryan Tibshirani’s Statistical Prediction lecture for Statistical Computing at Carnegie Mellon University."
   },
   {
     "objectID": "slides/26_prediction.html#recall-regression",
     "href": "slides/26_prediction.html#recall-regression",
     "title": "MATH167R: Prediction",
     "section": "Recall: Regression",
-    "text": "Recall: Regression\nAssume we have some data:\n\n\\(X_1,\\ldots, X_p\\): \\(p\\) independent variables/explanatory variables/covariates/predictors\n\\(Y\\): the dependent variables/response/outcome.\n\nWe want to know the relationship between our covariates and our response, we can do this with a method called regression. Regression provides us with a statistical method to conduct inference and prediction."
+    "text": "Recall: Regression\nAssume we have some data:\n\n\\(X_1,\\ldots, X_p\\): \\(p\\) independent variables/explanatory variables/covariates/predictors\n\\(Y\\): the dependent variables/response/outcome.\n\nWe want to know the relationship between our covariates and our response, we can do this with a method called regression. Regression provides us with a statistical method to conduct inference and prediction.\n\nWhat is the difference between inference and prediction?"
   },
   {
     "objectID": "slides/26_prediction.html#recall-regression-1",
@@ -4799,25 +4799,32 @@
     "href": "slides/26_prediction.html#bias-variance-tradeoff-1",
     "title": "MATH167R: Prediction",
     "section": "Bias-Variance Tradeoff",
-    "text": "Bias-Variance Tradeoff\n\nImage Credit: An Introduction to Statistical Learning by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani"
+    "text": "Bias-Variance Tradeoff\nFor example, suppose \\(Y^*=\\mu+\\epsilon\\) where \\(\\epsilon\\) is mean zero random error with variance \\(\\sigma^2\\):\n\\[\\begin{align}\\mathbb{E}[(Y^* -\\hat{Y}^*)^2]&=\\mathbb{E}(Y^{*2})-2\\mathbb{E}(Y^*\\hat{Y}^*)+\\mathbb{E}(\\hat{Y}^{*2})\\\\\n&=\\mu^2+\\sigma^2-2\\mu\\mathbb{E}(\\hat{Y}^*)+\\mathrm{Var}(\\hat{Y}^{*})+\\mathbb{E}(\\hat{Y}^{*2})\\\\\n&=(\\mu -\\mathbb{E}(\\hat{Y}^*))^2+\\sigma^2+\\mathrm{Var}(\\hat{Y}^{*}) \\end{align}\\]"
   },
   {
     "objectID": "slides/26_prediction.html#bias-variance-tradeoff-2",
     "href": "slides/26_prediction.html#bias-variance-tradeoff-2",
     "title": "MATH167R: Prediction",
     "section": "Bias-Variance Tradeoff",
-    "text": "Bias-Variance Tradeoff\n\nBias: underfitting, error from missing relevant relationships\nVariance: overfitting, error from high sensitivity\n\n\nImage Source"
+    "text": "Bias-Variance Tradeoff\n\nImage Credit: An Introduction to Statistical Learning by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani"
   },
   {
     "objectID": "slides/26_prediction.html#bias-variance-tradeoff-3",
     "href": "slides/26_prediction.html#bias-variance-tradeoff-3",
     "title": "MATH167R: Prediction",
     "section": "Bias-Variance Tradeoff",
-    "text": "Bias-Variance Tradeoff\n\nImage Source"
+    "text": "Bias-Variance Tradeoff\n\nBias: underfitting, error from missing relevant relationships\nVariance: overfitting, error from high sensitivity\n\n\nImage Source"
   },
   {
     "objectID": "slides/26_prediction.html#bias-variance-tradeoff-4",
     "href": "slides/26_prediction.html#bias-variance-tradeoff-4",
+    "title": "MATH167R: Prediction",
+    "section": "Bias-Variance Tradeoff",
+    "text": "Bias-Variance Tradeoff\n\nImage Source"
+  },
+  {
+    "objectID": "slides/26_prediction.html#bias-variance-tradeoff-5",
+    "href": "slides/26_prediction.html#bias-variance-tradeoff-5",
     "title": "MATH167R: Prediction",
     "section": "Bias-Variance Tradeoff",
     "text": "Bias-Variance Tradeoff\nIt is easy to fit a model with extremely low variance and extremely high bias, or extremely low bias and extremely high variance, but these models will not have a good test error. Ideally, we would like an estimate that has both low bias and low variance, but this is not always possible!\nAs a general rule of thumb, as we increase the complexity of our model, the bias will decrease but the variance will increase. You can think of our bias decreasing because we are training our model to be more specific to our training data. You can think of the variance increasing because our model will be overfit, and will vary substantially with new training data."
@@ -4900,8 +4907,8 @@
     "text": "Leave-One-Out Cross-Validation\nLeave-one-out cross-validation (LOOCV) is a special instance of \\(k\\)-fold cross-validation where \\(k\\) is equal to the sample size \\(n\\). This means you fit \\(n\\) different models using \\(n-1\\) data points for your training data, and then test on the remaining individual data point."
   },
   {
-    "objectID": "slides/26_prediction.html#bias-variance-tradeoff-5",
-    "href": "slides/26_prediction.html#bias-variance-tradeoff-5",
+    "objectID": "slides/26_prediction.html#bias-variance-tradeoff-6",
+    "href": "slides/26_prediction.html#bias-variance-tradeoff-6",
     "title": "MATH167R: Prediction",
     "section": "Bias-variance Tradeoff",
     "text": "Bias-variance Tradeoff\nLOOCV strengths in that it uses as much data as possible to train the model while still having out-of-sample test data. Thus, it will provide approximately unbiased estimates of the test error, and is the best choice for minimizing bias.\nHowever, LOOCV has one major drawback: variance. Because it fits \\(n\\) models, each of which is trained on almost identical training data, the outputs of the models are highly correlated. All other things being equal, the mean of correlated observations has a higher variance than the mean of uncorrelated observations. Thus, LOOCV has higher variance than \\(k\\)-fold CV with \\(k&lt;n\\).\nAs a rule of thumb, stick to \\(k=5\\) and \\(k=10\\). These values tend to result in an ideal balance in terms of the bias-variance tradeoff."
@@ -5023,14 +5030,14 @@
     "href": "slides/26_prediction.html#variable-importance",
     "title": "MATH167R: Prediction",
     "section": "Variable Importance",
-    "text": "Variable Importance\nOne major benefit of tree-based prediction algorithms is that they provide a powerful and interpretable tool for assessing variable importance. For example, we can look across all trees in a random forest, assess how often variables were used for splitting and how helpful those splits were for prediction, and identify the variables that improve our predictions the most!\n(For more on this, see the Gini index. I highly recommend the book I’ve been using for some of these images, “An Introduction to Statistical Learning” by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani.)"
+    "text": "Variable Importance\nOne major benefit of tree-based prediction algorithms is that they provide a powerful and interpretable tool for assessing variable importance. For example, we can look across all trees in a random forest, assess how often variables were used for splitting and how helpful those splits were for prediction, and identify the variables that improve our predictions the most!\n(For more on this, see the Gini index and “An Introduction to Statistical Learning” by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani.)"
   },
   {
     "objectID": "slides/26_prediction.html#statistical-prediction-algorithms-2",
     "href": "slides/26_prediction.html#statistical-prediction-algorithms-2",
     "title": "MATH167R: Prediction",
     "section": "Statistical Prediction Algorithms",
-    "text": "Statistical Prediction Algorithms\nThis was a very brief overfiew of a very small subset of the algorithms used for statistical prediction. Other common examples include:\n\nneural networks,\nsupport vector machines,\nkernel classifiers,\nBayesian classifiers,  \\(\\ \\ \\ \\ \\ \\ \\ \\vdots\\)\n\nThese algorithms, and related topics, are likely things that you will cover if you take courses more focused on machine learning."
+    "text": "Statistical Prediction Algorithms\nThis was a very brief overfiew of a very small subset of the algorithms used for statistical prediction. Other common examples include:\n\nneural networks,\nsupport vector machines,\nkernel classifiers,\nBayesian classifiers,\nand more…\n\nThese algorithms, and related topics, are likely things that you will cover if you take courses more focused on machine learning."
   },
   {
     "objectID": "slides/02_fundamentals.html#warm-up",
@@ -6288,14 +6295,14 @@
   {
     "objectID": "checkins/10_checkin.html",
     "href": "checkins/10_checkin.html",
-    "title": "Check-in 9",
+    "title": "Check-in 10",
     "section": "",
     "text": "Remember, you must submit both your .Rmd and the compiled .html in order to receive full credit! In addition, to receive full credit, your code output and plots must be correctly formatted."
   },
   {
     "objectID": "checkins/10_checkin.html#part-1.-training-and-test-error-10-points",
     "href": "checkins/10_checkin.html#part-1.-training-and-test-error-10-points",
-    "title": "Check-in 9",
+    "title": "Check-in 10",
     "section": "Part 1. Training and Test Error (10 points)",
     "text": "Part 1. Training and Test Error (10 points)\nUse the following code to generate data:\n\nlibrary(ggplot2)\n# generate data\nset.seed(302)\nn &lt;- 30\nx &lt;- sort(runif(n, -3, 3))\ny &lt;- 2*x + 2*rnorm(n)\nx_test &lt;- sort(runif(n, -3, 3))\ny_test &lt;- 2*x_test + 2*rnorm(n)\ndf_train &lt;- data.frame(\"x\" = x, \"y\" = y)\ndf_test &lt;- data.frame(\"x\" = x_test, \"y\" = y_test)\n\n# store a theme\nmy_theme &lt;- theme_bw(base_size = 16) + \n  theme(plot.title = element_text(hjust = 0.5, face = \"bold\"),\n        plot.subtitle = element_text(hjust = 0.5))\n\n# generate plots\ng_train &lt;- ggplot(df_train, aes(x = x, y = y)) + geom_point() +\n  xlim(-3, 3) + ylim(min(y, y_test), max(y, y_test)) + \n  labs(title = \"Training Data\") + my_theme\ng_test &lt;- ggplot(df_test, aes(x = x, y = y)) + geom_point() +\n  xlim(-3, 3) + ylim(min(y, y_test), max(y, y_test)) + \n  labs(title = \"Test Data\") + my_theme\ng_train\n\n\n\ng_test\n\n\n\n\n1a. For \\(k = 1\\) and \\(k = 5\\), fit a degree-k polynomial linear regression model with y as the response and x as the explanatory variable(s). (Hint: Use poly(), as in the lecture slides.)\n1b. For each model from (a), record the training error. Then predict y_test using x_test and also record the test error.\n1c. If you were going to choose a model based on training error, which would you choose? Plot the data, colored by split. Add a line to the plot representing your selection for model fit. Add a subtitle to this plot with the (rounded!) test error. (Hint: See Lecture Slides for example code.)\n1d. If you were going to choose a model based on test error, which would you choose? Plot the data, colored by split. Add a line to the plot representing your selection for model fit. Add a subtitle to this plot with the (rounded!) test error.\n1e. What do you notice about the shape of the curves from part (d) and (e)? Which model do you think has lower bias? Lower variance? Why?"
   },
