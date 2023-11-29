@@ -4953,7 +4953,7 @@
     "href": "slides/26_prediction.html#statistical-prediction-algorithms-1",
     "title": "MATH167R: Prediction",
     "section": "Statistical Prediction Algorithms",
-    "text": "Statistical Prediction Algorithms\nThe normal distribution, specified by parameters for the mean and the variance, is an example of a parametric model. We are now going to discuss some non-parametric models. As the name implies, these models have no parameters at all.\nNon-parametric models are not motivated by assuming a distribution about the data. Instead, the focus is often on pure prediction. How can we use data to help us classify and predict the world around us? For the most part, many of these methods would have been impossible before the rise of high-powered computing."
+    "text": "Statistical Prediction Algorithms\nThe normal distribution, specified by parameters for the mean and the variance, is an example of a parametric model. We are now going to discuss some non-parametric models. As the name implies, these models do not assume that the data are drawn from some distribution with a fixed number of parameters.\nNon-parametric models are not motivated by inference on model parameters. Instead, the focus is often on pure prediction. How can we use data to help us classify and predict the world around us? For the most part, many of these methods would have been impossible before the rise of high-powered computing."
   },
   {
     "objectID": "slides/26_prediction.html#k-nearest-neighbors",
@@ -4988,7 +4988,14 @@
     "href": "slides/26_prediction.html#choosing-k-1",
     "title": "MATH167R: Prediction",
     "section": "Choosing k",
-    "text": "Choosing k\n\nTest error is minimized at about \\(k=10\\).\nImage Credit: An Introduction to Statistical Learning by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani"
+    "text": "Choosing k"
+  },
+  {
+    "objectID": "slides/26_prediction.html#choosing-k-2",
+    "href": "slides/26_prediction.html#choosing-k-2",
+    "title": "MATH167R: Prediction",
+    "section": "Choosing k",
+    "text": "Choosing k\n\n\n\n\n\n\n\n\nImage Credit"
   },
   {
     "objectID": "slides/26_prediction.html#trees",

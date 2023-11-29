@@ -891,8 +891,8 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 </section>
 <section id="statistical-prediction-algorithms-1" class="slide level2">
 <h2>Statistical Prediction Algorithms</h2>
-<p>The normal distribution, specified by parameters for the mean and the variance, is an example of a <strong>parametric model</strong>. We are now going to discuss some <strong>non-parametric models</strong>. As the name implies, these models have no parameters at all.</p>
-<p>Non-parametric models are not motivated by assuming a distribution about the data. Instead, the focus is often on pure prediction. How can we use data to help us classify and predict the world around us? For the most part, many of these methods would have been impossible before the rise of high-powered computing.</p>
+<p>The normal distribution, specified by parameters for the mean and the variance, is an example of a <strong>parametric model</strong>. We are now going to discuss some <strong>non-parametric models</strong>. As the name implies, these models do not assume that the data are drawn from some distribution with a fixed number of parameters.</p>
+<p>Non-parametric models are not motivated by inference on model parameters. Instead, the focus is often on pure prediction. How can we use data to help us classify and predict the world around us? For the most part, many of these methods would have been impossible before the rise of high-powered computing.</p>
 </section>
 <section id="k-nearest-neighbors" class="slide level2">
 <h2>k-nearest neighbors</h2>
@@ -929,8 +929,20 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 <section id="choosing-k-1" class="slide level2">
 <h2>Choosing k</h2>
 
-<img data-src="images/choosek.png" class="r-stretch quarto-figure-center"><p>Test error is minimized at about <span class="math inline">\(k=10\)</span>.</p>
-<p>Image Credit: An Introduction to Statistical Learning by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani</p>
+<img data-src="images/choosek.png" class="r-stretch quarto-figure-center"></section>
+<section id="choosing-k-2" class="slide level2">
+<h2>Choosing k</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/doubledescent.png"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://en.wikipedia.org/wiki/Double_descent#/media/File:Double_descent_in_a_two-layer_neural_network_(Figure_3a_from_Rocks_et_al._2022).png"></p>
+<figcaption>Image Credit</figcaption>
+</figure>
+</div>
 </section>
 <section id="trees" class="slide level2">
 <h2>Trees</h2>

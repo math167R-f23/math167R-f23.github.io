@@ -687,9 +687,9 @@ We will discuss only a few methods for this course to teach you about the princi
 
 ## Statistical Prediction Algorithms
 
-The normal distribution, specified by parameters for the mean and the variance, is an example of a **parametric model**. We are now going to discuss some **non-parametric models**. As the name implies, these models have no parameters at all.
+The normal distribution, specified by parameters for the mean and the variance, is an example of a **parametric model**. We are now going to discuss some **non-parametric models**. As the name implies, these models do not assume that the data are drawn from some distribution with a fixed number of parameters.
 
-Non-parametric models are not motivated by assuming a distribution about the data. Instead, the focus is often on pure prediction. How can we use data to help us classify and predict the world around us? For the most part, many of these methods would have been impossible before the rise of high-powered computing.
+Non-parametric models are not motivated by inference on model parameters. Instead, the focus is often on pure prediction. How can we use data to help us classify and predict the world around us? For the most part, many of these methods would have been impossible before the rise of high-powered computing.
 
 ## k-nearest neighbors
 
@@ -734,10 +734,13 @@ Cross-validation is a great tool to choose values for tuning parameters across a
 
 ![](images/choosek.png){fig-align="center"}
 
-Test error is minimized at about $k=10$.
+## Choosing k
 
-Image Credit: An Introduction to Statistical Learning by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani 
+![](images/doubledescent.png){fig-align="center"}
 
+
+
+![Image Credit](https://en.wikipedia.org/wiki/Double_descent#/media/File:Double_descent_in_a_two-layer_neural_network_(Figure_3a_from_Rocks_et_al._2022).png)
 
 
 ## Trees
