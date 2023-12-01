@@ -47,7 +47,7 @@ You will submit a 1-2 page project proposal with the following information:
 
 -   Any questions you have for me.
 
-## Part Two: Final Report (70 points), due 12/6
+## Part Two: Final Report (70 points), due 12/8
 
 5-7 pages, including figures. You do not have to write this in the form of an essay, but you should present your findings in a clear and organized way. In particular, you should be sure to cover the following areas:
 
@@ -73,9 +73,13 @@ You will submit a 1-2 page project proposal with the following information:
 -   A quick introduction to your dataset and research questions of interest.
 -   An overview of your favorite visualization/descriptive summary/result from your project.
 
-## Part Four: Reflection and Self-evaluation (5 points), due 12/6
+## Part Four: Reflection and Self-evaluation (5 points), due 12/12
 
-You will complete a 1-2 page reflection and self-evaluation on your work this semester for MATH167R. Questions will be posted at least two weeks in advance of the due date.
+You will complete a 1-2 page reflection and self-evaluation on your work this semester for MATH167R. Briefly answer the following questions:
+
+1. Describe at least one aspect of your work for this class of which you are proud. Are there any ways in which you grew this semester?
+2. Describe at least one aspect of your work which you could have improved.  
+3. Are there other topics related to programming in R and data science that you wish we had covered?
 
 ### Grading Rubric
 
